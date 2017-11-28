@@ -455,6 +455,7 @@ body * {
   border: none;
   border-radius: 5px;
   color: #fff;
+  -webkit-appearance: none;
 }
 .page-footer {
   background: #131316;
