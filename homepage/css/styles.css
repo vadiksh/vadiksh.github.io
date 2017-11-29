@@ -1,0 +1,250 @@
+body * {
+  
+}
+body {
+  background: #f7f7f7;
+  font-family: 'Roboto';
+  padding: 0px;
+}
+.section-title,
+.lg-title {
+/*   font-family: 'Roboto-Light'; */
+  font-family: 'Roboto-Thin';
+}
+.title-bold,
+.top-header__contacts::before {
+  font-family: 'Roboto-Medium';
+}
+ {
+  font-family: 'Roboto-Bold';
+}
+.section-tag,
+.header__request-btn,
+.access__submit {
+  font-family: 'Roboto-Black';
+}
+
+.wrapper {
+/*   margin: 0 10px; */
+}
+.section {
+  max-width: 920px;
+  margin: 0 auto;
+/*   display: flex; */
+}
+.section-tag {
+  display: inline-block;
+  color: #fff;
+  background: #808df4;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  padding: 4px 11px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+}
+.section-title {
+/*   display: inline-block; */
+  width: 430px;
+  color: #666;
+  font-size: 30px;
+}
+.section-text {
+  color: #999;
+  font-size: 14px;
+/*   width: 400px; */
+}
+.section-img {
+  width: 100%;
+}
+.lg-title {
+  font-size: 36px;
+}
+.title-italic {
+  display: inline-block;
+  transform: skewX(-10deg);
+}
+
+.header {
+  background: url('../img/header-bg.png') 0% 0%;
+  background-size: contain;
+}
+.top-header {
+  max-width: 1440px;
+  padding: 25px 40px;
+}
+.top-header__logo {
+  
+}
+.top-header__contacts::before {
+  content: 'Find us at';
+  color: #999;
+  font-size: 14px;
+}
+.contacts {
+  float: right;
+}
+.contacts__contacts-item {
+  
+}
+.contacts__contacts-link {
+  
+}
+.contacts__contacts-link:before {
+  content: '';
+  display: block;
+  
+}
+.header-section {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.header-section__text {
+  color: #999;
+}
+.header__request-btn {
+  display: inline-block;
+  color: #666;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 14px 35px;
+  border: 2px solid #666;
+  border-radius: 25px;
+  transition-duration: 0.2s;
+}
+.header__request-btn:hover {
+  background: #1f2639;
+  border: 2px solid #1f2639;
+  color: #71df96;
+  transition-duration: 0.3s;
+} 
+.jolted__text {
+  color: #666;
+}
+.access__text {
+  margin-bottom: 50px;
+}
+
+.label-box {
+    position: relative;
+    width: 920px;
+}
+
+.label-box::before,
+.label-box::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 0;
+    bottom: 50px;
+    background-color: #dedede;
+    transition-duration: 1s;
+}
+
+.label-box::before {
+    left: 50%;
+}
+
+.label-box::after {
+    right: 50%;
+}
+
+.access__input:focus + .label-box::before,
+.access__input:focus + .label-box::after {
+  width: 50%;
+  background-color: #aaa;
+  transition-duration: 0.6s;
+}
+
+.access__input {
+  position: relative;
+  width: 100%;
+  background: none;
+  color: black;
+  padding: 5px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid #dedede;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+  box-shadow: none;
+  font-size: 15px;
+}
+.access__input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  display: block;
+  height: 5px;
+  width: 100px;
+  background: #000;
+}
+.access__label {
+  position: absolute;
+  top: -86px;
+  font-size: 15px;
+  color: #aaa;
+  transition: 0.3s ease all;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+.access__input:focus + .label-box .access__label,
+.access__input:valid + .label-box .access__label {
+  font-size: 13px;
+  transform: translateY(-20px);
+}
+.access__submit {
+  display: inline-block;
+  color: #666;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 14px 35px;
+  border: 2px solid #666;
+  border-radius: 25px;
+  transition-duration: 0.2s;
+  background: none;
+}
+.access__submit:hover {
+  background: #1f2639;
+  border: 2px solid #1f2639;
+  color: #71df96;
+  transition-duration: 0.3s;
+}
+.access__name {
+  margin-top: 50px;
+}
+.access__error {
+  padding: 10px 15px;
+  background-color: #ed6d79;
+  color: #fff;
+  border-radius: 4px;
+  display: none;
+}
+
+/* 
+.access__input::before,
+.access__input::after {
+    content: "";
+    position: absolute;
+    height: 13px;
+    width: 100%;
+    bottom: 50px;
+    background-color: #dedede;
+    transition: width 0.4s;
+}
+.access__input::before {
+    left: 50%;
+}
+
+.access__input::after {
+    right: 50%;
+}
+
+.access__input:focus::before,
+.access__input:focus + .label-box::after {
+  width: 50%;
+  background-color: #000;
+}
+ */
