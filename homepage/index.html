@@ -9,42 +9,75 @@
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="fonts/fonts.css">
 	<link rel="stylesheet" href="css/styles.css">
-	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
 <body>
 	<header class="header">
-			<div class="top-header">
-				<img class="top-header__logo" src="img/logo.png" alt="Jolted">
-				<ul class="contacts top-header__contacts">
-					<li class="contacts__contacts-item">
-						<a href="" class="contacts__contacts-link"></a>
-					</li>
-					<li class="contacts__contacts-item">
-						<a href="" class="contacts__contacts-link"></a>
-					</li>
-				</ul>
+		<div class="sticky">
+			<div class="sticky-wrapper">
+			<img class="sticky__logo" src="img/sticky-logo.png" alt="Jolted">
+						<a class="sticky__request" href="#access">Request Invite</a>
+						<span class="sticky__btn sticky__share"></span>
+						<ul class="sticky__contacts">
+							<li class="sticky__contacts-item sticky__contact-fb">
+								<a href="#" class="sticky__btn contacts-closed sticky__fb"></a>
+							</li>
+							<li class="sticky__contacts-item sticky__contact-tw">
+								<a href="#" class="sticky__btn contacts-closed sticky__tw"></a>
+							</li>
+							<li class="sticky__contacts-item sticky__contact-close">
+								<span class="sticky__btn contacts-closed sticky__close"></span>
+							</li>
+						</ul>
+						<div class="nav-bar">
+							<a class="nav-bar__item nav-bar__item-1" href="#header-section"></a>
+							<a class="nav-bar__item nav-bar__item-2 nav-bar__active" href="#jolted"></a>
+							<a class="nav-bar__item nav-bar__item-3" href="#campaigns"></a>
+							<a class="nav-bar__item nav-bar__item-4" href="#targeting"></a>
+							<a class="nav-bar__item nav-bar__item-5" href="#filtering"></a>
+							<a class="nav-bar__item nav-bar__item-6" href="#engagement"></a>
+							<a class="nav-bar__item nav-bar__item-7" href="#analytics"></a>
+							<a class="nav-bar__item nav-bar__item-8" href="#benefits"></a>
+							<a class="nav-bar__item nav-bar__item-9" href="#access"></a>
+						</div>
+						</div>
+		</div>		
+		<div class="top-header">
+			<div class="wrapper-wide"><img class="top-header__logo" src="img/logo.png" alt="Jolted">
+						<ul class="contacts top-header__contacts">
+							<li class="contacts__contacts-item">
+								<a href="#" class="contacts__contacts-link contacts__fb"></a>
+							</li>
+							<li class="contacts__contacts-item">
+								<a href="#" class="contacts__contacts-link contacts__tw"></a>
+							</li>
+						</ul></div>
+		</div>
+		<div class="header-section section" id="header-section">
+			<div class="wrapper">
+				<span class="section-tag">Per invite only</span>
+				<h2 class="lg-title">The <span class="title-italic">easier</span> way to <span class="title-bold">engage</span>.</h2>
+				<p class="header-section__text">Target your audience, get active followers, and grow your Instagram fast and organically.</p>
+				<a href="#access" class="header__request-btn">Request invite</a>
+				<picture>
+					<source srcset="img/header.jpg" media="(min-width: 800px)">
+				   	<source srcset="img/header-ipad.png" media="(min-width: 500px)">
+				   	<source srcset="img/header-mob.png" media="(max-width: 500px)">
+				   <img class="section-img" srcset="img/header.jpg" alt="">
+				</picture>
 			</div>
-			<div class="header-section">
-				<div class="wrapper"><span class="section-tag">Per invite only</span>
-								<h2 class="lg-title">The <span class="title-italic">easier</span> way to <span class="title-bold">engage</span>.</h2>
-								<p class="header-section__text">Target your audience, get active followers, and grow your Instagram fast and organically.</p>
-								<a href="#access" class="header__request-btn">Request invite</a>
-								<picture>
-									<source srcset="img/header.jpg" media="(min-width: 800px)">
-								   	<source srcset="img/header-ipad.png" media="(min-width: 500px)">
-								   	<source srcset="img/header-mob.png" media="(max-width: 500px)">
-								   <img class="section-img" srcset="img/header.jpg" alt="">
-								</picture></div>
-			</div>
+		</div>
 	</header>
-	<section class="section jolted">
+	<section class="section jolted" id="jolted">
+	<div class="wrapper">
 		<span class="section-tag">what's Jolted?</span>
 		<h2 class="section-title lg-title"><span class="title-bold">Engagement</span> simplified.</h2>
 		<p class="jolted__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum accusantium, dolorum, quaerat quo hic necessitatibus nobis, quia impedit quas odio blanditiis reiciendis. Non animi recusandae facilis, nihil mollitia. Quas, laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem accusantium nulla quidem iste mollitia repellat repudiandae fugit porro est itaque aliquid non sequi, alias error exercitationem, temporibus facilis dolorem dicta.</p><br>
 		<p class="jolted__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat et est odio culpa. Voluptas consequatur, tenetur ipsum aliquam. Doloremque suscipit officia sapiente voluptate, nesciunt mollitia corrupti repellendus aperiam modi vitae.</p><br>
 		<p class="jolted__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nam numquam, dolorum quisquam sint eos.</p>
+		</div>
 	</section>
-	<section class="section campaigns">
+	<section class="section campaigns" id="campaigns">
+	<div class="wrapper">
 		<span class="section-tag">Campaigns</span>
 		<h2 class="section-title">Create a
 			<span class="title-bold"> campaign</span>.<br>Get an audience.
@@ -56,42 +89,72 @@
 		   	<source srcset="img/campaigns-mob.png" media="(max-width: 500px)">
 		   <img class="section-img" srcset="img/campaigns.png" alt="">
 		</picture>
+		</div>
 	</section>
-	<section class="section targeting">
+	<section class="section targeting" id="targeting">
+	<div class="wrapper">
 		<span class="section-tag">Targeting</span>
 		<h2 class="section-title">Input targets.<br>
 			Output<span class="title-bold"> followers</span>.</h2>
 		<p class="section-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus deleniti, minima at. Quasi nisi laudantium tempora ea, eveniet, accusantium consequuntur magni suscipit ut iste aperiam iusto pariatur! Repudiandae, quam qui!</p>
-		<!-- <img src="img/targeting.jpg" alt="Targeting" class="section-img"> -->
+		<picture>
+			<source srcset="img/targeting.png" media="(min-width: 800px)">
+		   	<source srcset="img/targeting-ipad.png" media="(min-width: 500px)">
+		   	<source srcset="img/targeting-mob.png" media="(max-width: 500px)">
+		   <img class="section-img" srcset="img/targeting.png" alt="">
+		</picture>
+		</div>
 	</section>
-	<section class="section filtering">
+	<section class="section filtering" id="filtering">
+	<div class="wrapper">
 		<span class="section-tag">Filtering</span>
 		<h2 class="section-title">
 			<span class="title-bold">Prequalify </span>
 			users.<br>Increase result.
 		</h2>
 		<p class="section-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam necessitatibus ea, consequatur nostrum consequuntur, temporibus quod cum inventore corporis officia suscipit, atque quis ut? Quia laudantium accusamus minima, ab optio.</p>
-		<!-- <img src="img/filtering.jpg" alt="Filtering" class="section-img"> -->
+		<picture>
+			<source srcset="img/filters.png" media="(min-width: 800px)">
+		   	<source srcset="img/filters-ipad.png" media="(min-width: 500px)">
+		   	<source srcset="img/filters-mob.png" media="(max-width: 500px)">
+		   <img class="section-img" srcset="img/filtering.png" alt="">
+		</picture>
+		</div>
 	</section>
-	<section class="section engagement">
+	<section class="section engagement" id="engagement">
+	<div class="wrapper">
 		<span class="section-tag">Engagement</span>
 		<h2 class="section-title">
 			<span class="title-bold">Natural </span>
 			behavior.<br>Faster results.
 		</h2>
 		<p class="section-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, inventore accusantium error recusandae animi perspiciatis eaque saepe facilis nisi accusamus odit nostrum, iusto, itaque magnam odio, vero ipsum dolorum consectetur.</p>
-		<!-- <img src="img/engagement.jpg" alt="Engagement" class="section-img"> -->
+		<picture>
+			<source srcset="img/engagement.png" media="(min-width: 800px)">
+		   	<source srcset="img/engagement-ipad.png" media="(min-width: 500px)">
+		   	<source srcset="img/engagement-mob.png" media="(max-width: 500px)">
+		   <img class="section-img" srcset="img/engagement.png" alt="">
+		</picture>
+		</div>
 	</section>
-	<section class="section analytics">
+	<section class="section analytics" id="analytics">
+	<div class="wrapper">
 		<span class="section-tag">Analytics</span>
 		<h2 class="section-title">Clear
 			<span class="title-bold"> Insights</span>.<br>
 			Better Conversions.
 		</h2>
 		<p class="section-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate quos voluptatibus quidem molestias, et tenetur illum cumque minus praesentium doloribus dicta, ex aperiam autem itaque odio dignissimos! Molestias, unde.</p>
-		<!-- <img src="img/analytics.jpg" alt="Analytics" class="section-img"> -->
+		<picture>
+			<source srcset="img/stats.png" media="(min-width: 800px)">
+		   	<source srcset="img/stats-ipad.png" media="(min-width: 500px)">
+		   	<source srcset="img/stats-mob.png" media="(max-width: 500px)">
+		   <img class="section-img" srcset="img/stats.png" alt="">
+		</picture>
+		</div>
 	</section>
-	<section class="section benefits">
+	<section class="section benefits" id="benefits">
+	<div class="wrapper">
 		<span class="section-tag">Why Jolted?</span>
 		<h2 class="section-title lg-title">Enjoy real<span class="title-bold"> growth.</span></h2>
 		<ul class="benefits__benefits-list">
@@ -112,8 +175,10 @@
 				<p class="benefits__item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni reiciendis fuga tenetur debitis vitae esse, minus fugiat mollitia in! Deleniti reiciendis adipisci debitis, repudiandae aut, consequuntur consectetur! Neque, consectetur, aliquid.</p>
 			</li>
 		</ul>
+		</div>
 	</section>
-	<section class="section access">
+	<section class="section access" id="access">
+	<div class="wrapper">
 		<span class="section-tag">Get access</span>
 		<h2 class="section-title lg-title"><span class="title-bold">Request </span>your invite.</h2>
 		<p class="section-text access__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa illum nobis maxime, repellat dolores aperiam omnis eius rerum, dignissimos alias rem quos quam, aliquam blanditiis labore minima quo provident ea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quod temporibus quae repellendus iure, soluta nulla sed, necessitatibus assumenda fugiat explicabo est quos ad, doloremque non voluptate eligendi tenetur. Harum.</p>
@@ -131,20 +196,24 @@
 			</div>
 			<input type="submit" class="access__submit" value="Invite me">
 		</form>
+		</div>
 	</section>
 	<footer class="footer">
-		<span class="footer__copyright"></span>
+	<div class="wrapper-wide">
+		<span class="footer__copyright">Jolted 2017</span>
 		<ul class="footer__link-list">
 			<li class="footer__link-item"><a href="#" class="footer__link">Privacy</a></li>
 			<li class="footer__link-item"><a href="#" class="footer__link">Terms of Use</a></li>
 			<li class="footer__link-item"><a href="#" class="footer__link">Contact Us</a></li>
 		</ul>
-		<ul class="contacts">
-			<li class="contacts__contacts-item"><a href="#" class="contacts__contacts-link"></a></li>
-			<li class="contacts__contacts-item"><a href="#" class="contacts__contacts-link"></a></li>
+		<ul class="contacts footer__contacts">
+			<li class="contacts__contacts-item"><a href="#" class="contacts__contacts-link contacts__fb"></a></li>
+			<li class="contacts__contacts-item"><a href="#" class="contacts__contacts-link contacts__tw"></a></li>
 		</ul>
+		</div>
 	</footer>
 
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 	<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
