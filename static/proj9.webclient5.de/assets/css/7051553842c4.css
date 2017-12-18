@@ -14466,7 +14466,7 @@ Works item
 	opacity: 0;
 	overflow: hidden;
 	padding: 20px;
-	z-index: 3;
+	/*z-index: 3;*/
 	text-align: center;
   -webkit-transform: translate3d(0,0,0);
 	-webkit-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
@@ -15687,6 +15687,7 @@ letter-spacing:1px;
 #who-is-who .work-caption {
 top:70%;
 padding:5px 10px;
+-webkit-transform: translate3d(0,0,0);
 }
 #who-is-who .work-item:hover .work-caption {
 top:30%;
