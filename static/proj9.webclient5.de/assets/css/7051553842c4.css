@@ -15667,7 +15667,7 @@ right: -16px;
 position:absolute;
 top:0;
 }
-.work-item a::after { top:60%;background:rgba(0,0,0,0.6);opacity:1; }
+/*.work-item a::after { top:60%;background:rgba(0,0,0,0.6);opacity:1; }*/
 .work-item:hover a::after { top:0; }
 .work-item .work-caption { top:80%;opacity:1;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);transform: translateY(-50%); }
 .tall.work-item a::after { top:80.5%; }
