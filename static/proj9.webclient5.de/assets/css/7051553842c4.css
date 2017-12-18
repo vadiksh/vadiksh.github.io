@@ -14447,8 +14447,6 @@ Works item
 	left: 0;
 	width: 100%;
 	height: 100%;
-  z-index: 2;
-  -webkit-transform: translate3d(0,0,0);
 	-webkit-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
 	   -moz-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
 	     -o-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
@@ -14465,12 +14463,11 @@ Works item
 	left: 0;
 	top: 100%;
 	width: 100%;
-	opacity: 1;
+	opacity: 0;
 	overflow: hidden;
 	padding: 20px;
 	z-index: 3;
 	text-align: center;
-  -webkit-transform: translate3d(0,0,0);
 	-webkit-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
 	   -moz-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
 	     -o-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
@@ -14531,7 +14528,6 @@ Works item hover
 .work-item:hover .work-caption {
 	opacity: 1;
 	top: 50%;
-  -webkit-transform: translate3d(0,0,0);
 	-webkit-transform: translateY(-50%);
 	   -moz-transform: translateY(-50%);
 	        transform: translateY(-50%);
@@ -15667,7 +15663,7 @@ right: -16px;
 position:absolute;
 top:0;
 }
-/*.work-item a::after { top:60%;background:rgba(0,0,0,0.6)font-;opacity:1; }*/
+.work-item a::after { top:60%;background:rgba(0,0,0,0.6);opacity:1; }
 .work-item:hover a::after { top:0; }
 .work-item .work-caption { top:80%;opacity:1;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);transform: translateY(-50%); }
 .tall.work-item a::after { top:80.5%; }
@@ -15689,7 +15685,6 @@ letter-spacing:1px;
 #who-is-who .work-caption {
 top:70%;
 padding:5px 10px;
--webkit-transform: translate3d(0,0,0);
 }
 #who-is-who .work-item:hover .work-caption {
 top:30%;
@@ -15730,7 +15725,7 @@ letter-spacing:1px;
 }
 #who-is-who .work-item a::after { top:65%; }
 #who-is-who .work-item:hover a::after { top:0%; }
-#who-is-who .work-caption { top:65%; z-index: 900;}
+#who-is-who .work-caption { top:65%; }
 #who-is-who .work-item:hover .work-caption { top:30%; }
 #who-is-who .work-item.high a::after { top:50%; }
 #who-is-who .work-item.high:hover a::after { top:0%; }
@@ -15740,14 +15735,14 @@ letter-spacing:1px;
 @media only screen and (min-width: 640px) and (max-width: 719px) {
 #who-is-who h3, #who-is-who .work-descr {
 font-size:11px;
-/*line-height:120%;*/
+line-height:120%;
 letter-spacing:1px;
 }
 }
 @media only screen and (min-width: 720px) and (max-width: 767px) {
 #who-is-who h3, #who-is-who .work-descr {
 font-size:12px;
-/*line-height:150%;*/
+line-height:150%;
 letter-spacing:2px;
 }
 }
