@@ -14468,6 +14468,7 @@ Works item
 	padding: 20px;
 	z-index: 3;
 	text-align: center;
+  -webkit-transform: translate3d(0,0,0);
 	-webkit-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
 	   -moz-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
 	     -o-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
@@ -14528,6 +14529,7 @@ Works item hover
 .work-item:hover .work-caption {
 	opacity: 1;
 	top: 50%;
+  -webkit-transform: translate3d(0,0,0);
 	-webkit-transform: translateY(-50%);
 	   -moz-transform: translateY(-50%);
 	        transform: translateY(-50%);
