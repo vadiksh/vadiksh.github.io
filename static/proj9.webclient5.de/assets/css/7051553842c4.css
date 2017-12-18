@@ -14465,7 +14465,7 @@ Works item
 	left: 0;
 	top: 100%;
 	width: 100%;
-	opacity: 0;
+	opacity: 1;
 	overflow: hidden;
 	padding: 20px;
 	z-index: 3;
