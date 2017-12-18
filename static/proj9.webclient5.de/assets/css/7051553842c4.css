@@ -15740,14 +15740,14 @@ letter-spacing:1px;
 @media only screen and (min-width: 640px) and (max-width: 719px) {
 #who-is-who h3, #who-is-who .work-descr {
 font-size:11px;
-line-height:120%;
+/*line-height:120%;*/
 letter-spacing:1px;
 }
 }
 @media only screen and (min-width: 720px) and (max-width: 767px) {
 #who-is-who h3, #who-is-who .work-descr {
 font-size:12px;
-line-height:150%;
+/*line-height:150%;*/
 letter-spacing:2px;
 }
 }
