@@ -14505,15 +14505,19 @@ Works item
 Works item hover
 ------------------------------------------------------------------- */
 
-.work-item:hover a:after {
+.work-item:hover a:after,
+.work-item.hover a:after {
 	background: rgba(0, 0, 0, 0.8);
 }
 
-.works-hover-w .work-item:hover a:after {
+.works-hover-w .work-item:hover a:after,
+.works-hover-w .work-item.hover a:after {
 	background: rgba(255, 255, 255, 0.8);
 }
+}
 
-.works-hover-g .work-item:hover a:after {
+.works-hover-g .work-item:hover a:after,
+.works-hover-g .work-item.hover a:after {
 	background: rgb(111, 226, 158);
 	background: -moz-linear-gradient(-45deg, rgba(111,226,158,0.8) 0%, rgba(91,218,209,0.8) 100%);
 	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(111,226,158,0.8)), color-stop(100%,rgba(91,218,209,0.8)));
@@ -14525,7 +14529,8 @@ Works item hover
 	opacity: 1;
 }
 
-.work-item:hover .work-caption {
+.work-item:hover .work-caption,
+.work-item.hover .work-caption {
 	opacity: 1;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
@@ -15664,12 +15669,12 @@ position:absolute;
 top:0;
 }
 .work-item a::after { top:60%;background:rgba(0,0,0,0.6);opacity:1; }
-.work-item:hover a::after { top:0; }
+.work-item:hover a::after, .work-item.hover a::after { top:0; }
 .work-item .work-caption { top:80%;opacity:1;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);transform: translateY(-50%); }
 .tall.work-item a::after { top:80.5%; }
-.tall.work-item:hover a::after { top: 0; }
+.tall.work-item:hover a::after, .tall.work-item.hover a::after { top: 0; }
 .tall.work-item .work-caption { top:90%;opacity:1;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);transform: translateY(-50%); }
-.tall.work-item:hover .work-caption { top: 50%;-webkit-transform: translateY(-50%);-moz-transform:translateY(-50%);transform: translateY(-50%); }
+.tall.work-item:hover .work-caption, .tall.work-item.hover .work-caption { top: 50%;-webkit-transform: translateY(-50%);-moz-transform:translateY(-50%);transform: translateY(-50%); }
 
 
 #who-is-who h3, #who-is-who .work-descr {
@@ -15678,15 +15683,15 @@ line-height:130%;
 letter-spacing:1px;
 }
 #who-is-who .work-item a::after { top:70%; }
-#who-is-who .work-item:hover a::after { top:0%; }
-#who-is-who .work-caption, #who-is-who .work-item:hover .work-caption {
+#who-is-who .work-item:hover a::after, #who-is-who .work-item.hover a::after { top:0%; }
+#who-is-who .work-caption, #who-is-who .work-item:hover .work-caption, #who-is-who .work-item.hover .work-caption {
 -o-transform: translateY(0%);-ms-transform: translateY(0%);-webkit-transform: translateY(0%);-moz-transform: translateY(0%);transform: translateY(0%);
 }
 #who-is-who .work-caption {
 top:70%;
 padding:5px 10px;
 }
-#who-is-who .work-item:hover .work-caption {
+#who-is-who .work-item:hover .work-caption, #who-is-who .work-item.hover .work-caption {
 top:30%;
 }
 #who-is-who .work-descr {
@@ -15701,7 +15706,7 @@ transition:color linear 0.6s;
 display:block;
 color:rgba(255,255,255,0.75);
 }
-#who-is-who .work-item:hover .work-descr {
+#who-is-who .work-item:hover .work-descr, #who-is-who .work-item.hover .work-descr {
 color:rgba(255,255,255,0.75);
 }
 #who-is-who .work-item .mtl:hover {
@@ -15724,9 +15729,9 @@ line-height:120%;
 letter-spacing:1px;
 }
 #who-is-who .work-item a::after { top:65%; }
-#who-is-who .work-item:hover a::after { top:0%; }
+#who-is-who .work-item:hover a::after, #who-is-who .work-item.hover a::after { top:0%; }
 #who-is-who .work-caption { top:65%; }
-#who-is-who .work-item:hover .work-caption { top:30%; }
+#who-is-who .work-item:hover .work-caption, #who-is-who .work-item.hover .work-caption { top:30%; }
 #who-is-who .work-item.high a::after { top:50%; }
 #who-is-who .work-item.high:hover a::after { top:0%; }
 #who-is-who .high .work-caption { top:50%; }
@@ -15787,9 +15792,9 @@ line-height:120%;
 letter-spacing:1px;
 }
 #who-is-who .work-item a::after { top:65%; }
-#who-is-who .work-item:hover a::after { top:0%; }
+#who-is-who .work-item:hover a::after, #who-is-who .work-item.hover a::after { top:0%; }
 #who-is-who .work-caption { top:65%; }
-#who-is-who .work-item:hover .work-caption { top:30%; }
+#who-is-who .work-item:hover .work-caption, #who-is-who .work-item.hover .work-caption { top:30%; }
 #who-is-who .work-item.high a::after { top:50%; }
 #who-is-who .work-item.high:hover a::after { top:0%; }
 #who-is-who .high .work-caption { top:50%; }
@@ -15813,9 +15818,9 @@ line-height:120%;
 letter-spacing:1px;
 }
 #who-is-who .work-item a::after { top:60%; }
-#who-is-who .work-item:hover a::after { top:0%; }
+#who-is-who .work-item:hover a::after, #who-is-who .work-item.hover a::after { top:0%; }
 #who-is-who .work-caption { top:60%; }
-#who-is-who .work-item:hover .work-caption { top:20%; }
+#who-is-who .work-item:hover .work-caption, #who-is-who .work-item.hover .work-caption { top:20%; }
 }
 /* ------------------------------------------------------------------
 Twin grid
