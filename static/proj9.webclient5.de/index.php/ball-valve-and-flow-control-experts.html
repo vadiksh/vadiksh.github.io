@@ -972,12 +972,18 @@
 <script src="../files/incanto/assets/js/contact.js"></script>
 <script src="../files/incanto/assets/js/custom.js"></script>
 <script> 
-if ($(window).width() < 568) {
   $('.work-item').on('click', function() {
-    $('.work-item').removeClass('hover');
-    $(this).addClass('hover');
+    if ($(window).width() < 568) {
+      $('.work-item').removeClass('hover');
+      $(this).addClass('hover');
+    }
   });
-}
+  $(window).on('resize', function() {
+    if ($(window).width() > 568) {
+    $('.work-item').removeClass('hover');
+  }
+  });
+  
 </script>
   <div id="devcon">Your request was sent.</div>
   <div id="requestform" style="display:none">
