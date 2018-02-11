@@ -1,6 +1,6 @@
 var item_title = $('.article-title');
 var item_text = $('.article-text');
-var requestURL = 'https://github.com/vadiksh/vadiksh.github.io/blob/master/h/example-rss.json';
+var requestURL = '/example-rss.json';
 var request = new XMLHttpRequest();
 
 request.open('GET', requestURL);
