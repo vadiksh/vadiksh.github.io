@@ -21,9 +21,10 @@ body * {
   padding: 40px 0;
 }
 .text-banner-content {
-  font-size: 1.6em;
+  font-size: 2.6em;
   text-align: center;
   color: #fff;
+  font-family: 'Gloria+Hallelujah';
 }
 .banner {
   background: url('../images/banner.jpg') 0% 0%;
@@ -56,7 +57,7 @@ body * {
   text-align: center;
   text-transform: uppercase;
   color: #fff;
-  background: #518B09;
+  background: #f17000;
   border-radius: 25px; 
   transition: 0.3s all;
   margin-bottom: 20px;
@@ -66,9 +67,17 @@ body * {
   background: #084304;
 }
 .banner-act {
-/*   position: absolute; */
-/*   bottom: 70px;
-  right: 20px; */
+  margin-bottom: -60px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;
+}
+.banner-act::before {
+  display: block;
+  content: '';
+  width: 130px;
+  height: 100px;
+  margin: 0 auto;
+  background: url('../images/arrow.png') 0 0/cover;
 }
 .advantages {
   background: #574e51;
@@ -168,8 +177,6 @@ body * {
 }
 .column-4 {
   display: none;
-  flex-flow: column nowrap;
-  justify-content: space-evenly;
 }
 .ingredients-img {
   width: 100%;
@@ -236,8 +243,8 @@ body * {
   margin-top: -50px;
 }
 .cooking {
-  background: #8b0951;
-  padding: 40px 0;
+  background: #e34a94;
+  padding: 40px 10px;
 }
 .cooking-title {
   color: #fff;
@@ -361,7 +368,7 @@ body * {
   width: 180px;
   padding: 15px 0px 15px 25px;
   color: #fff;
-  background: #518B09;
+  background: #f17000;
   border-radius: 25px; 
   margin: 0 auto;
   margin-bottom: 25px;
@@ -446,6 +453,7 @@ body * {
 .partners {
   padding: 40px 20px;
   text-align: center;
+  position: relative;
 }
 .partners-btn {
   text-align: center;
@@ -453,7 +461,7 @@ body * {
   max-width: 300px;
   padding: 25px 0 25px 30px;
   color: #fff;
-  background: #518B09;
+  background: #f17000;
   border-radius: 40px; 
   margin: 0 auto;
   margin-bottom: 25px;
@@ -475,33 +483,50 @@ body * {
   background: #084304;
 }
 .partners-garantie {
+  font-family: 'Great Vibes', cursive;
   padding: 0px 10px 40px;
-  font-size: 1.1em;
+  font-size: 2.2em;
+}
+.partners-garantie::before {
+  display: block;
+  content: '';
+  width: 130px;
+  height: 100px;
+  background: url('../images/arrow.png') 0 0/cover;
+  margin: 20px auto 0;
 }
 .partners-list {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
+
 .partners-item {
   width: 12%;
 }
 .partners-img {
   width: 100%;
 }
+.links {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  padding: 10px 20px;
+  background: #428bca;
+  border-radius: 8px 0px 0 0;
+}
+.links a {
+  color: #fff;
+}
+.links a:hover {
+  color: #ddd;
+}
 .footer {
-  padding: 0 15px;
-}
-.footer-wrapper {
-  max-width: 920px;
-  margin: 0 auto;
   padding: 15px 0;
+  text-align: center;
 }
-.footer-copyright {
-  float: right;
-}
-
 @media screen and (max-width: 1023px) {
   .column-2 {
     width: 30%;
@@ -513,6 +538,9 @@ body * {
 @media screen and (max-width: 919px) {
   .banner {
     padding: 28% 20px 28% 0;
+  }
+  .banner-act {
+    display: none;
   }
   .banner-list {
     display: none;
@@ -579,12 +607,8 @@ body * {
   .column-4 {
     width: 45%;
     display: flex;
-  }
-  .right {
-    border: none;
-  }
-  .right::after {
-    display: none;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
   }
   .ingredients-description {
     display: inline;
@@ -639,6 +663,17 @@ body * {
   .advantages-item {
     width: 100%;
     margin-bottom: 20px;
+  }
+  .column-4 {
+    display: block;
+  }
+  .chorella-sm-descr,
+  .root-sm-descr {
+    margin: 0;
+  }
+  .ingredients-description {
+    display: block;
+    margin-top: 30%;
   }
   .faq-question,
   .faq-content {
