@@ -1,0 +1,553 @@
+/*
+Theme Name: GeneratePress
+Theme URI: https://generatepress.com
+Author: Tom Usborne
+Author URI: https://tomusborne.com
+Description: GeneratePress is a fast, lightweight (less than 1MB zipped), mobile responsive WordPress theme built with speed, SEO and usability in mind. GP can serve as a solid base for any website, and works great with any of your favorite page builders. With an emphasis on WordPress coding standards, we ensure GeneratePress is compatible with all well-coded plugins, including major ones like WooCommerce, WPML, BuddyPress and bbPress. GeneratePress is device friendly (mobile and tablet), uses 100% valid HTML, is fully schema microdata integrated, is translated into over 20 languages by our amazing community and is cross browser compatible (including IE8). Some of our features include 9 widget areas, 5 navigation positions, 5 sidebar layouts, dropdown menus (click or hover) and a back to top button. All our options use the native WordPress Customizer, meaning you can see every change you make instantly before pressing the publish button. Learn more and check out our powerful premium version at https://generatepress.com 
+Version: 1.3.46
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: generatepress
+Tags: two-columns, three-columns, one-column, right-sidebar, left-sidebar, footer-widgets, blog, e-commerce, flexible-header, full-width-template, buddypress, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, rtl-language-support, featured-images, theme-options
+
+GeneratePress, Copyright 2017 Tom Usborne
+GeneratePress is distributed under the terms of the GNU GPL
+
+GeneratePress is based on Underscores http://underscores.me/, (C) 2012-2017 Automattic, Inc.
+
+DO NOT ADD YOUR CSS TO THIS FILE - IT WILL BE LOST
+To add your own CSS, use a child theme or install this plugin: https://wordpress.org/plugins/simple-css/
+*/
+
+body {background-color:#fff !important;}
+
+body .grid-container {
+    max-width: none !important;
+}
+
+.grid-container {
+	max-width: none !important;
+}
+
+@font-face {
+    font-family:'themify';
+    src:url(fonts/themify.ttf); 
+}
+@font-face {
+    font-family:'Bebas Neue';
+    src:url(fonts/bebasneue/bebasneue.ttf);
+}
+@font-face {
+    font-family:'Bebas Neue Regular';
+    src:url(fonts/bebasneue/bebasneue_regular.ttf);
+}
+@font-face {
+    font-family:'Poppins Light';
+    font-weight:100;
+    src:url(fonts/poppins/poppins_light.ttf);
+}
+@font-face {
+    font-family:'Poppins Medium';
+    font-weight:300;
+    src:url(fonts/poppins/poppins_medium.ttf);
+}
+@font-face {
+    font-family:'Poppins';
+    font-weight:400;
+    src:url(fonts/poppins/poppins_regular.ttf);
+}
+@font-face {
+    font-family:'Poppins SemiBold';
+    font-weight:600;
+    src:url(fonts/poppins/poppins_semibold.ttf);
+}
+@font-face {
+    font-family:'Poppins';
+    font-weight:700;
+    src:url(fonts/poppins/poppins_bold.ttf);
+}
+@font-face {
+    font-family:'Oswald';
+    src:url(fonts/oswald/oswald_regular.ttf);
+}
+*{
+    margin:0px;
+    padding:0px;
+    outline:none;
+    border:none;
+    font-family:inherit;
+}
+a{
+    text-decoration:none;
+    color:inherit;
+}
+h1,h2,h3,h4,h5,h6,p{
+    font-weight:initial;
+    font-size:inherit;
+}
+li{
+    list-style:none;
+}
+body,html{
+    height:100%;
+}
+#page_wrapper{
+    display:table;
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    table-layout:fixed;
+    padding-top:102px;
+}
+header,#content,footer{
+    display:table-row;
+    width:100%;
+    height:1px;
+}
+.wrapper{
+    position:relative;
+    margin:0px auto;
+    width:1200px;
+}
+.wrapper:after,
+.clear_both:after{
+    content:'';
+    display:block;
+    clear:both;
+}
+#menu_shape{
+    position:absolute;
+    right:0px;
+    top:102px;
+    width:68px;
+    height:100%;
+    background-color:#3c3c3b;
+}
+#header{
+    margin-bottom:68px;
+}
+#logo{
+    position:relative;
+    margin-top:25px;
+    margin-left:30px;
+}
+#page_title{
+    position:relative;
+    margin-left:154px;
+    margin-bottom:35px;
+}
+#page_title h1{
+    font-size:151px;
+    font-family:'Bebas Neue';
+    color:#ededed;
+    text-transform:uppercase;
+}
+#category_research{
+    margin-bottom:71px;
+}
+#category_research .form_block{
+    position:relative;
+    float:left;
+    margin-right:17px;
+    width:271px;
+    height:70px;
+    box-sizing:border-box;
+}
+#category_research .form_block:last-of-type{
+    margin-right:0px;
+}
+#category_research .form_block.artist{
+    width:383px;
+}
+#category_research .form_block.technic{
+    width:512px;
+}
+#category_research .form_block select,
+#category_research .form_block button{
+    width:100%;
+    height:100%;
+    background-color:#706f6f;
+    color:white;
+    font-size:36px;
+    font-family:'Bebas Neue';
+}
+#category_research .form_block select{
+    background-color:white;
+    font-size:19px;
+    font-family:'Poppins';
+    font-weight:400;
+    border:1px solid #706f6f;
+    color:#3c3c3b;
+}
+#search_count{
+    margin-bottom:66px;
+}
+#category_list{
+    padding-bottom:40px;
+    border-bottom:1px solid #878786;
+}
+#category_list .items{
+    position:relative;
+    float:left;
+    margin-bottom:48px;
+    width:282px;
+    border-bottom:1px solid #353534;
+}
+#category_list .items:not(:nth-of-type(4n)){
+    margin-right:24px;
+}
+#category_list .items .item_title{
+    margin-bottom:3px;
+    padding:2px 15px;
+    background-color:#575756;
+    color:white;
+    text-align:center;
+    text-transform:uppercase;
+    font-size:15px;
+    font-family:'Poppins SemiBold';
+}
+#category_list .items .item_image{
+    position:relative;
+    margin-bottom:4px;
+    width:100%;
+    height:308px;
+    overflow:hidden;
+}
+#category_list .items:hover .item_image:after{
+    content:url(../images/eye.png)' VOIR LA FICHE';
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    line-height:308px;
+    background-color:rgba(0,0,0,0.9);
+    color:white;
+    font-family:'Bebas Neue';
+    font-size:30px;
+    text-align:center;
+    z-index:1;
+}
+#category_list .items .item_image img{
+    width:100%;
+}
+#category_list .items .item_ad{
+    background-color:#b2b2b2;
+    padding:10px 21px 5px;
+    border-bottom:4px solid #353534;
+}
+#category_list .items .item_ad .num,
+#category_list .items .item_ad .name{
+    float:left;
+}
+#category_list .items .item_ad .num{
+    margin-right:8px;
+    color:#575756;
+    font-size:29px;
+    font-family:'Bebas Neue Regular';
+}
+#category_list .items .item_ad .name{
+    margin-top:-2px;
+    color:white;
+    font-size:34px;
+    font-family:'Bebas Neue';
+    text-transform:uppercase;
+}
+#category_list .items .item_ad .name div{
+    margin-top:-8px;
+}
+#category_list .items .item_desc{
+    padding:15px;
+    text-align:center;
+    font-size:15px;
+    font-family:'Poppins Medium';
+}
+#paging{
+    padding-bottom:15px;
+    border-bottom:1px solid #878786;
+    font-family:'Poppins';
+    font-weight:400;
+    font-size:14px;
+}
+#paging #paging_count{
+    margin-top:14px;
+    margin-bottom:16px;
+}
+#paging ul li{
+    position:relative;
+    float:left;
+    margin-right:5px;
+    width:28px;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    border:1px solid #706f6f;
+}
+#paging ul li:last-of-type{
+    margin-right:0px;
+}
+#paging ul li.prev{
+    margin-right:19px;
+}
+
+#paging ul li.prev:before,
+#paging ul li.next:before{
+    content:'';
+    display:inline-block;
+    width:0;
+    height:0;
+    border-style:solid;
+}
+#paging ul li.prev:before{
+    border-width:5px 9px 5px 0;
+    border-color:transparent #000000 transparent transparent;
+}
+#paging ul li.next{
+    margin-left:14px;
+}
+#paging ul li.next:before{
+    border-width:5px 0 5px 9px;
+    border-color:transparent transparent transparent #000000;
+}
+#paging ul li.active{
+    background-color:#ededed;
+}
+#paging ul li a{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+}
+#artist_item_image{
+    position:relative;
+    float:right;
+}
+#artist_image{
+    position:relative;
+    margin-right:-100px;
+    width:338px;
+    z-index:1;
+}
+#artist_item_image{
+    margin-top:-180px;
+    margin-right:82px;
+    width:430px;
+}
+#artist_image img,
+#artist_item_image img{
+    width:100%;
+}
+#artist_description{
+    position:relative;
+    float:right;
+    margin-top:-200px;
+    width:923px;
+    box-sizing:border-box;
+    padding:51px 102px 20px;
+    background-color:#f5f5f5;
+    font-family:'Bebas Neue';
+}
+#artist_description #artist_prof{
+    font-size:28px;
+    color:#878786;
+}
+#artist_description #artist_name{
+    font-size:76px;
+    color:#3c3c3b;
+}
+#artist_description ul li{
+    position:relative;
+    float:left;
+    clear:left;
+    width:220px;
+    font-size:14px;
+    font-family:'Poppins';
+    font-weight:400;
+    color:#575756;
+}
+#artist_description ul li:first-of-type,
+#artist_description ul li:nth-of-type(2){
+    margin-bottom:3px;
+    padding-bottom:3px;
+    border-bottom:1px dotted;
+    width:180px;
+}
+#artist_description ul li:last-of-type{
+    margin-top:50px;
+}
+.mail:before{
+    content:'\e75a';
+    font-family:'themify';
+}
+#artist_description ul li.mail:before{
+    display:inline-block;
+    -webkit-transform:translateY(3px);
+    -moz-transform:translateY(3px);
+    -ms-transform:translateY(3px);
+    -o-transform:translateY(3px);
+    transform:translateY(3px);
+    margin-right:8px;
+    font-size:20px;
+}
+#artist_description ul li.address{
+    line-height:16px;
+}
+#artist_item_description{
+    position:relative;
+    float:left;
+    width:671px;
+}
+#artist_item_description .apropos:not(:last-of-type){
+    margin-bottom:30px;
+}
+#artist_item_description .apropos .apropos_title{
+    margin-bottom:5px;
+    font-size:48px;
+    font-family:'Bebas Neue';
+    color:#3c3c3b;
+}
+#artist_item_description .apropos .apropos_desc{
+    font-family:'Poppins';
+    font-weight:400;
+    color:#575756;
+}
+#arts_participant_gallery{
+    margin-top:100px;
+}
+#arts_participant_gallery h3{
+    color:#dadad9;
+    font-size:160px;
+    font-family:'Bebas Neue';
+    text-align:right;
+    padding-right:110px;
+}
+#arts_participant_gallery ul li img{
+    width:30%;
+}
+#footer_info{
+    background-color:#f6f6f6;
+}
+#footer_info .wrapper{
+    height:39px;
+    padding:22px 0px;
+}
+#footer_tel_mail,
+#footer_soc{
+    top:50%;
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    transform:translateY(-50%);
+}
+#footer_tel_mail li{
+    position:relative;
+    float:left;
+    font-size:16px;
+    font-family:'Poppins';
+    font-weight:400;
+}
+#footer_tel_mail li:first-of-type{
+    margin-right:20px;
+}
+#footer_subscribes_soc{
+    position:relative;
+    float:right;
+}
+#footer_tel_mail,
+#footer_subscribes,
+#footer_subscribes li,
+#footer_soc,
+#footer_soc li{
+    position:relative;
+    float:left;
+}
+#footer_subscribes{
+    margin-right:46px;
+}
+#footer_subscribes_soc,
+#footer_subscribes li{
+    height:39px;
+    line-height:39px;
+}
+#footer_subscribes li#footer_newsletter{
+    margin-right:8px;
+    box-sizing:border-box;
+    padding:0px 20px;
+    border:1px solid #c6c6c6;
+    font-size:16px;
+    font-family:'Poppins';
+    font-weight:400;
+}
+#footer_subscribes li#footer_subscribe{
+    padding:0px 27px;
+    background-color:#3c3c3b;
+    color:white;
+    text-transform:uppercase;
+    font-family:'Bebas Neue';
+    font-size:24px;
+}
+.fb:before{
+    content:'\e741';
+    font-family:'themify';
+}
+.twitter:before{
+    content:'\e74b';
+    font-family:'themify';
+}
+.pinterest:before{
+    content:'\e731';
+    font-family:'themify';
+}
+.insta:before{
+    content:'\e73d';
+    font-family:'themify';
+}
+#footer_soc li{
+    margin-right:11px;
+    color:#3c3c3b;
+    font-size:20px;
+}
+#footer_soc li:last-of-type{
+    margin-right:0px;
+}
+#footer_soc li a{
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+}
+#partners{
+    background-color:#ededed;
+}
+#partners .wrapper{
+    padding:15px 0px;
+}
+#partners #partners_title{
+    font-size:34px;
+    font-family:'Oswald';
+    color:#3c3c3b;
+    text-transform:uppercase;
+}
+#footer{
+    background-color:#f6f6f6;
+    font-family:'Poppins';
+    font-weight:400;
+    font-size:13px;
+}
+#footer .wrapper{
+    padding:15px 0px;
+}
+#copyright{
+    position:relative;
+    float:left;
+}
+#design{
+    position:relative;
+    float:right;
+    color:#9D9D9C;
+}
+
