@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link href="css/hover.css">
+<?php wp_head(); ?>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	
+
 <?php 
 //template name: Home
 
@@ -27,7 +47,7 @@
                     					</div>
                     				</div>
                     				<div class="col banner-image"><!-- Right Image -->
-                    					<div class="image-wrapper image-wrapper-laptop"><img src="<?php echo get_sub_field('slider_image'); ?>"></div>
+                    					<div class="image-wrapper"><img src="<?php echo get_sub_field('slider_image'); ?>"></div>
                     					<div class="text-list">
                     						 <?php echo get_sub_field('text_on_slider'); ?>
                     					</div>
@@ -143,7 +163,7 @@
 		</section>
 	</div>
 
-	<div class="container-fluid topfooter-container" style="background: linear-gradient(to left, rgba(74,191,232,1) 0%, rgba(0,89,146,1) 100%);">
+	<div class="container-fluid topfooter-container" style="background: url(<?php echo get_stylesheet_directory_uri(); ?>/img/blue-rect-left.png);">
 
 		<section class="top-footer">
             <ul class="rslides2">     
@@ -157,8 +177,8 @@
     					</h1>
     					<span class="text">
     						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
+    						Lire la suite 
     					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
     				</div>
     				<div class="col footer-col">
     					<span class="date">12 juin 2018</span>
@@ -167,8 +187,8 @@
     					</h1>
     					<span class="text">
     						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
+    						Lire la suite
     					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
     				</div>
     				<div class="col footer-col">
     					<span class="date">12 juin 2018</span>
@@ -178,8 +198,8 @@
     					</h1>
     					<span class="text">
     						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
+    						Lire la suite 
     					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
     				</div>
     			</div>
 			</li>
@@ -192,9 +212,8 @@
     					</h1>
     					<span class="text">
     						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
-    						
+    						Lire la suite 
     					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
     				</div>
     				<div class="col footer-col">
     					<span class="date">12 juin 2018</span>
@@ -203,9 +222,8 @@
     					</h1>
     					<span class="text">
     						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
-    						
+    						Lire la suite
     					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite</span></a>
     				</div>
     				<div class="col footer-col">
     					<span class="date">12 juin 2018</span>
@@ -215,44 +233,8 @@
     					</h1>
     					<span class="text">
     						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
-    						
+    						Lire la suite 
     					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
-    				</div>
-    			</div>
-			</li>
-			<li>
-    		     <div class="row">
-    				<div class="col footer-col">
-    					<span class="date">12 juin 2018</span>
-    					<h1 class="title">Pourquoi l’ostéopathie
-    						peut changer ta vie
-    					</h1>
-    					<span class="text">
-    						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
-    					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
-    				</div>
-    				<div class="col footer-col">
-    					<span class="date">12 juin 2018</span>
-    					<h1 class="title">Pourquoi l’ostéopathie
-    							peut changer ta vie
-    					</h1>
-    					<span class="text">
-    						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
-    					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
-    				</div>
-    				<div class="col footer-col">
-    					<span class="date">12 juin 2018</span>
-    					<h1 class="title">
-    						Pourquoi l’ostéopathie
-    						peut changer ta vie
-    					</h1>
-    					<span class="text">
-    						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ultrices justo. In id vestibulum diam. Donec vitae sagittis leo. Vestibulum at magna sed quam.
-    					</span>
-    					<a class="footer-moretext-link" href="#"><span class="footer-moretext">Lire la suite </span></a>
     				</div>
     			</div>
 			</li>
@@ -268,3 +250,6 @@
 <div class="backgrounMountain backgrounMountain-home-top" style="background-image: url(http://orthopedic.cassette.am/wp-content/uploads/2018/03/home-top-mountain.jpg);"></div>
 <div class="backgrounMountain backgrounMountain-home-bottom" style="background-image: url(http://orthopedic.cassette.am/wp-content/uploads/2018/03/mountain-bottom-img.jpg);"></div>
 <?php get_footer(); ?>
+
+</body>
+</html>
