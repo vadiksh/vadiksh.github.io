@@ -1,6 +1,6 @@
 .container {
   height: 756px;
-  background: url('../img/slider1.png') no-repeat 80% 0%;
+  background: url('../img/slider1.jpg') no-repeat 80% 0%;
   background-size: 100% 100%;
 }
 .container::after {
