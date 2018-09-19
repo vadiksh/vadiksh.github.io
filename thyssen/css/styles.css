@@ -234,21 +234,22 @@ body {
 }
 
 .products-section {
-  height: 555px;
+  height: 585px;
   display: flex;
   overflow: hidden;
 }
 
 .products-info {
-  background-image: linear-gradient(45deg, rgba(17,60,102,0.15), rgba(25,17,102,0.8)), url('../img/products.jpg');
+  background-image: linear-gradient(45deg, rgba(17,60,102,0.05), rgba(25,17,102,1)), url('../img/products.jpg');
   background-size: 145%;
   background-repeat: no-repeat;
-  background-position: 0% 0%;
+  background-position: 1% 0%;
   color: #fff;
   display: block;
-  width: 58%;
+  width: 57.5%;
   padding: 219px 120px 73px 335px;
   position: relative;
+  max-width: 826px;
 }
 .products-title {
   font-size: 33px;
@@ -266,7 +267,7 @@ body {
   border-radius: 1px;
   position: absolute;
   left: -173px;
-  top: 22px;  
+  top: 20px;  
 }
 .products-description {
   font-size: 14px;
@@ -292,13 +293,14 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  align-content: flex-start;
   position: relative;
-  left: -6px;
+  left: -15px;
 }
 .products-item {
   height: 240px;
   margin-right: 35px;
-/*   margin-bottom: 30px; */
+  margin-bottom: 35px;
 }
 .products-item-link {
   height: 240px;
@@ -345,8 +347,8 @@ body {
   display: block;
   content: '';
   position: absolute;
-  right: -150px;
-  bottom: 38px;
+  right: -146px;
+  bottom: 70px;
   width: 200px;
   height: 240px;
   border-radius: 0 0 14px 14px;
@@ -356,7 +358,7 @@ body {
 }
 .footer {
   background: #191166;
-  padding: 55px 90px 55px 110px;
+  padding: 55px 90px 45px 110px;
 }
 .footer-logo {
   width: 26%;
@@ -368,7 +370,9 @@ body {
   display: inline-flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
-  padding-left: 90px;
+  padding-left: 78px;
+  padding-top: 24px;
+  vertical-align: top;
 }
 .footer-column {
 /*   flex-basis: 200px; */
@@ -385,7 +389,7 @@ body {
   line-height: 20px;
 }
 .footer-nav {
-  width: 100px;
+  width: 105px;
 }
 .footer-nav-item {
   line-height: 20px;
@@ -405,6 +409,10 @@ body {
   font-size: 14px;
   line-height: 20px;
 }
+.footer-contact-item:last-of-type .footer-contact-link {
+  position: relative;
+  top: -4px;
+}
 .footer-office {
   display: block;
   margin-bottom: 15px;
@@ -416,6 +424,14 @@ body {
 .inline-title {
   display: inline-block;
 }
+.footer-rights {
+  margin-top: 43px;
+  font-size: 11px;
+  color: #FFF;
+  text-align: center;
+  padding-right: 47px;
+}
+
 
 
 
