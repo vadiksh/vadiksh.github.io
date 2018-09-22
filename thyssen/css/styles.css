@@ -6,6 +6,9 @@ body,html {
   overflow-y: auto;
 	-webkit-overflow-scrolling:touch;
 }
+body * {
+  -webkit-overflow-scrolling:touch;
+}
 .menu-link,
 .title,
 .button,
