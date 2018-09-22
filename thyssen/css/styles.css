@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto-Regular'; 
+  height: 100%;
   position: relative;
   overflow-x: hidden;
 }
