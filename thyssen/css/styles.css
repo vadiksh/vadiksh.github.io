@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto-Regular'; 
+  position: relative;
   overflow-x: hidden;
 }
 .menu-link,
@@ -128,6 +129,7 @@ body {
 /*   position: relative; */
   width: 100%;
   /*! height: 757px; */
+overflow-x: hidden;
 }
 .header-responsive {
   position: relative;
