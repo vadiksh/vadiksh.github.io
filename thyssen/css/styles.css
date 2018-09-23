@@ -357,6 +357,8 @@ background: #fff;
 .arrow-button {
   font-size: 14px; 
   color: #191166;
+  position: relative;
+  z-index: 5;
 }
 .arrow-button::after {
   display: inline-block;
@@ -1913,8 +1915,11 @@ background: #fff;
     line-height: 17px;
     padding-right: 14px;
   }
+   .other-text:last-of-type {
+    margin-bottom: 0;
+  }
   .other-button {
-    margin-top: -8px;
+    margin-top: 12px;
     margin-bottom: 5px;
   }
   .products-other::after {
