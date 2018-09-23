@@ -370,7 +370,7 @@ background: #fff;
 }
 
 .partnership::after {
-  display: none;
+  display: block;
   content: '';
   width: 613px;
   height: 115px;  
