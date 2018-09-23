@@ -53,7 +53,7 @@
  display:none
 }
 .no-js .owl-carousel,.owl-carousel.owl-loaded {
- display:block
+ display:none;
 }
 .owl-carousel .owl-dot,.owl-carousel .owl-nav .owl-next,.owl-carousel .owl-nav .owl-prev {
  cursor:pointer;
