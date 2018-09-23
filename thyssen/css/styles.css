@@ -513,7 +513,7 @@ background: #fff;
 }
 .item-3 {
   background: url('../img/product3.jpg') 50% 50%;
-  background-size: 160%;
+  background-size: 165%;
 }
 .item-4 {
   background: url('../img/product4.jpg') 50% 0%;
@@ -899,6 +899,11 @@ background: #fff;
 .main-item {
   max-width: 193px;
   margin-right: 0;
+  height: 240px;
+  margin-bottom: 35px;
+}
+.owl-carousel {
+  display: none;
 }
 .products-mainlist .products-item-img {
   width: 193px;
@@ -1177,6 +1182,22 @@ background: #fff;
   .about-list {
     padding: 0 10px;
   }
+  .products-mainlist {
+    justify-content: center;
+  }
+  .main-item {
+    width: 25%;
+    max-width: none;
+    margin-bottom: 35px;
+  }
+  .main-item-wrap {
+    margin-left: auto;
+    width: 193px;
+    margin-right: auto;
+  }
+  .main-item .products-item-title {
+    max-width: 193px;
+  }
 }
 @media screen and (max-width: 1150px) {
   .promo {
@@ -1339,6 +1360,9 @@ background: #fff;
     left: -85px;
     top: 16px;
   }
+  .main-item {
+    width: 35%;
+  }
 }
 @media screen and (max-width: 900px) {
   .header-container {
@@ -1453,7 +1477,7 @@ background: #fff;
   }
   .services-info {
     padding: 0 82px 30px;
-    width: 90%;
+    width: 75%;
     margin-bottom: 35px;
     background: #fff;
     position: relative;
@@ -1493,6 +1517,14 @@ background: #fff;
   }
   .event-name {
     font-size: 50px;
+  }
+  .products-other {
+    padding: 50px 82px 30px;
+    width: 75%;
+  }
+  .other-title::before {
+    top: 20px;
+    left: -165px;
   }
 }
 
@@ -1604,7 +1636,7 @@ background: #fff;
   }
   
   .services-section {
-    padding: 70px 0 80px;
+    padding: 70px 0 65px;
   }
   .events-list {
   }
@@ -1624,6 +1656,40 @@ background: #fff;
     background-size: 140%;
     background-position: 0% 20%;
     margin-bottom: 0;
+  }
+  .products-mainsection {
+    padding: 0;
+  }
+  .products-mainlist {
+    display: none;
+  }
+  .owl-carousel {
+    display: block !important;
+  }
+  .owl-dots {
+    display: none;
+  }
+  .owl-nav {
+    display: none;
+  }
+  .carousel-content {
+/*     height: 240px; */
+/*     background: #000; */
+    width: 200px;
+    margin: 0 auto;
+  }
+  .owl-item, .owl-item.active +  .owl-item.active {
+    opacity: 0.5;
+    transition: 0.5s;
+    transform: scale(0.9) !important;
+  }
+  .owl-item.active {
+    opacity: 1;
+    transition: 0.5s;
+    transform: scale(1) !important;
+  }
+  .products-other {
+    padding: 90px 82px 30px;
   }
 }
 @media screen and (max-width: 700px) {
@@ -1825,6 +1891,32 @@ background: #fff;
     background-image: linear-gradient(162deg, rgba(17,60,102,0.00) 28%, rgba(25,17,102,0.65) 100%), url('../img/event5.jpg');
     background-size: 200% 350%;
     background-position: 80% 50%;
+  }
+  .products-other {
+    padding: 100px 22px 30px 25px;
+    width: 89%;
+    margin-bottom: 78px;
+  }
+  .other-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .other-title::before {
+    top: 12px;
+    left: -157px;
+  }
+  .other-text {
+    font-size: 13px;
+    line-height: 17px;
+    padding-right: 14px;
+  }
+  .other-button {
+    margin-top: -8px;
+    margin-bottom: 5px;
+  }
+  .products-other::after {
+    width: 250px;
+    box-shadow: 20px 15px 55px 0 rgba(0,0,0,0.13);
   }
 }
 @media screen and (max-width: 470px) {
