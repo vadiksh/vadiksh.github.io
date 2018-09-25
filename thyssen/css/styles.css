@@ -957,7 +957,7 @@ background: #fff;
 }
 .popup-img-5 {
   background: url('../img/product7.jpg') 50% 0%;
-  background-size: 200%;
+  background-size: 210%;
 }
 .popup-img-6 {
   background: url('../img/product8.jpg') 50% 0%;
@@ -1478,7 +1478,7 @@ background: rgba(255,255,255,0.65);
     flex-flow: column-reverse nowrap;
   }
   .services-info {
-    padding: 0 120px;
+    padding: 0 120px 0 230px;
     width: 100%;
     margin-bottom: 35px;
   }
@@ -1491,6 +1491,13 @@ background: rgba(255,255,255,0.65);
   .services-title::before {
     width: 100px;
     left: -15px;
+  }
+  .products-other {
+    padding-left: 290px;
+  }
+  .other-title::before {
+    width: 100px;
+    left: -112px;
   }
   .origin-title::before {
     left: -115px;
@@ -1695,7 +1702,7 @@ background: rgba(255,255,255,0.65);
   }
   .other-title::before {
     top: 20px;
-    left: -165px;
+    /*! left: -165px; */
   }
 }
 
@@ -2102,7 +2109,7 @@ background: rgba(255,255,255,0.65);
   }
   .other-title::before {
     top: 12px;
-    left: -157px;
+    left: -107px;
   }
   .other-text {
     font-size: 13px;
