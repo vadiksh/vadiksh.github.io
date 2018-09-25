@@ -50,12 +50,11 @@ body * {
 .header-mob {
 background: #fff;
   height: 95px;
-  padding: 10px 20px;
+  padding: 10px 20px 7px 30px;
   position: relative;
   text-align: right;
 }
 .mob-logo {
-  padding-top: 10px;
   display: inline-block;
   transition: .4s ease-in;
   float: left;
@@ -67,6 +66,7 @@ background: #fff;
 }
 .mob-logo img {
   width: 150px;
+  transform: scale(1.6);
 }
 .mob-menu {
   padding-top: 24px; 
@@ -215,7 +215,7 @@ background: #fff;
 }
 
 .header-container {
-  padding: 40px 80px 40px 125px;
+  padding: 20px 80px 40px 125px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -223,6 +223,7 @@ background: #fff;
 }
 .header-logo {
   width: 280px;
+  transform: scale(1.42);
 }
 .menu {
 }
@@ -537,6 +538,7 @@ background: #fff;
   width: 26%;
   max-width: 304px;
   
+  transform: scale(1.42);
 }
 .footer-container {
   width: 74%;
@@ -1106,7 +1108,12 @@ background: rgba(255,255,255,0.65);
   display: block;
   margin-top: 33px;
 }
-
+.contact-header .header-container {
+  padding: 8px 80px 10px 90px;
+}
+.contact-logo {
+  width: 250px;
+}
 .contact-section {
   display: flex;
 }
@@ -1155,8 +1162,8 @@ background: rgba(255,255,255,0.65);
 .contact-list::before {
   display: block;
   content: '';
-  width: 324px;
-  height: 238px;
+  width: 90%;
+  height: 90%;
   background: #fff;
   box-shadow: 0 9px 70px 0 #000000;
   border-radius: 32px;
@@ -1246,6 +1253,25 @@ background: rgba(255,255,255,0.65);
   .origin-title::before {
      left: -75px;
   }
+  .contact-section {
+    flex-flow: column-reverse;
+  }
+  .contact-map {
+    width: 100%;
+  }
+  .contact-container {
+    justify-content: center;
+    padding: 80px 25px;
+  }
+  .contact-title {
+    padding-left: 100px;
+  }
+  .contact-title::before {
+    left: -55px;
+  }
+  .contact-list {
+    top: 0;
+  }
 }
 @media screen and (max-width: 1300px) {
   .contact-bar-home {
@@ -1314,6 +1340,12 @@ background: rgba(255,255,255,0.65);
   .main-item .products-item-title {
     max-width: 193px;
   }
+  .contact-title {
+/*     align-self: flex-start; */
+/*     padding-top: 50px; */
+  }
+  .contact-title::before {
+  }
 }
 @media screen and (max-width: 1150px) {
   .promo {
@@ -1364,10 +1396,12 @@ background: rgba(255,255,255,0.65);
   .products-description {
     max-width: 360px;
   }
-  .header-container  {
+  .header-container,
+  .contact-header .header-container{
     padding-left: 70px;
     padding-right: 40px;
   }
+  
   .footer {
     padding-left: 70px;
     padding-right: 40px;
@@ -1393,7 +1427,14 @@ background: rgba(255,255,255,0.65);
   .services-title::before {
     left: -49px;
   }
-  
+  .contact-title {
+    font-size: 1.8em;
+    line-height: 1.5em;
+  }
+  .contact-title::before {
+    width: 100px;
+    left: -10px;
+  }
 }
 @media screen and (max-width: 1023px) {
   .promo {
@@ -1458,6 +1499,19 @@ background: rgba(255,255,255,0.65);
     width: 100%;
     padding: 0 116px;
   }
+  .contact-title {
+    margin-right: 30px;
+  }
+  .contact-list {
+    padding: 30px;
+  }
+  .contact-link {
+    font-size: 1em;
+    line-height: 1.7em;
+  }
+  .address-icon {
+    transform: translateY(-38px);
+}
 }
 @media screen and (max-width: 950px) {
   .partnership {
@@ -1481,7 +1535,8 @@ background: rgba(255,255,255,0.65);
   }
 }
 @media screen and (max-width: 900px) {
-  .header-container {
+  .header-container,
+  .contact-header .header-container {
     padding-left: 30px;
     padding-right: 20px;
   }
@@ -1645,7 +1700,7 @@ background: rgba(255,255,255,0.65);
 }
 
 @media screen and (max-width: 767px) {
-  .contact-bar,.header-top {
+  .contact-bar,.header-top,.contact-header .header-container {
     display: none;
   }
   .contact-mob,.header-mob {
@@ -1810,6 +1865,30 @@ background: rgba(255,255,255,0.65);
   .products-item-title {
     padding: 11px 0px 12px 8px;
   }
+  .contact-title {
+    font-size: 1.5em;
+    line-height: 1.3em;
+    padding-left: 0;
+    /*! max-width: 240px; */
+  }
+  
+  .contact-title::before {
+    top: 13px;
+    left: -110px;
+  }
+  .contact-link {
+    font-size: 13px;
+    line-height: 1.5em;
+    margin-bottom: 8px;
+  }
+  .contact-icon {
+    width: 20px;
+    margin-bottom: -3px;
+    margin-right: 5px;
+  }
+  .address-icon {
+    margin-bottom: -15px;
+  }
 }
 @media screen and (max-width: 700px) {
    .about-header {
@@ -1858,7 +1937,8 @@ background: rgba(255,255,255,0.65);
 /*     left: 20px; */
   }
   .mob-logo img {
-    width: 105px;
+    width: 65px;
+    transform: scale(2.5) translateY(0px);
   }
   .mob-menu {
     width: 100%;
@@ -2040,6 +2120,21 @@ background: rgba(255,255,255,0.65);
     width: 250px;
     box-shadow: 20px 15px 55px 0 rgba(0,0,0,0.13);
   }
+  .contact-container {
+    flex-flow: column;
+    padding: 30px 22px 40px;
+    background-size: 160%;
+  }
+  .contact-title {
+    margin-right: -50px;
+    margin-bottom: 40px;
+    font-size: 20px;
+  line-height: 26px;
+  }
+  .contact-title::before {
+    width: 60px;
+    left: -70px;
+  }
 }
 @media screen and (max-width: 470px) {
   .promo {
@@ -2139,9 +2234,26 @@ background: rgba(255,255,255,0.65);
   .popup-item {
     transform: translate(-60%, -70%);
   }
+  .contact-container {
+    background-size: 220%;
+  }
+  .contact-title {
+    margin-right: 0px;
+    font-size: 20px;
+  line-height: 26px;
+    align-self: flex-start;
+    min-width: 220px;
+    max-width: 300px;
+  }
+  .contact-title br {
+    display: none;
+  }
+  .contact-title::before {
+    left: -65px;
+  }
 }
 @media screen and (max-width:380px) {
     .popup-item {
-    transform: translate(-65%, -70%);
+    transform: translate(-65%, -60%);
   }
 }
