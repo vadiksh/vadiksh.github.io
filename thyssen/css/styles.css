@@ -57,12 +57,12 @@ background: #fff;
 .mob-logo {
   display: inline-block;
   transition: .4s ease-in;
-  float: left;
+  position: absolute;
+  left: 40px;
 }
 .mob-logo.revealed {
   transform: translate3d(0,0,0);
   transition: .8s ease-in-out;
-  /*! position: relative; */
 }
 .mob-logo img {
   width: 150px;
@@ -2058,7 +2058,7 @@ cursor: pointer;
   .mob-logo.revealed {
     transform: translate3d(0,0,0);
     transition: .8s ease-in-out;
-/*     position: relative; */
+/*! position: relative; */
   } 
   .mob-menu {
     width: 100%;
