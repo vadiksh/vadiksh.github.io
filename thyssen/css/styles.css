@@ -72,12 +72,12 @@ background: #fff;
   padding-top: 24px; 
   padding-right: 35px;
   z-index: 1;
-  transform: translateX(1000px);
+/*   transform: translateX(1000px); */
   transition: 1s ease-in-out;
   display: inline-block;
 }
 .mob-menu.revealed {
-  transform: translateX(-0);
+/*   transform: translateX(-0); */
   transition: 0.5s ease-out;
   position: relative;
 }
@@ -1071,6 +1071,8 @@ cursor: pointer;
   /*! width: 50%; */
   box-shadow: 0 40px 135px 0 rgba(0,0,0,0.55);
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .popup-close {
   display: block;
