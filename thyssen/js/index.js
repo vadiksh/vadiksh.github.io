@@ -57,3 +57,25 @@ $('.popup').click(function() {
     	}, 300);
 	}
 });
+
+$(function () {
+    var location = window.location.href;
+    var cur_url = location.split('/').pop();
+ 
+    $('.menu-list .menu-item').each(function () {
+        var link = $(this).find('a').attr('href');
+ 
+        if (cur_url == link)
+        {
+            $(this).addClass('active');
+        }
+    });
+      $('.mob-menu .mob-menu-item').each(function () {
+        var link = $(this).find('a').attr('href');
+ 
+        if (cur_url == link)
+        {
+            $(this).addClass('active');
+        }
+    });
+});
