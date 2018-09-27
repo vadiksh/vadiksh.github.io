@@ -2047,7 +2047,7 @@ cursor: pointer;
   }
   .mob-logo img {
     width: 65px;
-    transform: scale(2.5);
+    /*! transform: scale(2.5); */
   }
   
   .mob-logo {
