@@ -69,6 +69,7 @@ background: #fff;
   width: 150px;
   transform: scale(1.6);
   position: absolute;
+  z-index: -3;
 }
 .mob-menu {
   /*! padding-top: 24px; */ 
@@ -1822,6 +1823,7 @@ cursor: pointer;
   }
   .contact-mob,.header-mob {
     display: block;
+    z-index: -3;
   }
   .header-responsive {
     padding-bottom: 0;
@@ -2050,6 +2052,7 @@ cursor: pointer;
   .mob-logo img {
     width: 65px;
     transform: scale(2.5);
+    /*! height: 55px; */
   }
   
   .mob-logo {
