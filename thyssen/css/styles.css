@@ -60,24 +60,24 @@ background: #fff;
   float: left;
 }
 .mob-logo.revealed {
-  transform: translateX(0px);
+  transform: translate3d(0,0,0);
   transition: .8s ease-in-out;
-  position: relative;
+  /*! position: relative; */
 }
 .mob-logo img {
   width: 150px;
   transform: scale(1.6);
 }
 .mob-menu {
-  /*! padding-top: 24px; */ 
+  padding-top: 24px; 
   padding-right: 35px;
   z-index: 1;
-  transform: translateX(1000px);
+  transform: translate3d(1000px,0,0);
   transition: 1s ease-in-out;
   display: inline-block;
 }
 .mob-menu.revealed {
-  transform: translateX(-0);
+  transform: translate3d(0,0,0);
   transition: 0.5s ease-out;
   position: relative;
 }
@@ -2051,12 +2051,12 @@ cursor: pointer;
   }
   
   .mob-logo {
-    transform: translateX(-400px);
+    transform: translate3d(-400px,0,0);
     float: none;
     padding-top: 0px;
   }
   .mob-logo.revealed {
-    transform: translateX(0px);
+    transform: translate3d(0,0,0);
     transition: .8s ease-in-out;
 /*     position: relative; */
   } 
@@ -2067,11 +2067,11 @@ cursor: pointer;
     padding-top: 4px;
     padding-right: 0px;
     min-width: 280px;
-    transform: translateX(500px);
+    transform: translate3d(500px,0,0);
   }
   .mob-menu.revealed {
 /*     position: absolute; */
-    transform: translateX(0px);
+    transform: translate3d(0,0,0);
   }
   
   .mob-menu-open {
