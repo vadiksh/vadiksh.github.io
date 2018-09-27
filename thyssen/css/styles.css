@@ -2209,6 +2209,9 @@ cursor: pointer;
     background-size: 200% 350%;
     background-position: 80% 50%;
   }
+  .popup-close{
+    display: none;
+  }
   .products-other {
     padding: 100px 22px 30px 25px;
     width: 89%;
@@ -2354,6 +2357,7 @@ cursor: pointer;
   .popup-item {
     transform: translate(-60%, -70%);
   }
+  
   .contact-container {
     background-size: 220%;
   }
