@@ -179,20 +179,21 @@ background: #fff;
 }
 
 
-.slider { overflow-x: hidden; }
+.slider { /*! overflow: hidden; */ }
 .slider-image { 
   width: calc(100% / 6);
   float: left;
 }
 .slider-figure { 
   position: absolute;
-  z-index: -1;
+  z-index: -10;
   width: 600%;
   margin: 0;
   left: 0;
   text-align: left;
   font-size: 0;
   animation: 20s slidy infinite;
+  overflow: hidden;
 }
 .slider-item {
   display: none;
