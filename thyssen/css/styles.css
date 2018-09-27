@@ -72,12 +72,12 @@ background: #fff;
   padding-top: 24px; 
   padding-right: 35px;
   z-index: 1;
-/*   transform: translateX(1000px); */
+  transform: translateX(1000px);
   transition: 1s ease-in-out;
   display: inline-block;
 }
 .mob-menu.revealed {
-/*   transform: translateX(-0); */
+  transform: translateX(-0);
   transition: 0.5s ease-out;
   position: relative;
 }
@@ -2045,20 +2045,24 @@ cursor: pointer;
     height: 55px;
     text-align: center;
   }
-  .mob-logo {
-     transform: translateX(-400px);
-    float: none;
-    padding-top: 0px;
-/*      position: absolute; */
-/*     left: 20px; */
-  }
   .mob-logo img {
     width: 65px;
     transform: scale(2.5) translateY(0px);
   }
+  
+  .mob-logo {
+    transform: translateX(-400px);
+    float: none;
+    padding-top: 0px;
+  }
+  .mob-logo.revealed {
+    transform: translateX(0px);
+    transition: .8s ease-in-out;
+/*     position: relative; */
+  } 
   .mob-menu {
     width: 100%;
-    position: absolute;
+/*     position: absolute; */
     left: 0;
     padding-top: 4px;
     padding-right: 0px;
@@ -2066,9 +2070,10 @@ cursor: pointer;
     transform: translateX(500px);
   }
   .mob-menu.revealed {
-    position: absolute;
+/*     position: absolute; */
     transform: translateX(0px);
   }
+  
   .mob-menu-open {
     right: 10px;
     top: 2px;
