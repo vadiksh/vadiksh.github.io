@@ -1824,7 +1824,6 @@ cursor: pointer;
   }
   .contact-mob,.header-mob {
     display: block;
-    z-index: -3;
   }
   .header-responsive {
     padding-bottom: 0;
