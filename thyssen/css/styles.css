@@ -74,10 +74,11 @@ background: #fff;
 .mob-menu {
   /*! padding-top: 24px; */ 
   padding-right: 20px;
-  z-index: 1;
+  z-index: 0;
   transform: translate3d(1000px,22px,0);
   transition: 1s ease-in-out;
   display: inline-block;
+  position: relative;
 }
 .mob-menu.revealed {
   transition: 0.5s ease-out;
@@ -1824,6 +1825,7 @@ cursor: pointer;
   }
   .contact-mob,.header-mob {
     display: block;
+    z-index: -3;
   }
   .header-responsive {
     padding-bottom: 0;
@@ -2078,7 +2080,7 @@ cursor: pointer;
   .mob-menu.revealed {
 /*     position: absolute; */
     transform: translate3d(0,-22px,0);
-/*! padding-right: 40px; */
+padding-right: 35px;
   }
   
   .mob-menu-open {
