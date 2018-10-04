@@ -1,0 +1,227 @@
+// @import "vars"
+@media screen and (max-width: 1280px)
+	.title
+		font-size: 36px
+		line-height: 1.1
+	.header
+		background-position: 0% 100%
+		height: auto
+		padding: 55px 40px 0
+		.promo
+			padding: 40px 40px 100px 50%
+	.main 
+		padding: 0 50px
+	.services
+		width: 66.7%;
+		padding: 80px 60px 20px;
+		.slider
+			top: -240px
+			right: -400px
+	.collab,.experience
+		padding-left: 60px
+		padding-right: 0px
+	.footer
+		&-logo, &-contactm, &-rights
+			flex: 1
+
+@media screen and (max-width: 1100px)
+	.header
+		background-position: 50% 100%
+		padding: 30px 40px;
+		.promo
+			padding-top: 0px
+			padding-bottom: 50px
+	.services
+		width: 100%
+		padding: 60px 0 0 40px
+		margin-bottom: 80px 
+		
+		&::after 
+			display: none
+		&-container
+			display: flex
+			flex-flow: row nowrap
+			justify-content: space-between
+
+
+		.slider
+			top: -115px
+			right: 0px
+			position: relative
+			// min-width: 360px
+
+		.contact
+			bottom: -80px
+			right: 45px
+			// display: none
+		&-list
+			// display: inline-flex
+			flex-flow: column nowrap
+			padding-right: 0
+			width: 50%
+		&-item
+			width: 100%
+			margin-bottom: 40px
+	.collab,.experience
+		padding-left: 40px
+		padding-right: 0px
+
+@media screen and (max-width: 992px)
+	.header
+		width: 100%
+		.promo
+			&-title
+				font-size: 30px
+	.services
+		.contact
+			bottom: -80px
+			right: 0px
+
+@media screen and (max-width: 767px)
+	.header
+		width: 100%
+		background-position: 60% 100%
+		transform: scale(-1, 1)
+		text-align: right
+
+		&-logo
+			transform: scale(-1, 1)
+			text-align: right
+		.promo
+			transform: scale(-1, 1)
+			padding-left: 16px
+			padding-right: 0
+			padding: 70px 0 90px 16px
+			text-align: left
+			&-title
+				font-size: 33px
+			&-text
+				display: none
+	.main 
+		padding: 0
+	.services
+		padding: 0 40px
+		background: transparent
+		margin-bottom: 30px
+		&-mob
+			display: block
+			margin-bottom: 0px
+			min-width: 385px
+			padding-left: 130px
+		&-title 
+			display: none
+		.contact
+			position: relative
+			bottom: 0px
+			right: 0px
+			margin: 0 auto 80px
+		
+		.slider
+			display: none
+		&-list
+			width: 100%
+			flex-flow: row wrap
+			justify-content: space-between
+			padding: 0 50px
+		&-item
+			width: 40%
+			padding: 0
+	.collab
+		margin-bottom: 40px
+	.collab, .experience
+		padding: 0
+		&-title
+			text-align: center
+		&-list
+			display: flex
+			flex-flow: column
+			align-items: center
+		&-item
+			margin-right: 0
+			margin-bottom: 25px
+			
+
+	.footer
+		flex-flow: column
+		background-position: 30% 0
+		padding: 35px 0
+		&-logo
+			width: 150px
+			margin-bottom: 30px
+		&-contact
+			margin-bottom: 10px
+
+@media screen and (max-width: 570px)
+	.header
+		padding: 105px 0 65px 0
+		background-position: 30% 100%
+		// background-size: 320%
+		&-logo
+			display: none
+		&-mob
+			display: block
+		.promo
+			padding: 120px 0 85px 16px;
+			&-title
+				line-height: 1
+				padding-left: 25px
+				padding-right: 25px
+				text-shadow: 0 2px 6px rgba(122,122,122,0.50)
+	.services
+		padding: 0 30px
+		&-mob
+			margin-bottom: 210px
+			padding-right: 30px
+			max-width: 400px
+		.contact
+			position: absolute
+			top: 280px
+		
+		&-list
+			width: 100%
+			flex-flow: column nowrap
+			justify-content: space-between
+			align-items: center
+			padding: 0
+		&-item
+			width: 100%
+			max-width: 370px
+			text-align: center
+			margin-bottom: 60px
+			&-text
+				background: #fff
+				z-index: 1
+				padding: 0 20px 30px
+			&::before
+				position: relative
+				margin: 0 auto
+				left: 0
+				top: -8px
+			&::after
+				display: block
+				content: ''
+				width: 70%
+				position: absolute
+				left: 15%
+				bottom: 0
+				height: 50%
+				border-radius: 30px
+				background: black
+				box-shadow: 0 10px 50px 0 rgba(0,0,0,.02)
+				z-index: -1
+
+// /*==========  Desktop First  ==========*/
+
+// // ≥1200px
+// +media-breakpoint-down(lg)
+
+// // ≥992px
+// +media-breakpoint-down(md)
+
+// // ≥768px
+// +media-breakpoint-down(sm)
+
+// // ≥576px
+// +media-breakpoint-down(xs)
+
+

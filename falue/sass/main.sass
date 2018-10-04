@@ -1,0 +1,374 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #666
+body
+	font-size: $font
+	min-width: 320px
+	position: relative
+	line-height: 17px
+	font-family: $default-font
+	overflow-x: hidden
+	color: $text
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+*
+	box-sizing: border-box
+	position: relative
+	padding: 0
+	margin: 0
+li
+	list-style: none
+a
+	text-decoration: none
+	color: white
+.title
+	font-size: $title
+	line-height: 56px
+.header-mob 
+	display: none
+	transform: scale(-1, 1)
+	position: absolute
+	top: 0
+	text-align: center
+	width: 100%
+
+	.mob-contact
+		padding: 7px 0
+		background: #292929
+		&-item
+			display: inline-block
+		&-link
+			font-family: "roboto-regular"
+			font-size: 11px
+			&::before
+				display: block
+				content: ''
+				width: 12px
+				height: 14px
+				position: absolute
+				left: -18px
+				top: 0px
+				// background: white
+		&-mail::before
+			background: url('../img/svg/envelope.svg') no-repeat 50% 50%/contain
+		&-phone
+			margin-right: 30px
+		&-phone::before
+			background: url('../img/svg/phone.svg') no-repeat 50% 50%/contain
+	.mob-logo-link
+		display: inline-block
+		width: 100%
+		padding: 14px 0 10px
+		background: #fff
+		.mob-logo
+			width: 115px
+
+
+
+.header 
+	background: url('../img/home.jpg') 0% 0%/cover
+	color: white
+	height: 670px
+	padding: 55px 40px 0
+
+	.promo 
+		padding: 85px 40px 0 54.5%
+		&-title 
+			margin-bottom: 25px
+		&-text
+			max-width: 430px
+			margin-bottom: 16px
+
+.services, .slider-wrapper
+	display: inline-block
+.services 
+	width: 66.7%
+	padding: 120px 130px 20px
+	background: #fff
+	margin-bottom: 160px
+	&::after
+		display: block
+		content: ''
+		width: 432px
+		height: 78px
+		position: absolute
+		right: 0
+		bottom: 40px
+		box-shadow: 100px 40px 141px 0 rgba(0,0,0,.11)
+		border-radius: 32px
+		z-index: -1
+	&-mob
+		display: none
+		width: 115%
+		background: #fff
+		padding: 50px 40px 40px 80px 
+		top: -40px
+		left: -120px
+		&::after
+			display: block
+			content: ''
+			width: 90%
+			height: 100%
+			box-shadow: 0 35px 55px 0 rgba(0,0,0,0.13);
+			border-radius: 32px;
+			position: absolute
+			right: 0
+			bottom: 0
+			z-index: -1
+		&-title
+			margin-bottom: 20px
+			font-size: 25px
+		&-text
+			font-family: 'roboto-regular'
+	&-title
+		color: #000
+		margin-bottom: 45px
+	&-list
+		display: flex
+		flex-flow: row wrap
+		justify-content: space-between
+		padding-right: 60px
+	&-item 
+		width: 45%
+		padding: 0 30px 0 0
+		margin-bottom: 70px
+		&::before
+			display: block
+			content: ''
+			width: 42px
+			height: 42px
+			position: absolute
+			left: -48px
+			top: -12px
+		@for $i from 1 through 4 
+		  &.item-#{$i}::before
+		    background: url('../img/svg/icon#{$i}.svg') no-repeat 50% 50%
+
+		&-title
+			margin-bottom: 10px
+		&-text
+			font-family: 'roboto-regular'
+			// width: 260px
+	.slider
+		width: 399px
+		height: 534px
+		position: absolute
+		top: -350px
+		right: -425px
+		z-index: 1
+		&-img
+			position: absolute
+			width: 100%
+			height: 100%
+		&-img-1
+			background: url('../img/slide1.jpg')
+			animation: fade 15s infinite
+			background-size: cover;
+		&-img-2
+			background: url('../img/slide2.jpg')
+			animation: fade2 15s infinite
+			background-size: cover;
+		&-img-3
+			background: url('../img/slide3.jpg')
+			animation: fade3 15s infinite
+			background-size: cover;
+		&-img-4
+			background: url('../img/slide4.jpg')
+			animation: fade4 15s infinite	
+			background-size: cover;	
+
+		&::after
+			display: block
+			content: ''
+			width: 80%
+			height: 100%
+			position: absolute
+			bottom: 0
+			left: 50px
+			box-shadow: 0px 9px 70px 0 rgba(0,0,0,0.35);
+			border-radius: 32px;
+			z-index: -1
+	.contact
+		display: block
+		width: 295px
+		height: 150px
+		position: absolute
+		right: -295px
+		bottom: -150px
+		background-image: linear-gradient(34deg, #3FAAB3 22%, #0E7380 100%)
+		padding: 30px
+		text-align: center
+		font-size: 15px
+		line-height: 20px
+		&-text
+			color: #fff
+			font-family: "proxima-regular"
+			display: inline-block
+			margin-bottom: 15px
+		&-link
+			display: inline-block
+			margin-bottom: 3px
+			&::before
+				display: block
+				content: ''
+				width: 17px
+				height: 17px
+				position: absolute
+				left: -22px
+				top: 1px
+				// background: white
+		&-mail::before
+				background: url('../img/svg/envelope.svg') no-repeat 50% 50%
+		&-phone::before
+				background: url('../img/svg/phone.svg') no-repeat 50% 50%
+		&::after
+			display: block
+			content: ''
+			width: 190px
+			height: 90px
+			box-shadow: 0 19px 70px 0 rgba(0,0,0,0.35);
+			border-radius: 32px;
+			position: absolute
+			bottom: 0
+			left: 50px
+			z-index: -1
+.collab,.experience
+	padding: 25px 130px
+
+	&-title
+		font-family: "proxima-light"
+		font-size: 15px
+		margin-bottom: 25px
+		color: #bebebe
+	&-list
+
+	&-item
+		display: inline-block
+		margin-right: 50px
+	&-link
+.collab
+	&-icon-1
+		width: 84px
+	&-icon-2
+
+	&-icon-3
+
+.experience
+	margin-bottom: 45px
+	&-icon-1
+		width: 84px
+	&-icon-2,&-icon-3
+		width: 90px
+.footer
+	padding: 35px 50px
+	display: flex
+	flex-flow: row nowrap
+	justify-content: space-between
+	align-items: center
+	background: url('../img/footer.jpg') 0% 0/cover
+	&-logo-link
+		flex: 1
+		transform: translateY(5px)
+	&-contact
+		flex: 1
+		&-item
+			display: inline-block
+			margin-left: 40px
+		&-link 
+			display: inline-block
+			font-family: "roboto-regular"
+			
+			&::before
+				display: block
+				content: ''
+				width: 13px
+				height: 15px
+				position: absolute
+				left: -20px
+				top: 2px
+		&-mail 
+			margin-bottom: 5px
+		&-mail::before
+			background: url('../img/svg/envelope.svg') no-repeat 50% 50%/contain
+		&-phone::before
+			background: url('../img/svg/phone.svg') no-repeat 50% 50%/contain
+	&-rights
+		flex: 0.6
+		min-width: 280px
+		text-align: right
+		font-family: "roboto-regular"
+		color: #fff
+		&-bold 
+			font-family: "roboto-bold"
+
+@keyframes fade
+	0%
+		opacity: 1
+	10%
+		opacity: 1
+	20%
+		opacity: 0
+	50%
+		opacity: 0
+	70%
+		opacity: 0
+	80% 
+		opacity: 1
+	100%
+		opacity: 1
+@keyframes fade2
+	0%
+		opacity: 0
+	15%
+		opacity: 1
+	25%
+		opacity: 1
+	35%
+		opacity: 1
+	45%
+		opacity: 0
+	75%
+		opacity: 0
+	100%
+		opacity: 0
+@keyframes fade3
+	0%
+		opacity: 0
+	25%
+		opacity: 0
+	40%
+		opacity: 1
+	50%
+		opacity: 1
+	60%
+		opacity: 1
+	70%
+		opacity: 0
+	100%
+		opacity: 0
+@keyframes fade4
+	0%
+		opacity: 0
+	25%
+		opacity: 0
+	50%
+		opacity: 0
+	65%
+		opacity: 1
+	75%
+		opacity: 1
+	85%
+		opacity: 0
+	100%
+		opacity: 0
+
+
+@import "media" // Always at the end
