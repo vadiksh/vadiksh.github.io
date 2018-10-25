@@ -12,8 +12,11 @@
 </head>
 <body>
 	<header class="header" id="header">
-		<canvas id="nokey">
-		</canvas>
+		<div class="video-container">
+			<video autoplay muted loop class="video">
+			  <source src="video.mp4" type="video/mp4">
+			</video>
+		</div>
 		<div class="header__top">
 			<a href="" class="header__logo">LOGO</a>
 			<nav class="header__nav">
@@ -31,7 +34,7 @@
 			</div>
 			<div class="promo__right">
 				<p class="promo__text">Потому что мои хачеры сделают вам роскошный ремонт.</p>
-				<p class='promo__text'>Ну и потому что <a href="/" class="promo__text--marked">Слава Україні!</a>.</p>
+				<p class='promo__text'>Ну и потому что <a href="/" class="promo__text--marked">Слава Україні!</a></p>
 			</div>
 		</div>
 	</header>
@@ -51,7 +54,7 @@
 			<input type="text" name="name" placeholder="Ваше имя">
 			<p class="form-text"><b>Пожалуйста</b>, укажите контактные данные для связи:</p>
 			<input type="text" name="phone" placeholder="Телефон"/><span class="form-span">либо</span>
-			<input type="text" name="phone" placeholder="E-mail"/>
+			<input type="text" name="email" placeholder="E-mail"/>
 			<button>Отправить</button>
 		</form>
 	</section>
