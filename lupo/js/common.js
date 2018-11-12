@@ -4,7 +4,7 @@ $(document).ready(function() {
   if ($(window).width() <= 767) {
     
     $(".container").css({
-        "background-image" : "url('../img/fondo.jpg')",
+        "background-image" : "url('img/fondo.jpg')",
         "background-size" : "100% 60%"
     });
     $(window).scroll(function() {
@@ -12,7 +12,6 @@ $(document).ready(function() {
       var st = scrolled / 2;
 
       $(".container").css({
-        // "transform" : "translate3d(0, " + st + "px, 0)"
         "background-position" : "0 " + st + "px"
       });
     });
