@@ -1,4 +1,65 @@
 @import "vars"
 
 
+@media screen and (max-width: 850px)
+	.top-header
+		&::before
+			background-size: 100% 120px
+		.contact
+				top: -6px
+				left: auto
+				display: flex
+				justify-content: center
+				width: 100%
+				&-item,&-link
+					width: 60px
+	.logo-div
+		margin-top: 55px
+	.video
+		top: -45px
+	.widgets
+		margin-top: -30px
+		flex-flow: column nowrap
+		&-1
+			max-width: 520px
+			width: 86%
+			height: 280px
 
+	.info
+		.screenshot
+			max-width: 500px
+			flex-flow: column nowrap
+			&-item
+				width: 100%
+				margin-bottom: 14px
+		.text-block
+			max-width: 470px
+			padding: 10px 20px
+			font-size: 16px
+			line-height: 1.6
+		.text-sides,.text-block--left, .text-block--right
+			max-width: 470px
+			width: 100%
+	.footer
+		position: relative
+		height: 210px
+		&::before
+			height: 210px
+			background: url('../img/footer.png') no-repeat 0 10px /100% 250px
+		&-content
+			top: 95px
+		&-label
+			font-size: 22px
+			margin: 0 0 0 -15px
+			display: block
+		&-field
+			max-width: 200px
+			padding: 2px 10px 5px
+			font-size: 20px
+			top: -5px
+
+		&-button
+			width: 75px
+			height: 75px
+			top: -10px
+			margin-left: 0px

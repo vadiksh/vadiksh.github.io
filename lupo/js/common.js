@@ -1,6 +1,26 @@
 $(document).ready(function() {
 
-  $('.container').parallax({imageSrc: 'img/fondo.jpg'});
+  
+  if ($(window).width() <= 767) {
+    
+    $(".container").css({
+        "background-image" : "url('../img/fondo.jpg')",
+        "background-size" : "100% 60%"
+    });
+    $(window).scroll(function() {
+      var scrolled = $(this).scrollTop();
+      var st = scrolled / 2;
+
+      $(".container").css({
+        // "transform" : "translate3d(0, " + st + "px, 0)"
+        "background-position" : "0 " + st + "px"
+      });
+    });
+  } else {
+    $('.container').parallax({imageSrc: 'img/fondo.jpg'});
+  }
+  
+  
 
   var item = $('.screenshot-item');
   var img = $('.screenshot-item .screenshot-img');
