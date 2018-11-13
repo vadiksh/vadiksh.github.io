@@ -18,7 +18,12 @@ $(document).ready(function() {
   } else {
     $('.container').parallax({imageSrc: 'img/fondo.jpg'});
   }
-  
+  var iframe = document.getElementById('myFrame');
+  var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+  innerDoc.body.style.overflow = 'hidden';
+  console.log(innerDoc.body.style);
+
   var item = $('.screenshot-item');
   var img = $('.screenshot-item .screenshot-img');
   var modal = $('#myModal');
