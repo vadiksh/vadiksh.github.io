@@ -2,6 +2,13 @@
 @import "fonts"
 @import "libs"
 
+::-moz-selection 
+	background: $accent
+	color: #fff
+::selection 
+	background: $accent
+	color: #fff
+
 body * 
 	box-sizing: border-box
 body
@@ -63,14 +70,13 @@ body
 			@for $i from 1 through 5
 			  &-#{$i}::after
 			    background: url('../img/#{$i}-hover.png') center center /contain
+			    transition: .3s
 			&:hover::after
 				opacity: 1
 				transition: .3s
 			@for $i from 1 through 5
-			  &-#{$i}:active, &-#{$i}:focus
+			  &-#{$i}:active::after
 			    background: url('../img/#{$i}-clicked.png') center center /contain
-			&:active::after, &:focus::after 
-				opacity: 0 
 
 .logo-div
 	position: absolute
@@ -117,8 +123,8 @@ body
 		z-index: 2
 		margin: 0 auto
 	&-frame
-		width: 75vw
-		height: 42.2vw
+		width: 75.2vw
+		height: 42.7vw
 		
 .widgets
 	max-width: 1120px
@@ -230,47 +236,46 @@ body
 		display: none
 		position: fixed
 		z-index: 99
-		padding-top: 100px
 		left: 0
 		top: 0
 		width: 100%
 		height: 100%
-		overflow: auto
+		overflow-x: hidden
+		overflow-y: scroll
 		background-color: rgb(0,0,0)
 		background-color: rgba(0,0,0,0.9)
+		justify-content: center
+		align-items: center
 		&-content 
-		    margin: auto
+		    padding: 30px 25px
 		    display: block
 		    width: 90%
+		    height: auto
 		    max-width: 1100px
-		.caption
-		    margin: auto
-		    display: block
-		    width: 80%
-		    max-width: 700px
-		    text-align: center
-		    color: #ccc
-		    padding: 10px 0
-		    height: 150px
-		.modal-content, .caption
 		    animation-name: zoom
 		    animation-duration: 0.5s
-		.close-modal
-			position: absolute
-			top: 15px
-			right: 35px
-			color: #f1f1f1
-			font-size: 40px
-			font-weight: bold
-			transition: 0.3s
+		&-next, &-prev, &-close
 			font-style: normal
+			font-size: 40px
+			color: #f1f1f1
+			font-family: 'roboto'
+			position: absolute
+			top: 45vh
+
 			&:hover,
 			&:focus
-			    color: #bbb
-			    text-decoration: none
-			    cursor: pointer
-		
-
+				color: #bbb
+				text-decoration: none
+				cursor: pointer
+		&-close
+			top: 15px
+			right: 35px
+			transition: 0.3s
+			
+		&-next
+			right: 35px
+		&-prev
+			left: 35px
 
 .footer
 	position: relative
@@ -332,9 +337,9 @@ body
 		&:hover::after
 			opacity: 1
 			transition: .3s
-		&:active, &:focus
+		&:active
 			background: url('../img/1-clicked.png') center center /contain
-		&:active::after, &:focus::after 
+		&:active::after
 			opacity: 0 
 
 @keyframes zoom 

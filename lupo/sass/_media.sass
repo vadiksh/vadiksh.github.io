@@ -17,6 +17,8 @@
 		margin-top: 55px
 	.video
 		top: -45px
+		&-container
+			background-position: 0 1px
 	.widgets
 		margin-top: -30px
 		flex-flow: column nowrap
@@ -24,6 +26,8 @@
 			max-width: 520px
 			width: 86%
 			height: 280px
+			overflow: scroll
+
 
 	.info
 		.screenshot
@@ -42,6 +46,14 @@
 		.text-sides,.text-block--left, .text-block--right
 			max-width: 470px
 			width: 100%
+		.modal
+			&-content
+				width: 95%
+				padding: 0px
+			&-next, &-close
+				right: 30px
+			&-prev
+				left: 30px
 	.footer
 		position: relative
 		height: 210px
