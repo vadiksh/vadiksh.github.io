@@ -22,17 +22,24 @@
 	.widgets
 		margin-top: -30px
 		flex-flow: column nowrap
-		&-box
-			// width: 91%
-			// height: 91%
 		&-1
-			// max-width: 520px
-			// width: 87%
-			// height: 280px
+			position: relative
+			width: 310px
+			height: 232px
+			&::before
+				position: absolute
+				// display: block
+				// content: ''
+				width: 90%
+				height: 91%
+				background: #000
 			iframe
 				padding: 0
-				// width: auto
-				// height: auto
+				width: 280px
+				height: 212px
+				background: none
+				position: relative
+				top: 1px
 				// max-height: 260px !important
 				// overflow: scroll
 				// width: 100%
