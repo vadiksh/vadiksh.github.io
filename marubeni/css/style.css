@@ -280,6 +280,14 @@ img {
     background-attachment: fixed;
     padding: 28vh 0;
     text-align: center; }
+    .header .banner-container::before {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url("../images/head.jpg") no-repeat center center/cover;
+      z-index: -1; }
   .header .banner-title {
     opacity: 0;
     text-transform: uppercase;
@@ -477,7 +485,7 @@ img {
     .articles-owl .owl-item {
       margin-bottom: 30px; }
       .articles-owl .owl-item img {
-        min-height: 130px;
+        min-height: 140px;
         height: 35vw;
         max-height: 200px; }
   .articles-container {
@@ -688,7 +696,10 @@ img {
     min-height: 400px; }
     .header .banner-container {
       padding: 20vh 0 60vh;
-      min-height: 400px; }
+      min-height: 400px;
+      background: none; }
+      .header .banner-container::before {
+        content: ''; }
     .header .banner-title {
       width: 100%;
       margin: 0 auto; }
@@ -738,6 +749,15 @@ img {
     font-size: 18px;
     top: 3px;
     line-height: 1.1; } }
+@media screen and (max-width: 479px) {
+  .header .banner-title .transparent {
+    font-size: 50px;
+    letter-spacing: 2px; }
+  .header .banner-title .tomorrow {
+    right: calc((100% - 285px)/2); }
+
+  .map-container {
+    width: 94%; } }
 /*
  * SVG Processor
  * Updated version on 04/10/2017
