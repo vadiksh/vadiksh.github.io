@@ -16,6 +16,11 @@ jQuery(document).ready(function($){
 		if (scrolled > elmntScrollTop - $(window).height() / 5) {
 			articles.addClass('tdFadeInUp');
 		}
+		if (scrolled > $('.banner-container').height() + 500) {
+			$('.banner-container').css('opacity', 0);
+		} else {
+			$('.banner-container').css('opacity', 1);
+		}
 	});
 	
 	$('.map-spots-item, .navigation-item').click(function() {
