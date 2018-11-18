@@ -1,6 +1,11 @@
 $(document).ready(function() {
 
-  
+  $(window).resize(function() {
+    if ($(window).width() > 1600) {
+      $('.poster-img').attr('src', 'img/poster-lg.png');
+    } else $('.poster-img').attr('src', 'img/poster.png');
+  });
+   
   if ($(window).width() <= 767) {
     
     $(".container").css({
@@ -12,7 +17,8 @@ $(document).ready(function() {
       var st = scrolled / 2;
 
       $(".container").css({
-        "background-position" : "0 " + st + "px"
+        "background-position" : "0 " + st + "px",
+        "transition" : "1s ease-out"
       });
     });
   } else {
