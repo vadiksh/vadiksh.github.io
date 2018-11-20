@@ -498,6 +498,32 @@
 	paceOptions = {
 	  target: '.loader'
 	}
+
+	$('.owl-carousel').owlCarousel({
+	  loop:true,
+	  margin:15,
+	  nav:false, 
+	  // URLhashListener:true,
+   //  startPosition: 'URLHash',
+	  responsiveClass:true,
+	  responsive:{
+	  	0:{
+	  			items: 1.25
+	  	},
+      350:{
+          items:1.5
+      },
+      450:{
+          items:1.7
+      },
+      670:{
+          items:2
+      },
+      770:{
+          items:2.2
+      }
+	  }
+	});
 </script>
 <script src="scripts/pace.min.js"></script>
 <script type="text/javascript" src="http://assets.adobedtm.com/163d1096ee58e69f3c2853388c3bd41996e5fc4f/satelliteLib-d76d1730abb96687bfefdfdb53da02b40150601c.js"></script>
