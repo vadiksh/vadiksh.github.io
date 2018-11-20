@@ -96,6 +96,9 @@
 		padding: 0 15px;
 		&-owl {
 			display: flex;
+			.owl-carousel {
+				display: block !important;
+			}
 		}
 		&-container {
 			display: none;

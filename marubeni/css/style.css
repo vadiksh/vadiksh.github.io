@@ -778,6 +778,8 @@ img {
     padding: 0 15px; }
     .articles-owl {
       display: flex; }
+      .articles-owl .owl-carousel {
+        display: block !important; }
     .articles-container {
       display: none; }
 

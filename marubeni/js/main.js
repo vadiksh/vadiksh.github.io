@@ -7,7 +7,7 @@ $(document).ready(function() {
 	
 	
 	var fadeElmnts = $('.navigation, .map-continents');
-	var articles = $('.articles-item');
+	var articlesHub = $('.articles-container .articles-item');
 
 	$(window).scroll(function() {
 		var scrolled = $(window).scrollTop();
@@ -17,7 +17,7 @@ $(document).ready(function() {
 			$('.map-spots').addClass('tdFadeIn');
 		}
 		if (scrolled > elmntScrollTop - $(window).height() / 5) {
-			articles.addClass('fadeInUp');
+			articlesHub.addClass('fadeInUp');
 		}
 		if (scrolled > $('.banner-container').height() + 500) {
 			$('.banner-container').css('opacity', 0);
@@ -31,26 +31,24 @@ $(document).ready(function() {
 	  var activeElmnts = $('.navigation-item-' + index + ', .continent-' + index + ', .spot-' + index + ', .articles-continent-' + index);
 
 	  if (index !== $('.map-continents-item.active').attr('continent')) {
-	  	fadeElmnts.addClass('tdFadeOut').removeClass('tdFadeIn');
-		  articles.removeClass('tdFadeInUp').addClass('tdFadeOutDown');
+	  	fadeElmnts.removeClass('tdFadeIn').addClass('tdFadeOut');
+		  articlesHub.removeClass('tdFadeInUp').addClass('tdFadeOutDown');
 		  $('.spot-' + index).addClass('tdFadeOut');
 
 		  setTimeout(function(){
 		    activeElmnts.addClass('active').siblings().removeClass('active');
-		    articles.removeClass('tdFadeOutDown').addClass('tdFadeInUp');
+		    articlesHub.removeClass('tdFadeOutDown').addClass('tdFadeInUp');
 		    fadeElmnts.removeClass('tdFadeOut').addClass('tdFadeIn');
 		    $('.spot-' + index).removeClass('tdFadeOut');
 		  }, 500);
 	  }
 	});
-	if ($(window).width() > 767) {
-		articles.mouseenter(function () {
+		articlesHub.mouseenter(function () {
 			$(this).removeClass('tdFadeInUp movedown').addClass('moveup').css({"opacity" : 1});
 		});
-		articles.mouseleave(function () {
+		articlesHub.mouseleave(function () {
 			$(this).removeClass('moveup').addClass('movedown');
 		});
-	}
 	
 
 
@@ -59,7 +57,7 @@ $(document).ready(function() {
 	  margin:15,
 	  nav:false, 
 	  URLhashListener:true,
-      startPosition: 'URLHash',
+    startPosition: 'URLHash',
 	  responsiveClass:true,
 	  responsive:{
 	  	0:{
