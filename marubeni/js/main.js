@@ -17,7 +17,7 @@ $(document).ready(function() {
 			$('.map-spots').addClass('tdFadeIn');
 		}
 		if (scrolled > elmntScrollTop - $(window).height() / 5) {
-			articles.addClass('tdFadeInUp');
+			articles.addClass('fadeInUp');
 		}
 		if (scrolled > $('.banner-container').height() + 500) {
 			$('.banner-container').css('opacity', 0);
@@ -43,6 +43,16 @@ $(document).ready(function() {
 		  }, 300);
 	  }
 	});
+	if ($(window).width() > 767) {
+		articles.mouseenter(function () {
+			$(this).removeClass('tdFadeInUp movedown').addClass('moveup').css({"opacity" : 1});
+		});
+		articles.mouseleave(function () {
+			$(this).removeClass('moveup').addClass('movedown');
+		});
+	}
+	
+
 
 	$('.owl-carousel').owlCarousel({
 	  loop:true,
