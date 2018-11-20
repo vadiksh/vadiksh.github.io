@@ -183,22 +183,10 @@ header {
   transition: transform 0.5s 0.4s; }
 .articles.fold-is-open > * {
   /* on mobile - translate .cd-main content to the right when the .cd-folding-panel is open */
-  -webkit-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -o-transform: translateX(100%);
-  transform: translateX(100%);
   -webkit-transition: -webkit-transform 0.5s 0s;
   -moz-transition: -moz-transform 0.5s 0s;
   transition: transform 0.5s 0s; }
 
-@media only screen and (min-width: 600px) {
-  .cd-main.fold-is-open > * {
-    -webkit-transform: translateX(600px);
-    -moz-transform: translateX(600px);
-    -ms-transform: translateX(600px);
-    -o-transform: translateX(600px);
-    transform: translateX(600px); } }
 @media only screen and (min-width: 1100px) {
   .cd-main::before {
     /* never visible - this is used in jQuery to check the current MQ */
@@ -363,11 +351,11 @@ header {
 /* folding panel */
 .cd-folding-panel {
   position: fixed;
-  z-index: 20000000;
+  z-index: 200;
   top: 30px;
   left: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   visibility: hidden;
   overflow: hidden;
   -webkit-transition: visibility 0s 0.9s;
@@ -592,6 +580,7 @@ header {
 
 .is-open .cd-fold-content {
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   visibility: visible;
   -webkit-transition: visibility 0s 0.5s;

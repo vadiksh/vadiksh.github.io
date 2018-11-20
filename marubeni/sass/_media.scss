@@ -95,10 +95,20 @@
 	.articles {
 		padding: 0 15px;
 		&-owl {
-			display: flex;
-			.owl-carousel {
-				display: block !important;
-			}
+			display: block;
+		    .owl-carousel {
+		      opacity: 1 !important;
+		      display: block !important;
+		      visibility: visible !important;
+		      * {
+		      	visibility: visible !important;
+		      	opacity: 1 !important;
+		      }
+		    }
+		    .owl-stage-outer, .owl-stage {
+		      display: flex;
+		      display: -webkit-flex;
+      		}
 		}
 		&-container {
 			display: none;

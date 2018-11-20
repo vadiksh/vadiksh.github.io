@@ -777,9 +777,17 @@ img {
   .articles {
     padding: 0 15px; }
     .articles-owl {
-      display: flex; }
+      display: block; }
       .articles-owl .owl-carousel {
-        display: block !important; }
+        opacity: 1 !important;
+        display: block !important;
+        visibility: visible !important; }
+        .articles-owl .owl-carousel * {
+          visibility: visible !important;
+          opacity: 1 !important; }
+      .articles-owl .owl-stage-outer, .articles-owl .owl-stage {
+        display: flex;
+        display: -webkit-flex; }
     .articles-container {
       display: none; }
 
