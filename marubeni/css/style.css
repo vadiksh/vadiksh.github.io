@@ -775,17 +775,23 @@ img {
       width: 70%; }
 
   .articles {
+    position: relative;
     padding: 0 15px;
     visibility: visible !important;
-    opacity: 1 !important; }
+    opacity: 1 !important;
+    z-index: 20; }
     .articles-owl {
       display: block;
       visibility: visible !important;
-      opacity: 1 !important; }
+      opacity: 1 !important;
+      position: relative;
+      z-index: 22; }
       .articles-owl .owl-carousel {
         opacity: 1 !important;
         display: block !important;
-        visibility: visible !important; }
+        visibility: visible !important;
+        position: relative;
+        z-index: 25; }
         .articles-owl .owl-carousel * {
           visibility: visible !important;
           opacity: 1 !important; }
