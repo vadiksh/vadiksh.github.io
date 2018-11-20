@@ -285,8 +285,12 @@ img {
   padding: 0 70px 0 170px;
   &-owl {
     display: none;
+    .owl-carousel {
+      opacity: 1 !important;
+    }
     .owl-stage-outer, .owl-stage {
       display: flex;
+      opacity: 1 !important;
     }
     .articles-item {
       opacity: 1;
@@ -558,6 +562,10 @@ img {
   animation: movedown .2s;
   animation-fill-mode: forwards;
   opacity: 1;
+}
+.overflow-hidden {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 @keyframes fadeInUp {
   100% {

@@ -484,8 +484,11 @@ img {
   padding: 0 70px 0 170px; }
   .articles-owl {
     display: none; }
+    .articles-owl .owl-carousel {
+      opacity: 1 !important; }
     .articles-owl .owl-stage-outer, .articles-owl .owl-stage {
-      display: flex; }
+      display: flex;
+      opacity: 1 !important; }
     .articles-owl .articles-item {
       opacity: 1;
       width: 100%;
@@ -683,6 +686,10 @@ img {
   animation-fill-mode: forwards;
   opacity: 1; }
 
+.overflow-hidden {
+  overflow-x: hidden;
+  overflow-y: hidden; }
+
 @keyframes fadeInUp {
   100% {
     opacity: 1;
@@ -777,7 +784,9 @@ img {
   .footer-social {
     padding: 15px 10px; }
   .footer-bottom {
-    padding: 20px 15px 65px; }
+    padding: 20px 15px 25px; }
+  .footer-articles {
+    padding-bottom: 25px; }
   .footer-logo {
     width: 155px; }
   .footer-link:link {

@@ -31,8 +31,8 @@ $(document).ready(function() {
 	  var activeElmnts = $('.navigation-item-' + index + ', .continent-' + index + ', .spot-' + index + ', .articles-continent-' + index);
 
 	  if (index !== $('.map-continents-item.active').attr('continent')) {
-	  	fadeElmnts.removeClass('tdFadeIn').addClass('tdFadeOut');
-		  articles.removeClass('tdFadeInUp').removeClass('tdFadeOutDown');
+	  	fadeElmnts.addClass('tdFadeOut').removeClass('tdFadeIn');
+		  articles.removeClass('tdFadeInUp').addClass('tdFadeOutDown');
 		  $('.spot-' + index).addClass('tdFadeOut');
 
 		  setTimeout(function(){
@@ -40,7 +40,7 @@ $(document).ready(function() {
 		    articles.removeClass('tdFadeOutDown').addClass('tdFadeInUp');
 		    fadeElmnts.removeClass('tdFadeOut').addClass('tdFadeIn');
 		    $('.spot-' + index).removeClass('tdFadeOut');
-		  }, 300);
+		  }, 500);
 	  }
 	});
 	if ($(window).width() > 767) {
