@@ -94,8 +94,12 @@
 	}
 	.articles {
 		padding: 0 15px;
+		visibility: visible !important;
+		opacity: 1 !important;
 		&-owl {
 			display: block;
+			visibility: visible !important;
+			opacity: 1 !important;
 		    .owl-carousel {
 		      opacity: 1 !important;
 		      display: block !important;

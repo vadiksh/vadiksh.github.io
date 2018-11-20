@@ -775,9 +775,13 @@ img {
       width: 70%; }
 
   .articles {
-    padding: 0 15px; }
+    padding: 0 15px;
+    visibility: visible !important;
+    opacity: 1 !important; }
     .articles-owl {
-      display: block; }
+      display: block;
+      visibility: visible !important;
+      opacity: 1 !important; }
       .articles-owl .owl-carousel {
         opacity: 1 !important;
         display: block !important;
