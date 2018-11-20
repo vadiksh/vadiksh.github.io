@@ -1,14 +1,17 @@
-jQuery(document).ready(function($){
-
-
-	$('.hsocial_sec, .banner-title').addClass('tdFadeIn');
+$(document).ready(function() {
+	setTimeout(function() {
+		$('.loader').fadeOut(300, function(){
+			$('.hsocial_sec, .banner-title').addClass('tdFadeIn');
+		});
+	}, 300);
+	
 	
 	var fadeElmnts = $('.navigation, .map-continents');
 	var articles = $('.articles-item');
+
 	$(window).scroll(function() {
 		var scrolled = $(window).scrollTop();
 		var elmntScrollTop = $('.main').offset().top;
-
 		if(scrolled > elmntScrollTop - $(window).height() / 3) {
 			fadeElmnts.addClass('tdFadeIn');
 			$('.map-spots').addClass('tdFadeIn');
@@ -39,9 +42,7 @@ jQuery(document).ready(function($){
 		    $('.spot-' + index).removeClass('tdFadeOut');
 		  }, 300);
 	  }
-		  
 	});
-	
 
 	$('.owl-carousel').owlCarousel({
 	  loop:true,
@@ -156,19 +157,21 @@ jQuery(document).ready(function($){
 					  nav:true,
 					  responsiveClass:true,
 					  responsive:{
-				      0:{
-				          items:1,
-				          nav:true
-				      },
-				      600:{
-				          items:3,
-				          nav:false
-				      },
-				      1000:{
-				          items:5,
-				          nav:true,
-				          loop:false
-				      }
+					      0:{
+					          items:1
+					      },
+					      480:{
+					          items:2
+					      },
+					      600:{
+					          items:3
+					      },
+					      950:{
+					          items:4
+					      },
+					      1200:{
+					          items:5
+					      }
 					  }
 					});
 				}, 100);

@@ -60,6 +60,32 @@ header {
   float: right; }
 
 /* Footer */
+.footer-articles {
+  padding-bottom: 30px;
+  padding-right: 50px; }
+  .footer-articles .articles-item {
+    margin-bottom: 0; }
+  .footer-articles .owl-carousel .owl-dots {
+    display: none; }
+  .footer-articles .owl-carousel .owl-nav {
+    position: absolute;
+    top: 45%;
+    width: 100%; }
+    .footer-articles .owl-carousel .owl-nav .owl-prev {
+      display: none; }
+    .footer-articles .owl-carousel .owl-nav .owl-next {
+      right: -60px;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #889a9e;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 30px; }
+      .footer-articles .owl-carousel .owl-nav .owl-next span {
+        position: relative;
+        top: -4px; }
+
 footer a {
   height: 170px; }
   footer a:hover strong {
@@ -671,7 +697,7 @@ header {
   line-height: 1.1;
   font-weight: 400;
   margin: 0 0 25px;
-  padding: 0 calc((50% - 500px)/ 2); }
+  padding-left: 80px; }
 
 .title2 {
   font-size: 30px;
@@ -778,23 +804,21 @@ nav:after {
     .hmenu_list li a p {
       font-size: 18px; }
 
-  .title1 {
-    padding: 0 15px;
-    padding-left: 70px; }
-
   .dt_col {
     padding: 40px 15px; }
 
-  .top_leftsec {
-    padding-top: 0; }
-
-  .title_sec {
-    margin: 0 0 40px; }
+  .dt_col.top_leftsec {
+    padding-top: 0;
+    vertical-align: top; }
+    .dt_col.top_leftsec .title_sec {
+      left: 0px;
+      position: relative;
+      margin: 0 0 30px; }
 
   /* Footer */ }
 @media only screen and (max-width: 991px) {
   .menu_ico {
-    top: 135px;
+    top: 180px;
     left: 15px; }
 
   .page-wrapper .menu_ico {
@@ -826,8 +850,20 @@ nav:after {
   header > div {
     border: 0; } }
 @media only screen and (max-width: 767px) {
+  .footer-articles .owl-next {
+    right: -50px !important; }
+
+  .cd-fold-content header {
+    padding: 15px 15px 20px; }
+    .cd-fold-content header .logo {
+      position: static;
+      float: left;
+      width: 130px; }
+    .cd-fold-content header .hsocial_sec {
+      display: none; }
+
   .menu_ico {
-    top: 140px; }
+    top: 105px; }
 
   .page-wrapper .menu_ico {
     top: 200px; }
@@ -841,15 +877,14 @@ nav:after {
     height: 300px; }
 
   /* Header */
-  .logo {
-    position: static;
-    float: left; }
-
   /* Footer */ }
 @media only screen and (max-width: 568px) {
   /* Header */
   .menu_ico {
-    top: 170px; }
+    top: 85px; }
+
+  .wrapper_in {
+    padding: 25px 0 0; }
 
   .page-wrapper .menu_ico {
     top: 230px; }
@@ -865,6 +900,8 @@ nav:after {
     text-align: center; }
 
   .title1 {
-    font-size: 24px; } }
+    font-size: 24px;
+    padding-left: 70px;
+    padding-right: 15px; } }
 
 /*# sourceMappingURL=custom.css.map */

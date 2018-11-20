@@ -25,6 +25,74 @@
 	<meta name="twitter:image:src" content="http://marubeni.dhawalshah.net/images/sharing.jpg"/>
 	<meta name="twitter:creator" content="CNN"/>
 
+	<style>
+		.loader {
+			position: fixed;
+			top:0;
+			left:0;
+			background: white;
+			width: 100%;
+			height:100%;
+			z-index: 9999999999999999;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			background: linear-gradient(135deg, #fff 50%, #ddd);
+			/*display: none;*/
+		}
+		.loader-logo {
+			width: 165px;
+			height: auto;
+		}
+		.pace {
+			-webkit-pointer-events: none;
+			pointer-events: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			user-select: none;
+			width: 200px;
+			position: absolute;
+			height: 3px;
+			top: calc(50% + 60px);
+			left: calc(50% - 100px);
+			overflow: hidden;
+		}
+		.pace-inactive {
+		  	display: none;
+		}
+
+		.pace .pace-progress {
+		 	background: #cd1c1e;
+		    width: 100%;
+		    height: 100%;
+		    position: relative;
+		    left: -200px;
+		}
+		.progress {
+			width: 240px;
+		    position: absolute;
+		    top: 58%;
+		    left: calc(50% - 120px);
+		}
+		.progress::before {
+			width: 100%;
+			content:'';
+			height: 1px;
+		}
+		.bar {
+		  background-color: #cc0000;
+		  width:0%;
+		  height:3px;
+		}
+		.percent {
+		  position:absolute;
+		  display:inline-block;
+		  top:3px;
+		  left:48%;
+		}
+	</style>
+
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="fonts/fonts.css">
@@ -35,6 +103,15 @@
     <link rel="stylesheet" href="css/owl/dist/assets/owl.theme.default.min.css">
 </head>
 <body>
+
+<div class="loader">
+	<img src="images/cnn.svg" class="loader-logo" alt="">
+	<!-- <div class='progress' id="progress_div">
+	    <div class='bar' id='bar1'></div>
+	    <div class='percent' id='percent1'></div>
+	  </div>
+	  <input type="hidden" id="progress_width" value="0"> -->
+</div>
 
 <div id="cnn-header">
 	<a href="http://cnn.com" class="cnn-back">Back to CNN content</a>
@@ -71,7 +148,7 @@
 		<p class="banner-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus aspernatur ipsam minima sequi, id consequatur possimus aliquam pariatur sed porro sapiente iste ducimus, praesentium laborum, maiores iure vero repudiandae ad.</p>
 	</div>
 </header>
-<main class="main">
+<main class="main" id="main">
 	<div class="lg-container">
 		<ul class="navigation animated">
 			<a href="#america" class="navigation-item navigation-item-1 active" continent="1">America <span></span></a>
@@ -271,7 +348,7 @@
 					</div>
 					<div class="articles-item articles-continent-2" continent="2" data-hash="europe" data-id="energy">
 						<a href="energy.html">
-							<img src="images/eur.jpg" alt="">
+							<img src="images/eur-sm.jpg" alt="">
 							<div class="articles-item-info">
 								<span class="articles-item-sphere">Sustainability</span>
 								<h2 class="articles-item-title">Sparking the UK's green energy revolution</h2>
@@ -326,7 +403,7 @@
 					</div>
 					<div class="articles-item articles-continent-4" continent="4" data-hash="oceania" data-id="australia">
 						<a href="australia.html">
-							<img src="images/oce.jpg" alt="">
+							<img src="images/oce-sm.jpg" alt="">
 							<div class="articles-item-info">
 								<span class="articles-item-sphere">Infrastructure</span>
 								<h2 class="articles-item-title">Take the Tram to the Surf on Australia's Gold Coast</h2>
@@ -407,17 +484,22 @@
 </script>
 
 <script type="text/javascript">
-window.digitalDataLayer = {
-	'page_template': 'article',
-	'sponsored_content': true,
-	'sponsorship_type': 'adfeature',
-	// Fill in the advertiser name
-	'advertiser_name': 'marubeni2018',
-	'ad_enabled': false,
-	// Change below if multiple pages
-	'article_total_pages': 1
-}
+	window.digitalDataLayer = {
+		'page_template': 'article',
+		'sponsored_content': true,
+		'sponsorship_type': 'adfeature',
+		// Fill in the advertiser name
+		'advertiser_name': 'marubeni2018',
+		'ad_enabled': false,
+		// Change below if multiple pages
+		'article_total_pages': 1
+	}
+
+	paceOptions = {
+	  target: '.loader'
+	}
 </script>
+<script src="scripts/pace.min.js"></script>
 <script type="text/javascript" src="http://assets.adobedtm.com/163d1096ee58e69f3c2853388c3bd41996e5fc4f/satelliteLib-d76d1730abb96687bfefdfdb53da02b40150601c.js"></script>
 <script type="text/javascript">_satellite.pageBottom();</script>
 
