@@ -149,7 +149,7 @@ $(document).ready(function() {
 			var foldingContent = foldingPanel.find('.cd-fold-content');
 			foldingContent.load(url+' .cd-fold-content > *', function(event){
 				setTimeout(function(){
-					$('body').addClass('overflow-hidden');
+					$('body,html').addClass('overflow-hidden');
 					foldingPanel.addClass('is-open');
 					mainContent.addClass('fold-is-open');
 					var iframe = $('#video');

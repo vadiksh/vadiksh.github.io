@@ -561,6 +561,8 @@ img {
 .overflow-hidden {
   overflow-x: hidden;
   overflow-y: hidden;
+  height: 100%;
+  position: relative;
 }
 @keyframes fadeInUp {
   100% {
