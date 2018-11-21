@@ -105,7 +105,8 @@ $(document).ready(function() {
 	/* open folding content */
 	gallery.on('click', 'a', function(event){
 		event.preventDefault();
-		openItemInfo($(this).attr('href'));
+		// openItemInfo($(this).attr('href'));
+		toggleContent($(this).attr('href'), true);
 	});
 
 	/* close folding content */
@@ -113,35 +114,43 @@ $(document).ready(function() {
 		event.preventDefault();
 		toggleContent('', false);
 	});
-	gallery.on('click', function(event){
-		/* detect click on .cd-gallery::before when the .cd-folding-panel is open */
-		if($(event.target).is('.cd-gallery') && $('.fold-is-open').length > 0 ) toggleContent('', false);
+
+	// on menu open // 
+// var pos;
+// pos = $('body').attr( 'data-pos', $(window).scrollTop() ) ;
+ // ... // on menu close // 
+// $( window ).scrollTop( $('body').attr( 'data-pos' ) );
+
+	// gallery.on('click', function(event){
+	// 	/* detect click on .cd-gallery::before when the .cd-folding-panel is open */
+	// 	if($(event.target).is('.cd-gallery') && $('.fold-is-open').length > 0 ) toggleContent('', false);
 		
 		
 		
-	});
+	// });
 	
 
-	function openItemInfo(url) { 
-		var mq = viewportSize();
-		if( gallery.offset().top > $(window).scrollTop() && mq != 'mobile') {
-			/* if content is visible above the .cd-gallery - scroll before opening the folding panel */
-			$('body,html').animate({
-				'scrollTop': gallery.offset().top
-			}, 100, function(){ 
-	           	toggleContent(url, true);
-	        }); 
-	    } else if( gallery.offset().top + gallery.height() < $(window).scrollTop() + $(window).height()  && mq != 'mobile' ) {
-			/* if content is visible below the .cd-gallery - scroll before opening the folding panel */
-			$('body,html').animate({
-				'scrollTop': gallery.offset().top + gallery.height() - $(window).height()
-			}, 100, function(){ 
-	           	toggleContent(url, true);
-	        });
-		} else {
-			toggleContent(url, true);
-		}
-	}
+	// function openItemInfo(url) { 
+	// 	var mq = viewportSize();
+	// 	if( gallery.offset().top > $(window).scrollTop() && mq != 'mobile') {
+	// 		/* if content is visible above the .cd-gallery - scroll before opening the folding panel */
+	// 		$('body,html').animate({
+	// 			'scrollTop': gallery.offset().top
+	// 		}, 100, function(){ 
+	//            	toggleContent(url, true);
+	//         }); 
+	//     } else if( gallery.offset().top + gallery.height() < $(window).scrollTop() + $(window).height()  && mq != 'mobile' ) {
+	// 		/* if content is visible below the .cd-gallery - scroll before opening the folding panel */
+	// 		$('body,html').animate({
+	// 			'scrollTop': gallery.offset().top + gallery.height() - $(window).height()
+	// 		}, 100, function(){ 
+	//            	toggleContent(url, true);
+	//         });
+	// 	} else {
+	// 		toggleContent(url, true);
+	// 	}
+	// }
+
 
 	function toggleContent(url, bool) {
 		if( bool ) {
@@ -187,28 +196,30 @@ $(document).ready(function() {
 			});
 		} else {
 			/* close the folding panel */
-			var mq = viewportSize();
+			// var mq = viewportSize();
 			foldingPanel.removeClass('is-open');
 			mainContent.removeClass('fold-is-open');
+			$('body').removeClass('overflow-hidden'); 
+			$('html').scrollTop($('.main').offset().top);
 			
-			if (mq == 'mobile' || $('.no-csstransitions').length > 0 ) {
-				$('body').removeClass('overflow-hidden'); 
-				$('html').scrollTop($('.main').offset().top);
-			} else {
-				mainContent.find('.cd-item').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-					$('body').removeClass('overflow-hidden');
-					$('html').scrollTop($('.main').offset().top);
-					mainContent.find('.cd-item').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
-				});
-			}
+			// if (mq == 'mobile' || $('.no-csstransitions').length > 0 ) {
+			// 	$('body').removeClass('overflow-hidden'); 
+			// 	$('html').scrollTop($('.main').offset().top);
+			// } else {
+			// 	mainContent.find('.cd-item').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+			// 		$('body').removeClass('overflow-hidden');
+			// 		$('html').scrollTop($('.main').offset().top);
+			// 		mainContent.find('.cd-item').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
+			// 	});
+			// }
 				/* according to the mq, immediately remove the .overflow-hidden or wait for the end of the animation */
 		
 		}
 		
 	}
 
-	function viewportSize() {
-		/* retrieve the content value of .cd-main::before to check the actua mq */
-		return window.getComputedStyle(document.querySelector('.articles'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
-	}
+	// function viewportSize() {
+	// 	/* retrieve the content value of .cd-main::before to check the actua mq */
+	// 	return window.getComputedStyle(document.querySelector('.articles'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
+	// }
 });
