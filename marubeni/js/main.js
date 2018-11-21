@@ -191,14 +191,18 @@ $(document).ready(function() {
 			foldingPanel.removeClass('is-open');
 			mainContent.removeClass('fold-is-open');
 			
-			(mq == 'mobile' || $('.no-csstransitions').length > 0 ) 
-				/* according to the mq, immediately remove the .overflow-hidden or wait for the end of the animation */
-				? $('body').removeClass('overflow-hidden')
-				
-				: mainContent.find('.cd-item').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+			if (mq == 'mobile' || $('.no-csstransitions').length > 0 ) {
+				$('body').removeClass('overflow-hidden'); 
+				$('html').scrollTop($('.main').offset().top);
+			} else {
+				mainContent.find('.cd-item').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 					$('body').removeClass('overflow-hidden');
+					$('html').scrollTop($('.main').offset().top);
 					mainContent.find('.cd-item').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
 				});
+			}
+				/* according to the mq, immediately remove the .overflow-hidden or wait for the end of the animation */
+		
 		}
 		
 	}
