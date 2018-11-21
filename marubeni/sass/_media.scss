@@ -103,13 +103,16 @@
 			display: block;
 			position: relative;
 			padding: 15px 0 35px;
-			background: red;
+			background: white;
 			.owl-stage-outer{
 				background: white;
 			}
 			.owl-stage {
-		      // display: flex;
-		      // display: -webkit-flex;
+	      display: -webkit-box; 
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex; 
+				display: flex;
 		      // display: block;
 		    background: white;
       }
