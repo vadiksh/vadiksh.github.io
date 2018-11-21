@@ -264,9 +264,6 @@ img {
   margin: 0 auto;
   position: relative; }
 
-.owl-carousel {
-  z-index: 999 !important; }
-
 .header-top {
   width: 100%;
   position: absolute;
@@ -777,7 +774,7 @@ img {
   .articles {
     position: relative;
     padding: 0 15px;
-    background: #000; }
+    background: white; }
     .articles-owl {
       display: block; }
     .articles .owl-carousel {
@@ -786,11 +783,11 @@ img {
       padding: 15px 0 35px;
       background: red; }
       .articles .owl-carousel .owl-stage-outer {
-        background: green; }
+        background: white; }
       .articles .owl-carousel .owl-stage {
-        background: blue; }
+        background: white; }
       .articles .owl-carousel .articles-item {
-        background: grey; }
+        background: white; }
     .articles-container {
       display: none; }
 

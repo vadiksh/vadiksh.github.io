@@ -95,7 +95,7 @@
 	.articles {
 		position: relative;
 		padding: 0 15px;
-		background: #000;
+		background: white;
 		&-owl {
 			display: block;
 		}
@@ -105,16 +105,16 @@
 			padding: 15px 0 35px;
 			background: red;
 			.owl-stage-outer{
-				background: green;
+				background: white;
 			}
 			.owl-stage {
 		      // display: flex;
 		      // display: -webkit-flex;
 		      // display: block;
-		    background: blue;
+		    background: white;
       }
 		  .articles-item {
-			  background: grey;
+			  background: white;
 		  }
 		}
 		&-container {
