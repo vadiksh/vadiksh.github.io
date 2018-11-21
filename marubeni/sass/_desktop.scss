@@ -19,6 +19,9 @@ img {
   margin: 0 auto;
   position: relative;
 }
+.owl-carousel {
+  z-index: 999 !important;
+}
 .header {
   // padding: 0 80px;
   &-top {

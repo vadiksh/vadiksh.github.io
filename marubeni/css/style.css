@@ -264,6 +264,9 @@ img {
   margin: 0 auto;
   position: relative; }
 
+.owl-carousel {
+  z-index: 999 !important; }
+
 .header-top {
   width: 100%;
   position: absolute;
