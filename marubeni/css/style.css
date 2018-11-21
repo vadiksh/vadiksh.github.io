@@ -787,10 +787,6 @@ img {
       .articles .owl-carousel .owl-stage-outer {
         background: white; }
       .articles .owl-carousel .owl-stage {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
         display: flex;
         background: white; }
       .articles .owl-carousel .articles-item {
