@@ -158,14 +158,12 @@ $(document).ready(function() {
 			var foldingContent = foldingPanel.find('.cd-fold-content');
 			foldingContent.load(url+' .cd-fold-content > *', function(event){
 				setTimeout(function(){
-					$('body').addClass('overflow-hidden');
 					foldingPanel.addClass('is-open');
 					mainContent.addClass('fold-is-open');
+
 					var iframe = $('#video');
 					var player = new Vimeo.Player(iframe);
-					//player.play();
 					player.on('play', function() {
-						//console.log('played the video!');
 					});
 
 					$('.owl-carousel').owlCarousel({
@@ -174,26 +172,30 @@ $(document).ready(function() {
 					  nav:true,
 					  responsiveClass:true,
 					  responsive:{
-					      0:{
-					          items:1
-					      },
-					      480:{
-					          items:2
-					      },
-					      600:{
-					          items:3
-					      },
-					      950:{
-					          items:4
-					      },
-					      1200:{
-					          items:5
-					      }
+				      0:{
+				          items:1
+				      },
+				      480:{
+				          items:2
+				      },
+				      600:{
+				          items:3
+				      },
+				      950:{
+				          items:4
+				      },
+				      1200:{
+				          items:5
+				      }
 					  }
+
 					});
 				}, 100);
-				
 			});
+			setTimeout(function() {
+				$('body').addClass('overflow-hidden');
+			}, 1000);
+			
 		} else {
 			/* close the folding panel */
 			// var mq = viewportSize();
