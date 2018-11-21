@@ -286,6 +286,9 @@ img {
 }
 .articles {
   padding: 0 70px 0 170px;
+  &-owl {
+    display: none;
+  }
   .owl-carousel {
     display: none;
     .articles-item {

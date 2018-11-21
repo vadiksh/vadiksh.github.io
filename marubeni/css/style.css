@@ -485,6 +485,8 @@ img {
 
 .articles {
   padding: 0 70px 0 170px; }
+  .articles-owl {
+    display: none; }
   .articles .owl-carousel {
     display: none; }
     .articles .owl-carousel .articles-item {
@@ -776,14 +778,17 @@ img {
     position: relative;
     padding: 0 15px;
     background: #000; }
+    .articles-owl {
+      display: block; }
     .articles .owl-carousel {
       display: block;
       position: relative;
       padding: 15px 0 35px;
       background: red; }
-      .articles .owl-carousel .owl-stage-outer, .articles .owl-carousel .owl-stage {
-        display: flex;
-        display: -webkit-flex; }
+      .articles .owl-carousel .owl-stage-outer {
+        background: green; }
+      .articles .owl-carousel .owl-stage {
+        background: blue; }
       .articles .owl-carousel .articles-item {
         background: grey; }
     .articles-container {

@@ -96,18 +96,26 @@
 		position: relative;
 		padding: 0 15px;
 		background: #000;
+		&-owl {
+			display: block;
+		}
 		.owl-carousel {
 			display: block;
 			position: relative;
 			padding: 15px 0 35px;
 			background: red;
-			.owl-stage-outer, .owl-stage {
-		      display: flex;
-		      display: -webkit-flex;
-      		}
-		    .articles-item {
+			.owl-stage-outer{
+				background: green;
+			}
+			.owl-stage {
+		      // display: flex;
+		      // display: -webkit-flex;
+		      // display: block;
+		    background: blue;
+      }
+		  .articles-item {
 			  background: grey;
-		    }
+		  }
 		}
 		&-container {
 			display: none;
