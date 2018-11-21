@@ -114,6 +114,8 @@
 		      * {
 		      	visibility: visible !important;
 		      	opacity: 1 !important;
+		      	z-index: 999;
+		      	overflow-x: visible;
 		      }
 		    }
 		    .owl-stage-outer, .owl-stage {

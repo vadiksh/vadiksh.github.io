@@ -245,9 +245,6 @@ a:hover {
         transform: translateX(0em);
         opacity: 1; }
 
-body {
-  overflow-x: hidden; }
-
 img {
   max-width: 100%;
   height: auto;
@@ -690,8 +687,7 @@ img {
   opacity: 1; }
 
 .overflow-hidden {
-  overflow-x: hidden;
-  overflow-y: hidden; }
+  overflow-y: hidden !important; }
 
 @keyframes fadeInUp {
   100% {
@@ -798,7 +794,9 @@ img {
         z-index: 25; }
         .articles-owl .owl-carousel * {
           visibility: visible !important;
-          opacity: 1 !important; }
+          opacity: 1 !important;
+          z-index: 999;
+          overflow-x: visible; }
       .articles-owl .owl-stage-outer, .articles-owl .owl-stage {
         display: flex;
         display: -webkit-flex; }

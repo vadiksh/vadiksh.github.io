@@ -1,7 +1,7 @@
 
 
 body {
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 img {
   max-width: 100%;
@@ -566,8 +566,8 @@ img {
   opacity: 1;
 }
 .overflow-hidden {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  // overflow-x: hidden;
+  overflow-y: hidden !important;
 }
 @keyframes fadeInUp {
   100% {
