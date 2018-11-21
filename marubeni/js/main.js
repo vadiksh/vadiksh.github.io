@@ -199,10 +199,14 @@ $(document).ready(function() {
 		} else {
 			/* close the folding panel */
 			// var mq = viewportSize();
+			$('body').removeClass('overflow-hidden');
 			foldingPanel.removeClass('is-open');
 			mainContent.removeClass('fold-is-open');
-			$('body').removeClass('overflow-hidden'); 
-			$('html').scrollTop($('.main').offset().top);
+			setTimeout(function() {
+				$('html').scrollTop($('.main').offset().top);
+			},100);
+			
+			
 			
 			// if (mq == 'mobile' || $('.no-csstransitions').length > 0 ) {
 			// 	$('body').removeClass('overflow-hidden'); 
