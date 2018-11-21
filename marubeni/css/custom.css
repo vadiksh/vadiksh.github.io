@@ -615,7 +615,6 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
     /*padding: 4em 2em;*/
     visibility: hidden;
@@ -632,7 +631,6 @@ header {
 .no-js .cd-fold-content.single-page {
   position: static;
   visibility: visible;
-  height: auto;
   background-color: #dadcdc; }
   .no-js .cd-fold-content.single-page * {
     opacity: 1;
@@ -745,7 +743,6 @@ nav:after {
   top: 230px; }
 .page-wrapper .cd-fold-content {
   position: static;
-  height: auto;
   visibility: visible; }
   .page-wrapper .cd-fold-content > *, .page-wrapper .cd-fold-content * {
     opacity: 1;

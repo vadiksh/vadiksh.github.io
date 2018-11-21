@@ -788,7 +788,8 @@ img {
       visibility: visible !important;
       opacity: 1 !important;
       position: relative;
-      z-index: 22; }
+      z-index: 22;
+      padding: 15px 0 35px; }
       .articles-owl .owl-carousel {
         opacity: 1 !important;
         display: block !important;
