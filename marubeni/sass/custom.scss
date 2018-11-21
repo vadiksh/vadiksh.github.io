@@ -500,6 +500,7 @@ header {
   left: 0;
   height: 100%;
   width: 100%;
+  overflow: hidden;
   visibility: hidden;
   // overflow: hidden;
   -webkit-transition: visibility 0s 0.9s;
@@ -722,7 +723,7 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 30px;
+  // padding-top: 30px;
   height: 100%;
   width: 100%;
   z-index: 888;
@@ -757,7 +758,7 @@ header {
 }
 
 .is-open .cd-fold-content {
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   visibility: visible;

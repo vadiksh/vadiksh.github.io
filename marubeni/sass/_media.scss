@@ -107,13 +107,15 @@
 			.owl-stage-outer{
 				background: white;
 			}
-			.owl-stage {
+			.owl-stage, .owl-item{
 				display: flex;
 		      // display: block;
 		    background: white;
       }
 		  .articles-item {
 			  background: white;
+			  opacity: 1;
+			  width: 100%;
 		  }
 		}
 		&-container {
