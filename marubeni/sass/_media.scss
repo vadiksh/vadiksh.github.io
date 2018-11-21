@@ -95,33 +95,19 @@
 	.articles {
 		position: relative;
 		padding: 0 15px;
-		visibility: visible !important;
-		opacity: 1 !important;
-		z-index: 20;
-		&-owl {
+		background: #000;
+		.owl-carousel {
 			display: block;
-			visibility: visible !important;
-			opacity: 1 !important;
 			position: relative;
-			z-index: 22;
 			padding: 15px 0 35px;
-		    .owl-carousel {
-		      opacity: 1 !important;
-		      display: block !important;
-		      visibility: visible !important;
-		      position: relative;
-		      z-index: 25;
-		      * {
-		      	visibility: visible !important;
-		      	opacity: 1 !important;
-		      	z-index: 999;
-		      	// overflow-x: visible;
-		      }
-		    }
-		    .owl-stage-outer, .owl-stage {
+			background: red;
+			.owl-stage-outer, .owl-stage {
 		      display: flex;
 		      display: -webkit-flex;
       		}
+		    .articles-item {
+			  background: grey;
+		    }
 		}
 		&-container {
 			display: none;
