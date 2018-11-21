@@ -7,7 +7,6 @@
  *  Owl Carousel - Core
  */
 .owl-carousel {
-  display: none;
   width: 100%;
   -webkit-tap-highlight-color: transparent;
   /* position relative and z-index fix webkit rendering fonts issue */
@@ -72,12 +71,9 @@
   .owl-carousel.owl-loaded {
     display: block; }
   .owl-carousel.owl-loading {
-    opacity: 0;
     display: block; }
-  .owl-carousel.owl-hidden {
-    opacity: 0; }
-  .owl-carousel.owl-refresh .owl-item {
-    visibility: hidden; }
+  .owl-carousel.owl-hidden { }
+  .owl-carousel.owl-refresh .owl-item {}
   .owl-carousel.owl-drag .owl-item {
     -ms-touch-action: pan-y;
         touch-action: pan-y;
@@ -104,8 +100,7 @@
   animation-duration: 1000ms;
   animation-fill-mode: both; }
 
-.owl-carousel .owl-animated-in {
-  z-index: 0; }
+.owl-carousel .owl-animated-in { }
 
 .owl-carousel .owl-animated-out {
   z-index: 1; }
@@ -116,8 +111,7 @@
 @keyframes fadeOut {
   0% {
     opacity: 1; }
-  100% {
-    opacity: 0; } }
+  100% { } }
 
 /*
  * 	Owl Carousel - Auto Height Plugin
@@ -134,7 +128,6 @@
 			calculation of the height of the owl-item that breaks page layouts
 		 */ }
   .owl-carousel .owl-item .owl-lazy {
-    opacity: 0;
     transition: opacity 400ms ease; }
   .owl-carousel .owl-item .owl-lazy[src^=""], .owl-carousel .owl-item .owl-lazy:not([src]) {
     max-height: 0; }
