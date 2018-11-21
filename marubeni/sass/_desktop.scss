@@ -1,5 +1,7 @@
 
-
+html {
+  // overflow-y: hidden;
+}
 body {
   overflow-x: hidden;
 }
@@ -549,7 +551,7 @@ img {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 100%;
-  position: relative;
+  position: fixed;
 }
 @keyframes fadeInUp {
   100% {
