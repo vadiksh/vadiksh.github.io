@@ -678,7 +678,7 @@ img {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 100%;
-  position: fixed; }
+  position: absolute; }
 
 @keyframes fadeInUp {
   100% {
