@@ -165,35 +165,33 @@ $(document).ready(function() {
 					var player = new Vimeo.Player(iframe);
 					player.on('play', function() {
 					});
-
-					$('.owl-carousel').owlCarousel({
-					  loop:true,
-					  margin:10,
-					  nav:true,
-					  responsiveClass:true,
-					  responsive:{
-				      0:{
-				          items:1
-				      },
-				      480:{
-				          items:2
-				      },
-				      600:{
-				          items:3
-				      },
-				      950:{
-				          items:4
-				      },
-				      1200:{
-				          items:5
-				      }
-					  }
-
-					});
 				}, 100);
 			});
 			setTimeout(function() {
 				$('body').addClass('overflow-hidden');
+				$('.owl-carousel').owlCarousel({
+				  loop:true,
+				  margin:10,
+				  nav:true,
+				  responsiveClass:true,
+				  responsive:{
+			      0:{
+			          items:1
+			      },
+			      480:{
+			          items:2
+			      },
+			      600:{
+			          items:3
+			      },
+			      950:{
+			          items:4
+			      },
+			      1200:{
+			          items:5
+			      }
+				  }
+				});
 			}, 1000);
 			
 		} else {
@@ -204,6 +202,7 @@ $(document).ready(function() {
 			mainContent.removeClass('fold-is-open');
 			setTimeout(function() {
 				$('html').scrollTop($('.main').offset().top);
+				$('body').scrollTop($('.main').offset().top);
 			},100);
 			
 			
