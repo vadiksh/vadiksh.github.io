@@ -279,18 +279,20 @@ img {
   margin: 0 auto;
   padding: 0 120px; }
   .header .banner-container {
-    background: url("../images/head.jpg") no-repeat center center/cover;
+    position: relative;
     background-attachment: fixed;
     padding: 28vh 0;
     text-align: center; }
     .header .banner-container::before {
+      content: '';
       position: fixed;
-      width: 100vw;
+      width: calc(100% - 240px);
       height: 100vh;
       top: 0;
-      left: 0;
+      left: 120px;
       background: url("../images/head.jpg") no-repeat center center/cover;
-      z-index: -1; }
+      z-index: -1;
+      margin: 0 auto; }
   .header .banner-title {
     opacity: 0;
     text-transform: uppercase;
@@ -310,6 +312,8 @@ img {
       bottom: 20px;
       font-family: 'Korolev-Medium';
       letter-spacing: 3px; }
+  .header .banner-text-container {
+    background: #fff; }
   .header .banner-text {
     color: #3e5659;
     font-family: 'Korolev-Medium';
@@ -730,10 +734,10 @@ img {
     min-height: 400px; }
     .header .banner-container {
       padding: 20vh 0 60vh;
-      min-height: 400px;
-      background: none; }
+      min-height: 400px; }
       .header .banner-container::before {
-        content: ''; }
+        left: 0;
+        width: 100%; }
     .header .banner-title {
       width: 100%;
       margin: 0 auto; }

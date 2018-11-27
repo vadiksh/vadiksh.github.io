@@ -51,9 +51,9 @@
 			&-container {
 				padding: 20vh 0 60vh;
 				min-height: 400px;
-				background: none;
 				&::before {
-					content: '';
+					left: 0;
+					width: 100%;
 				}
 			}
 			&-title {

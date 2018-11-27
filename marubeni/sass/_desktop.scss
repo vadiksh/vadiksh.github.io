@@ -1,7 +1,4 @@
 
-html {
-  // overflow-y: hidden;
-}
 body {
   overflow-x: hidden;
 }
@@ -42,19 +39,22 @@ img {
     margin: 0 auto;
     padding: 0 120px;
     &-container {
-      background: url('../images/head.jpg') no-repeat center center / cover;
+      position: relative;
+      // background: url('../images/head.jpg') no-repeat center center / cover;
       background-attachment: fixed;
       padding: 28vh 0;
       text-align: center;
 
       &::before {
+        content: '';
         position: fixed;
-        width: 100vw;
+        width: calc(100% - 240px);
         height: 100vh;
         top: 0;
-        left: 0;
-        background: url('../images/head.jpg') no-repeat center center / cover;
+        left: 120px;
+        background: url("../images/head.jpg") no-repeat center center/cover;
         z-index: -1;
+        margin: 0 auto;
       }
     }
     &-title {
@@ -81,7 +81,9 @@ img {
         letter-spacing: 3px;
       }
     }
-    
+    &-text-container {
+      background: #fff;
+    }
     &-text {
       color: #3e5659;
       font-family: 'Korolev-Medium';
