@@ -22,9 +22,9 @@ $(document).ready(function() {
 
 
 		if (scrolled > $('.banner-container').height() + 700) {
-		// 	$('.banner-container').css('opacity', 0);
-		// } else {
-		// 	$('.banner-container').css('opacity', 1);
+			$('.banner-container').css('opacity', 0);
+		} else {
+			$('.banner-container').css('opacity', 1);
 		}
 	});
 	
