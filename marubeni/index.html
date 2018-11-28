@@ -177,7 +177,7 @@
 			<div class="articles-container">
 				<div class="articles-continent articles-continent-1 active">
 					<ul class="articles-list">
-						<li class="articles-item animated" data-id="fleet-management">
+						<li class="articles-item animated">
 							<a href="fleet_management.html">
 								<img src="images/ame1.jpg" alt="">
 								<div class="articles-item-info">
@@ -210,16 +210,16 @@
 								</div>
 							</a>
 						</li>
-						<li class="articles-item animated" data-id="">
-							<!-- <a> -->
+						<li class="articles-item animated" data-id="iguacu">
+							<a href="iguacu.html">
 								<img src="images/ame4.jpg" alt="">
 								<div class="articles-item-info">
 									<span class="articles-item-sphere">Logistics</span>
-									<h2 class="articles-item-title">A Taste of Brazil: The Instant Coffee Tailor-Made with Passion</h2>
+									<h2 class="articles-item-title">Just Add Passion: How a taste of Brazil makes a perfect cup of coffee</h2>
 									<p class="articles-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam sint eum itaque pariatur ipsa quae dolor, optio explicabo dolores quia maiores, nobis facere necessitatibus, excepturi velit perspiciatis in, ducimus et.</p>
-									<a class="articles-item-button">Read more</a>
+									<a href="iguacu.html" class="articles-item-button">Read more</a>
 								</div>
-							<!-- </a> -->
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -335,14 +335,14 @@
 							</div>
 						</a>
 					</div>
-					<div class="articles-item articles-continent-1" continent="1" data-id="">
-						<a href="">
+					<div class="articles-item articles-continent-1" continent="1" data-id="iguacu">
+						<a href="iguacu.html">
 							<img src="images/ame4.jpg" alt="">
 							<div class="articles-item-info">
 								<span class="articles-item-sphere">Logistics</span>
-								<h2 class="articles-item-title">A Taste of Brazil: The Instant Coffee Tailor-Made with Passion</h2>
+								<h2 class="articles-item-title">Just Add Passion: How a taste of Brazil makes a perfect cup of coffee</h2>
 								<p class="articles-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam sint eum itaque pariatur ipsa quae dolor, optio explicabo dolores quia maiores, nobis facere necessitatibus, excepturi velit perspiciatis in, ducimus et.</p>
-								<a href="" class="articles-item-button">Read more</a>
+								<a href="iguacu.html" class="articles-item-button">Read more</a>
 							</div>
 						</a>
 					</div>
@@ -424,7 +424,7 @@
 	
 	<div class="fold-right"></div> <!-- this is the right fold -->
 	
-	<div class="cd-fold-content">
+	<div class="cd-fold-content animated">
 
 		<!-- content will be loaded using javascript -->
 	</div>
@@ -458,9 +458,9 @@
     $(document).ready( function(){       
         var h = location.hash.substr(1);
         
-        if(h != undefined && h != '') {			
-			$('a[data-id="'+h+'"').trigger('click');
-		}
+  //       if(h != undefined && h != '') {			
+		// 	$('a[data-id="' + h + '"').trigger('click');
+		// }
     });
 </script>   
 <script type="text/javascript" src="scripts/utilities.min.js"></script>

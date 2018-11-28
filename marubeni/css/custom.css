@@ -33,6 +33,10 @@ a {
 h1, h2, h3, h4, h5, h6, p {
   line-height: 1.4; }
 
+p.italic, span.italic {
+  font-style: italic;
+  font-weight: bold; }
+
 /* Header */
 header {
   position: relative; }
