@@ -33,7 +33,7 @@ a {
 h1, h2, h3, h4, h5, h6, p {
   line-height: 1.4; }
 
-p.italic, span.italic {
+.italic {
   font-style: italic;
   font-weight: bold; }
 
@@ -694,7 +694,8 @@ header {
   padding-bottom: 80px;
   padding-left: calc((50% - 500px)/ 2);
   padding-right: calc((50% - 500px)/ 2);
-  position: relative; }
+  position: relative;
+  background-color: #fff; }
 
 .dt_col.top_leftsec {
   position: relative; }
@@ -721,12 +722,11 @@ article h2 {
   position: relative; }
   .video_sec iframe {
     position: absolute;
-    left: 0;
+    left: -1%;
     right: 0;
     bottom: 0;
-    top: 0;
-    width: 100%;
-    height: 100%; }
+    width: 102%;
+    height: 102%; }
 
 /* Pages */
 nav:after {
