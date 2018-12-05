@@ -384,7 +384,8 @@ img {
       left: 0; }
 
 .map {
-  padding: 30px 70px 30px 170px; }
+  padding: 30px 70px 30px 170px;
+  background: #fff; }
   .map-container {
     max-width: 600px;
     min-width: 450px;
@@ -485,7 +486,8 @@ img {
         box-shadow: 0 0 0 5px rgba(111, 175, 225, 0.5); }
 
 .articles {
-  padding: 0 70px 0 170px; }
+  padding: 0 70px 0 170px;
+  background: #fff; }
   .articles-owl {
     display: none; }
   .articles .owl-carousel {

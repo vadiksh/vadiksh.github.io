@@ -172,7 +172,7 @@ img {
 }
 .map {
   padding: 30px 70px 30px 170px;
-  
+  background: #fff;
   &-container {
     max-width: 600px;
     min-width: 450px;
@@ -287,6 +287,7 @@ img {
 }
 .articles {
   padding: 0 70px 0 170px;
+  background: #fff;
   &-owl {
     display: none;
   }
