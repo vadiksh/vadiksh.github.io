@@ -7,10 +7,11 @@
 	<title>Document</title>
 	<meta name="description" content="Description of the page less than 150 characters">
 	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="fonts/fonts.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/main.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/shakrmedia/tuesday@v1.1.0/build/tuesday.min.css" />
 </head>
 <body>
+	<div class="loader"><div class="sphere"></div></div>
 	<header class="header" id="header">
 		<div class="video-container">
 			<video autoplay muted loop id='myVideo' class="video">
@@ -19,36 +20,198 @@
 		</div>
 		<div class="header__top">
 			<span href="" class="header__logo"><a class="header__link">LOGO</a></span>
-			<nav class="header__nav">
-				<ul class="header__menu-list">
-					<li class="header__menu-item"><a href="" class="header__menu-link">MENU ITEM</a></li>
-					<li class="header__menu-item"><a href="" class="header__menu-link">MENU ITEM</a></li>
+			<nav class="header__menu">
+				<ul class="header__menu-list animated">
+					<li class="header__menu-item"><a href="" class="header__menu-link">MENU ITEMbbbb</a></li>
+					<li class="header__menu-item"><a href="" class="header__menu-link">MENUEM</a></li>
 					<li class="header__menu-item"><a href="" class="header__menu-link">MENU ITEM</a></li>
 					<li class="header__menu-item"><a href="" class="header__menu-link">MENU ITEM</a></li>
 				</ul>
 			</nav>
 		</div>
-		<div class="promo">
+		<div class="promo animated">
 			<div class="promo__left">
-				<h2 class="promo__title">Платите мне<br> много денег.</h2>
+				<h1 class="promo__title"><span>Стройка</span><span>отделка</span><span>ремонт</span>
+				</h1>
 			</div>
 			<div class="promo__right">
-				<p class="promo__text">Потому что мои хачеры сделают вам роскошный ремонт.</p>
-				<p class='promo__text'>Ну и потому что <a href="/" class="promo__text--marked">Слава Україні!</a></p>
+				<div class="promo__right-content">
+					<p class="promo__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil ducimus architecto deserunt, quas praesentium.</p>
+					<p class="promo__text"></p>
+					<button class="promo__button">Let's talk</button>
+				</div>
 			</div>
 		</div>
 	</header>
-	<section class="section slider">
-		<div class="slider__element">
-			<h3 class="slider__element-title">Эконом</h3>
+	<section class="section-prices">
+		<div class="prices prices-1">
+			<div class="prices-container">
+				<div>
+					<h2 class="prices-title">Капитальный<span class="prices-span">ремонт</span></h2>
+				</div>
+				<div>
+					<p class="prices-description">Полный комплекс работ по отделке и ремонту помещений<span>.</span></p>
+					<ul class="prices-services">
+						<li>Составление проекта</li>
+						<li>Демонтаж конструкций</li>
+						<li>Устройство инженерно-технических систем</li>
+						<li>Черновая/чистовая отделка</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<div class="slider__element">
-			<h3 class="slider__element-title">Стандарт</h3>
-		</div>
-		<div class="slider__element">
-			<h3 class="slider__element-title">Люкс</h3>
+		<div class="prices prices-2">
+			<div class="prices-container">
+				<div>
+					<h2 class="prices-title">Косметический<span class="prices-span">ремонт</span></h2>
+				</div>
+				<div>
+					<p class="prices-description">Работы по замене отделочных покрытий<br> без изменения конструктивных элементов<span>.</span></p>
+					<ul class="prices-services">
+						<li>Демонтаж отделки</li>
+						<li>Черновая отделка</li>
+						<li>Чистовая отделка</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</section>
+	<section class="services">
+		<div class="services-container">
+			<h3 class="services-title"><span>Распространенные</span>Виды работ</h3>
+			<ul class="services-types">
+				<li index='1'>Пол</li>
+				<li index='2'>Стены</li>
+				<li index='3'>Потолок</li>
+				<li index='4'>Сантехника</li>
+				<li index='5'>Электрика</li>
+			</ul>
+			<span class="services-indicator"></span>
+		
+			<ul class="services-prices animated">
+				<li class="services-item active services-item-1">
+					<table class="prices-list">
+						<tr class="animated">
+							<td>Стяжка пола</td>
+							<td>от 1000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Укладка ламината</td>
+							<td>от 1000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Укладка паркетной доски</td>
+							<td>от 1000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Установка плинтуса</td>
+							<td>от 1000$</td>
+						</tr>
+					</table>
+				</li>
+				<li class="services-item services-item-2">
+					<table class="prices-list">
+						<tr class="animated">
+							<td>Штукатурка </td>
+							<td>от 1000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Шпаклевка </td>
+							<td>от 1000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Поклейка обоев</td>
+							<td>от 1000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Декоративная штукатурка</td>
+							<td>от 1000$</td>
+						</tr>
+							<tr class="animated">
+							<td>Укладка плитки</td>
+							<td>от 1000$</td>
+						</tr>
+					</table>
+				</li>
+				<li class="services-item services-item-3">
+					<table class="prices-list">
+						<tr class="animated">
+							<td>Потолок скромный</td>
+							<td>от 10000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Потолок дорогой</td>
+							<td>от 10000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Потолок люкс</td>
+							<td>от 10000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Потолок премиум</td>
+							<td>от 10000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Потолок элитный</td>
+							<td>от 10000$</td>
+						</tr>
+					</table>
+				</li>
+				<li class="services-item services-item-4">
+					<table class="prices-list">
+						<tr class="animated">
+							<td>Сантехника</td>
+							<td>от 500$</td>
+						</tr>
+						<tr class="animated">
+							<td>Сантехника</td>
+							<td>от 500$</td>
+						</tr>
+						<tr class="animated">
+							<td>Сантехника</td>
+							<td>от 500$</td>
+						</tr>
+						<tr class="animated">
+							<td>Сантехника</td>
+							<td>от 500$</td>
+						</tr>
+						<tr class="animated">
+							<td>Сантехника</td>
+							<td>от 500$</td>
+						</tr>
+					</table>
+				</li>
+				<li class="services-item services-item-5">
+					<table class="prices-list">
+						<tr class="animated">
+							<td>Электрика различная</td>
+							<td>от 3000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Электрика различная</td>
+							<td>от 3000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Электрика различная</td>
+							<td>от 3000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Электрика различная</td>
+							<td>от 3000$</td>
+						</tr>
+						<tr class="animated">
+							<td>Электрика различная</td>
+							<td>от 3000$</td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+
+
+
 	<section class="section section-2">
 		<form class="form" id="form">
 			<input type="text" name="name" placeholder="Ваше имя">
