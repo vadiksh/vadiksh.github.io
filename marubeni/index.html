@@ -461,10 +461,10 @@
 
         if(h != undefined && h != '') {
 			$('.articles-item[data-id="' + h + '"] a').trigger('click');
-			// console.log($('articles-item[data-id="' + h + '"] a'));
-			// console.log($('.articles-item[data-id="' + h + '"]')[0]);
-		} else {
-			console.log('empty');
+			$('.navigation-item[href="#' + h + '"]').trigger('click');
+			$('body, html').animate({
+				scrollTop: $('.main').offset().top
+			}, 300)
 		}
     });
 </script>
