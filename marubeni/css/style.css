@@ -741,7 +741,6 @@ img {
       padding: 20vh 0 60vh;
       min-height: 400px; }
       .header .banner-container::before {
-        left: 0;
         width: 100%; }
     .header .banner-title {
       width: 100%;
