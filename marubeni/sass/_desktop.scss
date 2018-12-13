@@ -401,7 +401,7 @@ img {
       font-size: 14px;
       color: #7a7a7a;
     }
-    a.articles-item-button {
+    &-button {
       display: block;
       // height: 38px;
       font-family: 'Korolev-Medium';
@@ -412,6 +412,8 @@ img {
       position: absolute;
       bottom: -15px;
       left: calc((100% - 142px) / 2);
+      border: none;
+      cursor: pointer;
       &::before {
         content: '\2192';
         position: absolute;
@@ -454,7 +456,7 @@ img {
       // position: absolute;
       // top: 24px;
     }
-    a.articles-item-button {
+    .articles-item-button {
       display: inline-block;
       position: relative;
       top: 0;

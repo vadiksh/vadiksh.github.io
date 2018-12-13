@@ -89,8 +89,8 @@ $(document).ready(function() {
 		toggleContent('', false);
 	});
 
-
 	function toggleContent(url, bool) {
+		console.log(112);
 		if( bool ) {
 			/* load and show new content */
 			var foldingContent = foldingPanel.find('.cd-fold-content');
@@ -104,7 +104,33 @@ $(document).ready(function() {
 						mainContent.addClass('fold-is-open');
 
 						var iframe = $('#video');
+						console.log(iframe);
 						var player = new Vimeo.Player(iframe);
+						iframe.data('player', player);
+
+
+						setTimeout(function(){
+							var controller = new ScrollMagic.Controller();
+
+							var scene = new ScrollMagic.Scene({
+								triggerElement: '.cd-fold-content #video',
+								triggerHook: 0,
+								duration:"100%",
+								offset:-100
+							})
+							.on('leave', function (e) {
+								if (foldingPanel.hasClass('is-open')) {
+									player.pause();
+								}
+							})
+							.on('enter', function (e) {
+								if (foldingPanel.hasClass('is-open')) {
+									player.play();
+								}
+							})
+							// .addIndicators()
+							.addTo(controller)
+						}, 520)
 					}, 1);
 				});
 			}, 200);
@@ -141,12 +167,13 @@ $(document).ready(function() {
 		} else {
 			/* close the folding panel */
 			// var mq = viewportSize();
+			$('.cd-fold-content #video').data('player').pause();
 			$('body').removeClass('overflow-hidden');
 			foldingPanel.removeClass('is-open');
 			mainContent.removeClass('fold-is-open');
 			setTimeout(function() {
-				$('html').scrollTop($('.main').offset().top);
-				$('body').scrollTop($('.main').offset().top);
+				$('html').scrollTop($('.main').offset().top - 30);
+				$('body').scrollTop($('.main').offset().top - 30);
 			},100);
 			
 		}
