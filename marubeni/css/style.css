@@ -266,6 +266,9 @@ img {
 
 .header-top {
   width: 100%;
+  max-width: 1440px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
   position: absolute;
   z-index: 10;
   padding: 40px; }
@@ -276,20 +279,20 @@ img {
 .header .banner {
   position: relative;
   max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 120px; }
+  margin: 0 auto; }
   .header .banner-container {
     position: relative;
-    background-attachment: fixed;
-    padding: 28vh 0;
+    padding: 28vh 120px;
     text-align: center; }
     .header .banner-container::before {
       content: '';
       position: fixed;
       width: calc(100% - 240px);
+      max-width: 1440px;
       height: 100vh;
       top: 0;
-      left: 120px;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
       background: url("../images/head.jpg") no-repeat center center/cover;
       z-index: -1;
       margin: 0 auto; }
@@ -325,7 +328,7 @@ img {
 
 .main {
   position: relative;
-  background: #f9f9f9; }
+  background: #fff; }
 
 .navigation {
   position: absolute;

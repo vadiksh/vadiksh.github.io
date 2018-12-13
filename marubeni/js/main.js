@@ -81,7 +81,6 @@ $(document).ready(function() {
 		event.preventDefault();
 		// openItemInfo($(this).attr('href'));
 		toggleContent($(this).attr('href'), true);
-		console.log('fsfvsf');
 	});
 
 	/* close folding content */
