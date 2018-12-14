@@ -591,7 +591,8 @@ img {
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    min-height: 350px; }
+    min-height: 350px;
+    position: relative; }
     .articles-single > a {
       width: 80%;
       background: url("../images/eur.jpg") center center/cover; }
@@ -601,7 +602,9 @@ img {
       width: 20%;
       min-width: 290px;
       padding: 24px;
-      position: relative;
+      position: absolute;
+      right: 0;
+      min-height: 350px;
       background: #fff; }
     .articles-single .articles-item-button {
       display: inline-block;

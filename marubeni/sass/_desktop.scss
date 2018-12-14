@@ -435,6 +435,7 @@ img {
     display: flex;
     flex-flow: row nowrap;
     min-height: 350px;
+    position: relative;
     & > a {
       width: 80%;
       background: url('../images/eur.jpg') center center / cover;
@@ -449,7 +450,9 @@ img {
       // display: flex;
       // flex-flow: column nowrap;
       // justify-content: flex-end;
-      position: relative;
+      position: absolute;
+      right: 0;
+      min-height: 350px;
       background: #fff;
     }
     .articles-item-sphere {
