@@ -3,7 +3,7 @@ $(document).ready(function() {
 		$('.loader').fadeOut(300, function(){
 			$('.hsocial_sec, .banner-title').addClass('tdFadeIn');
 		});
-	}, 300);
+	}, 200);
 	
 	
 	var fadeElmnts = $('.navigation, .map-continents');
@@ -28,6 +28,11 @@ $(document).ready(function() {
 		}
 	});
 	
+	setTimeout(function() {
+		$(window).trigger('scroll');
+	}, 500)
+		
+
 	$('.map-spots-item, .navigation-item').click(function() {
 	  var index = $(this).attr('continent');
 	  var activeElmnts = $('.navigation-item-' + index + ', .continent-' + index + ', .spot-' + index + ', .articles-continent-' + index);
