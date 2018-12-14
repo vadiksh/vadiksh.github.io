@@ -467,6 +467,7 @@
 				scrollTop: $('.main').offset().top - 30
 			}, 300)
 		}
+
     });
 </script>
 <script type="text/javascript" src="scripts/utilities.min.js"></script>
@@ -475,19 +476,6 @@
 <script type="text/javascript" src="js/_vimeo.js"></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
-<script>
-    $(document).ready( function(){
-        $('.articles-item, .articles-single').click( function(){
-            var getAttr = $(this).attr('data-id');
-            window.location.href = '#'+ getAttr;
-            var elmnt = $('.cd-fold-content');
-            $(elmnt).animate({
-                scrollTop: $(elmnt).scrollTop
-            }, 1000);
-        });
-        var h = location.hash.substr(1);
-    });
-</script>
 
 <script type="text/javascript">
 	window.digitalDataLayer = {
@@ -506,7 +494,7 @@
 	}
 
 	$(window).load(function() {
-		$('.owl-carousel').owlCarousel({
+		$('.articles-owl .owl-carousel').owlCarousel({
 		  loop:true,
 		  margin:15,
 		  nav:false,

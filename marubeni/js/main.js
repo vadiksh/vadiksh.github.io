@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	setTimeout(function() {
-		$('.loader').fadeOut(300, function(){
+			$('.loader').fadeOut(300, function(){
 			$('.hsocial_sec, .banner-title').addClass('tdFadeIn');
 		});
 	}, 200);
@@ -82,100 +82,131 @@ $(document).ready(function() {
 		foldingPanel = $('.cd-folding-panel'),
 		mainContent = $('.articles');
 	/* open folding content */
+
+	$('.articles-item, .articles-single').click( function(){
+	    var getAttr = $(this).attr('data-id');
+	    window.location.href = '#'+ getAttr;
+	    var elmnt = $('.cd-fold-content');
+	    $(elmnt).animate({
+	        scrollTop: $(elmnt).scrollTop
+	    }, 1000);
+	});
+	var h = location.hash.substr(1);
+
+	$( window ).on( 'hashchange', function() {
+		h = location.hash.substr(1);
+		 // console.log(h + '  //  ' + $('.navigation-item[href="#' + h + '"]'))
+		if ($('.navigation-item[href="#' + h + '"]').length) {
+			$('.navigation-item[href="#' + h + '"]').trigger('click');
+			
+			if ($('.cd-folding-panel').hasClass('is-open')) {
+				$('body').removeClass('overflow-hidden');
+				$('.cd-folding-panel').removeClass('is-open');
+				$('.articles').removeClass('fold-is-open');
+				setTimeout(function() {
+					$('html, body').scrollTop($('.main').offset().top - 30);
+				},100);
+			}
+		} else if ($('.articles-container .articles-item[data-id="' + h + '"]').length) {
+			toggleContent($('.articles-container .articles-item[data-id="' + h + '"] a').attr('href'), true);
+		} else {
+			toggleContent('', false);
+		}
+	});
+
 	$('body').on('click', '.articles-item a', function(event){
 		event.preventDefault();
-		// openItemInfo($(this).attr('href'));
-		toggleContent($(this).attr('href'), true);
 	});
 
 	/* close folding content */
 	foldingPanel.on('click', '.cd-close', function(event){
 		event.preventDefault();
-		toggleContent('', false);
+		location.hash = '';
 	});
 
 	function toggleContent(url, bool) {
 		console.log(112);
 		if( bool ) {
 			/* load and show new content */
+			h = location.hash.substr(1);
 			var foldingContent = foldingPanel.find('.cd-fold-content');
 			foldingContent.removeClass('tdFadeIn').addClass('tdFadeOut');
 			setTimeout(function() {
 				foldingContent.load(url+' .cd-fold-content > *', function(event){
+					$('.cd-fold-content').scrollTop(0);
+					foldingPanel.addClass('is-open');
+					foldingContent.removeClass('tdFadeOut').addClass('tdFadeIn');
+					mainContent.addClass('fold-is-open');
+
+					var iframe = $('#video');
+					console.log(iframe);
+					var player = new Vimeo.Player(iframe);
+					iframe.data('player', player);
+
+
 					setTimeout(function(){
-						$('.cd-fold-content').scrollTop(0);
-						foldingPanel.addClass('is-open');
-						foldingContent.removeClass('tdFadeOut').addClass('tdFadeIn');
-						mainContent.addClass('fold-is-open');
+						var controller = new ScrollMagic.Controller();
 
-						var iframe = $('#video');
-						console.log(iframe);
-						var player = new Vimeo.Player(iframe);
-						iframe.data('player', player);
-
-
-						setTimeout(function(){
-							var controller = new ScrollMagic.Controller();
-
-							var scene = new ScrollMagic.Scene({
-								triggerElement: '.cd-fold-content #video',
-								triggerHook: 0,
-								duration:"100%",
-								offset:-100
-							})
-							.on('leave', function (e) {
-								if (foldingPanel.hasClass('is-open')) {
-									player.pause();
-								}
-							})
-							.on('enter', function (e) {
-								if (foldingPanel.hasClass('is-open')) {
-									player.play();
-								}
-							})
-							// .addIndicators()
-							.addTo(controller)
-						}, 520)
-					}, 1);
+						var scene = new ScrollMagic.Scene({
+							triggerElement: '.cd-fold-content #video',
+							triggerHook: 0,
+							duration:"100%",
+							offset:-100
+						})
+						.on('leave', function (e) {
+							if (foldingPanel.hasClass('is-open')) {
+								player.pause();
+							}
+						})
+						.on('enter', function (e) {
+							if (foldingPanel.hasClass('is-open')) {
+								player.play();
+							}
+						})
+						// .addIndicators()
+						.addTo(controller)
+					}, 520)
 				});
+
+				setTimeout(function() {
+					$('body').addClass('overflow-hidden');
+					$('.footer-articles .owl-carousel').owlCarousel({
+					  loop:true,
+					  margin:10,
+					  nav:true,
+					  responsiveClass:true,
+					  responsive:{
+					      0:{
+					          items:1
+					      },
+					      480:{
+					          items:2
+					      },
+					      600:{
+					          items:3
+					      },
+					      950:{
+					          items:4
+					      },
+					      1200:{
+					          items:5
+					      }
+					  }
+					});
+					$('.footer-articles .articles-item').click( function(){
+					    var getAttr = $(this).attr('data-id');
+					    window.location.href = '#'+ getAttr;
+					});
+				}, 200);
 			}, 200);
 
-			
-
-			setTimeout(function() {
-				$('body').addClass('overflow-hidden');
-				$('.owl-carousel').owlCarousel({
-				  loop:true,
-				  margin:10,
-				  nav:true,
-				  responsiveClass:true,
-				  responsive:{
-			      0:{
-			          items:1
-			      },
-			      480:{
-			          items:2
-			      },
-			      600:{
-			          items:3
-			      },
-			      950:{
-			          items:4
-			      },
-			      1200:{
-			          items:5
-			      }
-				  }
-				});
-			}, 1000);
-			
 		} else {
 			/* close the folding panel */
-			// var mq = viewportSize();
 			$('.cd-fold-content #video').data('player').pause();
 			$('body').removeClass('overflow-hidden');
 			foldingPanel.removeClass('is-open');
 			mainContent.removeClass('fold-is-open');
+			
 			setTimeout(function() {
 				$('html').scrollTop($('.main').offset().top - 30);
 				$('body').scrollTop($('.main').offset().top - 30);
