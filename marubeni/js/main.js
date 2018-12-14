@@ -57,7 +57,7 @@ $(document).ready(function() {
 	articlesHub.mouseleave(function () {
 		$(this).removeClass('moveup').addClass('movedown');
 	});
-	
+
 
 	var owlIndex;
 	$('.owl-carousel').on('dragged.owl.carousel', function() {
@@ -83,6 +83,18 @@ $(document).ready(function() {
 		mainContent = $('.articles');
 	/* open folding content */
 
+	var h = location.hash.substr(1);
+    if(h != undefined && h != '') {
+    	if ($('.navigation-item[href="#' + h + '"]').length) {	
+			$('.navigation-item[href="#' + h + '"]').trigger('click');
+    	} else if ($('.articles-container .articles-item[data-id="' + h + '"]').length) {
+    		toggleContent($('.articles-container .articles-item[data-id="' + h + '"] a').attr('href'), true);
+    	}		
+		$('body, html').animate({
+			scrollTop: $('.main').offset().top - 30
+		}, 300)
+	}
+
 	$('.articles-item, .articles-single').click( function(){
 	    var getAttr = $(this).attr('data-id');
 	    window.location.href = '#'+ getAttr;
@@ -91,11 +103,9 @@ $(document).ready(function() {
 	        scrollTop: $(elmnt).scrollTop
 	    }, 1000);
 	});
-	var h = location.hash.substr(1);
 
 	$( window ).on( 'hashchange', function() {
 		h = location.hash.substr(1);
-		 // console.log(h + '  //  ' + $('.navigation-item[href="#' + h + '"]'))
 		if ($('.navigation-item[href="#' + h + '"]').length) {
 			$('.navigation-item[href="#' + h + '"]').trigger('click');
 			
@@ -119,7 +129,8 @@ $(document).ready(function() {
 	});
 
 	/* close folding content */
-	foldingPanel.on('click', '.cd-close', function(event){
+
+	foldingPanel.on('click', '.cd-close, .menu_ico', function(event){
 		event.preventDefault();
 		location.hash = '';
 	});
@@ -143,10 +154,8 @@ $(document).ready(function() {
 					var player = new Vimeo.Player(iframe);
 					iframe.data('player', player);
 
-
 					setTimeout(function(){
 						var controller = new ScrollMagic.Controller();
-
 						var scene = new ScrollMagic.Scene({
 							triggerElement: '.cd-fold-content #video',
 							triggerHook: 0,
@@ -197,8 +206,9 @@ $(document).ready(function() {
 					    var getAttr = $(this).attr('data-id');
 					    window.location.href = '#'+ getAttr;
 					});
-				}, 200);
-			}, 200);
+					
+				}, 600);
+			}, 300);
 
 		} else {
 			/* close the folding panel */
