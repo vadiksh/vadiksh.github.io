@@ -249,11 +249,15 @@ a:hover {
         opacity: 1; }
 
 body {
+  position: relative;
+  height: 100%;
+  width: 100%;
   background: #eaeef0;
   color: #303a43;
   overflow-x: hidden; }
 
 section {
+  position: relative;
   padding: 100px 0; }
 
 .container {
@@ -804,7 +808,18 @@ section {
     left: 0;
     width: 100%;
     height: 160px;
-    background: #164166; }
+    background: #303a43; }
+  .footer::before {
+    content: "Sources:\a European Venture Philanthropy Association, Rediscovering Social Innovation,\aScaling Up: Catalyzing the Social Enterprise, DBS Foundation";
+    white-space: pre;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    color: #fff;
+    z-index: 10;
+    transform: translateY(50px); }
 
 @keyframes pulse {
   0% {
@@ -1001,11 +1016,12 @@ section {
     padding-top: 40px;
     padding-bottom: 25vw; }
     .part-1 .main-title {
-      font-size: 34px; }
+      font-size: 32px;
+      letter-spacing: -.5px; }
       .part-1 .main-title span {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 400;
-        margin-bottom: 0; }
+        margin-bottom: 3px; }
     .part-1 .main-description {
       font-size: 16px;
       padding-top: 30px;
@@ -1077,6 +1093,8 @@ section {
       padding-top: 50px;
       font-size: 16px; }
     .footer::after {
-      height: 100px; } }
+      height: 100px; }
+    .footer::before {
+      content: ''; } }
 
 /*# sourceMappingURL=style.css.map */
