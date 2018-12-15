@@ -178,7 +178,7 @@ $(document).ready(function() {
 		$(this).addClass('active').siblings().removeClass('active');
 		var graphIndex = $(this).attr("graph");
 		setTimeout(function() {
-			$('.landscape-graph__content img').attr('src', 'images/graph' + graphIndex + '.png');
+			$('.landscape-graph__content img').attr('src', 'images/graph' + graphIndex + '.svg');
 			$('.landscape-graph__content').removeClass('tdFadeOut').addClass('tdFadeIn');
 		}, 200)
 	});
