@@ -1,0 +1,415 @@
+﻿
+https://www.tele2.com/ui/fonts/Tele2SlabWeb/Tele2SlabWeb-Bold.ttf
+https://www.tele2.com/ui/fonts/Tele2SlabWeb/Tele2SlabWeb-Regular.woff
+
+@font-face {
+    font-family: 'Tele2 Slab';
+    font-weight: 100;
+    src: url('fonts/Tele2SlabWeb-Regular.woff');
+}
+@font-face {
+    font-family: 'Tele2 Slab';
+    font-weight: 200;
+    src: url('fonts/Tele2SlabWeb-Regular.woff');
+}
+@font-face {
+    font-family: 'Tele2 Slab';
+    font-weight: 300;
+    src: url('fonts/Tele2SlabWeb-Regular.woff');
+}
+@font-face {
+    font-family: 'Tele2 Slab';
+    font-weight: 400;
+    src: url('fonts/Tele2SlabWeb-Regular.woff');
+}
+
+@font-face {
+    font-family: 'Tele2 Slab';
+    font-weight: 600;
+    src: url('fonts/Tele2SlabWeb-Bold.woff');
+}
+
+@font-face {
+    font-family: 'Tele2 Slab';
+    font-weight: 800;
+    src: url('fonts/Tele2SlabWeb-Heavy.woff');
+}
+
+html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Tele2 Slab', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.hero {
+    min-height: 90vh;
+    color: #fff;
+}
+
+    .hero h1 {
+        font-size: 90px;
+        font-weight: 800;
+    }
+
+
+.hero-inner {
+    max-width: 680px;
+}
+.modal-block {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none;
+    z-index: 100;
+}
+.modal-close {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 25px;
+    top: 25px;
+    z-index: 101;
+    cursor: pointer;
+}
+.modal-close::before,
+.modal-close::after {
+    position: absolute;
+    content: '';
+    background: #888;
+    transform: rotate3d(0,0,1,45deg);
+}
+.modal-close::before {
+    height: 30px;
+    width: 2px;
+    top: 11px;
+    left: 22px;
+}
+.modal-close::after {
+    width: 30px;
+    height: 2px;
+    top: 25px;
+    left: 9px;
+}
+.modal-form {
+
+}
+.modal-story {
+
+}
+.modal-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+h1 {
+    font-weight: 800;
+    line-height: 1;
+}
+
+h2,
+h3,
+h4 {
+    font-weight: 600;
+    line-height: 1;
+}
+
+
+hr {
+    width: 10%;
+    border-width: 6px;
+    border-top: 6px solid rgba(255,255,255,.2);
+}
+
+strong {
+    font-weight: 600;
+}
+
+.hero .subscribe {
+    position: relative;
+}
+
+    .hero .subscribe .icon {
+        position: absolute;
+        left: 20px;
+        top: 33px;
+        color: rgba(0,0,0,0.3);
+    }
+
+    .hero .subscribe input {
+        padding: 40px 25px;
+        padding-left: 50px;
+        border: none;
+        font-size: 1rem;
+        box-shadow: 1px 2px 5px -2px rgba(1,1,1,.1), 0 2px 7px 0 rgba(22,65,89,.03);
+        font-weight: 600;
+    }
+
+    .hero .subscribe button {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        padding: 20px 20px;
+        font-size: 1rem;
+    }
+
+.text-dark {
+    color: #333;
+}
+
+.text-orange {
+    color: #ef7f09;
+}
+
+.text-transparent {
+    color: rgba(255,255,255,.5);
+}
+
+.text-transparent-dark {
+    color: rgba(0,0,0,.5);
+}
+
+.img-transparent {
+    opacity: 0.75;
+}
+.btn-video {
+    cursor: pointer;
+}
+
+.bg-tele2 {
+    background: #333;
+    background: #333 url('http://i.imgur.com/o0EIm63.gif') no-repeat;
+    /*background: #e3a9b4 url('https://www.tele2.com/globalassets/scaled/it-1140_1140x740_80.jpg') no-repeat;*/
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-story1 {
+    background: #333 url('stories/johanna.png') no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-story2 {
+    background: #333 url('stories/sanders-flipped.png') no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-action {
+    background: #333 url('movement/action.png') no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-crappy {
+    background: #333 url('movement/crappy.png') no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-inspiring {
+    background: #333 url('movement/inspiring.png') no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-liberate {
+    background: #333 url('https://www.tele2.com/globalassets/scaled/liberating-workplace-2400_1980x825_80.jpg') no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-fearless {
+    background: #333 url('https://www.tele2brandportal.com/api/screen/thumbnail/15rBMYCyyalLWmOHeMUUHMUhmeINIr0680oLT4ZsFqs8IHD0lj9BjggG6MYgZ6ljNgoUA81cUt9jC512UtAoCw/1444') no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+
+.bg-pink {
+    background: #FF3F3F;
+}
+
+.review {
+    background-color: #0086FF;
+    color: #fff;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+a:hover {
+    text-decoration: none;
+}
+    a:hover .review {
+        background-color: rgba(0, 134, 255, 0.8);
+        color: #fff;
+    }
+
+.star {
+    background: #00b67a;
+    width: 20px;
+    line-height: 1rem;
+    margin-right: 2px;
+}
+
+.text-success {
+    color: #00b67a;
+}
+
+.review-lg {
+    /*width: 500px;*/
+}
+
+    .review-lg .star {
+        width: 40px;
+        margin-right: 4px;
+    }
+
+.btn {
+    font-weight: 600;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.btn-messenger {
+    background-color: #0086FF;
+    border-color: #0086FF;
+}
+
+    .btn-messenger:hover {
+        background-color: transparent;
+        border-color: #0086FF;
+        color: #0086FF;
+    }
+
+.btn-outline-light:hover {
+    color: #373737 !important;
+}
+
+.btn-success {
+    background-color: #00b67a;
+    border-color: #00b67a;
+}
+
+.navbar .navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.navbar .navbar-nav .nav-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+    .navbar .navbar-nav .nav-link,
+    .navbar .navbar-nav .nav-link.btn-outline-light {
+        color: rgba(255,255,255,.5);
+        border-color: rgba(255,255,255,.5);
+    }
+
+        .navbar .navbar-nav .nav-link:hover,
+        .navbar .navbar-nav .nav-link.btn-outline-light:hover {
+            color: rgba(255,255,255,.75);
+            border-color: rgba(255,255,255,.75);
+            background: transparent;
+        }
+
+        .navbar .navbar-nav .nav-link.btn-outline-messenger {
+            color: rgba(255,255,255,.5);
+            border-color: rgba(255,255,255,.5);
+        }
+
+            .navbar .navbar-nav .nav-link.btn-outline-messenger:hover {
+                color: #ffffff;
+                border-color: #0086FF;
+                background: #0086FF;
+            }
+
+
+
+input[type=text] {
+    -webkit-appearance: textfield;
+    font-weight: 300;
+}
+
+input, input[type=text] {
+    -webkit-appearance: none;
+    outline-offset: -2px;
+    font-weight: 300;
+}
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    font-weight: 300;
+    color: red;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-weight: 300;
+    color: red;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-weight: 300;
+    color: red;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-weight: 300;
+    color: red;
+}
+
+
+@media only screen and (max-width: 420px) {
+    .hero h1 {
+        font-size: 50px;
+    }
+}
+
+
+@keyframes rotate-diagonal-2 {
+    0% {
+        transform: rotate3d(-1,1,0,0deg)
+    }
+
+    50% {
+        transform: rotate3d(-1,1,0,180deg)
+    }
+
+    100% {
+        transform: rotate3d(-1,1,0,360deg)
+    }
+}
+
+@keyframes rotate-in-ver {
+    0% {
+        transform: rotateY(-360deg);
+        opacity: 0
+    }
+
+    100% {
+        transform: rotateY(0deg);
+        opacity: 1
+    }
+}
+
+.rotate-diagonal-2 {
+    animation: rotate-diagonal-2 .4s linear both
+}
+
+.rotate-in-ver {
+    animation: rotate-in-ver .5s cubic-bezier(.25,.46,.45,.94) both
+}
