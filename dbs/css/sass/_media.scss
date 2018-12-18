@@ -36,7 +36,6 @@
 	}
 	.hamburger {
 		display: block;
-		opacity: 0;
 	}
 	.part, .footer {
 		padding-left: 0;
@@ -49,6 +48,14 @@
 			width: 100%;
 			margin-top: -20vw;
 		}
+	}
+	
+	.part-2 .factors .pyramid-wrap img {
+		max-width: 100%;
+	}
+	
+	#factors-trigger {
+		margin: 70px 0 0;
 	}
 }
 @media screen and (max-width: 767px) {
@@ -98,11 +105,20 @@
 				display: none;
 			}
 		}
+	
+		.graph {
+      width: calc(100% + 30px);
+			left: -7px;
+		}
 	}
 	.part-2 {
 		padding: 25vw 0;
 		img {
 			width: 100%;
+		}
+	
+		.factors {
+			height: 600px;
 		}
 	}
 	.part-3 {
@@ -180,11 +196,53 @@
 			padding-top: 50px;
 			font-size: 16px;
 		}
-		&::after {
-			height: 100px;
+		&__sources {
+			font-size: 12px;
+      height: 100px;
+			padding-top: 20px;
 		}
 		&::before {
 			content: '';
 		}
 	}
+	
+	.animated-picture {
+		&.houses {
+			img  {
+				width: 60%;
+			}
+		}
+		
+		&.people img {
+			width: 80%;
+		}
+		
+		&.coins img {
+			width: 80%;
+		}
+	}
+	
+	.part-1 #graph-trigger {
+		margin: 50px 0 0;
+	}
 }
+@media screen and (max-width: 579px) {
+	.footer {
+		&__sources {
+			br {
+				display: none;
+			}
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 0 130px 0 10px;
+			text-align: left;
+		}
+	}
+}
+@media screen and (max-width: 374px) {
+	.part-2 .factors ul {
+		height: 360px;
+	}
+}
+

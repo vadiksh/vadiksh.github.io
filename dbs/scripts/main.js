@@ -2,6 +2,7 @@ $( window ).load(function() {
   $('.loader').fadeOut(400);
   setTimeout(function(){
   	$(window).trigger('scroll');
+  	$(window).trigger('resize');
   },400)
 });
 $(document).ready(function() {
@@ -17,7 +18,10 @@ $(document).ready(function() {
             scrollTop: 0
         }, 1000);
     });
-
+  if ($(window).width() < 768) {
+  	$('.graph1').attr('src', '../images/graph1-sm.svg');
+  	$('.graph2').attr('src', '../images/graph2-sm.svg');
+  }
 	$('.nav__list li').click(function() {
 		let partHref = $(this).attr('href');
 		$('html, body').animate({
@@ -49,40 +53,40 @@ $(document).ready(function() {
 
 
 	$('.hero-7').parallax({
-		imageSrc: 'images/hero7.svg',
+		imageSrc: '../images/hero7.svg',
 		speed: 0.8,
 		zIndex: -90
 	});
 	$('.hero-6').parallax({
-		imageSrc: 'images/hero6.svg',
+		imageSrc: '../images/hero6.svg',
 		speed: 0.25,
 		zIndex: -91
 	});
 		$('.hero-5').parallax({
-		imageSrc: 'images/hero5.svg',
+		imageSrc: '../images/hero5.svg',
 		speed: 0.4,
 		zIndex: -92
 	});
 	
 	$('.hero-4').parallax({
-		imageSrc: 'images/hero4.svg',
+		imageSrc: '../images/hero4.svg',
 		speed: 0.3,
 		zIndex: -93
 	});
 	$('.hero-3').parallax({
-		imageSrc: 'images/hero3.svg',
+		imageSrc: '../images/hero3.svg',
 		speed: 0.3,
 		zIndex: -94,
 		naturalWidth: 1647,
 		naturalHeight: 808
 	});
 	$('.hero-2').parallax({
-		imageSrc: 'images/hero2.svg',
+		imageSrc: '../images/hero2.svg',
 		speed: -0.1,
 		zIndex: -97
 	});	
 	$('.hero-1').parallax({
-		imageSrc: 'images/hero1.svg',
+		imageSrc: '../images/hero1.svg',
 		speed: 0.3,
 		zIndex: -100
 	});
@@ -94,16 +98,20 @@ $(document).ready(function() {
 
 		if (scrolled > $('#part-1').offset().top - ($(window).height() - 320)/2) {
 			$('.nav__list').addClass('tdFadeInRight').removeClass('tdFadeOutLeft');
-			$('.hamburger').addClass('tdFadeInLeft').removeClass('tdFadeOutRight');
+			$('.hamburger').addClass('active');
 			if ($(window).width() < 1350 && $(window).width() > 1023) {
 				$('.part-1').css({
 					"padding-left": "180px",
 					"transition": ".25s ease"
 				})
 			}
+			$(window).trigger('resize');
 		} else {
 			$('.nav__list').addClass('tdFadeOutLeft').removeClass('tdFadeInRight');
-			$('.hamburger').addClass('tdFadeOutRight').removeClass('tdFadeInLeft');
+			$('.hamburger').removeClass('active');
+			setTimeout(function(){
+				// $('.hamburger').css('display', 'none');
+			},200)
 			if ($(window).width() < 1350 && $(window).width() > 1023) {
 				$('.part-1').css({
 					"padding-left": "0px",
@@ -111,8 +119,9 @@ $(document).ready(function() {
 				})
 			}
 		}
-		if(scrolled > $('.part-2').offset().top - $(window).height()/2) {
+		if(scrolled > $('.graph').offset().top - $(window).height()/2) {
 			$('.footer_btm').addClass('tdFadeInLeft').removeClass('tdFadeOutRight');
+			$(window).trigger('resize');
 		} else {
 			$('.footer_btm').addClass('tdFadeOutRight').removeClass('tdFadeInLeft');
 		}
@@ -128,26 +137,35 @@ $(document).ready(function() {
 			$('.nav__list .nav-part-4').removeClass('alternative');
 		}
 
-		if (scrolled >= $('.part-2').offset().top && scrolled + 100 < $('.part-2').offset().top + $('.part-2').innerHeight() ||
-			scrolled >= $('.part-4').offset().top && scrolled + 100 < $('.part-4').offset().top + $('.part-4').innerHeight()) {
-			$('.hamburger').addClass('alternative');
-		} else {
-			$('.hamburger').removeClass('alternative');
-		}
-
-		if(isInView($('.main-title')) || scrolled > $('.main-title').offset().top - $(window).height()/2) {
+		if ($(window).width() < 768 && scrolled > $('.main-title').offset().top - $(window).height()) {
+			$('.main-title').addClass('tdShrinkIn');
+		} else if(scrolled > $('.main-title').offset().top - $(window).height()/2) {
 			$('.main-title').addClass('tdShrinkIn');
 		}
+
 		var tdFadeInElements = $('.text-block, .description, .overview__countries li');
 		for (var i = 0; i < tdFadeInElements.length; i++) {
 			if (scrolled > $(tdFadeInElements[i]).offset().top - $(window).height()/2) {
 				$(tdFadeInElements[i]).addClass('tdFadeInUp');
+
+				if($(tdFadeInElements[i]).hasClass('before-graph-text')) {
+					setTimeout(function(){
+						$('.graph').addClass('in-view');
+					}, 400)	
+				}
 			}
 		}
 
 		if (isInView($('.map'))) {
 			$('.map li').addClass('tdFadeIn');
 		}
+
+		$('.animated-picture').each(function(i, el){
+			if (isInView($(el).find('img')) && !$(this).hasClass('done')) {
+				$(this).find('img').attr('src',$(this).find('img').attr('src'));
+				$(this).addClass('done');
+			}
+		});
 
 		/*$('.animated-picture').each(function(){
 			var elem = $(this);
@@ -174,34 +192,52 @@ $(document).ready(function() {
 	}
 
 	$('.landscape-graph__toggle button').click(function() {
-		$('.landscape-graph__content').removeClass('tdFadeIn').addClass('tdFadeOut');
 		$(this).addClass('active').siblings().removeClass('active');
 		var graphIndex = $(this).attr("graph");
-		setTimeout(function() {
-			$('.landscape-graph__content img').attr('src', 'images/graph' + graphIndex + '.svg');
-			$('.landscape-graph__content').removeClass('tdFadeOut').addClass('tdFadeIn');
-		}, 200)
+		$('.graph' + graphIndex).addClass('active').siblings().removeClass('active');
 	});
 
 	//on scroll animations
+	if ($(window).width() < 768) {
+		$('.pyramid-wrap img').attr('src','../images/pyramid-mobile.svg');
+	}
 
 	var controller1 = new ScrollMagic.Controller();
 	var controller2 = new ScrollMagic.Controller();
 
-	var scene = new ScrollMagic.Scene({offset: 435, triggerElement: '#factors-trigger', duration: 1500})
+	var scene = new ScrollMagic.Scene({offset: -50, triggerElement: '#factors-trigger', duration: 1500, triggerHook: 'onLeave'})
+	.on('enter leave', function () {
+		$('.factors').toggleClass('in-view');
+	})
 	.setPin('#factors')
 	.addTo(controller1);
 
-	var scene1 = new ScrollMagic.Scene({triggerElement: '#factors-trigger', offset: 700})
-	.setVelocity('.factors #pyramid2', {opacity: 1}, {delay: 0, duration: 800})
+	var scene1 = new ScrollMagic.Scene({triggerElement: '#factors-trigger', offset: 0, duration: 700})
+	// .setVelocity('.factors #pyramid2', {opacity: 1}, {delay: 0, duration: 800})
+	// .setClassToggle('.factors li:first-child', 'active')
+	.setClassToggle('.factors li:first-child', 'active')
 	.addTo(controller2); 
 
-	var scene2 = new ScrollMagic.Scene({triggerElement: '#factors-trigger', offset: 700})
-	.setVelocity('.factors li:first-child', {opacity: 0}, {delay: 0, duration: 600})
+	var scene2 = new ScrollMagic.Scene({triggerElement: '#factors-trigger', offset: 700, duration: 750})
+	// .setVelocity('.factors li:first-child', {opacity: 0}, {delay: 0, duration: 600})
+	// .setClassToggle('.factors #pyramid2', 'active')
+	// .setClassToggle('.factors', 'show-p2')
+	.on('enter leave', function () {
+		$('.factors #pyramid2').toggleClass('active');
+		$('.factors').toggleClass('show-p2');
+	})
 	.addTo(controller2);    
 
 	var scene3 = new ScrollMagic.Scene({triggerElement: '#factors-trigger', offset: 1450})
-	.setVelocity('.factors #pyramid3', {opacity: 1}, {delay: 0, duration: 600})
+	// .setVelocity('.factors #pyramid3', {opacity: 1}, {delay: 0, duration: 600})
+	// .setClassToggle('.factors #pyramid3', 'active')
+	// .setClassToggle('.factors #pyramid3', 'active')
+	// .setClassToggle('.factors', 'show-p3')
+	.on('enter leave', function () {
+		$('.factors #pyramid3').toggleClass('active');
+		$('.factors').toggleClass('show-p3');
+		$('.factors').toggleClass('static');
+	})
 	.addTo(controller2); 
 
 	// var scene4 = new ScrollMagic.Scene({triggerElement: '#factors-trigger', offset: 1450})
@@ -222,9 +258,11 @@ $(document).ready(function() {
 
 	//graph animation
 
+	$('.graph').height($('.graph-1').height());
+
 	var controller3 = new ScrollMagic.Controller();
 
-	var scene = new ScrollMagic.Scene({offset: 297, triggerElement: '#graph-trigger', duration: 1500})
+	var scene = new ScrollMagic.Scene({offset: $('.graph-1').height()/2-15, triggerElement: '#graph-trigger', duration: 1500})
 	.setPin('#graph-pin')
 	.addTo(controller3);
 
@@ -268,11 +306,17 @@ $(document).ready(function() {
 
 	//paralaxed illustrations
 
-	$(".animated-picture").paroller({
-        factor: 0.15,            // multiplier for scrolling speed and offset
-        type: 'foreground',     // background, foreground
-        direction: 'vertical' // vertical, horizontal
-    });
+	if ($(window).width() >= 1024){
+		$(".animated-picture").paroller({
+	        factor: 0.15,            // multiplier for scrolling speed and offset
+	        type: 'foreground',     // background, foreground
+	        direction: 'vertical' // vertical, horizontal
+	    });
+	}
+
+	setTimeout(function(){
+  		$(window).trigger('resize');
+	}, 2000)
 
 });
 
