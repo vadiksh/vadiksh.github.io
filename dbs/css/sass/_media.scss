@@ -59,6 +59,17 @@
 	}
 }
 @media screen and (max-width: 767px) {
+	.hamburger {
+		&:hover {
+			opacity: .7;
+		}
+		&:active {
+			opacity: 1;
+		}
+		&.is-active {
+			opacity: 1;
+		}
+	}
 	.parallax-mirror {
 		padding-top: 25px;
 		width: 100%;
