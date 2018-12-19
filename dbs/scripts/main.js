@@ -6,6 +6,7 @@ $( window ).load(function() {
   },400)
 });
 $(document).ready(function() {
+
 	/* Footer Share Animation */
     $('.share-click-ico').on('click', function() {
         $('.foot-social').slideToggle();
@@ -23,13 +24,13 @@ $(document).ready(function() {
   	$('.graph2').attr('src', '../images/graph2-sm.svg');
   }
 	$('.nav__list li').click(function() {
-		let partHref = $(this).attr('href');
+		var partHref = $(this).attr('href');
 		$('html, body').animate({
        		scrollTop: $('#' + partHref).offset().top
    		}, 500);
 	});
 	$('.nav-mob__list li').click(function() {
-		let partHref = $(this).attr('href');
+		var partHref = $(this).attr('href');
 
 		$('body,html').scrollTop($('#' + partHref).offset().top + 1);
 		$('.hamburger').removeClass('is-active');
