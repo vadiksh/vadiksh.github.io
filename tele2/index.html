@@ -12,9 +12,9 @@
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.5/css/swiper.min.css">
+    
     <link rel="stylesheet" href="custom.css" />
 
     <script type="text/javascript" defer src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
@@ -22,17 +22,64 @@
     <script type="text/javascript" src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
-    <div class="modal-block modal-story">
+    <div class="modal-block">
         <span class="modal-close"></span>
+        <form name="submit-to-google-sheet" action="">
+            <input class="input" name="name" type="text" placeholder="Name" required="">
+            <input class="input" name="phone" type="tel" placeholder="Phone number" required="">
+            <input class="input" name="email" type="email" placeholder="E-mail" required="">
+            <label for="terms">
+                <input class="checkbox" type="checkbox" id="terms" required="">
+                <span class="checkmark"></span>
+                Accept Terms & Conditions
+            </label>
+            <button type="submit">Submit</button>      
+        </form>
+        <!-- <form name="contact">   -->
+            <!-- <input name="email" type="email" placeholder="Email" required>   -->
+            <!-- <button type="submit">Send</button>   -->
+        <!-- </form>   -->
+         
+        <div class="story-modal">
+            
+        </div>
+        <div class="story-modal">
+            
+        </div>
+        <div class="modal-video fearless">
+            <div class="video-content">
+                <h2>Stay in bed. Or change the world.</h2>
+                <p>Of course you wonder if we're as fearless as we make out. But look at our track record and see for yourself. Overcoming monopolies, taking on price wars, pioneering new markets – liberating customers from binding periods and introducing data buckets – this is what you'll find in our wake. And wherever we look we see more opportunities to set our customers free, to live smoother, more connected lives. Can you sense our spirit?</p>
+                <blockquote>
+                    A place where you learn by doing things you wouldn't get to do anywhere else.
+                </blockquote>
+                <p>Now let's talk about you. You're creative, quick and courageous. So you need an organisation where you'll be liberated to think different, and do different. A place where you learn by doing things you wouldn't get to do anywhere else. Somewhere you're rewarded for your achievements, not punished for trying. And wouldn't it be great to work with like-minded folk? People who get where they are with hard work and sharp minds. You'll find them here, in all shapes and sizes.</p>
+            </div>
+    
+        </div>
+        <div class="modal-video sparking">
+            <div class="video-content">
+                <h2>We know that wherever you land in our organisation you’ll be given the chance to grow.</h2>
+                <p>You'll have the mandate to make decisions, to get things done and to take ownership for your endeavours. Then, by giving us your best, your best will get even better – and your true potential will see the light of day sooner than you think.</p>
+                <blockquote>
+                    You'll have the mandate to make decisions, to get things done and to take ownership for your endeavours.
+                </blockquote>
+                <p>This is it – the place to explore what you're made of and challenge yourself (don't worry, we have challenges in store). Because the same people who will ask you to walk another mile will be there for you when things don't go as planned. We're a bit like an incubator for untapped talent – many successful entrepreneurs have already walked our path. Are you ready to take the leap? If you believe in yourself, this is where to do it.</p>
+            </div>
+            
+        </div>
+        <div class="modal-video liberating">
+            <div class="video-content">
+                <h2>Why would you live to work?</h2>
+                <p>The way we see it, the workplace can be a massive enabler. It's not just where we come together to get the job done. It's a place where creativity and innovation meet with trust and encouragement. And when this happens freely, without unnecessary boundaries, we can overcome challenges. Big and small. Connectivity gives us the power to solve problems fast, to pull together, and have fun doing it.</p>
+                <blockquote>
+                   Connectivity gives us the power to solve problems fast, to pull together, and have fun doing it.
+                </blockquote>
+                <p>Of course, liberating people to live a more connected life is what we do, so it's a natural starting point for the way we manage and organise our work. Better connectivity also opens up our work spaces, encouraging a more versatile and inclusive environment. The weird thing is, the more efficient we become the more we enjoy our time on the job – and the more we get out of the rest of our lives. Are you ready for the next step?</p>
+            </div>
+            
+        </div>
         
-    </div>  
-    <div class="modal-block modal-form">
-        <span class="modal-close"></span>
-        
-    </div>  
-    <div class="modal-block modal-video">
-        <span class="modal-close"></span>
-        <iframe src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <div class="container-fluid hero bg-tele2">
@@ -63,7 +110,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-messenger my-2 my-sm-0">
-                            <i class="fab fa-facebook-messenger mr-1"></i>
+                            <!-- <i class="fab fa-facebook-messenger mr-1"></i> -->
                             Subscribe & stay tuned
                         </a>
                     </li>
@@ -75,8 +122,8 @@
             <div class="col col-12 text-center hero-inner py-5">
                 <h1 class="mb-5 slideUp">
                     JOIN THE<br />
-                    AGILE<br />
-                    MOVEMENT
+                    TECH<br />
+                    COMMUNITY
                 </h1>
 
                 <h4 class="text-transparent my-4 slideUp">
@@ -84,24 +131,20 @@
                 </h4>
 
                 <p class="slideUp">
-                    During 2019 Tele2 IT will recruit more than 150 trail blazers and fearless<br />
-                    challengers. People hell-bent on doing things that others say is impossible.<br />
-                    Think you got what it takes? Take a sneak-peek into our world of opportunities<br />
-                    and sign up for the talent pool. The 150 choosen ones will get the<br />
-                    chance to step up their game.
+                    The Tele2 Tech Community consists of hundreds of devoted individuals sharing a common vision – to liberate people all over the world to live a more connected life. Together, we work to develop and maintain the technology needed to further this goal. Do you want to help us turn this vision into reality? Feel free to explore our open positions below and sign up to receive updates regarding new opportunities.
                 </p>
 
 
-                <a class="btn btn-lg btn-messenger my-5 slideUp">
-                    <i class="fab fa-facebook-messenger mr-1"></i>
-                    Subscribe & stay tuned
+                <a class="btn btn-lg btn-browse my-5 slideUp">
+                    <!-- <i class="fab fa-facebook-messenger mr-1"></i> -->
+                    Browse all job openings
                 </a>
 
             </div>
         </div>
     </div>
     <div class="container-fluid my-5">
-        <a name="why"></a>
+        
         <div class="row text-center align-items-center justify-content-center">
             <div class="col col-12 px-5 pb-4">
                 <p class="text-muted">
@@ -109,226 +152,232 @@
                 </p>
                 <h1 class="mb-5">THE AGILE MOVEMENT</h1>
             </div>
-            <div class="col col-12 col-sm-6 col-md-6 col-lg-2 slideRight">
+
+            <div class="col col-12 col-sm-8 col-md-4 col-lg-3 slideRight benefits-opaque">
                 <img src="icons/1-people.png" />
-                <h3 class="my-4">WE INVEST IN OUR PEOPLE</h3>
+                <h3 class="my-4">WE INVEST <br>IN OUR PEOPLE</h3>
                 <p>
                     Investing in people is to invest in success and therefore this will become our top priority for us.
                 </p>
             </div>
-            <div class="col col-12 col-sm-6 col-md-6 col-lg-2 slideRight">
-                <img src="icons/2-agile.png" />
-                <h3 class="my-4">AGILE ORGANIZATION</h3>
-                <p>
-                    We have implemented a scalable agile method to ensure accelerated and effective implementation.
-                </p>
-            </div>
-            <div class="col col-12 col-sm-12 col-md-12 col-lg-2 slideDownShort">
+           
+            <div class="col col-12 col-sm-8 col-md-4 col-lg-3 slideUpShort benefits-opaque">
                 <img src="icons/3-telecom.png" />
                 <h3 class="my-4">
                     NEXT GEN<br />
-                    TELECOM<br />
-                    COMPANY
+                    TELECOM COMPANY
                 </h3>
                 <p>
                     Innovate & evolve our principles regarding microservice strategy, Open API, architectural layers.
                 </p>
             </div>
-            <div class="col col-12 col-sm-6 col-md-6 col-lg-2 slideLeft">
+
+            <div class="col col-12 col-sm-8 col-md-4 col-lg-3 slideLeft benefits-opaque">
                 <img src="icons/4-itstack.png" />
-                <h3 class="my-4">STATE OF THE ART IT STACK</h3>
+                <h3 class="my-4">STATE OF THE<br>  ART IT STACK</h3>
                 <p>
                     We have a Digital First strategy alignment based on the Digital First bi-modal blueprint.
                 </p>
             </div>
-            <div class="col col-12 col-sm-6 col-md-6 col-lg-2 slideLeft">
-                <img src="icons/5-global.png" />
-                <h3 class="my-4">FAST GLOBAL COMPANY</h3>
-                <p>
-                    Being a fast growing and global company is a lot of great fun. Join us and you will see!
-                </p>
-            </div>
+            
         </div>
 
         <hr class="my-5" />
 
         <a name="jobs"></a>
         <div class="row text-center">
-            <div class="col col-12 px-5 pb-4">
+            <div class="col col-12 px-5">
                 <p class="text-muted">
                     <strong>Job openings</strong>
                 </p>
                 <h1 class="mb-3">PICK YOUR CHALLENGE</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col col-12 col-lg-8">
-                <div class="row mt-5">
-                    <a class="col col-12 col-md-6 mb-4 slideRight" href="https://www.tele2.com/career/job-openings/senior-ip-engineer" target="_blank">
-                        <div class="review review-lg p-5">
-                            <p class="mb-0 text-transparent">
-                                <strong>28</strong> october <strong>2018</strong>
-                            </p>
-
-                            <h3 class="my-4">Senior IP Engineer</h3>
-                            <p>The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
-
-                            <p class="mb-0 text-transparent">
-                                <strong>Stockholm</strong> Sweden
-                            </p>
-                        </div>
-                    </a>
-                    <a class="col col-12 col-md-6 mb-4 slideLeft" href="https://www.tele2.com/career/job-openings/domain-architect" target="_blank">
-                        <div class="review review-lg p-5">
-                            <p class="mb-0 text-transparent">
-                                <strong>26</strong> october <strong>2018</strong>
-                            </p>
-
-                            <h3 class="my-4">Domain Architect</h3>
-                            <p>The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
-
-                            <p class="mb-0 text-transparent">
-                                <strong>Stockholm</strong> Sweden
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="row my-2">
-                    <a class="col col-12 col-md-6 mb-4 slideLeft" href="https://www.tele2.com/career/job-openings/network-engineer" target="_blank">
-                        <div class="review review-lg p-5">
-                            <p class="mb-0 text-transparent">
-                                <strong>24</strong> october <strong>2018</strong>
-                            </p>
-
-                            <h3 class="my-4">Network Engineer</h3>
-                            <p>The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
-
-                            <p class="mb-0 text-transparent">
-                                <strong>Stockholm</strong> Sweden
-                            </p>
-                        </div>
-                    </a>
-                    <a class="col col-12 col-md-6 mb-4 slideRight" href="https://www.tele2.com/career/job-openings/system-architect" target="_blank">
-                        <div class="review review-lg p-5">
-                            <p class="mb-0 text-transparent">
-                                <strong>23</strong> october <strong>2018</strong>
-                            </p>
-
-                            <h3 class="my-4">System Architect</h3>
-                            <p>The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
-
-                            <p class="mb-0 text-transparent">
-                                <strong>Stockholm</strong> Sweden
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="row mb-5">
-                    <a class="col col-12 col-md-6 mb-4 slideRight" href="https://www.tele2.com/career/job-openings/full-stack-developer" target="_blank">
-                        <div class="review review-lg p-5">
-                            <p class="mb-0 text-transparent">
-                                <strong>21</strong> october <strong>2018</strong>
-                            </p>
-
-                            <h3 class="my-4">Full-Stack Developer</h3>
-                            <p>The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
-
-                            <p class="mb-0 text-transparent">
-                                <strong>Stockholm</strong> Sweden
-                            </p>
-                        </div>
-                    </a>
-                    <a class="col col-12 col-md-6 mb-4 slideLeft" href="https://www.tele2.com/career/job-openings/crm-domain-architect-to-tele2" target="_blank">
-                        <div class="review review-lg p-5">
-                            <p class="mb-0 text-transparent">
-                                <strong>17</strong> october <strong>2018</strong>
-                            </p>
-
-                            <h3 class="my-4">CRM Domain Architect</h3>
-                            <p>The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
-
-                            <p class="mb-0 text-transparent">
-                                <strong>Stockholm</strong> Sweden
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="col col-12 text-center">
-                        <p class="text-muted">
-                            There are <strong>48</strong> other job openings available
-                        </p>
-                        <a href="https://www.tele2.com/career/job-openings" class="btn btn-lg btn-outline-light my-2" target="_blank">
-                            Browse all job openings
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col col-12 col-lg-4">
-                <div class="p-5 text-center mt-5 slideUp">
-
+        <div class="row text-center wanted">
+            <div class="col col-12">
+                <div class="p-5 text-center slideUp">
+    
                     <h2>Wanted</h2>
-
+    
                     <h4 class="text-transparent my-4">150 fearless IT brainiacs</h4>
-
+    
                     <p>
-                        During 2019 Tele2 IT will recruit more than 150 trail blazers and fearless challengers. People hell-bent
-                        on doing things that others say is impossible.
+                        During 2019 Tele2 IT will recruit more than 150 trail blazers and fearless<br> challengers.
+                        People hell-bent on doing things that others say is impossible.
                     </p>
                     <p>
-                        Think you got what it takes? Subscribe for the talent pool.
+                        Think you got what it takes? Subscribe for the talent pool.<br>
                         The 150 choosen ones will get the chance to step up their game.
                     </p>
-
+    
                     <a class="btn btn-lg btn-messenger my-5">
-                        <i class="fab fa-facebook-messenger mr-1"></i>
+                        <!-- <i class="fab fa-facebook-messenger mr-1"></i> -->
                         Subscribe & stay tuned
                     </a>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row jobs-block">
+            <div class="col col-12 col-lg-12">
+                <div class="jobs-container">
+                    <div class="row my-2 jobs-row">
+                        <a class="col col-12 col-md-4 mb-4 slideRight job-link" href="https://www.tele2.com/career/job-openings/senior-ip-engineer" target="_blank">
+                            <div class="review review-lg p-5">
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-day">28</strong> <span class="job-month">october</span> <strong class="job-year">2018</strong>
+                                </p>
 
-    <div class="container-fluid hero bg-story1">
-        <a name="people"></a>
-        <div class="row mx-5 justify-content-start">
-            <div class="col col-12 text-left hero-inner py-5">
-                <h1 class="my-5 slideRight">
-                    She left Nasa to join Tele2 IT
-                </h1>
+                                <h3 class="my-4 job-title">Senior IP Engineer</h3>
+                                <p class="job-description">The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
 
-                <h4 class="text-transparent my-4 slideRight">
-                    Johanna Juhl is former tech-ninja at Nasa. Now
-                    tech-squad leader in the Tele2 IT Liberation
-                </h4>
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-city">Stockholm</strong> Sweden
+                                </p>
+                            </div>
+                        </a>
+                        <a class="col col-12 col-md-4 mb-4 slideUpShort job-link" href="https://www.tele2.com/career/job-openings/domain-architect" target="_blank">
+                            <div class="review review-lg p-5">
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-day">26</strong> <span class="job-month">october</span> <strong class="job-year">2018</strong>
+                                </p>
 
-                <a class="btn btn-lg btn-outline-light my-5 slideRight btn-full-story">
-                    Read the full story
-                </a>
+                                <h3 class="my-4 job-title">Domain Architect</h3>
+                                <p class="job-description">The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
+
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-city">Stockholm</strong> Sweden
+                                </p>
+                            </div>
+                        </a>
+                        <a class="col col-12 col-md-4 mb-4 slideLeft job-link" href="https://www.tele2.com/career/job-openings/domain-architect" target="_blank">
+                            <div class="review review-lg p-5">
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-day">26</strong> <span class="job-month">october</span> <strong class="job-year">2018</strong>
+                                </p>
+
+                                <h3 class="my-4 job-title">Domain Architect</h3>
+                                <p class="job-description">The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
+
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-city">Stockholm</strong> Sweden
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="row my-2 jobs-row">
+                        <a class="col col-12 col-md-4 mb-4 slideRight job-link" href="https://www.tele2.com/career/job-openings/senior-ip-engineer" target="_blank">
+                            <div class="review review-lg p-5">
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-day">28</strong> <span class="job-month">october</span> <strong class="job-year">2018</strong>
+                                </p>
+
+                                <h3 class="my-4 job-title">Senior IP Engineer</h3>
+                                <p class="job-description">The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
+
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-city">Stockholm</strong> Sweden
+                                </p>
+                            </div>
+                        </a>
+                        <a class="col col-12 col-md-4 mb-4 slideUpShort job-link" href="https://www.tele2.com/career/job-openings/domain-architect" target="_blank">
+                            <div class="review review-lg p-5">
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-day">26</strong> <span class="job-month">october</span> <strong class="job-year">2018</strong>
+                                </p>
+
+                                <h3 class="my-4 job-title">Domain Architect</h3>
+                                <p class="job-description">The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
+
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-city">Stockholm</strong> Sweden
+                                </p>
+                            </div>
+                        </a>
+                        <a class="col col-12 col-md-4 mb-4 slideLeft job-link" href="https://www.tele2.com/career/job-openings/domain-architect" target="_blank">
+                            <div class="review review-lg p-5">
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-day">26</strong> <span class="job-month">october</span> <strong class="job-year">2018</strong>
+                                </p>
+
+                                <h3 class="my-4 job-title">Domain Architect</h3>
+                                <p class="job-description">The IP Access Design department, which is partially located in Riga, is responsible for the upkeep of our office LAN within Tele2 Group. They also carry out the development, maintenance and support to our Firewall and Loadbalancer.</p>
+
+                                <p class="mb-0 text-transparent">
+                                    <strong class="job-city">Stockholm</strong> Sweden
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="more-jobs">
+                        
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col col-12 text-center">
+                 <!--        <p class="text-muted">
+                            Browse all job openings available at <strong>Tele2 Career</strong>
+                        </p>
+ -->                        <button class="btn btn-lg btn-outline-light my-2 load-jobs" target="_blank">
+                            Load all job openings</button>
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </div>
-    <div class="container-fluid hero bg-story2">
-        <div class="row mx-5 justify-content-start">
-            <div class="col col-12 text-left hero-inner py-5">
-                <h1 class="my-5 slideRight">
-                    Sander kicks ass for a living
-                </h1>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-story1 story">
+                    <a name="people"></a>
+                    <div class="row mx-5 justify-content-start">
+                        <div class="col col-12 text-left hero-inner py-5">
+                            <h1 class="my-5">
+                                She left Nasa to join Tele2 IT
+                            </h1>
+
+                            <h4 class="text-transparent my-4">
+                                Johanna Juhl is former tech-ninja at Nasa. Now
+                                tech-squad leader in the Tele2 IT Liberation
+                            </h4>
+
+                            <a class="btn btn-lg btn-outline-light my-5 btn-full-story">
+                                Read the full story
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-story2 story">
+                    <div class="row mx-5 justify-content-start">
+                        <div class="col col-12 text-left hero-inner py-5">
+                            <h1 class="my-5">
+                                Sander kicks ass for a living
+                            </h1>
 
 
-                <h4 class="text-transparent my-4 slideRight">
-                    Stay in bed or change the world? A simple choice
-                    for IT-architect Sander Elvers.
-                </h4>
+                            <h4 class="text-transparent my-4">
+                                Stay in bed or change the world? A simple choice
+                                for IT-architect Sander Elvers.
+                            </h4>
 
-                <a class="btn btn-lg btn-outline-light my-5 slideRight btn-full-story">
-                    Read the full story
-                </a>
+                            <a class="btn btn-lg btn-outline-light my-5 btn-full-story">
+                                Read the full story
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
+        <div class="swiper-pagination"></div>
+        <!-- <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div> -->
+    </div>
 
     <br /><br /><br />
 
@@ -350,38 +399,67 @@
     </div>
     <br /><br />
 
-    <div class="container-fluid hero bg-liberate d-flex justify-content-center align-items-center">
-        <div class="row mx-5 justify-content-center">
-            <div class="col col-12 text-center hero-inner py-5">
-                <h1 class="my-5 text-dark slideUp">
-                    LIBERATING
-                    WORKPLACE
-                </h1>
-                <h4 class="text-transparent-dark my-4 slideUp">
-                    Why would you live to work?
-                </h4>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-liberate d-flex justify-content-center align-items-center">
+                    <div class="row mx-5 justify-content-center">
+                        <div class="col col-12 text-center hero-inner py-5">
+                            <h1 class="my-5 text-white">
+                                LIBERATING
+                                WORKPLACE
+                            </h1>
+                            <h4 class="text-transparent my-4">
+                                Why would you live to work?
+                            </h4>
 
-                <img data-src="https://www.youtube.com/embed/X31g5TB-MRo"  src="images/play.png"  width="96" class="btn-video img-transparent my-5 slideUp" />
+                            <button class="btn-video" data-src="https://www.youtube.com/embed/X31g5TB-MRo?autoplay=1&autohide=1" id="liberating"><img  src="images/play-white.png"  width="96" class="img-transparent my-5"/></button>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-fearless d-flex justify-content-center align-items-center">
+                    <div class="row mx-5 justify-content-center">
+                        <div class="col col-12 text-center hero-inner py-5">
+                            <h1 class="my-5 text-white">
+                                FEARLESS
+                                CHALLENGER
+                            </h1>
+                            <h4 class="text-transparent my-4">
+                                Stay in bed. Or change the world.
+                            </h4>
+                               
+                            <button data-src="https://www.youtube.com/embed/dGiQaabX3_o?autoplay=1&autohide=1" class="btn-video" id="fearless"><img  src="images/play-white.png" width="96" class="img-transparent my-5" /></button> 
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-sparking d-flex justify-content-center align-items-center">
+                    <div class="row mx-5 justify-content-center">
+                        <div class="col col-12 text-center hero-inner py-5">
+                            <h1 class="my-5 text-white">
+                                SPARKING POTENTIAL
+                            </h1>
+                            <h4 class="text-grey my-4">
+                                Go ahead. Take the lead.
+                            </h4>
+
+                            <button class="btn-video"  id="sparking" data-src="https://www.youtube.com/embed/dGiQaabX3_o?autoplay=1&autohide=1"><img  src="images/play-white.png" width="96"class="img-transparent my-5" /></button>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="swiper-pagination"></div>
     </div>
-    <div class="container-fluid hero bg-fearless d-flex justify-content-center align-items-center">
-        <div class="row mx-5 justify-content-center">
-            <div class="col col-12 text-center hero-inner py-5">
-                <h1 class="my-5 text-white slideUp">
-                    FEARLESS
-                    CHALLENGER
-                </h1>
-                <h4 class="text-transparent my-4 slideUp">
-                    Stay in bed. Or change the world.
-                </h4>
-
-                <img data-src="https://www.youtube.com/embed/dGiQaabX3_o"  src="images/play-white.png" width="96" class="btn-video img-transparent my-5 slideUp" />
-
-            </div>
-        </div>
-    </div>
+    
+    
     <div class="container-fluid bg-tele2 p-5">
         <div class="row justify-content-center">
             <div class="col col-6 text-center hero-inner">
@@ -395,107 +473,96 @@
             </div>
             <div class="col col-6 text-center hero-inner">
                 <a class="btn btn-lg btn-messenger my-5 slideUp">
-                    <i class="fab fa-facebook-messenger mr-1"></i>
+                    <!-- <i class="fab fa-facebook-messenger mr-1"></i> -->
                     Subscribe & stay tuned
                 </a>
             </div>
         </div>
     </div>
-    <div class="container-fluid hero bg-action d-flex justify-content-center align-items-center">
-        <div class="row mx-5">
-            <div class="col col-12 text-center py-5">
-                <h1 class="my-5 text-orange slideRight">
-                    WELCOME TO AN<br />
-                    ACTION-ORIENTED WORKPLACE.
-                </h1>
 
-                <img data-src="https://www.youtube.com/embed/X31g5TB-MRo"  src="images/play.png" width="96" class="btn-video img-transparent my-5 slideLeft" />
+    <div class="swiper-container noselect">    
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-action">
+                    <div class="row mx-5">
+                        <div class="col col-12 text-center py-5">
+                            <h1 class="my-5">
+                                WELCOME TO AN<br />
+                                ACTION-ORIENTED <br>WORKPLACE.
+                            </h1>
+
+                            
+                            <button data-src="https://www.youtube.com/embed/X31g5TB-MRo" class="btn-video"><img src="images/play-white.png" width="96" class="img-transparent my-5" /></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-inspiring">
+                    <div class="row mx-5">
+                        <div class="col col-12 text-center py-5">
+                            <h1 class="my-5">
+                                WELCOME TO A WORKPLACE
+                                INSPIRING (REAL) ACCOMPLISHMENTS.
+                            </h1>
+
+                            
+                            <button class="btn-video" data-src="https://www.youtube.com/embed/X31g5TB-MRo"><img src="images/play-white.png" width="96" class="img-transparent my-5" /></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="container-fluid hero bg-crappy">
+                    <div class="row mx-5">
+                        <div class="col col-12 text-center py-5">
+                            <h1 class="my-5">
+                                SAY GOODBYE<br> TO
+                                CRAPPY <br />MANAGERS.
+                            </h1>
+
+                            
+                            <button class="btn-video" data-src="https://www.youtube.com/embed/dGiQaabX3_o"><img src="images/play-white.png" width="96" class="img-transparent my-5" /></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="swiper-pagination"></div>
     </div>
-    <div class="container-fluid bg-tele2 p-5">
-        <div class="row justify-content-center">
-            <div class="col col-6 text-center hero-inner">
-                <a class="btn btn-lg btn-messenger my-5 slideUp">
-                    <i class="fab fa-facebook-messenger mr-1"></i>
-                    Subscribe & stay tuned
-                </a>
-            </div>
-            <div class="col col-6 text-center hero-inner">
-                <h1 class="my-5 slideUp">
-                    JOIN THE
-                    AGILE
-                    MOVEMENT
-                </h1>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid hero bg-crappy d-flex justify-content-center align-items-center">
-        <div class="row mx-5">
-            <div class="col col-12 text-center py-5">
-                <h1 class="my-5 text-orange slideLeft">
-                    SAY GOODBYE TO<br />
-                    CRAPPY MANAGERS.
-                </h1>
-
-                <img data-src="https://www.youtube.com/embed/dGiQaabX3_o"  src="images/play.png" width="96" class="btn-video img-transparent my-5 slideRight" />
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-tele2 p-5">
-        <div class="row justify-content-center">
-            <div class="col col-6 text-center hero-inner">
-                <h1 class="my-5 slideUp">
-                    JOIN THE
-                    AGILE
-                    MOVEMENT
-                </h1>
-
-
-            </div>
-            <div class="col col-6 text-center hero-inner">
-                <a class="btn btn-lg btn-messenger my-5 slideUp">
-                    <i class="fab fa-facebook-messenger mr-1"></i>
-                    Subscribe & stay tuned
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid hero bg-inspiring d-flex justify-content-center align-items-center">
-        <div class="row mx-5">
-            <div class="col col-12 text-center py-5">
-                <h1 class="my-5 text-orange slideRight">
-                    WELCOME TO A WORKPLACE<br />
-                    INSPIRING (REAL) ACCOMPLISHMENTS.
-                </h1>
-
-                <img data-src="https://www.youtube.com/embed/X31g5TB-MRo"  src="images/play.png" width="96" class="btn-video img-transparent my-5 slideLeft" />
-            </div>
-        </div>
-    </div>
+    
 
 
     <div class="container-fluid hero bg-tele2 p-5">
         <div class="row mt-5 justify-content-center">
             <div class="col col-12 text-center hero-inner mt-5">
                 <h1 class="my-5 slideUp">
-                    JOIN THE<br />
-                    AGILE<br />
-                    MOVEMENT
+                    JOIN THE<br>
+                    TECH<br>
+                    COMMUNITY
                 </h1>
                 <h4 class="text-transparent my-4 slideUp">
                     <strong>Stay in bed. Or change the world.</strong>
                 </h4>
 
                 <a class="btn btn-lg btn-messenger my-5 slideUp">
-                    <i class="fab fa-facebook-messenger mr-1"></i>
+                    <!-- <i class="fab fa-facebook-messenger mr-1"></i> -->
                     Subscribe & stay tuned
                 </a>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shave/2.5.2/jquery.shave.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.5/js/swiper.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+    <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+    <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
     <script type="text/javascript">
         var slideUp = {
             distance: '100%',
@@ -518,36 +585,55 @@
             opacity: 0,
             delay: 200
         };
-        var slideDownShort = {
-            distance: '50%',
-            origin: 'top',
-            easing: 'cubic-bezier(0.4,0,0.4,1)',
-            opacity: 0,
-            delay: 200
-        };
-        var slideRight = {
-            distance: '100%',
-            origin: 'left',
-            easing: 'cubic-bezier(0.4,0,0.4,1)',
-            opacity: 0,
-            delay: 200
-        };
-        var slideLeft = {
-            distance: '100%',
-            origin: 'right',
-            easing: 'cubic-bezier(0.4,0,0.4,1)',
-            opacity: 0,
-            delay: 200
-        };
+        // var slideDownShort = {
+        //     distance: '50%',
+        //     origin: 'top',
+        //     easing: 'cubic-bezier(0.4,0,0.4,1)',
+        //     opacity: 0,
+        //     delay: 200
+        // };
+        // var slideRight = {
+        //     distance: '100%',
+        //     origin: 'left',
+        //     easing: 'cubic-bezier(0.4,0,0.4,1)',
+        //     opacity: 0,
+        //     delay: 200
+        // };
+        // var slideLeft = {
+        //     distance: '100%',
+        //     origin: 'right',
+        //     easing: 'cubic-bezier(0.4,0,0.4,1)',
+        //     opacity: 0,
+        //     delay: 200
+        // };
         ScrollReveal().reveal('.slideUp', slideUp);
         ScrollReveal().reveal('.slideDown', slideDown);
-        ScrollReveal().reveal('.slideRight', slideRight);
-        ScrollReveal().reveal('.slideLeft', slideLeft);
+        // ScrollReveal().reveal('.slideRight', slideRight);
+        // ScrollReveal().reveal('.slideLeft', slideLeft);
 
-        ScrollReveal().reveal('.slideUpShort', slideUpShort);
-        ScrollReveal().reveal('.slideDownShort', slideDownShort);
+        // ScrollReveal().reveal('.slideUpShort', slideUpShort);
+        // ScrollReveal().reveal('.slideDownShort', slideDownShort);
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script type="text/javascript" src="index.js"></script>
+    <script>  
+         const scriptURL = 'https://script.google.com/macros/s/AKfycbwnLzzHlrsxj6-OhzrBsdYrwCitqOq8J8YA6oDGoiN6LpYdc4U/exec'  
+         // const form = $('form');
+         const form = document.forms['submit-to-google-sheet'];
+         form.addEventListener('submit', function(e) {
+             e.preventDefault()
+             fetch(scriptURL, { method: 'POST', body: new FormData(form)})  
+              .then(response => {
+                   console.log('Success!', response);
+                   console.log(new FormData(form));
+               })  
+              .catch(error => console.error('Error!', error.message))  
+         })
+
+         // form.addEventListener('submit', e => {  
+          
+         // })  
+    </script>  
+    
 </body>
 </html>
