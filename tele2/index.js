@@ -182,34 +182,35 @@ $(document).ready(function() {
 	    },
 	})
 	
-	// $('.modal-block button').on('click', function(e) {
-	// 	console.log('clicked');
-	// 	var form = $('.modal-block form'),
-	//     	url = 'https://script.google.com/macros/s/AKfycbw9nryhh0Kgzm6qlLPb3ILAtQ6oDw70X7E-TkJjRnnqkRgYA9wY/exec';
-	// 	e.preventDefault();
-	// 	var jqxhr = $.ajax({
-	// 	    url: url,
-	// 	    method: "GET",
-	// 	    dataType: "json",
-	// 	    data: form.serializeObject(),
-	// 	    success: function(){
-	// 	    	console.log('success');
-	// 	    	console.log($(this));
-	// 	    }
- //  		})	
-	// });
-	// <form name="contact">  
-	//   <input name="email" type="email" placeholder="Email" required>  
-	//   <button type="submit">Send</button>  
-	//  </form>  
-	   
-	  // const scriptURL = 'https://script.google.com/macros/s/AKfycbw9nryhh0Kgzm6qlLPb3ILAtQ6oDw70X7E-TkJjRnnqkRgYA9wY/exec'  
-	  // const form = $('.modal-block form');  
-	  // $('.modal-block button').click(e => {  
-	  //  e.preventDefault()  
-	  //  fetch(scriptURL, { method: 'POST', body: new FormData(form)})  
-	  //   .then(response => console.log('Success!', response))  
-	  //   .catch(error => console.error('Error!', error.message))  
-	  // }); 
+	$('.modal-block form').submit(function(e) {
+		console.log('clicked');
+		e.preventDefault();
+		formSubmit();
+	});
+	function formSubmit() {
+		var name = $('.input-name')val(),
+			phone = $('.input-phone').val(),
+			email = $('.input-email').val();
+		if (name && phone && email) {
+			var $form = $('.modal-block form'),
+	    	url = 'https://script.google.com/macros/s/AKfycbyABVoFRLxVaElk4yU9RoLeW6u0xBuCTguhOMx466L91BpYpA/exec';
+			$.ajax({
+			    url: url,
+			    method: "GET",
+			    dataType: "json",
+			    data: $form.serialize(),
+			    success: function(response) {
+			    	console.log('success');
+			    	return true
+			    }
+			})	
+		} else {
+			return false
+		}
+		
+	}
+		
+	
+
 });
 
