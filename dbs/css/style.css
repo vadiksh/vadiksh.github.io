@@ -1056,11 +1056,11 @@ section {
   #factors-trigger {
     margin: 70px 0 0; } }
 @media screen and (max-width: 767px) {
-  .hamburger:hover {
+  .hamburger:hover, .scroll-top:hover, .share-block .share-click-ico:hover {
     opacity: .7; }
-  .hamburger:active {
+  .hamburger:active, .scroll-top:active, .share-block .share-click-ico:active {
     opacity: 1; }
-  .hamburger.is-active {
+  .hamburger.is-active, .scroll-top.is-active, .share-block .share-click-ico.is-active {
     opacity: 1; }
 
   .parallax-mirror {

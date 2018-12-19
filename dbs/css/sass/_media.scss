@@ -59,7 +59,7 @@
 	}
 }
 @media screen and (max-width: 767px) {
-	.hamburger {
+	.hamburger, .scroll-top, .share-block .share-click-ico {
 		&:hover {
 			opacity: .7;
 		}
