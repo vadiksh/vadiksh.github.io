@@ -379,7 +379,7 @@ $(document).ready(function() {
 		}	
 	}
 	$('.job-link').click(function() {
-		ga('send', 'event', 'Jobs', 'clicked');
+		// ga('send', 'event', 'Jobs', 'clicked');
 		console.log('clicked joblink')
 	})
 	$('.load-jobs').click(function() {
