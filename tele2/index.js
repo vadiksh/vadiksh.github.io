@@ -341,8 +341,8 @@ $(document).ready(function() {
 	}
 
 	$('.modal-block form').submit(function(e) {
-		ga('send', 'event', 'Subscribe', 'subscribed');
-
+		// ga('send', 'event', 'Subscribe', 'subscribed');
+		dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Subscribe', 'eventAction' : 'subcribed'});
 		$('.form-loader').css({
 			"display": "flex",
 			"opacity": 1
@@ -385,12 +385,14 @@ $(document).ready(function() {
 	})
 	$('.load-jobs').click(function() {
 		if (!$('.more-jobs, .more-jobs-mob').hasClass('is-open')) {
-			ga('send', 'event', 'Jobs', 'expanded');
+			// ga('send', 'event', 'Jobs', 'expanded');
+			dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Jobs', 'eventAction' : 'expanded'});
 			console.log('clicked morejobs')
 		}
 	})
 	$('.btn-messenger, .btn-outline-messenger').click(function() {
-		ga('send', 'event', 'Subscribe', 'opened');
+		// ga('send', 'event', 'Subscribe', 'opened');
+		dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Subscribe', 'eventAction' : 'opened'});
 		console.log('clicked subscribe open')
 	})
 
