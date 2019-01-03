@@ -380,6 +380,7 @@ $(document).ready(function() {
 	}
 	$('.job-link').click(function() {
 		// ga('send', 'event', 'Jobs', 'clicked');
+		dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Jobs', 'eventAction' : 'clicked'});
 		console.log('clicked joblink')
 	})
 	$('.load-jobs').click(function() {
