@@ -14,26 +14,44 @@ $(document).ready(function() {
 			}
 		});
 	})
-
-	$('a[href^="#"]').click(function(e) {
-		e.preventDefault();
-
-		var elementId = $(this).attr('href');
-		if (elementId == '#people') {
+	$('.nav-link').click(function() {
+		var urlParam = this.dataset.id;
+		// var newUrl = window.location + '?' + urlParam;
+		var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + urlParam;
+		console.log(urlParam)
+		if (urlParam == 'people') {
 			$('body,html').animate({
-				scrollTop: $(elementId).offset().top
+				scrollTop: $('#' + urlParam).offset().top
 			}, 500, function() {
-				location.hash = elementId;
+				history.pushState('', 'Join the Tech Community', newUrl);
 			})
-		} else if (elementId == '#why' || elementId == '#jobs') {
+		} else if (urlParam == 'why' || urlParam == 'jobs') {
 			$('body,html').animate({
-				scrollTop: $(elementId).offset().top - 30
+				scrollTop: $('#' + urlParam).offset().top - 30
 			}, 500, function() {
-				location.hash = elementId;
+				history.pushState('', 'Join the Tech Community', newUrl);
 			})
 		}
-		
 	})
+	// $('a[href^="#"]').click(function(e) {
+	// 	e.preventDefault();
+
+	// 	var elementId = $(this).attr('href');
+	// 	if (elementId == '#people') {
+	// 		$('body,html').animate({
+	// 			scrollTop: $(elementId).offset().top
+	// 		}, 500, function() {
+	// 			location.hash = elementId;
+	// 		})
+	// 	} else if (elementId == '#why' || elementId == '#jobs') {
+	// 		$('body,html').animate({
+	// 			scrollTop: $(elementId).offset().top - 30
+	// 		}, 500, function() {
+	// 			location.hash = elementId;
+	// 		})
+	// 	}
+		
+	// })
 
 	$('.btn-video').click(function(e) {
 		scrolled = $(window).scrollTop();
@@ -330,12 +348,11 @@ $(document).ready(function() {
 	  }
 	});
 
-
-	var h = location.hash;
-    if(h != undefined && h != '') {
+	var urlSearchString = window.location.search;
+    if(urlSearchString) {
 		setTimeout(function () {
 			$('body, html').animate({
-				scrollTop: $(h).offset().top
+				scrollTop: $('#' + urlSearchString.substr(1)).offset().top
 			})
 		}, 2000)
 	}
@@ -395,5 +412,7 @@ $(document).ready(function() {
 		dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Subscribe', 'eventAction' : 'opened'});
 		console.log('clicked subscribe open')
 	})
+
+
 
 });
