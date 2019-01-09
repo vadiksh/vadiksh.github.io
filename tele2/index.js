@@ -267,6 +267,10 @@ $(document).ready(function() {
 		}
 		$('.jobs-quantity span').html(otherJobs);
 		$('.job-description').shave(150);
+		$('.job-link').click(function() {
+			dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Jobs', 'eventAction' : 'clicked'});
+			console.log('clicked joblink')
+		})
 
 		$('.load-jobs').click(function() {
 			if ($('.more-jobs, .more-jobs-mob').hasClass('is-open')) {
@@ -321,6 +325,7 @@ $(document).ready(function() {
 		ScrollReveal().reveal('.slideRight', slideRight);
 		ScrollReveal().reveal('.slideLeft', slideLeft);
 	}
+
 	var mySwiper = new Swiper ('.swiper-container', {
 	    loop: true,
 	    pagination: {
@@ -395,20 +400,15 @@ $(document).ready(function() {
 			return false
 		}	
 	}
-	$('.job-link').click(function() {
-		// ga('send', 'event', 'Jobs', 'clicked');
-		dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Jobs', 'eventAction' : 'clicked'});
-		console.log('clicked joblink')
-	})
+
+	
 	$('.load-jobs').click(function() {
 		if (!$('.more-jobs, .more-jobs-mob').hasClass('is-open')) {
-			// ga('send', 'event', 'Jobs', 'expanded');
 			dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Jobs', 'eventAction' : 'expanded'});
 			console.log('clicked morejobs')
 		}
 	})
 	$('.btn-messenger, .btn-outline-messenger').click(function() {
-		// ga('send', 'event', 'Subscribe', 'opened');
 		dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Subscribe', 'eventAction' : 'opened'});
 		console.log('clicked subscribe open')
 	})
