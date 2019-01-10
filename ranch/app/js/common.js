@@ -132,13 +132,15 @@ $(document).ready(function(){
  			    	// 	$('body').removeClass('overflow-hidden');
  			    	// 	$('body, html').scrollTop(scrolled);
  			    	// })
- 			    	return true
  			    	console.log('sent')
+ 			    	return true
+ 			    	
  			    }
  			})	
  		} else {
- 			return false
  			console.log('failed')
+ 			return false
+ 			
  		}	
  	}
 
