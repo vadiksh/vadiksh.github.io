@@ -1393,9 +1393,22 @@ button
 				background: url('../img/ranch-left-hover.png') no-repeat center
 .contact
 	padding-bottom: 0
+	&__form-container
+		background: url('../img/contact-us/contact-bg.png') no-repeat center top/100%
+		padding: 120px 200px 100px
 	form
-		background: url('../img/contact-us/contact-bg.png') no-repeat center top/cover
-		padding: 150px 200px
+		::-webkit-input-placeholder 
+		  color: #fff
+		  font-size: 16px
+		::-moz-placeholder
+		  color: #fff
+		  font-size: 16px
+		:-ms-input-placeholder 
+		  color: #fff
+		  font-size: 16px
+		:-moz-placeholder
+		  color: #fff
+		  font-size: 16px
 		h3
 			color: $text-title
 			font-family: 'sancreek'
@@ -1405,11 +1418,122 @@ button
 		span
 			color: $text-title
 			line-height: 30px
-		input
+		label, .select
+			display: block
+			position: relative
+			margin-bottom: 18px
+			&::before
+				content: ''
+				display: block
+				position: absolute
+				width: 100%
+				height: 100%
+				left: 0
+				top: 0
+				background: url('../img/contact-us/input.png') no-repeat center center/cover
+				opacity: .35
+		.input
+			line-height: 1.2
+			display: block
 			position: relative
 			width: 100%
-			background: url('../img/experience/question-active.png') center center/cover
-			border: none
+			border: 2px solid transparent
+			outline: none
+			background: transparent
+			font-size: 16px
+			padding: 18px
+			transition: .2s ease
+		input:focus, textarea:focus
+			background: #fff
+			border: 2px solid #676563
+			font-size: 16px
+			color: #676563
+			transition: .2s ease
+		.dropdown
+			margin-bottom: 18px
+			&-menu
+				background: url('../img/contact-us/dropdown-li.png') repeat center center/contain
+			li
+				font-family: 'lato-black'
+				color: $text-title
+				position: relative
+				text-transform: uppercase
+				margin: 0
+				border: none
+				transition: .3s ease
+				&::before
+					position: absolute
+					content: ''
+					width: 100%
+					height: 100%
+					left: 0
+					top: 0
+				&:hover
+					background: #fff
+					transition: .3s ease
+					color: $accent
+		.select
+			font-family: 'lato-italic'
+			margin-bottom: 0
+			&::after
+				content: ''
+				display: block
+				width: 21px
+				height: 15px
+				background: url('../img/contact-us/arrow.png') no-repeat center center/cover
+				position: absolute
+				top: 22px
+				right: 30px
+			&::before
+				background: url('../img/contact-us/dropdown.png') no-repeat center center/cover
+		textarea
+			margin-bottom: 45px
+	&__buttons
+		button
+			margin-right: 16px
+			margin-bottom: 100px
+	&__touch-base
+		font-size: 15px
+		text-align: center
+		max-width: 480px
+		h3
+			position: relative
+			padding: 12px
+			width: 100%
+			font-size: 25px
+			font-family: 'sancreek'
+			text-transform: uppercase
+			color: $title
+			font-weight: 300
+			margin-bottom: 20px
+			&::before
+				content: ''
+				display: block
+				position: absolute
+				width: 100%
+				height: 100%
+				left: 0
+				top: 0
+				background: url('../img/contact-us/input.png') no-repeat center center/cover
+				opacity: .15
+		span
+			font-family: 'sancreek'
+			color: $accent
+			text-transform: uppercase
+			line-height: 1.2
+		ul
+			position: relative
+			top: -3px
+			margin-bottom: 16px
+		li
+			line-height: 1.4
+			color: $title
+			font-family: 'lato-black'
+			a
+				color: $title
+
+
+		
 
 
 @keyframes pulse

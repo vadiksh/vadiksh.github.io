@@ -43,32 +43,51 @@
 <section class="contact">
 	<div class="container">
 		<h2 class="section-title"><span>Get in touch</span>Ask us anything</h2>
-		<form>
-			<h3>Contact us</h3>
-			<span>Make a reservation or for more information</span>
-			<input  type="text" class="input" name="name" placeholder="Your name" required="">
-			<input  type="email" class="input" name="email" placeholder="Your e-mail" required="">
-			<select name="book-or-ask" class="input select-input" placeholder="Choose to book or ask...">
-				<option value="">Book</option>
-				<option value="">Ask</option>
-			</select>
-			<textarea name="message"  rows="5" placeholder="Your message"></textarea>
-			<ul class="form-buttons">
-				<button type="submit">Send</button>
-                <button class="form-reset">Reset</button>
-            </ul>
-            <div class="contact__tounch-base">
-            	<h3>Touch base</h3>
-            	<div class="contact__touch-base-contacts">
-            		<span>Phone toll free: 1 866 GO RIDING (467 4346)</span>
-            		<ul>
-            			<li>Phone: <a href="tel:+12506742792">250 674 2792</a></li>
-            			<li>email: <a href="mailto:reservation@wellsgrayranch.com">reservation@wellsgrayranch.com</a>
-            			</li>
-            		</ul>
-            	</div>
-            </div>
-		</form>
+		<div class="contact__form-container">
+			<form>
+				<h3>Contact us</h3>
+				<span>Make a reservation or for more information</span>
+				<label>
+					<input  type="text" class="input input-name" name="name" placeholder="Your name" required="">
+				</label>
+
+				<label>
+					<input  type="email" class="input input-email" name="email" placeholder="Your e-mail" required="">
+				</label>
+
+				<div class="dropdown">
+					<div class="select">
+						<span class="input">Choose to book or ask...</span>
+					</div>
+					<input type="hidden" class="input-book-ask" name="book-or-ask">
+					<ul class="dropdown-menu">
+						<li class="input" id="booking">Booking</li>
+						<li class="input" id="asking">Asking</li>
+					</ul>
+		      	</div>
+	
+				<label>
+					<textarea name="message" class="input input-message" rows="5" placeholder="Your message"></textarea>
+				</label>
+				
+				<ul class="contact__buttons">
+					<button type="submit">Send</button>
+		            <button class="form-reset">Reset</button>
+		        </ul>
+			</form>
+				
+			
+	
+	        <div class="contact__touch-base">
+	        	<h3>Touch base</h3>
+	    		<span>Phone toll free: 1 866 GO RIDING (467 4346)</span>
+	    		<ul>
+	    			<li>Phone: <a href="tel:+12506742792">250 674 2792</a></li>
+	    			<li>email: <a href="mailto:reservation@wellsgrayranch.com">reservation@wellsgrayranch.com</a>
+	    			</li>
+	    		</ul>
+	    	</div>
+	    </div>
 	</div>
 </section>
 
