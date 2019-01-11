@@ -105,254 +105,9 @@ header {
   .hsocial_sec a:hover {
     color: #e60013; }
 
-.hmenu_list li {
-  float: left;
-  width: 50%;
-  height: 520px;
-  text-align: center;
-  background-size: cover;
-  -webkit-background-size: cover; }
-  .hmenu_list li:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: all 0.4s; }
-
-.hmenu_list1:before {
-  background: rgba(166, 192, 171, 0.9); }
-
-.hmenu_list2:before {
-  background: rgba(166, 178, 192, 0.9); }
-
-.hmenu_list3:before {
-  background: rgba(187, 192, 166, 0.9); }
-
-.hmenu_list4:before {
-  background: rgba(176, 202, 203, 0.9); }
-
-.hmenu_list5:before {
-  background: rgba(167, 179, 193, 0.9); }
-
-.hmenu_list6:before {
-  background: rgba(192, 176, 166, 0.9); }
-
-.hmenu_list li:hover:before {
-  opacity: 1; }
-.hmenu_list li a {
-  display: table;
-  padding: 20px 15px;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  color: #ffffff;
-  position: relative;
-  text-decoration: none; }
-  .hmenu_list li a h3 {
-    font-size: 34px;
-    font-weight: bold;
-    line-height: 42px;
-    margin: 0 0 12px; }
-  .hmenu_list li a p {
-    font-size: 24px;
-    font-weight: 300;
-    color: #ffffff;
-    padding: 0;
-    opacity: 0; }
-  .hmenu_list li a b {
-    display: inline-block;
-    border-radius: 30px;
-    padding: 5px 30px;
-    border: 1px solid #ffffff;
-    font-size: 16px;
-    font-weight: normal;
-    text-transform: none; }
-  .hmenu_list li a:hover p {
-    opacity: 1; }
-.hmenu_list li div {
-  display: table-cell;
-  vertical-align: middle; }
-
 /* Folding start */
 /* Main content */
-.articles::before {
-  /* never visible - this is used in jQuery to check the current MQ */
-  display: none;
-  content: 'mobile'; }
-.articles > * {
-  -webkit-transition: -webkit-transform 0.5s 0.4s;
-  -moz-transition: -moz-transform 0.5s 0.4s;
-  transition: transform 0.5s 0.4s; }
-.articles.fold-is-open > * {
-  /* on mobile - translate .cd-main content to the right when the .cd-folding-panel is open */
-  -webkit-transition: -webkit-transform 0.5s 0s;
-  -moz-transition: -moz-transform 0.5s 0s;
-  transition: transform 0.5s 0s; }
-
-@media only screen and (min-width: 1100px) {
-  .cd-main::before {
-    /* never visible - this is used in jQuery to check the current MQ */
-    content: 'desktop'; }
-  .cd-main.fold-is-open > * {
-    /* reset style - on bigger devices we translate the gallery items */
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
-    transform: translateX(0); } }
-.cd-gallery::after {
-  clear: both;
-  content: "";
-  display: table; }
-.cd-gallery::before {
-  /* this is the dark layer covering the .cd-gallery when the .cd-folding-panel is open */
-  display: block;
-  content: '';
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(28, 23, 38, 0.6);
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
-  -moz-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
-  transition: opacity 0.5s 0.4s, visibility 0s 0.9s; }
-
-.fold-is-open .cd-gallery::before {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition: opacity 0.5s 0s, visibility 0s 0s;
-  -moz-transition: opacity 0.5s 0s, visibility 0s 0s;
-  transition: opacity 0.5s 0s, visibility 0s 0s; }
-
-.cd-item {
-  width: 100%;
-  height: 300px;
-  text-align: center;
-  /* Force Hardware Acceleration */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 0.5s 0.4s;
-  -moz-transition: -moz-transform 0.5s 0.4s;
-  transition: transform 0.5s 0.4s; }
-  .cd-item > a {
-    display: table;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    color: #ffffff;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; }
-    .cd-item > a.dark-text {
-      color: #363558; }
-      .cd-item > a.dark-text b {
-        border-color: #363558; }
-  .cd-item div {
-    display: table-cell;
-    vertical-align: middle; }
-  .cd-item:nth-of-type(1) {
-    background-color: #363558; }
-  .cd-item:nth-of-type(2) {
-    background-color: #544173; }
-  .cd-item:nth-of-type(3) {
-    background-color: #dadcdc; }
-  .cd-item:nth-of-type(4) {
-    background-color: #65d29b; }
-  .cd-item h2 {
-    font-size: 2.2rem; }
-  .cd-item p {
-    line-height: 1.2;
-    font-size: 1.4rem;
-    opacity: 0.6;
-    padding: 1em 0; }
-  .cd-item b {
-    display: inline-block;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 1em 1.3em;
-    border-radius: 50em;
-    border: 1px solid #ffffff; }
-
-@media only screen and (min-width: 1100px) {
-  .cd-item {
-    width: 50%;
-    float: left;
-    height: 520px;
-    -webkit-transition: -webkit-transform 0.5s 0.4s;
-    -moz-transition: -moz-transform 0.5s 0.4s;
-    transition: transform 0.5s 0.4s; }
-    .cd-item h2 {
-      font-size: 3rem; }
-    .cd-item p {
-      font-size: 1.6rem; }
-    .cd-item h2, .cd-item p {
-      -webkit-transform: translateY(30px);
-      -moz-transform: translateY(30px);
-      -ms-transform: translateY(30px);
-      -o-transform: translateY(30px);
-      transform: translateY(30px);
-      -webkit-transition: -webkit-transform 0.3s 0.1s;
-      -moz-transition: -moz-transform 0.3s 0.1s;
-      transition: transform 0.3s 0.1s; }
-    .cd-item b {
-      opacity: 0;
-      -webkit-transform: translateY(20px);
-      -moz-transform: translateY(20px);
-      -ms-transform: translateY(20px);
-      -o-transform: translateY(20px);
-      transform: translateY(20px);
-      -webkit-transition: opacity 0.3s 0s, -webkit-transform 0.3s 0s;
-      -moz-transition: opacity 0.3s 0s, -moz-transform 0.3s 0s;
-      transition: opacity 0.3s 0s, transform 0.3s 0s; }
-
-  .no-touch .cd-item a:hover h2, .no-touch .cd-item a:hover p {
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-    -webkit-transition: -webkit-transform 0.3s 0s;
-    -moz-transition: -moz-transform 0.3s 0s;
-    transition: transform 0.3s 0s; }
-  .no-touch .cd-item a:hover b {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-    -webkit-transition: opacity 0.3s 0.1s, -webkit-transform 0.3s 0.1s;
-    -moz-transition: opacity 0.3s 0.1s, -moz-transform 0.3s 0.1s;
-    transition: opacity 0.3s 0.1s, transform 0.3s 0.1s; }
-
-  .fold-is-open .cd-item {
-    -webkit-transition: -webkit-transform 0.5s 0s;
-    -moz-transition: -moz-transform 0.5s 0s;
-    transition: transform 0.5s 0s;
-    -webkit-transform: translateX(-400px);
-    -moz-transform: translateX(-400px);
-    -ms-transform: translateX(-400px);
-    -o-transform: translateX(-400px);
-    transform: translateX(-400px); }
-    .fold-is-open .cd-item:nth-of-type(2n) {
-      -webkit-transform: translateX(400px);
-      -moz-transform: translateX(400px);
-      -ms-transform: translateX(400px);
-      -o-transform: translateX(400px);
-      transform: translateX(400px); } }
+/* on mobile - translate .cd-main content to the right when the .cd-folding-panel is open */
 /* folding panel */
 .cd-folding-panel {
   position: fixed;
@@ -363,9 +118,9 @@ header {
   width: 100%;
   overflow: hidden;
   visibility: hidden;
-  -webkit-transition: visibility 0s 0.9s;
-  -moz-transition: visibility 0s 0.9s;
-  transition: visibility 0s 0.9s; }
+  -webkit-transition: visibility 0s 0.8s;
+  -moz-transition: visibility 0s 0.8s;
+  transition: visibility 0s 0.8s; }
   .cd-folding-panel .fold-left, .cd-folding-panel .fold-right {
     /* the :after elements of .fold-left and .fold-right are the 2 fold sides */
     width: 100%;
@@ -385,16 +140,11 @@ header {
     height: 100%;
     width: 100%;
     /* Force Hardware Acceleration */
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transition: -webkit-transform 0.5s 0.4s, background-color 0.5s 0.4s;
-    -moz-transition: -moz-transform 0.5s 0.4s, background-color 0.5s 0.4s;
-    transition: transform 0.5s 0.4s, background-color 0.5s 0.4s; }
+    -webkit-transition: -webkit-transform 0.5s 0.3s, background-color 0.5s 0.3s;
+    -moz-transition: -moz-transform 0.5s 0.3s, background-color 0.5s 0.3s;
+    transition: transform 0.5s 0.3s, background-color 0.5s 0.3s; }
   .cd-folding-panel .fold-right {
     -webkit-perspective-origin: 0% 50%;
     -moz-perspective-origin: 0% 50%;
@@ -408,26 +158,21 @@ header {
       height: 100%;
       width: 100%;
       /* Force Hardware Acceleration */
-      -webkit-transform: translateZ(0);
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      transform: translateZ(0);
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      -webkit-transition: -webkit-transform 0.5s 0.4s, background-color 0.5s 0.4s;
-      -moz-transition: -moz-transform 0.5s 0.4s, background-color 0.5s 0.4s;
-      transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
+      -webkit-transition: -webkit-transform 0.5s 0.3s, background-color 0.5s 0.3s;
+      -moz-transition: -moz-transform 0.5s 0.3s, background-color 0.5s 0.3s;
+      transition: transform 0.5s 0.3s, background-color 0.5s 0.3s;
       -webkit-transform-origin: right center;
       -moz-transform-origin: right center;
       -ms-transform-origin: right center;
       -o-transform-origin: right center;
       transform-origin: right center;
-      -webkit-transform: translateX(-100%) rotateY(-90deg);
-      -moz-transform: translateX(-100%) rotateY(-90deg);
-      -ms-transform: translateX(-100%) rotateY(-90deg);
-      -o-transform: translateX(-100%) rotateY(-90deg);
-      transform: translateX(-100%) rotateY(-90deg);
+      -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+      -moz-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+      -ms-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+      -o-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+      transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
       background-color: #c0c3c3; }
   .cd-folding-panel .fold-left {
     /* on mobile only the right fold side is visible */
@@ -485,14 +230,14 @@ header {
     -moz-transition: visibility 0s 0s;
     transition: visibility 0s 0s; }
     .cd-folding-panel.is-open .fold-right::after, .cd-folding-panel.is-open .fold-left::after {
-      -webkit-transform: translateX(0);
-      -moz-transform: translateX(0);
-      -ms-transform: translateX(0);
-      -o-transform: translateX(0);
-      transform: translateX(0);
-      -webkit-transition: -webkit-transform 0.5s 0s, background-color 0.5s 0s;
-      -moz-transition: -moz-transform 0.5s 0s, background-color 0.5s 0s;
-      transition: transform 0.5s 0s, background-color 0.5s 0s; }
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-transition: -webkit-transform 0.5s, background-color 0.5s 0s;
+      -moz-transition: -moz-transform 0.5s, background-color 0.5s 0s;
+      transition: transform 0.5s, background-color 0.5s 0s; }
     .cd-folding-panel.is-open .fold-right::after {
       background-color: #f9fafa; }
     .cd-folding-panel.is-open .cd-close {
@@ -508,11 +253,11 @@ header {
   .cd-folding-panel {
     left: 50%;
     right: auto;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    -moz-transform: translate3d(-50%, 0, 0);
+    -ms-transform: translate3d(-50%, 0, 0);
+    -o-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
     width: 100%; }
     .cd-folding-panel .fold-left {
       width: 50%;
@@ -532,11 +277,11 @@ header {
         -ms-transform-origin: right center;
         -o-transform-origin: right center;
         transform-origin: right center;
-        -webkit-transform: translateX(-100%) rotateY(-90deg);
-        -moz-transform: translateX(-100%) rotateY(-90deg);
-        -ms-transform: translateX(-100%) rotateY(-90deg);
-        -o-transform: translateX(-100%) rotateY(-90deg);
-        transform: translateX(-100%) rotateY(-90deg); }
+        -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+        -moz-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+        -ms-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+        -o-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+        transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg); }
     .cd-folding-panel .fold-left {
       display: block;
       /* change perspective-origin so that the 2 fold sides have the same vanishing point */
@@ -549,11 +294,11 @@ header {
         -ms-transform-origin: left center;
         -o-transform-origin: left center;
         transform-origin: left center;
-        -webkit-transform: translateX(100%) rotateY(90deg);
-        -moz-transform: translateX(100%) rotateY(90deg);
-        -ms-transform: translateX(100%) rotateY(90deg);
-        -o-transform: translateX(100%) rotateY(90deg);
-        transform: translateX(100%) rotateY(90deg); } }
+        -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
+        -moz-transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
+        -ms-transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
+        -o-transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
+        transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg); } }
 .cd-fold-content {
   position: absolute;
   top: 0;
@@ -568,11 +313,11 @@ header {
   transition: visibility 0s 0.4s; }
   .cd-fold-content * {
     opacity: 0;
-    -webkit-transform: translateY(20px);
-    -moz-transform: translateY(20px);
-    -ms-transform: translateY(20px);
-    -o-transform: translateY(20px);
-    transform: translateY(20px); }
+    -webkit-transform: translate3d(0, 20px, 0);
+    -moz-transform: translate3d(0, 20px, 0);
+    -ms-transform: translate3d(0, 20px, 0);
+    -o-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0); }
   .cd-fold-content h2 {
     -webkit-transition: -webkit-transform 0.2s 0.2s, opacity 0.2s 0.2s;
     -moz-transition: -moz-transform 0.2s 0.2s, opacity 0.2s 0.2s;
@@ -591,32 +336,32 @@ header {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   visibility: visible;
-  -webkit-transition: visibility 0s 0.5s;
-  -moz-transition: visibility 0s 0.5s;
-  transition: visibility 0s 0.5s; }
+  -webkit-transition: visibility 0s 1s;
+  -moz-transition: visibility 0s 1s;
+  transition: visibility 0s 1s; }
   .is-open .cd-fold-content * {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0); }
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
   .is-open .cd-fold-content h2 {
-    -webkit-transition: -webkit-transform 0.2s 0.5s, opacity 0.2s 0.5s;
-    -moz-transition: -moz-transform 0.2s 0.5s, opacity 0.2s 0.5s;
-    transition: transform 0.2s 0.5s, opacity 0.2s 0.5s; }
+    -webkit-transition: -webkit-transform 0.2s 1.1s, opacity 0.2s 1.1s;
+    -moz-transition: -moz-transform 0.2s 1.1s, opacity 0.2s 1.1s;
+    transition: transform 0.2s 1.1s, opacity 0.2s 1.1s; }
   .is-open .cd-fold-content h3 {
-    -webkit-transition: -webkit-transform 0.2s 0.550s, opacity 0.2s 0.550s;
-    -moz-transition: -moz-transform 0.2s 0.550s, opacity 0.2s 0.550s;
-    transition: transform 0.2s 0.550s, opacity 0.2s 0.550s; }
+    -webkit-transition: -webkit-transform 0.2s 1.15s, opacity 0.2s 1.15s;
+    -moz-transition: -moz-transform 0.2s 1.15s, opacity 0.2s 1.15s;
+    transition: transform 0.2s 1.15s, opacity 0.2s 1.15s; }
   .is-open .cd-fold-content em {
-    -webkit-transition: -webkit-transform 0.2s 0.6s, opacity 0.2s 0.6s;
-    -moz-transition: -moz-transform 0.2s 0.6s, opacity 0.2s 0.6s;
-    transition: transform 0.2s 0.6s, opacity 0.2s 0.6s; }
+    -webkit-transition: -webkit-transform 0.2s 1.2s, opacity 0.2s 1.2s;
+    -moz-transition: -moz-transform 0.2s 1.2s, opacity 0.2s 1.2s;
+    transition: transform 0.2s 1.2s, opacity 0.2s 1.2s; }
   .is-open .cd-fold-content p {
-    -webkit-transition: -webkit-transform 0.2s 0.7s, opacity 0.2s 0.7s;
-    -moz-transition: -moz-transform 0.2s 0.7s, opacity 0.2s 0.7s;
-    transition: transform 0.2s 0.7s, opacity 0.2s 0.7s; }
+    -webkit-transition: -webkit-transform 0.2s 1.25s, opacity 0.2s 1.25s;
+    -moz-transition: -moz-transform 0.2s 1.25s, opacity 0.2s 1.25s;
+    transition: transform 0.2s 1.25s, opacity 0.2s 1.25s; }
 
 @media only screen and (min-width: 1100px) {
   .cd-fold-content {
@@ -626,15 +371,47 @@ header {
     width: 100%;
     /*padding: 4em 2em;*/
     visibility: hidden;
-    -webkit-transition: visibility 0s 0.4s;
-    -moz-transition: visibility 0s 0.4s;
-    transition: visibility 0s 0.4s; }
+    -webkit-transition: visibility 0s 1s;
+    -moz-transition: visibility 0s 1s;
+    transition: visibility 0s 1s; }
     .cd-fold-content > * {
-      -webkit-transform: translateY(40px);
-      -moz-transform: translateY(40px);
-      -ms-transform: translateY(40px);
-      -o-transform: translateY(40px);
-      transform: translateY(40px); } }
+      -webkit-transform: translate3d(0, 40px, 0);
+      -moz-transform: translate3d(0, 40px, 0);
+      -ms-transform: translate3d(0, 40px, 0);
+      -o-transform: translate3d(0, 40px, 0);
+      transform: translate3d(0, 40px, 0); }
+
+  .is-open .cd-fold-content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    visibility: visible;
+    -webkit-transition: visibility 0s .5s;
+    -moz-transition: visibility 0s .5s;
+    transition: visibility 0s .5s; }
+    .is-open .cd-fold-content * {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0); }
+    .is-open .cd-fold-content h2 {
+      -webkit-transition: -webkit-transform 0.2s 1.1s, opacity 0.2s 1.1s;
+      -moz-transition: -moz-transform 0.2s 1.1s, opacity 0.2s 1.1s;
+      transition: transform 0.2s 1.1s, opacity 0.2s 1.1s; }
+    .is-open .cd-fold-content h3 {
+      -webkit-transition: -webkit-transform 0.2s 1.15s, opacity 0.2s 1.15s;
+      -moz-transition: -moz-transform 0.2s 1.15s, opacity 0.2s 1.15s;
+      transition: transform 0.2s 1.15s, opacity 0.2s 1.15s; }
+    .is-open .cd-fold-content em {
+      -webkit-transition: -webkit-transform 0.2s 1.2s, opacity 0.2s 1.2s;
+      -moz-transition: -moz-transform 0.2s 1.2s, opacity 0.2s 1.2s;
+      transition: transform 0.2s 1.2s, opacity 0.2s 1.2s; }
+    .is-open .cd-fold-content p {
+      -webkit-transition: -webkit-transform 0.2s 1.25s, opacity 0.2s 1.25s;
+      -moz-transition: -moz-transform 0.2s 1.25s, opacity 0.2s 1.25s;
+      transition: transform 0.2s 1.25s, opacity 0.2s 1.25s; } }
 /* Javascript disabled */
 .no-js .cd-fold-content.single-page {
   position: static;
@@ -642,11 +419,11 @@ header {
   background-color: #dadcdc; }
   .no-js .cd-fold-content.single-page * {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0); }
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
 
 /* Folding end */
 .javascript-hidden {

@@ -82,18 +82,7 @@ $(document).ready(function() {
 		foldingPanel = $('.cd-folding-panel'),
 		mainContent = $('.articles');
 	/* open folding content */
-
-	var h = location.hash.substr(1);
-    if(h != undefined && h != '') {
-    	if ($('.navigation-item[href="#' + h + '"]').length) {	
-			$('.navigation-item[href="#' + h + '"]').trigger('click');
-    	} else if ($('.articles-container .articles-item[data-id="' + h + '"]').length) {
-    		toggleContent($('.articles-container .articles-item[data-id="' + h + '"] a').attr('href'), true);
-    	}		
-		$('body, html').animate({
-			scrollTop: $('.main').offset().top - 30
-		}, 300)
-	}
+	// var h = location.hash.substr(1);
 
 	$('.articles-item, .articles-single').click( function(){
 	    var getAttr = $(this).attr('data-id');
@@ -105,7 +94,7 @@ $(document).ready(function() {
 	});
 
 	$( window ).on( 'hashchange', function() {
-		h = location.hash.substr(1);
+		var h = location.hash.substr(1);
 		if ($('.navigation-item[href="#' + h + '"]').length) {
 			$('.navigation-item[href="#' + h + '"]').trigger('click');
 			
@@ -139,14 +128,15 @@ $(document).ready(function() {
 		console.log(112);
 		if( bool ) {
 			/* load and show new content */
-			h = location.hash.substr(1);
+			var h = location.hash.substr(1);
 			var foldingContent = foldingPanel.find('.cd-fold-content');
 			foldingContent.removeClass('tdFadeIn').addClass('tdFadeOut');
 			setTimeout(function() {
-				foldingContent.load(url+' .cd-fold-content > *', function(event){
+
+				foldingContent.load(url + ' .cd-fold-content > *', function(event){
 					$('.cd-fold-content').scrollTop(0);
-					foldingPanel.addClass('is-open');
 					foldingContent.removeClass('tdFadeOut').addClass('tdFadeIn');
+					foldingPanel.addClass('is-open');
 					mainContent.addClass('fold-is-open');
 
 					var iframe = $('#video');
@@ -158,9 +148,9 @@ $(document).ready(function() {
 						var controller = new ScrollMagic.Controller();
 						var scene = new ScrollMagic.Scene({
 							triggerElement: '.cd-fold-content #video',
-							triggerHook: 0,
-							duration:"100%",
-							offset:-100
+							triggerHook: ($(window).width() < 768) ? '0.7' : 0,
+							duration: ($(window).width() < 768) ? '60%' : '100%',
+							offset: ($(window).width() < 768) ? 0 : -100
 						})
 						.on('leave', function (e) {
 							if (foldingPanel.hasClass('is-open')) {
@@ -174,41 +164,42 @@ $(document).ready(function() {
 						})
 						// .addIndicators()
 						.addTo(controller)
-					}, 520)
-				});
 
-				setTimeout(function() {
-					$('body').addClass('overflow-hidden');
-					$('.footer-articles .owl-carousel').owlCarousel({
-					  loop:true,
-					  margin:10,
-					  nav:true,
-					  responsiveClass:true,
-					  responsive:{
-					      0:{
-					          items:1
-					      },
-					      480:{
-					          items:2
-					      },
-					      600:{
-					          items:3
-					      },
-					      950:{
-					          items:4
-					      },
-					      1200:{
-					          items:5
-					      }
-					  }
-					});
-					$('.footer-articles .articles-item').click( function(){
-					    var getAttr = $(this).attr('data-id');
-					    window.location.href = '#'+ getAttr;
-					});
-					
-				}, 600);
-			}, 300);
+					}, 520)
+
+					setTimeout(function() {
+						$('body').addClass('overflow-hidden');
+						$('.footer-articles .owl-carousel').owlCarousel({
+						  loop:true,
+						  margin:10,
+						  nav:true,
+						  responsiveClass:true,
+						  responsive:{
+						      0:{
+						          items:1
+						      },
+						      480:{
+						          items:2
+						      },
+						      600:{
+						          items:3
+						      },
+						      950:{
+						          items:4
+						      },
+						      1200:{
+						          items:5
+						      }
+						  }
+						});
+						$('.footer-articles .articles-item').click( function(){
+						    var getAttr = $(this).attr('data-id');
+						    window.location.href = '#'+ getAttr;
+						});
+					}, 500);						
+			
+				});
+			}, 200);
 
 		} else {
 			/* close the folding panel */
@@ -225,5 +216,17 @@ $(document).ready(function() {
 		}
 		
 	}
-
+	var h = location.hash.substr(1);
+    if(h != undefined && h != '') {
+    	if ($('.navigation-item[href="#' + h + '"]').length) {	
+			$('.navigation-item[href="#' + h + '"]').trigger('click');
+    	} else if ($('.articles-container .articles-item[data-id="' + h + '"]').length) {
+    		setTimeout(function() {
+    			toggleContent($('.articles-container .articles-item[data-id="' + h + '"] a').attr('href'), true);
+    		}, 500)
+    	}		
+		$('body, html').animate({
+			scrollTop: $('.main').offset().top - 30
+		}, 300)
+	}
 });
