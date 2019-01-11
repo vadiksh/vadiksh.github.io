@@ -46,20 +46,20 @@
 		<div class="contact__form-container">
 			<form>
 				<h3>Contact us</h3>
-				<span>Make a reservation or for more information</span>
+				<span class="description">Make a reservation or for more information</span>
 				<label>
-					<input  type="text" class="input input-name" name="name" placeholder="Your name" required="">
+					<input  type="text" class="input input-name" name="user_name" placeholder="Your name" required="">
 				</label>
 
 				<label>
-					<input  type="email" class="input input-email" name="email" placeholder="Your e-mail" required="">
+					<input  type="email" class="input input-email" name="user_email" placeholder="Your e-mail" required="">
 				</label>
 
 				<div class="dropdown">
 					<div class="select">
 						<span class="input">Choose to book or ask...</span>
 					</div>
-					<input type="hidden" class="input-book-ask" name="book-or-ask">
+					<input type="hidden" class="input-book-ask" name="book-or-ask" required="">
 					<ul class="dropdown-menu">
 						<li class="input" id="booking">Booking</li>
 						<li class="input" id="asking">Asking</li>
@@ -67,15 +67,15 @@
 		      	</div>
 	
 				<label>
-					<textarea name="message" class="input input-message" rows="5" placeholder="Your message"></textarea>
+					<textarea name="user_message" class="input input-message" rows="5" placeholder="Your message"></textarea>
 				</label>
-				
+
 				<ul class="contact__buttons">
 					<button type="submit">Send</button>
 		            <button class="form-reset">Reset</button>
 		        </ul>
 			</form>
-				
+				<!-- https://script.google.com/macros/s/AKfycbxigMqCiKFbqK70dIYBoE2TooY32Xn7a1USEHldo74d7KJgvmg/exec -->
 			
 	
 	        <div class="contact__touch-base">
