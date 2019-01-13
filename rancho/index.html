@@ -21,16 +21,28 @@
 		<div class="container">
 			<a href="/" class="logo"><img src="img/logo.png" alt=""></a>
 			<nav class="menu">
+				<div class="burger"><span></span></div>
 				<ul class="container-flex">
-					<li><a href="experience.html">Your experience</a></li>
-					<li><a href="cabins-camping.html">Cabins & Camping</a></li>
+					<li><a href="/">Your experience</a></li>
+					<li><a href="camping.html">Cabins & Camping</a></li>
 					<li><a href="rates.html">RATES</a></li>
 					<li><a href="getting-here.html">GETtING HERE</a></li>
 					<li><a href="contact-us.html">Contact us</a></li>
 				</ul>
 			</nav>
+			<nav class="mob-menu">
+				<ul class="container-flex">
+					<li><a href="/">Your experience</a></li>
+					<li><a href="camping.html">Cabins & Camping</a></li>
+					<li><a href="rates.html">RATES</a></li>
+					<li><a href="getting-here.html">GETtING HERE</a></li>
+					<li><a href="contact-us.html">Contact us</a></li>
+				</ul>
+				<div class="close"><span></span></div>
+			</nav>
 		</div>
 	</div>
+
 	<div class="banner container-flex">
 		<h1 class="banner__title">
 			<img src="img/experience/title.png" alt="Experience The Wild West">
@@ -46,6 +58,7 @@
 			<span>Welcome to</span>The Wells Gray Guest Ranch
 		</h2>
 		<div class="welcome__content container-flex">
+			<div class="welcome__album"></div>
 			<div class="text-block">
 				<h3>The wild west</h3>
 				<p>Journey to the Wild West of Wells Gray Provincial Park and witness spectacular beauty and awe-inspiring natural wonders.  It’s one of British Columbia’s largest and most spectacular wilderness parks (540,000 hectares) and is home to a large black bear population.  This is one of the best places in BC for black bear watching!</p>
@@ -101,7 +114,21 @@
 			</div>
 		</div>
 		<div class="slider experience-slider">
-			<div class="owl-carousel">
+			<ul class="owl-carousel">
+				<li><img src="img/experience/ranch1.jpg" data-src="img/experience/ranch1-lg.jpg"></li>
+				<li><img src="img/experience/ranch2.jpg" data-src="img/experience/ranch2-lg.jpg"></li>
+				<li><img src="img/experience/ranch3.jpg" data-src="img/experience/ranch3-lg.jpg"></li>
+				<li><img src="img/experience/ranch4.jpg" data-src="img/experience/ranch4-lg.jpg"></li>
+				<li><img src="img/experience/ranch5.jpg" data-src="img/experience/ranch5-lg.jpg"></li>
+				<li><img src="img/experience/ranch6.jpg" data-src="img/experience/ranch6-lg.jpg"></li>
+				<li><img src="img/experience/ranch7.jpg" data-src="img/experience/ranch7-lg.jpg"></li>
+				<li><img src="img/experience/ranch8.jpg" data-src="img/experience/ranch8-lg.jpg"></li>
+				<li><img src="img/experience/ranch9.jpg" data-src="img/experience/ranch9-lg.jpg"></li>
+				<li><img src="img/experience/ranch10.jpg" data-src="img/experience/ranch10-lg.jpg"></li>
+				<li><img src="img/experience/ranch11.jpg" data-src="img/experience/ranch11-lg.jpg"></li>
+				<li><img src="img/experience/ranch12.jpg" data-src="img/experience/ranch12-lg.jpg"></li>
+			</ul>
+			<!-- <div class="owl-carousel">
 				<div>
 					<ul class="container-flex">
 						<li><img src="img/experience/ranch1.jpg" data-src="img/experience/ranch1-lg.jpg"></li>
@@ -126,7 +153,7 @@
 						<li><img src="img/experience/ranch12.jpg" data-src="img/experience/ranch12-lg.jpg"></li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div class="video">
@@ -186,6 +213,7 @@
 					<p>The country we ride in is vast with a large number of trails. For your safety and the horse’s safety, all of the rides are guided.</p>
 					<p>We only allow faster rides if you have ridden with us for one full day or two half day rides and if your ability and experience so allows. Most of our trips have to be suitable for the amateur adventurer and therefore we do not trot or gallop horses with beginners.</p>
 					<p>Helmets are available for anyone that would like one. Kids 16 years and under are required to wear a helmet while riding.</p>
+					<button class="questions__back">Back</button>
 				</div>
 			</div>
 		</div>

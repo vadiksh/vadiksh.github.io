@@ -51,6 +51,26 @@ $(document).ready(function(){
 		})
 	}
 
+
+	$('.slider .owl-carousel').owlCarousel({
+		lazyLoad:true,
+		loop:true,
+		nav:true,
+		responsive: {
+			0: {
+				items: 1,
+				slideBy: 1
+			},
+			630: {
+				items: 2, 
+				slideBy: 2
+			},
+			767: {
+				items: 4,
+				slideBy: 4
+			}
+		}
+	})
 	$('.owl-carousel').owlCarousel({
 		items: 1,
 		lazyLoad:true,
@@ -86,6 +106,15 @@ $(document).ready(function(){
 	$('.questions__page ul li').click(function() {
 		var pIndex = $(this).index() + 1;
 		$(this).addClass('active').siblings().removeClass('active');
+		if ($(window).width() < 1024) {
+			$('.questions__page').css({'opacity': 0, 'transition': '.2s ease-in'})
+			$('.questions__page--right').css({'opacity': 1, 'transition': '.4s .2s ease-out'})
+			$('.questions__page--right p:nth-of-type(' + pIndex + ')').addClass('active').siblings().removeClass('active')
+			$('.questions__back').click(function(){
+				$('.questions__page').css({'opacity': 1, 'transition': '.4s .2s ease-out'})
+				$('.questions__page--right').css({'opacity': 0, 'transition': '.2s ease-in'})
+			})
+		}
 		$('.questions__page--right p:nth-of-type(' + pIndex + ')').addClass('active').siblings().removeClass('active')
 	})
 
@@ -102,15 +131,27 @@ $(document).ready(function(){
 		$(this).parents('.dropdown').find('span').text($(this).text());
 		$(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
  	})
-
+	$('.burger').click(function(){
+		$('.mob-menu').addClass('active')
+	})
+	$('.mob-menu .close').click(function() {
+		$('.mob-menu').removeClass('active')
+	})
  	$('.contact form').submit(function(e) {
- 		// $('.form-loader').css({
- 		// 	"display": "flex",
- 		// 	"opacity": 1
- 		// })
+ 		$('.form-loader').css({
+ 			"display": "flex",
+ 			"opacity": 1
+ 		})
  		e.preventDefault();
  		formSubmit();
  	});
+
+ 	$('.form-reset').click(function(e){
+ 		e.preventDefault();
+ 		$('input, textarea').val('')
+ 		$('.select span').text('Choose to book or ask...')
+ 	})
+
  	function formSubmit() {
  		var name = $('.input-name').val(),
  			email = $('.input-email').val(),
@@ -124,16 +165,13 @@ $(document).ready(function(){
  			    dataType: "json",
  			    data: $form.serialize(),
  			    success: function(response) {
- 			    	// $('.form-loader .circles').fadeOut(200, function() {
- 			    	// 	$('.form-submitted').fadeIn(200);
- 			    	// })
- 			    	// $('.form-submitted button').click(function() {
- 			    		
- 			    	// 	$('body').removeClass('overflow-hidden');
- 			    	// 	$('body, html').scrollTop(scrolled);
- 			    	// })
+ 			    	$('.form-loader .circles').fadeOut(200, function() {
+ 			    		$('.form-submitted').fadeIn(200);
+ 			    	})
+ 			    	$('.form-submitted button').click(function() {
+ 			    		$('.form-loader').fadeOut(200)
+ 			    	})
  			    	console.log('sent')
- 			    	// return true
  			    }
  			})	
  		}

@@ -4,7 +4,6 @@
 
 body
 	font-size: 16px
-	min-width: 320px
 	position: relative
 	line-height: 30px
 	font-family: $default-font
@@ -30,7 +29,7 @@ body
 		width: 100%
 		height: 100%
 section
-	padding: 120px 0
+	padding: 120px 15px
 
 .section-title
 	text-align: center
@@ -121,6 +120,7 @@ button
 	height: 100vh
 	text-align: center
 	padding-top: 45px
+	overflow: hidden
 	&.camping
 		background: url('../img/camping/banner.jpg') 0 0/cover
 	&.getting-here
@@ -134,7 +134,9 @@ button
 	height: 110px
 	width: 100%
 	background: url('../img/header.jpg') no-repeat
-	background-size: 100% 100%
+	background-size: auto 100%
+	padding: 0 15px
+	position: relative
 
 	.logo
 		float: left
@@ -147,6 +149,47 @@ button
 	.menu
 		float: right
 		padding-top: 40px
+		.burger
+			display: none
+			position: absolute
+			top: 50%
+			transform: translate3d(0,-50%,0)
+			right: 15px
+			width: 50px
+			height: 50px
+			cursor: pointer
+			span
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate3d(-50%,-50%,0)
+				display: block
+				width: 30px
+				height: 3px
+				background: $title
+				transition: .3s
+				border-radius: 3px
+				&::after, &::before
+					content: ''
+					display: block
+					height: 3px
+					width: 30px
+					left: 0
+					position: absolute
+					background: $title
+					transition: .3s
+					border-radius: 3px
+				&::before
+					top: -8px
+				&::after
+					top: 8px
+			&:hover
+				span
+					transition: .3s
+					background: $accent
+					&::before, &::after
+						background: $accent
+
 		ul 
 			width: 100%
 
@@ -164,6 +207,64 @@ button
 			&:hover
 				color: $accent
 				transition: .3s ease
+	.mob-menu
+		position: fixed
+		width: 100vw
+		height: 100vh
+		left: 0
+		top: 0
+		background: url('../img/bg.jpg') center center/cover
+		transform: translate3d(110%,0,0)
+		transition: .4s ease-in
+		z-index: 100
+		ul
+			display: flex
+			flex-flow: column
+		a
+			display: block
+			padding: 5px 25px
+			color: $title
+			text-transform: uppercase
+			font-size: 18px
+			padding: 10px 25px
+			transition: .3s ease
+			font-family: 'sancreek'
+		.close
+			position: absolute
+			right: 30px
+			top: 30px
+			width: 50px
+			height: 50px
+			cursor: pointer
+			span
+				display: block
+				position: absolute
+				text-align: center
+				width: 30px
+				height: 3px
+				top: 50%
+				left: 50%
+				background: $title
+				transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,45deg)
+				transition: .3s
+				&::after
+					display: block
+					content: ''
+					position: absolute
+					right: 0
+					top: 0
+					width: 30px
+					height: 3px
+					background: $title
+					transform: rotate3d(0,0,1,90deg)
+					transition: .3s
+			&:hover
+				span, span::after
+					background: $accent
+					transition: .3s
+	.mob-menu.active
+		transform: translate3d(0,0,0)
+		transition: .4s ease-out
 
 
 .banner
@@ -174,13 +275,10 @@ button
 	&__title
 		font-family: "bleeding"
 		color: #e9dcca
-
-		span
-			font-size: 65px
-			line-height: 80px
-			display: block
-			
-			// text-shadow:
+		max-width: 90%
+		margin: 0 auto
+		img
+			width: 100%
 	b
 		font-family: "sancreek"
 		font-weight: 300
@@ -203,6 +301,7 @@ button
 		background: url('../img/experience/exp-album.png') no-repeat center center/contain
 	&__content
 		justify-content: flex-end
+		align-items: flex-start
 		position: relative
 		margin-bottom: 120px
 		&::before
@@ -213,8 +312,7 @@ button
 			width: 480px
 			height: 970px
 			background: url('../img/experience/exp-west.png')
-	.container-flex
-		align-items: flex-start
+		
 
 	&__activity
 		width: 50%
@@ -264,7 +362,8 @@ button
 				padding: 10px !important
 				margin: 0
 				position: absolute
-				top: 95px
+				top: 50%
+				transform: translate3d(0, -50%, 0)
 				&:hover
 					transition: .3s
 				span
@@ -368,9 +467,10 @@ button
 		
 .ranch
 	padding-bottom: 0
+	padding-left: 0
+	padding-right: 0
 	&-container
 		background: url('../img/wood.jpg') center bottom/cover
-		// max-width: 1400px
 		margin: 0 auto
 	.gallery
 		position: relative
@@ -408,13 +508,13 @@ button
 
 	.slider
 		transform: translate3d(0, -70px, 0)
+		width: 90vw
+		margin: 0 auto
 		ul
 			position: relative
-			width: 90vw
-			margin: 0 auto
 		li
 			position: relative
-			width: 25vw
+			width: 100%
 			height: 25vw
 			background: url('../img/gallery-card.png') center center /cover
 			transition: .4s ease-out
@@ -429,8 +529,8 @@ button
 				top: 24%
 				left: 15%
 				border-radius: 10px
-		.owl-carousel .owl-stage-outer 
-			overflow: visible
+		.owl-carousel .owl-stage-outer
+			padding-top: 20px
 		.owl-carousel .owl-nav
 			display: block
 		.owl-dots
@@ -441,27 +541,37 @@ button
 			padding: 10px !important
 			margin: 0
 			position: absolute
-			top: 95px
+			top: 50%
+			transform: translate3d(0,-50%,0)
 			&:hover
 				transition: .3s
 			span
-				width: 20px
-				height: 20px
+				display: block
+				margin: 0 auto
+				width: 40px
+				height: 65px
 				transition: .3s
 				font-size: 0
-		.owl-nav button.owl-next
-			background: url('../img/ranch-right.png') no-repeat center
-			right: -10px
-			&:hover
-				background: url('../img/ranch-right-hover.png') no-repeat center
+				
 		.owl-nav button.owl-prev
-			background: url('../img/ranch-left.png') no-repeat center
-			left: -10px
-			&:hover
-				background: url('../img/ranch-left-hover.png') no-repeat center
+			left: -60px
+			span
+				background: url('../img/ranch-left.png') no-repeat center/contain
+			&:hover span
+				background: url('../img/ranch-left-hover.png') no-repeat center/ contain
+		.owl-nav button.owl-next
+			right: -60px
+			span
+				background: url('../img/ranch-right.png') no-repeat center/contain
+			&:hover span
+				background: url('../img/ranch-right-hover.png') no-repeat center/contain
+
+		
 	.video
 		position: relative
 		padding-top: 120px
+		padding-right: 15px
+		padding-left: 15px
 		&::before
 			content: ''
 			display: block
@@ -475,7 +585,8 @@ button
 			justify-content: space-between
 			// margin: 0
 		.text-block
-			min-width: 500px
+			width: 50%
+			max-width: 500px
 		&__block
 			position: relative
 			width: 75%
@@ -485,9 +596,9 @@ button
 		&__wrapper
 			position: absolute
 			left: 4%
-			top: 21%
+			top: 19.5%
 			width: 92%
-			height: 58.5%
+			height: 61%
 			border-radius: 10px
 			overflow: hidden
 			// background: #593c23 url('../img/experience/exp-video.jpg') center center/cover
@@ -560,6 +671,8 @@ button
 			p.active
 				opacity: 1
 				transition: .3s ease-out
+			button
+				display: none
 
 		&-container
 			position: absolute
@@ -637,8 +750,8 @@ button
 						background: url('../img/right.png')
 						transition: .3s ease-in
 				&.active
-					background: url('../img/experience/question-active.png') 0 0/100%
-					transition: .3s ease-in
+					&::after
+						opacity: .7
 					span 
 						color: #fff
 						transition: .3s ease-out
@@ -646,7 +759,7 @@ button
 							background: url('../img/right-hover.png')
 				&:hover
 					&::after 
-						opacity: 1
+						opacity: .7
 						transition: .3s ease-out
 					span
 						color: #fff
@@ -656,8 +769,13 @@ button
 .footer
 	position: relative
 	background: url('../img/footer.jpg') no-repeat right center/cover
-	padding: 45px 0
+	padding: 45px 15px
 	color: $text-title
+	a
+		transition: .2s
+		&:hover
+			color: $accent
+			transition: .3s
 	.container
 		align-items: flex-start
 		justify-content: space-between
@@ -1251,7 +1369,7 @@ button
 					top: 8px
 					border-radius: 50%
 .activities-rates
-	padding: 0 0 120px 0
+	padding-bottom: 120px
 	h2
 		margin-bottom: 100px
 	.cabins-rates__list
@@ -1394,8 +1512,17 @@ button
 .contact
 	padding-bottom: 0
 	&__form-container
+		position: relative
 		background: url('../img/contact-us/contact-bg.png') no-repeat center top/100%
 		padding: 120px 200px 100px
+		&::before
+			content: ''
+			position: absolute
+			left: -270px
+			bottom: 25%
+			width: 500px
+			height: 200px
+			background: url('../img/pincel.png') no-repeat center center/contain
 	form
 		::-webkit-input-placeholder 
 		  color: #fff
@@ -1491,6 +1618,62 @@ button
 				background: url('../img/contact-us/dropdown.png') no-repeat center center/cover
 		textarea
 			margin-bottom: 45px
+		.form-loader 
+		    width: 100vw
+		    height: 100vh
+		    position: fixed
+		    top: 0
+		    left: 0
+		    background: rgba(0,0,0,.9)
+		    display: flex
+		    flex-flow: column
+		    justify-content: center
+		    align-items: center
+		    display: none
+		    opacity: 0
+		    transition: .2s
+		    z-index: 10
+		
+		.form-submitted 
+		    font-size: 20px
+		    text-align: center
+		    display: none
+		
+		.form-submitted p 
+		    max-width: 500px
+		    color: #fff
+		    margin-bottom: 15px
+		
+		.form-submitted button 
+		    width: 200px
+		
+		.form-submitted button:hover 
+			// background: #fff
+			// boder-color: #fff
+			// color: #000
+		#circleG
+			width: 135px
+			margin: 0 auto
+
+		.circleG
+			background-color: rgb(255,255,255)
+			float: left
+			height: 29px
+			margin-left: 15px
+			width: 29px
+			animation-name: bounce_circleG
+			animation-duration: 1.1675s
+			animation-iteration-count: infinite
+			animation-direction: normal
+			border-radius: 19px
+		
+		#circleG_1
+			animation-delay: 0.2295s
+		
+		#circleG_2
+			animation-delay: 0.5455s
+		#circleG_3
+			animation-delay: 0.6985s
 	&__buttons
 		button
 			margin-right: 16px
@@ -1549,5 +1732,9 @@ button
 	100%
 		opacity: .8
 		transform: scale(.9)
+
+@keyframes bounce_circleG
+	50%
+		background-color: rgb(189,45,40)
 
 @import "media"
