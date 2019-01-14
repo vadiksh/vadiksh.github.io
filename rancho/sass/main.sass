@@ -30,7 +30,7 @@ body
 		height: 100%
 section
 	padding: 120px 15px
-	overflow-x: hidden
+	overflow: hidden
 .section-title
 	text-align: center
 	font-family: 'sancreek'
@@ -126,7 +126,7 @@ button
 	&.getting-here
 		background: url('../img/getting-here/banner.jpg') 0 0/cover
 	&.rates
-		background: url('../img/rates/banner.jpg') 0 bottom/cover
+		background: url('../img/rates/banner.jpg') 30% bottom/cover
 	&.contact-us
 		background: url('../img/contact-us/banner.jpg') center center/cover
 	
@@ -1077,11 +1077,14 @@ button
 				background: rgba(76,60,44,.05)
 				span
 					display: inline-block
-					padding: 7px 25px
+					padding: 7px 0
 					position: relative
 					text-transform: uppercase
+				span:nth-child(1)
+					padding-left: 20px
 				span:nth-child(2)
 					text-align: right
+					padding-right: 20px
 					float: right
 				i
 					font-family: 'lato-italic'
@@ -1116,7 +1119,7 @@ button
 .ranch-getting-here
 	padding: 0 0 170px 0
 	.video
-		padding: 0 0 120px 0
+		padding: 0 15px 120px
 	.text-block a
 		font-family: 'sancreek'
 		font-size: 20px
@@ -1174,7 +1177,7 @@ button
 			width: 100%
 			height: 100%
 			background: url('../img/rates/holder.png') no-repeat center center/contain
-			z-index: -5
+			z-index: 0
 		&-img
 			position: relative
 			width: 100%
@@ -1276,7 +1279,7 @@ button
 				max-width: 500px
 				width: 90%
 				height: 23px
-				background: url('../img/rates/separator.png')
+				background: url('../img/rates/separator.png') no-repeat center center/contain
 			&:nth-child(2n)
 				flex-flow: row-reverse nowrap
 
@@ -1436,7 +1439,8 @@ button
 			display: flex
 			justify-content: space-between
 			li
-				width: 25%
+				width: 100%
+				position: relative
 			.cabins-rates__sm-holder
 				position: relative
 				width: 100%
@@ -1484,6 +1488,10 @@ button
 				padding: 15px 0
 				text-transform: uppercase
 				background: rgba(76,60,44,.05)
+		.owl-carousel
+			max-width: 90%
+			margin: 0 auto
+
 		.owl-dots
 			display: none
 		.owl-nav button
@@ -1492,29 +1500,38 @@ button
 			padding: 10px !important
 			margin: 0
 			position: absolute
-			top: 50px
+			top: 50%
+			transform: translate3d(0, -50%, 0)
+			
 			&:hover
 				transition: .3s
 			span
-				width: 20px
-				height: 20px
+				display: block
+				width: 40px
+				height: 70px
+				background: url('../img/ranch-right.png') no-repeat center center/ contain
 				transition: .3s
 				font-size: 0
+				margin: 0 auto
 		.owl-nav button.owl-next
-			background: url('../img/ranch-right.png') no-repeat center
+			
 			right: -80px
-			&:hover
-				background: url('../img/ranch-right-hover.png') no-repeat center
-		.owl-nav button.owl-prev
-			background: url('../img/ranch-left.png') no-repeat center
+			span
+				background: url('../img/ranch-right.png') no-repeat center/ contain
+			&:hover span
+				background: url('../img/ranch-right-hover.png') no-repeat center/ contain
+		.owl-nav button.owl-prev 
 			left: -80px
-			&:hover
-				background: url('../img/ranch-left-hover.png') no-repeat center
+			span
+				background: url('../img/ranch-left.png') no-repeat center/ contain
+			&:hover 
+				span
+					background: url('../img/ranch-left-hover.png') no-repeat center/ contain
 .contact
 	padding-bottom: 0
 	&__form-container
 		position: relative
-		background: url('../img/contact-us/contact-bg.png') no-repeat center top/100%
+		background: url('../img/contact-us/contact-bg.png') no-repeat center top/100% 100%
 		padding: 120px 200px 100px
 		&::before
 			content: ''
@@ -1676,9 +1693,12 @@ button
 		#circleG_3
 			animation-delay: 0.6985s
 	&__buttons
+		margin-bottom: 100px
+		text-align:  center
 		button
 			margin-right: 16px
-			margin-bottom: 100px
+			margin-bottom: 10px
+
 	&__touch-base
 		font-size: 15px
 		text-align: center

@@ -71,6 +71,29 @@ $(document).ready(function(){
 			}
 		}
 	})
+	$('.activities-rates__more .owl-carousel').owlCarousel({
+		lazyLoad:true,
+		loop:true,
+		nav:true,
+		responsive: {
+			0: {
+				items: 1,
+				slideBy: 1
+			},
+			630: {
+				items: 2, 
+				slideBy: 2
+			},
+			767: {
+				items: 2,
+				slideBy: 2
+			},
+			1023: {
+				items: 4,
+				slideBy: 4
+			}
+		}
+	})
 	$('.owl-carousel').owlCarousel({
 		items: 1,
 		lazyLoad:true,

@@ -81,6 +81,13 @@
 @media screen and (max-width: 1024px)
 	section
 		padding: 60px 15px
+	.rooms::before
+		height: 600px
+	.area::after
+		top: 100px
+		background: url('../img/camping/lantern.png') no-repeat left center/contain
+		height: 500px
+		right: -300px
 	.section-title
 		font-size: 35px
 		span
@@ -198,6 +205,58 @@
 				// align-self: center
 				position: relative
 				z-index: 100
+	.area
+		&__types
+			h3
+				font-size: 20px
+	.cabins-rates__list
+		& > li
+			flex-flow: column !important
+			& > div
+				width: 100%
+				max-width: 480px
+				margin: 0 auto
+			.cabins-rates__overview
+				margin-bottom: 60px
+	.cabins-rates
+		h3
+			text-align: center
+		.container-flex
+			flex-flow: column
+			& > div
+				width: 100%
+				margin: 0 auto
+				max-width: 480px
+		&__overview
+			padding-top: 0
+		&__rules-policy.container-flex
+			h3
+				font-size: 22px
+			& > div
+				margin-bottom: 30px
+		.buttons
+			li
+				margin-bottom: 20px
+	.activities-rates__more
+		.owl-nav button
+			&.owl-prev
+				left: -65px
+			&.owl-next
+				right: -65px
+			span
+				height: 40px
+	.ranch-getting-here
+		.video
+			.container-flex
+				flex-flow: column
+				& > div
+					width: 100%
+					max-width: 480px
+			&__block
+				max-width: none !important
+				padding-bottom: 99%
+
+	
 	.footer
 		background: url('../img/footer.jpg') repeat left center/140%
 		.container-flex
@@ -220,6 +279,38 @@
 				font-size: 16px
 				margin-bottom: 0px
 		
+@media screen and (max-width: 900px)
+	.map
+		&__content
+			width: 100%
+			max-width: 480px
+			margin: 0 auto
+		&__image
+			position: relative
+			top: 0
+			padding-bottom: 0
+			width: 100%
+			left: -20%
+			img
+				position: relative
+		.container-flex
+			justify-content: center
+		h3
+			font-size: 22px
+	.ranch-getting-here
+		padding-bottom: 0px
+		.video
+			padding-bottom: 30px
+	.contact
+		form h3
+			font-size: 22px
+		&__form-container
+			padding: 60px
+			&::before
+				display: none
+		&__buttons
+			margin-bottom: 40px
+
 @media screen and (max-width: 767px)
 	.welcome
 		.container-flex
@@ -250,6 +341,25 @@
 		.slider
 			li
 				height: 40vw
+	.rooms,.area
+		.container-flex
+			flex-flow: column
+			& > div, & > li
+				max-width: 480px
+				margin: 0 auto
+				width: 100%
+			& > li
+				margin-bottom: 40px
+	.rooms::before, .area::after
+		display: none
+	.area__types
+		padding: 60px 0
+	.contact
+		padding-left: 0
+		padding-right: 0
+		&__form-container
+			background: url('../img/contact-us/contact-bg.png') no-repeat center top/auto 100%
+
 @media screen and (max-width: 630px)
 	section
 		padding: 30px 10px
@@ -270,7 +380,9 @@
 		h1
 			max-width: 95%
 		b
-			top: -20px
+			top: -10px
+			letter-spacing: 12px
+			font-size: 14px
 	.ranch
 		&-container
 			background: none
@@ -344,6 +456,47 @@
 					width: 150px
 					height: 45px
 					font-size: 15px
+	.activities-rates__more
+		position: relative
+		.owl-carousel
+			max-width: none
+		.owl-nav button
+			top: auto
+			bottom: -20px
+			transform: none
+			&.owl-prev
+				left: -15px
+			&.owl-next
+				right: -15px
+			span
+				height: 30px
+	.cabins-rates
+		h3
+			font-size: 22px
+		&__overview .owl-dots
+			bottom: -25px !important
+		&__prices
+			padding-top: 50px
+	.map
+		&__image
+			width: 150%
+			left: -35%
+		&__table
+			ul li
+				font-size: 14px
+	.ranch-getting-here
+		padding-bottom: 30px
+	.contact
+		form 
+			.description
+				line-height: 1.4
+		&__form-container
+			padding: 50px 15px
+		&__buttons
+			button
+				width: 150px
+				height: 45px
+				font-size: 15px
 	.footer
 		h3
 			padding-top: 10px
