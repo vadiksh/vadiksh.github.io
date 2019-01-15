@@ -230,3 +230,31 @@ $(document).ready(function() {
 		}, 300)
 	}
 });
+$(window).load(function() {
+	$('.articles-owl .owl-carousel').owlCarousel({
+	  loop:true,
+	  margin:15,
+	  nav:false,
+	  dots: false,
+	  URLhashListener:true,
+      startPosition: 'URLHash',
+	  responsiveClass:true,
+	  responsive:{
+	  	0:{
+	  	  items: 1.25
+	  	},
+		350:{
+		  items:1.5
+		},
+		450:{
+		  items:1.7
+		},
+		670:{
+		  items:2
+		},
+		770:{
+		  items:2.2
+		}
+	  }
+   });
+});
