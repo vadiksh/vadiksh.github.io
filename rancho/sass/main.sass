@@ -112,8 +112,121 @@ button
 	background: url('../img/holder-sm-right.png') no-repeat center center/contain
 	img
 		transform: rotate3d(0,0,1,1deg)
+.gallery__popup
+	display: none
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	padding: 60px
+	z-index: 999
+	overflow-y: scroll
+	background: rgba(0,0,0,.9)
+	img
+		display: block
+		max-width: 1440px
+		margin: 0 auto
+		width: 100%
+		height: auto
+	.close
+		position: fixed
+		right: 25px
+		top: 15px
+		width: 50px
+		height: 50px
+		cursor: pointer
+		z-index: 1000
+		span
+			display: block
+			position: absolute
+			text-align: center
+			width: 30px
+			height: 3px
+			top: 50%
+			left: 50%
+			background: #fff
+			transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,45deg)
+			transition: .3s
+			&::after
+				display: block
+				content: ''
+				position: absolute
+				right: 0
+				top: 0
+				width: 30px
+				height: 3px
+				background: #fff
+				transform: rotate3d(0,0,1,90deg)
+				transition: .3s
+		&:hover
+			span, span::after
+				background: $accent
+				transition: .3s
 
 
+.share-block 
+	display: inline-block
+	position: relative
+.foot-social 
+	display: none
+	vertical-align: middle
+	position: absolute
+	bottom: 6px
+	right: -100px
+	li 
+		display: inline-block
+		vertical-align: top
+		margin-right: 8px
+		opacity: 0
+		animation: social 800ms forwards
+		+ li 
+			animation-delay: 200ms
+
+	&:last-child 
+		margin-right: 0
+	a 
+		display: block
+		width: 30px
+		height: 30px
+		position: relative
+		transition: .2s
+		
+	.fb
+		background: url('../img/fb.svg') no-repeat center center/contain
+	.mail
+		background: url('../img/mail.svg') no-repeat center center/contain
+		height: 32px
+		width: 34px
+	&:hover 
+		opacity: 1
+		transition: .2s
+
+	&:after 
+		content: ""
+		width: 0
+		height: 0
+		-webkit-box-shadow: 0 0 1px 1px white
+		box-shadow: 0 0 1px 1px white
+		opacity: 0
+		position: absolute
+		left: 0
+		right: 0
+		top: 0
+		bottom: 0
+		margin: auto
+		transition: all .5s
+		-webkit-transition: all 0.5s
+
+@keyframes social 
+  0% 
+    opacity: 0
+    transform: translate(-50px, 0)
+  
+  100% 
+    opacity: 1
+    transform: translate(0, 0)
+  
 
 .header
 	background: url('../img/experience/banner.jpg') 0 0/cover
@@ -134,7 +247,7 @@ button
 	height: 110px
 	width: 100%
 	background: url('../img/header.jpg') no-repeat
-	background-size: auto 100%
+	background-size: 100% 100%
 	padding: 0 15px
 	position: relative
 
@@ -582,6 +695,7 @@ button
 			width: 380px
 			height: 700px
 			background: url('../img/experience/exp-trees.png') no-repeat center center /contain
+			z-index: -1
 		> .container-flex
 			justify-content: space-between
 			// margin: 0
@@ -843,6 +957,21 @@ button
 			font-size: 14px
 		a
 			color: $text-title
+		&-social
+			margin-top: 10px
+			li
+				display: inline-block
+				margin-right: 20px
+			a
+				display: block
+				width: 30px
+				height: 30px
+			.fb
+				background: url('../img/fb.svg') no-repeat center center/contain
+			.insta
+				background: url('../img/insta.svg') no-repeat center center/contain
+				width: 32px
+				height: 31px
 .area, .rooms
 	padding-bottom: 0
 	position: relative

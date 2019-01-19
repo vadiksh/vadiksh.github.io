@@ -1,4 +1,15 @@
 $(document).ready(function(){
+	var imgSrc = $('.slider li:first-of-type img').attr('data-src');
+	var fbSrc = 'https://www.facebook.com/sharer/sharer.php?u=' + location.origin + '/' + imgSrc;
+	var mailSrc = 'mailto:?subject=Wells Gray Guest Ranch&body=' + location.origin + '/' + imgSrc;
+
+	$('.foot-social .fb').attr('href', fbSrc);
+	$('.foot-social .mail').attr('href', mailSrc);
+	
+	$('.share-click-ico').on('click', function() {
+	    $('.foot-social').slideToggle();
+	    $('.foot-social').toggleClass("active");
+	});
 
 	for (var i = 0; i < $('.welcome__saloon .welcome__activity-item span').length; i++) {
 		var imgIndex = +i + 1;
@@ -100,15 +111,36 @@ $(document).ready(function(){
 		loop:true,
 		nav:true
 	})
-
+	
 	$('.ranch .slider li').click(function() {
-		var imgSrc = $(this).find('img').attr('data-src');
-
+		imgSrc = $(this).find('img').attr('data-src');
+		fbSrc = 'https://www.facebook.com/sharer/sharer.php?u=' + location.origin + '/' + imgSrc;
+		mailSrc = 'mailto:?subject=Wells Gray Guest Ranch&body=' + location.origin + '/' + imgSrc;
 		$('.ranch .gallery__screen').fadeOut(200, function() {
 			$('.ranch .gallery__screen').css({"background": "url('" + imgSrc + "') no-repeat center center/cover"})
 			$('.ranch .gallery__screen').fadeIn(400);
 		})
-			
+		$('.foot-social .fb').attr('href', fbSrc);
+		$('.foot-social .mail').attr('href', mailSrc);
+	})
+
+	$('a[href^="#"]').click(function(e) {
+		e.preventDefault();
+		var elementId = $(this).attr('href');
+
+		$('body,html').animate({
+			scrollTop: $(elementId).offset().top
+		}, 500)
+	})
+
+	$('.enlarge').click(function () {
+		// var enlargeSrc = $('.gallery__screen').css('background-image');
+		$('.gallery__popup img').attr('src', imgSrc)
+		$('.gallery__popup').fadeIn(300);
+		console.log(imgSrc)
+	})
+	$('.gallery__popup .close').click(function() {
+		$('.gallery__popup').fadeOut(300);
 	})
 
 	$('.video__wrapper button').click(function() {
