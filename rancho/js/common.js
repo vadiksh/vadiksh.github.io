@@ -1,11 +1,11 @@
 $(document).ready(function(){
 	var imgSrc = $('.slider li:first-of-type img').attr('data-src');
-	var fbSrc = 'https://www.facebook.com/sharer/sharer.php?u=' + location.origin + '/' + imgSrc;
-	var mailSrc = 'mailto:?subject=Wells Gray Guest Ranch&body=' + location.origin + '/' + imgSrc;
+	var fbSrc = 'https://www.facebook.com/sharer/sharer.php?u=' + location.origin + '/rancho/' + imgSrc;
+	var mailSrc = 'mailto:?subject=Wells Gray Guest Ranch&body=' + location.origin + '/rancho/' + imgSrc;
 
 	$('.foot-social .fb').attr('href', fbSrc);
 	$('.foot-social .mail').attr('href', mailSrc);
-	
+
 	$('.share-click-ico').on('click', function() {
 	    $('.foot-social').slideToggle();
 	    $('.foot-social').toggleClass("active");
@@ -114,8 +114,8 @@ $(document).ready(function(){
 	
 	$('.ranch .slider li').click(function() {
 		imgSrc = $(this).find('img').attr('data-src');
-		fbSrc = 'https://www.facebook.com/sharer/sharer.php?u=' + location.origin + '/' + imgSrc;
-		mailSrc = 'mailto:?subject=Wells Gray Guest Ranch&body=' + location.origin + '/' + imgSrc;
+		fbSrc = 'https://www.facebook.com/sharer/sharer.php?u=' + location.origin + '/rancho/' + imgSrc;
+		mailSrc = 'mailto:?subject=Wells Gray Guest Ranch&body=' + location.origin + '/rancho/' + imgSrc;
 		$('.ranch .gallery__screen').fadeOut(200, function() {
 			$('.ranch .gallery__screen').css({"background": "url('" + imgSrc + "') no-repeat center center/cover"})
 			$('.ranch .gallery__screen').fadeIn(400);
