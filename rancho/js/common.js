@@ -28,6 +28,15 @@ $(document).ready(function(){
 	setBackground($('.welcome__activities .welcome__activity-item span'), 'experience/activity', 'center/cover');
 	setBackground($('.welcome__saloon .welcome__activity-item span'), 'experience/saloon', 'center/cover');
 
+
+	setTimeout(function() {
+		 else if (location.hash) {
+			$('body,html').animate({
+				scrollTop: $(location.hash).offset().top + 80
+			}, 500)
+		}
+	}, 1000)
+	
 	
 	$('.slider .owl-carousel').owlCarousel({
 		lazyLoad:true,
@@ -200,8 +209,4 @@ $(document).ready(function(){
  			})	
  		}
  	}
-
 });
-
-
-	
