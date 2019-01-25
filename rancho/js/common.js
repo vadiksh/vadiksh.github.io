@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 
 	setTimeout(function() {
-		 else if (location.hash) {
+		if (location.hash) {
 			$('body,html').animate({
 				scrollTop: $(location.hash).offset().top + 80
 			}, 500)
