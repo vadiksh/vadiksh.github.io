@@ -104,7 +104,7 @@ button {
 		}
  		li {
 			position: relative;
-			padding: 50px 0;
+			padding: 50px 0 0;
 			transform: translate3d(0,100%,0);
 		}
 		.owl-item:not(.center) li.revealed {
@@ -145,15 +145,16 @@ button {
 					transition: 2.2s cubic-bezier(.5,0,0,1);
 					transition-delay: 0.3s;
 					transform: translate3d(0, 0, 0);
+					visibility: visible;
 				}
 			}
 		}
 		.owl-dots {
-			transform: translate3d(0, 100px, 0);
+			transform: translate3d(0, 0, 0);
 			opacity: 0;
 		}
 		.owl-dots.revealed {
-			transform: translate3d(0, 0, 0);
+			transform: translate3d(0, -70px, 0);
 			opacity: 1;
 			transition: 2.2s .5s cubic-bezier(.5,0,0,1);
 		}
@@ -233,11 +234,13 @@ button {
 				color: #fff;
 				pointer-events: initial;
 				opacity: 0;
+				visibility: hidden;
 				transform: translate3d(0, 300px, 0);
+				padding: 0;
 				&::after {
 					display: inline-block;
 					content: '';
-					width: 20px;
+					width: 24px;
 					height: 20px;
 					background: url('../images/play-sm.png') no-repeat center center/100% auto;
 					transform: translate3d(10px,4px,0);
@@ -304,9 +307,15 @@ button {
 			margin: 0 10px;
 			box-shadow: 0 10px 20px 0 rgba(0,0,0,.08);
 			margin-bottom: 20px;
-			&:hover .overlay {
-				transform: translate3d(100%,0,0);
-				transition: .4s ease-out;
+			&:hover {
+				.overlay {
+					transform: translate3d(100%,0,0);
+					transition: .4s ease-out;
+				}
+				&::before {
+					transform: translate3d(-50%,-50%,0);
+					transition: .4s ease-out;
+				}
 			}
 			&::after {
 				position: absolute;
@@ -317,6 +326,24 @@ button {
 				left: 0;
 				bottom: 0;
 				z-index: 10;
+			}
+			&::before {
+				display: block;
+				position: absolute;
+				text-transform: uppercase;
+				left: 50%;
+				top: 50%;
+				transform: translate3d(-250%,-50%,0);
+				color: white;
+				font-size: 20px;
+				font-family: 'Circular-Bold';
+				transition: .2s ease-out;
+			}
+			&.education::before {
+				content: 'education';
+			}
+			&.disability::before {
+				content: 'disability';
 			}
 			.overlay {
 				position: absolute;
@@ -491,10 +518,20 @@ button {
 /** Share **/
 
 .footer_btm {
+  visibility: hidden;
   position: fixed;
   right: 30px;
   bottom: 30px;
   z-index: 1020;
+  opacity: 0;
+  transition: .2s ease-in;
+  transform: translate3d(25px,0,0);
+}
+.footer_btm.revealed {
+	opacity: 1;
+	transition: .3s ease-out;
+	transform: translate3d(0,0,0);
+	visibility: visible;
 }
 
 .scroll-top {
