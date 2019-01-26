@@ -551,7 +551,8 @@ button {
         visibility: hidden;
         -webkit-transform: translate3d(0, 300px, 0);
                 transform: translate3d(0, 300px, 0);
-        padding: 0; }
+        padding: 0;
+        overflow: visible; }
         .slider-section__slider .text-content button i {
           display: inline-block;
           width: 20px;
