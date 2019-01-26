@@ -1,12 +1,21 @@
-$( window ).load(function() {
-  $('.loader').fadeOut(400, function() {
-  	setTimeout(function(){
-  	  $(window).trigger('scroll');
-  	}, 200)
-  	$('.slider-section__slider li, .owl-dots').addClass('revealed');
-  });
-});
+// $(window).load(function() {
+//   $('.loader').fadeOut(400, function() {
+//   	setTimeout(function(){
+//   	  $(window).trigger('scroll');
+//   	}, 200)
+//   	$('.slider-section__slider li, .owl-dots').addClass('revealed');
+//   });
+// });
 $(document).ready(function() {
+	setTimeout(function() {
+		$('.loader').fadeOut(400, function() {
+			// setTimeout(function(){
+			  $(window).trigger('scroll');
+			// }, 200)
+			$('.slider-section__slider li, .owl-dots').addClass('revealed');
+		});
+	},400)
+	
 	/* Footer Share Animation */
   $('.share-click-ico').on('click', function() {
       $('.foot-social').slideToggle();
@@ -41,8 +50,7 @@ $(document).ready(function() {
   			videoSrc = $('.owl-item:not(.cloned) li')[index].dataset.src;
   	$('.slider-section__background video').fadeOut(300, function(){
   		$('.slider-section__background video source').attr('src', videoSrc);
-  		$('.slider-section__background video').load();
-  		$('.slider-section__background video').fadeIn(300);
+  		$('.slider-section__background video').load().delay(500).fadeIn(300);
   	})
   	$('.slider-section__background-color').css({'background': color});
 	})
