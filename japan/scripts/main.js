@@ -42,7 +42,9 @@ $(document).ready(function() {
     			videoSrc = $('.owl-item:not(.cloned) li')[index].dataset.src;
     	$('.slider-section__background video').fadeOut(300, function(){
     		$('.slider-section__background video source').attr('src', videoSrc);
+    		console.log($('.slider-section__background video source').attr('src'));
     		$('.slider-section__background video').load('', function(){
+    			console.log('loaded');
     			$('.slider-section__background video').fadeIn(300);
     		});
     	})
