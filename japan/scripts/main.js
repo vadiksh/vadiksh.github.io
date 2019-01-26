@@ -41,11 +41,11 @@ $(document).ready(function() {
     			color = $('.owl-item:not(.cloned) li')[index].dataset.color,
     			videoSrc = $('.owl-item:not(.cloned) li')[index].dataset.src;
     	$('.slider-section__background video').fadeOut(300, function(){
-    		$('.slider-section__background video source').attr('src', videoSrc);
-    		console.log($('.slider-section__background video source').attr('src'));
-    		$('.slider-section__background video').load('', function(){
+    		$('.slider-section__background video source')[0].attr('src', videoSrc);
+    		console.log($('.slider-section__background video source')[0].attr('src'));
+    		$('.slider-section__background video')[0].load('', function(){
     			console.log('loaded');
-    			$('.slider-section__background video').fadeIn(300);
+    			$('.slider-section__background video')[0].fadeIn(300);
     		});
     	})
     	$('.slider-section__background-color').css({'background': color});
