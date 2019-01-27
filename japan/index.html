@@ -118,6 +118,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="https://cdn.plyr.io/3.4.8/plyr.css">
 
 </head>
 
@@ -151,7 +152,10 @@
 <div class="popup">
 	<div class="popup-container">
 		<div class="close"><span></span></div>
-		<iframe src="" frameborder="0"></iframe>
+		<!-- <div class="plyr__video-embed" id="player">
+		    <iframe src="" allowfullscreen allow="autoplay"></iframe>
+		</div> -->
+		<div id="player" class="iframe" data-plyr-provider="vimeo" data-plyr-embed-id=""></div>
 	</div>
 </div>
 
@@ -162,14 +166,14 @@
 		</div>
 	</header>
 	<div class="slider-section__background">
-		<video autoplay muted loop id='myVideo'>
+		<video autoplay muted loop id='myVideo' data-object-fit>
 			<source src="https://player.vimeo.com/external/313332777.hd.mp4?s=1075e0e2bd6a403d04cf1bedafc9a81362055452" type="video/mp4">
 		</video>
 		<span class="slider-section__background-color"></span>
   </div>
 	<ul class="slider-section__slider owl-carousel owl-theme">
 		<li data-color='#6aac5a' data-src='https://player.vimeo.com/external/313332777.hd.mp4?s=1075e0e2bd6a403d04cf1bedafc9a81362055452'>
-			<div class="thumbnail education"><button class='open-video' data-src='https://player.vimeo.com/external/312490346.hd.mp4?s=297b00ec5346f1302be1c89067271bea911e1da5&autoplay=1'></button></div>
+			<div class="thumbnail education"><button class='open-video' data-src='312490346'></button></div>
 			<div class="text-content">
 				<h2>Side by Side</h2>
 				<a class='mob-play open-video' data-src='https://player.vimeo.com/external/312490346.hd.mp4?s=297b00ec5346f1302be1c89067271bea911e1da5&autoplay=1'></a>
@@ -179,7 +183,7 @@
 			</div>
 		</li>
 		<li data-color='#5987d5' data-src='https://player.vimeo.com/external/313332763.hd.mp4?s=117ca3054e5d378d3bffaebb70a90ba708b3de9f'>
-			<div class="thumbnail disability"><button class='open-video' data-src='https://player.vimeo.com/external/312490271.hd.mp4?s=c937a87c819c9219640b196e48e561531d2361ad&autoplay=1'></button></div>
+			<div class="thumbnail disability"><button class='open-video' data-src='312490271'></button></div>
 			<div class="text-content">
 				<h2>Side by Side</h2>
 				<a class='mob-play open-video' data-src='https://player.vimeo.com/external/312490271.hd.mp4?s=c937a87c819c9219640b196e48e561531d2361ad&autoplay=1'></a>
@@ -373,6 +377,11 @@ if( DEVELOPMENT && !IE && ES6 ){
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdn.plyr.io/3.4.8/plyr.polyfilled.js"></script>
+<script src="scripts/objectFitPolyfill.basic.min.js"></script>
+<!-- <script>const player = new Plyr('#player', {
+    "autoplay": true
+});</script> -->
 
 <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
 <script>

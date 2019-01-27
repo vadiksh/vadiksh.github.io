@@ -60,14 +60,18 @@ $(document).ready(function() {
 	$('.owl-item.center').mouseleave(function(){
 		$('.owl-carousel').trigger('play.owl.autoplay');
 	})
+	var player;
 	$('.open-video').click(function() {
 		var src = this.dataset.src;
 		$('.popup').fadeIn(300);
-		$('.popup iframe').attr('src', src);
+		$('#player').attr('data-plyr-embed-id', src);
+		player = new Plyr('#player', {
+    	"autoplay": true
+		});
 	})
 	$('.popup .close').click(function() {
 		$('.popup').fadeOut(300);
-		$('.popup iframe').attr('src', '');
+		player.destroy();
 	})
 
 	$(window).scroll(function() {
