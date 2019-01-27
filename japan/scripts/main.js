@@ -12,7 +12,7 @@ $(document).ready(function() {
 			// setTimeout(function(){
 			  $(window).trigger('scroll');
 			// }, 200)
-			$('.slider-section__slider li, .owl-dots').addClass('revealed');
+			$('.slider-section__slider li, .dots').addClass('revealed');
 		});
 	},400)
 	
@@ -30,12 +30,14 @@ $(document).ready(function() {
   $('.owl-carousel').owlCarousel({
   	items:1.3,
   	center: true,
-      loop:true,
-      margin:0,
-      autoplay: true,
-      autoplayTimeout: 8000,
-      autoplaySpeed: 2000,
-      responsive:{
+  	slideBy: 'page',
+  	dots: false,
+    loop:true,
+    margin:0,
+    autoplay: true,
+    autoplayTimeout: 8000,
+    autoplaySpeed: 2000,
+    responsive:{
           0:{
               items:1.2
           },
@@ -45,14 +47,17 @@ $(document).ready(function() {
       }
   })
   $('.owl-carousel').on('changed.owl.carousel', function(event) {
-  	var index = event.page.index,
-  			color = $('.owl-item:not(.cloned) li')[index].dataset.color,
-  			videoSrc = $('.owl-item:not(.cloned) li')[index].dataset.src;
+  	var index = event.page.index;
+  	var	color = $('.owl-item:not(.cloned) li')[index].dataset.color;
+  	var	videoSrc = $('.owl-item:not(.cloned) li')[index].dataset.src;
+  	
+  	console.log(index)
   	$('.slider-section__background video').fadeOut(300, function(){
   		$('.slider-section__background video source').attr('src', videoSrc);
   		$('.slider-section__background video').load().delay(500).fadeIn(300);
   	})
   	$('.slider-section__background-color').css({'background': color});
+  	$('.dot-' + index).addClass('active').siblings().removeClass('active');
 	})
 	$('.owl-item.center').mouseenter(function(){
 		$('.owl-carousel').trigger('stop.owl.autoplay');
@@ -60,6 +65,12 @@ $(document).ready(function() {
 	$('.owl-item.center').mouseleave(function(){
 		$('.owl-carousel').trigger('play.owl.autoplay');
 	})
+	$('.dot').click(function() {
+		var index = this.dataset.dot;
+		$('.owl-carousel').trigger('to.owl.carousel', [index, 1000]);
+	})
+
+
 	var player;
 	$('.open-video').click(function() {
 		var src = this.dataset.src;
