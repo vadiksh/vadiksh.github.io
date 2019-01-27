@@ -48,9 +48,9 @@ $(document).ready(function() {
   })
   $('.owl-carousel').on('changed.owl.carousel', function(event) {
   	var index = event.page.index;
-  	var	color = $('.owl-item:not(.cloned) li')[index].dataset.color;
-  	var	videoSrc = $('.owl-item:not(.cloned) li')[index].dataset.src;
-  	
+  	var	color = $($('.owl-item:not(.cloned) li')[index]).attr('data-color');
+  	var	videoSrc = $($('.owl-item:not(.cloned) li')[index]).attr('data-src');
+
   	console.log(index)
   	$('.slider-section__background video').fadeOut(300, function(){
   		$('.slider-section__background video source').attr('src', videoSrc);
@@ -59,21 +59,23 @@ $(document).ready(function() {
   	$('.slider-section__background-color').css({'background': color});
   	$('.dot-' + index).addClass('active').siblings().removeClass('active');
 	})
+
 	$('.owl-item.center').mouseenter(function(){
 		$('.owl-carousel').trigger('stop.owl.autoplay');
 	})
 	$('.owl-item.center').mouseleave(function(){
 		$('.owl-carousel').trigger('play.owl.autoplay');
 	})
+
 	$('.dot').click(function() {
-		var index = this.dataset.dot;
+		var index = $(this).attr('data-dot');
 		$('.owl-carousel').trigger('to.owl.carousel', [index, 1000]);
 	})
 
 
 	var player;
 	$('.open-video').click(function() {
-		var src = this.dataset.src;
+		var src = $(this).attr('data-src');
 		$('.popup').fadeIn(300);
 		$('#player').attr('data-plyr-embed-id', src);
 		player = new Plyr('#player', {
