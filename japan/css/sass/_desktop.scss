@@ -112,7 +112,7 @@ button {
 		bottom: 0;
 		text-align: center;
 		opacity: 0;
-		z-index: 100;
+		z-index: 10;
 		transform: translate3d(0, 100px, 0);
 		.dot {
 			transition: .2s ease;

@@ -47,11 +47,10 @@ $(document).ready(function() {
       }
   })
   $('.owl-carousel').on('changed.owl.carousel', function(event) {
-  	var index = event.page.index;
-  	var	color = $($('.owl-item:not(.cloned) li')[index]).attr('data-color');
-  	var	videoSrc = $($('.owl-item:not(.cloned) li')[index]).attr('data-src');
+  	var index = event.page.index,
+  			color = $($('.owl-item:not(.cloned) li')[index]).attr('data-color'),
+  			videoSrc = $($('.owl-item:not(.cloned) li')[index]).attr('data-src');
 
-  	console.log(index)
   	$('.slider-section__background video').fadeOut(300, function(){
   		$('.slider-section__background video source').attr('src', videoSrc);
   		$('.slider-section__background video').load().delay(500).fadeIn(300);
