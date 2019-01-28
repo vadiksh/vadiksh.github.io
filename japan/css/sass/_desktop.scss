@@ -283,7 +283,7 @@ button {
 	}
 	.owl-item.center .thumbnail:hover {
 		transform: scale(1.06);
-		transition: .3s ease-out;
+		transition: 0.3s ease-out;
 		button {
 			opacity: 1;
 			transition: .3s ease-out;
@@ -291,7 +291,7 @@ button {
 	}
 	.owl-item:not(.center) {
 		transform: scale3d(1, 0.9, 1);
-		transition: .3s ease;
+		transition: 1.5s ease;
 		.text-content {
 			opacity: 0;
 			transition: .3s ease;

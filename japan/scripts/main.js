@@ -31,11 +31,12 @@ $(document).ready(function() {
   	items:1.3,
   	center: true,
   	dots: false,
+  	slideBy: 'page',
     loop:true,
     margin:0,
     autoplay: true,
     autoplayTimeout: 8000,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1500,
     responsive:{
           0:{
               items:1.2
@@ -49,7 +50,6 @@ $(document).ready(function() {
   	var index = event.page.index,
   			color = $($('.owl-item:not(.cloned) li')[index]).attr('data-color'),
   			videoSrc = $($('.owl-item:not(.cloned) li')[index]).attr('data-src');
-
   	$('.slider-section__background video').fadeOut(300, function(){
   		$('.slider-section__background video source').attr('src', videoSrc);
   		$('.slider-section__background video').load().delay(500).fadeIn(300);
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 	$('.dot').click(function() {
 		var index = $(this).attr('data-dot');
-		$('.owl-carousel').trigger('to.owl.carousel', [index, 1000]);
+		$('.owl-carousel').trigger('to.owl.carousel', [index, 1500]);
 	})
 
 

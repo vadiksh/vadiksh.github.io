@@ -595,9 +595,9 @@ button {
     -webkit-transform: scale(1.06);
         -ms-transform: scale(1.06);
             transform: scale(1.06);
-    -webkit-transition: .3s ease-out;
-    -o-transition: .3s ease-out;
-    transition: .3s ease-out; }
+    -webkit-transition: 0.3s ease-out;
+    -o-transition: 0.3s ease-out;
+    transition: 0.3s ease-out; }
     .slider-section .owl-item.center .thumbnail:hover button {
       opacity: 1;
       -webkit-transition: .3s ease-out;
@@ -606,9 +606,9 @@ button {
   .slider-section .owl-item:not(.center) {
     -webkit-transform: scale3d(1, 0.9, 1);
             transform: scale3d(1, 0.9, 1);
-    -webkit-transition: .3s ease;
-    -o-transition: .3s ease;
-    transition: .3s ease; }
+    -webkit-transition: 1.5s ease;
+    -o-transition: 1.5s ease;
+    transition: 1.5s ease; }
     .slider-section .owl-item:not(.center) .text-content {
       opacity: 0;
       -webkit-transition: .3s ease;
