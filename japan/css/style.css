@@ -311,7 +311,7 @@ button {
   top: 20px;
   left: 0;
   overflow-y: scroll;
-  padding: 120px 50px;
+  padding: 60px;
   z-index: 100;
   background: rgba(0, 0, 0, 0.8); }
   .popup-container {
@@ -344,8 +344,8 @@ button {
             align-items: center;
     width: 50px;
     height: 50px;
-    right: 0;
-    top: -60px;
+    right: -50px;
+    top: -10px;
     cursor: pointer; }
     .popup .close span {
       display: block;
@@ -591,18 +591,18 @@ button {
           background: url("../images/play-sm.png") no-repeat center center/contain;
           -webkit-transform: translate3d(10px, 4px, 0);
                   transform: translate3d(10px, 4px, 0); }
-  .slider-section .owl-item.center:hover .thumbnail button {
-    opacity: 1;
-    -webkit-transition: .3s ease-out;
-    -o-transition: .3s ease-out;
-    transition: .3s ease-out; }
-  .slider-section .owl-item.center:hover .thumbnail {
+  .slider-section .owl-item.center .thumbnail:hover {
     -webkit-transform: scale(1.06);
         -ms-transform: scale(1.06);
             transform: scale(1.06);
     -webkit-transition: .3s ease-out;
     -o-transition: .3s ease-out;
     transition: .3s ease-out; }
+    .slider-section .owl-item.center .thumbnail:hover button {
+      opacity: 1;
+      -webkit-transition: .3s ease-out;
+      -o-transition: .3s ease-out;
+      transition: .3s ease-out; }
   .slider-section .owl-item:not(.center) {
     -webkit-transform: scale3d(1, 0.9, 1);
             transform: scale3d(1, 0.9, 1);

@@ -30,7 +30,6 @@ $(document).ready(function() {
   $('.owl-carousel').owlCarousel({
   	items:1.3,
   	center: true,
-  	slideBy: 'page',
   	dots: false,
     loop:true,
     margin:0,
@@ -59,10 +58,10 @@ $(document).ready(function() {
   	$('.dot-' + index).addClass('active').siblings().removeClass('active');
 	})
 
-	$('.owl-item.center').mouseenter(function(){
+	$('.owl-item.center .thumbnail').mouseenter(function(){
 		$('.owl-carousel').trigger('stop.owl.autoplay');
 	})
-	$('.owl-item.center').mouseleave(function(){
+	$('.owl-item.center .thumbnail').mouseleave(function(){
 		$('.owl-carousel').trigger('play.owl.autoplay');
 	})
 
