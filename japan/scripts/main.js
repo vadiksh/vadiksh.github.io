@@ -8,13 +8,11 @@
 // });
 $(document).ready(function() {
 	setTimeout(function() {
-		$('.loader').fadeOut(400, function() {
-			// setTimeout(function(){
-			  $(window).trigger('scroll');
-			// }, 200)
+		$('.loader').fadeOut(300, function() {
+			$(window).trigger('scroll');
 			$('.slider-section__slider li, .dots').addClass('revealed');
 		});
-	},400)
+	},200)
 	
 	/* Footer Share Animation */
   $('.share-click-ico').on('click', function() {
@@ -35,7 +33,7 @@ $(document).ready(function() {
     loop:true,
     margin:0,
     autoplay: true,
-    autoplayTimeout: 8000,
+    autoplayTimeout: 6000,
     autoplaySpeed: 1500,
     responsive:{
           0:{
@@ -113,11 +111,11 @@ $(document).ready(function() {
 			$('.info-section__partnership').addClass('revealed');
 		}
 
-		if(isInView($('.info-section__partnership-items'))) {
-			$('.info-section__partnership-items').addClass('revealed');
-		}
+		// if(isInView($('.info-section__partnership-items'))) {
+		// 	$('.info-section__partnership-items').addClass('revealed');
+		// }
 
-		if(scrolled + $(window).height()/1.3 > $('.info-section__partnership a').offset().top) {
+		if(scrolled + $(window).height() > $('.info-section__partnership a').offset().top) {
 			 $('.info-section__partnership a').addClass('revealed');
 		}
 

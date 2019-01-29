@@ -5,7 +5,7 @@
 		}
 		.text-content {
 			h2 {
-				font-size: 60px;
+				font-size: 55px;
 				margin-bottom: 30px;
 			}
 			span {
@@ -107,9 +107,6 @@
 	}
 }
 @media screen and (max-width: 767px) {
-	body {
-		padding-bottom: 60px;
-	}
 	.slider-section__slider {
 		.text-content {
 			width: 100%;
@@ -127,6 +124,7 @@
 		}
 	}
 	.info-section {
+		padding-bottom: 60px;
 		background: url('../images/bg.jpg') no-repeat left bottom/150%;
 		&__videos {
 			ul {
