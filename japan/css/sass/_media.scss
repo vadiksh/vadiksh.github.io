@@ -22,10 +22,10 @@
 @media screen and (max-width: 1023px) {
 	.slider-section {
 		header {
-			padding: 20px 0 20px;
+			padding: 20px;
 			text-align: center;
 			img {
-				max-width: 290px;
+				// max-width: 290px;
 			}
 		}
 		&__slider {
@@ -112,16 +112,21 @@
 			width: 100%;
 			text-align: center;
 			h2 {
-				font-size: 45px;
+				font-size: 38px;
 			}
 			span {
 				font-size: 18px;
 				line-height: 26px;
 			}
 			p {
-				font-size: 16px;
+				font-size: 14px;
+				line-height: 1.4;
+				padding: 0 10px;
 			}
 		}
+	}
+	.slider-section .dots.revealed {
+		transform: translate3d(0, -75px, 0);
 	}
 	.info-section {
 		padding-bottom: 60px;
@@ -137,10 +142,13 @@
 			}
 		}
 		&__partnership {
+			h3 {
+				font-size: 22px;
+			}
 			p {
 				display: block;
 				margin: 0 auto;
-				font-size: 17px;
+				font-size: 16px;
 			    line-height: 25px;
 			    max-width: 300px;
 			}
