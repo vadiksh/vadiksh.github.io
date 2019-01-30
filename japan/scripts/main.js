@@ -84,10 +84,12 @@ $(document).ready(function() {
 
 	var player;
 	$('.open-video').click(function() {
-		var src = $(this).attr('data-src');
+		var src = $(this).attr('data-src'),
+				mobSrc = $(this).attr('data-mob-src');
+
 		$('.popup').fadeIn(300);
 		if (isTouchDevice) {
-			$('.popup iframe').attr('src', src);
+			$('.popup iframe').attr('src', mobSrc);
 		} else {
 			$('#player').attr('data-plyr-embed-id', src);
 			player = new Plyr('#player', {
