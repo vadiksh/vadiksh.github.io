@@ -89,7 +89,7 @@ $(document).ready(function() {
 
 		$('.popup').fadeIn(300);
 		if (isTouchDevice) {
-			$('.popup iframe').attr('src', mobSrc);
+			$('.popup .mob-iframe').attr('src', mobSrc);
 		} else {
 			$('#player').attr('data-plyr-embed-id', src);
 			player = new Plyr('#player', {
@@ -102,7 +102,7 @@ $(document).ready(function() {
 	$('.popup .close').click(function() {
 		$('.popup').fadeOut(300);
 		if (isTouchDevice) {
-			$('.popup iframe').attr('src', '');
+			$('.popup .mob-iframe').attr('src', '');
 		} else {
 			player.destroy();
 		}
