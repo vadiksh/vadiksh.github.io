@@ -1,11 +1,3 @@
-// $(window).load(function() {
-//   $('.loader').fadeOut(400, function() {
-//   	setTimeout(function(){
-//   	  $(window).trigger('scroll');
-//   	}, 200)
-//   	$('.slider-section__slider li, .owl-dots').addClass('revealed');
-//   });
-// });
 $(document).ready(function() {
 	setTimeout(function() {
 		$('.loader').fadeOut(300, function() {
@@ -32,7 +24,7 @@ $(document).ready(function() {
   	slideBy: 'page',
     loop:true,
     margin:0,
-    autoplay: false,
+    autoplay: true,
     autoplayTimeout: 6000,
     autoplaySpeed: 1500,
     responsive:{
@@ -60,7 +52,7 @@ $(document).ready(function() {
 		$('.owl-carousel').trigger('stop.owl.autoplay');
 	})
 	$('.owl-item.center .thumbnail').mouseleave(function(){
-		// $('.owl-carousel').trigger('play.owl.autoplay');
+		$('.owl-carousel').trigger('play.owl.autoplay');
 	})
 
 	$('.dot').click(function() {
@@ -88,26 +80,26 @@ $(document).ready(function() {
 				mobSrc = $(this).attr('data-mob-src');
 
 		$('.popup').fadeIn(300);
-		// if (isTouchDevice) {
+		if (isTouchDevice) {
 			$('#player').hide();
 			$('.popup .mob-iframe').attr('src', mobSrc);
-		// } else {
-		// 	$('#player').attr('data-plyr-embed-id', src);
-		// 	player = new Plyr('#player', {
-	 //    	"autoplay": true,
-	 //    	"volume": 1,
-	 //    	"muted": false
-		// 	});
-		// }
+		} else {
+			$('#player').attr('data-plyr-embed-id', src);
+			player = new Plyr('#player', {
+	    	"autoplay": true,
+	    	"volume": 1,
+	    	"muted": false
+			});
+		}
 	})
 	$('.popup .close').click(function() {
 		$('.popup').fadeOut(300);
-		// if (isTouchDevice) {
+		if (isTouchDevice) {
 			$('#player').show();
 			$('.popup .mob-iframe').attr('src', '');
-		// } else {
-		// 	player.destroy();
-		// }
+		} else {
+			player.destroy();
+		}
 	})
 
 	$(window).scroll(function() {
@@ -119,7 +111,6 @@ $(document).ready(function() {
 
 		if(isInView($('.info-section__videos-container'))) {
 			$('.info-section__videos, .footer_btm, .info-section__partnership').addClass('revealed');
-			// $('.footer_btm').addClass('revealed')
 		} else {
 			$('.footer_btm').removeClass('revealed');
 		}
