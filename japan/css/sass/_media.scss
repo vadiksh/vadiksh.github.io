@@ -108,6 +108,13 @@
 	}
 }
 @media screen and (max-width: 767px) {
+	.popup {
+		padding: 90px 10px;
+		.close {
+			right: -10px;
+			top: -50px;
+		}
+	}
 	.slider-section__slider {
 		.text-content {
 			width: 100%;
