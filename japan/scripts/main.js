@@ -32,7 +32,7 @@ $(document).ready(function() {
   	slideBy: 'page',
     loop:true,
     margin:0,
-    autoplay: true,
+    autoplay: false,
     autoplayTimeout: 6000,
     autoplaySpeed: 1500,
     responsive:{
@@ -60,7 +60,7 @@ $(document).ready(function() {
 		$('.owl-carousel').trigger('stop.owl.autoplay');
 	})
 	$('.owl-item.center .thumbnail').mouseleave(function(){
-		$('.owl-carousel').trigger('play.owl.autoplay');
+		// $('.owl-carousel').trigger('play.owl.autoplay');
 	})
 
 	$('.dot').click(function() {
@@ -88,24 +88,26 @@ $(document).ready(function() {
 				mobSrc = $(this).attr('data-mob-src');
 
 		$('.popup').fadeIn(300);
-		if (isTouchDevice) {
+		// if (isTouchDevice) {
+			$('#player').hide();
 			$('.popup .mob-iframe').attr('src', mobSrc);
-		} else {
-			$('#player').attr('data-plyr-embed-id', src);
-			player = new Plyr('#player', {
-	    	"autoplay": true,
-	    	"volume": 1,
-	    	"muted": false
-			});
-		}
+		// } else {
+		// 	$('#player').attr('data-plyr-embed-id', src);
+		// 	player = new Plyr('#player', {
+	 //    	"autoplay": true,
+	 //    	"volume": 1,
+	 //    	"muted": false
+		// 	});
+		// }
 	})
 	$('.popup .close').click(function() {
 		$('.popup').fadeOut(300);
-		if (isTouchDevice) {
+		// if (isTouchDevice) {
+			$('#player').show();
 			$('.popup .mob-iframe').attr('src', '');
-		} else {
-			player.destroy();
-		}
+		// } else {
+		// 	player.destroy();
+		// }
 	})
 
 	$(window).scroll(function() {
