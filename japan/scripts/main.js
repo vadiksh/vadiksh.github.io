@@ -95,8 +95,9 @@ $(document).ready(function() {
 	$('.popup .close').click(function() {
 		$('.popup').fadeOut(300);
 		// if (isTouchDevice) {
-			$('#player').show();
+			
 			$('.popup .mob-iframe').attr('src', '');
+			$('#player').show();
 		// } else {
 		// 	player.destroy();
 		// }
