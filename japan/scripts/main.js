@@ -80,26 +80,26 @@ $(document).ready(function() {
 				mobSrc = $(this).attr('data-mob-src');
 
 		$('.popup').fadeIn(300);
-		if (isTouchDevice) {
+		// if (isTouchDevice) {
 			$('#player').hide();
 			$('.popup .mob-iframe').attr('src', mobSrc);
-		} else {
-			$('#player').attr('data-plyr-embed-id', src);
-			player = new Plyr('#player', {
-	    	"autoplay": true,
-	    	"volume": 1,
-	    	"muted": false
-			});
-		}
+		// } else {
+		// 	$('#player').attr('data-plyr-embed-id', src);
+		// 	player = new Plyr('#player', {
+	 //    	"autoplay": true,
+	 //    	"volume": 1,
+	 //    	"muted": false
+		// 	});
+		// }
 	})
 	$('.popup .close').click(function() {
 		$('.popup').fadeOut(300);
-		if (isTouchDevice) {
+		// if (isTouchDevice) {
 			$('#player').show();
 			$('.popup .mob-iframe').attr('src', '');
-		} else {
-			player.destroy();
-		}
+		// } else {
+		// 	player.destroy();
+		// }
 	})
 
 	$(window).scroll(function() {
