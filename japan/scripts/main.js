@@ -84,7 +84,8 @@ $(document).ready(function() {
 		if (isTouchDevice) {
 			$('#player').hide();
 			$('.popup video source').attr('src', mobSrc);
-			$('.popup video').load().play();
+			$('.popup video').load();
+			$('.popup video')[0].play();
 		} else {
 			$('#player').attr('data-plyr-embed-id', src);
 			player = new Plyr('#player', {
