@@ -58,10 +58,11 @@ $(document).ready(function() {
 	$('.dot').click(function() {
 		var index = $(this).attr('data-dot');
 		$('.dot-' + index).addClass('active').siblings().removeClass('active');
-		setTimeout(function(){
-			$('.owl-carousel').trigger('to.owl.carousel', [index, 1500]);
-		},5000)
-		
+
+		$('.owl-carousel').trigger('to.owl.carousel', [index, 1500]);
+		$('.owl-carousel').trigger('stop.owl.autoplay');
+		$('.owl-carousel').trigger('play.owl.autoplay');
+
 	})
 
 	var isTouchDevice = (('ontouchstart' in window)
@@ -77,13 +78,13 @@ $(document).ready(function() {
 	var player;
 	$('.open-video').click(function() {
 		var src = $(this).attr('data-src'),
-				mobSrc = $(this).attr('data-mob-src');
+			mobSrc = $(this).attr('data-mob-src');
 
 		$('.popup').fadeIn(300);
 		if (isTouchDevice) {
 			$('#player').hide();
 			$('.popup video source').attr('src', mobSrc);
-			$('.popup video').load();
+			$('.popup video').load().play();
 		} else {
 			$('#player').attr('data-plyr-embed-id', src);
 			player = new Plyr('#player', {
