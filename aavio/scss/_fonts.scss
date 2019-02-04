@@ -1,0 +1,9 @@
+@import "_mixins/font-face";
+
+@include font-face("pt-sans", "../fonts/PT-Sans-Regular");
+@include font-face("pt-sans-b", "../fonts/PT-Sans-Bold");
+@include font-face("montserrat", "../fonts/Montserrat-Regular");
+@include font-face("montserrat-l", "../fonts/Montserrat-Light");
+@include font-face("montserrat-b", "../fonts/Montserrat-Bold");
+@include font-face("gilroy", "../fonts/Gilroy-Regular");
+@include font-face("gilroy-b", "../fonts/Gilroy-Bold");

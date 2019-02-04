@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="17px" viewBox="0 0 22 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>002-close-envelope</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage-Copy" transform="translate(-762.000000, -6247.000000)" fill="#000000">
+            <g id="002-close-envelope" transform="translate(762.000000, 6247.000000)">
+                <path d="M11,11.87875 L8.2781875,9.31778623 L0.496604167,16.4894457 C0.779453125,16.7714239 1.16130208,16.947337 1.58245312,16.947337 L20.4175469,16.947337 C20.837151,16.947337 21.2173958,16.7714239 21.4986979,16.4894457 L13.7218125,9.31778623 L11,11.87875 Z" id="Fill-1"></path>
+                <path d="M21.5033958,0.510554348 C21.2205469,0.226913043 20.8403021,0.0526630435 20.4175469,0.0526630435 L1.58245313,0.0526630435 C1.16284896,0.0526630435 0.782604167,0.228576087 0.499755208,0.513942029 L11,10.189529 L21.5033958,0.510554348 Z" id="Fill-2"></path>
+                <polygon id="Fill-3" points="0 1.53603623 0 15.572 7.59469792 8.63353623"></polygon>
+                <polygon id="Fill-4" points="14.4053021 8.63353623 22 15.572 22 1.53092391"></polygon>
+            </g>
+        </g>
+        <g id="001-favorite-heart-button"></g>
+    </g>
+</svg>

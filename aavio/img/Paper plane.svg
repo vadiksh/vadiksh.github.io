@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="12px" viewBox="0 0 18 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>003-paper-plane</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 18 0 18 12 0 12"></polygon>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage-Copy" transform="translate(-362.000000, -3609.000000)">
+            <g id="Group-19" transform="translate(190.000000, 3607.000000)">
+                <g id="003-paper-plane" transform="translate(172.000000, 2.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M17.8206015,0.00777588937 L0.280530052,5.64696614 C-0.0450169892,5.75222424 -0.100517018,6.14039476 0.184248753,6.31162684 L2.80629697,7.90396839 L14.7066937,2.32066002 L4.63315728,9.01268149 L4.63315728,11.7237031 C4.63315728,11.9079465 4.86607927,12.0198771 5.03984499,11.9178718 L7.25872112,10.6083176 L9.44440974,11.9343444 C9.64400359,12.0560335 9.91775373,12.0034044 10.0472225,11.8191611 L17.9795079,0.182093981 C18.0461641,0.0868028709 17.9388672,-0.0316333442 17.8206015,0.00777588937 Z" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+        <g id="001-favorite-heart-button"></g>
+    </g>
+</svg>
