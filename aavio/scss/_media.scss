@@ -13,6 +13,11 @@
 		padding-top: 10px;
 		h1 {
 			font-size: 80px;
+			line-height: 1;
+			span i {
+				width: 35px;
+				height: 40px;
+			}
 		}
 		&__interactive-list {
 			padding-left: 300px;
@@ -22,17 +27,14 @@
 		}
 	}
 	.promo {
-		padding: 0 20px;
+		padding: 0 15px;
 		.text-block {
-			padding-left: 300px;
+			padding-left: 305px;
 		}
 	}
 	.works {
 		&__cards {
 			justify-content: space-around;
-		}
-		.left {
-
 			li {
 				width: 45%;
 				margin: 10px;
@@ -48,7 +50,7 @@
 		}
 	}
 	.who-for {
-		padding: 0 20px 150px;
+		padding: 0 15px 150px;
 		.left {
 			width: 35%;
 		}
@@ -86,7 +88,7 @@
 	}
 	.team {
 		.plane-container {
-			display: none;
+			z-index: -1;
 		}
 		.no-owl {
 			display: none;
@@ -118,6 +120,7 @@
 				left: auto;
 				top: auto;
 				bottom: auto;
+				width: 100%;
 				&::before {
 					position: absolute;
 					content: '';
@@ -165,6 +168,227 @@
 				display: inline-block;
 				margin: 0 10px;
 				font-size: 13px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 767px) {
+	.text-block {
+		h2 {
+			font-size: 25px;
+			line-height: 32px;
+			margin-bottom: 10px;
+		}
+		p {
+			font-size: 12px;
+			line-height: 22px;
+		}
+	}
+	.header {
+		min-height: auto;
+		padding-top: 10px;
+		box-shadow: 0 2px 40px rgba(0,0,0,.5);
+		.logo {
+			padding-left: 10px;
+			max-width: 80px;
+		}
+		.open-mob {
+			display: flex;
+		}
+		nav {
+			display: none;
+			&.mob {
+				display: flex;
+			}
+		}
+		h1 {
+			padding-top: 150px;
+			&::after {
+				display: block;
+				content: 'Click. Buy. Fly.';
+				font-size: 17px;
+				font-family: 'pt-sans';
+				padding-top: 10px;
+				line-height: 1;
+			}
+			br {
+				display: block;
+			}
+		}
+		&__interactive {
+			display: none;
+		}
+	}
+	.promo {
+		margin-bottom: 50px;
+		.plane-container{
+			display: none;
+		}
+		.text-block {
+			padding-left: 0;
+			padding-top: 60px;
+			h2 {
+				color: $accent;
+			}
+		}
+		&__phone {
+			display: block;
+		}
+	}
+	.works {
+		padding: 30px 15px 200px;
+		margin-bottom: 0;
+		overflow:hidden;
+		&::before,&::after {
+			display: none;
+		}
+		.plane-container {
+			display: block;
+		}
+		.container {
+			flex-flow: column-reverse nowrap;
+		}
+		.left,.right {
+			width: 100%;
+			padding-left: 0;
+		}
+		&__cards {
+			position: relative;
+			left: 20px;
+			li {
+				padding: 50px 0;
+				margin: 10px 0;
+			}
+			img {
+				width: 40px;
+				display: block;
+				margin: 0 auto 12px;
+			}
+			span {
+				font-size: 24px;
+				line-height: 1;
+				margin-bottom: 8px;
+			}
+			h3 {
+				font-size: 10px;
+				line-height: 1;
+			}
+		}
+		.left {
+			margin-top: 60px;
+			position: relative;
+			left: -20px;
+			padding: 30px 0;
+			&::before,&::after {
+				content: '';
+				position: absolute;
+				width: 85%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				border-radius: 0px 20px 20px 0;
+			}
+			&::before {
+				background: url('../img/works-bg.jpg') no-repeat left center/auto 100%;
+			}
+			&::after {
+				box-shadow: 0 22px 80px #7781a8;
+				z-index: -1;
+				opacity: .55; 
+				width: 50%;
+			}
+		}
+	}
+	.partners {
+		display: none;
+	}
+	.who-for {
+		padding-bottom: 50px;
+		.right {
+			display: none;
+		}
+		.left {
+			padding-top: 30px;
+			width: 100%;
+		}
+		.plane-container {
+			display: none;
+		}
+	}
+	.legacy {
+		padding-top: 30px;
+		padding-bottom: 160px;
+		h2 {
+			font-size: 25px;
+		}
+		ul {
+			display: none;
+		}
+		.mob-list {
+			display: block;
+		}
+		.plane-container {
+			display: block;
+		}
+	}
+	.team {
+		.plane-container {
+			display: none;
+		}
+	}
+	.contact {
+		// padding: 30px;
+		&__container {
+			width: 100%;
+			padding: 40px 50px 60px;
+			h2 {
+				font-size: 25px;
+			}
+			form {
+				label {
+					order: 3;
+					width: 100%;
+					&:nth-child(1) {
+						order: 1;
+					}
+					&:nth-child(3) {
+						order: 2;
+					}
+				}
+				
+				input, textarea {
+					padding-top: 8px;
+				}
+			}		
+			&::after {
+				border-radius: 0;
+			}
+			&::before {
+				background: url('../img/contact-bg.jpg') no-repeat 15% center/cover;
+			}
+		}
+	}
+	.footer {
+		&__info {
+			display: flex;
+			flex-flow: column;
+			li {
+				display: block;
+				text-align: center;
+				margin-bottom: 4px;
+				order: 2;
+				&:nth-child(3) {
+					order: 1;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:579px) {
+	.works {
+		.left {
+			&::after {
+				width: 65%;
 			}
 		}
 	}

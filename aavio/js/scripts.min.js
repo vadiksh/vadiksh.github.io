@@ -8,7 +8,15 @@ $(function() {
 			scrollTop: $(elementId).offset().top
 		},1000)
 	})
-
+	$('.open-mob').click(function(){
+		$('nav.mob').addClass('opened');
+	})
+	$('.close-mob').click(function(){
+		$('nav.mob').removeClass('opened');
+	})
+	$('nav.mob a').click(function(){
+		$('nav.mob').removeClass('opened');
+	})
 	$('.header__interactive-list li').click(function() {
 		var index = $(this).index();
 		$('.line').css({
@@ -23,22 +31,57 @@ $(function() {
 		"transition": ".3s ease-out"
 	})
 	
-	if ($(window).width() > 1200) {
-		$('.owl-carousel').owlCarousel({
+	// if ($(window).width() > 1200) {
+		$('.people.owl-carousel').owlCarousel({
 			items: 4,
 			margin: -250,
 			dots: false,
-			nav: false
+			nav: false,
+			responsive:{
+				0:{
+ 				 items: 1,
+ 				 margin: -130
+				},
+				375:{
+				  items:1,
+				  margin:-170
+				},
+				450:{
+				  items:1,
+				  margin:-250
+				},
+				600:{
+				  items:2,
+				  margin:-200
+				},
+				767: {
+				  items:3,
+				  margin: -170
+				},
+				1200:{
+				  items:4,
+				  margin: -250
+				}
+			}
 		})
-	} else {
-		console.log('fds')
-		$('.owl-carousel').owlCarousel({
-			items: 3,
-			margin: -170,
-			dots: false,
-			nav: false
-		})
-	}
+	$('.mob-list .owl-carousel').owlCarousel({
+		items: 2.5,
+		margin: 20,
+		center: true,
+		loop: true,
+		dots: false,
+		nav: false,
+		responsive:{
+			0:{
+			  items:1.5,
+			  margin: 20
+			},
+			500: {
+			  items:2.5,
+			  margin: 20
+			}
+		}
+	})
 
 	var scrolled;
 	$(window).scroll(function() {
