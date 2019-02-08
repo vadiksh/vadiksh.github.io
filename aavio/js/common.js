@@ -2,7 +2,6 @@ $(document).ready(function() {
 	$(window).trigger('scroll');
 	$('.header__top, h1, .header__interactive').addClass('in-view')
 
-	console.log($('.people-mob li'))
 	for (var i = 0; i <= $('.people-mob li').length - 1; i++) {
 		var index = i + 1;
 		$($($('.people-mob li .photo'))[i]).css({
@@ -37,7 +36,7 @@ $(document).ready(function() {
 			"transform": "translate3d(" + index + "00%,0,0)"
 		})
 		$('.header').css({
-			"background": "url('../img/banner" + index + ".jpg') no-repeat center bottom/cover"
+			"background": "url('img/banner" + index + ".jpg') no-repeat center bottom/cover"
 		})
 		$('.mask' + index).addClass('active').siblings().removeClass('active');
 
