@@ -1,6 +1,20 @@
-$(function() {
+$(document).ready(function() {
 	$(window).trigger('scroll');
+	$('.header__top, h1, .header__interactive').addClass('in-view')
 
+	console.log($('.people-mob li'))
+	for (var i = 0; i <= $('.people-mob li').length - 1; i++) {
+		var index = i + 1;
+		$($($('.people-mob li .photo'))[i]).css({
+			"background": "url('img/person" + index + ".jpg') no-repeat center top/cover"
+		})
+	}
+	for (var i = 0; i <= $('.people-advisors li').length - 1; i++) {
+		var index = i + 1;
+		$($($('.people-advisors li .photo'))[i]).css({
+			"background": "url('img/advisor" + index + ".jpg') no-repeat center top/cover"
+		})
+	}
 	$('a[href^="#"]').click(function(e) {
 		e.preventDefault();
 		var elementId = $(this).attr('href');
@@ -22,48 +36,50 @@ $(function() {
 		$('.line').css({
 			"transform": "translate3d(" + index + "00%,0,0)"
 		})
-		$('.header__interactive-phone span').css({
-			"background": "url('../img/phone-screen" + 1 + ".jpg') no-repeat center center/auto 100%;"
+		$('.header').css({
+			"background": "url('../img/banner" + index + ".jpg') no-repeat center bottom/cover"
 		})
+		$('.mask' + index).addClass('active').siblings().removeClass('active');
+
 	})
 	$($('.owl-item.active')[0]).css({
 		"opacity": ".3",
 		"transition": ".3s ease-out"
 	})
 	
-	// if ($(window).width() > 1200) {
-		$('.people.owl-carousel').owlCarousel({
-			items: 4,
-			margin: -250,
-			dots: false,
-			nav: false,
-			responsive:{
-				0:{
- 				 items: 1,
- 				 margin: -130
-				},
-				375:{
-				  items:1,
-				  margin:-170
-				},
-				450:{
-				  items:1,
-				  margin:-250
-				},
-				600:{
-				  items:2,
-				  margin:-200
-				},
-				767: {
-				  items:3,
-				  margin: -170
-				},
-				1200:{
-				  items:4,
-				  margin: -250
-				}
+	
+	$('.people.owl-carousel').owlCarousel({
+		items: 4,
+		margin: -250,
+		dots: false,
+		nav: false,
+		responsive:{
+			0:{
+				 items: 1,
+				 margin: -130
+			},
+			375:{
+			  items:1,
+			  margin:-170
+			},
+			450:{
+			  items:1,
+			  margin:-250
+			},
+			600:{
+			  items:2,
+			  margin:-200
+			},
+			767: {
+			  items:3,
+			  margin: -230
+			},
+			1200:{
+			  items:4,
+			  margin: -100
 			}
-		})
+		}
+	})
 	$('.mob-list .owl-carousel').owlCarousel({
 		items: 2.5,
 		margin: 20,
@@ -92,6 +108,15 @@ $(function() {
 		}
 		if (isInView($('.who-for'))) {
 			$('.who-for').addClass('in-view');
+		}
+		if (isInView($('.team'))) {
+			$('.people.no-owl').addClass('in-view');
+		}
+		if (isInView($('.people-mob'))) {
+			$('.people-mob').addClass('in-view');
+		}
+		if (scrolled + $(window).height()/1.5 > $('.people-advisors').offset().top) {
+			$('.people-advisors').addClass('in-view');
 		}
 	})
 
