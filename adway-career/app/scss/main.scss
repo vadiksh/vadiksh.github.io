@@ -1,0 +1,61 @@
+@import "vars";
+@import "fonts";
+
+
+.overflow-wrapper {
+	position: relative;
+	width: 100%;
+	overflow-x: hidden;
+}
+body {
+	font-size: 20px;
+	min-width: 320px;
+	position: relative;
+	line-height: 26px;
+	font-family: $default-font;
+	overflow-x: hidden;
+	color: $text;
+	background: #F2F4F5;
+	&.alt {
+		background: #fff;
+	}
+	section {
+		padding-top: 50px;
+	}
+	h2,h3 {
+		font-family: "montserrat-b";
+		color: $title;
+	}
+	.container {
+		display: block;
+		max-width: 1110px;
+		margin: 0 auto;
+		&.fixed-height {
+			height: 540px;
+		}
+	}
+	.section-title {
+		display: block;
+		text-align: center;
+		margin-top: 90px;
+		margin-bottom: 90px;
+		span {
+			display: block;
+			font-size: 16px;
+			line-height: 24px;
+			font-family: "montserrat";
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		h2 {
+			color: $title;
+			font-size: 40px;
+			line-height: 48px;
+			text-align: center;
+		}
+	}
+
+}
+
+
+@import "media";

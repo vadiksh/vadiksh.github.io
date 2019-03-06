@@ -34,7 +34,6 @@ $(document).ready(function() {
       }, 1000);
   });
   $('.owl-carousel').owlCarousel({
-  	items:1.3,
   	center: true,
   	dots: false,
   	mouseDrag: false,
@@ -55,34 +54,46 @@ $(document).ready(function() {
           }
       }
   })
+
+  var currentIndex = 0;
+
   $('.owl-carousel').on('changed.owl.carousel', function(event) {
   	var index = event.page.index,
   			color = $($('.owl-item:not(.cloned) li')[index]).attr('data-color'),
   			videoSrc = $($('.owl-item:not(.cloned) li')[index]).attr('data-src');
-  	$('.slider-section__background video').fadeOut(300, function(){
-  		$('.slider-section__background video source').attr('src', videoSrc);
-  		$('.slider-section__background video').load().delay(500).fadeIn(300);
-  	})
-  	$('.slider-section__background-color').css({'background': color});
-  	$('.dot-' + index).addClass('active').siblings().removeClass('active');
+	  	$('.slider-section__background video').fadeOut(300, function(){
+	  		$('.slider-section__background video source').attr('src', videoSrc);
+	  		$('.slider-section__background video').load().delay(500).fadeIn(300);
+	  	})
+	  	$('.slider-section__background-color').css({'background': color});
+	  	$('.dot-' + index).addClass('active').siblings().removeClass('active');
+	  	currentIndex = $('.dot.active').attr('data-dot');
 	})
 
-  	$('body').on('mouseenter', '.owl-item.center .thumbnail', function() {
-  		$('.owl-carousel').trigger('stop.owl.autoplay');
-  	})
-  	$('body').on('mouseleave', '.owl-item.center .thumbnail', function() {
-  		$('.owl-carousel').trigger('play.owl.autoplay');
-  	})
+	$('body').on('mouseenter', '.owl-item.center .thumbnail', function() {
+		$('.owl-carousel').trigger('stop.owl.autoplay');
+	})
+	$('body').on('mouseleave', '.owl-item.center .thumbnail', function() {
+		$('.owl-carousel').trigger('play.owl.autoplay');
+	})
 
 
 	$('.dot').click(function() {
 		var index = $(this).attr('data-dot');
-		$('.dot-' + index).addClass('active').siblings().removeClass('active');
+		var indexChange = index - currentIndex;
+		// console.log('index: ' + index + ' // current Index: ' + currentIndex);
 
-		$('.owl-carousel').trigger('to.owl.carousel', [index, 1500]);
+		$('.dot-' + index).addClass('active').siblings().removeClass('active');
+		if (indexChange >= 1) {
+			$('.owl-carousel').trigger('next.owl.carousel', [1500]);
+			$('.owl-carousel').trigger('to.owl.carousel', [index, 1500]);
+		} else {
+			$('.owl-carousel').trigger('prev.owl.carousel', [1500]);
+			$('.owl-carousel').trigger('to.owl.carousel', [index, 1500]);
+		}
 		$('.owl-carousel').trigger('stop.owl.autoplay');
 		$('.owl-carousel').trigger('play.owl.autoplay');
-
+		currentIndex = $(this).attr('data-dot');
 	})
 	
 	var isTouchDevice = (('ontouchstart' in window)

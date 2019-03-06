@@ -206,6 +206,12 @@ button {
 			&.disability {
 				background: url('../images/video2.jpg') no-repeat center center/cover;
 			}
+			&.environment {
+				background: url('../images/video3.jpg') no-repeat center center/cover;
+			}
+			&.connectivity {
+				background: url('../images/video4.jpg') no-repeat center center/cover;
+			}
 			button {
 				opacity: 0;
 				transition: .3s ease-out;
@@ -380,7 +386,7 @@ button {
 				text-transform: uppercase;
 				left: 50%;
 				top: 50%;
-				transform: translate3d(-250%,-50%,0);
+				transform: translate3d(-300px,-50%,0);
 				color: white;
 				font-size: 20px;
 				font-family: 'Circular-Bold';
@@ -391,6 +397,12 @@ button {
 			}
 			&.disability::before {
 				content: 'disability';
+			}
+			&.environment::before {
+				content: 'environment';
+			}
+			&.connectivity::before {
+				content: 'connectivity';
 			}
 			.overlay {
 				position: absolute;
