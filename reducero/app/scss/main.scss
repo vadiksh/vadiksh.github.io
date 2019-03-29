@@ -1217,6 +1217,9 @@ body {
 			&:nth-of-type(3)::after {
 				display: none;
 			}
+			&:nth-of-type(1) {
+				padding-top: 90px;	
+			}
 		}
 	}
 	&__title {
@@ -1224,6 +1227,10 @@ body {
 		line-height: 48px;
 		color: $title;
 		margin-bottom: 25px;
+		font-family: "montserrat-b";
+		a {
+			color: $title;
+		}
 	}
 	&__author-info {
 		display: flex;
@@ -1339,7 +1346,14 @@ body {
 		padding: 0 55px;
 	}
 	&__text-block {
-		h3 {
+		h1 {
+			margin-bottom: 25px;
+			font-size: 40px;
+			line-height: 48px;
+			color: $title;
+			font-family: "montserrat-b";
+		}
+		h2 {
 			font-family: "montserrat";
 			font-size: 20px;
 			line-height: 26px;
@@ -1352,7 +1366,7 @@ body {
 			font-family: "lora";
 			margin-bottom: 50px;
 		}
-		& > ul {
+		ul {
 			margin-bottom: 50px;
 			li {
 				display: block;
@@ -1387,13 +1401,14 @@ body {
 				margin: 0;	
 			}
 		}
-		p > img {
+		img, p > img {
 			position: relative;
 			width: calc(100% + 110px);
 			max-height: 440px;
 			height: 78vw;
 			left: -55px;
 			object-fit: cover;
+			margin-bottom: 40px;
 		}
 	}
 
@@ -1450,11 +1465,11 @@ body {
 	}
 	&.seo {
 		margin-bottom: 115px;
-		.text-section__seo-title {
+		.text-section__seo-title, h1 {
 			margin-bottom: 50px;
 		}
 		.text-section__text-block {
-			h3 {
+			h2 {
 				margin-bottom: 30px;
 				margin-top: 50px;
 			}
@@ -1471,8 +1486,12 @@ body {
 	}
 	&.cookies {
 		margin-bottom: 95px;
-		.blog-listing__title {
+		h1 {
 			margin-bottom: 25px;
+			font-size: 40px;
+			line-height: 48px;
+			color: $title;
+			font-family: "montserrat-b";
 		}
 	}
 }

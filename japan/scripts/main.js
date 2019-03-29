@@ -162,7 +162,7 @@ $(document).ready(function() {
 		}
 
 		function isInView(el) {
-			if (scrolled + $(window).height()/2 > $(el).offset().top) {
+			if (scrolled > $(el).offset().top) {
 			  return true;
 			}
 		}

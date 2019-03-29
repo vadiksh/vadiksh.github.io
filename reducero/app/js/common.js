@@ -1,13 +1,7 @@
 $(function() {
 
 	
-	$('body').on('click', function() {
-		if ($('.banner__form input').is(':focus') || $('.banner__form input').val()) {
-			$('.banner__form label').fadeOut(200);
-		} else {
-			$('.banner__form label').fadeIn(200);
-		}
-	})
+
 	$('.faq__list-question').click(function(){
 		if ($(this).next('.faq__list-answer').hasClass('opened')) {
 			$(this).next('.faq__list-answer').slideUp(400).removeClass('opened');
@@ -48,6 +42,86 @@ $(function() {
 			});
 		}
 	})
+	$('.header__reviews-list').owlCarousel({
+	    loop:false,
+	    nav: false,
+	    margin: -100,
+	    responsiveClass:true,
+	    responsive:{
+	        0:{
+	            items:1,
+	            margin: -30,
+	            startPosition: 1,
+	            center: true
+	        },
+	        630: {
+	        	items: 2
+	        },
+	        767:{
+	            items:2
 
+	        },
+	        950:{
+	            items:3
+	        },
+	        1250:{
+	            items:4
+	        }
+	    }
+	})
+	$('.partners__list').owlCarousel({
+	    loop:false,
+	    nav: false,
+	    margin: -100,
+	    responsiveClass:true,
+	    responsive:{
+	        0:{
+	            items:2,
+	            margin: -30,
+	            startPosition: 1,
+	            center: true
+	        },
+	        630: {
+	        	items: 3
+	        },
+	        767:{
+	            items:3
+
+	        },
+	        850:{
+	        	items: 4
+	        },
+	        1250:{
+	        	items: 5
+	        }
+	    }
+	})
+	if(window.innerWidth <= 767) {
+		$('.works__steps').addClass('owl-carousel owl-theme');
+		$('.works__steps').owlCarousel({
+			items:1,
+			margin: -40,
+			center: true,
+		    loop:false,
+		    dots: true,
+		    center: true
+		})		
+	}
+	$(window).on('resize', function(){
+		if(window.innerWidth <= 767) {
+			$('.works__steps').addClass('owl-carousel owl-theme');
+			$('.works__steps').owlCarousel({
+				items:1,
+				margin: -40,
+				center: true,
+			    loop:false,
+			    dots: true,
+			    center: true
+			})		
+		} else {
+			$('.works__steps').removeClass('owl-carousel owl-theme');
+			$('.works__steps').trigger('destroy.owl.carousel');
+		}
+	})
 
 });

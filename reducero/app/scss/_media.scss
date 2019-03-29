@@ -890,7 +890,12 @@
 			padding: 0 30px;
 		}
 		&__text-block {
-			h3 {
+			h1 {
+				font-size: 20px;
+				line-height: 28px;
+				margin-bottom: 12px;
+			}
+			h2 {
 				margin-bottom: 25px;
 			}
 			p {
@@ -898,7 +903,7 @@
 				line-height: 24px;
 				margin-bottom: 25px;
 			}
-			& > ul {
+			ul {
 				margin-bottom: 25px;
 				li {
 					font-size: 16px;
@@ -914,6 +919,9 @@
 				font-size: 17px;
 				line-height: 22px;
 				padding: 10px 0 10px 12px;
+				margin-bottom: 25px;
+			}
+			img {
 				margin-bottom: 25px;
 			}
 		}
@@ -945,10 +953,15 @@
 		&.seo {
 			margin-bottom: 40px;
 			.text-section__seo-title {
-				margin-bottom: -25px;
+				margin-bottom: 20px;
 			}
 			.text-section__text-block {
-				h3 {
+				h1 {
+					font-size: 20px;
+					line-height: 28px;
+					margin-bottom: 12px;
+				}
+				h2 {
 					margin-bottom: 25px;
 				}
 			}

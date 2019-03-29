@@ -59,10 +59,10 @@
 				<li>En kreditupplysning</li>
 			</ul>
 			<form>
-				<label>
+			<!-- 	<label>
 					Ditt mobilnummer
-				</label>
-				<input type="tel">
+				</label> -->
+				<input type="tel" placeholder="Ditt mobilnummer" autofocus="">
 				<button type="submit">Sänk min månadskostnad</button>
 			</form>
 		</div>
@@ -384,10 +384,7 @@
 		<div class="partners__form banner__form">
 			<p class="partners__form-text banner__text">Du får besked inom 30 sekunder och kan ofta sänka din månadskostnad med 30%.</p>
 			<form>
-				<label>
-					Ditt mobilnummer
-				</label>
-				<input type="tel">
+				<input type="tel"  placeholder="Ditt mobilnummer">
 				<button type="submit">Sänk min månadskostnad</button>
 			</form>
 		</div>
@@ -518,86 +515,7 @@
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script>
-	$('.header__reviews-list').owlCarousel({
-	    loop:false,
-	    nav: false,
-	    margin: -100,
-	    responsiveClass:true,
-	    responsive:{
-	        0:{
-	            items:1,
-	            margin: -30,
-	            startPosition: 1,
-	            center: true
-	        },
-	        630: {
-	        	items: 2
-	        },
-	        767:{
-	            items:2
 
-	        },
-	        950:{
-	            items:3
-	        },
-	        1250:{
-	            items:4
-	        }
-	    }
-	})
-	$('.partners__list').owlCarousel({
-	    loop:false,
-	    nav: false,
-	    margin: -100,
-	    responsiveClass:true,
-	    responsive:{
-	        0:{
-	            items:2,
-	            margin: -30,
-	            startPosition: 1,
-	            center: true
-	        },
-	        630: {
-	        	items: 3
-	        },
-	        767:{
-	            items:3
-
-	        },
-	        850:{
-	        	items: 4
-	        }
-	    }
-	})
-	if(window.innerWidth <= 767) {
-		$('.works__steps').addClass('owl-carousel owl-theme');
-		$('.works__steps').owlCarousel({
-			items:1,
-			margin: -40,
-			center: true,
-		    loop:false,
-		    dots: true,
-		    center: true
-		})		
-	}
-	$(window).on('resize', function(){
-		if(window.innerWidth <= 767) {
-			$('.works__steps').addClass('owl-carousel owl-theme');
-			$('.works__steps').owlCarousel({
-				items:1,
-				margin: -40,
-				center: true,
-			    loop:false,
-			    dots: true,
-			    center: true
-			})		
-		} else {
-			$('.works__steps').removeClass('owl-carousel owl-theme');
-			$('.works__steps').trigger('destroy.owl.carousel');
-		}
-	})
-</script>
 
 </body>
 </html>
