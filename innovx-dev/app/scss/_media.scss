@@ -1,0 +1,167 @@
+@import "vars";
+
+@media (min-width: 1500px) {
+	.header {
+		max-height: 1024px;
+		&::after {
+			display: none;
+		}
+		&__title {
+			h1 {
+				font-size: 250px;
+			}
+		}
+	}
+}
+@media (min-height: 1024px) {
+	.header {
+		max-height: 1024px;
+	}
+}
+@media (max-width: 1250px) {
+	.header {
+		&__title {
+			span {
+				bottom: -2.5vh;
+			}
+		}
+		p {
+			color: #fff;
+		}
+	}
+}
+
+@media (max-width: 950px) {
+	.header {
+		min-height: 110vw;
+		.container {
+			background: url('../img/header.png') no-repeat center center/90% auto;
+		}
+		&__title {
+			margin: 0;
+			h1 {
+				font-size: 130px;
+				line-height: 1.4;
+			}
+			span {
+				right: 8%;
+				bottom: -1.5vh;
+			}
+		}
+		&::after {
+			display: none;
+		}
+	}
+	.holdings {
+		.container {
+			padding: 35px 0;
+			align-items: flex-start;
+			flex-direction: column;
+		}
+		&__list {
+			li {
+				margin-left: 0;
+				img  {
+					width: auto;
+				}
+			}
+			.owl-item {
+				img {
+					margin: 0 auto;
+					width: auto;
+					max-width: 100%;
+					height: auto;
+				}				
+			}
+		}
+		h2 {
+			display: block;
+			margin-bottom: 20px;
+		}
+	}
+}
+@media (max-width: 767px) {
+	.header {
+		padding: 60px 0;
+		display: flex;
+		flex-direction: column;
+		min-height: auto;
+		height: auto;
+		background: linear-gradient(to right, transparent, transparent 99%, #1d1d1d 99%, #1d1d1d 100%) repeat center center/35% auto;
+		.container {
+			position: relative;	
+			height: 0;
+			width: 100%;
+			padding-bottom: 75%;
+			background: url('../img/header.png') no-repeat center center/75% auto;
+		}
+		&__title {
+			position: absolute;
+			top: 50%;
+			transform: translate3d(0,-50%,0);
+			h1 {
+				font-size: 90px;
+				line-height: 1.4;
+			}
+			span {
+				right: 8%;
+				bottom: -1.5vh;
+			}	
+			p {
+				display: none;
+			}
+		} 
+		.text-mob {
+			display: block;
+		}
+	}
+	.footer, .holdings {
+		padding: 0 20px;
+		.container {
+			flex-direction: column;
+		}
+	}
+	
+	.footer {
+		.container {
+			padding: 100px 0;
+			max-width: 400px;
+			align-items: flex-start;
+		}
+		&__company {
+			margin-bottom: 50px;
+		}
+	}
+}
+@media (max-width: 479px) {
+	.header {
+		height: 100vh;
+		.container {
+			
+		}
+		&__title {
+			h1 {
+				font-size: 18vw;
+				letter-spacing: .1em;
+				line-height: 1.5;
+			}
+			span {
+				font-size: 16px;
+				right: 1%;
+			}
+		}
+	}
+}
+@media (max-height: 900px) and (max-width: 1440px) {
+	
+}
+@media (max-height: 850px) {
+	.header {
+		&__title {
+			h1 {
+				// font-size: 200px;
+			}
+			
+		}
+	}
+}

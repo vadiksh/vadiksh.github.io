@@ -546,14 +546,14 @@ body {
 	}
 }
 .header-alt {
-	height: 90px;
+	height: 86px;
 	min-height: auto;
 	&__top {
-		padding-top: 14px;
+		// padding-top: 14px;
 		align-items: stretch;
 		border-bottom: 1px solid #efefef;
 		.logo {
-			padding-top: 4px;
+			padding-top: 3px;
 			span {
 				color: $title;
 			}
@@ -1218,7 +1218,7 @@ body {
 				display: none;
 			}
 			&:nth-of-type(1) {
-				padding-top: 90px;	
+				padding-top: 100px;	
 			}
 		}
 	}
