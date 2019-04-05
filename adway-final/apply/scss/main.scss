@@ -126,7 +126,7 @@ form label {
 	text-align: center;
 	padding: 0 35px;
 	height: 100vh;
-	overflow: hidden;
+	// overflow: hidden;
 	.container {
 		opacity: 0;
 		transition: .3s ease-out;
@@ -162,7 +162,7 @@ form label {
 		}
 		.job-screen__apply-buttons {
 			button {
-				animation: none;
+				animation: none !important;
 			}
 		}
 	}
@@ -274,14 +274,14 @@ form label {
 			color: #fff;
 		}
 		button {
-			animation: bounce .8s forwards;
+			// animation: bounce .8s forwards;
 		}
 		.linkedin {
 			background: #2F76B3;
 		}
 		.facebook {
 			background: #415896;
-			animation-delay: .03s;
+			animation-delay: .02s !important;
 		}
 		.manual {
 			font-size: 16px;
@@ -289,7 +289,7 @@ form label {
 			color: #9B9B9B;
 			margin-bottom: 0;
 			padding-bottom: 0;
-			animation-delay: .06s;
+			animation-delay: .02s !important;
 		}
 	}
 }
@@ -301,19 +301,19 @@ form label {
   }
 
   from {
-    transform: translate3d(0, 300px, 0);
+    transform: translate3d(0, 200px, 0);
   }
 
   30% {
-    transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -80px, 0);
   }
 
-  55% {
+  50% {
     transform: translate3d(0, 20px, 0);
   }
 
   80% {
-    transform: translate3d(0, -8px, 0);
+    transform: translate3d(0, -5px, 0);
   }
   to {
     transform: translate3d(0, 0, 0);
