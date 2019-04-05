@@ -9,7 +9,7 @@ body {
 	position: relative;
 	line-height: 1.65;
 	font-family: $default-font;
-	overflow-x: hidden;
+	overflow: hidden;
 	color: #fff;
 	-webkit-overflow-scrolling: touch;
 }
@@ -126,7 +126,7 @@ form label {
 	text-align: center;
 	padding: 0 35px;
 	height: 100vh;
-	// overflow: hidden;
+	overflow: hidden;
 	.container {
 		opacity: 0;
 		transition: .3s ease-out;
@@ -135,7 +135,6 @@ form label {
 		display: flex;
 		flex-flow: column;
 		justify-content: space-between;
-		overflow: hidden;
 	}
 	&.revealed {
 		overflow: visible;
