@@ -125,7 +125,7 @@ form label {
 .job-screen {
 	text-align: center;
 	padding: 0 35px;
-	height: 100vh;
+	height: auto;
 	overflow: hidden;
 	.container {
 		opacity: 0;
@@ -135,12 +135,14 @@ form label {
 		display: flex;
 		flex-flow: column;
 		justify-content: space-between;
+		// overflow: hidden;
 	}
 	&.revealed {
-		overflow: visible;
+		
 		.container {
 			padding-top: 16px;
 			transition: .2s ease-out;
+			overflow: visible;
 		}
 		.job-screen__title {
 			transform: scale(.85);
@@ -324,7 +326,7 @@ form label {
 	.job-screen {
 		padding: 0 15px;
 		.container {
-			padding: 20px 0;
+			padding: 12px 0;
 		}
 	}
 }
