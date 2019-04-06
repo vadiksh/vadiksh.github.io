@@ -9,6 +9,7 @@ body {
 	font-family: $default-font;
 	overflow-x: hidden;
 	color: $text;
+	-webkit-overflow-scrolling: touch;
 }
 .overflow-wrapper {
 	position: relative;
@@ -24,6 +25,7 @@ body {
 .header {
 	padding: 100px 0;
 	height: 100vh;
+	max-height: 667px;
 	min-height: 568px;
 	position: relative;
 	text-align: center;
@@ -131,7 +133,15 @@ h2 {
 	    justify-content: space-between;
 	}
 	.owl-dots {
-		display: none;
+		padding-top: 10px;
+		span {
+			background: $text !important;
+			width: 8px !important;
+			height: 8px !important;
+		}
+		.active span {
+			background: #869791 !important;
+		}
 	}
 }
 .footer {

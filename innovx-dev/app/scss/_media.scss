@@ -54,13 +54,18 @@
 	}
 	.holdings {
 		.container {
-			padding: 35px 0;
+			padding: 35px 0 20px;
 			align-items: flex-start;
 			flex-direction: column;
 		}
 		&__list {
+			flex-flow: row wrap;
+			// justify-content: flex;
 			li {
+				// width: 33%;
 				margin-left: 0;
+				// margin-right: 40px;
+				// margin-bottom: 20px;
 				img  {
 					width: auto;
 				}

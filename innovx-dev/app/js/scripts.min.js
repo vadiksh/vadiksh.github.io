@@ -3,7 +3,7 @@ $(function() {
 	if ($(window).width() < 950) {
 		$('.holdings__list').owlCarousel({
 		    loop:false,
-		    nav: false,
+		    dots: true,
 		    items: 2,
 		    responsiveClass:true,
 		    responsive:{
@@ -26,7 +26,7 @@ $(function() {
 		if ($(window).width() < 950) {
 			$('.holdings__list').owlCarousel({
 			    loop:false,
-			    nav: false,
+			    dots: true,
 			    items: 2,
 			    responsiveClass:true,
 			    responsive:{
