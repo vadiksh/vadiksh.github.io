@@ -1,27 +1,23 @@
 $(document).ready(function() {
+  
   setTimeout(function() {
     $('.loader').fadeOut(300, function(){
       $('.header__menu-list, .promo').addClass('tdFadeIn');
     });
   }, 300);
 
-
-  $('.services-types li').click(function() {
-    var index = $(this).attr('index');
-    var activeElmnts = $('.services-item-' + index);
-    var indicatorX = index - 1;
-
-    $('.services-indicator').css({
-      "transform": "translate3d(" + indicatorX + "00%, 0, 0"
-    })
-
-    $('.services-prices').removeClass('tdFadeIn').addClass('tdFadeOut');
-
-    setTimeout(function(){
-      activeElmnts.addClass('active').siblings().removeClass('active');
-     $('.services-prices').removeClass('tdFadeOut').addClass('tdFadeIn');
-    }, 200);
-  });
+  $('a[href^="#"]').click(function(e) {
+    e.preventDefault();
+    var elementId = $(this).attr('href');
+    $('.overflow-wrapper').animate({
+      scrollTop: $(elementId).offset().top
+    },1000)
+    console.log($(elementId).offset().top)
+    if ($(this).hasClass('mob-link')) {
+      $('.header__mob').removeClass('active');
+    }
+  })
+  
 
   $(window).scroll(function() {
     var scrolled = $(this).scrollTop();
@@ -43,6 +39,8 @@ $(document).ready(function() {
         });
     }
   });
+
+
   $("#form").submit(function() {
     $.ajax({
       type: "POST",
@@ -68,17 +66,54 @@ $(document).ready(function() {
     $('.promo__title span').removeClass("shadow");
   });
   
-  $('.prices').hover(function() {
+  $('.types').hover(function() {
     
-      $(this).find('.prices-description span').text(':');
+      $(this).find('.types-description span').text(':');
   },function() {
-    $(this).find('.prices-description span').text('.');
+    $(this).find('.types-description span').text('.');
   });
 
-  // $('.c-hover').hover(function(){
-  //   $(this).text('Hover Text'); //text to be shown on hover state
-  // },function(){
-  //    $(this).text('Normal Text'); //text to be seen when not in hover state
-  // });
+  var old = false,
+      area = 0,
+      complete = true,
+      design = false,
+      price = 0;
+
+  $('.step-1 input').click(function(){
+    console.log(this)
+    $('.step-2').addClass('active').siblings().removeClass('active');
+    
+    if($('.repair-old').is(':checked')) {
+      old = true
+    } else {
+      old = false
+    }
+    console.log(old)
+  })
+  $('.step-2 button').click(function(){
+    $('.step-3').addClass('active').siblings().removeClass('active');
+    area = $('.step-2 input').val();
+  })
+  $('.step-3 button').click(function(){
+    $('.calculate-result').addClass('active').siblings().removeClass('active');
+    
+    price = area * 2000;
+    if(old) {
+      if($('.repair-complete').is(':checked')) {
+        price += price * 0.2
+      } else {
+        price -= price * 0.1
+      }
+      console.log(price)
+    }
+
+    if($('.design-project').is(':checked')) {
+      price += 50000;
+    }
+    $('.calculate-result .price').html(price);
+  })
+  $('.back').click(function(){
+    $('.step-1').addClass('active').siblings().removeClass('active');
+  })
 });
 

@@ -21,7 +21,7 @@ $(function() {
 		}
 
 		function checkInView(el) {
-			if (scrolled + $(window).height()/2 > el.offset().top && scrolled < el.offset().top + el.height()) {
+			if (scrolled + $(window).height() - 200 > el.offset().top && scrolled < el.offset().top + el.height()) {
 				el.addClass('in-view')
 			}
 		}

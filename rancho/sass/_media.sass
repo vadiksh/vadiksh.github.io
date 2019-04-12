@@ -1,0 +1,543 @@
+@import "vars"
+
+@media screen and (max-width: 1500px)
+	.welcome
+		&__activity
+			width: 40%
+			&:first-of-type
+				padding-right: 40px
+			&:nth-child(2)
+				padding-left: 40px
+
+				&::before
+					content: ''
+					position: absolute
+					width: 450px
+					height: 650px
+					top: -160px
+					right: -420px
+					// z-index: -1
+					background: url('../img/experience/exp-activities.png') no-repeat 0 0/contain
+@media screen and (min-width: 1500px) 
+	.ranch
+		.video__block
+			transform: translate3d(100px,0,0)
+
+@media screen and (max-width: 1440px)
+	.ranch
+		.gallery__buttons
+			width: 100%
+			left: 50%
+			right: auto
+			transform: translate3d(-50%, 0, 0)
+			bottom: -70px
+			text-align: center
+			button
+				display: inline-block
+				margin: 0 10px
+@media screen and (max-width: 1280px)
+	.ranch
+		.slider
+			width: 100%
+			padding: 0 40px
+			li
+				background: url(../img/gallery-card.png) no-repeat center center/109% 100%
+		.video__block
+			transform: none
+	.welcome__activity
+		.owl-carousel
+			.owl-nav button.owl-next
+				right: -30px
+			.owl-nav button.owl-prev
+				left: -30px
+	.questions__page
+		width: 39%
+		height: 71%
+		left: 10%
+		top: 11%
+		&--right
+			width: 33%
+			left: 58%
+		ul
+			li
+				padding: 12px 15px
+				&::before
+					bottom: -12px
+				span::before
+					bottom: -12px
+
+@media screen and (max-width: 1100px)
+	.header
+		.menu
+			ul
+				display: none
+			.burger
+				display: block
+	.rooms__content
+		padding-left: 20px
+	.footer__map
+		transform: none
+
+@media screen and (max-width: 1024px)
+	.header-top
+		background-size: auto 100%
+	section
+		padding: 60px 15px
+	.rooms::before
+		height: 600px
+	.area::after
+		top: 100px
+		background: url('../img/camping/lantern.png') no-repeat left center/contain
+		height: 500px
+		right: -300px
+	.section-title
+		font-size: 35px
+		span
+			font-size: 22px
+			margin-bottom: 3px
+		&::after
+			bottom: -6px
+			margin-bottom: 50px
+	.text-block
+		p
+			font-size: 15px
+			line-height: 1.6
+			margin-bottom: 15px
+		h3
+			font-size: 22px
+			margin-bottom: 15px
+	.banner
+		&__title
+			max-width: 75%
+		b
+			letter-spacing: 16px
+			font-size: 18px
+	.welcome
+		&::before
+			display: none
+		&__content
+			justify-content: space-between
+			flex-flow: column
+			align-items: flex-start
+			position: relative
+			margin-bottom: 120px
+			&::before
+				top: 35%
+				width: 480px
+				height: 970px
+				background: url('../img/experience/exp-west.png')
+		&__album
+			width: 100%
+			padding-bottom: 85%
+			background: url(../img/experience/exp-album.png) no-repeat center center/contain
+			transform: translate3d(-25%,0,0)
+			margin-bottom: 20px
+		.text-block
+			margin: 0 auto
+		&__activity
+			width: 45%
+			align-self: flex-start
+			&::before
+				display: none
+			h3
+				font-size: 22px
+	.header-top
+		.logo 
+			img
+				width: 230px
+				top: -20px
+	.ranch
+		.gallery
+			padding: 60px 60px 0
+			&::before
+				display: none
+			&__cloth
+				padding: 60px
+				padding-bottom: 150px
+		.slider
+			.owl-nav button.owl-next
+				right: -60px
+				span
+					width: 30px
+			.owl-nav button.owl-prev
+				left: -60px
+				span
+					width: 30px
+	.questions
+		padding-bottom: 0
+		&__book
+			background: url('../img/contact-us/contact-bg.png') 0 0/100% 100%
+			padding: 0
+			// 
+			&::before
+				display: none
+		&__page
+			position: relative
+			width: 100%
+			height: 100%
+			left: 0
+			top: 0
+			padding: 40px
+			h3
+				margin-bottom: 20px
+			&-container, ul
+				position: relative
+
+		&__page--right
+			opacity: 0
+			position: absolute
+			// align-items: flex-start
+			justify-content: center
+			.questions__page-container
+				flex-flow: column
+				align-items: center
+				justify-content: center
+			h3
+				// position: relative
+				margin-bottom: 0
+			p
+				padding: 40px
+				// align-self: flex-start
+				transition: 0s
+				&.active
+					transition: 0s
+					position: relative
+			button
+				display: block
+				// align-self: center
+				position: relative
+				z-index: 100
+	.area
+		&__types
+			h3
+				font-size: 20px
+	.cabins-rates__list
+		& > li
+			flex-flow: column !important
+			& > div
+				width: 100%
+				max-width: 480px
+				margin: 0 auto
+			.cabins-rates__overview
+				margin-bottom: 60px
+	.cabins-rates
+		h3
+			text-align: center
+		.container-flex
+			flex-flow: column
+			& > div
+				width: 100%
+				margin: 0 auto
+				max-width: 480px
+		&__overview
+			padding-top: 0
+		&__rules-policy.container-flex
+			h3
+				font-size: 22px
+			& > div
+				margin-bottom: 30px
+		.buttons
+			li
+				margin-bottom: 20px
+	.activities-rates__more
+		.owl-nav button
+			&.owl-prev
+				left: -65px
+			&.owl-next
+				right: -65px
+			span
+				height: 40px
+	.ranch-getting-here
+		.video
+			.container-flex
+				flex-flow: column
+				& > div
+					width: 100%
+					max-width: 480px
+			&__block
+				max-width: none !important
+				padding-bottom: 99%
+
+	
+	.footer
+		background: url('../img/footer.jpg') repeat left center/140%
+		.container-flex
+			flex-flow: row wrap
+			max-width: 600px
+			margin: 0 auto
+		h3
+			text-align: center
+			margin-bottom: 15px
+			font-size: 22px
+		&__logo
+			width: 100%
+			a
+				float: left
+			h3,p
+				display: inline-block
+				padding-left: 30px
+			h3
+				padding-top: 35px
+				font-size: 16px
+				margin-bottom: 0px
+		
+@media screen and (max-width: 900px)
+	.map
+		&__content
+			width: 100%
+			max-width: 480px
+			margin: 0 auto
+		&__image
+			position: relative
+			top: 0
+			padding-bottom: 0
+			width: 100%
+			left: -20%
+			img
+				position: relative
+		.container-flex
+			justify-content: center
+		h3
+			font-size: 22px
+	.ranch-getting-here
+		padding-bottom: 0px
+		.video
+			padding-bottom: 30px
+	.contact
+		form h3
+			font-size: 22px
+		&__form-container
+			padding: 60px
+			&::before
+				display: none
+		&__buttons
+			margin-bottom: 40px
+
+@media screen and (max-width: 767px)
+	.gallery__popup	
+		padding: 60px 0px 0
+		.close
+			top: 5px
+	.welcome
+		.container-flex
+			flex-flow: column
+		&__content
+			margin-bottom: 60px
+		&__activity
+			width: 100%
+			max-width: 480px
+			margin: 0 auto
+			padding: 0 !important
+			&:first-of-type
+				margin-bottom: 40px
+				&::after
+					display: none
+			.owl-carousel
+				padding: 0 20px
+				.owl-nav button.owl-next
+					right: -8px
+				.owl-nav button.owl-prev
+					left: -8px
+	.ranch
+		padding-top: 0
+		.gallery
+			padding: 80px 30px 0
+			&__cloth
+				padding: 30px 30px 150px
+		.slider
+			li
+				height: 40vw
+	.rooms,.area
+		.container-flex
+			flex-flow: column
+			& > div, & > li
+				max-width: 480px
+				margin: 0 auto
+				width: 100%
+			& > li
+				margin-bottom: 40px
+	.rooms::before, .area::after
+		display: none
+	.rooms__content 
+		padding-left: 0
+		button
+			display: block
+			margin: 0 auto
+	.area__types
+		padding: 60px 0
+	.contact
+		padding-left: 0
+		padding-right: 0
+		&__form-container
+			background: url('../img/contact-us/contact-bg.png') no-repeat center top/auto 100%
+
+@media screen and (max-width: 630px)
+	section
+		padding: 30px 10px
+	.section-title
+		font-size: 25px
+		letter-spacing: -1px
+		span
+			font-size: 18px
+			margin-bottom: 0 
+	.header
+		padding-top: 20px
+		&-top 
+			height: 80px
+			.logo img
+				width: 140px
+				top: -5px
+	.banner
+		h1
+			max-width: 95%
+		b
+			top: -10px
+			letter-spacing: 12px
+			font-size: 14px
+	.ranch
+		&-container
+			background: none
+		.gallery
+			padding-top: 30px
+			&__cloth
+				background: none
+				padding-bottom: 0
+			&__screen
+				display: none !important
+				height: 200px
+
+			&__buttons
+				bottom: -130px
+				button
+					display: block
+					margin: 0 auto 10px
+
+		.slider
+			transform: translate3d(0, -30px, 0)
+			padding: 0
+			.owl-carousel .owl-stage-outer
+				padding-top: 0
+			li
+				background: url(../img/gallery-card.png) no-repeat center center/110% 100%
+				height: 100vw
+				img
+					width: 78%
+					left: 11%
+					height: 50%
+					top: 20%
+
+				&:hover
+					transform: none
+			.owl-nav button.owl-next, .owl-nav button.owl-prev
+				top: auto
+				transform: none
+				bottom: -45px
+			.owl-nav button.owl-next
+				right: 40px
+			.owl-nav button.owl-prev
+				left: 40px
+
+		.video
+			.container-flex
+				flex-flow: column
+				& > div
+					width: 100%
+			&__block
+				margin-top: 20px
+				padding-bottom: 98%
+	.questions
+		padding: 60px 0 0
+		&__book
+			background: url(../img/contact-us/contact-bg.png) center 0/auto 100%
+		&__page
+			padding: 30px 15px
+			h3
+				font-size: 22px
+			ul li
+				span
+					padding-right: 20px
+					&::after
+						right: 0px
+			&--right
+				p
+					font-size: 18px
+					padding: 0
+					margin-bottom: 20px
+				button
+					width: 150px
+					height: 45px
+					font-size: 15px
+	.activities-rates__more
+		position: relative
+		.owl-carousel
+			max-width: none
+		.owl-nav button
+			top: auto
+			bottom: -20px
+			transform: none
+			&.owl-prev
+				left: -15px
+			&.owl-next
+				right: -15px
+			span
+				height: 30px
+	.cabins-rates
+		h3
+			font-size: 22px
+		&__overview .owl-dots
+			bottom: -25px !important
+		&__prices
+			padding-top: 50px
+	.map
+		&__image
+			width: 150%
+			left: -35%
+		&__table
+			ul li
+				font-size: 14px
+	.ranch-getting-here
+		padding-bottom: 30px
+	.contact
+		form 
+			.description
+				line-height: 1.4
+		&__form-container
+			padding: 50px 15px
+		&__buttons
+			button
+				width: 150px
+				height: 45px
+				font-size: 15px
+	.footer
+		h3
+			padding-top: 10px
+			margin-bottom: 8px
+		.container-flex
+			flex-flow: column
+			align-items: center
+		&__logo
+			// width: 320px
+			margin: 0 auto
+			text-align: center
+			margin-bottom: 20px
+			a
+				display: block
+				margin: 0 auto
+				width: 150px
+				float: none
+			img
+				width: 100%
+			h3,p
+				padding-left: 0
+		&__map
+			margin-bottom: 20px
+			li
+				font-size: 15px
+				line-height: 2.2
+		&__contacts
+			span
+				display: inline-block
+				font-size: 15px
+				line-height: 1.5
+
+	

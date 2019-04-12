@@ -1,5 +1,24 @@
 @import "vars";
 
+@media (min-width: 1500px) {
+	.advantages {
+		&::before {
+			width: 120%;
+			top: 0;
+			left: -25%;
+			background: url('../img/homepage/advantages-bg.svg') no-repeat right 0/100% 100%;
+		}
+	}
+	.features {
+		&__list::before {
+			width: 150%;
+			height: 100%;
+			top: 0;
+			left: -60%;
+			background: url(../img/homepage/features-bg.svg) no-repeat right center/cover;
+		}
+	}
+}
 @media (max-width: 1250px) {
 	.quote-section {
 		padding-bottom: 0;
@@ -15,6 +34,11 @@
 				font-size: 18px;
 				line-height: 28px;
 			}
+		}
+	}
+	.advantages {
+		&::before {
+			background: url('../img/homepage/advantages-bg.svg') no-repeat right 0/cover;
 		}
 	}
 	.benefits {
@@ -66,8 +90,6 @@
 	}
 	.about {
 		background: url('../img/homepage/about-bg.svg') no-repeat bottom center/100%;
-		// padding-top: 150px;
-		// margin-top: -150px;
 		.container {
 			padding: 250px 20px 250px;
 		}
@@ -112,7 +134,6 @@
 			}
 		}
 		&__text-block {
-			// width: 50%;
 			h3 {
 				font-size: 20px;
 				br {
@@ -124,7 +145,6 @@
 			}
 		}
 		&__combination {
-
 		}
 	}
 	.header {
@@ -145,7 +165,7 @@
 		padding-bottom: 100px;
 		&__banner {
 			height: 400px;
-			background: url('../img/hero.jpg') no-repeat right top/150%;
+			background: url('../img/career/hero.jpg') no-repeat right top/150%;
 		}
 		&__quote {
 			position: absolute;
@@ -180,6 +200,33 @@
 			justify-content: space-around;
 		}
 	}
+	.about-description {
+		background-size: contain;
+	}
+	.management {
+		&__list {
+			flex-flow: row wrap;
+			justify-content: space-around;
+			li {
+				width: 45%;
+				max-width: none;
+				margin-bottom: 50px;
+			}
+			li:nth-of-type(2) {
+				padding-top: 0px;
+			}
+		}
+		&.advisors {
+			h2 {
+				margin-bottom: 40px;
+			}
+			.management__list {
+				li {
+					padding-top: 0;
+				}
+			}
+		}
+	}
 	.quote-section.jobpage {
 		.section-title {
 			padding-top: 0px;
@@ -191,6 +238,16 @@
 		}
 		.quote-section__banner {
 			margin-top: 0px;
+		}
+	}
+	.blog-post {
+		&__banner {
+			padding: 50px 40px;
+		}
+		&__text-block {
+			border-radius: 0;
+			margin-top: 0;
+			padding: 70px 20px;
 		}
 	}
 }
@@ -431,7 +488,7 @@
 		}
 		&__banner {
 			height: 300px;
-			background: url('../img/hero.jpg') no-repeat center top/cover;
+			background: url('../img/career/hero.jpg') no-repeat center top/cover;
 		}
 		.section-title {
 			// padding-top: 0px;
@@ -586,6 +643,62 @@
 			padding-top: 15px;
 		}
 	}
+	.about-header {
+		padding: 0 10px;
+		.header__banner {
+			display: flex;
+			h1 {
+				font-size: 24px;
+				margin-bottom: 12px;
+			}
+			p {
+				line-height: 1.35;
+				margin-bottom: 0;
+			}
+		}
+		&__container {
+		    height: 120vh;
+		    min-height: 550px;
+		}
+	}
+	.about-description {
+		display: none;
+	}
+	.management {
+		h2 {
+			font-size: 24px;
+			line-height: 1.4;
+			margin-bottom: 30px;
+		}
+		h3 {
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+		&__list {
+			flex-flow: column;
+			li {
+				width: 100%;
+				max-width: 500px;
+				margin: 0 auto 40px;
+			}
+			span {
+				font-size: 16px;
+				margin-bottom: 10px;
+			}
+			p {
+				font-size: 15px;
+				line-height: 1.6;
+				margin-bottom: 18px;
+			}
+		}
+		&.advisors {
+			.management__list {
+				li {
+					margin-bottom: 25px;
+				}
+			}
+		}
+	}
 	.quote-section.jobpage {
 		.container {
 			flex-flow: column;
@@ -636,6 +749,134 @@
 					}
 				}
 			}
+		}
+	}
+	.blog-listing {
+		&__main {
+			h1 {
+				font-size: 26px;
+			}
+			&-description {
+				font-size: 18px;
+				margin: 30px 0;
+			}
+			.blog-listing__info {
+				flex-direction: column;
+				align-items: flex-start;
+				.full-story {
+					margin-top: 25px;
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+		&__articles {
+			padding-bottom: 50px;
+			li {
+				width: 100%;
+				margin-bottom: 50px;
+			}
+			h2 {
+				font-size: 22px;
+			}
+		}
+	}
+	.blog-post {
+		&__banner {
+			padding: 50px 20px;
+			height: calc(100vh - 68px);
+			h1 {
+				font-size: 25px;
+				margin-bottom: 100px;
+
+			}
+		}
+		&__info {
+			p {
+				display: block;
+				line-height: 1.4;
+			}
+			.author::after {
+				display: none;
+			}
+		}
+		&__text-block {
+			border-radius: 0;
+			margin-top: 0;
+			padding: 40px 20px;
+			p {
+				font-size: 15px;
+				line-height: 1.75;
+			}
+			h2,h3,h4 {
+				line-height: 1.25;
+				font-weight: 500;
+			}
+			h2 {
+				font-size: 22px;
+			}
+			h3 {
+				font-size: 20px;
+			}
+			h4 {
+				font-size: 18px;
+			}
+			ul {
+				padding-left: 20px;
+				li {
+					font-size: 15px;
+					line-height: 1.75;
+					&::before {
+						left: -16px;
+						top: 9px;
+					}
+				}
+			}
+		}
+	}
+	.blog-navigation {
+		&__list {
+			flex-flow: column;
+			li {
+				width: 100%;
+			}
+		}
+	}
+	.blog-footer {
+		.container {
+			padding-top: 0;
+			border-top: 0;
+		}
+		h2 {
+			font-size: 22px;
+			br {
+				display: none;
+			}
+		}
+		&__links {
+			flex-flow: row wrap;
+			justify-content: center;
+			li {
+				margin: 0 15px;
+			}
+		}
+	}
+}
+@media (max-width: 350px) {
+	.about-header {
+		&__container {
+			height: 140vh;
+			// min-height: 550px;
+		}
+		.header__banner {
+			height: 130vh;
+			padding-top: 0;
+		}
+	}
+	.management {
+		margin-top: -70px;
+		&.advisors {
+			margin-top: 0;
 		}
 	}
 }

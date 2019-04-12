@@ -1,0 +1,7 @@
+@import "_mixins/font-face";
+
+@include font-face("roboto", "../fonts/Roboto-Regular");
+@include font-face("roboto-b", "../fonts/Roboto-Black");
+@include font-face("montserrat", "../fonts/Montserrat-Regular");
+@include font-face("montserrat-l", "../fonts/Montserrat-Light");
+@include font-face("montserrat-b", "../fonts/Montserrat-Black");
