@@ -1,26 +1,67 @@
 $(function() {
 
-	
-
-	$('.faq__list-question').click(function(){
-		if ($(this).next('.faq__list-answer').hasClass('opened')) {
-			$(this).next('.faq__list-answer').slideUp(400).removeClass('opened');
-			$(this).removeClass('active');
-		} else {
-			$('.faq__list-question').removeClass('active');
-			$(this).addClass('active');
-			$('.faq__list-answer').slideUp(400).removeClass('opened');
-			$(this).next('.faq__list-answer').slideDown(400).addClass('opened');
-		}
-	})
-
-
 	$('.header .hamburger').click(function(){
 		$('.header__mob').addClass('active');
 	})
 	$('.header__mob .close').click(function(){
 		$('.header__mob').removeClass('active');
 	})
+	$('.faq__list-question').click(function(){
+		if ($(this).next('.faq__list-answer').hasClass('opened')) {
+			$(this).next('.faq__list-answer').slideUp(400).removeClass('opened');
+			$(this).removeClass('active');
+		} else {
+			$(this).addClass('active');
+			$('.faq__list-answer').slideUp(400).removeClass('opened');
+			$(this).next('.faq__list-answer').slideDown(400).addClass('opened');
+		}
+	})
+	$('.form-input').focus(function() {
+		if ($(this).val().length == 0) {
+			var cleave = new Cleave($(this), {
+			    numericOnly: true,
+			    prefix: '07',
+		        // delimiter: '-',
+		        blocks: [10]
+			});
+		}
+		
+	})
+
+	$('form').submit(function(e) {
+		var form = $(this);
+		var button = $(this).find('button');
+
+		$('form input').attr('disabled', '');
+		form.addClass( "onclic");
+		validate();
+		function validate() {
+		  setTimeout(function() {
+		    window.location.href = url;
+		    
+		  }, 2250 );
+		}
+		e.preventDefault();
+
+		var mobile = $(this).find('input').val(),
+			url = 'https://kund.reducero.se?mobile=' + mobile;
+		$.ajax({
+		    url: url,
+		    method: "GET",
+		    dataType: "json",
+		    data: form.serialize(),
+		    success: function(response) {
+		    	window.location.href = url;
+		    	return true
+		    }
+		})
+	});
+	
+
+	
+
+
+	
 	
 	$('.footer__info-list.company h3').click(function(){
 		if ($(this).hasClass('active')) {
@@ -92,7 +133,7 @@ $(function() {
 	        	items: 4
 	        },
 	        1250:{
-	        	items: 5
+	        	items:5
 	        }
 	    }
 	})
@@ -123,5 +164,4 @@ $(function() {
 			$('.works__steps').trigger('destroy.owl.carousel');
 		}
 	})
-
 });

@@ -171,18 +171,34 @@ body {
 				top: 31px;
 				background: url('../img/mob.svg') no-repeat center center/contain;
 			}
-		}
-		label {
-			position: absolute;
-			display: block;
-			width: 100%;
-			height: 100%;
-			border: none;
-			position: relative;
-			font-size: 16px;
-			font-family: "montserrat-l";
-			text-align: left;
-			padding-left: 26px;
+			&.onclic {
+				&::before, input {
+					opacity: 0;
+					transition: .3s;
+				}
+				.button-wrap {
+					width: 100%;
+					transition: .3s;
+					right: 0;
+				}
+				button {
+					width: 40px;
+					height: 40px;
+					border-radius: 50%;
+					border: 3px solid transparent;
+					background: transparent;
+					font-size:0;
+					border-left-color:$hover;
+					animation: rotating 2s 0.25s linear infinite;
+					&:after {
+						content:"";
+					}
+					&:hover {
+						color:$accent;
+						background: transparent;
+					}
+				}
+			}
 		}
 		input {
 			position: absolute;
@@ -197,13 +213,25 @@ body {
 			padding-left: 55px;
 			padding-bottom: 1px;
 			font-size: 16px;
+			&:disabled {
+				opacity: .5;
+				transition: .3s;
+			}
 		}
-		button {
+		.button-wrap {
 			position: absolute;
 			width: 250px;
 			height: 65px;
 			top: 8px;
 			right: 8px;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		button {
+			width: 250px;
+			height: 65px;
 			border: none;
 			background: $accent;
 			border-radius: 3px;
@@ -214,6 +242,41 @@ body {
 			&:hover {
 				transition: .3s ease;
 				background: $hover;
+			}
+			&:active {
+				letter-spacing: .5px;
+			}
+			&:after {
+				content:"Sänk min månadskostnad";
+			}
+			
+			// &.validate {
+			// 	font-size:13px;
+			// 	color: white;
+			// 	background: $accent;
+			// 	&:after {
+			// 		content: '';
+			// 		display: block;
+			// 		margin: -5px auto 0;
+			// 		width: 16px;
+			// 		height: 9px;
+			// 		background: transparent;
+			// 		border: 4px solid #fff;
+			// 		border-right: none;
+			// 		border-top: none;
+			// 		transform: rotate(-45deg);
+			// 		border-radius: 2px;
+			// 	}
+
+			// }
+
+			@keyframes rotating {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
 			}
 		}
 	}

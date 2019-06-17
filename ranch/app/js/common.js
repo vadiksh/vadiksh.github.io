@@ -68,13 +68,13 @@ $(document).ready(function(){
 			
 	})
 
-	$('.video__wrapper button').click(function() {
+	$('tale__screen-thumbnail apn').click(function() {
 		var videoSrc = 'https://www.youtube.com/embed/rvskMHn0sqQ?autoplay=1&autohide=1';
 		$('.video__wrapper span').css({
 			"background": "url('../img/experience/exp-video-clicked.jpg') center center/cover",
 			"transition": "1s ease"
 		})
-		$(this).fadeOut(1000);
+		$(this).fadeOut(500);
 		setTimeout(function() {
 			$('.video__wrapper span').fadeOut(2000, function() {
 				$('.video__wrapper iframe').css({"z-index": 10})

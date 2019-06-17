@@ -1,0 +1,9 @@
+@import "_mixins/font-face";
+
+@include font-face("sans", "../fonts/OpenSans-Regular");
+@include font-face("sans-sb", "../fonts/OpenSans-SemiBold");
+@include font-face("sans-b", "../fonts/OpenSans-Bold");
+@include font-face("helvetica", "../fonts/HelveticaNeue-Roman");
+@include font-face("helvetica-b", "../fonts/HelveticaNeue-Bold");
+@include font-face("helvetica-m", "../fonts/HelveticaNeue-Medium");
+@include font-face("helvetica-l", "../fonts/HelveticaNeue-Light");

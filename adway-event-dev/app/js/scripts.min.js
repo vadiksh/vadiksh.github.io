@@ -11,9 +11,8 @@ $(function() {
 		e.preventDefault();
 		var elementId = $(this).attr('href');
 		$('.overflow-wrapper').animate({
-			scrollTop: $(elementId).offset().top
+			scrollTop: $(elementId)[0].offsetTop
 		},1000)
-		console.log($(elementId).offset().top)
 		if ($(this).hasClass('mob-link')) {
 			$('.header__mob').removeClass('active');
 		}
@@ -54,15 +53,22 @@ $(function() {
 	});
 
 	$('.book-form').submit(function(e) {
-		$('.loader').css({
-			"display": "flex",
-			"opacity": 1
-		})
+		$(".book-form button").addClass( "onclic");
+		validate();
+		function validate() {
+		  setTimeout(function() {
+		    $(".book-form button").removeClass( "onclic" );
+		    $(".book-form button").addClass( "validate");
+		    $('.book-form input, .book-form button').attr('disabled', '');
+		    $('.book-form .received').addClass('visible');
+		  }, 2250 );
+		}
 		e.preventDefault();
 		formSubmit();
 	});
+	
+
 	function formSubmit() {
-		
 		var $form = $('.book-form'),
  		  	url = 'https://hooks.zapier.com/hooks/catch/4793565/7sab83/';
 		$.ajax({
@@ -71,13 +77,7 @@ $(function() {
 		    dataType: "json",
 		    data: $form.serialize(),
 		    success: function(response) {
-		    	$('.loader-ring').fadeOut(200, function() {
-    				$('.loader-submitted').fadeIn(200, function(){
-    					setTimeout(function(){
-    						$('.loader').fadeOut(400);
-    					}, 2000)
-    				});
-    			})
+		    	
 		    	return true
 		    }
 		})
@@ -108,17 +108,26 @@ $(function() {
 		}
 	})
 
-	var imgIndex;
+	var imgSrc;
 	$('.images__list li').click(function(){
 		
 		imgSrc = this.dataset.src;
 		$('.images__fullscreen').addClass('active');
 		$('.images__fullscreen img').attr('src', imgSrc);
-
 	})
 
 	$('.images__fullscreen img').click(function() {
+		var currentSrc = $(this).attr('src');
+		$('.images__fullscreen img').fadeOut(200, function(){
+			imgSrc = $('.images__list li[data-src="' + currentSrc + '"]').next().attr('data-src');
+			if (currentSrc == $('.images__list li:last-child').attr('data-src')) {
+				imgSrc =  $('.images__list li:first-child').attr('data-src');
+			}
+			$('.images__fullscreen img').attr('src', imgSrc);
 
+			$(this).fadeIn(300);
+
+		})
 	})
 
 	$('.images__fullscreen .close').click(function(){
