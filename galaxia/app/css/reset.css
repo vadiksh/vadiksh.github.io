@@ -1,0 +1,26 @@
+/*------------------------------RESET DEFAULT STYLES--------------------------------*/
+/*----------------------------------------------------------------------------------*/
+html,body                       { width:100%; height:100%; -webkit-text-size-adjust:none !important;}
+body                            { padding:0; margin:0; font:16px; color:#000; line-height: 1.5; background: #fff;}
+div,p,a,span,em,strong,img,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,td,tr,form,fieldset,label,select,input,textarea,header, nav, section, article, aside, footer, blockquote {
+	padding:0;
+	margin:0;
+	outline:none;
+	list-style:none;
+
+	-webkit-box-sizing: border-box;
+
+	        box-sizing: border-box;
+ 	-moz-box-sizing: border-box;
+}
+header, nav, section, article, aside, footer {
+	display: block
+}
+select, input, textarea        {  font: 16px; color: #fff; vertical-align:middle; }
+textarea                       { vertical-align:top; resize:none;}
+:focus                         { outline:none; }
+input[type=submit], button     { cursor:pointer; }
+img, fieldset                  { border:0; }
+table                          { border-collapse:collapse; border-spacing:0; }
+a                              { /*! font: 16px Roboto; */ color: #000; text-decoration:none; }
+a:hover                        { text-decoration:none;}
