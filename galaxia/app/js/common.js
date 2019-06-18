@@ -1,6 +1,6 @@
 $(function() {
 
-	$('.header .hamburger').click(function(){
+	$('.hamburger').click(function(){
 		$('.header__mob').addClass('active');
 	})
 	$('.header__mob .close').click(function(){

@@ -18,6 +18,19 @@
 <body>
 <div class="overflow-wrapper ">
 	<header class="header">
+		<div class="header__mob">
+			<nav>
+				<ul>
+					<li><a class="mob-link" href="#about">How it Works</a></li>
+					<li><a class="mob-link" href="#market">Markeplace</a></li>
+				</ul>
+			</nav>
+			<ul class="social">
+				<li><a href="https://twitter.com/GalaxiaOne" target="_blank"></a></li>
+				<li><a href="https://medium.com/@galaxiaoneproject" target="_blank"></a></li>
+			</ul>
+			<span class="close"></span>
+		</div>
 		<div class="container">
 			<div class="header-top fading">
 				<a class="logo" href="#"><img src="img/logo.svg" alt=""></a>
@@ -32,19 +45,6 @@
 					<li class="mode dark"></li>
 					<li class="hamburger"></li>
 				</ul>
-				<div class="header__mob">
-					<nav>
-						<ul>
-							<li><a href="#about">How it Works</a></li>
-							<li><a href="#market">Markeplace</a></li>
-						</ul>
-					</nav>
-					<ul class="social">
-						<li><a href="https://twitter.com/GalaxiaOne" target="_blank"></a></li>
-						<li><a href="https://medium.com/@galaxiaoneproject" target="_blank"></a></li>
-					</ul>
-					<span class="close"></span>
-				</div>
 			</div>
 		
 
@@ -65,18 +65,18 @@
 				<h2>How it works</h2>
 				<p>Start a galactic corporation. Discover new planets. Exploit them.</p>
 			</div>
-			<ul class="fading">
-				<li>
+			<ul>
+				<li class="fading">
 					<div class="img"><img src="img/about1.png" alt=""></div>
 					<h3>START A CORP</h3>
 					<p>Guide the fate of your<br> corporation as its CEO.</p>
 				</li>
-				<li>
-					<div class="img"><img src="img/about2.png" alt=""></div>
+				<li class="fading">
+					<div class="img"><img width="218" src="img/about2.png" alt=""></div>
 					<h3>FIND NEW WORLDS</h3>
 					<p>Discover your first planet<br> or buy one on OpenSea.</p>
 				</li>
-				<li>
+				<li class="fading">
 					<div class="img"><img src="img/about3.png" alt=""></div>
 					<h3>EXPAND. EXPLORE. EXPLOIT.</h3>
 					<p>Mine rare minerals and recieve moon<br> credits in an ever-expanding universe.</p>
@@ -228,7 +228,7 @@
 			<div class="signup fading">
 				<h2>Sign up for updates</h2>
 				<p>Get the latest Galaxia news straight to your inbox</p>
-				<form action="">
+				<form action="" method="POST">
 					<input type="email" placeholder="Your email address">
 					<button>Submit</button>
 				</form>

@@ -30,6 +30,18 @@ body {
 			min-height: 100vh;
 			background: url('../img/banner-light.png') center bottom/cover;
 			transition: .3s;
+			&__mob {
+				background: #fff;
+				transition: .3s;
+				a {
+					color: #000;				
+					transition: .3s;
+				}
+				.close {
+					background: url('../img/close-light.svg') no-repeat center center/contain;
+					transition: .3s;
+				}
+			}
 		}
 		.awaits {
 			background: url('../img/awaits-bg.png') center bottom/cover;
@@ -120,14 +132,13 @@ body {
 	min-height: 100vh;
 	background: url('../img/banner.png') center bottom/cover;
 	transition: .3s;
-	padding: 0 15px;
+	padding: 0 30px;
 	color: #fff;
 	.container {
 		max-width: 1110px;
 		position: relative;
 	}
 	&-top {
-		// padding: 65px 0;
 		position: absolute;
 		width: 100%;
 		top: 0;
@@ -142,46 +153,58 @@ body {
 			height: auto;
 			transform: scale(1.01);
 		}
-		nav {
-			ul {
-				display: flex;
-				align-items: center;
+		ul {
+			display: flex;
+			align-items: center;
+		}
+		li {
+			display: inline-block;
+			transition: .2s;
+			&:hover {
+				transform: scaleX(1.05);
+				transition: .3s ease-out;
 			}
-			li {
+			a {
 				display: inline-block;
-				transition: .2s;
-				&:hover {
-					transform: scaleX(1.05);
-					transition: .3s ease-out;
-				}
-				a {
-					color: #fff;
-					font-family: 'sans-sb';
-					font-size: 20px;
-					padding: 10px 20px;
-				}
+				color: #fff;
+				font-family: 'sans-sb';
+				font-size: 20px;
+				padding: 10px 20px;
 			}
-			li.mode {
-				cursor: pointer;
-				padding: 10px;
-				margin-left: 10px;
-				width: 26px;
-				height: 26px;
-				background: url('../img/dark.svg') no-repeat center center/contain;
+		}
+		li.mode {
+			cursor: pointer;
+			padding: 10px;
+			margin-left: 10px;
+			width: 26px;
+			height: 20px;
+			background: url('../img/dark.svg') no-repeat center center/contain;
+			transition: .3s;
+			&:hover {
 				transition: .3s;
-				&:hover {
-					transition: .3s;
-					transform: scale(1.2);
-				}
-				&.dark {
-					background: url('../img/light.svg') no-repeat center center/contain;
-					transition: .3s;
-				}
+				transform: scale(1.2);
+			}
+			&.dark {
+				background: url('../img/light.svg') no-repeat center center/contain;
+				height: 25px;
+				transition: .3s;
 			}
 		}
 	}
 	.mob-menu {
 		display: none;
+		li:hover {
+			transform: none;
+		}
+		.mode {
+			margin-right: 12px;
+		}
+		.hamburger {
+			display: block;
+			width: 18px;
+			height: 13px;
+			background: url('../img/hamburger.svg') no-repeat center center/contain;
+		}
 	}
 	&__mob {
 		display: none;
@@ -192,8 +215,8 @@ body {
 		height: 100vh;
 		background: #000;
 		z-index: 16;
-		display: none;
 		flex-flow: column;
+		// padding-top: 100px;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
@@ -205,19 +228,25 @@ body {
 		}
 		nav {
 			margin-bottom: 20px;
-			li {
-				display: block;
-				padding: 0;
-				margin-bottom: 25px;
-			}
 			a {
-				font-size: 32px;
+				font-size: 16px;
 				color: #fff;
 				transition: .25s ease;
 				padding: 10px;
 				margin: 0;
 				display: block;
 			}
+		}
+		
+		.close {
+			width: 20px;
+			height: 21px;
+			display: block;
+			position: fixed;
+			z-index: 17;
+			top: 35px;
+			right: 30px;
+			background: url('../img/close.svg') no-repeat center center/contain;
 		}
 	}
 	&-banner {
@@ -310,7 +339,7 @@ body {
 }
 .awaits {
 	text-align: center;
-	padding: 35px 15px 90px;
+	padding: 35px 15px 0px;
 	.container {
 		max-width: 935px;
 		margin: 0 auto;
@@ -368,7 +397,7 @@ body {
 			background: #fff;
 			position: relative;
 			top: -10px;
-			border-radius: 0 0 5px 5px;
+			border-radius: 0 0 3px 3px;
 			padding: 25px 20px;
 			text-align: left;
 		}
@@ -386,14 +415,14 @@ body {
 	}
 }
 .features {
-	padding: 0 15px;
+	padding: 45px 30px;
 	&__list {
 		display: flex;
 		justify-content: space-between;
 		max-width: 840px;
 		margin: 0 auto;
 		ul {
-			width: 45%;
+			width: 50%;
 		}
 		li {
 			margin-bottom: 30px;
@@ -433,6 +462,7 @@ body {
 		p {
 			font-size: 18px;
 			line-height: 1.3;
+			padding-left: 24px;
 		}
 	}
 }
@@ -464,6 +494,7 @@ body {
 		background: #F8FCFF;
 	}
 	input {
+		background: transparent;
 		width: 100%;
 		color: #000;
 		font-size: 13px;
@@ -515,7 +546,7 @@ body {
 	}
 }
 .footer {
-	padding: 0 15px;
+	padding: 0 30px;
 	.container {
 		max-width: 1110px;
 		position: relative;

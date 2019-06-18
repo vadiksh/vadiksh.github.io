@@ -1,0 +1,11 @@
+<svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 6">
+<path id="Oval" fill-rule="evenodd" clip-rule="evenodd" d="M32.5 63C49.3447 63 63 49.3447 63 32.5C63 15.6553 49.3447 2 32.5 2C15.6553 2 2 15.6553 2 32.5C2 49.3447 15.6553 63 32.5 63Z" stroke="white" stroke-width="3"/>
+<path id="Right Arrow" fill-rule="evenodd" clip-rule="evenodd" d="M28 23L40 33L28 43V23Z" fill="white"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="28" y="23" width="12" height="20">
+<path id="Right Arrow_2" fill-rule="evenodd" clip-rule="evenodd" d="M28 23L40 33L28 43V23Z" fill="white"/>
+</mask>
+<g mask="url(#mask0)">
+</g>
+</g>
+</svg>

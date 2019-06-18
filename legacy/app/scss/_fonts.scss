@@ -1,0 +1,9 @@
+@import "_mixins/font-face";
+
+@include font-face("gilroy-b", "../fonts/Gilroy-Bold");
+@include font-face("gilroy", "../fonts/Gilroy-Regular");
+@include font-face("proxima-b", "../fonts/ProximaNova-Bold");
+@include font-face("proxima", "../fonts/ProximaNova-Regular");
+@include font-face("roboto", "../fonts/RobotoRegular");
+@include font-face("roboto-b", "../fonts/RobotoBold");
+@include font-face("montserrat", "../fonts/Montserrat-Regular")

@@ -1,0 +1,481 @@
+@import "vars";
+
+@media (max-width: 767px) {
+	body {
+		background-color:#fff;
+	}
+	.header {
+		height: 400px;
+		box-shadow: inset 0px -69px 99px -20px #446182;
+		background: url('../img/header-bg.png') 75% center / cover no-repeat !important;
+			.header__top {
+				padding: 40px 0px 0px 20px;
+				.logo {
+					background: url('../img/logo-white.png') center center / cover no-repeat;
+				}
+				nav {
+					.header__top-nav {
+						position: fixed;
+						display: flex;
+						-webkit-flex-direction: column;
+						-moz-flex-direction: column;
+						-ms-flex-direction: column;
+						-o-flex-direction: column;
+						flex-direction: column;
+						justify-content: center;
+						width: 100%;
+						height: 100%;
+						background-color: #fff;
+						z-index: 20;
+						left: 0;
+						top: 0;
+						transform: translate3d(100%,0,0);
+				    	transition: .5s ease;
+			    		&.visible {
+			    			transform: translate3d(0,0,0);
+			    	    	transition: .5s ease;
+			    	    	z-index: 10;
+			    		}
+						li {
+							margin: 10px 0px;
+							text-align: center;
+							a {
+								font-size: 20px;
+								color: black;
+								position: relative;
+								z-index: 50;
+							}
+						}
+						li:last-child a {
+						    color: black;
+						    background-color: transparent;
+						    padding: 8px 25px;
+						    border-radius: 0px;
+						}
+					}
+						.hamburger {
+							height: 46px;
+							width: 50px;
+							display: block;
+							position: relative;
+							z-index: 11;
+							border-radius: 30%;
+							right: 20px;
+							top: -5px;
+							z-index: 100;
+							cursor: pointer;
+							}
+						.hamburger.active {
+							position: fixed;
+							top: 36px;
+						}	
+						.hamburger.active .hamburger_button {
+							background-color: #000;
+						} 
+						.hamburger.active .hamburger_button::before, .hamburger.active .hamburger_button::after {
+							background-color: #000;
+						}
+						.hamburger_button {
+							height: 2px;
+							width: 60%;
+							display: block;
+							background-color: #fff;
+						    position: relative;
+						    top: 50%;
+					      	margin: 0 auto;
+							border-radius: 3px;
+					    	transform: translateY(-50%);
+					    	z-index: 21;
+						}
+						.hamburger_button::after, .hamburger_button::before {
+							content: '';
+							background-color: #fff;
+							position: absolute;
+							height: 2px;
+							width: 100%;
+							left: 0;
+							border-radius: 3px;
+							transition: top .3s, transform .3s .3s;
+						}
+						.hamburger_button::after {
+							top: -7px;
+						}
+						.hamburger_button::before {
+							top: 7px;
+						}			
+				}	
+			}
+			.header-container {
+				.container {
+					height: calc(400px - 86px);
+					position: relative;
+					.left {
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						h1 {
+							font-size: 30px;
+							// margin-top: 15%;
+						    color: white;
+						    text-align: center;
+						    position: relative;
+						    // bottom: 0;
+						}
+						p {
+							display: none;
+						}
+						.button {
+							display: none;
+						}
+					}
+					.right {
+						width: 100%;
+						height: 80%;
+						display: flex;
+						justify-content: center;
+						flex-direction: column;
+						align-items: center;
+						.play-div {
+							position: relative;
+							z-index: 1;
+							p {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+	}
+.mob-info {
+	display: block!important;
+	text-align: left;
+	margin-bottom: 50px;
+	padding-left: 30px;
+	p {
+		font-family: 'gilroy';
+		font-style: normal;
+		font-weight: normal;
+		font-size: 19px;
+		line-height: 29px;
+		margin: 25px 0px;
+	}
+}
+.why-legacy {	
+	overflow: hidden;
+	padding-bottom: 5%;
+	.container {
+		flex-flow: column-reverse wrap;
+		.text-block {
+			margin: 0px 0 0 30px !important;
+			width: 100%;
+			h2 {
+				width: 80%;
+			}
+			.button {
+				font-size: 15px;
+			}
+		}
+		.days {
+			margin-top:100px;
+			justify-content: center;
+			justify-content: start;
+			margin-left: 7%;
+			li {
+				padding: 20px 5px;
+				width: 35%;
+				.days-bold {
+					margin: 5px 0px 2px 0px;
+				}
+				img {
+					width: 56px;
+				}
+			}
+			li:nth-child(3) img {
+			    width: 40px !important;
+			}
+		}
+		.days::after {
+			height: 73%!important;
+		    width: 100%!important;
+		    top: 35%!important;
+		}
+	}
+}
+.how-it-works {
+	margin-top: 30px !important;
+	overflow: hidden;
+	.container {
+		flex-flow: column;
+		.text-block {
+			width: 100%;
+			padding: 0px 0px 0px 30px;
+			.p-default {
+				width: 80%;
+			}
+		}
+		.possibilities {
+			padding: 0px;
+			width: 100%;
+			li {
+				width: 45%;
+			}
+		}
+	}
+}
+.mission {
+	// display: none;
+	margin-top: 50px !important;
+	.container {
+		position: relative;
+		flex-direction: column;
+		.slick-slider {
+			width: 100%;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		.text-block {
+			margin: 30px 0px;
+			width: 80%;
+			padding-left: 30px;
+			.p-mission {
+				font-size: 23px;
+				line-height: 31px;
+				width: 100%;
+			}
+		}
+	}
+	&::after {
+		width: 80%;
+		height: 620px;
+		top: 140px;
+
+	}
+	
+}
+.meet-erno {
+	margin-top: 0px !important;
+	padding-top: 80px!important;
+	overflow: hidden;
+	.container {
+		flex-flow: column;
+		position: relative;
+		.conversation {
+			position: relative!important;
+			top: -135px!important;
+			width: 125%!important;
+			height: auto!important;
+			right: 70px !important;
+		}
+		.text-block {
+			width: 100%;
+			padding-left: 30px!important;
+		}
+	}
+	&::after {
+		width: 100% !important;
+		top: -104px !important;
+	}
+}
+.team {
+	margin-top: -200px;
+	.container {
+		ul {
+			img {
+				margin: 0 auto;
+			}
+		}
+	}
+}
+.contact {
+	position: relative;
+	margin-top: 0px;
+	.contact-container {
+		text-align: left;
+		width: 90%;
+		margin-top: 12%;
+		h3 {
+			padding-left: 50px;
+		}
+		form {
+			padding: 0 50px 50px 50px;
+			.inputs {
+				label {
+					width: 100%;
+					margin-top: 15px;
+				}
+				label:nth-child(1) {
+					order: 1;
+				}
+				label:nth-child(2) {
+					order:3;
+				}
+				label:nth-child(3) {
+					order: 2;
+				}
+				label:nth-child(4) {
+					order: 6;
+				}		
+				label:nth-child(5) {
+					order: 4;
+				}
+				.general-box {
+				width: 100%;
+				order: 7;
+				margin-top: 15px;
+				}	
+				label:last-child {
+					order: 5;
+					margin-top: 15px;
+				}
+			}
+			.send {
+				float: none;
+				margin: 0;
+				margin-top: 20px;
+			}
+		}
+	}
+	.doubt {
+		margin:30px auto 0;
+		width: 70%;
+	}
+	&::after {
+		width: 570px;
+		height: 530px;
+		bottom: -40px;
+		position: absolute;
+		left: -115px;
+		z-index: -5;
+	}
+	
+}
+.footer {
+	padding:25px 0px;
+	.container {
+		padding-top: 30px;
+		display: block;
+		max-width: 100%;
+		.logo {
+			position: relative;
+			display: block;
+			margin:0 auto;
+		}
+		ul {
+			padding-bottom: 40px;
+			border-bottom: .5px solid #002840;
+			position: relative;
+			justify-content:center;
+		}
+		p {
+			display: block;
+		}
+	}
+}	
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+	.header {
+		.header__top {
+			max-width: 700px;
+			.logo {
+				width: 240px;
+			    height: 56px;
+			}
+			nav {
+				.header__top-nav {
+					margin-top: 10px;
+					li {
+						a {
+							padding: 8px;
+						}
+					}
+				}
+			}
+		}
+		.header-container {
+			max-width: 600px;
+			.container {
+				.left {
+
+				}
+				.right {
+
+				}
+			}
+		}
+	}
+	.how-it-works {
+		.container {
+			.possibilities {
+				padding:0;
+			}
+			.text-block {
+				width: 100%;
+			}
+		}
+	}
+	.why-legacy {
+		margin-top: 70px;
+		.container {
+			li {
+				padding:40px 5px;
+				width: 40%;
+			}
+			.text-block {
+				margin:0;
+				padding:5px;
+			}	
+		}
+	}
+	.mission {
+		.container {
+			display: block;
+			.slick-slider {
+				margin:40px auto;
+			}
+			.text-block {
+				width: 100%;
+				margin-left: 0;
+				text-align: center;
+				.p-mission {
+					width: 100%;
+				}
+			}
+		}
+	}
+	.meet-erno {
+		.container {
+			.conversation {
+				top: -200px;
+				width: 60%;
+			}
+		}
+	}
+}
+@media (min-width: 1024px) and (max-width: 1300px) {
+	.header {
+		padding:50px;
+	}
+	.meet-erno {
+		.container {
+			.conversation {
+				width: 600px;
+			}
+		}
+	}
+	.mission {
+		// overflow: hidden;
+		.text-block {
+			margin: 80px 0 0 30px;
+			.p-mission {
+				width: 100%;
+			}
+		}
+	}
+}
+
+
