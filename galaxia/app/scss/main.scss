@@ -78,7 +78,7 @@ body {
 	max-width: 980px;
 	margin: 0 auto;
 }
-.section-header {
+.section-title {
 	text-align: center;
 	margin-bottom: 70px;
 	h2 {
@@ -90,7 +90,30 @@ body {
 	}
 	p {
 		font-size: 20px;
-		
+	}
+}
+.fading {
+	transform: translate3d(0, 30px, 0);
+	opacity: 0;
+	&.header-top {
+		transform: translate3d(0, -100px, 0);
+	}
+	&.title {
+		transform: translate3d(-100%, 0, 0);
+		&.in-view {
+			transition: .6s .2s;
+		}
+	}
+	&.planets {
+		transform: translate3d(100%, 0, 0);
+		&.in-view {
+			transition: .6s .2s; 
+		}
+	}
+	&.in-view {
+		transition: .4s ease;
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
 	}
 }
 .header {
@@ -126,6 +149,11 @@ body {
 			}
 			li {
 				display: inline-block;
+				transition: .2s;
+				&:hover {
+					transform: scaleX(1.05);
+					transition: .3s ease-out;
+				}
 				a {
 					color: #fff;
 					font-family: 'sans-sb';
@@ -141,6 +169,10 @@ body {
 				height: 26px;
 				background: url('../img/dark.svg') no-repeat center center/contain;
 				transition: .3s;
+				&:hover {
+					transition: .3s;
+					transform: scale(1.2);
+				}
 				&.dark {
 					background: url('../img/light.svg') no-repeat center center/contain;
 					transition: .3s;
@@ -231,6 +263,11 @@ body {
 				border-radius: 5px;
 				font-family: "sans-sb";
 				color: #fff;
+				transition: .2s;
+				&:hover {
+					transition: .3s;
+					transform: scale(1.05);
+				}
 				&::after {
 					content: '';
 					position: absolute;
@@ -246,7 +283,7 @@ body {
 	}
 }
 .about {
-	padding: 0 15px;
+	padding: 35px 15px 0;
 	margin-bottom: 85px;
 	ul {
 		display: flex;
@@ -274,6 +311,10 @@ body {
 .awaits {
 	text-align: center;
 	padding: 35px 15px 90px;
+	.container {
+		max-width: 935px;
+		margin: 0 auto;
+	}
 	&__options {
 		display: inline-flex;
 		border: 1px solid #fff;
@@ -294,18 +335,21 @@ body {
 			color: #000;
 		}
 	}
+	&__list-wrap {
+		position: relative;
+	}
 	&__list {
-		max-width: 935px;
-		margin: 0 auto;
+		width: 100%;
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-between;
-		opacity: 0;
+		opacity: 0 !important;
 		visibility: hidden;
 		position: absolute;
-		// transition: .3s;
+		top: 0;
+		left: 0;
 		&.active {
-			opacity: 1;
+			opacity: 1 !important;
 			transition: .4s;
 			position: relative;
 			visibility: visible;
@@ -451,6 +495,11 @@ body {
 	li {
 		display: inline-block;
 		margin-right: 25px;
+		transition: .2s;
+		&:hover {
+			transition: .3s;
+			transform: scale(1.12);
+		}
 		&:first-of-type a {
 			background: url('../img/twitter.svg') no-repeat center center/contain;
 		}

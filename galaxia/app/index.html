@@ -19,7 +19,7 @@
 <div class="overflow-wrapper ">
 	<header class="header">
 		<div class="container">
-			<div class="header-top">
+			<div class="header-top fading">
 				<a class="logo" href="#"><img src="img/logo.svg" alt=""></a>
 				<nav>
 					<ul>
@@ -49,23 +49,23 @@
 		
 
 			<div class="header-banner">
-				<div class="title">
+				<div class="title fading">
 					<h1>Start a galactic corporation<br> and conquer the stars.</h1>
 					<p>The year is <span>3022</span>. Capitalism has consumed everything on earth. Now corporations move to the next great market: <span>space</span>. </p>
 					<a href="">Live on OpenSea</a>
 				</div>
-				<div class="planets"></div>
+				<div class="planets fading"></div>
 			</div>
 		</div>
 	</header>
 
 	<section class="about" id="about">
 		<div class="container">
-			<div class="section-header">
+			<div class="section-title fading">
 				<h2>How it works</h2>
 				<p>Start a galactic corporation. Discover new planets. Exploit them.</p>
 			</div>
-			<ul>
+			<ul class="fading">
 				<li>
 					<div class="img"><img src="img/about1.png" alt=""></div>
 					<h3>START A CORP</h3>
@@ -85,145 +85,147 @@
 		</div>
 	</section>
 
-	<section class="awaits">
+	<section class="awaits" id="market">
 		<div class="container">
-			<div class="section-header">
+			<div class="section-title fading">
 				<h2>A whole universe awaits</h2>
 				<p>Buying any of the planets from our solar system helps us develop Galaxia in the future.</p>
 			</div>
-			<ul class="awaits__options">
+			<ul class="awaits__options fading">
 				<li class="active" data-option='planet'>Planets</li>
 				<li data-option='corp'>Corps</li>
 			</ul>
-			<ul class="awaits__list planet active">
-				<li>
-					<img src="img/planet1.jpg" alt="">
-					<div class="info">
-						<h3>Earth #1</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/planet2.jpg" alt="">
-					<div class="info">
-						<h3>Jupiter #2</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/planet3.jpg" alt="">
-					<div class="info">
-						<h3>Uranus #3</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/planet4.jpg" alt="">
-					<div class="info">
-						<h3>Moon #4</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/planet5.jpg" alt="">
-					<div class="info">
-						<h3>Mars #5</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/planet6.jpg" alt="">
-					<div class="info">
-						<h3>Pluto #6</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-			</ul>
-			<ul class="awaits__list corp">
-				<li>
-					<img src="img/corp1.jpg" alt="">
-					<div class="info">
-						<h3>MIUGAI Developments</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/corp2.jpg" alt="">
-					<div class="info">
-						<h3>TALOO Industries</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/corp3.jpg" alt="">
-					<div class="info">
-						<h3>Fire System</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/corp4.jpg" alt="">
-					<div class="info">
-						<h3>KYUSA Technologies</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/corp5.jpg" alt="">
-					<div class="info">
-						<h3>Astral Enterprise</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-				<li>
-					<img src="img/corp6.jpg" alt="">
-					<div class="info">
-						<h3>Lotus Robotics</h3>
-						<a href="">View on OpenSea</a>
-					</div>
-				</li>
-			</ul>
+			<div class="awaits__list-wrap">
+				<ul class="awaits__list planet active fading">
+					<li>
+						<img src="img/planet1.jpg" alt="">
+						<div class="info">
+							<h3>Earth #1</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/planet2.jpg" alt="">
+						<div class="info">
+							<h3>Jupiter #2</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/planet3.jpg" alt="">
+						<div class="info">
+							<h3>Uranus #3</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/planet4.jpg" alt="">
+						<div class="info">
+							<h3>Moon #4</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/planet5.jpg" alt="">
+						<div class="info">
+							<h3>Mars #5</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/planet6.jpg" alt="">
+						<div class="info">
+							<h3>Pluto #6</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+				</ul>
+				<ul class="awaits__list corp fading">
+					<li>
+						<img src="img/corp1.jpg" alt="">
+						<div class="info">
+							<h3>MIUGAI Developments</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/corp2.jpg" alt="">
+						<div class="info">
+							<h3>TALOO Industries</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/corp3.jpg" alt="">
+						<div class="info">
+							<h3>Fire System</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/corp4.jpg" alt="">
+						<div class="info">
+							<h3>KYUSA Technologies</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/corp5.jpg" alt="">
+						<div class="info">
+							<h3>Astral Enterprise</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+					<li>
+						<img src="img/corp6.jpg" alt="">
+						<div class="info">
+							<h3>Lotus Robotics</h3>
+							<a href="">View on OpenSea</a>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</section>
 
 	<section class="features" id="">
 		<div class="container">
-			<div class="section-header">
+			<div class="section-title fading">
 				<h2>Upcoming features</h2>
 				<p>Here are some of the mechanics and features we’re adding to the Galaxia universe.</p>
 			</div>
 			<div class="features__list">
 				<ul>
-					<li>
+					<li class="fading">
 						<h3 class="green">MISSION LAUNCH</h3>
 						<p>Prepare the Gen 1 planets and corporations<br> ready for launch.</p>
 					</li>
-					<li>
+					<li class="fading">
 						<h3 class="yellow">GEN 2 PLANETS + GALAXIA WIKI</h3>
 						<p>Add extra moons and planets to the universe<br> as well as a dedicated wiki.</p>
 					</li>
-					<li>
+					<li class="fading">
 						<h3>GALACTIC MAP</h3>
 						<p>Create an interactive, explorable<br> map of the Galaxia universe.</p>
 					</li>
 				</ul>
 				<ul>
-					<li>
+					<li class="fading">
 						<h3>EXPLORE. UPGRADE. MINE.</h3>
 						<p>Scour the universe for new planets and<br> profit from the ones you already have.</p>
 					</li>
-					<li>
+					<li class="fading">
 						<h3 class="moon">MOON CREDITS</h3>
 						<p>Enable planets to passively mine moon credits,<br> which are collected by corporations.</p>
 					</li>
-					<li>
+					<li class="fading">
 						<h3>CORP MANAGEMENT</h3>
 						<p>Let users upgrade planet infrastructure,<br> send expeditions and manage corp finances.</p>
 					</li>	
 				</ul>
 			</div>
 		
-			<div class="signup">
+			<div class="signup fading">
 				<h2>Sign up for updates</h2>
 				<p>Get the latest Galaxia news straight to your inbox</p>
 				<form action="">

@@ -12,11 +12,27 @@ $(function() {
 		var elementId = $(this).attr('href');
 		$('.overflow-wrapper').animate({
 			scrollTop: $(elementId)[0].offsetTop
-		},1000)
+		},800)
 		if ($(this).hasClass('mob-link')) {
 			$('.header__mob').removeClass('active');
 		}
 	})
+
+	var scrolled;
+	$('.overflow-wrapper').scroll(function() {
+		scrolled = $('.overflow-wrapper').scrollTop();
+
+		for (var i = 0; i < $('.fading').length; i++) {
+			checkInView($($('.fading')[i]));
+		}
+
+		function checkInView(el) {
+			if (scrolled + $(window).height() - 150 > el[0].offsetTop && scrolled < el[0].offsetTop + el.height()) {
+				el.addClass('in-view')
+			}
+		}
+	})
+	$('.overflow-wrapper').trigger('scroll');
 
 	$('.awaits__options li').click(function() {
 		if (!$(this).hasClass('active')) {
