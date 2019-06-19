@@ -5,6 +5,7 @@
 		background-color:#fff;
 	}
 	.header {
+		min-height: 0;
 		height: 400px;
 		box-shadow: inset 0px -69px 99px -20px #446182;
 		background: url('../img/header-bg.png') 75% center / cover no-repeat !important;
@@ -162,6 +163,9 @@
 		line-height: 29px;
 		margin: 25px 0px;
 	}
+	br {
+		display: none;
+	}
 }
 .why-legacy {	
 	overflow: hidden;
@@ -179,18 +183,22 @@
 			}
 		}
 		.days {
+			padding: 0 10px;
 			margin-top:100px;
-			justify-content: center;
-			justify-content: start;
-			margin-left: 7%;
+			justify-content: space-around;
 			li {
-				padding: 20px 5px;
-				width: 35%;
+				padding: 25px 5px;
+				width: 45%;
+				margin:0 0 10px 0;
 				.days-bold {
-					margin: 5px 0px 2px 0px;
+					margin-bottom: 0px;
+					font-size: 15px;
+				}
+				.days-regular {
+					font-size: 15px;
 				}
 				img {
-					width: 56px;
+					width: 43px;
 				}
 			}
 			li:nth-child(3) img {
@@ -258,32 +266,36 @@
 	
 }
 .meet-erno {
-	margin-top: 0px !important;
-	padding-top: 80px!important;
+	margin-top: 0px ;
+	padding-top: 80px;
 	overflow: hidden;
 	.container {
 		flex-flow: column;
 		position: relative;
 		.conversation {
-			position: relative!important;
-			top: -135px!important;
-			width: 125%!important;
-			height: auto!important;
-			right: 70px !important;
+			position: relative;
+			top: -105px;
+			width: 125%;
+			height: auto;
+			right: 70px;
+			z-index: -10;
 		}
 		.text-block {
 			width: 100%;
-			padding-left: 30px!important;
+			padding-left: 30px;
 		}
 	}
 	&::after {
-		width: 100% !important;
-		top: -104px !important;
+		width: 100% ;
+		top: -104px ;
 	}
 }
 .team {
 	margin-top: -200px;
 	.container {
+		h2 {
+			padding:0 10px;
+		}
 		ul {
 			img {
 				margin: 0 auto;
@@ -299,10 +311,11 @@
 		width: 90%;
 		margin-top: 12%;
 		h3 {
-			padding-left: 50px;
+			padding-left: 35px;
+			font-size: 32px;
 		}
 		form {
-			padding: 0 50px 50px 50px;
+			padding: 0 35px 50px 35px;
 			.inputs {
 				label {
 					width: 100%;
@@ -327,7 +340,11 @@
 				width: 100%;
 				order: 7;
 				margin-top: 15px;
-				}	
+				padding-left: 20px;
+				}
+					.check {
+						width: 100%;
+					}	
 				label:last-child {
 					order: 5;
 					margin-top: 15px;
@@ -337,6 +354,7 @@
 				float: none;
 				margin: 0;
 				margin-top: 20px;
+				display: inline-block;
 			}
 		}
 	}
@@ -367,7 +385,7 @@
 		}
 		ul {
 			padding-bottom: 40px;
-			border-bottom: .5px solid #002840;
+			border-bottom: .5px solid #d6dadc;
 			position: relative;
 			justify-content:center;
 		}
