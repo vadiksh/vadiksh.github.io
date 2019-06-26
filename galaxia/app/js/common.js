@@ -42,6 +42,10 @@ $(function() {
 		}
 	})
 
+	$('form').submit(function() {
+		$(this).addClass('submitted');
+	})
+
 	$('.mode').click(function() {
 		if ($(this).hasClass('dark')) {
 			$('.overflow-wrapper').addClass('light-mode');

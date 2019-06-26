@@ -900,7 +900,17 @@ body {
 		&-answer {
 			font-family: "montserrat-l";
 			display: none;
-
+			li::before {
+				display: inline-block;
+				content: '';
+				width: 6px;
+				height: 6px;
+				background: #6c757d;
+				margin-right: 10px;
+				border-radius: 50%;
+				position: relative;
+				top: -2px;
+			}
 		}
 	}
 }

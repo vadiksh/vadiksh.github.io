@@ -22,14 +22,10 @@ $(function() {
     p,
     distance;
 
-  console.log(count)
-  console.log(width)
-  console.log(height)
-
   function postRender(ctx, C) {
-    this.x -= this.speed*5;
+    this.x -= this.speed/16;
     this.y -= this.speed;
-
+    
     if (this.y < window.scrollY - height * 1.5) {
       this.y = randomRange(height * 1.5 + window.scrollY, height * 2.5 + window.scrollY);
     }
@@ -37,9 +33,50 @@ $(function() {
       this.y = randomRange(window.scrollY - height * 1.5, window.scrollY - height * 0.5);
     }
     if (this.x < -width) {
-      this.x = width*2;
+      this.x = width * 2;
     }
+    if (this.z > 1) {
+       this.z = randomRange(0, 0.1);
+    }
+    if (clicked) {
+       this.z += this.speed/60;
+       
+    } else if (lightspeed) {
+      this.z += this.speed/5;
+    } else {
+      // this.x = randomRange(-width / 2, width * 2.5),
+      // this.y = randomRange(-height * 1.5, height * 2.5) + window.scrollY,
+      // this.z = randomRange(0.3, 1);
+    }
+
   }
+  var clicked = false,
+      lightspeed = false;
+
+  $('.cta-btn').click(function(e) {
+    e.preventDefault();
+    var elementId = $(this).attr('href');
+    clicked = true;
+    $('.flir').fadeOut(300);
+    
+   
+    setTimeout(function() {
+      clicked = false;
+      lightspeed = true;
+      $('.form').fadeIn(1000);
+
+      $('body, html').animate({
+        scrollTop: $(elementId).offset().top
+      },1000)
+
+      setTimeout(function() {
+        lightspeed = false;
+        document.getElementById('name').focus();
+        $('.flir').fadeIn(300);
+      }, 1000)
+    }, 300)
+  
+  }) 
 
   for (; i < count; i++) {
     distance = randomRange(0.3, 1);
@@ -62,77 +99,78 @@ $(function() {
 
   scene.add(polygons);
 
+
   
-  if ($(window).width() > 767) {
-    $('.header__banner').paroller({
-      factor: -0.25,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    // SmoothParallax.init();
-    $('.advantages').paroller({
-      factor: 0.3,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
+  // if ($(window).width() > 767) {
+  //   $('.header__banner').paroller({
+  //     factor: -0.25,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   // SmoothParallax.init();
+  //   $('.advantages').paroller({
+  //     factor: 0.3,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
 
-    $('.advantages__list li:nth-of-type(1)').paroller({
-      factor: -0.3,            // multiplier for scrolling speed and offset
-      factorSm: -0.35,            // multiplier for scrolling speed and offset
-      factorMd: -0.35,
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.advantages__list li:nth-of-type(2)').paroller({
-      factor: -0.25,            // multiplier for scrolling speed and offset
-      factorSm: -0.2,            // multiplier for scrolling speed and offset
-      factorMd: -0.2,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.advantages__list li:nth-of-type(3)').paroller({
-      factor: -0.2,            // multiplier for scrolling speed and offset
-      factorSm: -0.1,            // multiplier for scrolling speed and offset
-      factorMd: -0.1,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
+  //   $('.advantages__list li:nth-of-type(1)').paroller({
+  //     factor: -0.3,            // multiplier for scrolling speed and offset
+  //     factorSm: -0.35,            // multiplier for scrolling speed and offset
+  //     factorMd: -0.35,
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.advantages__list li:nth-of-type(2)').paroller({
+  //     factor: -0.25,            // multiplier for scrolling speed and offset
+  //     factorSm: -0.2,            // multiplier for scrolling speed and offset
+  //     factorMd: -0.2,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.advantages__list li:nth-of-type(3)').paroller({
+  //     factor: -0.2,            // multiplier for scrolling speed and offset
+  //     factorSm: -0.1,            // multiplier for scrolling speed and offset
+  //     factorMd: -0.1,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
 
-    $('.features .section-title').paroller({
-      factor: 0,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.features__list').paroller({
-      factor: 0.25,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.features__list li:nth-of-type(1)').paroller({
-      factor: -0.35,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.features__list li:nth-of-type(2)').paroller({
-      factor: -0.3,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.features__list li:nth-of-type(3)').paroller({
-      factor: -0.25,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.features__combination ul').paroller({
-      factor: -0.25,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
-    $('.features__combination-title').paroller({
-      factor: -0.1,            // multiplier for scrolling speed and offset
-      type: 'foreground',     // background, foreground
-      direction: 'vertical'
-    });
+  //   $('.features .section-title').paroller({
+  //     factor: 0,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.features__list').paroller({
+  //     factor: 0.25,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.features__list li:nth-of-type(1)').paroller({
+  //     factor: -0.35,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.features__list li:nth-of-type(2)').paroller({
+  //     factor: -0.3,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.features__list li:nth-of-type(3)').paroller({
+  //     factor: -0.25,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.features__combination ul').paroller({
+  //     factor: -0.25,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
+  //   $('.features__combination-title').paroller({
+  //     factor: -0.1,            // multiplier for scrolling speed and offset
+  //     type: 'foreground',     // background, foreground
+  //     direction: 'vertical'
+  //   });
 
-  }
+  // }
 });

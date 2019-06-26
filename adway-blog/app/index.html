@@ -16,7 +16,8 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-<div class="overflow-wrapper new">
+<div class="overflow-wrapper homepage">
+<!-- <div class="overflow-wrapper new"> -->
 <header class="header homepage-header">
 	<!-- <div class="homepage-header__container"></div> -->
 	<div class="header__top">
@@ -50,9 +51,46 @@
 <!-- start-movement='0' end-movement="1" -->
 		<h1 class="header__title">The future of data<br> driven talent acquisition</h1>
 		<p>Adway is a smart recruitment marketing platform that will streamline your candidate inflow and take your employer brand to new levels.</p>
-		<a href="#"><span>Request demo</span></a>
+		<a class="cta-btn" href="#form" ><span>Request demo</span></a>
 	</div>
 </header>
+
+<section class="form">
+	<div class="container" id="form">
+		<form action="">
+			<div>
+				<label for="name">1- What's your name? *</label>
+				<input id="name" type="text" placeholder="Type your name here">
+			</div>
+			<div>
+				<label for="email">2- What's your email address? *</label>
+				<input id="email" type="email" placeholder="Type your email here">
+				
+			</div>
+			<div>
+				<label for="num">3- What's your phone number? *</label>
+				<input id="num" type="tel" placeholder="Type your answer here">
+			</div>
+			
+			<button type="submit" class="button-border">Submit form</button>
+		</form>
+	</div>
+</section>
+
+<section class="portfolio-section flir">
+	<div class="flir__images features__combination">
+		
+		<ul class="fading">
+<!-- 			<li><img class="editable" src="{{ site.baseurl }}/img/homepage/phone-left.png" alt=""></li>
+			<li><img class="editable" src="{{ site.baseurl }}/img/homepage/phone-center.png" alt=""></li>
+			<li><img class="editable" src="{{ site.baseurl }}/img/homepage/phone-right.png" alt=""></li> -->
+			<li><img class="editable" src="img/portfolio/flir-screen-1.png" alt=""></li>
+			<li><img class="editable" src="img/portfolio/flir-screen-2.png" alt=""></li>
+			<li><img class="editable" src="img/portfolio/flir-screen-3.png" alt=""></li>
+		</ul>
+	</div>
+</section>
+
 <section class="about fading" >
 
 	<div class="container">
@@ -65,6 +103,7 @@
 				<li><img src="img/homepage/partners4.png" alt=""></li>
 				<li><img src="img/homepage/partners5.png" alt=""></li>
 			</ul>
+			<a href="" class="button-border">See cases</a>
 		</div>
 	</div>
 </section>
@@ -72,21 +111,20 @@
 
 	<ul class="advantages__list">
 		<li class="fading"  >
-				<img src="img/homepage/advantages-01.png" alt="">
+			<img src="img/homepage/advantages-01.png" alt="">
 			<div class="advantages__content">
 				<h2>Grow your candidate pool with Adway</h2>
 				<p>We know how to find your dream candidates on social media – whether it’s on Facebook, Instagram, or LinkedIn.<br> On an increasingly competitive candidate market our powerful and effective job ads will reach the exact candidates you would want to apply. Our self-learning platform ensures that your candidate pool gets larger and better over time. With us, you can attract and engage with your dream candidates in new ways and get results you have not seen before.</p>
 			</div>
 		</li>
 		<li class="right fading"  >
-				<div class="gif-wrapper"><span></span><img src="img/homepage/advantages-02.gif" alt=""></div>
+			<div class="gif-wrapper"><span></span><img src="img/homepage/advantages-02.gif" alt=""></div>
 			<div class="advantages__content">
 				<h2>Stand out to your candidates</h2>
 				<p>Top candidates will not apply to your company just because you have an open position, they will apply because they believe in you. Whether you have a complete employer value proposition or not, we will help position you as the obvious employer in your field.<br> By using smart technology, we will nurture your candidate pool over time – giving you more qualitative applications, more candidates who accept your proposals, and a lower turnover on your existing staff.</p>
 			</div>
 		</li>
-		<li class="fading"  >
-
+		<li class="fading">
 			<img src="img/homepage/advantages-03.png" alt="">
 			<div class="advantages__content">
 				<h2>Strategic consultation</h2>
@@ -101,35 +139,36 @@
 		<h2>Easy access to<br> powerful tools</h2>
 		<p>Recruiting has become a digital experience where candidates expect convenience and mobile accessibility. We let savvy recruiters access new technologies that leverage all their recruitment efforts.</p>
 	</div>
-	<ul class="features__list" >
-		<li class="fading" >
-			<div class="features__text-block">
-				<h3>Beautiful<br> and customized ads</h3>
-				<p>Adway’s platform automatically distributes powerful job ads through social media. Lead with your employer brand and attract the next generation through the art of marketing.</p>
-			</div>
-			<div class="features__img-wrapper wrapper1">
-				<img src="img/homepage/phone1.png" alt="">
-			</div>
-		</li>
-		<li class="fading"  >
+	<div class="features__list-wrap">
+		<ul class="features__list" >
+			<li class="fading" >
 				<div class="features__text-block">
-				<h3>Increased<br> conversion rates</h3>
-				<p>With cutting-edge technology and smart algorithms, we can match your best job opportunities with you dream talents in a unique way. Increase the number of applicants to your company.</p>
-			</div>
-			<div class="features__img-wrapper wrapper2"><span></span><img src="img/homepage/phone2.png" alt=""></div>
-		</li>
-		<li class="fading" >
-				<div class="features__text-block">
-				<h3>Insightful data</h3>
-				<p>Data is the key resource for making better and more profitable decisions. The users of the Adway platform are liberated from the guessing game and are unleashed into the world of data. It’s time to take data-driven decisions.</p>
-			</div>
-			<div class="features__img-wrapper wrapper3"><span></span><img src="img/homepage/phone3.png" alt=""></div>
-		</li>
-	</ul>
+					<h3>Beautiful<br> and customized ads</h3>
+					<p>Adway’s platform automatically distributes powerful job ads through social media. Lead with your employer brand and attract the next generation through the art of marketing.</p>
+				</div>
+				<div class="features__img-wrapper wrapper1">
+					<img src="img/homepage/phone1.png" alt="">
+				</div>
+			</li>
+			<li class="fading"  >
+					<div class="features__text-block">
+					<h3>Increased<br> conversion rates</h3>
+					<p>With cutting-edge technology and smart algorithms, we can match your best job opportunities with you dream talents in a unique way. Increase the number of applicants to your company.</p>
+				</div>
+				<div class="features__img-wrapper wrapper2"><span></span><img src="img/homepage/phone2.png" alt=""></div>
+			</li>
+			<li class="fading" >
+					<div class="features__text-block">
+					<h3>Insightful data</h3>
+					<p>Data is the key resource for making better and more profitable decisions. The users of the Adway platform are liberated from the guessing game and are unleashed into the world of data. It’s time to take data-driven decisions.</p>
+				</div>
+				<div class="features__img-wrapper wrapper3"><span></span><img src="img/homepage/phone3.png" alt=""></div>
+			</li>
+		</ul>
+	</div>
 	<div class="features__combination">
-		<div class="features__combination-title fading" >
-
-			<h3>The power of combination</h2>
+		<div class="features__combination-title section-title fading" >
+			<h2>The power of combination</h2>
 			<p>Make sure that candidates don’t forget about you. Bring your Employer Branding to candidates who have showed their interest in you and your available positions. We let you combine your job ads with your Employer Branding.</p>
 		</div>
 		<ul class="fading" >
@@ -166,7 +205,7 @@
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
 <script type='text/javascript' src='https://shshaw.github.io/Canvallax/dist/canvallax.min.js'></script>
 <!-- <script type='text/javascript' src='js/smooth-parallax.min.js'></script> -->
-<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/paroller.js@1.4.4/dist/jquery.paroller.min.js'></script>
+<!-- <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/paroller.js@1.4.4/dist/jquery.paroller.min.js'></script> -->
 <script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/canvas.js"></script>
 

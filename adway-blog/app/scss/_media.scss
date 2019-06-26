@@ -1,21 +1,26 @@
 @import "vars";
 
 @media (min-width: 1500px) {
+	.homepage-header {
+		.header__top {
+			max-width: 85%;
+		}
+	}
 	.advantages {
 		&::before {
-			width: 120%;
-			top: 0;
-			left: -25%;
-			background: url('../img/homepage/advantages-bg.svg') no-repeat right 0/100% 100%;
+			// width: 120%;
+			// top: 0;
+			// left: -25%;
+			// background: url('../img/homepage/advantages-bg.svg') no-repeat right 0/100% 100%;
 		}
 	}
 	.features {
 		&__list::before {
-			width: 150%;
-			height: 100%;
-			top: 0;
-			left: -60%;
-			background: url('../img/homepage/features-bg.svg') no-repeat right center/cover;
+			// width: 100%;
+			// height: 100%;
+			// top: 0;
+			// left: 0;
+			// background: url('../img/homepage/features-bg.svg') no-repeat right center/cover;
 		}
 	}
 	.quote-section {

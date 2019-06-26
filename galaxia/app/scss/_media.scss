@@ -17,9 +17,6 @@
 		}
 	}
 	.about {
-		br {
-			// display: none;
-		}
 		ul {
 			flex-flow: row wrap;
 			justify-content: center;
@@ -173,6 +170,7 @@
 	}
 	.features {
 		padding-bottom: 0;
+		padding-top: 45px;
 		&__list {
 			flex-flow: column;
 			ul {

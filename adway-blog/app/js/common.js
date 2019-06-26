@@ -68,4 +68,14 @@ $(function() {
 			'background': 'url(' + imgSrc + ') center center/cover'
 		})
 	}
+
+
+	$('.form input').focus(function() {
+		$(this).parent().addClass('active');
+	})
+	$('.form input').focusout(function() {
+		if ($(this).val() == '') {
+			$(this).parent().removeClass('active');
+		}
+	});
 });
