@@ -35,23 +35,21 @@ $(function() {
     if (this.x < -width) {
       this.x = width * 2;
     }
-    if (this.z > 1) {
-       this.z = randomRange(0, 0.1);
+    if (this.z > 1.2) {
+       this.z = randomRange(0, 0.3);
     }
     if (clicked) {
        this.z += this.speed/60;
-       
     } else if (lightspeed) {
       this.z += this.speed/5;
-    } else {
-      // this.x = randomRange(-width / 2, width * 2.5),
-      // this.y = randomRange(-height * 1.5, height * 2.5) + window.scrollY,
-      // this.z = randomRange(0.3, 1);
+    } else if (slowdown) {
+      this.z += this.speed/100;
     }
 
   }
   var clicked = false,
-      lightspeed = false;
+      lightspeed = false,
+      slowdown = false;
 
   $('.cta-btn').click(function(e) {
     e.preventDefault();
@@ -71,9 +69,14 @@ $(function() {
 
       setTimeout(function() {
         lightspeed = false;
-        document.getElementById('name').focus();
-        $('.flir').fadeIn(300);
-      }, 1000)
+        slowdown = true;
+        setTimeout(function() {
+          slowdown = false;
+          document.getElementById('name').focus();
+          $('.flir').fadeIn(300);
+        }, 400)
+      }, 600)
+
     }, 300)
   
   }) 
