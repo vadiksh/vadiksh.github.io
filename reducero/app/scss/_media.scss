@@ -451,6 +451,9 @@
 			padding: 0 20px;
 			text-align: left;
 		}
+		.terms {
+			text-align: left;
+		}
 	}
 	.header {
 		&__top {
@@ -464,30 +467,35 @@
 		}
 		&__banner {
 			height: 90vh;
+			background: #ec85b4;
 		}
 		&__form {
 			&-benefits {
 				text-align: left;
 				padding-left: 20px;
 				line-height: 18px;
-				margin-bottom: 18px;
+				margin-bottom: 25px;
 				li {
 					display: block;
-					font-size: 12px;
-					margin-bottom: 2px;
+					font-size: 14px;
+					margin-bottom: 6px;
 					&::after {
 						display: none;
 					}
 					&::before {
 						content: '';
 						display: inline-block;
-						width: 6px;
-						height: 6px;
+						width: 8px;
+						height: 8px;
 						background: #fff;
 						border-radius: 50%;
 						margin-right: 8px;
 					}
 				}
+			}
+			.terms {
+				margin-top: 15px;
+				padding-left: 20px;
 			}
 		}
 		&__reviews {
@@ -537,7 +545,7 @@
 	.team {
 		&__responsive {
 			padding-top: 78%;
-			background: url('../img/team.jpg') no-repeat left center/cover;
+			background: url('../img/team1.jpg') no-repeat center top/cover;
 		}
 	}
 

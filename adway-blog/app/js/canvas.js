@@ -53,27 +53,28 @@ $(function() {
 
   $('.cta-btn').click(function(e) {
     e.preventDefault();
-    var elementId = $(this).attr('href');
+    // var elementId = $(this).attr('href');
     clicked = true;
-    $('.flir').fadeOut(300);
-    
+    // $('.flir').fadeOut(300);
+    $('.header__banner').addClass('hidden');
    
     setTimeout(function() {
       clicked = false;
       lightspeed = true;
-      $('.form').fadeIn(1000);
+      $('.header__banner').hide();
+      $('.form').addClass('revealed');
 
-      $('body, html').animate({
-        scrollTop: $(elementId).offset().top
-      },1000)
+      // $('body, html').animate({
+      //   scrollTop: $(elementId).offset().top
+      // },1000)
 
       setTimeout(function() {
         lightspeed = false;
         slowdown = true;
         setTimeout(function() {
           slowdown = false;
-          document.getElementById('name').focus();
-          $('.flir').fadeIn(300);
+          // document.getElementById('name').focus();
+          // $('.flir').fadeIn(300);
         }, 400)
       }, 600)
 

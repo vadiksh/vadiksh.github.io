@@ -1,5 +1,10 @@
 $(function() {
+	setTimeout(function () {
+		$('.loader-wrap').fadeOut(300, function () {
+			$('.overflow-wrapper').trigger('scroll');
+		});
 
+	}, 800)
 	$('.hamburger').click(function(){
 		$('.header__mob').addClass('active');
 	})
@@ -32,7 +37,7 @@ $(function() {
 			}
 		}
 	})
-	$('.overflow-wrapper').trigger('scroll');
+	// $('.overflow-wrapper').trigger('scroll');
 
 	$('.awaits__options li').click(function() {
 		if (!$(this).hasClass('active')) {
