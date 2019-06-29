@@ -20,8 +20,6 @@ $(function() {
 		if ($(this).val().length == 0) {
 			var cleave = new Cleave($(this), {
 			    numericOnly: true,
-			    prefix: '07',
-		        // delimiter: '-',
 		        blocks: [10]
 			});
 		}

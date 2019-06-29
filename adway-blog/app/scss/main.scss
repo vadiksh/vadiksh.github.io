@@ -471,19 +471,20 @@ body {
 .form {
 	text-align: center;
 	max-width: 1840px;
+	width: 100%;
+	min-height: 115vh;
 	margin: 0 auto;
-	background: url('../img/form-bg1.svg') no-repeat center top/contain;
-	// margin-top: -300px;
-	margin-bottom: -430px;
-	padding-top: 400px;
-	padding-bottom: 300px;
-	// position: absolute;
-	// visibility: hidden;
-	transform: scale(0.1);
+	background: url('../img/form-bg.svg') no-repeat center top -25vh/100%;
+	padding-top: 150px;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	transform: scale(0.2);
 	opacity: 0;
 	&.revealed {
-		// position: relative;
-		// visibility: visible;
+		position: relative;
 		transform: scale(1);
 		opacity: 1;
 		transition: .4s ease-out;

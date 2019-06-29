@@ -453,6 +453,7 @@
 		}
 		.terms {
 			text-align: left;
+			padding-left: 20px;
 		}
 	}
 	.header {
@@ -737,18 +738,26 @@
 			margin-bottom: 30px;
 		}
 		&__banner {
-			height: 500px;
+			height: auto;
+			padding: 30px 0 50px;
+			transform: translate3d(0,-100px,0);
 		}
 		&__title {
 			margin-bottom: 25px;
 		}
+		&__form {
+			.terms {
+				margin-top: 20px;
+			}
+		}
 		&__form-text {
 			font-family: "montserrat-l";
-			margin-bottom: 40px;
+			margin-bottom: 55px;
 		}
 	}
 	.footer {
 		padding: 0 30px;
+		margin-top: 30px;
 		&__left {
 			.quote-block {
 				padding: 0;
@@ -818,6 +827,9 @@
 			padding: 0 30px;
 			& > li {
 				padding: 45px 0;
+				&:nth-of-type(1) {
+				    padding-top: 30px;
+				}
 				&::after {
 					background: url('../img/blog-line.svg') repeat 0 0/auto 100%;
 				}
@@ -908,6 +920,7 @@
 		}
 		&__container {
 			padding: 0 30px;
+			padding-top: 30px !important;
 		}
 		&__text-block {
 			h1 {
@@ -949,6 +962,8 @@
 			height: auto;
 			padding: 50px 30px 50px;
 			margin-bottom: 25px;
+			margin-right: auto;
+			margin-left: auto;
 			&-title {
 				padding: 0;
 				padding-left: 20px;
@@ -1022,7 +1037,7 @@
 	}
 	.header {
 		&__title {
-			max-width: 320px;
+			// max-width: 320px;
 
 			br {
 				display: none;

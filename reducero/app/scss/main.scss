@@ -550,7 +550,7 @@ body {
 		}
 	}
 	&__banner {
-		height: 70vh;
+		height: 80vh;
 		min-height:500px;
 		background: url('../img/hero.jpg') no-repeat 90% bottom/cover;
 	}
@@ -1537,6 +1537,9 @@ body {
 		}
 		.header__form-benefits {
 			margin-bottom: 20px;
+		}
+		.terms {
+			text-align: left;
 		}
 	}
 	&__tags {

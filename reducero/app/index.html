@@ -59,10 +59,7 @@
 				<li>En kreditupplysning</li>
 			</ul>
 			<form>
-			<!-- 	<label>
-					Ditt mobilnummer
-				</label> -->
-				<input type="tel" class="form-input" placeholder="Ditt mobilnummer" pattern=".{10}" required="" title="10 characters format">
+				<input type="tel" class="form-input" placeholder="Ditt mobilnummer" pattern="^(07)([0-9]{8})$" required="" title="Enter a valid mobile phone number, starting with 07">
 				<div class="button-wrap"><button type="submit"></button></div>
 			</form>
 			<p class="terms">* By submitting your mobile phone, you accept the terms & conditions
