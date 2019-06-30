@@ -408,9 +408,14 @@ body {
 			}
 		}
 		&.hidden {
-			transform: scale(0);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			transform: scale(0.05);
 			opacity: 0;
-			transition: .4s ease-in;
+			transition: transform 1s cubic-bezier(.87,0,.31,.79), opacity .3s .7s ease-out;
 		}
 		&::before, &::after {
 			display: none;
@@ -487,7 +492,8 @@ body {
 		position: relative;
 		transform: scale(1);
 		opacity: 1;
-		transition: .4s ease-out;
+		transition: 1s 1.5s cubic-bezier(.73,.04,.24,.98);
+
 	}
 	.container {
 		max-width: 600px;

@@ -26,6 +26,15 @@ $(function() {
     this.x -= this.speed/16;
     this.y -= this.speed;
     
+    if (clicked) {
+      this.z += this.speed/30;
+    } else if (lightspeed) {
+      this.z += this.speed/10;
+    } else if (slowdown) {
+      this.z += this.speed/120;
+    }
+
+
     if (this.y < window.scrollY - height * 1.5) {
       this.y = randomRange(height * 1.5 + window.scrollY, height * 2.5 + window.scrollY);
     }
@@ -35,16 +44,51 @@ $(function() {
     if (this.x < -width) {
       this.x = width * 2;
     }
-    if (this.z > 1.2) {
-       this.z = randomRange(0, 0.3);
+    if (this.z > 1.5) {
+       this.z = randomRange(0, 0.2);
     }
-    if (clicked) {
-       this.z += this.speed/60;
-    } else if (lightspeed) {
-      this.z += this.speed/5;
-    } else if (slowdown) {
-      this.z += this.speed/60;
+    if (this.x > width/5 && this.x < width/1.25 && this.y > height/5 && this.y < height/1.25) { 
+       // if (clicked) {
+       //   this.z += this.speed/25;
+       // } else if (lightspeed) {
+       //   this.z += this.speed;
+       // } else if (slowdown) {
+       //   this.z += this.speed/30;
+       // }
+       if (this.z > 1) {
+          this.z = randomRange(0.3, 0.5);
+          this.x = randomRange(-width / 2, width * 2.5);
+          this.y = randomRange(-height * 1.5, height * 2.5) + window.scrollY;
+       }
     }
+    // if (this.z > 0.6 && this.y > height/5 && this.y < height/2) { 
+    //    if (clicked) {
+    //     this.y -= this.speed*5;
+    //      this.z += this.speed/25;
+    //    } else if (lightspeed) {
+    //      this.z += this.speed;
+    //    } else if (slowdown) {
+    //      this.z += this.speed/30;
+    //    }
+    //    if (this.z > 1.5) {
+          
+    //    }
+    // }
+    // if (this.y > height/2 && this.y < height/1.25) { 
+    //    if (clicked) {
+    //     this.y += this.speed*3;
+    //      this.z += this.speed/25;
+    //    } else if (lightspeed) {
+    //      this.z += this.speed;
+    //    } else if (slowdown) {
+    //      this.z += this.speed/30;
+    //    }
+    //    if (this.z > 1.5) {
+          
+    //    }
+    // }
+    // this.y randomRange(-height * 1.5, height * 2.5) + window.scrollY) {
+    
 
   }
   var clicked = false,
@@ -62,19 +106,21 @@ $(function() {
     setTimeout(function() {
       clicked = false;
       lightspeed = true;
-      $('.header__banner').hide();
+      // $('.header__banner').hide();
+      $('.form').addClass('revealed');
 
       setTimeout(function() {
-        lightspeed = false;
+       
         slowdown = true;
-        $('.form').addClass('revealed');
+        lightspeed = false;
+
         setTimeout(function() {
           slowdown = false;
           document.getElementById('name').focus();
-        }, 800)
-      }, 1500)
+        }, 500)
+      }, 2000)
 
-    }, 400)
+    }, 300)
   
   }) 
 
