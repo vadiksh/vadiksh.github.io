@@ -10,7 +10,7 @@ body {
 .text-block {
 	width: 50%;
 	h2 {
-		font-family: 'gilroy-b';
+		font-family: 'gilroy-m';
 		font-style: normal;
 		font-weight: bold;
 		font-size: 35px;
@@ -26,7 +26,7 @@ body {
 		margin: 30px 0px 40px 0px;
 	}
 	.button {
-		font-family: 'gilroy-b';
+		font-family: 'gilroy';
 		font-weight: bold;
 		color: white;
 		background-color: $orange;
@@ -39,9 +39,9 @@ body {
 		z-index: 1;
 	}
 }
-.text-block.active {
-	transform: translateY(0px) !important;
-	transition: 1s;
+.text-block.visible {
+	opacity: 1 !important;
+	transition: 2s;
 }
 .container {
 	max-width: 1250px;
@@ -50,7 +50,7 @@ body {
 }
 .button {
 	color: white;
-	font-family: 'gilroy-b';
+	font-family: 'gilroy';
 	padding: 10px 20px;
 	background-color: $orange;
 	border-radius: 4px;
@@ -67,7 +67,7 @@ body {
 }
 .header {
 	min-height: 600px;
-	background: url('../img/header-bg-cut.png') top right / auto 100% no-repeat;
+	background: url('../img/new-header-bg.png') center center / cover no-repeat; //* top right / auto 100% no-repeat;
 	height:100vh;
 	background-position-x: 1280px;
 	&-container {
@@ -122,7 +122,7 @@ body {
 			transform: translateY(0px);
 			transition: .4s;
 			transition-delay: 1s;
-			animation: scaled .4s 1.2s; 
+			animation: scaled .55s 1.4s; 
 		}
 		a {
 			color: white;
@@ -164,9 +164,9 @@ body {
 		font-family: 'gilroy';
 		font-style: normal;
 		font-weight: normal;
+		width: 80%;
 		font-size: 40px;
 		line-height: 47px;
-		// margin-top: 150px;
 		span {
 			font-family: 'gilroy-b';
 		}
@@ -181,7 +181,7 @@ body {
 	}
 	.play-div {
 		text-align: center;
-		animation: scaled .4s 1.8s; 
+		animation: scaled .55s 2s; 
 		img {
 			margin: 0 auto;
 			width: 60px;
@@ -261,23 +261,15 @@ body {
 	}
 .why-legacy {
 	position: relative;
-	// &::after {
-	//     display: block;
-	//     content: '';
-	//     background: url('../img/splash.svg') left/cover no-repeat;
-	//     position: absolute;
-	//     height: 117%;
-	//     width: 55%;
-	//     top: -65px;
-	//     z-index: -1;
-	// }
+	margin-top: 5%;
 	.container {
 		max-width: 1250px;
 		margin: 0 auto;
 		display: flex;
 		.text-block {
+			opacity: 0;
 			margin: 160px 0px 0px 100px;
-			transform: translateY(100px);
+			// transform: translateY(100px);
 			.p-default {
 				width: 90%;
 			}
@@ -347,15 +339,17 @@ body {
 .how-it-works {
 	position: relative;
 	margin-top: 200px;
-	transform: translateY(100px);
 	.text-block {
 		padding: 30px 0 0 70px;
+		opacity: 0;
 	}	
 	.possibilities {
+		transform: translateY(100px);
 		padding: 0px 110px;
 		display: flex;
 		justify-content: center;
 		flex-flow: row wrap;
+		opacity: 0;
 		li {
 			text-align: center;
 			width: 30%;
@@ -380,6 +374,11 @@ body {
 			margin-top: 10px;
 		}
 	}	
+	.possibilities.active {
+		transform: translateY(0px);
+		transition: 1s;
+		opacity: 1;
+	}
 }
 .how-it-works.active {
 	transform: translateY(0px);
@@ -403,7 +402,8 @@ body {
 	.container {
 		display: flex;
 			.slick-slider {
-				transform: translateY(100px);
+				opacity: 0;
+				// transform: translateY(100px);
 				margin-top: 40px;
 					width: 540px;
 				.pic-wrap {
@@ -414,7 +414,7 @@ body {
 				}
 			}
 			.slick-slider.active {
-				transform: translateY(0px);
+				// transform: translateY(0px);
 				opacity: 1;
 				transition: 1s;
 			}
@@ -422,7 +422,7 @@ body {
 		.text-block {
 			margin: 80px 0px 0px 70px;
 			width: 50%;
-			transform: translateY(100px);
+			opacity: 0;
 			.p-mission {
 				font-family: 'gilroy';
 				font-style: normal;
@@ -457,15 +457,14 @@ body {
 	}
 	.container {
 		.text-block {
-			transform: translateY(100px);
 			padding-left: 70px;
 			.p-default {
 				width: 74%;
 			}
 		}
-		.text-block.active {
-			transform: translateY(0px);
-			transition: 1s;
+		.text-block.visible {
+			opacity: 1;
+			transition: 2s;
 		}
 		.conversation {
 			position: absolute;
@@ -505,7 +504,7 @@ body {
 			display: inline-block;
 		}
 		h2 {
-		font-family: 'gilroy-b';
+		font-family: 'gilroy-m';
 		font-style: normal;
 		font-weight: bold;
 		font-size: 35px;
@@ -518,6 +517,13 @@ body {
 			li {
 				width: 20%;
 				margin-top: 40px;
+				.photos {
+					width: 130px;
+					height: 130px;
+					display: block;
+					border-radius: 50%;
+					margin: 0 auto;
+				}
 			}
 			img {
 				width: 130px;
@@ -546,14 +552,14 @@ body {
 	}
 }
 .contact {
-	margin-top: 100px;
+	padding-top: 100px;
 	position: relative;
 	overflow: hidden;
 	padding-bottom: 70px;
 	&::after {
 		content: '';
 		display: block;
-		background: url('../img/bottom-splash.png') center center / contain no-repeat;
+		background: url('../img/bottom-splash.svg') center center / contain no-repeat;
 		width: 650px;
 		height: 350px;
 		position: relative;
@@ -725,17 +731,26 @@ body {
 				color: white;
 			}
 			h3.active {
-				animation: scaled .5s .5s;  
+				animation: scaled .55s .5s;  
 			}
-			p, a {
+			a {
+				text-decoration: none;
+			}
+			a, .here {
 				font-family: 'proxima';
 				font-style: normal;
 				font-weight: normal;
 				font-size: 14px;
 				line-height: 18px;
 				color: white;
-				text-decoration: none;
 				margin-top: 10px;
+				display: inline-block;
+			}
+			.here {
+				text-decoration: underline;
+			}
+			.here.active {
+				animation: scaled .55s 1.4s; 
 			}
 		}	
 }
@@ -772,7 +787,7 @@ body {
 		transform: scale(1);
 	}
 	50% {
-		transform: scale(1.4);
+		transform: scale(1.2);
 	}
 	100% {
 		transform: scale(1);

@@ -10,6 +10,9 @@
 	<meta name="description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="What will you do with your full potential? - Your Legacy Academy">
+	<meta property="og:url" content="http://www.yourlegacy.academy/">
 	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 	<link rel="icon" href="img/favic.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/main.min.css">
@@ -91,13 +94,13 @@
 
 <section class="how-it-works" id="how-it-works">
 	<div class="container">
-		<div class="text-block">
+		<div class="text-block" id="text4">
 			<h2>How it Works</h2>
 			<p class="p-default">One intensive program will unearth your purpose and leadership style. Once the “ah-ha” moment hits, you’ll be ready. We’ll drop you at an unknown foreign location with no money or phone. The challenging journey back home will create unforgettable experiences, and shape moments that define your true character. These moments form the keys to unlock your full potential.</p>
 		</div>
 			<ul class="possibilities">
 				<li><img src="img/1baloon.svg"><span>Discover your authentic self</span></li>
-				<li><img src="img/2baloon.svg"><span>Unlock your full potentiel</span></li>
+				<li><img src="img/2baloon.svg"><span>Unlock your full potential</span></li>
 				<li><img src="img/3baloon.svg"><span>Create unforgettable memories</span></li>
 				<li><img src="img/4baloon.svg"><span>Character defining moments</span></li>
 				<li><img src="img/5baloon.svg"><span>Write your Legacy</span></li>
@@ -146,29 +149,29 @@
 		<a class="play-video" data-src="https://player.vimeo.com/video/280709887?autoplay=true">Their Stories</a>
 		<ul>
 			<li>
-				<img src="img/person1.jpg">
-				<span class="name">Stella</span>
-				<span class="p-default">“What YLA gave me is simple yet complex - deep insight into who I am - which is more than I could have ever asked for!”</span>
-			</li>
-			<li>
-				<img src="img/person2.jpg" alt="">
-				<span class="name">Stefan</span>
+				<span class="photos" style="background: url('../img/person1.jpg') center center / cover no-repeat;"></span>
+				<span class="name">Leon</span>
 				<span class="p-default">“Now that I have experienced YLA, I believe that anything is possible.”</span>
 			</li>
 			<li>
-				<img src="img/person3.jpg" alt="">
-				<span class="name">Joost</span>
+				<span class="photos" style="background: url('../img/person2.jpg') center center / cover no-repeat;"></span>
+				<span class="name">Sarah</span>
+				<span class="p-default">“Found my core "word”, my purpose and intrinsic motivation"</span>
+			</li>
+			<li>
+				<span class="photos" style="background: url('../img/person3.jpg') center center / cover no-repeat;"></span>
+				<span class="name">Marvin</span>
+				<span class="p-default">“What YLA gave me is simple yet complex - deep insight into who I am - which is more than I could have ever asked for!”</span>
+			</li>
+			<li>
+				<span class="photos" style="background: url('../img/person4.jpg') center center / cover no-repeat;"></span>
+				<span class="name">Mary</span>
 				<span class="p-default">“YLA pushed me out of my comfort zone a lot, which made me much more confident and determined to use my full potential.”</span>
 			</li>
 			<li>
-				<img src="img/person4.jpg" alt="">
-				<span class="name">Mary</span>
-				<span class="p-default">“What YLA gave me is simple yet complex - deep insight into who I am - which is more than I could have ever asked for!”</span>
-			</li>
-			<li>
-				<img src="img/person5.jpg" alt="">
-				<span class="name">Stefan</span>
-				<span class="p-default">“What YLA gave me is simple yet complex - deep insight into who I am - which is more than I could have ever asked for!”</span>
+				<span class="photos" style="background: url('../img/person5.jpg') center center / cover no-repeat;"></span>
+				<span class="name">Joost</span>
+				<span class="p-default">“Now, I am not afraid of the unpacked path when I dare myself”</span>
 			</li>
 		</ul>
 </section>
@@ -183,10 +186,10 @@
 				<label>Phone (accepts WhatsApp messages)<input type="tel" placeholder="Phone number"></label>
 				<label> Is there anything else we should know about?<input type="text" placeholder="Example: I am afraid of flying"></label>
 				<label>Experience Level
-					<select>
-						<option value="1">Begginer</option>
-						<option value="2">Medior</option>
-						<option value="3">Senior</option>	
+					<select id="select">
+						<option value="one">Beginner</option>
+						<option selected value="two" id="medior">Medior</option>
+						<option value="three">Senior</option>	
 					</select>
 				</label>
 					<div class="general-box">
@@ -207,7 +210,7 @@
 	</div>
 	<div class="doubt">
 		<h3>Still in doubt?</h3>
-		<p>Discover your purpose <a href="http://start.yourlegacy.academy/cursus-1">here</a> for free!</p>
+		<a href="http://start.yourlegacy.academy/cursus-1">Discover your purpose <span class="here">here</span> for free!</a>
 	</div>	
 </section>
 

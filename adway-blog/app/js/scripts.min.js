@@ -12,15 +12,15 @@ $(function() {
 	$(window).scroll(function() {
 		scrolled = $(window).scrollTop();
 
-		$('.homepage-header__container').css({
-			"transform": "translate3d(0, -" + scrolled/3 + "px , 0)"
-		})
-		$('.about-description').css({
-			"transform": "translate3d(0, -" + scrolled/5 + "px , 0)"
-		})
-		$('.about-header .header__banner').css({
-			"transform": "translate3d(0, -" + scrolled/4 + "px , 0)"
-		})
+		// $('.homepage-header__container').css({
+		// 	"transform": "translate3d(0, -" + scrolled/3 + "px , 0)"
+		// })
+		// $('.about-description').css({
+		// 	"transform": "translate3d(0, -" + scrolled/5 + "px , 0)"
+		// })
+		// $('.about-header .header__banner').css({
+		// 	"transform": "translate3d(0, -" + scrolled/4 + "px , 0)"
+		// })
 
 		for (var i = 0; i < $('.fading').length; i++) {
 			checkInView($($('.fading')[i]));
