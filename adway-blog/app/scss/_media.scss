@@ -94,7 +94,7 @@
 	}
 	.advantages {
 		&::before {
-			background: url('../img/homepage/advantages-bg.svg') no-repeat right 0/cover;
+			// background: url('../img/homepage/advantages-bg.svg') no-repeat right 0/cover;
 		}
 	}
 	.benefits {
@@ -204,9 +204,10 @@
 		}
 	}
 	.about {
-		background: url('../img/homepage/about-bg.svg') no-repeat bottom center/100%;
+		// background: url('../img/homepage/about-bg.svg') no-repeat bottom center/100%;
 		.container {
-			padding: 250px 20px 250px;
+			// padding: 250px 20px 250px;
+			padding: 0px 20px;
 		}
 		&__content {
 			position: relative;
@@ -216,6 +217,7 @@
 		}
 		p {
 			font-size: 16px;
+			line-height: 1.6;
 		}
 	}
 	.advantages {
@@ -442,12 +444,40 @@
 			margin-bottom: 20px;
 		}
 	}
+	.overflow-wrapper {
+		&.homepage {
+			.flir {
+				padding-bottom: 20px;
+				&__images {
+					padding-top: 0;
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+	.form {
+		background: url('../img/form-bg.svg') no-repeat center center/ auto 110%;
+		.container {
+			padding: 100px 20px;
+			div {
+				margin-bottom: 40px;
+			}
+		}
+		label {
+			font-size: 10px;
+		}
+		input {
+			font-size: 20px;
+		}
+	}
 	.about {
 		margin-top: 50px;
 		margin-bottom: 0;
-		background: url('../img/homepage/about-bg.svg') no-repeat bottom center /cover;
+		// background: url('../img/homepage/about-bg.svg') no-repeat bottom center /cover;
+		background: none;
 		.container {
-			padding: 250px 15px 150px;
+			// padding: 250px 15px 150px;
+			padding: 0px 15px;
 		}
 		h2 {
 			font-size: 18px;
@@ -462,14 +492,17 @@
 		}
 	}
 	.advantages {
-		padding-top: 200px;
+		// padding-top: 200px;
+		padding-top: 80px;
+		margin-top: 300px;
 		margin-bottom: 150px;
 		&::after {
 			display: none;
 		}
 		&::before {
 			left: auto;
-			background: url('../img/homepage/advantages-bg.svg') no-repeat 70% 0/cover;
+			// background: url('../img/homepage/advantages-bg.svg') no-repeat 70% 0/cover;
+			background: url('../img/homepage/advantages-bg1.svg') no-repeat 70% center/auto 85%;
 		}
 		&__content {
 			margin-left: 0px;
@@ -506,10 +539,16 @@
 		}
 	}
 	.features {
+		margin-top: 0;
 		padding-top: 150px;
 		.section-title {
 			margin-bottom: 100px;
 			padding: 0 15px;
+		}
+		&__list-wrap {
+			&::before {
+				background: url('../img/homepage/features-bg.svg') no-repeat right center/auto 130%;
+			}
 		}
 		&__list {
 			padding: 0 15px;
@@ -543,7 +582,7 @@
 					}
 				}
 				.features__text-block {
-					margin-bottom: 80px;
+					margin-bottom: 100px;
 					transform: translate3d(0px,0,0);
 				}
 			}
@@ -575,13 +614,14 @@
 			}
 		}
 		&__combination {
-			padding-top: 250px;
+			// padding-top: 250px;
+			padding-top: 180px;
 			padding-bottom: 100px;
 			&::after {
 				display: none;
 			}
-			&-title {
-				margin-bottom: 50px;
+			.section-title {
+				margin-bottom: 30px;
 				h3 {
 					font-size: 22px;
 					line-height: 1.5;

@@ -35,6 +35,7 @@ $(function() {
     }
 
 
+
     if (this.y < window.scrollY - height * 1.5) {
       this.y = randomRange(height * 1.5 + window.scrollY, height * 2.5 + window.scrollY);
     }
@@ -123,6 +124,17 @@ $(function() {
     }, 300)
   
   }) 
+  $('.form button').click(function(e) {
+    e.preventDefault();
+    $('.form').removeClass('revealed');
+    
+    setTimeout(function() {
+      $('.header__banner').removeClass('hidden');
+      // $('.form').css({
+      //   'position': 'relative'
+      // })
+    }, 300)
+  })
 
   for (; i < count; i++) {
     distance = randomRange(0.3, 1);
