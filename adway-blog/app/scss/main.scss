@@ -371,6 +371,7 @@ body {
 	}
 }
 .homepage-header {
+	position: relative;
 	.header__top {
 		max-width: 1180px;
 		position: absolute;
@@ -393,10 +394,11 @@ body {
 		transition: .2s ease-out;
 	}
 	&__banner {
-		position: relative;
+		// position: relative;
 		z-index: 5;
 		padding: 50px 20px 0;
 		max-height: none;
+		transition: transform 1s cubic-bezier(.87,0,.31,.79), opacity .3s .7s ease-out;
 
 		& > * {
 			opacity: 0;
@@ -436,40 +438,6 @@ body {
 			font-family: 'montserrat-l';
 			// font-weight: 500;
 		}
-		// a {
-		// 	padding: 0;
-		// 	background: linear-gradient(to right,#b54dff 0,#ff4362 100%);
-		// 	background: #FF47BD;
-		// 	// background: none;
-		// 	// border: 2px solid #fff;
-		// 	box-shadow: 0 4px 20px rgba(255,71,189,.5);
-		// 	position: relative;
-		// 	z-index: 2;
-		// 	transition: .2s;
-		// 	&:hover {
-		// 		transform: scale(1.05);
-		// 		transition: .25s;
-		// 	}
-		// 	span {
-		// 		font-family: "montserrat-b";
-		// 		font-size: 12px;
-		// 		line-height: 15px;
-		// 		letter-spacing: 2px;
-		// 		color: #fff;
-		// 		text-transform: uppercase;
-		// 		padding: 16px 35px;
-		// 		display: block;
-		// 		background: none;
-		// 		border-radius: 25px;
-		// 		transition: .25s ease-in;
-		// 	}
-		// 	&:hover {
-		// 		span {
-		// 			background: none;
-		// 			transition: .25s ease-out;
-		// 		}
-		// 	}
-		// }
 	}
 }
 
@@ -486,14 +454,14 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-
 	transform: scale(0.2);
 	opacity: 0;
+	transition: transform 1s 0.5s cubic-bezier(.73,.04,.24,.98), opacity .5s 1s ease-out;
 	&.revealed {
 		position: relative;
 		transform: scale(1);
 		opacity: 1;
-		transition: transform 1s 1.5s cubic-bezier(.73,.04,.24,.98), opacity .5s 2s ease-out;
+		transition: transform 1s 0.5s cubic-bezier(.73,.04,.24,.98), opacity .5s 1s ease-out;
 
 	}
 	.container {
@@ -501,8 +469,6 @@ body {
 		max-width: 600px;
 		margin: 0 auto;
 		padding: 200px 20px;
-		padding-top: 200px;
-		padding-bottom: 200px;
 		div {
 			display: block;
 			margin-bottom: 60px;
@@ -584,6 +550,22 @@ body {
 	}
 	button {
 		margin-top: 5px;
+	}
+	.close {
+		display: block;
+		font-family: montserrat-b;
+		text-transform: uppercase;
+		font-size: 12px;
+		letter-spacing: 1.7px;
+		margin-top: 5px;
+		padding: 20px;
+		color: rgba(255,255,255,.4);
+		cursor: pointer;
+		transition: .25s;
+		&:hover {
+			color: #fff;
+			transition: .25s;
+		}
 	}
 }
 @-webkit-keyframes autofill {
