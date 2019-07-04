@@ -78,4 +78,37 @@ $(function() {
 			$(this).parent().removeClass('active');
 		}
 	});
+
+	$('.form form').submit(function(e) {
+		// $(".book-form button").addClass( "onclic");
+		// validate();
+		// function validate() {
+		//   setTimeout(function() {
+		//     $(".book-form button").removeClass( "onclic" );
+		//     $(".book-form button").addClass( "validate");
+		//     $('.book-form input, .book-form button').attr('disabled', '');
+		//     $('.book-form .received').addClass('visible');
+		//   }, 2250 );
+		// }
+		e.preventDefault();
+		formSubmit();
+		console.log('submitted')
+	});
+	
+
+	function formSubmit() {
+		var $form = $('.form form'),
+ 		  	url = 'https://hooks.zapier.com/hooks/catch/4793565/oy0zd4f/';
+		$.ajax({
+		    url: url,
+		    method: "POST",
+		    dataType: "json",
+		    data: $form.serialize(),
+		    success: function(response) {
+		    	console.log('submitted ajax');
+		    	return true
+		    }
+		})
+	}
+
 });

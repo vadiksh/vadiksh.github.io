@@ -767,13 +767,14 @@ body {
 	}
 }
 .features {
-	margin-top: -200px;
+	// margin-top: -200px;
+	margin-top: 200px;
 	padding-top: 600px;
 	position: relative;
 	z-index: 2;
 	
 	.section-title {
-		margin-bottom: 150px;
+		margin-bottom: 350px;
 		& > * {
 			opacity: 0;
 		}
@@ -787,6 +788,9 @@ body {
 		}
 		p {
 			max-width: 620px;
+		}
+		a {
+			margin-top: 35px;
 		}
 	}
 	&__list-wrap {

@@ -112,7 +112,7 @@ $(function() {
       })
       $('.header__banner').removeClass('hidden');
 
-    }, 1000)
+    }, 700)
   })
 
   for (; i < count; i++) {
