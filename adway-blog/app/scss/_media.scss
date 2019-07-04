@@ -457,7 +457,7 @@
 		}
 	}
 	.form {
-		background: url('../img/form-bg.svg') no-repeat center center/ auto 110%;
+		background: url('../img/form-bg.svg') no-repeat center center/ auto 130%;
 		.container {
 			padding: 100px 20px;
 			div {
@@ -838,17 +838,33 @@
 				padding: 3px;
 			}
 		}
-		&__contact {
+		.contact {
 			margin-bottom:10px;
+			&__list {
+				flex-flow: row;
+			}
 			li {
 				a {
-					font-size: 15px;
+					font-size: 18px;
+				}
+				span {
+					font-size: 12px;
 				}
 			}
 		}
 		&__links {
 			margin-top: 0px;
-			padding-top: 15px;
+			// padding-top: 15px;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			li {
+				width: 50%;
+				text-align: center;
+				a {
+					padding: 0px 20px;
+				}
+			}
 		}
 	}
 	.about-header {
