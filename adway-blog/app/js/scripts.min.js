@@ -80,16 +80,15 @@ $(function() {
 	});
 
 	$('.form form').submit(function(e) {
-		// $(".book-form button").addClass( "onclic");
-		// validate();
-		// function validate() {
-		//   setTimeout(function() {
-		//     $(".book-form button").removeClass( "onclic" );
-		//     $(".book-form button").addClass( "validate");
-		//     $('.book-form input, .book-form button').attr('disabled', '');
-		//     $('.book-form .received').addClass('visible');
-		//   }, 2250 );
-		// }
+		$(".form button").addClass( "onclic");
+		validate();
+		function validate() {
+		  setTimeout(function() {
+		    $(".form button").removeClass( "onclic");
+		    $(".form button").addClass( "validate");
+		    $('.form input, .form button').attr('disabled', '');
+		  }, 2250 );
+		}
 		e.preventDefault();
 		formSubmit();
 		console.log('submitted')
