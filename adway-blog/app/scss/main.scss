@@ -1406,7 +1406,7 @@ body {
 }
 .footer {
 	// height: 600px;
-	background: url('../img/footer-bg.svg') no-repeat center top/cover;
+	background: url('../img/footer_bg.svg') no-repeat center top/cover;
 	position: relative;
 	z-index: 2;
 	padding-top: 200px;
@@ -1498,6 +1498,9 @@ body {
 				margin-right: 12px;
 				background: url('../img/location.svg') no-repeat center center/contain;
 			}
+		}
+		a {
+			color: #fff;
 		}
 		p {
 			font-family: "montserrat-l";
