@@ -61,23 +61,34 @@ $(function() {
   }
   var clicked = false,
       lightspeed = false,
-      slowdown = false;
+      slowdown = false,
+      ctaBlock,
+      ctaForm;
+
 
   $('.cta-btn').click(function(e) {
+    ctaBlock = $(this).parent();
+    ctaForm = ctaBlock.siblings('.form');
     e.preventDefault();
     clicked = true;
-    $('.header__banner').addClass('hidden');
-    $('.form').css({
-      'position': 'relative'
+    // console.log(ctaForm[0].scrollHeight);
+    ctaBlock.parent().css({
+      'height': ctaForm[0].scrollHeight + 'px',
+      'transition': '0.7s ease-in-out' 
     })
-    $('.header__banner').css({
+    ctaBlock.addClass('hidden');
+    ctaForm.css({
+      'position': 'relative',
+      'visibility': 'visible'
+    })
+    ctaBlock.css({
       'position': 'absolute'
     })
    
     setTimeout(function() {
       clicked = false;
       lightspeed = true;
-      $('.form').addClass('revealed');
+     ctaForm.addClass('revealed');
 
       setTimeout(function() {
        
@@ -86,31 +97,41 @@ $(function() {
 
         setTimeout(function() {
           slowdown = false;
-          document.getElementById('name').focus();
+          ctaForm.find('#name').focus();
         }, 500)
       }, 1000)
-
     }, 300)
-  
   }) 
+
   $('.form .close').click(function() {
-    $('.form').removeClass('revealed');
+    ctaForm = $(this).closest('.form');
+    ctaBlock = ctaForm.siblings('.cta-block');
+
+    var ctaHeight = ctaBlock[0].clientHeight;
+    console.log(ctaHeight) 
+
+    ctaBlock.parent().css({
+      'height': ctaBlock[0].scrollHeight + 'px',
+      'transition': '0.7s ease-in-out'
+    })
+    ctaForm.removeClass('revealed');
     
     setTimeout(function() {
       $('body, html').animate({
-        scrollTop: 0
+        scrollTop: ctaForm.parent().offset().top
       },300)
-    }, 500)
+    }, 700)
     
     setTimeout(function() {
 
-      $('.form').css({
-        'position': 'absolute'
+      ctaForm.css({
+        'position': 'absolute',
+        'visibility': 'hidden'
       })
-      $('.header__banner').css({
+      ctaBlock.css({
         'position': 'relative'
       })
-      $('.header__banner').removeClass('hidden');
+     ctaBlock.removeClass('hidden');
 
     }, 700)
   })
