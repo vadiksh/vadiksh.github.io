@@ -50,7 +50,7 @@ $(function() {
     }
     if (this.x > width/5 && this.x < width/1.25 && this.y > height/5 && this.y < height/1.25) { 
 
-       if (this.z > 1) {
+       if (this.z > 0.8) {
           this.z = randomRange(0.3, 0.5);
           this.x = randomRange(-width / 2, width * 2.5);
           this.y = randomRange(-height * 1.5, height * 2.5) + window.scrollY;
@@ -73,7 +73,7 @@ $(function() {
     clicked = true;
     // console.log(ctaForm[0].scrollHeight);
     ctaBlock.parent().css({
-      'height': ctaForm[0].scrollHeight + 'px',
+      'height': ctaForm[0].clientHeight + 'px',
       'transition': '0.7s ease-in-out' 
     })
     ctaBlock.addClass('hidden');
@@ -107,11 +107,9 @@ $(function() {
     ctaForm = $(this).closest('.form');
     ctaBlock = ctaForm.siblings('.cta-block');
 
-    var ctaHeight = ctaBlock[0].clientHeight;
-    console.log(ctaHeight) 
 
     ctaBlock.parent().css({
-      'height': ctaBlock[0].scrollHeight + 'px',
+      'height': ctaBlock[0].clientHeight + 'px',
       'transition': '0.7s ease-in-out'
     })
     ctaForm.removeClass('revealed');
