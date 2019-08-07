@@ -65,13 +65,21 @@ $(function() {
       ctaBlock,
       ctaForm;
 
+   if ($('.about-header').length) {
+    setTimeout(function () {
+      $('.about-header').css({
+        'height': $('.about-header')[0].clientHeight + 'px'
+      })
+    },100)
+   } 
 
+  
   $('.cta-btn').click(function(e) {
     ctaBlock = $(this).parent();
     ctaForm = ctaBlock.siblings('.form');
     e.preventDefault();
     clicked = true;
-    // console.log(ctaForm[0].scrollHeight);
+
     ctaBlock.parent().css({
       'height': ctaForm[0].clientHeight + 'px',
       'transition': '0.7s ease-in-out' 
@@ -91,7 +99,9 @@ $(function() {
      ctaForm.addClass('revealed');
 
       setTimeout(function() {
-       
+       $('body, html').animate({
+         scrollTop: ctaForm.parent().offset().top
+       },300)
         slowdown = true;
         lightspeed = false;
 
@@ -106,7 +116,6 @@ $(function() {
   $('.form .close').click(function() {
     ctaForm = $(this).closest('.form');
     ctaBlock = ctaForm.siblings('.cta-block');
-
 
     ctaBlock.parent().css({
       'height': ctaBlock[0].clientHeight + 'px',
