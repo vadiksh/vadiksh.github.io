@@ -120,13 +120,12 @@ $(function() {
 
 		if ($(window).width() < 1024) {
 			var controller = new ScrollMagic.Controller();
-			var elOffset = $(".design").offset().top;
+			// var elOffset = $(".design").offset().top;
 
 			scene = new ScrollMagic.Scene({
-				// triggerHook: 0,
-				// triggerElement: ".design",
-				offset: elOffset,
-				duration: 1000})
+				triggerHook: 0,
+				triggerElement: "#trigger-pin",
+				duration: 300})
 			.setPin("#scroll-pin")
 			.addTo(controller)
 			.on("progress", function(e) {
