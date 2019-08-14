@@ -127,7 +127,7 @@ $(function() {
 				// triggerElement: ".design",
 				offset: elOffset,
 				duration: 1000})
-			.setPin(".design")
+			.setPin("#scroll-pin")
 			.addTo(controller)
 			.on("progress", function(e) {
 				if (e.progress > 0 && e.progress < 1/9) {
