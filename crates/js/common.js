@@ -143,7 +143,6 @@ $(function() {
 		// };
 		var scene;
 		$(window).resize(function() {
-
 			if ($(window).width() < 768) {
 				$(".social__mob").owlCarousel({
 				    loop:true,
@@ -154,7 +153,12 @@ $(function() {
 				    responsive:{
 				    }
 				});
+			} else {
+				$(".social__mob").trigger("destroy.owl.carousel");
+			}
 
+			if ($(window).width() < 1024) {
+				console.log("width < 1024")
 				var controller = new ScrollMagic.Controller();
 
 				scene = new ScrollMagic.Scene({
@@ -184,7 +188,7 @@ $(function() {
 					}
 				});
 			} else {
-				$(".social__mob").trigger("destroy.owl.carousel");
+				console.log("width > 1024");
 				scene.destroy(true);
 			}
 		});
