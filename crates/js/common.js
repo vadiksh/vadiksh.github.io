@@ -122,10 +122,10 @@ $(function() {
 			var controller = new ScrollMagic.Controller();
 
 			scene = new ScrollMagic.Scene({
+				offset: 100,
 				duration: 300,
 				triggerElement: "#trigger-pin",
-				triggerHook: 0,
-				reverse: false
+				triggerHook: 0
 			})
 			.setPin("#scroll-pin")
 			.addTo(controller)
