@@ -1,6 +1,4 @@
 $(function() {
-	window.viewportUnitsBuggyfill.init();
-	
 	$(".header__mob .hamburger").click(function() {
 		$(".header__mob-menu").addClass("active");
 	});
