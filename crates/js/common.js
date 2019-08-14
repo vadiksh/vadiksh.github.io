@@ -125,7 +125,7 @@ $(function() {
 				triggerHook: 0,
 				triggerElement: ".design",
 				duration: 1500})
-			.setPin(".design-wrap")
+			.setPin(".design")
 			.addTo(controller)
 			.on("progress", function(e) {
 				if (e.progress > 0 && e.progress < 1/9) {
@@ -158,5 +158,5 @@ $(function() {
 	$(".footer__list h3").click(function() {
 		$(this).toggleClass("active").next().slideToggle();
 	});
-	
+
 });
