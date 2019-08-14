@@ -70,36 +70,6 @@ $(function() {
 		});
 
 
-		var controller3 = new ScrollMagic.Controller();
-
-		var scene = new ScrollMagic.Scene({
-			triggerHook: 0,
-			triggerElement: ".design", duration: 1500})
-		.setPin(".design-wrap")
-		.addTo(controller3)
-		.on("progress", function(e) {
-			if (e.progress > 0 && e.progress < 1/9) {
-				$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 1/9 && e.progress < 2/9) {
-				$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 2/9 && e.progress < 3/9) {
-				$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 3/9 && e.progress < 4/9) {
-				$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 4/9 && e.progress < 5/9) {
-				$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 5/9 && e.progress < 6/9) {
-				$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 6/9 && e.progress < 7/9) {
-				$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 7/9 && e.progress < 8/9) {
-				$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
-			} else if (e.progress > 8/9 && e.progress < 1) {
-				$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
-			}
-		});
-
-
 		$(".design__features li").click(function () {
 			if (!$(this).hasClass("active")) {
 				$(this).addClass("active").siblings().removeClass("active");
@@ -131,18 +101,49 @@ $(function() {
 		    responsive:{
 		    }
 		});
-		if ($(window).width() < 768) {
-			$(".social__mob").owlCarousel({
-			    loop:true,
-			    nav: true,
-			    dots: false,
-			    items: 1,
-			    responsiveClass:true,
-			    responsive:{
-			    }
-			})
-		};
+		// if ($(window).width() < 768) {
+		// 	$(".social__mob").owlCarousel({
+		// 	    loop:true,
+		// 	    nav: true,
+		// 	    dots: false,
+		// 	    items: 1,
+		// 	    responsiveClass:true,
+		// 	    responsive:{
+		// 	    }
+		// 	})
+
+		// 	var controller3 = new ScrollMagic.Controller();
+
+		// 	var scene = new ScrollMagic.Scene({
+		// 		triggerHook: 0,
+		// 		triggerElement: ".design", duration: 1500})
+		// 	.setPin(".design-wrap")
+		// 	.addTo(controller3)
+		// 	.on("progress", function(e) {
+		// 		if (e.progress > 0 && e.progress < 1/9) {
+		// 			$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 1/9 && e.progress < 2/9) {
+		// 			$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 2/9 && e.progress < 3/9) {
+		// 			$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 3/9 && e.progress < 4/9) {
+		// 			$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 4/9 && e.progress < 5/9) {
+		// 			$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 5/9 && e.progress < 6/9) {
+		// 			$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 6/9 && e.progress < 7/9) {
+		// 			$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 7/9 && e.progress < 8/9) {
+		// 			$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
+		// 		} else if (e.progress > 8/9 && e.progress < 1) {
+		// 			$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
+		// 		}
+		// 	});
+		// };
+		var scene;
 		$(window).resize(function() {
+
 			if ($(window).width() < 768) {
 				$(".social__mob").owlCarousel({
 				    loop:true,
@@ -152,11 +153,43 @@ $(function() {
 				    responsiveClass:true,
 				    responsive:{
 				    }
-				})
+				});
+
+				var controller = new ScrollMagic.Controller();
+
+				scene = new ScrollMagic.Scene({
+					triggerHook: 0,
+					triggerElement: ".design", duration: 1500})
+				.setPin(".design-wrap")
+				.addTo(controller)
+				.on("progress", function(e) {
+					if (e.progress > 0 && e.progress < 1/9) {
+						$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 1/9 && e.progress < 2/9) {
+						$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 2/9 && e.progress < 3/9) {
+						$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 3/9 && e.progress < 4/9) {
+						$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 4/9 && e.progress < 5/9) {
+						$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 5/9 && e.progress < 6/9) {
+						$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 6/9 && e.progress < 7/9) {
+						$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 7/9 && e.progress < 8/9) {
+						$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
+					} else if (e.progress > 8/9 && e.progress < 1) {
+						$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
+					}
+				});
 			} else {
 				$(".social__mob").trigger("destroy.owl.carousel");
+				scene.destroy(true);
 			}
 		});
+
+		$(window).trigger("resize");
 		
 		$(".footer__list h3").click(function() {
 			$(this).toggleClass("active").next().slideToggle();
