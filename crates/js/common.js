@@ -125,7 +125,7 @@ $(function() {
 			$(".design").css({"height": deviceHeight + "px"})
 			scene = new ScrollMagic.Scene({
 				offset: 0,
-				duration: 300,
+				duration: 100,
 				triggerElement: "#trigger-pin",
 				triggerHook: 0
 			})
