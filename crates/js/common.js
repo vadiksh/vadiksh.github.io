@@ -104,23 +104,29 @@ $(function() {
 		
 	var scene,
 		scrolled,
+		scrollingArea = 500,
 		scrolledFraction,
-		deviceHeight = window.innerHeight;
-		$(".design").append(deviceHeight + ' - window.innerHeight // $(window).height()' + $(window).height());
-	$(window).scroll(function() {
-		if ($(window).width() < 1024) {
-			scrolled = $(window).scrollTop() - $("#scroll-pin").offset().top;
-			scrolledFraction = scrolled / 500;
+		deviceHeight = $(window).outerHeight();
 
-			$(".design").css({"height": deviceHeight + "px"});
-			$("#scroll-pin").css({"height":   deviceHeight + 500 + "px"})
+	if ($(window).width() < 1024) {
+		$(".design").css({"height": deviceHeight + "px"});
+		$("#scroll-pin").css({"height":   deviceHeight + scrollingArea + "px"})
+
+		$(window).scroll(function() {
+			scrolled = $(window).scrollTop() - $("#scroll-pin").offset().top;
+			scrolledFraction = scrolled / scrollingArea;
+			if ($(window).outerHeight() > deviceHeight) {
+				deviceHeight = $(window).outerHeight();
+				$(".design").css({"height": deviceHeight + "px"});
+				$("#scroll-pin").css({"height":   deviceHeight + scrollingArea + "px"})
+			}
 
 			if ($(window).scrollTop() > $("#scroll-pin").offset().top) {
 				$('#scroll-pin').addClass('active');
 			} else {
 				$('#scroll-pin').removeClass('active');
 			}
-			if ($(window).scrollTop() > $("#scroll-pin").offset().top && $(window).scrollTop() < $("#scroll-pin").offset().top + 500) {
+			if ($(window).scrollTop() > $("#scroll-pin").offset().top && $(window).scrollTop() < $("#scroll-pin").offset().top + scrollingArea) {
 				$(".design.fixed-copy").addClass("visible");
 			} else {
 				$(".design.fixed-copy").removeClass("visible");
@@ -145,9 +151,8 @@ $(function() {
 			} else if (scrolledFraction > 8/9 && scrolledFraction < 1) {
 				$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
 			}
-		}
-		
-	})
+		});
+	}
 
 	$(window).resize(function() {
 		if ($(window).width() < 768) {
