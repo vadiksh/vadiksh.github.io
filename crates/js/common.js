@@ -30,17 +30,17 @@ $(function() {
 
 
 	var scrolled;
-	$(window).scroll(function() {
-		scrolled = $(window).scrollTop();
-		if (scrolled + $(window).height() > $(".features").offset().top) {
+	// $(window).scroll(function() {
+	// 	scrolled = $(window).scrollTop();
+	// 	if (scrolled + $(window).height() > $(".features").offset().top) {
 			const playerScroll = new Plyr("#features-player", {
 			    loop: {active: true},
 			    controls: false,
 			    autoplay: true,
 			    muted: true
 			});
-		}
-	})
+	// 	}
+	// })
 
 	var faq = $(".fixed-faq__block");
 
