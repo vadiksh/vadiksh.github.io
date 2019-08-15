@@ -120,7 +120,9 @@ $(function() {
 
 		if ($(window).width() < 1024) {
 			var controller = new ScrollMagic.Controller();
+			var deviceHeight = $(window).height();
 
+			$(".design").css({"height": deviceHeight + "px"})
 			scene = new ScrollMagic.Scene({
 				offset: 100,
 				duration: 300,
