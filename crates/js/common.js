@@ -5,6 +5,15 @@ $(function() {
 	$(".header__mob .close").click(function() {
 		$(".header__mob-menu").removeClass("active");
 	});
+
+	$(".search-icon").click(function(e) {
+		e.preventDefault();
+		$(".search-popup").addClass("active");
+	});
+	$(".search-popup .close").click(function() {
+		$(".search-popup").removeClass("active");
+	});
+
 	var player;
 	$(".header__banner .button").click(function() {
 		$(".header, .video-popup").addClass("active");
@@ -18,6 +27,20 @@ $(function() {
 		player.destroy();
 		$(".video-popup, .header").removeClass("active");
 	});
+
+
+	var scrolled;
+	$(window).scroll(function() {
+		scrolled = $(window).scrollTop();
+		if (scrolled + $(window).height() > $(".features").offset().top) {
+			const playerScroll = new Plyr("#features-player", {
+			    loop: {active: true},
+			    controls: false,
+			    autoplay: true,
+			    muted: true
+			});
+		}
+	})
 
 	var faq = $(".fixed-faq__block");
 
@@ -103,7 +126,6 @@ $(function() {
 	});
 		
 	var scene,
-		scrolled,
 		scrollingArea = 500,
 		scrolledFraction,
 		deviceHeight = $(window).outerHeight();
@@ -168,68 +190,6 @@ $(function() {
 		} else {
 			$(".social__mob").trigger("destroy.owl.carousel");
 		}
-
-		// if ($(window).width() < 1024) {
-		// 	var controller = new ScrollMagic.Controller();
-		// 	var deviceHeight = $(window).height();
-
-		// 	$(".design").css({"height": deviceHeight + "px"});
-		// 	$("#scroll-pin").css({"height": deviceHeight + 300 + "px"})
-
-
-			// if (e.progress > 0 && e.progress < 1/9) {
-			// 	$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 1/9 && e.progress < 2/9) {
-			// 	$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 2/9 && e.progress < 3/9) {
-			// 	$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 3/9 && e.progress < 4/9) {
-			// 	$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 4/9 && e.progress < 5/9) {
-			// 	$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 5/9 && e.progress < 6/9) {
-			// 	$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 6/9 && e.progress < 7/9) {
-			// 	$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 7/9 && e.progress < 8/9) {
-			// 	$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
-			// } else if (e.progress > 8/9 && e.progress < 1) {
-			// 	$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
-			// }
-
-
-			// scene = new ScrollMagic.Scene({
-			// 	offset: 0,
-			// 	duration: 100,
-			// 	triggerElement: "#trigger-pin",
-			// 	triggerHook: 0
-			// })
-			// .setPin("#scroll-pin")
-			// .addTo(controller)
-			// .on("progress", function(e) {
-			// 	if (e.progress > 0 && e.progress < 1/9) {
-			// 		$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 1/9 && e.progress < 2/9) {
-			// 		$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 2/9 && e.progress < 3/9) {
-			// 		$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 3/9 && e.progress < 4/9) {
-			// 		$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 4/9 && e.progress < 5/9) {
-			// 		$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 5/9 && e.progress < 6/9) {
-			// 		$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 6/9 && e.progress < 7/9) {
-			// 		$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 7/9 && e.progress < 8/9) {
-			// 		$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
-			// 	} else if (e.progress > 8/9 && e.progress < 1) {
-			// 		$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
-			// 	}
-			// });
-		// } else {
-			// scene.destroy(true);
-		// }
 	});
 
 	$(window).trigger("resize");

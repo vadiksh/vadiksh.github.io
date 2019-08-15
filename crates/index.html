@@ -18,6 +18,13 @@
 
 <body>
 
+	<div class="search-popup popup">
+		<div class="container">
+			<form class="form"><input type="text" placeholder="search..."></form>
+			<div class="close"><span></span></div>
+		</div>
+	</div>
+
 	<div class="fixed-faq">
 		<span class="fixed-faq__button faq-button">FAQs</span>
 		<ul class="contact-list">
@@ -44,7 +51,6 @@
 			</ul>
 		</div>
 	</div>
-	
 	<header class="header">
 		<div class="header__top">
 			<div>
@@ -58,10 +64,11 @@
 					</ul>
 				</nav>
 			</div>
+
 			<ul class="header__top-list">
 				<li><a href="tel:+12089080118"><img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/phone.svg" alt=""></a></li>
-				<li><a href=""><img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/search.svg" alt=""></a></li>
-				<li><a href=""><img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/user.svg" alt=""></a></li>
+				<li><a class="search-icon" href="/search"><img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/search.svg" alt=""></a></li>
+				<li><a href="https://www.impactdogcrates.com/account/login"><img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/user.svg" alt=""></a></li>
 				<li><a href="https://www.impactdogcrates.com/cart"><img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/cart.svg" alt=""></a></li>
 			</ul>
 		</div>
@@ -69,8 +76,8 @@
 			<div class="hamburger"></div>
 			<a class="logo" href="https://www.impactdogcrates.com/"><img src="https://vadiksh.github.io/crates/img/mob/logo.svg" alt=""></a>
 			<ul class="header__top-list">
-				<li><a href=""><img src="https://vadiksh.github.io/crates/img/mob/phone.svg" alt=""></a></li>
-				<li><a href=""><img src="https://vadiksh.github.io/crates/img/mob/user.svg" alt=""></a></li>
+				<li><a href="tel:+12089080118"><img src="https://vadiksh.github.io/crates/img/mob/phone.svg" alt=""></a></li>
+				<li><a href="https://www.impactdogcrates.com/account/login"><img src="https://vadiksh.github.io/crates/img/mob/user.svg" alt=""></a></li>
 				<li><a href="https://www.impactdogcrates.com/cart"><img src="https://vadiksh.github.io/crates/img/mob/cart.svg" alt=""></a></li>
 			</ul>
 			<nav class="header__mob-menu">
@@ -88,12 +95,12 @@
 			<div class="header__banner">
 				<h1>YOUR DOG DESERVES<br> THE BEST CRATE</h1>
 				<p>And you deserve peace of mind</p>
-				<a class="button" data-src="https://www.youtube.com/embed/m3QvxsAvc38">WATCH VIDEO</a>
+				<a class="button">WATCH VIDEO</a>
 			</div>
 		</div>
 
-		<div class="video-popup">
-			<div id="player" data-plyr-provider="vimeo" data-plyr-embed-id="https://player.vimeo.com/video/353551560?controls=0f"></div>
+		<div class="video-popup popup">
+			<div id="player" data-plyr-provider="vimeo" data-plyr-embed-id="https://player.vimeo.com/video/353985411?controls=0"></div>
 			<span class="close"><span></span></span>
 		</div>
 	</header>
@@ -107,6 +114,13 @@
 			</ul>
 		</div>
 		<div class="features__video">
+			<div class="features__video-container">
+				<!-- http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/video-bg.jpg -->
+				<video id="features-player" playsinline muted loop>
+				    <source src="https://vadiksh.github.io/crates/video/features.mp4" type="video/mp4" />
+				</video>
+			</div>
+			
 			<div class="container">
 				<h2>The strongest,<br> safest Crate</h2>
 				<ul>
@@ -132,7 +146,6 @@
 					</li>
 				</ul>
 			</div>
-			<span class="play"><img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/play-circle.svg" alt=""></span>
 		</div>
 	</section>
 
@@ -179,139 +192,137 @@
 		</div>
 	</section>
 	
-	<div id="trigger-pin">
-		<div id="scroll-pin" class="scroll-pin">
-			<section class="design">
-				<div class="design__title">
-					<h2>INNOVATION MEETS DESIGN</h2>
-					<p>DURABLE | RELIABLE | FUNCTIONAL</p>
+	<div id="scroll-pin" class="scroll-pin">
+		<section class="design">
+			<div class="design__title">
+				<h2>INNOVATION MEETS DESIGN</h2>
+				<p>DURABLE | RELIABLE | FUNCTIONAL</p>
+			</div>
+			<div class="container">
+				<div class="design__img">
+					<img src="https://vadiksh.github.io/crates/img/new/design.jpg" alt="">
 				</div>
-				<div class="container">
-					<div class="design__img">
-						<img src="https://vadiksh.github.io/crates/img/new/design.jpg" alt="">
-					</div>
 
-					<ul class="design__features">
-						<li>Military-Grade Aluminum</li>
-						<li>Escape Proof Crate</li>
-						<li>Color Options</li>
-						<li><span class="compliant">Compliant</span></li>
-						<li>Fully Assembled</li>
-						<li>Lightweight</li>
-						<li>Comfortable</li>
-						<li>No Wear No Tear</li>
-						<li>Easy Open and Close Latches</li>
-					</ul>
+				<ul class="design__features">
+					<li>Military-Grade Aluminum</li>
+					<li>Escape Proof Crate</li>
+					<li>Color Options</li>
+					<li><span class="compliant">Compliant</span></li>
+					<li>Fully Assembled</li>
+					<li>Lightweight</li>
+					<li>Comfortable</li>
+					<li>No Wear No Tear</li>
+					<li>Easy Open and Close Latches</li>
+				</ul>
 
-					<div class="design__screen">
-						<ul class="design__screen-list">
-							<li class="active"><img src="https://vadiksh.github.io/crates/img/new/feat1.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
-							<li>
-								<div class="color-demo">
+				<div class="design__screen">
+					<ul class="design__screen-list">
+						<li class="active"><img src="https://vadiksh.github.io/crates/img/new/feat1.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
+						<li>
+							<div class="color-demo">
+								<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+								<span>Gray</span>
+							</div>
+							<ul class="color-options">
+								<li>
 									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Gray</span>
-								</div>
-								<ul class="color-options">
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>Blue</span>
-									</li>
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>black</span>
-									</li>
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>Lime Green</span>
-									</li>
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>Desert Tan</span>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<h4 class="compliant">Compliant</h4>
-								<p>IATA ensures that both safety and animal welfare are addressed in all regulatory issues pertaining to transportation of live animals by air. IATA coordinates the Live Animals and Perishables Board (LAPB) and provides key input to the airline industry on issues such as animal welfare, identification, and animal behavior based on modern science.</p>
-							</li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat5.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat6.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat7.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat8.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat9.jpg" alt=""></li>
-						</ul>
-						<span class="close"></span>
-					</div>
-				</div>
-				<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>	
-			</section>
-			<section class="design fixed-copy">
-				<div class="design__title">
-					<h2>INNOVATION MEETS DESIGN</h2>
-					<p>DURABLE | RELIABLE | FUNCTIONAL</p>
-				</div>
-				<div class="container">
-					<div class="design__img">
-						<img src="https://vadiksh.github.io/crates/img/new/design.jpg" alt="">
-					</div>
-
-					<ul class="design__features">
-						<li>Military-Grade Aluminum</li>
-						<li>Escape Proof Crate</li>
-						<li>Color Options</li>
-						<li><span class="compliant">Compliant</span></li>
-						<li>Fully Assembled</li>
-						<li>Lightweight</li>
-						<li>Comfortable</li>
-						<li>No Wear No Tear</li>
-						<li>Easy Open and Close Latches</li>
-					</ul>
-
-					<div class="design__screen">
-						<ul class="design__screen-list">
-							<li class="active"><img src="https://vadiksh.github.io/crates/img/new/feat1.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
-							<li>
-								<div class="color-demo">
+									<span>Blue</span>
+								</li>
+								<li>
 									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Gray</span>
-								</div>
-								<ul class="color-options">
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>Blue</span>
-									</li>
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>black</span>
-									</li>
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>Lime Green</span>
-									</li>
-									<li>
-										<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-										<span>Desert Tan</span>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<h4 class="compliant">Compliant</h4>
-								<p>IATA ensures that both safety and animal welfare are addressed in all regulatory issues pertaining to transportation of live animals by air. IATA coordinates the Live Animals and Perishables Board (LAPB) and provides key input to the airline industry on issues such as animal welfare, identification, and animal behavior based on modern science.</p>
-							</li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat5.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat6.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat7.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat8.jpg" alt=""></li>
-							<li><img src="https://vadiksh.github.io/crates/img/new/feat9.jpg" alt=""></li>
-						</ul>
-						<span class="close"></span>
-					</div>
+									<span>black</span>
+								</li>
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+									<span>Lime Green</span>
+								</li>
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+									<span>Desert Tan</span>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 class="compliant">Compliant</h4>
+							<p>IATA ensures that both safety and animal welfare are addressed in all regulatory issues pertaining to transportation of live animals by air. IATA coordinates the Live Animals and Perishables Board (LAPB) and provides key input to the airline industry on issues such as animal welfare, identification, and animal behavior based on modern science.</p>
+						</li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat5.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat6.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat7.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat8.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat9.jpg" alt=""></li>
+					</ul>
+					<span class="close"></span>
 				</div>
-				<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>	
-			</section>
-		</div>	
+			</div>
+			<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>	
+		</section>
+		<section class="design fixed-copy">
+			<div class="design__title">
+				<h2>INNOVATION MEETS DESIGN</h2>
+				<p>DURABLE | RELIABLE | FUNCTIONAL</p>
+			</div>
+			<div class="container">
+				<div class="design__img">
+					<img src="https://vadiksh.github.io/crates/img/new/design.jpg" alt="">
+				</div>
+
+				<ul class="design__features">
+					<li>Military-Grade Aluminum</li>
+					<li>Escape Proof Crate</li>
+					<li>Color Options</li>
+					<li><span class="compliant">Compliant</span></li>
+					<li>Fully Assembled</li>
+					<li>Lightweight</li>
+					<li>Comfortable</li>
+					<li>No Wear No Tear</li>
+					<li>Easy Open and Close Latches</li>
+				</ul>
+
+				<div class="design__screen">
+					<ul class="design__screen-list">
+						<li class="active"><img src="https://vadiksh.github.io/crates/img/new/feat1.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
+						<li>
+							<div class="color-demo">
+								<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+								<span>Gray</span>
+							</div>
+							<ul class="color-options">
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+									<span>Blue</span>
+								</li>
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+									<span>black</span>
+								</li>
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+									<span>Lime Green</span>
+								</li>
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+									<span>Desert Tan</span>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4 class="compliant">Compliant</h4>
+							<p>IATA ensures that both safety and animal welfare are addressed in all regulatory issues pertaining to transportation of live animals by air. IATA coordinates the Live Animals and Perishables Board (LAPB) and provides key input to the airline industry on issues such as animal welfare, identification, and animal behavior based on modern science.</p>
+						</li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat5.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat6.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat7.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat8.jpg" alt=""></li>
+						<li><img src="https://vadiksh.github.io/crates/img/new/feat9.jpg" alt=""></li>
+					</ul>
+					<span class="close"></span>
+				</div>
+			</div>
+			<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>	
+		</section>
 	</div>
 	
 
@@ -986,7 +997,7 @@
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-	<script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+	<script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
 
 
