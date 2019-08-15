@@ -102,7 +102,53 @@ $(function() {
 	    }
 	});
 		
-	var scene;
+	var scene,
+		scrolled,
+		scrolledFraction,
+		deviceHeight;
+	$(window).scroll(function() {
+		if ($(window).width() < 1024) {
+			scrolled = $(window).scrollTop() - $("#scroll-pin").offset().top;
+			scrolledFraction = scrolled / 500;
+			deviceHeight = $(window).height();
+
+			$(".design").css({"height": deviceHeight + "px"});
+			$("#scroll-pin").css({"height": deviceHeight + 500 + "px"})
+
+			if ($(window).scrollTop() > $("#scroll-pin").offset().top) {
+				$('#scroll-pin').addClass('active');
+			} else {
+				$('#scroll-pin').removeClass('active');
+			}
+			if ($(window).scrollTop() > $("#scroll-pin").offset().top && $(window).scrollTop() < $("#scroll-pin").offset().top + 500) {
+				$(".design.fixed-copy").addClass("visible");
+			} else {
+				$(".design.fixed-copy").removeClass("visible");
+			}
+			// if (scrolled) {}
+			 if (scrolledFraction > 0 && scrolledFraction < 1/9) {
+				$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 1/9 && scrolledFraction < 2/9) {
+				$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 2/9 && scrolledFraction < 3/9) {
+				$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 3/9 && scrolledFraction < 4/9) {
+				$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 4/9 && scrolledFraction < 5/9) {
+				$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 5/9 && scrolledFraction < 6/9) {
+				$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 6/9 && scrolledFraction < 7/9) {
+				$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 7/9 && scrolledFraction < 8/9) {
+				$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
+			} else if (scrolledFraction > 8/9 && scrolledFraction < 1) {
+				$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
+			}
+		}
+		
+	})
+
 	$(window).resize(function() {
 		if ($(window).width() < 768) {
 			$(".social__mob").owlCarousel({
@@ -118,43 +164,67 @@ $(function() {
 			$(".social__mob").trigger("destroy.owl.carousel");
 		}
 
-		if ($(window).width() < 1024) {
-			var controller = new ScrollMagic.Controller();
-			var deviceHeight = $(window).height();
+		// if ($(window).width() < 1024) {
+		// 	var controller = new ScrollMagic.Controller();
+		// 	var deviceHeight = $(window).height();
 
-			$(".design").css({"height": deviceHeight + "px"})
-			scene = new ScrollMagic.Scene({
-				offset: 0,
-				duration: 100,
-				triggerElement: "#trigger-pin",
-				triggerHook: 0
-			})
-			.setPin("#scroll-pin")
-			.addTo(controller)
-			.on("progress", function(e) {
-				if (e.progress > 0 && e.progress < 1/9) {
-					$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 1/9 && e.progress < 2/9) {
-					$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 2/9 && e.progress < 3/9) {
-					$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 3/9 && e.progress < 4/9) {
-					$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 4/9 && e.progress < 5/9) {
-					$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 5/9 && e.progress < 6/9) {
-					$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 6/9 && e.progress < 7/9) {
-					$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 7/9 && e.progress < 8/9) {
-					$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
-				} else if (e.progress > 8/9 && e.progress < 1) {
-					$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
-				}
-			});
-		} else {
-			scene.destroy(true);
-		}
+		// 	$(".design").css({"height": deviceHeight + "px"});
+		// 	$("#scroll-pin").css({"height": deviceHeight + 300 + "px"})
+
+
+			// if (e.progress > 0 && e.progress < 1/9) {
+			// 	$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 1/9 && e.progress < 2/9) {
+			// 	$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 2/9 && e.progress < 3/9) {
+			// 	$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 3/9 && e.progress < 4/9) {
+			// 	$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 4/9 && e.progress < 5/9) {
+			// 	$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 5/9 && e.progress < 6/9) {
+			// 	$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 6/9 && e.progress < 7/9) {
+			// 	$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 7/9 && e.progress < 8/9) {
+			// 	$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
+			// } else if (e.progress > 8/9 && e.progress < 1) {
+			// 	$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
+			// }
+
+
+			// scene = new ScrollMagic.Scene({
+			// 	offset: 0,
+			// 	duration: 100,
+			// 	triggerElement: "#trigger-pin",
+			// 	triggerHook: 0
+			// })
+			// .setPin("#scroll-pin")
+			// .addTo(controller)
+			// .on("progress", function(e) {
+			// 	if (e.progress > 0 && e.progress < 1/9) {
+			// 		$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 1/9 && e.progress < 2/9) {
+			// 		$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 2/9 && e.progress < 3/9) {
+			// 		$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 3/9 && e.progress < 4/9) {
+			// 		$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 4/9 && e.progress < 5/9) {
+			// 		$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 5/9 && e.progress < 6/9) {
+			// 		$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 6/9 && e.progress < 7/9) {
+			// 		$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 7/9 && e.progress < 8/9) {
+			// 		$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
+			// 	} else if (e.progress > 8/9 && e.progress < 1) {
+			// 		$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
+			// 	}
+			// });
+		// } else {
+			// scene.destroy(true);
+		// }
 	});
 
 	$(window).trigger("resize");
