@@ -106,6 +106,7 @@ $(function() {
 		scrolled,
 		scrolledFraction,
 		deviceHeight = window.innerHeight;
+		$(".design").append(deviceHeight + ' - window.innerHeight // $(window).height()' + $(window).height());
 	$(window).scroll(function() {
 		if ($(window).width() < 1024) {
 			scrolled = $(window).scrollTop() - $("#scroll-pin").offset().top;
