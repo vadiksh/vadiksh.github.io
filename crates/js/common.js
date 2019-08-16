@@ -22,6 +22,9 @@ $(function() {
 		    controls: false
 		});
 		player.poster = "";
+		setTimeout(function() {
+			player.play();
+		},500)
 	});
 	$(".video-popup .close").click(function () {
 		player.destroy();
@@ -191,7 +194,7 @@ $(function() {
 			img.attr("src", src);
 			img.css({
 				"opacity": 1,
-				"transition": ".25s .3s ease-out"
+				"transition": ".25s .5s ease-out"
 			})
 		}, 350)
 	}
