@@ -191,7 +191,7 @@ $(function() {
 			img.attr("src", src);
 			img.css({
 				"opacity": 1,
-				"transition": ".25s ease-out"
+				"transition": ".25s .3s ease-out"
 			})
 		}, 350)
 	}
