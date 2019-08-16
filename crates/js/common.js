@@ -24,7 +24,7 @@ $(function() {
 		player.poster = "";
 		setTimeout(function() {
 			player.play();
-		},500)
+		},2000)
 	});
 	$(".video-popup .close").click(function () {
 		player.destroy();
