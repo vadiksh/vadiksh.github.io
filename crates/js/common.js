@@ -65,31 +65,31 @@ $(function() {
 	var infoIndex;
 	var linkTabViewed = false;
 
-	$(".info").mouseenter(function() {
+	$(".stats__list p").mouseenter(function() {
 		linkTabViewed = true;
-		infoIndex = $(this).attr("data-id");
-		$($(".info-links")[infoIndex]).addClass("visible");
+		// infoIndex = $(this).attr("data-id");
+		// $($(".stats-popup")[infoIndex]).addClass("visible");
+		$(".stats-popup").addClass("visible");
 	});
 
-	$(".info").mouseleave(function() {
-		infoIndex = $(this).attr("data-id");
+	$(".stats__list p").mouseleave(function() {
+		// infoIndex = $(this).attr("data-id");
 		linkTabViewed = false;
 
 		setTimeout(function () {
 			if (!linkTabViewed) {
-				$(".info-links").removeClass("visible")
+				$(".stats-popup").removeClass("visible")
 			}
 		}, 200)
 	});
-	$(".info-links").mouseenter(function () {
+	$(".stats-popup").mouseenter(function () {
 		linkTabViewed = true;
 	});
-	$(".info-links").mouseleave(function () {
+	$(".stats-popup").mouseleave(function () {
 		linkTabViewed = false;
 		setTimeout(function () {
-			 $(".info-links").removeClass("visible")
+			 $(".stats-popup").removeClass("visible")
 		}, 100)
-		
 	});
 
 
@@ -106,11 +106,96 @@ $(function() {
 		$(".design__screen").css({"opacity": 0, "transition": ".3s"});
 		$(".design__features li, .design__screen-list > li").removeClass("active");
 	});
-
-	$(".options__list ul li").click(function() {
-		$(this).addClass("active").siblings().removeClass("active");
-		$(".options__screens > li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+	$(".color-options").owlCarousel({
+	    loop:false,
+	    nav: true,
+	    dots: false,
+	    slideBy: 4,
+	    items: 4,
+	    responsiveClass:true,
+	    responsive:{
+	    }
 	});
+
+	var src,
+		color;
+	$(".color-options .owl-item").click(function() {
+		src = $(this).find('img').attr("src");
+		color = $(this).find('span').html();
+		$(".color-demo").css({
+			"opacity": 0,
+			"transition": ".3s ease-in"
+		})
+		setTimeout(function () {
+			$(".color-demo img").attr("src", src);
+			$(".color-demo span").html(color);
+			$(".color-demo").css({
+				"opacity": 1,
+				"transition": ".25s .2s ease-out"
+			})
+		}, 350)
+	})
+
+	var product;
+	$(".options__list ul li").click(function() {
+		product = $(".options__screens > li").eq($(this).index());
+		src = product.find('.options__image > img').attr("data-src");
+		color = product.find('select[name="color"] option:selected').attr("data-src");
+		
+		$(this).addClass("active").siblings().removeClass("active");
+		product.addClass("active").siblings().removeClass("active");
+		if (color) {
+			src = color;
+		}
+		changeImg($(".options__image img, .mob-info > img"));		
+	});
+
+	$(".options__details .owl-carousel").owlCarousel({
+	    loop:false,
+	    nav: true,
+	    dots: false,
+	    slideBy: 4,
+	    items: 4,
+	    margin: 0,
+	    responsiveClass:true,
+	    responsive:{
+	    }
+	});
+	$(".options__details li").click(function() {
+		src = $(this).find('img').attr("src");
+		changeImg($(".options__image img, .mob-info > img"))
+	})
+
+	$(".options__form select[name='color']").change(function () {
+		src = $(this).find('option:selected').attr('data-src');
+		if ($(this).parents('.form').find('select[name="size"] option:selected').hasClass('alt')) {
+			src = $(this).find('option:selected').attr('data-src-alt');
+		}
+		changeImg($(".options__image img, .mob-info > img"))
+	})
+	$(".options__form .size-select").change(function () {
+		src = $(this).parents('.form').find('select[name="color"] option:selected').attr('data-src');
+		if ($(this).find('option:selected').hasClass('alt')) {
+			src = $(this).parents('.form').find('select[name="color"] option:selected').attr('data-src-alt');
+		}
+		changeImg($(".options__image img, .mob-info > img"))
+	})
+
+
+	function changeImg(img) {
+		img.css({
+			"opacity": 0,
+			"transition": ".3s ease-in"
+		})
+		setTimeout(function () {
+			img.attr("src", src);
+			img.css({
+				"opacity": 1,
+				"transition": ".25s ease-out"
+			})
+		}, 350)
+	}
+
 	$(".mob-info .view").click(function(){
 		$(this).next().slideToggle();
 	});
