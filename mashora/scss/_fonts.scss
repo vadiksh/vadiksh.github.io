@@ -1,0 +1,5 @@
+@import "_mixins/font-face";
+
+@include font-face("manrope-m", "../fonts/Manrope3-Medium");
+@include font-face("manrope", "../fonts/Manrope3-Regular");
+@include font-face("butler", "../fonts/Butler-Black");
