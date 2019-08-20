@@ -719,9 +719,6 @@ h2 {
 .design {
 	padding: 60px 15px;
 	text-align: center;
-	&.fixed-copy {
-		display: none;
-	}
 	&__title {
 		text-align: center;
 		h2 {
@@ -757,6 +754,7 @@ h2 {
 		align-items: center;
 		padding: 60px 0;
 		text-align: left;
+		position: relative;
 	}
 	&__img {
 		width: 50%;
@@ -764,6 +762,97 @@ h2 {
 			width: 100%;
 			height: auto;
 		}
+	}
+
+
+	input[type=range] {
+		position: absolute;
+		top: 0;
+		left: 30px;
+		transform-origin: 0 0;
+		transform: rotate(90deg);
+		z-index: 5;
+		height: 34px;
+		-webkit-appearance: none;
+		margin: 10px 0;
+		width: 100%;
+	}
+	input[type=range]:focus {
+	  outline: none;
+	}
+	input[type=range]::-webkit-slider-runnable-track {
+	  width: 100%;
+	  height: 3px;
+	  cursor: pointer;
+	  animate: 0.2s;
+	  background: $accent;
+	}
+	input[type=range]::-webkit-slider-thumb {
+	  border: none;
+	  box-shadow: 0px -2px 5px rgba(0,0,0,.5);
+	  border-radius: 50%;
+	  height: 28px;
+	  width: 28px;
+	  background: url('../img/mob/range.svg') no-repeat center center/cover;
+	  transform: rotate(90deg);
+	  cursor: pointer;
+	  -webkit-appearance: none;
+	  margin-top: -13px;
+	}
+	input[type=range]:focus::-webkit-slider-runnable-track {
+	  background: $accent;
+	}
+	input[type=range]::-moz-range-track {
+	  width: 100%;
+	  height: 11px;
+	  cursor: pointer;
+	  animate: 0.2s;
+	  background: $accent;
+	}
+	input[type=range]::-moz-range-thumb {
+		border: none;
+		box-shadow: 0px -2px 5px rgba(0,0,0,.5);
+		background: url('../img/mob/range.svg') no-repeat center center/cover;
+		transform: rotate(90deg);
+		-webkit-appearance: none;
+		border-radius: 50%;
+		height: 28px;
+		width: 28px;
+		cursor: pointer;
+	}
+	input[type=range]::-ms-track {
+	  width: 100%;
+	  height: 11px;
+	  cursor: pointer;
+	  animate: 0.2s;
+	  background: transparent;
+	  border-color: transparent;
+	  color: transparent;
+	}
+	input[type=range]::-ms-fill-lower {
+	  background: $accent;
+	  border: none;
+	}
+	input[type=range]::-ms-fill-upper {
+		border: none;
+	  background: $accent;
+	}
+	input[type=range]::-ms-thumb {
+	  border: none;
+	  box-shadow: 0px -2px 5px rgba(0,0,0,.5);
+	  background: url('../img/mob/range.svg') no-repeat center center/cover;
+	  transform: rotate(90deg);
+	  -webkit-appearance: none;
+	  border-radius: 50%;
+	  height: 28px;
+	  width: 28px;
+	  cursor: pointer;
+	}
+	input[type=range]:focus::-ms-fill-lower {
+	  background: $accent;
+	}
+	input[type=range]:focus::-ms-fill-upper {
+	  background: $accent;
 	}
 	&__features {
 		width: 50%;
@@ -1446,7 +1535,7 @@ h2 {
 		align-items: center;
 	}
 	&__widget {
-		display: none;
+		display: block;
 		margin-top: 30px;
 		margin-bottom: 80px;
 		align-self: flex-end;
