@@ -240,53 +240,77 @@ $(function() {
 	var scene,
 		scrollingArea = 500,
 		scrolledFraction,
-		deviceHeight = $(window).outerHeight();
+		deviceHeight = $(window).outerHeight(),
+		range;
 
-	if ($(window).width() < 1024) {
-		$(".design").css({"height": deviceHeight + "px"});
-		$("#scroll-pin").css({"height":   deviceHeight + scrollingArea + "px"})
+	$('#range').change(function() {
+		range = $(this).val();
 
-		$(window).scroll(function() {
-			scrolled = $(window).scrollTop() - $("#scroll-pin").offset().top;
-			scrolledFraction = scrolled / scrollingArea;
-			if ($(window).outerHeight() > deviceHeight) {
-				deviceHeight = $(window).outerHeight();
-				$(".design").css({"height": deviceHeight + "px"});
-				$("#scroll-pin").css({"height":   deviceHeight + scrollingArea + "px"})
-			}
+		 if (range > 0 && range < 100) {
+			$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
+		} else if (range > 100 && range < 200) {
+			$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
+		} else if (range > 200 && range < 300) {
+			$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
+		} else if (range > 300 && range < 400) {
+			$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
+		} else if (range > 400 && range < 500) {
+			$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
+		} else if (range > 500 && range < 600) {
+			$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
+		} else if (range > 600 && range < 700) {
+			$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
+		} else if (range > 700 && range < 800) {
+			$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
+		} else if (range > 800 && range < 900) {
+			$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
+		}
+	})
+	// if ($(window).width() < 1024) {
+		// $(".design").css({"height": deviceHeight + "px"});
+		// $("#scroll-pin").css({"height":   deviceHeight + scrollingArea + "px"})
 
-			if ($(window).scrollTop() > $("#scroll-pin").offset().top) {
-				$('#scroll-pin').addClass('active');
-			} else {
-				$('#scroll-pin').removeClass('active');
-			}
-			if ($(window).scrollTop() > $("#scroll-pin").offset().top && $(window).scrollTop() < $("#scroll-pin").offset().top + scrollingArea) {
-				$(".design.fixed-copy").addClass("visible");
-			} else {
-				$(".design.fixed-copy").removeClass("visible");
-			}
-			// if (scrolled) {}
-			 if (scrolledFraction > 0 && scrolledFraction < 1/9) {
-				$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 1/9 && scrolledFraction < 2/9) {
-				$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 2/9 && scrolledFraction < 3/9) {
-				$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 3/9 && scrolledFraction < 4/9) {
-				$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 4/9 && scrolledFraction < 5/9) {
-				$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 5/9 && scrolledFraction < 6/9) {
-				$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 6/9 && scrolledFraction < 7/9) {
-				$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 7/9 && scrolledFraction < 8/9) {
-				$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
-			} else if (scrolledFraction > 8/9 && scrolledFraction < 1) {
-				$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
-			}
-		});
-	}
+	// 	$(window).scroll(function() {
+	// 		scrolled = $(window).scrollTop() - $("#scroll-pin").offset().top;
+	// 		scrolledFraction = scrolled / scrollingArea;
+	// 		if ($(window).outerHeight() > deviceHeight) {
+	// 			deviceHeight = $(window).outerHeight();
+	// 			$(".design").css({"height": deviceHeight + "px"});
+	// 			$("#scroll-pin").css({"height":   deviceHeight + scrollingArea + "px"})
+	// 		}
+
+	// 		if ($(window).scrollTop() > $("#scroll-pin").offset().top) {
+	// 			$('#scroll-pin').addClass('active');
+	// 		} else {
+	// 			$('#scroll-pin').removeClass('active');
+	// 		}
+	// 		if ($(window).scrollTop() > $("#scroll-pin").offset().top && $(window).scrollTop() < $("#scroll-pin").offset().top + scrollingArea) {
+	// 			$(".design.fixed-copy").addClass("visible");
+	// 		} else {
+	// 			$(".design.fixed-copy").removeClass("visible");
+	// 		}
+	// 		// if (scrolled) {}
+	// 		 if (scrolledFraction > 0 && scrolledFraction < 1/9) {
+	// 			$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 1/9 && scrolledFraction < 2/9) {
+	// 			$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 2/9 && scrolledFraction < 3/9) {
+	// 			$(".design__features li:nth-of-type(3)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 3/9 && scrolledFraction < 4/9) {
+	// 			$(".design__features li:nth-of-type(4)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 4/9 && scrolledFraction < 5/9) {
+	// 			$(".design__features li:nth-of-type(5)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 5/9 && scrolledFraction < 6/9) {
+	// 			$(".design__features li:nth-of-type(6)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 6/9 && scrolledFraction < 7/9) {
+	// 			$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 7/9 && scrolledFraction < 8/9) {
+	// 			$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
+	// 		} else if (scrolledFraction > 8/9 && scrolledFraction < 1) {
+	// 			$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
+	// 		}
+	// 	});
+	// }
 
 	$(window).resize(function() {
 		if ($(window).width() < 768) {
