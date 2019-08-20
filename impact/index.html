@@ -119,10 +119,11 @@
 		</div>
 		<div class="features__video">
 			<div class="features__video-container">
-				<!-- http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/video-bg.jpg -->
-				<video id="features-player" playsinline preload="auto" muted>
+
+				<div id="features-player" data-plyr-provider="vimeo" data-plyr-embed-id="https://player.vimeo.com/video/354927062?controls=0"></div>
+				<!-- <video id="features-player" playsinline preload="auto" muted>
 				    <source src="https://vadiksh.github.io/crates/video/features.mp4" type="video/mp4" />
-				</video>
+				</video> -->
 			</div>
 			
 			<div class="container">
@@ -199,114 +200,93 @@
 		</div>
 	</section>
 	
-	<div id="scroll-pin" class="scroll-pin">
-		<section class="design">
-			<div class="design__title">
-				<h2>INNOVATION MEETS DESIGN</h2>
-				<p>DURABLE | RELIABLE | FUNCTIONAL</p>
+	<section class="design">
+		<div class="design__title">
+			<h2>INNOVATION MEETS DESIGN</h2>
+			<p>DURABLE | RELIABLE | FUNCTIONAL</p>
+		</div>
+		<div class="container">
+			<div class="design__img">
+				<img src="https://vadiksh.github.io/crates/img/new/design.jpg" alt="">
 			</div>
-			<div class="container">
-				<div class="design__img">
-					<img src="https://vadiksh.github.io/crates/img/new/design.jpg" alt="">
-				</div>
-				
-				<input type="range" id="range" name="design-range"
-				        min="0" max="900">
-				<ul class="design__features">
-					<li>Military-Grade Aluminum</li>
-					<li>Escape Proof Crate</li>
-					<li>Color Options</li>
-					<li><span class="compliant">Compliant</span></li>
-					<li>Fully Assembled</li>
-					<li>Lightweight</li>
-					<li>Comfortable</li>
-					<li>No Wear No Tear</li>
-					<li>Easy Open and Close Latches</li>
-				</ul>
+			
+			<input type="range" id="range" name="design-range"
+			        min="0" max="900">
+			<ul class="design__features">
+				<li class="active">Military-Grade Aluminum</li>
+				<li>Escape Proof Crate</li>
+				<li>Color Options</li>
+				<li><span class="compliant">Compliant</span></li>
+				<li>Fully Assembled</li>
+				<li>Lightweight</li>
+				<li>Comfortable</li>
+				<li>No Wear No Tear</li>
+				<li>Easy Open and Close Latches</li>
+			</ul>
 
-				<div class="design__screen">
-					<ul class="design__screen-list">
-						<li class="active"><img src="https://vadiksh.github.io/crates/img/new/feat1.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
-						<li>
-							<div class="color-demo">
+			<div class="design__screen">
+				<ul class="design__screen-list">
+					<li class="active"><img src="https://vadiksh.github.io/crates/img/new/feat1.jpg" alt=""></li>
+					<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
+					<li>
+						<div class="color-demo">
+							<img src="https://vadiksh.github.io/crates/img/products/collapsible/1.jpg" alt="">
+							<span>Gray</span>
+						</div>
+
+						<ul class="color-options owl-carousel">
+							<li>
 								<img src="https://vadiksh.github.io/crates/img/products/collapsible/1.jpg" alt="">
 								<span>Gray</span>
-							</div>
-
-							<ul class="color-options owl-carousel">
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/1.jpg" alt="">
-									<span>Gray</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/2.jpg" alt="">
-									<span>Teal</span>
-								</li>
-								
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/3.jpg" alt="">
-									<span>Desert Tan</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/4.jpg" alt="">
-									<span>Purple</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/5.jpg" alt="">
-									<span>Blue</span>
-								</li>
-								
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/6.jpg" alt="">
-									<span>black</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/7.jpg" alt="">
-									<span>White</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/products/collapsible/8.jpg" alt="">
-									<span>Lime Green</span>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<h4 class="compliant">Compliant</h4>
-							<p>IATA ensures that both safety and animal welfare are addressed in all regulatory issues pertaining to transportation of live animals by air. IATA coordinates the Live Animals and Perishables Board (LAPB) and provides key input to the airline industry on issues such as animal welfare, identification, and animal behavior based on modern science.</p>
-						</li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat5.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat6.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat7.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat8.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat9.jpg" alt=""></li>
-					</ul>
-					<span class="close"></span>
-				</div>
-			</div>
-			<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>	
-		</section>
-<!-- 		<section class="design fixed-copy">
-			<div class="design__title">
-				<h2>INNOVATION MEETS DESIGN</h2>
-				<p>DURABLE | RELIABLE | FUNCTIONAL</p>
-			</div>
-			<div class="container">
-				<ul class="design__features">
-					<li>Military-Grade Aluminum</li>
-					<li>Escape Proof Crate</li>
-					<li>Color Options</li>
-					<li><span class="compliant">Compliant</span></li>
-					<li>Fully Assembled</li>
-					<li>Lightweight</li>
-					<li>Comfortable</li>
-					<li>No Wear No Tear</li>
-					<li>Easy Open and Close Latches</li>
+							</li>
+							<li>
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/2.jpg" alt="">
+								<span>Teal</span>
+							</li>
+							
+							<li>
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/3.jpg" alt="">
+								<span>Desert Tan</span>
+							</li>
+							<li>
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/4.jpg" alt="">
+								<span>Purple</span>
+							</li>
+							<li>
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/5.jpg" alt="">
+								<span>Blue</span>
+							</li>
+							
+							<li>
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/6.jpg" alt="">
+								<span>black</span>
+							</li>
+							<li>
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/7.jpg" alt="">
+								<span>White</span>
+							</li>
+							<li>
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/8.jpg" alt="">
+								<span>Lime Green</span>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h4 class="compliant">Compliant</h4>
+						<p>IATA ensures that both safety and animal welfare are addressed in all regulatory issues pertaining to transportation of live animals by air. IATA coordinates the Live Animals and Perishables Board (LAPB) and provides key input to the airline industry on issues such as animal welfare, identification, and animal behavior based on modern science.</p>
+					</li>
+					<li><img src="https://vadiksh.github.io/crates/img/new/feat5.jpg" alt=""></li>
+					<li><img src="https://vadiksh.github.io/crates/img/new/feat6.jpg" alt=""></li>
+					<li><img src="https://vadiksh.github.io/crates/img/new/feat7.jpg" alt=""></li>
+					<li><img src="https://vadiksh.github.io/crates/img/new/feat8.jpg" alt=""></li>
+					<li><img src="https://vadiksh.github.io/crates/img/new/feat9.jpg" alt=""></li>
 				</ul>
+				<span class="close"></span>
 			</div>
-			<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>	
-		</section> -->
-	</div>
+		</div>
+		<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>	
+	</section>
+
 	
 
 	<section class="military">
