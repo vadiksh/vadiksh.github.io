@@ -18,6 +18,10 @@
 
 <body>
 
+	<div class="affirm-popup">
+		<iframe class="affirm-sandbox-iframe" id="prequal-application" width="100%" height="100%" frameborder="0" allowscroll="no" allowtransparency="true" sandbox="allow-forms allow-modals allow-popups allow-same-origin allow-scripts" src="https://www.affirm.com/apps/prequal/?public_api_key=UFYNB2GMGAQ140RK&amp;device_id=dbc63ccf-041b-4817-99ff-0459678d698f&amp;referring_url=https%253A%252F%252Fwww.impactdogcrates.com%252Fproducts%252Fcollapsible-dog-crate%253F_pos%253D1%2526_sid%253D608359251%2526_ss%253Dr&amp;unit_price=55649&amp;page_type=product&amp;use_promo=true" style="overflow: hidden; width: 100%; height: 100%; margin: 0px; border: 0px; padding: 0px;"></iframe>
+	</div>
+
 	<div class="search-popup popup">
 		<div class="container">
 			<form class="form"><input type="text" placeholder="search..."></form>
@@ -116,7 +120,7 @@
 		<div class="features__video">
 			<div class="features__video-container">
 				<!-- http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/video-bg.jpg -->
-				<video id="features-player" playsinline muted loop>
+				<video id="features-player" playsinline preload="auto" muted>
 				    <source src="https://vadiksh.github.io/crates/video/features.mp4" type="video/mp4" />
 				</video>
 			</div>
@@ -163,32 +167,35 @@
 		<ul class="stats__list">
 			<li>
 				<img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/stats1.svg" alt="6M">
-				<p>car crashes every<br> year in USA<br> (NHTSA) <i class="info" data-id="0"></i></p>
-				<ul class="info-links">
-					<li><a href="">Link</a></li>
-					<li><a href="">Link</a></li>
-				</ul>
+				<p>car crashes every<br> year in USA<br> (NHTSA) <i></i></p>
 			</li>
 			<li>
 				<img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/stats2.svg" alt="2.5M">
-				<p>rear-end crashes<br> where dogs are kept <br> (National Safety Council) <i class="info" data-id="1"></i></p>
-				<ul class="info-links">
-					<li><a href="">Looong, extremely looooooooooong Link</a></li>
-					<li><a href="">Link</a></li>
-				</ul>
+				<p>rear-end crashes<br> where dogs are kept <br> (National Safety Council) <i></i></p>
 			</li>
 			<li>
 				<img src="http://variations-cdn.figpii.com/variations/impactdogcrates/New_HomePage_Redesign/stats3.svg" alt="100M">
-				<p>dogs die from riding<br> in truck beds alone<br> each year (AHS) <i class="info" data-id="2"></i></p>
-				<ul class="info-links">
-					<li><a href="">Link</a></li>
-					<li><a href="">Looong, extremely looooooooooong Link</a></li>
+				<p>dogs die from riding<br> in truck beds alone<br> each year (AHS) <i></i></p>
+			</li>
+			<li class="stats-popup">
+				<h3>CAR CRASH AND PET STATISTICS*</h3>
+				<ul>
+					<li>• According to a survey by the American Automobile Association, over 80% of dog owners’ drive with their pets in the car. Only 16% of people who transport their dogs use proper safety restraints.</li>
+					<li>• According to the National Highway Traffic Safety Administration (NHTSA), there were 5,687,000 crashes in 2013, with 1,591,000 injuries and 32,719 fatalities.</li>
+					<li>• According to the National Highway Traffic Safety Administration (NHTSA), there were 5,687,000 crashes in 2013, with 1,591,000 injuries and 32,719 fatalities.</li>
+					<li>• A full 51% of travelers with pets say they would bring their pets along on every vacation if they could, according to a recent AAA/Best Western survey.</li>
+					<li>• According to the National Safety Council, over 2.5 million rear-end collisions are reported every year, making them the most common type of automobile accident. This is where most pets should be contained, which is why it is important to use pet safety products.</li>
+					<li>• If a car crashes at a speed of just 25mph, an unrestrained dog can be projected forward at a force equal to 40 times its weight. A large-size dog weighing 75 lbs., for example, can achieve an impact force of 3,000 pounds in a car crash, which could be a lethal blow for both a passenger and the pet. (Allianz website – Keeping pets safe in the car)</li>
+					<li>• Even for smaller pets traveling at just 30 miles per hour, an unrestrained 10-lbs dog will exert 300 pounds of pressure in an accident, according to Jennifer Huebner-Davidson, traffic safety programs manager for AAA. Without a crash tested safety restraint, that pint-size pooch can injure passengers and become severely injured on impact. (CNN - Rethink your dog roaming freely)</li>
+					<li>• The American Humane Society reports that an estimated 100,000 dogs die from riding in truck beds alone each year. And that doesn’t include the dogs that die from jumping out of car windows or dogs who are unsecured in the car during a collision.</li>
 				</ul>
+				<a target="_blank" href="https://www.petprosupplyco.com/pages/car-accident-pet-statistics-america">* https://www.petprosupplyco.com/pages/car-accident-pet-statistics-america</a>
+				<a target="_blank" href="https://icalmpet.com/blog/keeping-dogs-safe-in-the-car/">* https://icalmpet.com/blog/keeping-dogs-safe-in-the-car/</a>
 			</li>
 		</ul>
 		<div class="container">
 			<h2>Your dog’s<br> Safety is worth<br> Every penny</h2>
-			<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>
+			<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>
 		</div>
 	</section>
 	
@@ -221,25 +228,44 @@
 						<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
 						<li>
 							<div class="color-demo">
-								<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+								<img src="https://vadiksh.github.io/crates/img/products/collapsible/1.jpg" alt="">
 								<span>Gray</span>
 							</div>
-							<ul class="color-options">
+
+							<ul class="color-options owl-carousel">
 								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Blue</span>
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/1.jpg" alt="">
+									<span>Gray</span>
 								</li>
 								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/2.jpg" alt="">
+									<span>Teal</span>
+								</li>
+								
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/3.jpg" alt="">
+									<span>Desert Tan</span>
+								</li>
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/4.jpg" alt="">
+									<span>Purple</span>
+								</li>
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/5.jpg" alt="">
+									<span>Blue</span>
+								</li>
+								
+								<li>
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/6.jpg" alt="">
 									<span>black</span>
 								</li>
 								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Lime Green</span>
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/7.jpg" alt="">
+									<span>White</span>
 								</li>
 								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Desert Tan</span>
+									<img src="https://vadiksh.github.io/crates/img/products/collapsible/8.jpg" alt="">
+									<span>Lime Green</span>
 								</li>
 							</ul>
 						</li>
@@ -256,7 +282,7 @@
 					<span class="close"></span>
 				</div>
 			</div>
-			<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>	
+			<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>	
 		</section>
 		<section class="design fixed-copy">
 			<div class="design__title">
@@ -264,10 +290,6 @@
 				<p>DURABLE | RELIABLE | FUNCTIONAL</p>
 			</div>
 			<div class="container">
-				<div class="design__img">
-					<img src="https://vadiksh.github.io/crates/img/new/design.jpg" alt="">
-				</div>
-
 				<ul class="design__features">
 					<li>Military-Grade Aluminum</li>
 					<li>Escape Proof Crate</li>
@@ -279,56 +301,15 @@
 					<li>No Wear No Tear</li>
 					<li>Easy Open and Close Latches</li>
 				</ul>
-
-				<div class="design__screen">
-					<ul class="design__screen-list">
-						<li class="active"><img src="https://vadiksh.github.io/crates/img/new/feat1.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat2.jpg" alt=""></li>
-						<li>
-							<div class="color-demo">
-								<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-								<span>Gray</span>
-							</div>
-							<ul class="color-options">
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Blue</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>black</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Lime Green</span>
-								</li>
-								<li>
-									<img src="https://vadiksh.github.io/crates/img/new/feat3.1.jpg" alt="">
-									<span>Desert Tan</span>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<h4 class="compliant">Compliant</h4>
-							<p>IATA ensures that both safety and animal welfare are addressed in all regulatory issues pertaining to transportation of live animals by air. IATA coordinates the Live Animals and Perishables Board (LAPB) and provides key input to the airline industry on issues such as animal welfare, identification, and animal behavior based on modern science.</p>
-						</li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat5.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat6.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat7.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat8.jpg" alt=""></li>
-						<li><img src="https://vadiksh.github.io/crates/img/new/feat9.jpg" alt=""></li>
-					</ul>
-					<span class="close"></span>
-				</div>
 			</div>
-			<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>	
+			<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>	
 		</section>
 	</div>
 	
 
 	<section class="military">
 		<h2>Nothing says durability and strength like a crate made with military grade aluminum</h2>
-		<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>
+		<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>
 	</section>
 
 	<section class="options">
@@ -336,30 +317,19 @@
 			<img src="https://vadiksh.github.io/crates/img/new/logo-green.svg" alt="">
 			<span>Available in Multiple Sized</span>
 			<ul>
-				<li>COLLAPSIBLE<br> DOG CRATES</li>
+				<li class="active">COLLAPSIBLE<br> DOG CRATES</li>
 				<li>HIGH ANXIETY<br> DOG CRATES</li>
-				<li class="active">STATIONARY<br> DOG CRATES</li>
+				<li>STATIONARY<br> DOG CRATES</li>
 				<li>SIDE DOOR<br> DOG CRATES</li>
 				<li>HYBRID<br> DOG CRATES</li>
 				<li>COLOSSAL<br> DOG CRATES</li>
 			</ul>
 		</div>
 		<div class="container">
-			<div class="options__details">
-				<p>View product details</p>
-				<ul>
-					<li><img src="" alt=""></li>
-					<li><img src="" alt=""></li>
-					<li><img src="" alt=""></li>
-					<li><img src="" alt=""></li>
-					<li><img src="" alt=""></li>
-				</ul>
-				<span class="hide"></span>
-			</div>
 			<ul class="options__screens">
 				<li class="active">
 					<div class="options__image">
-						<img src="https://vadiksh.github.io/crates/img/new/option1.jpg" alt="">
+						<img data-src="https://vadiksh.github.io/crates/img/new/option1.jpg" src="https://vadiksh.github.io/crates/img/new/option1.jpg" alt="">
 						<h3>Function meets Reliability and Safety</h3>
 						<p>The Collapsible dog crate has quickly become our most popular crate with its unique ability to transform from a secure dog crate into its convenient, 8-inch briefcase profile within seconds. Unlike flimsy folding kennels, the Collapsible crate is built with quality materials to provide uncompromising protection for your fur friend, and engineered for practical carrying. </p>
 					</div>
@@ -370,6 +340,7 @@
 							<img src="https://vadiksh.github.io/crates/img/new/stars.svg" alt="">
 							<span>Based on 231 Impact Dog Crate Lovers’ Rates</span>
 						</div>
+
 						<div class="mob-info">
 							<img src="https://vadiksh.github.io/crates/img/new/option1.jpg" alt="">
 													
@@ -377,49 +348,57 @@
 								<span class="view">VIEW PRODUCT DETAILS</span>
 								<div>
 									<div class="options__details">
-										<ul>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
+										<ul class="owl-carousel">
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail4.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail5.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail6.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail7.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail8.jpg" alt=""></li>
 										</ul>
-										<span class="hide"></span>
 									</div>
 									<h3>Function meets Reliability and Safety</h3>
 									<p>The Collapsible dog crate has quickly become our most popular crate with its unique ability to transform from a secure dog crate into its convenient, 8-inch briefcase profile within seconds. Unlike flimsy folding kennels, the Collapsible crate is built with quality materials to provide uncompromising protection for your fur friend, and engineered for practical carrying. </p>
 								</div>
 							</div>
 						</div>
+
 						<form action="" class="form">
 							<label>
 								Select size <span class="sizing-chart">Sizing Chart</span>
 								<select name="size" id="">
-									<option value="100 (X-small)">100 (X-small)</option>
 									<option value="200 (Small)">200 (Small)</option>
 									<option value="300 (Medium)">300 (Medium)</option>
 									<option value="400 (Large)">400 (Large)</option>
-									<option value="Collapsible 750 (4X-Large)">Collapsible 750 (4X-Large)</option>
+									<option value="450 (X-Large)">450 (X-Large)</option>
+									<option value="500 (2X-Large)">500 (2X-Large)</option>
+									<option value="700 (3X-Large)">700 (3X-Large)</option>
 								</select>
 							</label>
 							<label>
 								Select Color Of Crate
 								<select name="color" id="">
-									<option value="Gray">Gray</option>
-									<option value="Blue">Blue</option>
-									<option value="Black">Black</option>
-									<option value="Lime Green">Lime Green</option>
-									<option value="Desert Tan">Desert Tan</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/1.jpg" value="Gray">Gray</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/3.jpg" value="Blue">Desert Tan</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/8.jpg" value="Lime Green">Lime Green</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/4.jpg" value="Blue">Purple</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/5.jpg" value="Blue">Blue</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/6.jpg" value="Blue">black</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/2.jpg" value="Desert Tan">Teal</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/collapsible/7.jpg" value="Blue">White</option>
+									
 								</select>
 							</label>
 							<label>
 								Select door
 								<select name="door" id="">
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
+									<option value="Front Door">Front door</option>
 									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
 								</select>
 							</label>
+
 							<div class="cart">
 								<button class="button">Add To Cart</button>
 								<ul class="cart__options">
@@ -434,10 +413,25 @@
 							<li>TRUSTED<br> CHECKOUT</li>
 						</ul>
 					</div>
+
+					<div class="options__details">
+						<p>View product details</p>
+						<ul class="owl-carousel">
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail4.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail5.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail6.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail7.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail8.jpg" alt=""></li>
+						</ul>
+						<span class="hide"></span>
+					</div>
 				</li>
 				<li>
 					<div class="options__image">
-						<img src="https://vadiksh.github.io/crates/img/new/option2.jpg" alt="">
+						<img data-src="https://vadiksh.github.io/crates/img/new/option2.jpg" src="https://vadiksh.github.io/crates/img/new/option2.jpg" alt="">
 						<h3>The Only Crate Designed to Protect ‘Houdini Dogs’</h3>
 						<p>Our renowned High Anxiety Crate is specifically engineered for escape-artist dogs who have successfully outsmarted plastic and wire kennels. It is quickly becoming a favorite training tool among dog owners whose pups struggle with anxiety. This welded crate is constructed of 12 gauge Aluminum and includes 4 additional latches for security and peace of mind. Multiple testimonials show that after dogs realize they can’t break through this crate, they’ve learned to accept and love their new den. This is the only crate backed with our 2-year, free replacement plan and our lifetime guarantee! Financing options available.</p>
 					</div>
@@ -454,12 +448,13 @@
 								<span class="view">VIEW PRODUCT DETAILS</span>
 								<div>
 									<div class="options__details">
-										<ul>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
+										<ul class="owl-carousel">
+											<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail1.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail4.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail5.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail6.jpg" alt=""></li>
 										</ul>
 										<span class="hide"></span>
 									</div>
@@ -472,11 +467,11 @@
 							<label>
 								Select size <span class="sizing-chart">Sizing Chart</span>
 								<select name="size" id="">
-									<option value="100 (X-small)">100 (X-small)</option>
-									<option value="200 (Small)">200 (Small)</option>
 									<option value="300 (Medium)">300 (Medium)</option>
 									<option value="400 (Large)">400 (Large)</option>
-									<option value="Collapsible 750 (4X-Large)">Collapsible 750 (4X-Large)</option>
+									<option value="450 (X-Large)">450 (X-Large)</option>
+									<option value="500 (2X-Large)">500 (2X-Large)</option>
+									<option value="700 (3X-Large)">700 (3X-Large)</option>
 								</select>
 							</label>
 							<div class="cart">
@@ -492,11 +487,23 @@
 							<li>LIFETIME<br> GUARANTEE</li>
 							<li>TRUSTED<br> CHECKOUT</li>
 						</ul>
+					<div class="options__details">
+						<p>View product details</p>
+						<ul class="owl-carousel">
+							<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail1.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail4.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail5.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/anxiety/detail6.jpg" alt=""></li>
+						</ul>
+						<span class="hide"></span>
+					</div>
 					</div>
 				</li>
 				<li>
 					<div class="options__image">
-						<img src="https://vadiksh.github.io/crates/img/new/option3.jpg" alt="">
+						<img  data-src="https://vadiksh.github.io/crates/img/new/option3.jpg" src="https://vadiksh.github.io/crates/img/new/option3.jpg" alt="">
 						<h3>The Only Crate Designed to Protect ‘Houdini Dogs’</h3>
 						<p>Our renowned High Anxiety Crate is specifically engineered for escape-artist dogs who have successfully outsmarted plastic and wire kennels. It is quickly becoming a favorite training tool among dog owners whose pups struggle with anxiety. This welded crate is constructed of 12 gauge Aluminum and includes 4 additional latches for security and peace of mind. Multiple testimonials show that after dogs realize they can’t break through this crate, they’ve learned to accept and love their new den. This is the only crate backed with our 2-year, free replacement plan and our lifetime guarantee! Financing options available.</p>
 					</div>
@@ -513,15 +520,11 @@
 								<span class="view">VIEW PRODUCT DETAILS</span>
 								<div>
 									<div class="options__details">
-										<p>View product details</p>
-										<ul>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
+										<ul class="owl-carousel">
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
 										</ul>
-										<span class="hide"></span>
 									</div>
 									<h3>The Only Crate Designed to Protect ‘Houdini Dogs’</h3>
 									<p>Our renowned High Anxiety Crate is specifically engineered for escape-artist dogs who have successfully outsmarted plastic and wire kennels. It is quickly becoming a favorite training tool among dog owners whose pups struggle with anxiety. This welded crate is constructed of 12 gauge Aluminum and includes 4 additional latches for security and peace of mind. Multiple testimonials show that after dogs realize they can’t break through this crate, they’ve learned to accept and love their new den. This is the only crate backed with our 2-year, free replacement plan and our lifetime guarantee! Financing options available.</p>
@@ -531,29 +534,37 @@
 						<form action="" class="form">
 							<label>
 								Select size <span class="sizing-chart">Sizing Chart</span>
-								<select name="size" id="">
-									<option value="100 (X-small)">100 (X-small)</option>
-									<option value="200 (Small)">200 (Small)</option>
-									<option value="300 (Medium)">300 (Medium)</option>
-									<option value="400 (Large)">400 (Large)</option>
-									<option value="Collapsible 750 (4X-Large)">Collapsible 750 (4X-Large)</option>
+								<select class="size-select" name="size" id="">
+									<option class="alt" value="100 (X-small)">100 (X-small)</option>
+									<option class="alt" value="200 (Small)">200 (Small)</option>
+									<option class="alt" value="250 (Medium)">250 (Medium)</option>
+									<option class="alt" value="300 (Medium)">300 (Medium)</option>
+									<option value="400 (Large)" selected="">400 (Large)</option>
+									<option value="450 (X-Large)">450 (X-Large)</option>
+									<option value="500 (2X-Large)">500 (2X-Large)</option>
+									<option value="600 (2X-Large)">600 (2X-Large)</option>
+									<option value="700 (3X-Large)">700 (3X-Large)</option>
 								</select>
 							</label>
 							<label>
 								Select Color Of Crate
 								<select name="color" id="">
-									<option value="Gray">Gray</option>
-									<option value="Blue">Blue</option>
-									<option value="Black">Black</option>
-									<option value="Lime Green">Lime Green</option>
-									<option value="Desert Tan">Desert Tan</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/1.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/1-sm.jpg" value="Gray">Gray</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/2.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/2-sm.jpg" value="Desert Tan">Desert Tan</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/3.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/3-sm.jpg" value="Lime Green">Lime Green</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/4.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/4-sm.jpg" value="Purple">Purple</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/5.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/5-sm.jpg" value="Blue">Blue</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/6.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/6-sm.jpg" value="Black">Black</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/7.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/7-sm.jpg" value="Red">Red</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/8.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/8-sm.jpg" value="Teal">Teal</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/9.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/stationary/9-sm.jpg" value="White">White</option>
+									
 								</select>
 							</label>
 							<label>
 								Select door
 								<select name="door" id="">
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
+									<option value="Front Door">Front door</option>
 									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
 								</select>
 							</label>
@@ -571,10 +582,19 @@
 							<li>TRUSTED<br> CHECKOUT</li>
 						</ul>
 					</div>
+					<div class="options__details">
+						<p>View product details</p>
+						<ul class="owl-carousel">
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
+						</ul>
+						<span class="hide"></span>
+					</div>
 				</li>
 				<li>
 					<div class="options__image">
-						<img src="https://vadiksh.github.io/crates/img/new/option4.jpg" alt="">
+						<img  data-src="https://vadiksh.github.io/crates/img/new/option4.jpg" src="https://vadiksh.github.io/crates/img/new/option4.jpg" alt="">
 						<h3>Accessibility - anytime, anywhere.</h3>
 						<p>Our reputable Stationary Crate is more versatile than ever with Side-Door accessibility. Easily adapts to your vehicle with optional Front and Back Doors to effortlessly load and unload your pups. The Side Door crate is constructed of the same high-quality Aluminum and durable hardware to provide lifelong protection for your best friend.</p>
 					</div>
@@ -592,12 +612,10 @@
 								<div>
 									<div class="options__details">
 										<p>View product details</p>
-										<ul>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
+										<ul class="owl-carousel">
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
 										</ul>
 										<span class="hide"></span>
 									</div>
@@ -610,28 +628,31 @@
 							<label>
 								Select size <span class="sizing-chart">Sizing Chart</span>
 								<select name="size" id="">
-									<option value="100 (X-small)">100 (X-small)</option>
-									<option value="200 (Small)">200 (Small)</option>
-									<option value="300 (Medium)">300 (Medium)</option>
-									<option value="400 (Large)">400 (Large)</option>
-									<option value="Collapsible 750 (4X-Large)">Collapsible 750 (4X-Large)</option>
+									<option class="small-option" value="300 (Medium)">300 (Medium)</option>
+									<option value="400 (Large)" selected="">400 (Large)</option>
+									<option value="450 (X-Large)">450 (X-Large)</option>
+									<option value="600 (2X-Large)">600 (2X-Large)</option>
 								</select>
 							</label>
 							<label>
 								Select Color Of Crate
 								<select name="color" id="">
-									<option value="Gray">Gray</option>
-									<option value="Blue">Blue</option>
-									<option value="Black">Black</option>
-									<option value="Lime Green">Lime Green</option>
-									<option value="Desert Tan">Desert Tan</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/1.jpg" value="Gray">Gray</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/2.jpg" value="Desert Tan">Desert Tan</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/3.jpg" value="Lime Green">Lime Green</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/4.jpg" value="Purple">Purple</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/5.jpg" value="Blue">Blue</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/6.jpg" value="Black">Black</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/7.jpg" value="Red">Red</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/8.jpg" value="Teal">Teal</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/side-door/9.jpg" value="White">White</option>
+									
 								</select>
 							</label>
 							<label>
 								Select door
 								<select name="door" id="">
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
+									<option value="Side Door Only">Side Door Only</option>
 									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
 								</select>
 							</label>
@@ -649,33 +670,41 @@
 							<li>TRUSTED<br> CHECKOUT</li>
 						</ul>
 					</div>
+					<div class="options__details">
+						<p>View product details</p>
+						<ul class="owl-carousel">
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
+						</ul>
+						<span class="hide"></span>
+					</div>
 				</li>
 				<li>
 					<div class="options__image">
-						<img src="https://vadiksh.github.io/crates/img/new/option5.jpg" alt="">
+						<img  data-src="https://vadiksh.github.io/crates/img/new/option5.jpg" src="https://vadiksh.github.io/crates/img/new/option5.jpg" alt="">
 						<h3>Let air and sunshine in!</h3>
 						<p>The Hybrid Crate is our safer and more reliable version of a traditional wire crate. Its open-concept structure invites substantial airflow while the removable floor-pan allows for easy cleanup. The Hybrid crate is ideal for pups who are comfortable in simple crates.</p>
 					</div>
 					<div class="options__form">
-						<h2>COLLAPSIBLE DOG CRATE</h2>
+						<h2>IMPACT HYBRID DOG CRATE</h2>
 						<div class="rate">
 							<img src="https://vadiksh.github.io/crates/img/new/stars.svg" alt="">
 							<span>Based on 231 Impact Dog Crate Lovers’ Rates</span>
 						</div>
 						<div class="mob-info">
-							<img src="https://vadiksh.github.io/crates/img/new/option5.jpg" alt="">
+							<img src="https://vadiksh.github.io/crates/img/new/option5.jpg" data-src="https://vadiksh.github.io/crates/img/new/option5.jpg" alt="">
 													
 							<div class="mob-info__details">
 								<span class="view">VIEW PRODUCT DETAILS</span>
 								<div>
 									<div class="options__details">
 										<p>View product details</p>
-										<ul>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
+										<ul class="owl-carousel">
+											<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail1.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail2.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail3.png" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail4.jpg" alt=""></li>
 										</ul>
 										<span class="hide"></span>
 									</div>
@@ -688,11 +717,8 @@
 							<label>
 								Select size <span class="sizing-chart">Sizing Chart</span>
 								<select name="size" id="">
-									<option value="100 (X-small)">100 (X-small)</option>
-									<option value="200 (Small)">200 (Small)</option>
-									<option value="300 (Medium)">300 (Medium)</option>
 									<option value="400 (Large)">400 (Large)</option>
-									<option value="Collapsible 750 (4X-Large)">Collapsible 750 (4X-Large)</option>
+									<option value="450 (X-Large)">450 (X-Large)</option>
 								</select>
 							</label>
 							
@@ -710,10 +736,20 @@
 							<li>TRUSTED<br> CHECKOUT</li>
 						</ul>
 					</div>
+					<div class="options__details">
+						<p>View product details</p>
+						<ul class="owl-carousel">
+							<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail1.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail2.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail3.png" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/hybrid/detail4.jpg" alt=""></li>
+						</ul>
+						<span class="hide"></span>
+					</div>
 				</li>
 				<li>
 					<div class="options__image">
-						<img src="https://vadiksh.github.io/crates/img/new/option6.jpg" alt="">
+						<img  data-src="https://vadiksh.github.io/crates/img/new/option6.jpg" src="https://vadiksh.github.io/crates/img/new/option6.jpg" alt="">
 						<h3>Functionality and Safety for our biggest furry friend</h3>
 						<p>The crate that goes above and beyond-in size too! The Colossal crate is intended for giant dog breeds who need a comfortable and sturdy crate. Choose from the Stationary and Collapsible models to best suit your lifestyle. Available in over 8 colors and backed by our lifetime guarantee.</p>
 					</div>
@@ -731,15 +767,14 @@
 								<div>
 									<div class="options__details">
 										<p>View product details</p>
-										<ul>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
-											<li><img src="" alt=""></li>
+										<ul class="owl-carousel">
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+											<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
 										</ul>
 										<span class="hide"></span>
 									</div>
+
 									<h3>Functionality and Safety for our biggest furry friend</h3>
 									<p>The crate that goes above and beyond-in size too! The Colossal crate is intended for giant dog breeds who need a comfortable and sturdy crate. Choose from the Stationary and Collapsible models to best suit your lifestyle. Available in over 8 colors and backed by our lifetime guarantee.</p>
 								</div>
@@ -748,29 +783,28 @@
 						<form action="" class="form">
 							<label>
 								Select size <span class="sizing-chart">Sizing Chart</span>
-								<select name="size" id="">
-									<option value="100 (X-small)">100 (X-small)</option>
-									<option value="200 (Small)">200 (Small)</option>
-									<option value="300 (Medium)">300 (Medium)</option>
-									<option value="400 (Large)">400 (Large)</option>
-									<option value="Collapsible 750 (4X-Large)">Collapsible 750 (4X-Large)</option>
+								<select class="size-select" name="size" id="">
+									<option value="Stationary 750 (4X-Large)">Stationary 750 (4X-Large)</option>
+									<option class="alt" value="Collapsible 750 (4X-Large)">Collapsible 750 (4X-Large)</option>
 								</select>
 							</label>
 							<label>
 								Select Color Of Crate
-								<select name="color" id="">
-									<option value="Gray">Gray</option>
-									<option value="Blue">Blue</option>
-									<option value="Black">Black</option>
-									<option value="Lime Green">Lime Green</option>
-									<option value="Desert Tan">Desert Tan</option>
+								<select name="color" id=""><!-- <option data-src="https://vadiksh.github.io/crates/img/products/stationary/7.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/7.jpg" value="Red">Red</option> -->
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/1.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/1.jpg" value="Gray">Gray</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/2.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/3.jpg" value="Desert Tan">Desert Tan</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/3.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/8.jpg" value="Lime Green">Lime Green</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/4.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/4.jpg" value="Purple">Purple</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/5.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/5.jpg" value="Blue">Blue</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/6.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/6.jpg" value="Black">Black</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/8.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/2.jpg" value="Teal">Teal</option>
+									<option data-src="https://vadiksh.github.io/crates/img/products/stationary/9.jpg" data-src-alt="https://vadiksh.github.io/crates/img/products/collapsible/7.jpg" value="White">White</option>
 								</select>
 							</label>
 							<label>
 								Select door
 								<select name="door" id="">
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
-									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
+									<option value="Side Door Only">Side Door Only</option>
 									<option value="Front and Back Door  |  +$157.50">Front and Back Door  |  +$157.50</option>
 								</select>
 							</label>
@@ -788,8 +822,18 @@
 							<li>TRUSTED<br> CHECKOUT</li>
 						</ul>
 					</div>
+					<div class="options__details">
+						<p>View product details</p>
+						<ul class="owl-carousel">
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail1.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail2.jpg" alt=""></li>
+							<li><img src="https://vadiksh.github.io/crates/img/products/collapsible/detail3.jpg" alt=""></li>
+						</ul>
+						<span class="hide"></span>
+					</div>
 				</li>
 			</ul>
+			
 		</div>
 	</section>
 
@@ -811,7 +855,7 @@
 						<p>After a recent car accident where my plastic crates were damaged, I no longer feel frightened driving with my dogs in the car. I am confident that in a similar incident in the future this Crate will 100% hold up and keep my dogs safe and sound.</p>
 					</div>
 				</li>
-				<li>
+				<li class="img-position">
 					<img src="https://vadiksh.github.io/crates/img/new/review3.jpg" alt="">
 					<div class="reviews__content">
 						<div class="rate"><img src="https://vadiksh.github.io/crates/img/new/stars.svg" alt=""><span>03/17/2019</span></div>
@@ -848,7 +892,7 @@
 				<span class="quantity">Based on 801 reviews</span>
 				<a href="">Explore Reviews ></a>
 			</div>
-			<a href="https://www.impactdogcrates.com/collections/" class="button">Shop now</a>
+			<a href="https://www.impactdogcrates.com/collections/crates/" class="button">Shop now</a>
 		</div>
 	</section>
 
@@ -864,16 +908,16 @@
 					<li>You have every reason to trust Impact</li>
 					<li>You will find everything you can ask for in one crate</li>
 				</ul>
-				<a class="button" href="https://www.impactdogcrates.com/collections/">Shop now</a>
+				<a class="button" href="https://www.impactdogcrates.com/collections/crates/">Shop now</a>
 			</div>
 			<div class="chart__image"><img src="https://vadiksh.github.io/crates/img/new/chart11.png" alt=""></div>
 
 			<div class="chart__mob">
 				<span>Select & Compare</span>
 				<ul class="options">
-					<li class="active">Plastic Crate</li>
+					<li data-src="" class="active">Plastic Crate</li>
 
-					<li>Wire Crate</li>
+					<li data-src="">Wire Crate</li>
 				</ul>
 				<img src="https://vadiksh.github.io/crates/img/mob/chart-mob.png" alt="">
 				<!-- <div>
@@ -883,15 +927,15 @@
 						<img src="https://vadiksh.github.io/crates/img/new/mob/chart-mob2.png" alt="">
 					</div>
 				</div> -->
-				<a class="button" href="https://www.impactdogcrates.com/collections/">Shop now</a>	
+				<a class="button" href="https://www.impactdogcrates.com/collections/crates/">Shop now</a>	
 			</div>
 		</div>
 	</section>
 	
 	<section class="social">
 		<ul class="links">
-			<li><a href="">#impactpups</a></li>
-			<li><a href="">@impactdogcrates</a></li>
+			<li><a target="_blank" href="https://www.instagram.com/explore/tags/impactpups/">#impactpups</a></li>
+			<li><a target="_blank" href="https://www.instagram.com/impactdogcrates/">@impactdogcrates</a></li>
 		</ul>
 		<div class="social__block">
 			<div class="img"><img src="https://vadiksh.github.io/crates/img/new/social-1.jpg" alt=""></div>
@@ -974,8 +1018,8 @@
 				<div class="footer__list">
 					<h3>PAYMENT OPTIONS</h3>
 					<ul>
-						<li><a href="">Affirm</a></li>
-						<li><a href="">Layaway</a></li>
+						<li><a class="">Affirm</a></li>
+						<li><a href="https://partial.ly/checkout/register?utm_campaign=button">Layaway</a></li>
 					</ul>
 				</div>
 				<div class="footer__list newsletter">
@@ -1000,10 +1044,11 @@
 	<script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
 
-
+	
 	<!-- <script type="text/javascript" src="https://vadiksh.github.io/crates/js/common.js"></script> -->
-
 	<script type="text/javascript" src="js/common.js"></script>
+
+	<!-- <script type="text/javascript" src="js/common.js"></script> -->
 <!-- 	<script>
 	$(window).load(function(){
 	
