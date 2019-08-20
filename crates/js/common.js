@@ -243,7 +243,7 @@ $(function() {
 		deviceHeight = $(window).outerHeight(),
 		range;
 
-	$('#range').change(function() {
+	$('#range').on("input", function() {
 		range = $(this).val();
 
 		 if (range > 0 && range < 100) {
@@ -265,7 +265,7 @@ $(function() {
 		} else if (range > 800 && range < 900) {
 			$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
 		}
-	})
+	});
 	// if ($(window).width() < 1024) {
 		// $(".design").css({"height": deviceHeight + "px"});
 		// $("#scroll-pin").css({"height":   deviceHeight + scrollingArea + "px"})
