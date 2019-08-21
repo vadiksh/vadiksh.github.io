@@ -768,7 +768,7 @@ h2 {
 	input[type=range] {
 		display: none;
 		position: absolute;
-		top: 0;
+		top: -10px;
 		left: 30px;
 		transform-origin: 0 0;
 		transform: rotate(90deg);
@@ -777,7 +777,7 @@ h2 {
 		-webkit-appearance: none;
 		margin: 10px 0;
 		width: 100%;
-		max-width: 380px;
+		max-width: 340px;
 	}
 	input[type=range]:focus {
 	  outline: none;
