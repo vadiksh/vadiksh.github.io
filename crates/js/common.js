@@ -172,6 +172,10 @@ $(function() {
 		changeImg($(".options__image img, .mob-info > img"));		
 	});
 
+	$(".options__details .hide").click(function () {
+		$(this).toggleClass('active');
+		$(".options__details .owl-carousel").slideToggle(250);
+	});
 	$(".options__details .owl-carousel").owlCarousel({
 	    loop:true,
 	    nav: true,
