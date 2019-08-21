@@ -246,7 +246,7 @@ $(function() {
 	$('#range').on("input", function() {
 		range = $(this).val();
 
-		 if (range > 0 && range < 100) {
+		 if (range >= 0 && range < 100) {
 			$(".design__features li:nth-of-type(1)").addClass("active").siblings().removeClass("active")
 		} else if (range > 100 && range < 200) {
 			$(".design__features li:nth-of-type(2)").addClass("active").siblings().removeClass("active")
@@ -262,7 +262,7 @@ $(function() {
 			$(".design__features li:nth-of-type(7)").addClass("active").siblings().removeClass("active")
 		} else if (range > 700 && range < 800) {
 			$(".design__features li:nth-of-type(8)").addClass("active").siblings().removeClass("active")
-		} else if (range > 800 && range < 900) {
+		} else if (range > 800 && range <= 900) {
 			$(".design__features li:nth-of-type(9)").addClass("active").siblings().removeClass("active")
 		}
 	});
