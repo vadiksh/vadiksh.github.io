@@ -231,10 +231,8 @@ $(function() {
 	});
 	
 	$(".chart__mob .options li").click(function() {
-		console.log($(this));
-		src = $(this).attr("data-src");
 		$(this).addClass('active').siblings().removeClass('active');
-		changeImg($(".chart__mob .mob-img"));
+		$('.chart__alternative ul').eq($(this).index()).addClass('active').siblings().removeClass('active');
 	})
 
 	var scene,

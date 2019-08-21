@@ -795,7 +795,7 @@ h2 {
 	  border-radius: 50%;
 	  height: 28px;
 	  width: 28px;
-	  background: url('../img/mob/range.svg') no-repeat center center/cover;
+	  background: url('https://vadiksh.github.io/crates/img/mob/range.svg') no-repeat center center/cover;
 	  transform: rotate(90deg);
 	  cursor: pointer;
 	  -webkit-appearance: none;
@@ -814,7 +814,7 @@ h2 {
 	input[type=range]::-moz-range-thumb {
 		border: none;
 		box-shadow: 0px -2px 5px rgba(0,0,0,.5);
-		background: url('../img/mob/range.svg') no-repeat center center/cover;
+		background: url('https://vadiksh.github.io/crates/img/mob/range.svg') no-repeat center center/cover;
 		transform: rotate(90deg);
 		-webkit-appearance: none;
 		border-radius: 50%;
@@ -842,7 +842,7 @@ h2 {
 	input[type=range]::-ms-thumb {
 	  border: none;
 	  box-shadow: 0px -2px 5px rgba(0,0,0,.5);
-	  background: url('../img/mob/range.svg') no-repeat center center/cover;
+	  background: url('https://vadiksh.github.io/crates/img/mob/range.svg') no-repeat center center/cover;
 	  transform: rotate(90deg);
 	  -webkit-appearance: none;
 	  border-radius: 50%;
@@ -1743,6 +1743,7 @@ h2 {
 					border-bottom: 1px solid #ccc;
 					padding: 11px;
 					position: relative;
+					font-weight: 500;
 					&:nth-of-type(1)::before,
 					&:nth-of-type(5)::before,
 					&:nth-of-type(9)::before {
@@ -1826,7 +1827,7 @@ h2 {
 		border-radius: 5px;
 		margin-right: 10px;
 		li:not(.img) {
-			background: url('../img/new/yes.svg') no-repeat center center/24px;
+			background: url('https://vadiksh.github.io/crates/img/new/yes.svg') no-repeat center center/24px;
 		}
 		.img {
 			padding-bottom: 18px;
@@ -1844,23 +1845,15 @@ h2 {
 			}
 		}
 		li:not(.img) {
-			background: url('../img/new/no.svg') no-repeat center center/16px;
+			background: url('https://vadiksh.github.io/crates/img/new/no.svg') no-repeat center center/16px;
 		}
 		li.alt {
-			background: url('../img/new/yes.svg') no-repeat center center/24px;
+			background: url('https://vadiksh.github.io/crates/img/new/yes.svg') no-repeat center center/24px;
 		}
 	}
 
-	&__mob {
+	&__mob, .mob-button {
 		display: none;
-	}
-	&__image {
-		width: 100%;
-		max-width: 830px;
-		img {
-			width: 100%;
-			height: auto;
-		}
 	}
 }
 
