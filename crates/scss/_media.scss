@@ -233,11 +233,12 @@
 				}
 			}
 		}
-		.rate {
-			display: none;
-		}
+		
 		&__list {
 			padding: 30px 40px;
+			.rate {
+				display: none;
+			}
 			li {
 				flex-flow: column;
 				img {
@@ -249,6 +250,21 @@
 		&__widget {
 			margin-top: 15px;
 			margin-bottom: 25px;
+			> div {
+				font-size: 13px;
+				letter-spacing: 0;
+			}
+			.rate {
+				span {
+					display: inline-block;
+					margin-left: 5px;
+				}
+			}
+			.quantity {
+				font-size: 25px;
+				letter-spacing: -1px;
+				font-weight: 400;
+			}
 		}
 	}
 	.chart {
@@ -293,7 +309,7 @@
 		}
 		.img {
 			order: 2;
-			margin-bottom: 0;
+			width: 90px;
 			img {
 				margin: 0 auto; 
 			}
@@ -613,6 +629,9 @@
 	.features-footer {
 		li {
 			width: 50%;
+		}
+		.img {
+			margin-bottom: 0;
 		}
 	}
 	.footer {
