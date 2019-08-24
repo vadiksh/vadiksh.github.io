@@ -31,4 +31,14 @@ $(function() {
 		$(this).addClass('active').siblings().removeClass('active');
 		$('.how-we-work__list li').eq($(this).index()).addClass('active').siblings().removeClass('active');
 	})
+	$('.owl-carousel').owlCarousel({
+	    loop:true,
+	    nav: true,
+	    dots: true,
+	    center: true,
+	    items: 3,
+	    responsiveClass:true,
+	    responsive:{
+	    }
+	});
 });
