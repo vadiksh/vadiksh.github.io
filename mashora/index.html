@@ -9,7 +9,9 @@
 	<link rel="icon" href="" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
-
+	
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 </head>
 <body>
 
@@ -26,10 +28,16 @@
 		</nav>
 		<a href="contact.html" class="button">Contact us</a>
 	</div>
-	<div class="header__banner">
-		<div class="container">
-			<h1>Mashora<br> consultancy</h1>
-			<p>Focused on providing strategic advice and policy implementation assistance to public and private organizations working in fragile contexts and emerging markets.</p>
+	<div class="header__banner owl-carousel">
+		<div class="first-screen">
+			<div class="container">
+				<h1>Mashora<br> consultancy</h1>
+			</div>
+		</div>
+		<div class="second-screen">
+			<div class="container">
+				<p>Focused on providing strategic advice and policy implementation assistance to public and private organizations working in fragile contexts and emerging markets.</p>
+			</div>
 		</div>
 	</div>
 </header>
@@ -113,12 +121,19 @@
 			<input id="input" type="text" placeholder="Enter your e-mail">
 			<button></button>
 		</form>
-		<ul>
-			<li><a href="about.html">About</a></li>
-			<li><a href="services.html">Services</a></li>
-			<li><a href="career.html">Career</a></li>
-			<li><a href="contact.html">Contacts</a></li>
-		</ul>
+		<div>
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="career.html">Career</a></li>
+				<li><a href="contact.html">Contacts</a></li>
+			</ul>
+			<ul class="contacts">
+				<li><a href=""><img src="img/about/twitter.png" alt=""></a></li>
+				<li><a href=""><img src="img/about/linkedin.png" alt=""></a></li>
+			</ul>
+		</div>
+		
 	</div>
 	<div class="footer-container">
 		<p class="copyright">Copyright © 2019 Mashora</p>
@@ -130,6 +145,7 @@
 </footer>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="js/scripts.min.js"></script>
 </body>
 </html>
