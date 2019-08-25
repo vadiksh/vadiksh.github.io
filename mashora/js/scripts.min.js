@@ -30,7 +30,7 @@ $(function() {
 	var scrolled;
 	$(window).scroll(function(){
 		scrolled = $(this).scrollTop() + $(window).height();
-		if (scrolled - 300 > $('.why-us').offset().top) {
+		if ($('.why-us').length && scrolled - 300 > $('.why-us').offset().top) {
 			$('.why-us').addClass('in-view');
 		}
 	})
