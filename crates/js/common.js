@@ -208,11 +208,31 @@ $(function() {
 		}, 350)
 	})
 
-	var product;
+	var product,
+		productPrice,
+		productSize,
+		productColor,
+		productDoor,
+		productPriceHtml;
 	$(".options__list ul li").click(function() {
 		product = $(".options__screens > li").eq($(this).index());
 		src = product.find('.options__image > img').attr("data-src");
 		color = product.find('select[name="color"] option:selected').attr("data-src");
+		productColor = product.find('select[name="color"] option:selected').val();
+		productDoor = product.find('select[name="door"] option:selected').val();
+		productSize = product.find('select[name="size"] option:selected').attr("data-price");
+		productPriceHtml = product.find('.price');
+
+		if (productColor == 'Gray' || productColor == 'Desert Tan' || !productColor) {
+			productPrice = productSize;
+		} else {
+			productPrice = (+productSize + 78.75).toFixed(2);
+		}
+		if (productDoor == 'Back Door') {
+			productPrice = (+productPrice + 157.50).toFixed(2); 
+		}
+		productPriceHtml.html('').append(productPrice);
+
 		
 		$(this).addClass("active").siblings().removeClass("active");
 		product.addClass("active").siblings().removeClass("active");
@@ -256,7 +276,26 @@ $(function() {
 		}
 		changeImg($(".options__image img, .mob-info > img"))
 	})
+	
+	$(".options__form select").change(function() {
+		productSize = $(this).parents('.form').find('select[name="size"] option:selected').attr("data-price");
+		productColor = $(this).parents('.form').find('select[name="color"] option:selected').val();
+		productDoor = $(this).parents('.form').find('select[name="door"] option:selected').val();
+		productPriceHtml = $(this).parents('.form').find('.price');
 
+	
+		if (productColor == 'Gray' || productColor == 'Desert Tan' || !productColor) {
+			productPrice = productSize;
+		} else {
+			productPrice = (+productSize + 78.75).toFixed(2);
+		}
+		if (productDoor == 'Back Door') {
+			productPrice = (+productPrice + 157.50).toFixed(2); 
+		}
+		productPriceHtml.fadeOut(200, function(){
+			productPriceHtml.html('').append(productPrice).fadeIn(200);
+		})
+	})
 
 	function changeImg(img) {
 		img.css({
