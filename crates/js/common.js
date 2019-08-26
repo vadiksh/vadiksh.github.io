@@ -113,27 +113,27 @@ $(function() {
 		}, 100)
 	});
 
-	$(".cart__options .affirm").mouseenter(function() {
+	$(".affirm").mouseenter(function() {
 		linkTabViewed = true;
-		$(".cart__options .affirm p").addClass("visible");
+		$(this).find("p").addClass("visible");
 	});
 
-	$(".cart__options .affirm").mouseleave(function() {
+	$(".affirm").mouseleave(function() {
 		linkTabViewed = false;
 
 		setTimeout(function () {
 			if (!linkTabViewed) {
-				$(".cart__options .affirm p").removeClass("visible")
+				$(".affirm p").removeClass("visible")
 			}
 		}, 200)
 	});
-	$(".cart__options .affirm p").mouseenter(function () {
+	$(".affirm p").mouseenter(function () {
 		linkTabViewed = true;
 	});
-	$(".cart__options .affirm p").mouseleave(function () {
+	$(".affirm p").mouseleave(function () {
 		linkTabViewed = false;
 		setTimeout(function () {
-			 $(".cart__options .affirm p").removeClass("visible")
+			 $(".affirm p").removeClass("visible")
 		}, 100)
 	});
 

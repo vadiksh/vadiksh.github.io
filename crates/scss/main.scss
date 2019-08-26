@@ -32,7 +32,7 @@ h2 {
 .button {
 	background: $accent;
 	border-radius: 5px;
-	padding: 10px 35px 8px;
+	padding: 10px 35px 6px;
 	font-size: 26px;
 	text-transform: uppercase;
 	position: relative;
@@ -1487,47 +1487,6 @@ h2 {
 					line-height: 1;
 					font-weight: 700;
 				}
-				.affirm {
-					display: block;
-					margin: 0 auto;
-					width: 52px;
-					height: 16px;
-					background: url("https://vadiksh.github.io/crates/img/new/affirm.svg") no-repeat 0 0/contain;
-					position: relative;
-					p {
-						position: absolute;
-						width: 200px;
-						padding: 10px 10px 15px;
-						bottom: -10px;
-						left: 50%;
-						transform: translate3d(-50%,90%,0);
-						background: #000;
-						font-size: 13px;
-						z-index: 5;
-						background: rgba(240,240,240,.95);
-					    border: 1px solid #01acb4;
-					    border-radius: 3px;
-					    text-transform: initial;
-					    font-weight: 400;
-					    opacity: 0;
-						transition: .25s ease;
-						visibility: hidden;
-						color: #000;
-						b {
-							font-weight: 600;
-						}
-						img {
-							max-width: 52.5px;
-							height: auto;
-						}
-					}
-					p.visible {
-						opacity: 1;
-						transform: translate3d(-50%,100%,0);
-						transition: .25s ease;
-						visibility: visible;
-					}
-				}
 			}
 		}
 		&-features {
@@ -1562,7 +1521,50 @@ h2 {
 		}
 	}
 }
-
+.affirm {
+	display: block;
+	margin: 0 auto;
+	width: 52px;
+	height: 16px;
+	background: url("https://vadiksh.github.io/crates/img/new/affirm.svg") no-repeat 0 0/contain;
+	position: relative;
+	cursor: pointer;
+	p {
+		position: absolute;
+		width: 200px;
+		padding: 10px 10px 15px;
+		bottom: -10px;
+		left: 50%;
+		transform: translate3d(-50%,90%,0);
+		background: #000;
+		font-size: 13px;
+		z-index: 5;
+		background: rgba(240,240,240,.95);
+	    border: 1px solid #01acb4;
+	    border-radius: 3px;
+	    text-transform: initial;
+	    font-weight: 400;
+	    opacity: 0;
+		transition: .25s ease;
+		visibility: hidden;
+		color: #000;
+		b {
+			font-weight: 600;
+		}
+		img {
+			max-width: 52.5px;
+			height: auto;
+			position: relative;
+			top: -3px;
+		}
+	}
+	p.visible {
+		opacity: 1;
+		transform: translate3d(-50%,100%,0);
+		transition: .25s ease;
+		visibility: visible;
+	}
+}
 .reviews {
 	padding: 80px 15px;
 	background: url("https://vadiksh.github.io/crates/img/new/reviews.jpg") bottom center/cover;
@@ -2057,6 +2059,12 @@ h2 {
 			margin-bottom: 12px;
 			font-weight: 400;
 			letter-spacing: 2px;
+		}
+		.affirm {
+			background: none;
+			width: auto;
+			height: auto;
+			margin-left: 0;
 		}
 		a {
 			color: #fff;
