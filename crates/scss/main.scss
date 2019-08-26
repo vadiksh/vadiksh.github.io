@@ -1436,6 +1436,7 @@ h2 {
 				outline: none;
 				border: none;
 				color: #fff;
+				text-align: center;
 				&:hover {
 					transform: none;
 				}
@@ -1476,6 +1477,8 @@ h2 {
 					display: block;
 					color: $text-dark;
 					font-weight: 400;
+					padding: 0 15px;
+					line-height: 1.3;
 				}
 				span {
 					margin-top: 8px;
@@ -1483,16 +1486,46 @@ h2 {
 					font-size: 21px;
 					line-height: 1;
 					font-weight: 700;
-					sub {
+				}
+				.affirm {
+					display: block;
+					margin: 0 auto;
+					width: 52px;
+					height: 16px;
+					background: url("https://vadiksh.github.io/crates/img/new/affirm.svg") no-repeat 0 0/contain;
+					position: relative;
+					p {
+						position: absolute;
+						width: 200px;
+						padding: 10px 10px 15px;
+						bottom: -10px;
+						left: 50%;
+						transform: translate3d(-50%,90%,0);
+						background: #000;
 						font-size: 13px;
-						position: relative;
-						top: -4px;
+						z-index: 5;
+						background: rgba(240,240,240,.95);
+					    border: 1px solid #01acb4;
+					    border-radius: 3px;
+					    text-transform: initial;
+					    font-weight: 400;
+					    opacity: 0;
+						transition: .25s ease;
+						visibility: hidden;
+						color: #000;
+						b {
+							font-weight: 600;
+						}
+						img {
+							max-width: 52.5px;
+							height: auto;
+						}
 					}
-					i {
-						display: inline-block;
-						width: 52px;
-						height: 16px;
-						background: url("https://vadiksh.github.io/crates/img/new/affirm.svg") no-repeat 0 0/contain;
+					p.visible {
+						opacity: 1;
+						transform: translate3d(-50%,100%,0);
+						transition: .25s ease;
+						visibility: visible;
 					}
 				}
 			}

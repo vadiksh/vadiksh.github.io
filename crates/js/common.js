@@ -88,15 +88,13 @@ $(function() {
 	var infoIndex;
 	var linkTabViewed = false;
 
+
 	$(".stats__list i").mouseenter(function() {
 		linkTabViewed = true;
-		// infoIndex = $(this).attr("data-id");
-		// $($(".stats-popup")[infoIndex]).addClass("visible");
 		$(".stats-popup").addClass("visible");
 	});
 
 	$(".stats__list i").mouseleave(function() {
-		// infoIndex = $(this).attr("data-id");
 		linkTabViewed = false;
 
 		setTimeout(function () {
@@ -112,6 +110,30 @@ $(function() {
 		linkTabViewed = false;
 		setTimeout(function () {
 			 $(".stats-popup").removeClass("visible")
+		}, 100)
+	});
+
+	$(".cart__options .affirm").mouseenter(function() {
+		linkTabViewed = true;
+		$(".cart__options .affirm p").addClass("visible");
+	});
+
+	$(".cart__options .affirm").mouseleave(function() {
+		linkTabViewed = false;
+
+		setTimeout(function () {
+			if (!linkTabViewed) {
+				$(".cart__options .affirm p").removeClass("visible")
+			}
+		}, 200)
+	});
+	$(".cart__options .affirm p").mouseenter(function () {
+		linkTabViewed = true;
+	});
+	$(".cart__options .affirm p").mouseleave(function () {
+		linkTabViewed = false;
+		setTimeout(function () {
+			 $(".cart__options .affirm p").removeClass("visible")
 		}, 100)
 	});
 
