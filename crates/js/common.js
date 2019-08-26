@@ -231,6 +231,9 @@ $(function() {
 		if (productDoor == 'Back Door') {
 			productPrice = (+productPrice + 157.50).toFixed(2); 
 		}
+		if (productPrice == 'Sold out') {
+			productPriceHtml.addClass('sold');
+		}
 		productPriceHtml.html('').append(productPrice);
 
 		
@@ -292,9 +295,13 @@ $(function() {
 		if (productDoor == 'Back Door') {
 			productPrice = (+productPrice + 157.50).toFixed(2); 
 		}
+		if (productPrice == 'Sold out') {
+			productPriceHtml.addClass('sold');
+		}
 		productPriceHtml.fadeOut(200, function(){
 			productPriceHtml.html('').append(productPrice).fadeIn(200);
 		})
+		
 	})
 
 	function changeImg(img) {

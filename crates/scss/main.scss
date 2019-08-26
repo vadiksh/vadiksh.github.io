@@ -1493,6 +1493,9 @@ h2 {
 						content: '$';
 						display: inline-block;
 					}
+					&.sold::before {
+						content: '';
+					}
 				}
 			}
 		}
