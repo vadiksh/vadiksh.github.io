@@ -1,7 +1,6 @@
 $(function() {
 	var textWrapper = document.querySelector('.mashora');
 	textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
 	$('.mashora').css({"opacity": 1})
 	anime.timeline({loop: false})
 	  .add({
@@ -17,10 +16,7 @@ $(function() {
 	    easing: "easeInQuad",
 	    delay: (el, i) => 500 + 50 * i
 	  });
-	  
 	  $('.loader .bg').addClass('hidden');
-	
-
 
 	$('.header').addClass('visible');
 
