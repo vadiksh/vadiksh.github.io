@@ -15,7 +15,7 @@ $(function() {
 		$(this).addClass('active').siblings().removeClass('active');
 		$('.how-we-work__list li').eq($(this).index()).addClass('active').siblings().removeClass('active');
 	})
-	$('.team-list').owlCarousel({
+	$('.team__list').owlCarousel({
 	    loop:false,
 	    nav: true,
 	    dots: true,
