@@ -46,16 +46,59 @@ h2 {
 		transition: .25s;
 	}
 }
+
+.loader {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// background: #e7ceb5;
+	.bg {
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		height: 150%;
+		top: 0;
+		left: 0;
+		background: url('../img/loader-bg.png') bottom center/cover;
+		&.hidden {
+			transform: translate3d(0,-100%,0);
+			transition: .6s 2s ease;
+		}
+	}
+	.mashora {
+		position: relative;
+		z-index: 2;
+		font-family: "butler";
+		color: $accent;
+		font-size: 50px;
+		letter-spacing: -2px;
+		overflow: hidden;
+		line-height: 1;
+		opacity: 0;
+		.letter {
+			position: relative;
+			display: inline-block;
+			line-height: 1em;
+		}
+	}
+
+}
 .header {
 	position: relative;
 	min-height: 100vh;
 	opacity: 0;
 	&.visible {
 		opacity: 1;
-		transition: .5s;
+		transition: .5s 2s;
 		.header__top {
 			transform: translate3d(-50%,-0%,0);
-			transition: .3s .5s ease;
+			transition: .3s 2.5s ease;
 		}
 	}
 	&.alt {

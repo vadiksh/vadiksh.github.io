@@ -1,4 +1,28 @@
 $(function() {
+	var textWrapper = document.querySelector('.mashora');
+	textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+	// setTimeout(function() {
+		$('.mashora').css({"opacity": 1})
+		anime.timeline({loop: false})
+		  .add({
+		    targets: '.mashora .letter',
+		    translateY: [50,0],
+		    easing: "easeOutExpo",
+		    duration: 1400,
+		    delay: (el, i) => 100 + 50 * i
+		  }).add({
+		    targets: '.mashora .letter',
+		    duration: 200,
+		    translateY: [0,-50],
+		    easing: "easeInQuad",
+		    delay: (el, i) => 500 + 50 * i
+		  });
+		  
+		  $('.loader .bg').addClass('hidden');
+	// },200)
+	
+
 
 	$('.header').addClass('visible');
 
