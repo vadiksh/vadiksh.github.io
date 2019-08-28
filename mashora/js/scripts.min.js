@@ -28,7 +28,7 @@ $(function() {
 	
 
 
-	$('.header').addClass('visible');
+	$('.header.animated').addClass('visible');
 	
 
 	var i = 1;
@@ -44,7 +44,8 @@ $(function() {
 	$('.how-we-work__sidebar li').click(function() {
 		$(this).addClass('active').siblings().removeClass('active');
 		$('.how-we-work__list li').eq($(this).index()).addClass('active').siblings().removeClass('active');
-	})
+	});
+
 	$('.team__list').owlCarousel({
 	    loop:false,
 	    nav: true,
