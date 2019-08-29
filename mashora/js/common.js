@@ -69,6 +69,9 @@ $(function() {
 		if ($('.why-us').length && scrolled - 300 > $('.why-us').offset().top) {
 			$('.why-us').addClass('in-view');
 		}
+		if ($('.objectives').length && scrolled - 300 > $('.objectives').offset().top) {
+			$('.objectives').addClass('in-view');
+		}
 		for (var i = 0; i < $('.services__list li').length; i++) {
 			if (scrolled - 300 > $('.services__list li').eq(i).offset().top) {
 				$('.services__list li').eq(i).addClass('in-view');
