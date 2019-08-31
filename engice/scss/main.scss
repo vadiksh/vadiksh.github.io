@@ -42,33 +42,87 @@ h2 {
 	}
 }
 .social {
-
+ 	li {
+		display: inline-block;
+	}
+	a {
+		display: block;
+		width: 23px;
+		height: 23px;
+		padding: 5px 3px;
+		svg {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+.language-button {
+	display: inline-block;
+	position: relative;
+	opacity: .5;
+	transition: .2s;
+	cursor: pointer;
+	margin-bottom: 25px;
+	color: #fff;
+	&:hover {
+		opacity: 1;
+		transition: .2s;
+	}
+	&::after {
+		content: '';
+		display: inline-block;
+		transform: rotate(90deg);
+		width: 10px;
+		height: 10px;
+		margin-left: 12px;
+		background: url('../img/arrow-white.svg') no-repeat center center/contain;
+	}
 }
 .header {
 	background: url('../img/banner.jpg') center center/cover;
 	&__top {
 		background: $text;
-		padding: 10px 20px;
+		padding: 3px 20px;
 		font-size: 10px;
+		height: 35px;
 		li {
 			display: inline-block;
 		}
 		&-contact {
+			margin-left: -10px;
 			a {
 				transition: .2s;
 				color: #8083ac;
+				padding: 10px;
+				&::before {
+					position: relative;
+					top: 2px;
+					margin-right: 6px;
+					content: '';
+					display: inline-block;
+					width: 12px;
+					height: 12px;
+					background: url('../img/phone.svg') no-repeat center center/contain;
+				}
 				&:hover {
 					color: #fff;
 					transition: .2s;
 				}
 			}
+			li:last-child {
+				a::before {
+					background: url('../img/envelope.svg') no-repeat center center/contain;
+				}
+			}
 		}
 	}
 	&__main {
+		height: 115px;
 		padding: 30px;
 		border-bottom: 1px solid rgba(255,255,255,.15);
 		.logo {
 			max-width: 140px;
+			display: block;
 			img {
 				width: 100%;
 				height: auto;
@@ -77,35 +131,89 @@ h2 {
 		&-menu {
 			li {
 				display: inline-block;
+				&:last-child {
+					a {
+						padding-right: 0;
+					}
+				}
 				a {
+					display: block;
 					color: rgba(255,255,255,.5);
-					padding: 15px;
-					font-size: 13px;
+					padding: 15px 20px;
+					font-size: 12px;
 					position: relative;
 					transition: .2s;
+					font-family: 'volte-m';
+					margin-left: 15px;
+
 					&:hover {
 						color: #fff;
 						transition: .2s;
 					}
 					&::after {
 						display: block;
-						width: 5px;
-						height: 5px;
+						position: absolute;
+						bottom: 0;
+						left: calc(50% - 5px/2);
+						width: 7px;
+						height: 7px;
 						background: $blue;
 						border-radius: 50%;
 						text-align: center;
 					}
 				}
 				&.active {
-					a::after {
-						content: '';
-					}
+					a {
+						color: #fff;
+						&::after {
+							content: '';
+						}
+					}	
+				}
+			}
+			.language-button {
+				cursor: pointer;
+				margin: 0;
+				padding: 15px;
+				font-size: 12px;
+				margin-left: 15px;
+			}
+			.contact-button {
+				display: inline-block;
+				cursor: pointer;
+				width: 25px;
+				height: 17px;
+				margin-left: 18px;
+				position: relative;
+				top: 3px;
+				opacity: 0.5;
+				transition: .2s;
+				// padding: 15px;
+				background: url("../img/envelope.svg") no-repeat center center/19px;
+				&:hover {
+					opacity: 1;
+					transition: .2s;
 				}
 			}
 		}
 	}
 	&__banner {
 		position: relative;
+		min-height: 450px;
+		height: calc(100vh - 150px);
+		.scroll {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			transform: translate3d(-50%,0,0);
+			content: '';
+			width: 20px;
+			height: 40px;
+			&-animated {
+				animation: scroll 1.4s infinite;
+			}
+		}
+
 		&-bubbles {
 			position: absolute;
 			width: 100%;
@@ -183,20 +291,26 @@ h2 {
 			position: relative;
 			width: 25%;
 			height: calc(1100px / 4);
-			transition: .3s ease-out;
+			transition: .3s cubic-bezier(.12,.64,.4,.98);
 			padding: 30px 0;
 			overflow: hidden;
 			&:hover {
 				height: 420px;
-				transition: .3s ease-in-out;
+				transition: .8s cubic-bezier(.71,.04,0,1);
 				transform: translate3d(0,0,0);
 				.services__list-info {
 					opacity: 1;
-					transition: .3s .3s ease-out;
+					transition: 0.5s .3s cubic-bezier(.12,.64,.4,.98);
+					transform: translate3d(0,0,0);
 				}
 				h3 {
 					transform: translate3d(0,0,0);
-					transition: .3s ease-in-out;
+					transition: .8s cubic-bezier(.71,.04,0,1);
+				}
+				a.button {
+					opacity: 1;
+					transform: translate3d(-50%,0,0);
+					transition: .5s .3s cubic-bezier(.12,.64,.4,.98);
 				}
 			}
 			&:nth-of-type(2n-1) {
@@ -230,14 +344,45 @@ h2 {
 			font-family: 'avant';
 			line-height: 1.2;
 			margin-bottom: 60px;
-			transition: .3s .3s ease-in-out;
+			transition: .5s cubic-bezier(.12,.64,.4,.98);
 		}
 		&-info {
 			padding: 0 35px;
 			opacity: 0;
-			transition: .3s ease-in;
-			a {
-				
+			transform: translate3d(0,-25px,0);
+			transition: .25s cubic-bezier(.12,.64,.4,.98);
+
+			p {
+				font-size: 12px;
+			}
+		}
+		a.button {
+			display: block;
+			width: 130px;
+			text-align: center;
+			padding: 7px 38px 7px 15px;
+			background: $yellow;
+			color: $text;
+			margin: 0 auto;
+			border-radius: 25px;
+			font-size: 10px;
+			font-family: "volte-sb";
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			opacity: 0;
+			transform: translate3d(-50%,25px,0);
+			transition: .3s cubic-bezier(.12,.64,.4,.98);
+			&::after {
+				content: '';
+				width: 18px;
+				height: 18px;
+				display: inline-block;
+				position: absolute;
+				background: #000759 url('../img/arrow-yellow.svg') no-repeat center center /6px;
+				right: 7px;
+				top: 7px;
+				border-radius: 50%;
 			}
 		}
 	}
@@ -561,7 +706,7 @@ h2 {
 .footer {
 	background: $text;
 	color: #fff;
-	padding: 45px 20px;
+	padding: 50px 20px 0;
 	&__main {
 		align-items: flex-start;
 	}
@@ -569,8 +714,8 @@ h2 {
 		width: 47%;
 		&-text {
 			max-width: 330px;
-			line-height: 1.4;
-			font-size: 13px;
+			line-height: 1.3;
+			font-size: 12px;
 			margin-bottom: 35px;
 			b {
 				font-family: "volte-sb";
@@ -600,6 +745,10 @@ h2 {
 		a {
 			font-size: 10px;
 			color: #fff;
+			display: inline-block;
+		}
+		li {
+			line-height: 1.4;	
 		}
 	}
 	&__block {
@@ -611,7 +760,7 @@ h2 {
 		p, a {
 			display: block;
 			font-size: 10px;
-			line-height: 2;
+			line-height: 1.8;
 			color: #fff;
 		}
 		.route {
@@ -622,27 +771,7 @@ h2 {
 	&__right {
 		text-align: right;
 		width: 47%;
-		.language-button {
-			display: inline-block;
-			position: relative;
-			opacity: .5;
-			transition: .2s;
-			cursor: pointer;
-			margin-bottom: 25px;
-			&:hover {
-				opacity: 1;
-				transition: .2s;
-			}
-			&::after {
-				content: '';
-				display: inline-block;
-				transform: rotate(90deg);
-				width: 10px;
-				height: 10px;
-				margin-left: 12px;
-				background: url('../img/arrow-white.svg') no-repeat center center/contain;
-			}
-		}
+		
 		&-newsletter {
 			display: block;
 			width: 100%;
@@ -701,9 +830,41 @@ h2 {
 			}
 		}
 	}
+	&__bottom {
+		padding: 20px 0;
+		.social {
+			path {
+				fill: #fff;
+			}
+		}
+		&-privacy {
+			li {
+				display: inline-block;
+				a {
+					color: #fff;
+					font-size: 9px;
+					text-transform: uppercase;
+					padding: 4px;
+				}
+				&:last-child a {
+					padding-right: 0;
+				}
+			}
+		}
+	}
 }
 
-
+@keyframes scroll {
+	0% {
+		transform: translate3d(0,0,0);
+	}
+	35% {
+		transform: translate3d(0,15px,0);
+	}
+	100% {
+		transform: translate3d(0,0,0);
+	}
+}
 
 
 
