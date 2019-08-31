@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'VolteRounded-Medium';
+  src: url('VolteRounded-Medium.eot?#iefix') format('embedded-opentype'),  url('VolteRounded-Medium.otf')  format('opentype'),
+	     url('VolteRounded-Medium.woff') format('woff'), url('VolteRounded-Medium.ttf')  format('truetype'), url('VolteRounded-Medium.svg#VolteRounded-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

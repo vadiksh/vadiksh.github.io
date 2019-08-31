@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'ITCAvantGardeStd-Bold';
+  src: url('ITCAvantGardeStd-Bold.eot?#iefix') format('embedded-opentype'),  url('ITCAvantGardeStd-Bold.otf')  format('opentype'),
+	     url('ITCAvantGardeStd-Bold.woff') format('woff'), url('ITCAvantGardeStd-Bold.ttf')  format('truetype'), url('ITCAvantGardeStd-Bold.svg#ITCAvantGardeStd-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
