@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	 function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8,
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 46.519276, lng: 6.638339},
+          zoom: 12,
           styles: [
 			{
 			    "featureType": "administrative",
@@ -492,6 +492,49 @@ document.addEventListener("DOMContentLoaded", function() {
 			]
 
         });
-      }
+
+		// var marker = new google.maps.Marker({
+		//   position: {lat: 46.519276, lng: 6.638339},
+		//   icon: 'https://i.imgur.com/PyeQvAW.png',
+		//   map: map
+		// });
+        var marker = new google.maps.Marker({
+          position: {lat: 46.519276, lng: 6.638339},
+          icon: {
+          	url: 'https://i.imgur.com/PyeQvAW.png',
+			scaledSize: new google.maps.Size(85,100)
+          },
+          map: map
+        });
+
+		var locations = [
+			{lat: 46.519276, lng: 6.638339},
+			{lat: 49.405209, lng: 31.926336},
+			{lat: 31.926336, lng: 49.434992}
+		];
+		var pins = Array.from(document.querySelectorAll('.map__list .link'));
+		for (pin of pins) {
+			google.maps.event.addDomListener(pin, 'click', function() {
+			  var index = this.dataset.index;
+			  map.setCenter(locations[index]);
+
+	          var marker = new google.maps.Marker({
+	            position: locations[index],
+	            icon: {
+	            	url: 'https://i.imgur.com/PyeQvAW.png',
+	  				scaledSize: new google.maps.Size(85,100)
+	            },
+	            map: map
+	          });
+	        });
+
+
+	       
+
+		}
+		
+
+      };
+      initMap();
 	
 });

@@ -214,6 +214,34 @@ h2 {
 }
 .contact {
 	margin-bottom: 90px;
+	.text {
+		width: 950px;
+		margin: 60px auto 90px;
+		text-align: center;
+		h2 {
+			margin-bottom: 40px;
+		}
+		p {
+			font-size: 19px;
+			line-height: 1.75;
+		}
+		p.text-main {
+			font-family: "volte-m";
+			margin-bottom: 8px;
+			font-size: 32px;
+			p {
+				font-size: 32px;
+			}
+			b {
+				font-family: "volte-sb";
+				font-size: 35px;
+			}
+			span {
+				color: $blue;
+			}
+		}
+
+	}
 	&__form {
 		max-width: 600px;
 		margin: 0 auto;
@@ -642,6 +670,38 @@ h2 {
 				b {
 					font-family: "volte-sb";
 					font-size: 35px;
+				}
+			}
+		}
+		&-remote {
+			height: auto;
+			min-height: auto;
+			padding: 120px 20px 235px;
+			.title {
+				font-family: "avant";
+				display: inline-block;
+				text-align: center;
+			}
+			h2 {
+				position: relative;
+				width: auto;
+				display: inline-block;
+				color: #fff;
+				font-size: 96px;
+				line-height: 1;
+				span {
+					color: $yellow;
+				}
+			}
+			p {
+				display: inline-block;
+				font-size: 43px;
+				color: $yellow;
+				position: absolute;
+				bottom: -65px;
+				left: 92px;
+				span {
+					color: #fff;
 				}
 			}
 		}
@@ -1192,9 +1252,306 @@ h2 {
 		}
 	}
 }
-#map {
-        height: 100%;
-      }
+
+//	CONTACT PAGE
+.map {
+	padding-top: 65px;
+	background: $text;
+	color: #fff;
+	margin-bottom: 350px;
+	h2 {
+		margin-bottom: 100px;
+		font-size: 48px;
+		span {
+			color: $yellow;
+		}
+	}
+	&__list {
+		justify-content: space-around;
+		align-items: flex-start;
+		margin-bottom: 70px;
+		li {
+			&::before {
+				content: '';
+				display: block;
+				width: 25px;
+				height: 3px;
+				background: $yellow;
+				margin-bottom: 20px;
+			}
+		}
+		h3 {
+			font-size: 29px;
+			font-family: "volte-sb";
+			margin-bottom: 15px;
+		}
+		a, p {
+			display: block;
+			font-size: 16px;
+			line-height: 1.9;
+			color: #fff;
+		}
+		.link {
+			color: $yellow;
+		}
+	}
+	&__embed {
+		border: 5px solid #0b00ea;
+		height: 620px;
+		transform: translate3d(0,160px,0);
+		margin-top: -160px;
+	}
+}
+
+//	REMOTE PAGE
+.remote {
+	position: relative;
+	margin-bottom: 120px;
+	&__title {
+		text-align: center;
+		padding: 100px 20px 115px;
+		p.text-main {
+			font-family: "volte-m";
+			margin-bottom: 28px;
+			font-size: 32px;
+			b {
+				font-family: "volte-sb";
+				font-size: 35px;
+			}
+		}
+		p {
+			font-size: 19px;
+			max-width: 900px;
+			margin: 0 auto;
+			line-height: 1.7;
+		}
+	}
+	.flex {
+		align-items: flex-start;
+	}
+	.left,.right {
+		width: 50%;
+	}
+	.right {
+		margin-top: 160px;
+	}
+	&__offer {
+		position: relative;
+		padding: 75px 100px 80px 0;
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100vw;
+			left: 0;
+			top: 0;
+			height: 100%;
+			background: $yellow;
+			transform: translate3d(-30vw,0,0);
+			z-index: -1;
+		}
+		h2 {
+			text-align: left;
+			color: #0b00ea;
+			margin-bottom: 26px;
+			span {
+				color: #fff;
+			}
+		}
+		p {
+			font-size: 19px;
+			line-height: 1.6;
+			word-break: break-word;
+			hyphens: auto;
+		}
+	}
+	&__list {
+		padding: 100px;
+		padding-left: 0;
+		li {
+			margin-bottom: 35px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		h3 {
+			font-family: "avant-m";
+			font-size: 19px;
+			color: #0b00ea;
+			margin-bottom: 5px;
+		}
+		p {
+			line-height: 1.5;
+		}
+	}
+	&__how {
+		background: $text;
+		padding: 55px 0 95px 85px;
+		padding-right: 0;
+		position: relative;
+		&::before {
+			content: '';
+			width: 200%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: $text;
+			z-index: -1;
+		}
+		h2 {
+			margin-bottom: 75px;
+			line-height: 1.5;
+			color: #fff;
+			text-align: left;
+			span {
+				color: $blue;
+			}
+		}
+		.blue {
+			color: $blue;
+			font-size: 26px;
+			line-height: 1.6;
+			text-transform: uppercase;
+			margin-bottom: 70px;
+			position: relative;
+			font-family: 'avant';
+		}
+		.text {
+			margin-bottom: 78px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			h3 {
+				color: #fff;
+				font-size: 22px;
+				line-height: 1.2;
+				font-family: "avant";
+				text-transform: uppercase;
+				margin-bottom: 16px;
+			}
+			p {
+				font-size: 19px;
+				color: #fff;
+				line-height: 1.6;
+			}
+		}
+	}
+	&__estimation {
+		padding: 120px 0 170px 55px;
+		background: url('../img/estimate.png') left bottom/cover;
+		position: relative;
+		margin-bottom: 125px;
+		h2 {
+			span {
+				color: $blue;
+			}
+		}
+		&::before {
+			content: '';
+			width: 200%;
+			height: calc(100% - 60px);
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: #f2f3f8;
+			z-index: -1;
+		}
+	}
+	&__table {
+		width: 100%;
+		font-size: 19px;
+		td {
+			line-height: 1.3;
+			padding: 6px 0;
+			padding-left: 6%;
+			vertical-align: top;
+			&:nth-of-type(1) {
+				padding-left: 0;
+			}
+		}
+		th {
+			vertical-align: top;
+			font-size: 23px;
+			font-family: "avant";
+			line-height: 1.25;
+			text-transform: uppercase;
+			text-align: center;
+			width: 50%;
+			padding-bottom: 25px;
+			&:last-child {
+				font-size: 24px;
+			}
+		}
+		tbody {
+			tr:nth-child(2) td {
+				padding-top: 25px;
+				vertical-align: bottom;
+			}
+		}
+		.cost {
+			font-size: 24px;
+		}
+
+		.bold {
+			font-family: "volte-m";
+		}
+		.total-top {
+			td {
+				padding-top: 20px;
+			}
+		}
+		.total-bottom {
+			td {
+				padding-bottom: 45px;
+			}
+		}
+		.total-bg {
+			background: #f2f3f8;
+			position: relative;
+			td {
+				padding-top: 40px;
+				&:first-child {
+					font-family: "volte-m";
+				}
+				&:last-child {
+					font-family: "volte-sb";
+					font-size: 22px;
+				}
+			}
+			&:last-child {
+				td {
+					padding-top: 2px;
+					padding-bottom: 50px;
+				}
+			}
+		}
+		.developer {
+			font-size: 22px;
+			font-family: 'avant';
+			background: #f2f3f8;
+			border-collapse: collapse;
+			padding: 21px 0 21px 6%;
+		}
+	}
+	.bg-gray {
+		display: block;
+		position: relative;
+		width: 100%;
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 155px;
+			top: 0;
+			transform: translateY(-100%);
+			left: 0;
+			background: #f2f3f8;
+			z-index: -1;
+		}
+	}
+}	
+
 .footer {
 	background: $text;
 	color: #fff;
