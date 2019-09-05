@@ -1,12 +1,62 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+	var mobMenu = document.getElementById('mob-menu');
+	document.getElementById('menu').addEventListener('click', function () {
+		mobMenu.classList.add('active');
+	})
+	document.getElementById('mob-close').addEventListener('click', function () {
+		mobMenu.classList.remove('active');
+	})
+
+	if(document.getElementsByClassName('services__menu').length) {
+		var serviceMenu = document.getElementById('services-menu');
+		document.getElementById('services-more').addEventListener('click', function () {
+			serviceMenu.classList.add('active');
+		})
+		document.getElementById('services-close').addEventListener('click', function () {
+			serviceMenu.classList.remove('active');
+		})
+		var serviceMenuItems = Array.from(document.querySelectorAll(".services__menu li"));
+		for (let item of serviceMenuItems) {
+			item.addEventListener('click', function () {
+				serviceMenu.classList.remove('active');	
+			})
+		}
+	}
+	
+	
+	var inputs = Array.from(document.querySelectorAll('.contact__form-inputs input, textarea'));
+
+	for (let input of inputs) {
+		input.addEventListener('focus', function() {
+			for (let input of inputs) {
+				input.classList.add('active');
+			}
+		})
+	}
+	for (let input of inputs) {
+		input.addEventListener('focusout', function() {
+			for (let input of inputs) {
+				input.classList.remove('active');
+			}
+		})
+	}
+
+	if (document.getElementsByClassName('rellax').length) {
+		var rellax = new Rellax('.rellax', {
+			center: true
+		});
+	}
+
 	var contactButtons = document.getElementsByClassName("contact-button"),
 		contactBar = document.getElementById("contact-sidebar"),
 		languageButtons = document.getElementsByClassName("language-button"),
 		languageBar = document.getElementById("language-sidebar"),
 		closeLanguage = document.querySelector(".languages .close"),
 		contactSubmit = document.getElementsByClassName("submit-btn"),
-		contactForms = document.getElementsByClassName("contact__form");
+		contactForms = document.getElementsByClassName("contact__form"),
+		footerForm = document.querySelector('.footer__right-newsletter'),
+		footerSubmit = document.querySelector('.newsletter-btn');
 	for (let button of contactButtons) {
 		button.addEventListener('click', function() {
 			contactBar.classList.toggle('active'); 
@@ -33,6 +83,13 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		})
 	}
+	footerSubmit.addEventListener('click', function(e) {
+		e.preventDefault();
+		footerForm.classList.add('submitted');
+		setTimeout(function() {
+			footerForm.classList.add('sent');
+		},1000)
+	});
 
 	var menuItemsNodes = document.querySelectorAll(".services__menu li"),
 	 	menuItems = Array.from(menuItemsNodes),
@@ -535,6 +592,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		
 
       };
-      initMap();
+      if (document.getElementsByClassName('map').length) {
+		initMap();
+	  }
+      
 	
 });
