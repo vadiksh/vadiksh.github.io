@@ -271,7 +271,7 @@
 
 	.objectives {
 		padding: 40px 20px 70px;
-		background: linear-gradient(to bottom, #bddbec, transparent 100%);
+		background: linear-gradient(to bottom, #bddbec, rgba(255,255,255,0) 100%);
 		.container {
 			flex-flow: column;
 		}
@@ -537,6 +537,9 @@
 	}
 	.footer {
 		padding: 0 20px;
+		.mob {
+			display: none;
+		}
 		&-container {
 			padding: 25px 0;
 			flex-flow: column;
