@@ -19,12 +19,16 @@
 			padding-bottom: 20px;
 			transition: .25s;
 			background: transparent;
+			&.sticky {
+				display: flex;
+			}
 			&.active {
 				transition: .25s;
 				&.sticky {
 					background: #B9D9EB;
 					opacity: 1;
 					transition: .25s;
+
 				}
 			}
 			.logo {
@@ -337,6 +341,9 @@
 	.services {
 		padding: 105px 0px 10px;
 		text-align: center;
+		.button {
+			display: inline-block;
+		}
 		&__title {
 			margin-bottom: 35px;
 			padding: 0 20px;
@@ -538,7 +545,7 @@
 	.footer {
 		padding: 0 20px;
 		.mob {
-			display: none;
+			// display: none;
 		}
 		&-container {
 			padding: 25px 0;

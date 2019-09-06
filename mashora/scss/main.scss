@@ -67,7 +67,7 @@ h2 {
 		background: url('../img/loader-bg.png') bottom center/cover;
 		&.hidden {
 			transform: translate3d(0,-100%,0);
-			transition: .6s 2.5s ease;
+			transition: .6s 2s ease;
 		}
 	}
 	.mashora {
@@ -97,7 +97,7 @@ h2 {
 	&.visible {
 		.header__top {
 			transform: translate3d(-50%,-0%,0);
-			transition: .3s .5s ease;
+			transition: .3s 2.5s ease;
 			&.sticky {
 				transform: translate3d(0%,0%,0);
 				transition: .3s;
@@ -153,6 +153,7 @@ h2 {
 		transform: translate3d(-50%,-100%,0);
 		z-index: 5;
 		&.sticky {
+			display: none;
 			opacity: 0;
 			transition: .25s;
 			position: fixed;
@@ -818,10 +819,10 @@ h2 {
 		}
 	}
 	&.in-view {
-		h2, .contact__form, .contact__info {
+		h2, .contact__form, .contact__info, .description {
 			transform: translate3d(0,0,0);
 			opacity: 1;
-			transition: .4s ease-out;
+			transition: .4s 2s ease-out;
 		}
 		.contact__info {
 			transform: translate3d(0,10px,0);
@@ -838,6 +839,7 @@ h2 {
 		margin-bottom: 115px;
 		max-width: 410px;
 		line-height: 1.75;
+		transform: translate3d(-100px,0,0);
 	}
 	&__positions {
 		font-size: 20px;
@@ -994,6 +996,9 @@ h2 {
 }
 .services {
 	padding: 245px 20px 135px;
+	.button {
+		display: none;
+	}
 	&__title {
 		text-align: center;
 		margin-bottom: 95px;

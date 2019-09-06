@@ -9,14 +9,14 @@ $(function() {
 		    targets: '.mashora .letter',
 		    translateY: [50,0],
 		    easing: "easeOutExpo",
-		    duration: 1400,
+		    duration: 1200,
 		    delay: (el, i) => 100 + 50 * i
 		  }).add({
 		    targets: '.mashora .letter',
 		    duration: 200,
 		    translateY: [0,-50],
 		    easing: "easeInQuad",
-		    delay: (el, i) => 500 + 50 * i
+		    delay: (el, i) => 50 * i
 		  });
 		  
 		  setTimeout(function() {
@@ -24,7 +24,7 @@ $(function() {
 		  },3000)
 		  setTimeout(function() {
 		  	$('.header .first-screen').addClass('active');
-		  },1500)
+		  },1000)
 		  $('.loader .bg').addClass('hidden');
 
 		$('.header.animated').addClass('visible');
