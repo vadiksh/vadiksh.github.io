@@ -15,7 +15,7 @@
 
 <header class="header alt">
 	<div class="header__top">
-		<a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
+		<a href="index.html" class="logo"><img src="img/logo.svg" alt=""></a>
 		<nav class="nav">
 			<ul>
 				<li><a href="about.html">About</a></li>
@@ -24,15 +24,75 @@
 			</ul>
 		</nav>
 		<a href="contact.html" class="button">Contact us</a>
+		<span class="hamburger"></span>
 	</div>
+	<div class="header__top sticky">
+		<a href="index.html" class="logo"><img src="img/logo.svg" alt=""></a>
+		<nav class="nav">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="career.html">Career</a></li>
+			</ul>
+		</nav>
+		<a href="contact.html" class="button">Contact us</a>
+		
+		<span class="hamburger"></span>
+	</div>
+	<nav class="header__top-mob">
+		<ul>
+			<li><a href="about.html">About</a></li>
+			<li><a href="services.html">Services</a></li>
+			<li><a href="career.html">Career</a></li>
+			<li><a href="contact.html" class="button">Contact us</a></li>
+		</ul>
+		<div class="close"></div>
+	</nav>
 </header>
 
 <section class="contact">
 	<div class="container">
 		<h2>Careers</h2>
+		<p class="description">Mashora is a startup consultancy and we are growing fast. Please check the links below to find out about the current positions we are looking for.</p>
+		<div class="contact__positions">
+			<ul class="contact__positions-titles">
+				<li>Title</li>
+				<li>Category</li>
+			</ul>
+			<ul class="contact__positions-list">
+				<li class="active">
+					<div>
+						<span>Service Director</span>
+						<span>Administration</span>
+					</div>
+					
+					<p>Mashora is a startup consultancy and we are growing fast. Please check the links below to find out about the current positions we are looking for.</p>
+					<a href="" class="apply">Apply</a>
+				</li>
+				<li>
+					<div>
+						<span>PHP Developer</span>
+						<span>Product Development</span>
+					</div>
+					
+					<p>Mashora is a startup consultancy and we are growing fast. Please check the links below to find out about the current positions we are looking for.</p>
+					<a href="" class="apply">Apply</a>
+				</li>
+				<li>
+					<div>
+						<span>Account Manager</span>
+						<span>Customer service</span>
+					</div>
+					
+					<p>Mashora is a startup consultancy and we are growing fast. Please check the links below to find out about the current positions we are looking for.</p>
+					<a href="" class="apply">Apply</a>
+				</li>
+			</ul>
+		</div>
 		<div class="contact__block">
 			<form action="" class="contact__form">
 				<h3>General application</h3>
+
 				<input type="text" placeholder="Your name">
 				<input type="text" placeholder="Position you are applying for">
 				<textarea rows="5" placeholder="Write a little about yourself"></textarea>
@@ -40,7 +100,7 @@
 				<a class="cv" href="#">Upload CV</a>
 			</form>
 			<div class="contact__info">
-				<p>Mashora is a startup consultancy and we are growing fast. Please check the links below to find out about the current positions we are looking for.</p>
+				
 			</div>
 		</div>
 	</div>
@@ -48,11 +108,11 @@
 
 <footer class="footer">
 	<div class="footer-container">
-		<form action="" class="form">
+	<!-- 	<form action="" class="form">
 			<label for="input">Join Our Newsletter</label>
 			<input id="input" type="text" placeholder="Enter your e-mail">
 			<button></button>
-		</form>
+		</form> -->
 		<div>
 			<ul>
 				<li><a href="about.html">About</a></li>

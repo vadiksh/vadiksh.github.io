@@ -10,7 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 	
-	
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 </head>
 <body>
 <div class="loader">
@@ -19,7 +20,7 @@
 </div>
 <header class="header animated">
 	<div class="header__top">
-		<a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
+		<a href="index.html" class="logo"><img src="img/logo.svg" alt=""></a>
 		<nav class="nav">
 			<ul>
 				<li><a href="about.html">About</a></li>
@@ -28,7 +29,32 @@
 			</ul>
 		</nav>
 		<a href="contact.html" class="button">Contact us</a>
+		
+		<span class="hamburger"></span>
 	</div>
+	<div class="header__top sticky">
+		<a href="index.html" class="logo"><img src="img/logo.svg" alt=""></a>
+		<nav class="nav">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="career.html">Career</a></li>
+			</ul>
+		</nav>
+		<a href="contact.html" class="button">Contact us</a>
+		
+		<span class="hamburger"></span>
+	</div>
+	
+	<nav class="header__top-mob">
+		<ul>
+			<li><a href="about.html">About</a></li>
+			<li><a href="services.html">Services</a></li>
+			<li><a href="career.html">Career</a></li>
+			<li><a href="contact.html" class="button">Contact us</a></li>
+		</ul>
+		<div class="close"></div>
+	</nav>
 	<div class="header__banner">
 		<div class="first-screen screen">
 			<div class="container">
@@ -45,6 +71,7 @@
 			</div>
 		</div>
 	</div>
+	<a href="contact.html" class="button mob">Contact us</a>
 </header>
 
 <section class="why-us">
@@ -55,22 +82,22 @@
 		</div>
 		<ul class="why-us__list">
 			<li>
-				<img src="img/why1.png" alt="">
+				<img src="img/why1.svg" alt="">
 				<h3>We can work in the most challenging environments</h3>
 				<p>Lack of data? Fragile Infrastructure? Weak institutions? These conditions might scare most consulting companies, but not us. With more than a decade of combined work experience of our team in challenging contexts, we are confident we can navigate our way through your target country and deliver results!</p>
 			</li>
 			<li>
-				<img src="img/why2.png" alt="">
+				<img src="img/why2.svg" alt="">
 				<h3>We Know What We are Talking About</h3>
 				<p>Our work mechanism involves cooperating with the best available expertise and talent to provide you with the strategic advice and assistance you need.</p>
 			</li>
 			<li>
-				<img src="img/why3.png" alt="">
+				<img src="img/why3.svg" alt="">
 				<h3>We are flexible</h3>
 				<p>We keep an eye on your end goal but understand that the path towards it may require pivoting. We believe smart strategies are developed with flexibility as a key component.</p>
 			</li>
 			<li>
-				<img src="img/why4.png" alt="">
+				<img src="img/why4.svg" alt="">
 				<h3>We are grounded</h3>
 				<p>We combine international comparative experience with deep local know-how. A one-size-fits-all has no place in our dictionary. Whether its Africa or the Middle East, we speak the language and we are familiar with the setting.</p>
 			</li>
@@ -78,7 +105,7 @@
 	</div>
 </section>
 
-<!-- <section class="how-we-work">
+<section class="how-we-work">
 	<div class="container">
 		<div class="how-we-work__title">
 			<h2>How we work</h2>
@@ -114,10 +141,29 @@
 					<p>We deliver results</p>
 				</li>
 			</ul>
+
+			<ul class="how-we-work__mob owl-carousel">
+				<li class="active">
+					<img src="img/work1.jpg" alt="">
+					<p>Debrief with us about the challenge/opportunity you would like to tackle</p>
+				</li>
+				<li>
+					<img src="img/work2.jpg" alt="">
+					<p>We link your project to the most suitable experts</p>
+				</li>
+				<li>
+					<img src="img/work3.jpg" alt="">
+					<p>We discuss with you our proposal to ensure you are happy with our plan</p>
+				</li>
+				<li>
+					<img src="img/work4.jpg" alt="">
+					<p>We deliver results</p>
+				</li>
+			</ul>
 			<a href="contact.html" class="button">Contact us</a>
 		</div>
 	</div>
-</section> -->
+</section>
 
 <footer class="footer">
 	<div class="footer-container">
@@ -150,6 +196,7 @@
 </footer>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="js/common.js"></script>
 </body>
