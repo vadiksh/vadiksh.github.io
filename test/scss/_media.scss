@@ -1,0 +1,14 @@
+@import "vars";
+
+@media (max-width: 767px) {
+	.form {
+		&__options {
+			max-width: none;
+			li {
+				&:hover::before {
+					transform: scale(1);
+				}
+			}
+		}
+	}
+}
