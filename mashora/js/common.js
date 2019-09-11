@@ -10,13 +10,17 @@ $(function() {
 		    translateY: [50,0],
 		    easing: "easeOutExpo",
 		    duration: 1200,
-		    delay: (el, i) => 100 + 50 * i
+		    delay: function(el, i) {
+		    	return 100 + 50 * i;
+		    }
 		  }).add({
 		    targets: '.mashora .letter',
 		    duration: 200,
 		    translateY: [0,-50],
 		    easing: "easeInQuad",
-		    delay: (el, i) => 50 * i
+		    delay: function(el, i) {
+		    	return 50 * i;
+		    }
 		  });
 		  
 		  setTimeout(function() {
