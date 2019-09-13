@@ -17,9 +17,8 @@
 		$('.header__links-list > li').eq($(this).index()).addClass('active').siblings().removeClass('active');
 		
 	})
-	$('.leagues-list a').click(function(e) {
-		e.preventDefault();
+	$('.leagues-list li').click(function() {
 
 		$('.header__links-leagues').addClass('active').siblings().removeClass('active');
-		$('.header__links-leagues > li').eq($(this).parent().index()).addClass('active').siblings().removeClass('active');
+		$('.header__links-leagues > li').eq($(this).index()).addClass('active').siblings().removeClass('active');
 	})
