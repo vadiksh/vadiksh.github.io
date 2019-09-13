@@ -5,7 +5,7 @@
 		navLinePosition;
 	$('.header__top nav li, .mob-nav li').click(function() {
 		console.log($('header').width());
-		console.log($('body').innerWidth;
+		console.log($('body').innerWidth);
 
 		if ($(window).width() < 768) {
 			navLinePosition = $(this).index() + '00';
