@@ -4,7 +4,9 @@
 	var navLineTransform,
 		navLinePosition;
 	$('.header__top nav li, .mob-nav li').click(function() {
-		console.log($(this).parent().width());
+		console.log(this);
+		console.log($(this));
+
 		console.log(document.body.clientWidth);
 		console.log($('header').clientWidth);
 
