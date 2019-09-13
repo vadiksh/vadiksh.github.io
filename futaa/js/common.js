@@ -4,10 +4,10 @@
 	var navLineTransform,
 		navLinePosition;
 	$('.header__top nav li, .mob-nav li').click(function() {
-		console.log($('header').width());
-		console.log($('body').innerWidth);
+		// console.log($('header').width());
+		console.log($('body').clientWidth);
 
-		if ($(window).width() < 768) {
+		if ($('body').clientWidth < 768) {
 			navLinePosition = $(this).index() + '00';
 			navLineTransform = (100 * $(this).index() / 3) + +navLinePosition;
 			$('.nav-line').css({'opacity': 1, 'transform': 'translateX(' + navLineTransform + '%)'});
