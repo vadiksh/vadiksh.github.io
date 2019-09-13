@@ -4,13 +4,8 @@
 	var navLineTransform,
 		navLinePosition;
 	$('.header__top nav li, .mob-nav li').click(function() {
-		console.log(this.ownerDocument.defaultView.innerWidth);
-		console.log($(this));
 
-		console.log(document.body.clientWidth);
-		console.log($('header').clientWidth);
-
-		if (document.body.clientWidth < 768) {
+		if (this.ownerDocument.defaultView.innerWidth < 768) {
 			navLinePosition = $(this).index() + '00';
 			navLineTransform = (100 * $(this).index() / 3) + +navLinePosition;
 			$('.nav-line').css({'opacity': 1, 'transform': 'translateX(' + navLineTransform + '%)'});
