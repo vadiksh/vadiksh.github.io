@@ -4,7 +4,7 @@
 	var navLineTransform,
 		navLinePosition;
 	$('.header__top nav li, .mob-nav li').click(function() {
-		// console.log($('header').width());
+		console.log(document.body.clientWidth);
 		console.log($('header').clientWidth);
 
 		if ($('header').clientWidth < 768) {
