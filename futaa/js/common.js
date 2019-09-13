@@ -7,7 +7,7 @@
 		console.log(document.body.clientWidth);
 		console.log($('header').clientWidth);
 
-		if ($('header').clientWidth < 768) {
+		if (document.body.clientWidth < 768) {
 			navLinePosition = $(this).index() + '00';
 			navLineTransform = (100 * $(this).index() / 3) + +navLinePosition;
 			$('.nav-line').css({'opacity': 1, 'transform': 'translateX(' + navLineTransform + '%)'});
