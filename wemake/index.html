@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title></title>
+	<title>WeMake</title>
 	<meta name="description" content="">
 	<link rel="shortcut icon" href="" type="image/x-icon">
 	<link rel="icon" href="" type="image/x-icon">
@@ -16,34 +16,51 @@
 
 
 <header class="header">
-	<div class="header__top fixed">
+	<div class="header__top fixed animated">
 		<div class="container">
-			<a href="" class="logo"><img src="img/logo.svg" alt=""></a>
+			<a href="/" class="logo"><img src="img/logo.svg" alt=""></a>
 			<ul class="contact__list">
 				<li><a class="email" href="mailto:info@wemake.nl">info@wemake.nl</a></li>
 				<li><a class="tel" href="tel:+31651477541">+31 6 514 775 41</a></li>
 			</ul>
 			<nav class="header__nav">
 				<ul>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="about.html">About us</a></li>
-					<li><a href="contact.html">Contact</a></li>
-					<li><a href="nl/index.html" class="lang">NL</a></li>
+					<li><a href="/services.html">Services</a></li>
+					<li><a href="/about.html">About us</a></li>
+					<li><a href="/contact.html">Contact</a></li>
+					<li><a href="/nl/index.html" class="lang">NL</a></li>
 				</ul>
 			</nav>
+			<div class="hamburger"><span></span></div>
 		</div>
 	</div>
-	<div class="header__banner">
+	<div class="header__banner animated">
 		<div class="container">
 			<h1><span>We renovate & create space</span><br><strong>WeMake.</strong></h1>
 			<div class="text__block header__banner-text">
 				<h2>Together, we move mountains.</h2>
 				<p>WeMake is a general contractor that is specialized in translating the most challenging designs into a fantastic project. We are proud on what we have built, and want have a proud client . We renovate, revitalize and transform commercial real estate. Our main focus is: offices, industrial and residential project.</p>
-				<a href="" class="button">Our services</a>
+				<a href="/services.html" class="button">Our services</a>
 			</div>
 		</div>
 	</div>
 </header>	
+<div class="header__mob">
+	<div class="close"><span></span></div>
+	<nav class="header__mob-nav header__nav">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/services.html">Services</a></li>
+			<li><a href="/about.html">About us</a></li>
+			<li><a href="/contact.html">Contact</a></li>
+			<li><a href="/nl/index.html" class="lang">NL</a></li>
+		</ul>
+	</nav>
+	<ul class="header__mob-contacts contact__list">
+		<li><a class="email" href="mailto:info@wemake.nl">info@wemake.nl</a></li>
+		<li><a class="tel" href="tel:+31651477541">+31 6 514 775 41</a></li>
+	</ul>
+</div>
 <section class="partners">
 	<ul class="container partners__list">
 		<li><img src="img/partner1.png" alt=""></li>
@@ -54,18 +71,18 @@
 		<li><img src="img/partner6.png" alt=""></li>
 	</ul>
 </section>
-<section class="we-can">
+<section class="we-can animated">
 	<div class="container">
 		<div class="we-can__banner">
-			<h2>What we can <b>do for you</b></h2>
+			<h2><span>What we can </span><b>do for you</b></h2>
 			<div class="text__block">
 				<p>Do you ever fantasize about how your dream environment will look like. What if we tell you we can make this happen. Our experienced team of designers, project managers and construction professionals delivers innovate, affordable and beautiful project.</p>
-				<a href="" class="button">About us</a>
+				<a href="/about.html" class="button">About us</a>
 			</div>
 		</div>
 	</div>
 </section>
-<section class="we-do">
+<section class="we-do animated">
 	<div class="title-line">
 		<div class="container">
 			<h2>What we do</h2>
@@ -102,14 +119,14 @@
 		</li>
 	</ul>
 </section>
-<section class="work">
+<section class="work animated">
 	<div class="title-line">
 		<div class="container">
 			<h2>Our work</h2>
 		</div>
 	</div>
 	<div class="work__list">
-		<li>
+		<li class="animated">
 			<div class="container">
 				<div class="text__block">
 					<h2>A productive workspace for a<b> productive</b> company</h2>
@@ -117,7 +134,7 @@
 				</div>
 			</div>
 		</li>
-		<li>
+		<li class="animated">
 			<div class="container">
 				<div class="text__block">
 					<h2>Embracing <b>peace </b>and <b>space</b> in one room</h2>
@@ -126,11 +143,11 @@
 			</div>
 		</li>
 	</div>
-	<div class="container"><a href="" class="work__link">All our work</a></div>
+	<div class="container"><a href="/services.html" class="work__link">All our work</a></div>
 </section>
-<section class="section contact">
+<section class="section contact animated">
 	<h2>Ready to create<br> your space?</h2>
-	<a href="" class="button">Contact us</a>
+	<a href="/contact.html" class="button">Contact us</a>
 	<ul class="contact__list">
 		<li><a href="mailto:info@wemake.nl">info@wemake.nl</a></li>
 		<li><a href="tel:+31651477541">+31 6 514 775 41</a></li>
@@ -138,7 +155,7 @@
 </section>
 <footer class="footer">
 	<div class="container footer__flex">
-		<a href="" class="logo"><img src="img/logo.svg" alt=""></a>
+		<a href="/" class="logo"><img src="img/logo.svg" alt=""></a>
 		<div class="footer__nav">
 			<nav>
 				<ul>
