@@ -10,7 +10,7 @@
 	}
 	.we-can {
 		&__banner {
-			overflow: initial;
+			overflow: visible;
 		}
 	}
 }
@@ -317,16 +317,16 @@
 					display: none;
 				}
 				&:nth-child(1) {
-					background: url('/img/team1.jpg') no-repeat top center/120% auto;
+					background: url('/wemake/img/team1.jpg') no-repeat top center/120% auto;
 				}
 				&:nth-child(2) {
-					background: url('/img/team2.jpg') no-repeat 30% 0/130% auto;
+					background: url('/wemake/img/team2.jpg') no-repeat 30% 0/130% auto;
 				}
 				&:nth-child(3) {
-					background: url('/img/team3.jpg') no-repeat top center/120% auto;
+					background: url('/wemake/img/team3.jpg') no-repeat top center/120% auto;
 				}
 				&:nth-child(4) {
-					background: url('/img/team4.jpg') no-repeat top center/120% auto;
+					background: url('/wemake/img/team4.jpg') no-repeat top center/120% auto;
 				}
 				&:nth-child(3) {
 					margin-bottom: 40px;
