@@ -1,0 +1,106 @@
+@import "vars";
+@import "fonts";
+@import "libs";
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	font-size: 16px;
+	min-width: 320px;
+	position: relative;
+	line-height: 1.65;
+	overflow-x: hidden;
+	color: $text;
+}
+.find-lease {
+	border-radius: 5px;
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	height: 220px;
+	padding: 40px 100px;
+	color: #fff;
+	background: url('../img/banner-bg.jpg') no-repeat 0 bottom/auto 100%;
+	position: relative;
+	display: flex;
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background: url('../img/deer.png') no-repeat bottom -4px left 20px/221px 178px;
+	}
+	&__border {
+		border: 2px solid rgba(255,255,255,.2);
+		border-radius: 4px;
+		padding-left: 0px;
+		width: 100%;
+	}
+	&__container {
+		max-width: 510px;
+		margin: 0 auto;
+		margin-left: 150px;
+	}
+	&__title {
+		font-size: 36px;
+		font-family: Oswald;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+	&__list {
+		list-style: none;
+		margin-bottom: 14px;
+		li {
+			display: inline-block;
+			font-size: 14px;
+			font-family: Lato;
+			line-height: 1.35;
+			position: relative;
+			padding-left: 20px;
+			margin-right: 20px;
+			&::before {
+				font-size: 30px;
+				font-family: Oswald;
+				display: inline-block;
+				position: absolute;
+				left: 0;
+				top: -4px;
+			}
+			&:nth-child(1)::before {
+				content: '1';
+			}
+			&:nth-child(2) {
+				padding-left: 25px;
+				&::before {
+					content: '2';
+				}
+			}
+		}
+	}
+	&__button {
+		color: #fff;
+		text-decoration: none;
+		font-size: 18px;
+		font-family: Lato;
+		width: 190px;
+		display: block;
+		margin: 0 auto;
+		background: #f77c10;
+		border-radius: 3px;
+		text-align: center;
+		padding: 3px 0;
+		position: relative;
+		z-index: 4;
+	}
+}
+
+
+
+
+
+@import "media";
