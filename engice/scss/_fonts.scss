@@ -1,0 +1,9 @@
+@import "_mixins/font-face";
+
+@include font-face("volte", "../fonts/VolteRounded-Regular/VolteRounded-Regular");
+@include font-face("volte-m", "../fonts/VolteRounded-Medium/VolteRounded-Medium");
+@include font-face("volte-sb", "../fonts/VolteRounded-Semibold/VolteRounded-Semibold");
+@include font-face("avant", "../fonts/AvantGarde-Bold/AvantGarde-Bold");
+@include font-face("avant-m", "../fonts/AvantGarde-Medium/AvantGarde-Medium");
+@include font-face("avant-alt", "../fonts/AvantGardeAlternatesBold/AvantGardeAlternatesBold");
+@include font-face("avant-h1", "../fonts/ITCAvantGardeStd-Bold/ITCAvantGardeStd-Bold");
