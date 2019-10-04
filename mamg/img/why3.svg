@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58.386" height="60.51" viewBox="0 0 58.386 60.51">
+    <defs>
+        <style>
+            .cls-1{fill:#fff;stroke:#212830;stroke-width:.5px}
+        </style>
+    </defs>
+    <g id="golf" transform="translate(-1.866 -1.74)">
+        <path id="Path_446" d="M59.372 6.071l-10-4A1 1 0 0 0 48 3v21.058A9.315 9.315 0 0 0 47 24c-3.364 0-6 1.757-6 4s2.636 4 6 4 6-1.757 6-4c0-1.509-1.2-2.8-3-3.477V11.677l9.372-3.748a1 1 0 0 0 0-1.858zM43 28c0-.944 1.71-2 4-2a7.1 7.1 0 0 1 1 .077v3.846A7.1 7.1 0 0 1 47 30c-2.29 0-4-1.056-4-2zm8 0c0 .437-.379.9-1 1.264v-2.528c.621.364 1 .827 1 1.264zM50 9.523V4.477L56.308 7z" class="cls-1" data-name="Path 446"/>
+        <path id="Path_447" d="M27.806 51.256a2.973 2.973 0 0 0-2.63-.489l-10.348 2.956-3.734-26.137a1.963 1.963 0 0 0 .776-1.807l-1.777-16A2 2 0 0 0 8.1 8H4.117a2 2 0 0 0-1.987 2.221l1.777 16a1.994 1.994 0 0 0 1.183 1.6l3.71 31.53A3 3 0 0 0 11.778 62H26a3 3 0 0 0 3-3v-5.349a2.974 2.974 0 0 0-1.194-2.4zM4.117 10h3.988l1.779 16H5.9zM27 59a1 1 0 0 1-1 1H11.778a1 1 0 0 1-.993-.883L7.125 28h2.008l3.715 26.006a2 2 0 0 0 2.529 1.64l10.349-2.956a1 1 0 0 1 1.274.961z" class="cls-1" data-name="Path 447"/>
+        <path id="Path_448" d="M17 56h8v2h-8z" class="cls-1" data-name="Path 448"/>
+        <path id="Path_449" d="M34 34a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2z" class="cls-1" data-name="Path 449"/>
+        <path id="Path_450" d="M26.172 44h5.657v2h-5.657z" class="cls-1" data-name="Path 450" transform="rotate(-45 29 45)"/>
+        <path id="Path_451" d="M26.586 40h2.828v2h-2.828z" class="cls-1" data-name="Path 451" transform="rotate(-45 28 41)"/>
+        <path id="Path_452" d="M22.586 44h2.828v2h-2.828z" class="cls-1" data-name="Path 452" transform="rotate(-45 24 45)"/>
+    </g>
+</svg>
