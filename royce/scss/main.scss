@@ -350,11 +350,13 @@ body {
 	top: 58px;
 	top: 119px;
 	background: #fff;
-	transition: .4s ease-in;
+	transform: translate3d(100%,0,0);
+	visibility: hidden;
+	transition: .4s ease;
 	&.active {
-		// transform: translate3d(0,0,0);
-		// visibility: visible;
-		// transition: .4s ease-out;
+		transform: translate3d(0,0,0);
+		visibility: visible;
+		transition: .4s ease;
 	}
 	.mob-list {
 		a {
@@ -363,7 +365,7 @@ body {
 			display: block;
 			padding: 15px 30px;
 			transition: .2s;
-			&:hover {
+			&:active {
 				background: #F1F3F7;
 				transition: .2s;
 			}
@@ -441,15 +443,15 @@ body {
 	}
 	&__container {
 		position: relative;
-		// top: 62px;
 		background: #fff;
-		transform: translate3d(100%,0,0);
+		// transform: translate3d(100%,0,0);
 		transition: .4s;
-
 		height: calc(100vh - 119px);
-		overflow: auto;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
 		&.active {
-			transform: translate3d(0,0,0);
+			// transform: translate3d(0,0,0);
 			transition: .4s;
 		}
 		> div, > ul {
@@ -463,8 +465,8 @@ body {
 			// box-shadow: 0px 1px 3px 0px #ddd;
 		}
 		.header-mob__main {
-			display: flex;
-		    flex-flow: row wrap;
+			// display: flex;
+		    // flex-flow: row wrap;
 		    min-height: calc(100vh - 119px);
 		}
 	}
@@ -563,14 +565,17 @@ body {
 	}
 	&__utility {
 		padding-top: 20px;
-		padding-bottom: 10px;
 		width: 100%;
+		padding-bottom: 75px;
 	}
 	&__social {
 		width: 100%;
 		align-self: flex-end;
 		padding: 15px 30px;
 		position: relative;
+		position: absolute;
+		bottom: 0;
+		left: 0;
 		&::before {
 			content: '';
 			position: absolute;

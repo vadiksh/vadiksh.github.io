@@ -47,10 +47,10 @@ $(function() {
 	$('.header .hamburger').click(function() {
 		if (!$(this).hasClass('active')) {
 			$(this).addClass('active');
-			$('.header-mob__search, .header-mob__container').addClass('active');
+			$('.header-mob__search, .header-mob').addClass('active');
 		} else {
 			$(this).removeClass('active');
-			$('.header-mob__search, .header-mob__container').removeClass('active');
+			$('.header-mob__search, .header-mob').removeClass('active');
 			// $('.header-mob, .header-mob__main, .header-mob__subfunds, .header-mob__submenus').removeClass('active hidden');
 			// $('.header-mob__submenus > li, .header-mob__subfunds > li').removeClass('active');
 		}
