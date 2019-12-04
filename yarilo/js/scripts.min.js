@@ -16,6 +16,11 @@ $(function() {
 		$('.clothes .container').css({
 			"height": height
 		})
+		gtag('event', 'click', {
+		  'event_category' : 'fdsfs',
+		  'event_label' : 'fsfs'
+		});
+		// dataLayer.push({'event': 'event-to-ga', 'eventCategory' : 'Jobs', 'eventAction' : 'clicked'});
 	})
 
 	$('.back-to-category').click(function() {
@@ -108,22 +113,35 @@ $(function() {
 	//     prefix: '+38',
 	//     delimeters: [' ', ' ', '-', '-']
 	// });
+	$('.items__info .button').click(function () {
+		$('.form-item').val($(this).attr('data-item'));
+		$('body,html').animate({
+			scrollTop: $('.header__order').offset().top
+		},500)
+	})
 	$('form').submit(function(e) {
- 		// e.preventDefault();
- 		// formSubmit($(this));
+ 		e.preventDefault();
+ 		formSubmit($(this));
  	});
-
+	$('.header__banner').owlCarousel({
+		loop:true,
+		autoplay: true,
+		dots: true,
+		nav: false,
+		items: 1,
+		responsiveClass:true
+		// autoplayHoverPause: true
+	})
  	function formSubmit(form) {
 			var $form = form,
-	    	url = 'https://script.google.com/macros/s/AKfycbw2kTmyvLUy-TqYxaNKS2z8IGxJKzrsCH7BIgFcG-DXFh_4-zs/exec';
+	    	url = 'https://script.google.com/macros/s/AKfycbzbbKUQBzMNmTtZqQMyTOHI1zSNj1sXBPKY2u_0lDUdgaev_8Jp/exec';
 			$.ajax({
 			    url: url,
 			    method: "GET",
 			    dataType: "json",
 			    data: $form.serialize(),
 			    success: function(response) {
-			    	console.log('form submitted');
- 					// window.location.href = 'https://kvadrat.store/thanks.html';
+					$('.')
 			    }
 			})	
  	}
