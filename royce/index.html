@@ -14,33 +14,80 @@
 </head>
 <body>
 
-	<header class="header">
+	<header class="headerMenu">
 		<div class="container flex">
-			<a data-ga-label="Redirect-home" href="/" class="header__logo">
+			<a data-ga-label="Redirect-home" href="/" class="headerMenu__logo">
 				<img src="img/logo.svg" alt="Royce Investment Partners">
 			</a>
-			<div>
-				<ul class="header__utility">
-					<li><a href="/contact/">Contact us</a></li>
-					<li><a href=""></a>Shareholder Account Access
-						<ul class="header__utility-dropdown">
+			<div class="headerMenu__top-menu"> 
+				<div class="headerMenu__search">
+					<input type="text" placeholder="Search royceinvest.com">
+				</div>
+				<ul class="headerMenu__utility flex">
+					<li class="headerMenu__utility-search">
+						
+						
+					</li>
+					<li><a class="headerMenu__utility-link" href="/contact/">Contact us</a></li>
+					<li>
+						<a class="headerMenu__utility-link">Shareholder Account Access</a>
+						<ul class="headerMenu__utility-dropdown shareholder-dropdown">
 							<span>Log in or Open New Account</span>
-							<li><a href=""></a></li>
-							<li><a href=""></a></li>
+							<li><a href="" class="external">Shareholder Account Access</a></li>
+							<li><a href="">Closed-End Fund Account Access</a></li>
 						</ul>
 					</li>
-					<li>Login</li>
+					<li><a class="headerMenu__utility-link">Login</a>
+						<div class="headerMenu__utility-dropdown profile-dropdown">
+							<label for="email">Let’s get started</label>
+							<form action="">
+								<div class="flex">
+									<input type="email" placeholder="Your e-mail">
+									<button>GO</button>
+								</div>
+								<label for="check">
+									<input type="checkbox" id="check" class="checkbox"> Subscribe to Our Newsletter
+									<span class="checkmark"></span>
+
+								</label>
+							</form>
+							<ul>
+								<li>Customize your fund preferences</li>
+								<li>Manage your subscriptions</li>
+								<li>Access financial professional content</li>
+							</ul>
+						</div>
+
+						<div class="headerMenu__utility-dropdown profile-dropdown signed">
+							<p class="welcome">Welcome <span class="name">XXXX</span> <span class="second-name">XXXXX</span></p>
+							<a href="" class="profile">Your profile</a>
+							<div>
+								<h5>Your Investments</p>
+								<a href="">Your Performance</a>
+								<a href="">Your Literature</a>
+							</div>
+							<div>
+								<h5>Your Royce Contact</h5>
+								<p class="contact-name">Kevin Hofmann</p>
+								<p class="contact-post">Client Service Associate</p>
+								<a class="contact-tel" href="tel:+000000000">212 4590098</a>
+								<a class="contact-email" href="mailto:khofmann@roycefunds.com">khofmann@roycefunds.com</a>
+							</div>
+							<a href="">Sign Out</a>
+						</div>
+					</li>
 				</ul>
-				<div class="hamburger">
-					<span></span>
-				</div>
+			</div>
+			
+			<div class="hamburger">
+				<span></span>
 			</div>
 		</div>
-		<nav class="header__nav">
-			<ul  class="header__nav-list header__nav-container">
+		<nav class="headerMenu__nav">
+			<ul  class="headerMenu__nav-list headerMenu__nav-container">
 				<li>
-					<a class="header__nav-link" href="">Strategies</a>
-					<div class="header__nav-dropdown">
+					<a class="headerMenu__nav-link">Strategies</a>
+					<div class="headerMenu__nav-dropdown">
 						<ul>
 							<li><a href="">Strategy Overview</a></li>
 							<li><a href="">Separate Accounts</a></li>
@@ -49,30 +96,30 @@
 							<li><a href="">Institutional Fund Share Classes</a></li>
 							<li><a href="">UCITS</a></li>
 						</ul>
-						<a href="" class="header__nav-box">
+						<a href="" class="headerMenu__nav-box">
 							<span>ENGAGE WITH US</span>
 							<p>Connect with our Institutional Client Service Team.</p>
 						</a>
 					</div>
 				</li>
 				<li>
-					<a class="header__nav-link" href="">Funds</a>
-					<div class="header__nav-dropdown flex header__nav-sub">
+					<a class="headerMenu__nav-link">Funds</a>
+					<div class="headerMenu__nav-dropdown flex headerMenu__nav-sub">
 						<div>
 							<ul>
 								<li><a href="">Prices & Performance</a></li>
-								<li class="header__nav-sublink"><a href="">Open-End Funds</a></li>
-								<li class="header__nav-sublink"><a href="">Closed-End Funds</a></li>
-								<li class="header__nav-sublink"><a href="">Annuity Portfolios</a></li>
-								<li class="header__nav-sublink"><a href="">ETFs & SMAs</a></li>
-								<li class="header__nav-sublink"><a href="">Resources</a></li>
+								<li class="headerMenu__nav-sublink"><a href="">Open-End Funds</a></li>
+								<li class="headerMenu__nav-sublink"><a href="">Closed-End Funds</a></li>
+								<li class="headerMenu__nav-sublink"><a href="">Annuity Portfolios</a></li>
+								<li class="headerMenu__nav-sublink"><a href="">ETFs & SMAs</a></li>
+								<li class="headerMenu__nav-sublink"><a href="">Resources</a></li>
 							</ul>
-							<a href="" class="header__nav-box">
+							<a href="" class="headerMenu__nav-box">
 								<span>INVEST WITH US</span>
 								<p>Learn how to invest directly or with your Financial Advisor.</p>
 							</a>
 						</div>
-						<ul class="header__nav-submenu">
+						<ul class="headerMenu__nav-submenu">
 							<li>
 								<ul>
 									<li><a href="">Dividend Value</a></li>
@@ -93,7 +140,7 @@
 									<li><a href="">Royce Value Trust</a></li>
 									<li><a href="">Royce Global Value Trust</a></li>
 								</ul>
-								<a href="" class="header__nav-box">
+								<a href="" class="headerMenu__nav-box">
 									<span>CLOSED-END RESOURCES</span>
 									<p>Portfolios, Purchasing, Drip Plan, Section 16 Fillings, Section 19a Notices, Proxy Statements</p>
 								</a>
@@ -103,7 +150,7 @@
 									<li><a href="">Capital Small-Cap</a></li>
 									<li><a href="">Capital Micro-Cap</a></li>
 								</ul>
-								<a href="" class="header__nav-box">
+								<a href="" class="headerMenu__nav-box">
 									<span>EXPLORE</span>
 									<p>Comapre Small-Cap and Micro-Cap, Performance, Risk, Composition, Distributions, Fees & Expenses</p>
 								</a>
@@ -132,8 +179,8 @@
 					</div>
 				</li>
 				<li>
-					<a class="header__nav-link" href="">Insights & News</a>
-					<div class="header__nav-dropdown flex header__nav-2cols">
+					<a class="headerMenu__nav-link">Insights & News</a>
+					<div class="headerMenu__nav-dropdown flex headerMenu__nav-2cols">
 						<div>
 							<h4>INSIGHTS
 								<a href="">View All</a>
@@ -143,7 +190,7 @@
 								<li><a href="">Investment Focus</a></li>
 								<li><a href="">Small-Cap Research</a></li>
 							</ul>
-							<a href="" class="header__nav-box">
+							<a href="" class="headerMenu__nav-box">
 								<span>SUBSCRIBE</span>
 								<p>Our latest insights, news, and media appearances.</p>
 							</a>
@@ -152,7 +199,7 @@
 							<h4>News
 								<a href="">View All</a>
 							</h4>
-							<ul class="header__nav-news">
+							<ul class="headerMenu__nav-news">
 								<li><a href="">Jay Kaplan On Nasdaq: The Case For Small-Cap Footwear</a></li>
 								<li><a href="">2019 Distribution Estimates for Our Open-End Funds</a></li>
 								<li><a href="">Mark Rayner Elevated to Leadership Role for International Premier</a></li>
@@ -161,8 +208,8 @@
 					</div>
 				</li>
 				<li>
-					<a class="header__nav-link" href="">About Us</a>
-					<div class="header__nav-dropdown flex header__nav-2cols">
+					<a class="headerMenu__nav-link">About Us</a>
+					<div class="headerMenu__nav-dropdown flex headerMenu__nav-2cols">
 						<div>
 							<h4>ROYCE INVESTMENT PARTNERS</h4>
 							<ul>
@@ -171,7 +218,7 @@
 								<li><a href="">Our History</a></li>
 								<li><a href="">ESG</a></li>
 							</ul>
-							<a href="" class="header__nav-box">
+							<a href="" class="headerMenu__nav-box">
 								<span>CONTACT US</span>
 								<p>Connect with us via email, phone or mail.</p>
 							</a>
@@ -191,27 +238,27 @@
 			</ul>
 		</nav>
 
-		<div class="header-mob__search">
+		<div class="headerMenu-mob__search">
 			<input type="text" placeholder="Search">
 		</div>
-		<div class="header-mob">
-			<div class="header-mob__container">
-				<div class="header-mob__main">
+		<div class="headerMenu-mob">
+			<div class="headerMenu-mob__container">
+				<div class="headerMenu-mob__main">
 					<nav>
-						<ul class="header-mob__nav mob-list">
+						<ul class="headerMenu-mob__nav mob-list">
 							<li><a>Strategies</a></li>
 							<li><a>Funds</a></li>
 							<li><a>Insights & News</a></li>
 							<li><a>About us</a></li>
 						</ul>
 					</nav>
-					<ul class="header-mob__utility mob-list">
+					<ul class="headerMenu-mob__utility mob-list">
 						<li><a href="">Contact us</a></li>
 						<li><a href="" class="external">Shareholder Account Access</a></li>
 						<li><a href="" class="external">Closed-End-Fund Account Access</a></li>
 						<li><a href="">Personalize</a></li>
 					</ul>
-					<div class="header-mob__social flex">
+					<div class="headerMenu-mob__social flex">
 						<ul>
 							<li><a href=""><img src="img/social1.svg" alt=""></a></li>
 							<li><a href=""><img src="img/social2.svg" alt=""></a></li>
@@ -221,9 +268,9 @@
 					</div>
 				</div>
 
-				<ul class="header-mob__submenus">
+				<ul class="headerMenu-mob__submenus">
 					<li>
-						<h3 class="header-mob__back">Strategies</h3>
+						<h3 class="headerMenu-mob__back">Strategies</h3>
 						<ul class="mob-list">
 							<li><a href="">Strategy Overview</a></li>
 							<li><a href="">Separate Accounts</a></li>
@@ -232,28 +279,28 @@
 							<li><a href="">Institutional Fund Share Classes</a></li>
 							<li><a href="">UCITS</a></li>
 						</ul>
-						<a href="" class="header__nav-box">
+						<a href="" class="headerMenu__nav-box">
 							<span>ENGAGE WITH US</span>
 							<p>Connect with our Institutional Client Service Team.</p>
 						</a>
 					</li>
 					<li>
-						<h3 class="header-mob__back">Funds</h3>
+						<h3 class="headerMenu-mob__back">Funds</h3>
 						<ul class="mob-list">
 							<li><a href="">Prices & Performance</a></li>
-							<li class="header-mob__sublink"><a href="">Open-End Funds</a></li>
-							<li class="header-mob__sublink"><a href="">Closed-End Funds</a></li>
-							<li class="header-mob__sublink"><a href="">Annuity Portfolios</a></li>
-							<li class="header-mob__sublink"><a href="">ETFs & SMAs</a></li>
-							<li class="header-mob__sublink"><a href="">Resources</a></li>
+							<li class="headerMenu-mob__sublink"><a href="">Open-End Funds</a></li>
+							<li class="headerMenu-mob__sublink"><a href="">Closed-End Funds</a></li>
+							<li class="headerMenu-mob__sublink"><a href="">Annuity Portfolios</a></li>
+							<li class="headerMenu-mob__sublink"><a href="">ETFs & SMAs</a></li>
+							<li class="headerMenu-mob__sublink"><a href="">Resources</a></li>
 						</ul>
-						<a href="" class="header__nav-box">
+						<a href="" class="headerMenu__nav-box">
 							<span>INVEST WITH US</span>
 							<p>Learn how to invest directly or with your Financial Advisor.</p>
 						</a>
 					</li>
 					<li>
-						<h3 class="header-mob__back">Insights & News</h3>
+						<h3 class="headerMenu-mob__back">Insights & News</h3>
 						<h4>INSIGHTS
 							<a href="">View All</a>
 						</h4>
@@ -266,19 +313,19 @@
 							<h4>News
 								<a href="">View All</a>
 							</h4>
-							<ul class="header__nav-news">
+							<ul class="headerMenu__nav-news">
 								<li><a href="">Jay Kaplan On Nasdaq: The Case For Small-Cap Footwear</a></li>
 								<li><a href="">2019 Distribution Estimates for Our Open-End Funds</a></li>
 								<li><a href="">Mark Rayner Elevated to Leadership Role for International Premier</a></li>
 							</ul>
-							<a href="" class="header__nav-box">
+							<a href="" class="headerMenu__nav-box">
 								<span>SUBSCRIBE</span>
 								<p>Our latest insights, news, and media appearances.</p>
 							</a>
 						</div>
 					</li>
 					<li>
-						<h3 class="header-mob__back">About us</h3>
+						<h3 class="headerMenu-mob__back">About us</h3>
 						<ul class="mob-list">
 							<li><a href="">Our people</a></li>
 							<li><a href="">Our Firm</a></li>
@@ -286,16 +333,16 @@
 							<li><a href="">Our History</a></li>
 							<li><a href="">ESG</a></li>
 						</ul>
-						<a href="" class="header__nav-box">
+						<a href="" class="headerMenu__nav-box">
 							<span>CONTACT US</span>
 							<p>Connect with us via email, phone or mail.</p>
 						</a>
 					</li>
 				</ul>
 
-				<ul class="header-mob__subfunds">
+				<ul class="headerMenu-mob__subfunds">
 					<li>
-						<h3 class="header-mob__back">
+						<h3 class="headerMenu-mob__back">
 							<span>Funds</span>
 							/ Open-End Funds
 						</h3>
@@ -313,7 +360,7 @@
 						</ul>
 					</li>
 					<li>
-						<h3 class="header-mob__back">
+						<h3 class="headerMenu-mob__back">
 							<span>Funds</span>
 							/ Closed-End Funds
 						</h3>
@@ -322,13 +369,13 @@
 							<li><a href="">Royce Value Trust</a></li>
 							<li><a href="">Royce Global Value Trust</a></li>
 						</ul>
-						<a href="" class="header__nav-box">
+						<a href="" class="headerMenu__nav-box">
 							<span>CLOSED-END RESOURCES</span>
 							<p>Portfolios, Purchasing, Drip Plan, Section 16 Fillings, Section 19a Notices, Proxy Statements</p>
 						</a>
 					</li>
 					<li>
-						<h3 class="header-mob__back">
+						<h3 class="headerMenu-mob__back">
 							<span>Funds</span>
 							/ Annuity Portfolios
 						</h3>
@@ -336,13 +383,13 @@
 							<li><a href="">Capital Small-Cap</a></li>
 							<li><a href="">Capital Micro-Cap</a></li>
 						</ul>
-						<a href="" class="header__nav-box">
+						<a href="" class="headerMenu__nav-box">
 							<span>EXPLORE</span>
 							<p>Comapre Small-Cap and Micro-Cap, Performance, Risk, Composition, Distributions, Fees & Expenses</p>
 						</a>
 					</li>
 					<li>
-						<h3 class="header-mob__back">
+						<h3 class="headerMenu-mob__back">
 							<span>Funds</span>
 							/ ETFs & SMAs
 						</h3>
@@ -357,7 +404,7 @@
 						</div>
 					</li>
 					<li>
-						<h3 class="header-mob__back">
+						<h3 class="headerMenu-mob__back">
 							<span>Funds</span>
 							/ Resources
 						</h3>
@@ -377,52 +424,289 @@
 	</header>
 
 
-	<ul class="flex dummy">
-		<li>
-			<p>
-				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui voluptate ducimus placeat veniam ad esse ipsam at pariatur eum unde cumque, enim impedit quis officiis! Soluta doloremque eaque eos quaerat.</span>
-				<span>Maiores ex, omnis. Asperiores minima nobis animi deleniti, perferendis totam unde, porro ipsum nisi rem laboriosam quidem excepturi illum recusandae? Maxime, quisquam error possimus nisi eaque quae modi excepturi? Est.</span>
-				<span>Perspiciatis dolorem, ipsam facilis inventore officia corporis facere minus. Ipsam sequi velit eligendi quae distinctio, maiores tempora architecto neque ullam est eos beatae sit excepturi, eius quisquam ab, reprehenderit numquam!</span>
-				<span>Aliquam veniam iure cum earum, tenetur voluptatem eveniet fugit assumenda minus vero. Maiores debitis quas obcaecati nulla aliquid dolores, iure ex sit labore ipsam? Natus, corrupti, facilis. Dignissimos, saepe, enim!</span>
-				<span>Tenetur minus animi architecto alias incidunt nobis nostrum, debitis repudiandae ipsa, ducimus voluptatem sequi quisquam sint, aperiam similique accusantium molestiae adipisci ea provident minima natus dicta vel deserunt. Voluptatibus, placeat.</span>
-				<span>Repellendus facilis deserunt amet, deleniti. Dolorum nulla molestias sint consequatur magni, quia nam voluptatibus necessitatibus facilis ex fuga, cum ut voluptates officiis expedita aliquid sapiente. Maxime fuga, architecto fugiat dolore.</span>
-				<span>Repellendus soluta, dignissimos possimus magni itaque quae ab molestiae fugit aspernatur fuga iusto doloribus quibusdam quos, rerum excepturi mollitia incidunt maxime veniam explicabo ullam reprehenderit. Excepturi quibusdam commodi officiis vel.</span>
-			</p>
-		</li>
-		<li>
-			<p>
-				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla praesentium corporis unde ab, labore minima. Obcaecati, veritatis quos totam odit natus suscipit aperiam facere ipsum, eius sit sint. Tempore, fugit.</span>
-				<span>Cum ex dolor aliquam fugiat earum reprehenderit exercitationem, ducimus optio commodi, rem maxime perferendis, eius numquam voluptate asperiores accusamus unde. Accusantium labore aut expedita sapiente ipsum quae deleniti culpa, aspernatur!</span>
-				<span>Asperiores voluptatem saepe quae nisi tempora nemo doloremque perspiciatis sunt molestiae ipsa provident unde architecto magnam neque tenetur nobis, cumque commodi, adipisci necessitatibus. Animi, vitae molestias natus mollitia repellat earum.</span>
-				<span>Adipisci vel id, natus ipsa ipsam ullam quod, voluptate placeat illum, dolorum aliquid. Sint eligendi aliquam quod, provident debitis, necessitatibus commodi laboriosam quae exercitationem et praesentium vero, asperiores obcaecati, dignissimos!</span>
-				<span>Magnam ut odit quibusdam blanditiis nostrum inventore placeat voluptatibus voluptatem, nulla dicta adipisci eos aspernatur dolore earum molestias libero modi, laboriosam. Quibusdam eveniet voluptas nulla magni ipsa omnis voluptatum possimus.</span>
-				<span>Assumenda hic adipisci aliquam error mollitia nobis blanditiis eum officia ipsa qui deleniti ab rem optio natus id veritatis modi cumque perferendis, esse repudiandae quos ducimus dolorem saepe! Veniam, optio.</span>
-				<span>Quia voluptatibus cupiditate, incidunt voluptates voluptate. Magnam provident, laudantium quia consequatur mollitia corrupti debitis doloremque corporis ipsam rerum iste vero expedita pariatur quasi vel aut fugiat necessitatibus beatae odit ratione!</span>
-			</p>
-		</li>
-		<li>
-			<p>
-				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, suscipit. Sint optio aliquid recusandae adipisci odio beatae neque veritatis repellendus, aliquam obcaecati consequuntur numquam ullam, quaerat voluptatibus error suscipit eius.</span>
-				<span>Exercitationem, nostrum. Iste ea minima, ex officia eius vitae beatae molestias aut adipisci dicta, voluptate temporibus odio iusto eveniet esse voluptas rerum dolore magnam eaque, voluptatibus eum labore aliquid? Esse.</span>
-				<span>Tenetur deserunt quidem dolorem modi, odit, labore fugiat eveniet, excepturi illo voluptas, similique autem quia ad repellat quisquam unde earum quos nostrum voluptatum necessitatibus voluptatem blanditiis maiores velit aspernatur. Delectus.</span>
-				<span>Ea amet quos illum sunt sapiente saepe expedita laudantium quod facere, quaerat aliquid, officiis eos possimus quis autem asperiores corrupti assumenda, minima architecto. Eveniet quam, consequuntur distinctio eum iusto in.</span>
-				<span>Ullam necessitatibus porro tempore vel a sed quod, totam incidunt iste cumque in similique iusto ducimus qui ut minima. Omnis qui iste sunt earum, eligendi optio in deleniti harum quidem?</span>
-				<span>Distinctio tempore veritatis, quae excepturi animi doloremque reiciendis laudantium ab perspiciatis eius libero, recusandae id nostrum beatae sed? Ipsam optio atque delectus quaerat, voluptates laudantium quo reiciendis cum placeat facere.</span>
-				<span>Libero omnis nisi, voluptatum saepe officia accusamus aliquam iure similique dolores molestiae iusto perspiciatis, ipsum expedita dolorum, possimus mollitia nostrum velit, laboriosam doloribus. Voluptate sint corrupti eligendi veniam debitis nisi!</span>
-			</p>
-		</li>
-		<li>
-			<p>
-				<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos corrupti quisquam illum labore fugit aperiam excepturi accusamus nostrum, amet temporibus blanditiis et, praesentium quia cum dolorum voluptatem expedita sequi. Omnis.</span>
-				<span>Quasi dignissimos autem iure inventore eligendi nulla animi doloribus voluptatem, odio. Incidunt dolores molestiae ullam quidem velit iusto adipisci quibusdam nam, ipsa, est culpa vel facilis doloribus debitis temporibus nostrum.</span>
-				<span>Unde nihil quos odit illo dicta iste voluptas suscipit asperiores ut provident adipisci maiores quidem illum laudantium, sapiente iure alias ullam facilis, veniam deserunt ab cumque quis. Voluptas, impedit dignissimos.</span>
-				<span>Eum et consequatur ab neque eveniet culpa nam accusamus, velit cupiditate. Iusto eius ipsa fugiat, aliquid? Distinctio in, sed neque odio consectetur reiciendis optio dolore dolorem unde nesciunt voluptatum, iure!</span>
-				<span>Voluptas quaerat accusamus vero quo fuga in perspiciatis sunt numquam temporibus! Nisi sunt corporis necessitatibus quis atque ratione tenetur ullam tempore dicta fugiat sint unde, accusamus ea saepe deserunt mollitia!</span>
-				<span>Doloribus minus, quo similique sed eos facilis explicabo dolorem quibusdam numquam aspernatur ullam commodi, modi ipsam nihil porro labore sequi necessitatibus temporibus officia eius perferendis vitae velit sunt tempore? Accusantium.</span>
-				<span>Ipsa doloribus veniam magnam ex sit aut minima quas, consequuntur nemo. Voluptatum rerum hic eaque iusto doloremque perspiciatis unde. Totam quis ullam corporis perferendis consequuntur ex repudiandae tenetur facere blanditiis!</span>
-			</p>
-		</li>
-	</ul>
+	<section class="strategies">
+		<div class="container flex strategies__header">
+			<h2>Strategies</h2>
+			<p>"Our goal is to deliver a great small-cap investment experience to each of our clients across all of our vehicles and strategies." <span>- Chuck Royce, Founder</span></p>
+		</div>
+		<div class="strategies__nav">
+			<ul class="container flex">
+				<span class="button-bg"></span>
+				<li class="active">Overview</li>
+				<li>Our Vehicles</li>
+				<li>Engage With Us</li>
+			</ul>
+		</div>
+		<div class="strategies__container container">
+			<div class="overview active">
+				<h3 class="mob-title">Overview
+					<span></span></h3>
+				<ul class="strategies__flex mob-wrapper">
+					<li>
+						<img src="img/overview/1.jpg" alt="">
+						<h4>SMALL-CAP INTERNATIONAL PREMIER QUALITY STRATEGY</h4>
+						<p>The strategy follows a high-quality core approach focuses on what Royce believes are “premier” international small-cap companies - those with discernible competitive advantages, high returns on capital, and a sustainable, moat-like franchise.</p>
+						<h5>Management</h5>
+						<a href="">Mark Rayner, CA</a>
+						<h5>Composite Benchmark</h5>
+						<p>MSCI ACWI ex-US Small Cap Index</p>
+						<h5 class="lock">Available Vehicle Factsheets</h5>
+						<a href="" class="pdf">Separate Account</a>
+						<a href="" class="pdf">Institutional Fund Share Class</a>
+					</li>
+					<li>
+						<img src="img/overview/2.jpg" alt="">
+						<h4>SMALL-CAP DEEP VALUE STRATEGY</h4>
+						<p>The strategy follows a theme-driven, deep value approach that focuses on stocks with low P/S and P/B ratios while emphasizing turnarounds and special situations.</p>
+						<h5>Management</h5>
+						<div class="management-links">
+							<a href="">Bill Hench,</a>
+							<a href="">Rob Kosowsky,</a>
+							<a href="">Suzanne Franks</a>
+						</div>
+						<h5>Composite Benchmark</h5>
+						<p>Russell 2000 Index</p>
+						<h5 class="lock">Available Vehicle Factsheets</h5>
+						<a href="" class="pdf">Separate Account</a>
+						<a href="" class="pdf">Collective Trust</a>
+						<a href="" class="pdf">Institutional Fund Share Class</a>
+						<h5>Additional Vehicles</h5>
+						<a href="" class="info">Commingled LLC</a>
+						<a href="" class="info">UCITs</a>
+					</li>
+					<li>
+						<img src="img/overview/3.jpg" alt="">
+						<h4>SMALL-CAP PREMIER QUALITY STRATEGY</h4>
+						<p>The strategy follows a high-quality core approach that focuses on what Royce believes are “premier” small-cap companies—those with discernible competitive advantages, high returns on capital, and a sustainable, moat-like franchise.</p>
+						<h5>Management</h5>
+						<div class="management-links">
+							<a href="">Lauren Romeo, CFA,</a>
+							<a href="">Chuck Royce,</a>
+							<a href="">Steven McBoyle</a>
+						</div>
+						<h5>Composite Benchmark</h5>
+						<p>Russell 2000 Index</p>
+						<h5 class="lock">Available Vehicle Factsheets</h5>
+						<a href="" class="pdf">Separate Account</a>
+						<a href="" class="pdf">Institutional Fund Share Class</a>
+					</li>
+					<li>
+						<img src="img/overview/4.jpg" alt="">
+						<h4>SMALL-CAP SPECIAL EQUITY STRATEGY</h4>
+						<p>The strategy follows an absolute value approach to stock selection, one that attempts to combine classic value analysis, the identiﬁcation of good businesses, and accounting cynicism.</p>
+						<h5>Management</h5>
+						<div class="management-links">
+							<a href="">Charlie Dreifus, CFA,</a>
+							<a href="">Steven McBoyle</a>
+						</div>
+						<h5>Composite Benchmark</h5>
+						<p>Russell 2000 Index</p>
+						<h5 class="lock">Available Vehicle Factsheets</h5>
+						<a href="" class="pdf">Separate Account</a>
+						<a href="" class="pdf">Institutional Fund Share Class</a>
+					</li>
+				</ul>
+			</div>
+			<div class="vehicles">
+				<h3 class="mob-title">Our Vehicles <span></span></h3>
+				<ul class="vehicles__list mob-wrapper">
+					<li>
+						<h3>Separate Accounts</h3>
+						<ul class="strategies__flex vehicles__flex">
+							<li>
+								<span class="label">International Small-Cap Quality Strategy</span>
+								<h4>International Small-Cap Quality Composite</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur omnis sed corporis quo cum adipisci, minus dolorum cumque quia harum aliquid accusantium, repudiandae architecto! Eligendi incidunt mollitia quae dignissimos! Beatae!</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							<li>
+								<span class="label">Small-Cap Deep Value Strategy</span>
+								<h4>Small-Cap Deep Value Composite</h4>
+								<p>Sint mollitia, alias placeat debitis veritatis non tempora aperiam! Labore dolorem iste veritatis non similique asperiores sequi impedit, cumque perferendis quo consequatur eligendi tempora, earum ex quam at soluta repellat.</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							<li>
+								<span class="label">Small-Cap Premier Quality Strategy</span>
+								<h4>Small-Cap Premier Quality Composite</h4>
+								<p>Mollitia dolore, incidunt est obcaecati, aliquam temporibus. Amet blanditiis quos magnam veritatis, quidem temporibus unde distinctio, fugit ipsa consequuntur eligendi vero minima voluptatem beatae, quam officia, delectus suscipit possimus dolores.</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							<li>
+								<span class="label">Small-Cap Special Equity Strategy</span>
+								<h4>Small-Cap Special Equity Composite</h4>
+								<p>Ipsam beatae, autem temporibus suscipit adipisci consequatur molestias totam perferendis explicabo, vero, aliquid, earum placeat libero! Totam deleniti aut consequuntur temporibus officiis, dolorem, earum, consectetur sit, natus numquam quibusdam eos.</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Collective Trusts</h3>
+						<ul class="strategies__flex vehicles__flex">
+							<li>
+								<span class="label">Small-Cap Deep Value Strategy</span>
+								<h4>Royce Opportunity Collective Trust</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum ullam sunt, tenetur nihil aperiam iste amet quidem, natus dicta maiores odio recusandae iusto aspernatur architecto iure, quam voluptatum, nulla veritatis?</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							<li>
+								<span class="label">Small-Cap Deep Value Strategy</span>
+								<h4>Royce Total Return Collective Trust</h4>
+								<p>Asperiores voluptatibus, quidem consectetur, possimus numquam, esse id eaque optio sint veritatis, consequuntur. Natus cupiditate nisi quia voluptate pariatur, aspernatur facilis, dolorem tempore possimus culpa recusandae blanditiis eveniet minus impedit.</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							
+						</ul>
+					</li>
+					<li>
+						<h3>Institutional Fund Share Classes</h3>
+						<ul class="strategies__flex vehicles__flex">
+							<li>
+								<span class="label">International Small-Cap Quality Strategy</span>
+								<h4>International Small-Cap Quality Composite</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ipsam ex nihil dolores minus. Nesciunt non, placeat, dolorum sequi voluptas laborum quod officiis provident, natus suscipit, voluptatum nostrum itaque consequatur.</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							<li>
+								<span class="label">Small-Cap Deep Value Strategy</span>
+								<h4>Small-Cap Deep Value Composite</h4>
+								<p>Commodi accusantium iusto rem asperiores sed aspernatur, nihil tempora id molestias, voluptates iste sint veniam dicta distinctio inventore, suscipit sequi! Repudiandae consequatur a adipisci nostrum est fugit iusto necessitatibus magni!</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							<li>
+								<span class="label">Small-Cap Deep Value Strategy</span>
+								<h4>Small-Cap Deep Value Composite</h4>
+								<p>Iure tenetur, quia beatae, inventore ex quisquam deleniti rem minus natus similique dolorem cumque debitis nemo. Consequuntur quis mollitia, est quod fugiat reiciendis quo laborum, minima repudiandae suscipit expedita, dolore.</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+							<li>
+								<span class="label">Small-Cap Special Equity Strategy</span>
+								<h4>Small-Cap Special Equity Composite</h4>
+								<p>Eaque ducimus, temporibus. Accusamus esse enim adipisci repellat asperiores animi, ullam rem delectus! Ea repellendus cupiditate cum ad, enim aperiam labore sapiente doloremque quo consectetur voluptate natus numquam similique facilis!</p>
+								<h5>Management</h5>
+								<a href="">Mark Rayner, CA</a>
+								<h5>Management</h5>
+								<p>Russell 2000 Index</p>
+								<a href="" class="lock factsheet">Factsheet</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h3>Additional Vehicles</h3>
+						<div class="vehicles__flex-2cols">
+							<div>
+								<h4>Commingled LLC</h4>
+								<p>A small-cap deep value strategy in a commingled fund for endowments, foundations, pension plans, and other institutional investors. Please contact our Institutional Client Service Team via email <a href="mailto:institutional@royceinvest.com">institutional@royceinvest.com</a> or by phone at 800-337-6923 for more information.</p>
+							</div>
+							<div>
+								<h4>UCITs</h4>
+								<p>Two sub-advised portfolios in small-cap deep value and small-cap quality strategies available in UCITs structure through Legg Mason for non-US residents.  For more information, please go to <a href="">Legg Mason’s website</a></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="engage">
+				<h3 class="mob-title">Engage With Us <span></span></h3>
+				<div class="engage__wrapper mob-wrapper">
+					<div class="engage__form flex">
+						<div class="engage__form-info">
+							<h4>Engage With Us</h4>
+							<p>Discover why institutions choose to partner with us for their small-cap allocation needs. We offer several strategies in order to best ﬁt your clients' needs. Each is available in vehicles suitable for Corporate and Public Pensions, Foundations</p>
+							<span>When you partner with Royce, you can:</span>
+							<ul>
+								<li>Schedule conference calls with our portfolio managers</li>
+								<li>Meet with portfolio specialists in our office or yours</li>
+								<li>Receive quarterly attribution and commentary online or via email</li>
+								<li>Subscribe to receive our latest small-cap insights</li>
+							</ul>
+							<a class="engage__button open-form">Open contact form</a>
+						</div>
+
+						<form action="">
+							<div class="engage__form-wrapper">
+								<div class="close"><span></span></div>
+								<h4>How can we help you?</h4>
+								<label for="input1">First name</label>
+								<input type="text" id="input1">
+								<label for="input2">Last name</label>
+								<input type="text" id="input2">
+								<label for="input3">Email Address</label>
+								<input type="email" id="input3">
+								<label for="input4">Message</label>
+								<textarea rows="6" id="input4"></textarea>
+								<div class="checkbox-wrap">
+									<input type="checkbox" id="checkbox" class="checkbox">
+									<span class="checkmark"></span>
+									<label for="checkbox">I am a Financial Professional</label>
+									<button class="engage__button">Send</button>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+					<ul class="engage__people">
+						<li>
+							<img src="img/engage/1.jpg" alt="">
+							<a class="name">Dave Gruber, CFP</a>
+							<p class="title">Head of Sales & Client Service Mid-Atlantic</p>
+						</li>
+						<li>
+							<img src="img/engage/2.jpg" alt="">
+							<a class="name">Name, Certification</a>
+							<p class="title">Job Role Gos Here and Can Span Over More Than One Line</p>
+						</li>
+						<li>
+							<img src="img/engage/3.jpg" alt="">
+							<a class="name">Name, Certification</a>
+							<p class="title">Job Role Gos Here and Can Span Over More Than One Line</p>
+						</li>
+						<li>
+							<img src="img/engage/4.jpg" alt="">
+							<a class="name">Name, Certification</a>
+							<p class="title">Job Role Gos Here and Can Span Over More Than One Line</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</section>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="js/scripts.min.js"></script>
 
