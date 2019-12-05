@@ -35,6 +35,7 @@ $(function() {
 	var subEntered = false;
 	$('.headerMenu__nav-sublink').mouseenter(function(){
 		subEntered = true;
+		$(this).addClass('active').siblings().removeClass('active');
 		$('.headerMenu__nav-submenu').addClass('visible');
 		$('.headerMenu__nav-submenu > li').eq($(this).index('.headerMenu__nav-sublink')).addClass('active').siblings().removeClass('active');
 	})
@@ -43,6 +44,7 @@ $(function() {
 		subEntered = false;
 		setTimeout(function() {
 			if (!subEntered) {
+				that.removeClass('active');
 				$('.headerMenu__nav-submenu').removeClass('visible');
 				$('.headerMenu__nav-submenu > li').eq(that.index('.headerMenu__nav-sublink')).removeClass('active')
 			}
@@ -55,6 +57,7 @@ $(function() {
 		subEntered = false;
 		setTimeout(function() {
 			if (!subEntered) {
+				$('.headerMenu__nav-sublink').removeClass('active');
 				$('.headerMenu__nav-submenu').removeClass('visible');
 				$('.headerMenu__nav-submenu > li').removeClass('active')
 			}
@@ -93,13 +96,18 @@ $(function() {
 			$('.headerMenu-mob__submenus').removeClass('hidden');
 		}
 	})
-	var	offset,
+
+	var	offset = $('.strategies__nav li:first-of-type').offset().left.toFixed(),
 		width,
 		index;
+	$('.strategies__nav .button-bg').css({
+		"transform": "translate3d(" + offset + "px,0,0)"
+	});
+	
 	$('.strategies__nav li').click(function() {
 		index = $(this).index() - 1;
 		$(this).addClass('active').siblings().removeClass('active');
-		offset = $(this).offset().left;
+		offset = $(this).offset().left.toFixed();
 		$('.strategies__nav .button-bg').css({
 			"transform": "translate3d(" + offset + "px,0,0)"
 		});

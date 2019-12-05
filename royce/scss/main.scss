@@ -430,6 +430,12 @@ li {
 		}
 		&-sublink {
 			position: relative;
+			transition: .3s;
+			&.active {
+				background: #F1F3F7;
+				transition: .3s;
+				color: #777;
+			}
 			&::after {
 				content: '';
 				position: absolute;
@@ -694,6 +700,7 @@ li {
 	&__nav {
 		padding-bottom: 25px;
 		position: relative;
+		margin-bottom: 0;
 		&::after {
 			position: absolute;
 			bottom: 0;
