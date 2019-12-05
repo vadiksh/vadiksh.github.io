@@ -530,6 +530,7 @@ li {
 		&-2cols {
 			padding: 0;
 			> div {
+				min-width: 375px;
 				width: 375px;
 				padding: 20px 35px 30px; 
 				&:last-child {
