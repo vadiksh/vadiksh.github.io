@@ -686,6 +686,8 @@ li {
 			font-size: 18px;
 			line-height: 1;
 			color: #777;
+			height: auto;
+			margin-bottom: 0;
 			&::placeholder {
 				font-size: 18px;
 				color: #C8C8C8;
@@ -874,6 +876,7 @@ li {
 			align-items: center;
 			width: 100%;
 			padding-right: 50px;
+			margin-bottom: 0;
 		}
 		.button {
 			background: #777777;
@@ -968,12 +971,11 @@ li {
 		}
 		.button-bg {
 			position: absolute;
-			left: -15px;
+			left: 0;
 			bottom: 0;
-			width: 90px;
 			z-index: 1;
 			transition: .3s;
-			transform: translate3d(15px,0,0);
+			transform: translate3d(0,0,0);
 			&::after {
 				position: absolute;
 				left: 50%;

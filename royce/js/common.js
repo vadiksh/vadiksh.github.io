@@ -68,11 +68,11 @@ $(function() {
 		if (!$(this).hasClass('active')) {
 			$(this).addClass('active');
 			$('.headerMenu-mob__search, .headerMenu-mob').addClass('active');
-			$('body').css({"overflow": "hidden"});
+			// $('body').css({"overflow": "hidden"});
 		} else {
 			$(this).removeClass('active');
 			$('.headerMenu-mob__search, .headerMenu-mob').removeClass('active');
-			$('body').css({"overflow": "visible"});
+			// $('body').css({"overflow": "visible"});
 
 		}
 		
