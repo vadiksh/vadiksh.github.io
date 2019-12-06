@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title></title>
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="" type="image/x-icon">
+	<link rel="icon" href="" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	
+</head>
+<body>
+	<div class="container">
+		<h2>Network Latency</h2>
+		<div class="timeframe">
+			<p class="title">Choose time interval:</p>
+			<ul>
+				<li class="active 10-min">10 min</li>
+				<li class="5-min">5 min</li>
+			</ul>
+		</div>
+		<div class="graph" id="graph"></div>
+		<div class="legend">
+			<p class="title">Loss percantage:</p>
+			<ul>
+				<li><span class="color"></span><span class="label">0%</span></li>
+				<li><span class="color"></span><span class="label">1% - 5%</span></li>
+				<li><span class="color"></span><span class="label">5% - 10%</span></li>
+				<li><span class="color"></span><span class="label">10% - 15%</span></li>
+				<li><span class="color"></span><span class="label">15% - 20%</span></li>
+				<li><span class="color"></span><span class="label">20% - 50%</span></li>
+				<li><span class="color"></span><span class="label">50% - 100%</span></li>
+			</ul>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/data.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script src="js/scripts.min.js"></script>
+
+</body>
+</html>
