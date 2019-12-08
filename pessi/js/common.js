@@ -11,7 +11,7 @@ $(function() {
 	})
 	var scrolled;
 	$(window).scroll(function() {
-		scrolled = $('body, html').scrollTop() + $(window).height();
+		scrolled = $(window).scrollTop() + $(window).height();
 		console.log(scrolled);
 		if (scrolled - 200 > $('.achievements').offset().top) {
 			for (var i = 0; i < $('.achievements .number').length; i++) {
