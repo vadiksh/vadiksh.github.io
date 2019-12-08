@@ -166,6 +166,7 @@ body {
 		left: -2.5%;
 		li {
 			width: calc(100% / 3);
+			position: relative;
 			margin-bottom: 60px;
 			display: flex;
 			align-items: stretch;
@@ -173,10 +174,9 @@ body {
 			padding-right: calc(15% / 6);
 			&:hover {
 				.cards__flip {
-					transition: 2s;
+					transition: .5s;
 					opacity: 1;
-					transform-style: preserve-3d;
-					backface-visibility: visible;
+					visibility: visible;
 				}
 				.cards__flip-wrapper {
 					transform: rotate3d(0,1,0,180deg);
@@ -191,28 +191,28 @@ body {
 				
 
 			}
-			&:nth-of-type(1) > div {
+			&:nth-of-type(1) > .cards__flip-wrapper {
 				background: #5cabcb;
 			}
-			&:nth-of-type(2) > div {
+			&:nth-of-type(2) > .cards__flip-wrapper {
 				background: #4888a9;
 			}
-			&:nth-of-type(3) > div {
+			&:nth-of-type(3) > .cards__flip-wrapper {
 				background: #2a6891;
 			}
-			&:nth-of-type(4) > div {
+			&:nth-of-type(4) > .cards__flip-wrapper {
 				background: #2d9cc9;
 			}
-			&:nth-of-type(5) > div {
+			&:nth-of-type(5) > .cards__flip-wrapper {
 				background: #3e769b;
 			}
-			&:nth-of-type(6) > div {
+			&:nth-of-type(6) > .cards__flip-wrapper {
 				background: #349ac3;
 			}
-			&:nth-of-type(7) > div {
+			&:nth-of-type(7) > .cards__flip-wrapper {
 				background: #3fa0c7;
 			}
-			&:nth-of-type(8) > div {
+			&:nth-of-type(8) > .cards__flip-wrapper {
 				background: #5793ab;
 			}
 		}
@@ -238,8 +238,8 @@ body {
 		padding: 10px 0;
 		color: #fff;
 		transition: .2s;
-		transform: rotate3d(0,1,0,180deg);
-		backface-visibility: visible;
+		z-index: 3;
+		visibility: hidden;
 		> div {
 			padding: 0 10px;
 			max-width: 50%;
