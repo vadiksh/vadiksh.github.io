@@ -181,7 +181,7 @@ body {
 				.cards__flip-wrapper {
 					transform: rotate3d(0,1,0,180deg);
 					transition: .6s;
-					backface-visibility: hidden;
+					backface-visibility: visible;
 					> img {
 						opacity: 0;
 						transition: .3s;
