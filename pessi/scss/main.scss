@@ -173,15 +173,15 @@ body {
 			padding-right: calc(15% / 6);
 			&:hover {
 				.cards__flip {
-					transition: .6s;
+					transition: 2s;
 					opacity: 1;
-					z-index: 3;
 					transform-style: preserve-3d;
 					backface-visibility: visible;
 				}
 				.cards__flip-wrapper {
-					transform: rotateY(180deg);
+					transform: rotate3d(0,1,0,180deg);
 					transition: .6s;
+					backface-visibility: hidden;
 					> img {
 						opacity: 0;
 						transition: .3s;
@@ -238,7 +238,7 @@ body {
 		padding: 10px 0;
 		color: #fff;
 		transition: .2s;
-		transform: rotateY(180deg);
+		transform: rotate3d(0,1,0,180deg);
 		backface-visibility: visible;
 		> div {
 			padding: 0 10px;
