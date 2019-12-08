@@ -275,7 +275,8 @@ body {
 		visibility: hidden;
 		> div {
 			padding: 0 10px;
-			max-width: 50%;
+			width: 45%;
+			text-align: center;
 		}
 		&-label {
 			display: block;
