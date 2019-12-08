@@ -174,13 +174,13 @@ body {
 			padding-right: calc(15% / 6);
 			&:hover {
 				.cards__flip {
-					transition: .5s;
+					transition: .5s .5s;
 					opacity: 1;
 					visibility: visible;
 				}
 				.cards__flip-wrapper {
 					transform: rotate3d(0,1,0,180deg);
-					transition: .6s;
+					transition: .5s;
 					backface-visibility: visible;
 					> img {
 						opacity: 0;
