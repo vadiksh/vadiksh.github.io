@@ -188,8 +188,41 @@ body {
 						z-index: 1;
 					}
 				}
-				
+				.tooltip {
+				  visibility: visible;
+				  opacity: 1;
+				  transition: .2s;
+				}
 
+			}
+			.tooltip {
+			  visibility: hidden;
+			  width: 220px;
+			  font-size: 14px;
+			  line-height: 1.2;
+			  background-color: #555;
+			  color: #fff;
+			  text-align: center;
+			  border-radius: 6px;
+			  padding: 5px 10px;
+			  position: absolute;
+			  z-index: 1;
+			  top: 0;
+			  left: 50%;
+			  transform: translate3d(-50%,-115%,0);
+			  opacity: 0;
+			  transition: opacity 0.2s;
+			}
+
+			.tooltip::after {
+			  content: "";
+			  position: absolute;
+			  top: 100%;
+			  left: 50%;
+			  margin-left: -5px;
+			  border-width: 5px;
+			  border-style: solid;
+			  border-color: #555 transparent transparent transparent;
 			}
 			&:nth-of-type(1) > .cards__flip-wrapper {
 				background: #5cabcb;
