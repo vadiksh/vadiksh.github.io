@@ -176,6 +176,8 @@ body {
 					transition: .6s;
 					opacity: 1;
 					z-index: 3;
+					transform-style: preserve-3d;
+					backface-visibility: visible;
 				}
 				.cards__flip-wrapper {
 					transform: rotateY(180deg);
@@ -237,6 +239,7 @@ body {
 		color: #fff;
 		transition: .2s;
 		transform: rotateY(180deg);
+		backface-visibility: visible;
 		> div {
 			padding: 0 10px;
 			max-width: 50%;
