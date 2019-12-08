@@ -1,4 +1,5 @@
 @import "_mixins/font-face";
 
 @include font-face("product", "../fonts/ProductSans");
+@include font-face("century", "../fonts/CenturyGothic");
 @include font-face("product", "../fonts/ProductSans-Bold", 700);
