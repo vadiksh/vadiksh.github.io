@@ -191,7 +191,7 @@ body {
 				.tooltip {
 				  visibility: visible;
 				  opacity: 1;
-				  transition: .2s .3s;
+				  transition: .3s .35s;
 				}
 
 			}
@@ -211,7 +211,7 @@ body {
 			  left: 50%;
 			  transform: translate3d(-50%,-115%,0);
 			  opacity: 0;
-			  transition: opacity 0.2s;
+			  transition: opacity 0.3s;
 			}
 
 			.tooltip::after {
@@ -296,7 +296,7 @@ body {
 			text-align: center;
 			display: flex;
 			align-items: center;
-			transition: .4s;
+			transition: .3s;
 			backface-visibility: visible;
 		}
 	}
