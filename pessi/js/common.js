@@ -1,6 +1,14 @@
 $(function() {
 
-	
+	$('a[href*="#"]').click(function(e) {
+		e.preventDefault();
+		var href = $(this).attr('href');
+
+		$('.header__nav').removeClass('active');
+		$('body, html').animate({
+			scrollTop: $(href).offset().top
+		}, 500)
+	})
 	var scrolled;
 	$(window).scroll(function() {
 		scrolled = $('body, html').scrollTop() + $(window).height();
@@ -23,6 +31,11 @@ $(function() {
 		}
 		
 	})
-	
+	$('.hamburger').click(function() {
+		$('.header__nav').addClass('active');
+	})
+	$('.close').click(function() {
+		$('.header__nav').removeClass('active');
+	})
 	$(window).trigger('scroll');
 });

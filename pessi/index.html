@@ -14,8 +14,10 @@
 	
 </head>
 <body>
-	<header class="header">
+	<header class="header" id="top">
 		<div class="container flex">
+			<div class="hamburger"><span></span></div>
+			
 			<img class="header__logo-secondary" src="img/logo-left.png" alt="">
 			<img class="header__logo" src="img/logo.png" alt="">
 			<img class="header__logo-secondary" src="img/logo-right.png" alt="">
@@ -24,12 +26,13 @@
 			<div class="container">
 				<nav>
 					<ul class="header__nav">
-						<li><a href="">Home</a></li>
-						<li><a href="">About Pessi</a></li>
-						<li><a href="">Reforms Roadmap</a></li>
-						<li><a href="">New Initiatives</a></li>
-						<li><a href="">Careers</a></li>
-						<li><a href="">Contact us</a></li>
+						<li class="close"><span></span></li>
+						<li><a href="#top">Home</a></li>
+						<li><a href="#goals">About Pessi</a></li>
+						<li><a href="#roadmap">Reforms Roadmap</a></li>
+						<li><a href="#achievements">New Initiatives</a></li>
+						<li><a href="#">Careers</a></li>
+						<li><a href="#footer">Contact us</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -156,7 +159,7 @@
 		</div>
 		
 	</section>
-	<section class="goals">
+	<section class="goals" id="goals">
 		<div class="container">
 			<h2 class="title">Goals & Objectives</h2>
 			<ul class="goals__list flex">
@@ -205,7 +208,7 @@
 			</ul>
 		</div>
 	</section>
-	<section class="scope">
+	<section class="scope" id="roadmap">
 		<div class="container">
 			<h2 class="title">Scope & Roadmap</h2>
 			<ul class="scope__list flex">
@@ -252,26 +255,26 @@
 			</ul>
 		</div>
 	</section>
-	<section class="achievements">
+	<section class="achievements" id="achievements">
 		<div class="container">
 			<h2 class="title">PESSI Achievements</h2>
 			<ul class="achievements__list flex">
 				<li>
-					<img src="img/achievement1.png" alt="">
+					<div class="achievements__img"><img src="img/achievement1.png" alt=""></div>
 					<div class="achievements__list-info">
 						<span class="number odometer" data-number="1400">0</span>
 						<p>Registered<br> Domestic<br> Workers</p>
 					</div>
 				</li>
 				<li>
-					<img src="img/achievement2.png" alt="">
+					<div class="achievements__img"><img src="img/achievement2.png" alt=""></div>
 					<div class="achievements__list-info">
 						<span class="number odometer" data-number="1000">0</span>
 						<p>Registered<br> Industrail<br> Workers</p>
 					</div>
 				</li>
 				<li>
-					<img src="img/achievement3.png" alt="">
+					<div class="achievements__img"><img src="img/achievement3.png" alt=""></div>
 					<div class="achievements__list-info">
 						<span class="number odometer" data-number="1200">0</span>
 						<p>Registered<br> Industrail<br> Units</p>
@@ -280,7 +283,7 @@
 			</ul>
 		</div>
 	</section>
-	<footer class="footer">
+	<footer class="footer" id="footer">
 		<div class="container flex">
 			<div class="footer__left">
 				<img src="img/footer-logo.png" alt="" class="footer__left-logo">
