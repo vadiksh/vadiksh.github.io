@@ -52,6 +52,13 @@ $(function() {
 	$('.cards__chart li:nth-of-type(3) span').css({
 		"height": pending + "%"
 	})
+	$('.sign-in').click(function (e) {
+		e.preventDefault();
+		$('.signin').addClass('active');
+	})
+	$('.close').click(function () {
+		$('.signin').removeClass('active');
+	})
 
 	$(window).trigger('scroll');
 });
