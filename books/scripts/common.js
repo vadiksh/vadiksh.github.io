@@ -19,9 +19,15 @@ document.addEventListener('DOMContentLoaded', function(){
 			links[j].addEventListener('click', function(e) {
 				if (!linksArr[links.indexOf(this)].clicked) {
 					e.preventDefault();	
+					for (var k = 0; k < links.length; k++) {
+						linksArr[k].clicked = false;
+					}
 					linksArr[links.indexOf(this)].clicked = true;
+				} else {
+					linksArr[links.indexOf(this)].clicked = false;
 				}
 			})
 		}
+
 	}
 });
