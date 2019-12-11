@@ -77,8 +77,46 @@ body {
     margin: 0 auto
 }
 
-li {
-    list-style: none
+.close {
+    position: absolute;
+    display: none;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    z-index: 6;
+    top: 20px;
+    right: 15px
+}
+
+.close span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    position: relative;
+    background: #1a1a1a;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.close span::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    left: 0;
+    top: 0;
+    content: '';
+    background: #1a1a1a
 }
 
 .headerMenu {
@@ -91,6 +129,14 @@ li {
     border-top: 10px solid #333;
     position: relative;
     z-index: 5
+}
+
+.headerMenu li {
+    list-style: none
+}
+
+.headerMenu.strategies-headerMenu .container,.headerMenu.strategies-headerMenu .headerMenu__nav-container {
+    max-width: 1360px
 }
 
 .headerMenu ul:not(.headerMenu__nav-list) {
@@ -106,7 +152,7 @@ li {
 }
 
 .headerMenu .container {
-    max-width: 1360px;
+    max-width: 1290px;
     margin: 0 auto;
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
@@ -115,12 +161,13 @@ li {
 }
 
 .headerMenu__logo {
-    max-width: 135px;
+    max-width: 185px;
     display: block;
     -webkit-align-self: center;
     -ms-flex-item-align: center;
     align-self: center;
-    padding: 15px 0 25px
+    padding: 20px 0 22px;
+    align-self: center
 }
 
 .headerMenu__logo img {
@@ -156,13 +203,13 @@ li {
     align-self: flex-end
 }
 
-.headerMenu__search::after {
+.headerMenu__search-button {
     position: absolute;
     right: 15px;
     top: 8px;
-    content: '';
     width: 16px;
     height: 16px;
+    cursor: pointer;
     background: url(../img/search.svg) no-repeat center center/contain
 }
 
@@ -234,7 +281,7 @@ li {
     color: #000
 }
 
-.headerMenu__utility-link.active {
+.headerMenu__utility-link.active,.headerMenu__utility-link:active,.headerMenu__utility-link:active:hover,.headerMenu__utility-link:focus,.headerMenu__utility-link:focus:hover {
     color: #fff;
     background: #333;
     -webkit-transition: .3s;
@@ -255,7 +302,178 @@ li {
     visibility: hidden;
     -webkit-transition: .3s;
     -o-transition: .3s;
+    transition: .3s;
+    left: auto;
+    right: 0;
+    padding: 20px 25px
+}
+
+.headerMenu__utility-dropdown.signed {
+    display: block;
+    font-size: 14px;
+    line-height: 1.4
+}
+
+.headerMenu__utility-dropdown.signed .welcome {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 700!important
+}
+
+.headerMenu__utility-dropdown.signed .welcome__name {
+    padding-left: 5px
+}
+
+.headerMenu__utility-dropdown.signed .profile {
+    display: block;
+    margin-bottom: 15px
+}
+
+.headerMenu__utility-dropdown.signed div {
+    margin-bottom: 16px
+}
+
+.headerMenu__utility-dropdown.signed h5 {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 5px 0
+}
+
+.headerMenu__utility-dropdown.signed a {
+    color: #1a81c5;
+    display: block!important;
+    font-weight: 400;
+    line-height: 1.4!important
+}
+
+.headerMenu__utility-dropdown.signed p {
+    font-size: 14px;
+    line-height: 1.4
+}
+
+.headerMenu__utility-dropdown ul {
+    margin-top: 20px
+}
+
+.headerMenu__utility-dropdown ul li {
+    font-size: 14px
+}
+
+.headerMenu__utility-dropdown ul li::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #333;
+    margin-right: 15px
+}
+
+.headerMenu__utility-dropdown>label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: block
+}
+
+.headerMenu__utility-dropdown .flex {
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch
+}
+
+.headerMenu__utility-dropdown button,.headerMenu__utility-dropdown input {
+    -webkit-appearance: none
+}
+
+.headerMenu__utility-dropdown button:active,.headerMenu__utility-dropdown button:focus,.headerMenu__utility-dropdown input:active,.headerMenu__utility-dropdown input:focus {
+    outline: 0
+}
+
+.headerMenu__utility-dropdown input:not(.checkbox) {
+    border: 2px solid #ccc;
+    width: 100%!important;
+    margin-right: 5px;
+    padding-left: 10px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
     transition: .3s
+}
+
+.headerMenu__utility-dropdown input:not(.checkbox):focus {
+    border-color: #999;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
+
+.headerMenu__utility-dropdown .checkbox {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    border-width: 1px;
+    margin-top: 5px;
+    position: relative;
+    top: 2px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    border: 1px solid #ccc;
+    z-index: 2
+}
+
+.headerMenu__utility-dropdown .checkbox:checked {
+    border: 1px solid #333;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
+
+.headerMenu__utility-dropdown .checkbox:checked+.checkmark {
+    opacity: 1;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
+
+.headerMenu__utility-dropdown .checkmark {
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    left: 5px;
+    width: 6px;
+    height: 10px;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    opacity: 0;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    z-index: 1
+}
+
+.headerMenu__utility-dropdown label[for=check] {
+    position: relative;
+    font-size: 12px;
+    display: block;
+    font-weight: 400;
+    color: #777;
+    font-family: proxima
+}
+
+.headerMenu__utility-dropdown button {
+    background: #1e3262;
+    font-size: 12px;
+    color: #fff;
+    padding: 7px 12px;
+    border: none;
+    height: auto;
+    line-height: 1
 }
 
 .headerMenu__utility-dropdown.active {
@@ -265,6 +483,10 @@ li {
     -o-transition: .3s;
     transition: .3s;
     z-index: 5
+}
+
+.headerMenu__utility .shareholder-dropdown {
+    padding: 0
 }
 
 .headerMenu__utility .shareholder-dropdown span {
@@ -305,165 +527,6 @@ li {
     margin-left: 10px
 }
 
-.headerMenu__utility .profile-dropdown {
-    left: auto;
-    right: 0;
-    padding: 20px 25px
-}
-
-.headerMenu__utility .profile-dropdown.signed {
-    display: none;
-    font-size: 14px;
-    line-height: 1.4
-}
-
-.headerMenu__utility .profile-dropdown.signed .welcome {
-    margin-bottom: 10px;
-    font-weight: 600
-}
-
-.headerMenu__utility .profile-dropdown.signed .profile {
-    display: block;
-    margin-bottom: 15px
-}
-
-.headerMenu__utility .profile-dropdown.signed div {
-    margin-bottom: 16px
-}
-
-.headerMenu__utility .profile-dropdown.signed h5 {
-    font-weight: 600;
-    font-size: 14px
-}
-
-.headerMenu__utility .profile-dropdown.signed a {
-    color: #1a81c5;
-    display: block;
-    font-weight: 400
-}
-
-.headerMenu__utility .profile-dropdown ul {
-    margin-top: 20px
-}
-
-.headerMenu__utility .profile-dropdown ul li {
-    font-size: 14px
-}
-
-.headerMenu__utility .profile-dropdown ul li::before {
-    content: '';
-    width: 3px;
-    height: 3px;
-    display: inline-block;
-    border-radius: 50%;
-    background: #333;
-    margin-right: 15px
-}
-
-.headerMenu__utility .profile-dropdown>label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 14px;
-    display: block
-}
-
-.headerMenu__utility .profile-dropdown .flex {
-    -webkit-box-align: stretch;
-    -webkit-align-items: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch
-}
-
-.headerMenu__utility .profile-dropdown button,.headerMenu__utility .profile-dropdown input {
-    -webkit-appearance: none
-}
-
-.headerMenu__utility .profile-dropdown button:active,.headerMenu__utility .profile-dropdown button:focus,.headerMenu__utility .profile-dropdown input:active,.headerMenu__utility .profile-dropdown input:focus {
-    outline: 0
-}
-
-.headerMenu__utility .profile-dropdown input {
-    border: 2px solid #ccc;
-    width: 100%;
-    margin-right: 5px;
-    padding-left: 10px;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s
-}
-
-.headerMenu__utility .profile-dropdown input:focus {
-    border-color: #999;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s
-}
-
-.headerMenu__utility .profile-dropdown .checkbox {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 3px;
-    border-width: 1px;
-    margin-top: 5px;
-    position: relative;
-    top: 2px;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s
-}
-
-.headerMenu__utility .profile-dropdown .checkbox:checked {
-    border: 1px solid #333;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s
-}
-
-.headerMenu__utility .profile-dropdown .checkbox:checked+.checkmark {
-    opacity: 1;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s
-}
-
-.headerMenu__utility .profile-dropdown .checkmark {
-    display: inline-block;
-    position: absolute;
-    top: 7px;
-    left: 5px;
-    width: 6px;
-    height: 10px;
-    border-right: 1px solid #333;
-    border-bottom: 1px solid #333;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    opacity: 0;
-    -webkit-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s
-}
-
-.headerMenu__utility .profile-dropdown label[for=check] {
-    position: relative;
-    font-size: 12px;
-    display: block;
-    font-weight: 400;
-    color: #777;
-    font-family: proxima
-}
-
-.headerMenu__utility .profile-dropdown button {
-    background: #1e3262;
-    font-size: 12px;
-    color: #fff;
-    padding: 7px 12px;
-    border: none;
-    height: auto;
-    line-height: 1
-}
-
 .headerMenu__nav {
     background: #46747a;
     width: -webkit-calc(100% + 40px);
@@ -479,7 +542,7 @@ li {
 }
 
 .headerMenu__nav-container {
-    max-width: 1360px;
+    max-width: 1290px;
     margin: 0 auto
 }
 
@@ -501,6 +564,7 @@ li {
 }
 
 .headerMenu__nav-list>li>a {
+    height: 40px;
     display: inline-block;
     color: #fff;
     font-size: 16px;
@@ -512,11 +576,12 @@ li {
     transition: .3s
 }
 
-.headerMenu__nav-list>li>a.active,.headerMenu__nav-list>li>a:hover {
+.headerMenu__nav-list>li>a.active,.headerMenu__nav-list>li>a:active,.headerMenu__nav-list>li>a:focus,.headerMenu__nav-list>li>a:hover {
     background: #588188;
     -webkit-transition: .3s;
     -o-transition: .3s;
-    transition: .3s
+    transition: .3s;
+    color: #fff
 }
 
 .headerMenu__nav-box {
@@ -596,6 +661,13 @@ li {
     font-size: 15px
 }
 
+.headerMenu__nav-dropdown a:active,.headerMenu__nav-dropdown a:focus {
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    color: #777
+}
+
 .headerMenu__nav-sub {
     padding: 0;
     background: 0 0;
@@ -604,6 +676,7 @@ li {
 }
 
 .headerMenu__nav-sub>div {
+    min-width: 375px;
     width: 375px;
     background: #fff;
     padding: 20px 35px 30px;
@@ -755,6 +828,7 @@ li {
 }
 
 .headerMenu__nav-2cols>div {
+    min-width: 375px;
     width: 375px;
     padding: 20px 35px 30px
 }
@@ -773,10 +847,18 @@ li {
 
 .headerMenu__nav-2cols h4 {
     text-transform: uppercase;
-    margin-bottom: 10px
+    margin-bottom: 5px
 }
 
 .headerMenu__nav-2cols h4 a {
+    display: block;
+    color: #000;
+    font-size: 16px;
+    padding-bottom: 5px
+}
+
+.headerMenu__nav-2cols h4 span {
+    font-size: 15px;
     float: right;
     color: #46747a;
     font-family: proxima;
@@ -795,9 +877,9 @@ li {
     content: '';
     position: absolute;
     left: 35px;
-    top: 15px;
+    top: 20%;
     width: 2px;
-    height: 30px;
+    height: 60%;
     background: #d8d8d8
 }
 
@@ -881,6 +963,10 @@ li {
     bottom: -6px
 }
 
+#theme-funds #header .name {
+    padding-top: 20px
+}
+
 .headerMenu-mob {
     display: none;
     position: fixed;
@@ -895,6 +981,10 @@ li {
     -o-transition: .4s ease;
     transition: .4s ease;
     z-index: 5
+}
+
+.headerMenu-mob li {
+    list-style: none
 }
 
 .headerMenu-mob.active {
@@ -921,6 +1011,10 @@ li {
     -webkit-transition: .2s;
     -o-transition: .2s;
     transition: .2s
+}
+
+.headerMenu-mob .mob-list a:active,.headerMenu-mob .mob-list a:focus {
+    color: #777
 }
 
 .headerMenu-mob .mob-list .headerMenu__nav-box {
@@ -967,7 +1061,9 @@ li {
     padding: 20px 35px 20px 55px;
     font-size: 18px;
     line-height: 1;
-    color: #777
+    color: #777;
+    height: auto;
+    margin-bottom: 0
 }
 
 .headerMenu-mob__search input::-webkit-input-placeholder {
@@ -1124,7 +1220,7 @@ li {
     z-index: 1;
     visibility: hidden;
     background: #fff;
-    padding-bottom: 50px
+    padding-bottom: 100px
 }
 
 .headerMenu-mob__subfunds>li.active,.headerMenu-mob__submenus>li.active {
@@ -1233,7 +1329,8 @@ li {
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    padding-right: 50px
+    padding-right: 50px;
+    margin-bottom: 0
 }
 
 .headerMenu-mob__social .button {
@@ -1286,6 +1383,37 @@ li {
     color: #adadad
 }
 
+.headerMenu-mob__personalize {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    padding-top: 60px!important;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
+
+.headerMenu-mob__personalize.active {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
+
+.headerMenu-mob__personalize .close {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    top: 10px;
+    right: 15px
+}
+
 .headerMenu-mob .headerMenu__nav-box {
     width: -webkit-calc(100% - 60px);
     width: calc(100% - 60px);
@@ -1303,11 +1431,17 @@ li {
     padding: 0 15px
 }
 
+.strategies li {
+    list-style: none
+}
+
 .strategies__header {
     padding: 20px 0
 }
 
 .strategies__header h2 {
+    padding-top: 0;
+    border-top: none;
     font-family: AdobeGaramond,proxima;
     font-size: 30px;
     color: #000;
@@ -1347,9 +1481,8 @@ li {
 
 .strategies__nav .button-bg {
     position: absolute;
-    left: -30px;
+    left: 0;
     bottom: 0;
-    width: 90px;
     z-index: 1;
     -webkit-transition: .3s;
     -o-transition: .3s;
@@ -1424,7 +1557,8 @@ li {
     font-size: 15px;
     font-weight: 400;
     position: relative;
-    border-bottom: 1px solid #c8c7c1
+    border-bottom: 1px solid #c8c7c1;
+    font-family: proxima
 }
 
 .strategies__container .mob-title.active span::after {
@@ -1494,7 +1628,8 @@ li {
     -webkit-box-align: stretch;
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
-    align-items: stretch
+    align-items: stretch;
+    margin: 0
 }
 
 .strategies__flex>li {
@@ -1572,7 +1707,7 @@ li {
     margin-left: 10px
 }
 
-.strategies__flex a.pdf::after {
+.strategies__flex a.strategies-pdf::after {
     width: 17px;
     height: 17px;
     background: url(../img/pdf.svg) no-repeat center center/contain
@@ -1739,12 +1874,12 @@ li {
     top: 6px
 }
 
-.engage form {
+.engage__form-wrapper {
     padding: 15px 30px 20px;
     width: 50%
 }
 
-.engage form input,.engage form textarea {
+.engage__form-wrapper input:not(.checkbox),.engage__form-wrapper textarea {
     display: block;
     -webkit-appearance: none;
     width: 100%;
@@ -1753,15 +1888,24 @@ li {
     font-size: 16px;
     font-family: proxima;
     padding: 10px 15px 6px 20px;
-    margin-bottom: 5px;
-    resize: none
+    margin-bottom: 0 0 5px;
+    resize: none;
+    height: auto;
+    -webkit-box-shadow: none;
+    box-shadow: none
 }
 
-.engage form input:focus,.engage form textarea:focus {
-    outline: 0
+.engage__form-wrapper input:not(.checkbox):focus,.engage__form-wrapper textarea:focus {
+    outline: 0;
+    background: #fff
 }
 
-.engage form label {
+.engage__form-wrapper span {
+    display: block
+}
+
+.engage__form-wrapper label {
+    display: inline-block;
     color: #9b9b9b;
     font-size: 15px;
     padding: 5px 8px;
@@ -1771,12 +1915,14 @@ li {
     top: 10px
 }
 
-.engage form .checkbox-wrap {
+.engage__form-wrapper .checkbox-wrap {
     margin-top: 16px;
     position: relative
 }
 
-.engage form .checkbox {
+.engage__form-wrapper .checkbox {
+    -webkit-appearance: none;
+    border: 1px solid #d0d5d9;
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -1784,14 +1930,18 @@ li {
     z-index: 2
 }
 
-.engage form .checkbox:checked+.checkmark {
+.engage__form-wrapper .checkbox:checked+.checkmark {
     opacity: 1;
     -webkit-transition: .2s;
     -o-transition: .2s;
     transition: .2s
 }
 
-.engage form .checkmark {
+.engage__form-wrapper .checkbox:focus {
+    outline: 0
+}
+
+.engage__form-wrapper .checkmark {
     z-index: 1;
     position: absolute;
     top: 5px;
@@ -1810,7 +1960,7 @@ li {
     transition: .2s
 }
 
-.engage form label[for=checkbox] {
+.engage__form-wrapper label[for=checkbox] {
     display: inline-block;
     padding: 0;
     background: 0 0;
@@ -1819,7 +1969,12 @@ li {
     padding-left: 10px
 }
 
+.engage .open-form {
+    display: none
+}
+
 .engage__button {
+    height: auto;
     display: block;
     width: 100%;
     padding: 13px 15px;
@@ -1830,7 +1985,9 @@ li {
     text-transform: uppercase;
     -webkit-appearance: none;
     font-size: 12px;
-    border: none
+    border: none;
+    float: none;
+    line-height: 1
 }
 
 .engage__button:focus {
@@ -1866,7 +2023,8 @@ li {
     color: #58a8f7;
     text-decoration: none;
     margin-bottom: 5px;
-    display: block
+    display: block;
+    padding: 0!important
 }
 
 .engage__people .title {
@@ -1875,7 +2033,7 @@ li {
     font-weight: 700
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1439px) {
     .shareholder-dropdown {
         right:0;
         left: auto
@@ -2045,7 +2203,18 @@ li {
     }
 
     .strategies__container .mob-wrapper {
-        display: none
+        height: 0;
+        opacity: 0;
+        -webkit-transition: .8s;
+        -o-transition: .8s;
+        transition: .8s
+    }
+
+    .strategies__container .mob-wrapper.active {
+        opacity: 1;
+        -webkit-transition: .8s;
+        -o-transition: .8s;
+        transition: .8s
     }
 
     .overview {
@@ -2053,6 +2222,10 @@ li {
     }
 
     .overview .strategies__flex {
+        padding-top: 0
+    }
+
+    .overview .strategies__flex li:first-of-type {
         padding-top: 20px
     }
 
@@ -2116,11 +2289,22 @@ li {
         margin-bottom: 25px
     }
 
+    .engage__form .close {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex
+    }
+
     .engage__button {
         margin-top: 20px
     }
 
-    .engage form {
+    .engage .open-form {
+        display: block
+    }
+
+    .engage__form-wrapper {
         padding: 15px 15px 20px;
         position: fixed;
         background: #fff;
@@ -2140,7 +2324,7 @@ li {
         transition: .2s
     }
 
-    .engage form.active {
+    .engage__form-wrapper.active {
         opacity: 1;
         visibility: visible;
         -webkit-transition: .3s;
@@ -2148,18 +2332,18 @@ li {
         transition: .3s
     }
 
-    .engage form h4 {
+    .engage__form-wrapper h4 {
         font-size: 20px;
         margin-bottom: 15px;
         font-weight: 400
     }
 
-    .engage form input,.engage form textarea {
+    .engage__form-wrapper input,.engage__form-wrapper textarea {
         padding: 8px;
         margin-bottom: 20px
     }
 
-    .engage form label {
+    .engage__form-wrapper label {
         color: #1a1a1a;
         background: 0 0;
         display: block;
@@ -2169,58 +2353,13 @@ li {
         top: 0
     }
 
-    .engage form .checkbox {
+    .engage__form-wrapper .checkbox {
         margin-bottom: 0
     }
 
-    .engage form label[for=checkbox] {
+    .engage__form-wrapper label[for=checkbox] {
         margin-bottom: 0;
         top: -15px
-    }
-
-    .engage form .close {
-        position: fixed;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        z-index: 6;
-        top: 70px;
-        right: 15px
-    }
-
-    .engage form .close span {
-        display: block;
-        width: 18px;
-        height: 2px;
-        position: relative;
-        background: #1a1a1a;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg)
-    }
-
-    .engage form .close span::after {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
-        left: 0;
-        top: 0;
-        content: '';
-        background: #1a1a1a
     }
 
     .engage__people {

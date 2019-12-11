@@ -22,12 +22,9 @@
 			<div class="headerMenu__top-menu"> 
 				<div class="headerMenu__search">
 					<input type="text" placeholder="Search royceinvest.com">
+					<span class="headerMenu__search-button"></span>
 				</div>
 				<ul class="headerMenu__utility flex">
-					<li class="headerMenu__utility-search">
-						
-						
-					</li>
 					<li><a class="headerMenu__utility-link" href="/contact/">Contact us</a></li>
 					<li>
 						<a class="headerMenu__utility-link">Shareholder Account Access</a>
@@ -59,10 +56,12 @@
 						</div>
 
 						<div class="headerMenu__utility-dropdown profile-dropdown signed">
-							<p class="welcome">Welcome <span class="name">XXXX</span> <span class="second-name">XXXXX</span></p>
+							<p class="welcome">Welcome 
+								<span class="welcome__name"></span>
+							</p>
 							<a href="" class="profile">Your profile</a>
 							<div>
-								<h5>Your Investments</p>
+								<h5>Your Investments</h5>
 								<a href="">Your Performance</a>
 								<a href="">Your Literature</a>
 							</div>
@@ -182,8 +181,10 @@
 					<a class="headerMenu__nav-link">Insights & News</a>
 					<div class="headerMenu__nav-dropdown flex headerMenu__nav-2cols">
 						<div>
-							<h4>INSIGHTS
-								<a href="">View All</a>
+							<h4><a href="">
+								INSIGHTS
+								<span>View All</span>
+							</a>
 							</h4>
 							<ul>
 								<li><a href="">Market Perspecrtive</a></li>
@@ -196,13 +197,14 @@
 							</a>
 						</div>
 						<div>
-							<h4>News
-								<a href="">View All</a>
+							<h4>
+								<a href="">News
+									<span>View All</span></a>
 							</h4>
 							<ul class="headerMenu__nav-news">
 								<li><a href="">Jay Kaplan On Nasdaq: The Case For Small-Cap Footwear</a></li>
-								<li><a href="">2019 Distribution Estimates for Our Open-End Funds</a></li>
-								<li><a href="">Mark Rayner Elevated to Leadership Role for International Premier</a></li>
+								<li><a href="">2019 Distribution Estimates</a></li>
+								<li><a href="">Mark Rayner Elevated to Leadership Role for International Premier ggggggggg gfjghgjhh gjgkhhjhk</a></li>
 							</ul>
 						</div>
 					</div>
@@ -257,7 +259,7 @@
 						<li><a href="">Contact us</a></li>
 						<li><a href="" class="external">Shareholder Account Access</a></li>
 						<li><a href="" class="external">Closed-End-Fund Account Access</a></li>
-						<li><a href="">Personalize</a></li>
+						<li><a href="" class="headerMenu-mob__utility-personalize">Personalize</a></li>
 					</ul>
 					<div class="headerMenu-mob__social flex">
 						<ul>
@@ -267,8 +269,30 @@
 						</ul>
 						<a href="" class="button">Subscribe</a>
 					</div>
-				</div>
 
+					
+					<div class="headerMenu-mob__personalize headerMenu__utility-dropdown">
+						<div class="close"><span></span></div>
+						<label for="email">Let’s get started</label>
+						<form action="">
+							<div class="flex">
+								<input type="email" placeholder="Your e-mail">
+								<button>GO</button>
+							</div>
+							<label for="check">
+								<input type="checkbox" id="check" class="checkbox"> Subscribe to Our Newsletter
+								<span class="checkmark"></span>
+
+							</label>
+						</form>
+						<ul>
+							<li>Customize your fund preferences</li>
+							<li>Manage your subscriptions</li>
+							<li>Access financial professional content</li>
+						</ul>
+					</div>
+				</div>
+				
 				<ul class="headerMenu-mob__submenus">
 					<li>
 						<h3 class="headerMenu-mob__back">Strategies</h3>
@@ -452,8 +476,8 @@
 						<h5>Composite Benchmark</h5>
 						<p>MSCI ACWI ex-US Small Cap Index</p>
 						<h5 class="lock">Available Vehicle Factsheets</h5>
-						<a href="" class="pdf">Separate Account</a>
-						<a href="" class="pdf">Institutional Fund Share Class</a>
+						<a href="" class="strategies-pdf">Separate Account</a>
+						<a href="" class="strategies-pdf">Institutional Fund Share Class</a>
 					</li>
 					<li>
 						<img src="img/overview/2.jpg" alt="">
@@ -468,9 +492,9 @@
 						<h5>Composite Benchmark</h5>
 						<p>Russell 2000 Index</p>
 						<h5 class="lock">Available Vehicle Factsheets</h5>
-						<a href="" class="pdf">Separate Account</a>
-						<a href="" class="pdf">Collective Trust</a>
-						<a href="" class="pdf">Institutional Fund Share Class</a>
+						<a href="" class="strategies-pdf">Separate Account</a>
+						<a href="" class="strategies-pdf">Collective Trust</a>
+						<a href="" class="strategies-pdf">Institutional Fund Share Class</a>
 						<h5>Additional Vehicles</h5>
 						<a href="" class="info">Commingled LLC</a>
 						<a href="" class="info">UCITs</a>
@@ -488,8 +512,8 @@
 						<h5>Composite Benchmark</h5>
 						<p>Russell 2000 Index</p>
 						<h5 class="lock">Available Vehicle Factsheets</h5>
-						<a href="" class="pdf">Separate Account</a>
-						<a href="" class="pdf">Institutional Fund Share Class</a>
+						<a href="" class="strategies-pdf">Separate Account</a>
+						<a href="" class="strategies-pdf">Institutional Fund Share Class</a>
 					</li>
 					<li>
 						<img src="img/overview/4.jpg" alt="">
@@ -503,8 +527,8 @@
 						<h5>Composite Benchmark</h5>
 						<p>Russell 2000 Index</p>
 						<h5 class="lock">Available Vehicle Factsheets</h5>
-						<a href="" class="pdf">Separate Account</a>
-						<a href="" class="pdf">Institutional Fund Share Class</a>
+						<a href="" class="strategies-pdf">Separate Account</a>
+						<a href="" class="strategies-pdf">Institutional Fund Share Class</a>
 					</li>
 				</ul>
 			</div>
@@ -659,7 +683,6 @@
 							<a class="engage__button open-form">Open contact form</a>
 						</div>
 
-						<form action="">
 							<div class="engage__form-wrapper">
 								<div class="close"><span></span></div>
 								<h4>How can we help you?</h4>
@@ -679,7 +702,6 @@
 								</div>
 							</div>
 							
-						</form>
 					</div>
 					<ul class="engage__people">
 						<li>
