@@ -547,7 +547,46 @@ tipobj.style.width=''
 document.onmousemove=positiontip
 
 </script>
-<script src="scripts/common.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		var isTouchDevice = (('ontouchstart' in window)
+		         || (navigator.MaxTouchPoints > 0)
+		         || (navigator.msMaxTouchPoints > 0));
+		if (isTouchDevice) {
+			if (window.location.pathname == '/') {
+				var links = Array.from(document.querySelectorAll('.style207 a, .style147 tr:last-of-type a'));
+			} else {
+				var links = Array.from(document.querySelectorAll('.style147 td:not(.style191):not(.style165):not(.style179) a'));
+			}
+			
+			var linksArr = [];
+			for (var i = 0; i < links.length; i++) {
+				var linkObj = {};
+				Object.defineProperties(linkObj, {
+				  'clicked': {
+				    value: false,
+				    writable: true
+				  }
+				});
+				linksArr.push(linkObj)
+			}
+			for (var j = 0; j < links.length; j++) {
+				links[j].addEventListener('click', function(e) {
+					if (!linksArr[links.indexOf(this)].clicked) {
+						e.preventDefault();	
+						for (var k = 0; k < links.length; k++) {
+							linksArr[k].clicked = false;
+						}
+						linksArr[links.indexOf(this)].clicked = true;
+					} else {
+						linksArr[links.indexOf(this)].clicked = false;
+					}
+				})
+			}
+
+		}
+	});
+</script>
 
 
 
