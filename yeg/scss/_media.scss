@@ -77,8 +77,8 @@
 		.owl-dots {
 			position: absolute;
 			bottom: 18px;
-			left: 50%;
-			transform: translate3d(-50%,0,0);
+			width: 100%;
+			text-align: center;
 		}
 		.owl-dot {
 			-webkit-appearance:none;
