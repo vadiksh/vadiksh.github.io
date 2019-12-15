@@ -129,7 +129,53 @@
 			margin-bottom: 25px;
 			border-bottom: 1px solid #ddd;
 			img {
-				margin-right: 15px !important;
+				margin-right: 15px;
+			}
+		}
+	}
+	.browse-container {
+		padding-top: 0 !important;
+		margin-top: 0 !important;
+	}
+	.browse {
+		&__inputs {
+			.ui.grid {
+				margin-top: 0;
+				.column {
+					padding-bottom: 0 !important;
+					padding-top: 0 !important;
+					margin-bottom: 0;
+				}
+			}
+		}
+		&__item, &__labels {
+			> div:nth-child(2) {
+				width: calc(60% - 50px);
+			}
+			> div:nth-child(3) {
+				width: calc(40% - 50px);
+			}
+		}
+		&__info {
+			margin-bottom: 0;
+			padding-bottom: 0;
+			border-bottom: none;
+			.events__info-headline {
+				font-size: 16px;
+			}
+			img {
+				margin-right: 0;
+			}
+		}
+		&__flex {
+			flex-direction: column;
+			.ui.input {
+				margin-right: 0;
+				margin-bottom: 10px;
+				width: 100%;
+			}
+			.ui.checkbox {
+				width: 100%;
 			}
 		}
 	}
@@ -166,5 +212,86 @@
 		border: none !important;
 		margin-left: 0 !important;
 		margin-right: 0 !important;
+	}
+	.browse {
+		&__item {
+			flex-direction: column;
+			> div:nth-child(1), > div:nth-child(2), > div:nth-child(3) {
+				width: 100%;
+			}
+		}
+		&__labels {
+			display: none;
+		}
+		&__date {
+			margin-right: 0;
+			margin-bottom: 15px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid #ddd; 
+			a {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+			div {
+				width: 50%;
+				&:first-of-type {
+					border-right: 1px solid #ddd;
+				}
+			}
+			&-week {
+				margin-top: 0;
+			}
+		}
+		&__info {
+			padding: 0 15px 15px;
+			border-bottom: 1px solid #ddd; 
+			margin-bottom: 15px;
+			> a {
+				margin-right: 15px;
+			}
+			img {
+				width: 80px;
+				margin-bottom: 15px;
+			}
+			.ui.button {
+				margin-right: 0;
+				padding: 8px;
+			}
+			.events__info-headline {
+				font-size: 15px;
+			}
+		}
+		&__pagination {
+			.ui.pagination.menu {
+				height: 30px;
+				margin: 0 8px;
+				.item {
+					padding: 5px 10px;
+					min-width: auto;
+					&.active {
+						padding-top: 5px;
+					}
+				}
+			}
+			&-flex {
+				display: flex;
+				justify-content: center;
+				p {
+					margin: 0 10px;
+				}
+			}
+			.ui.button {
+				padding: 8px 14px;
+				margin: 0;
+				&.mob-hidden {
+					display: none;
+				}
+				&.mob-btn {
+					display: block;
+				}
+			}
+		}
 	}
 }

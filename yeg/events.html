@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title></title>
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="" type="image/x-icon">
+	<link rel="icon" href="" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+	
+</head>
+<body>	
+	<header class="header">
+		<div class="ui container segment">
+			<div class="header__top">
+				<span>NEED HELP? CALL 1 877 ETIX NOW</span>
+				<div class="header__top-links">
+					<a href="">SHOPPING CART</a>
+					<a href="">ORDER STATUS</a>
+					<a href="">SIGN IN</a>
+				</div>
+				<div class="ui icon input">
+					<i class="search icon"></i>
+					<input type="text" placeholder="Search...">
+				</div>
+			</div>
+			<div class="header__main">
+				<a href="" class="header__main-logo">
+					<img src="img/logo.png" alt="">
+				</a>
+				<ul class="header__main-menu">
+					<div class="close"><span></span></div>
+					<div class="ui icon input">
+						<i class="search icon"></i>
+						<input type="text" placeholder="Search...">
+					</div>
+					<li><a href="">EVENT LISTINGS</a></li>
+					<li><a href="">ARTISTS</a></li>
+					<li><a href="">VENUES</a></li>
+					<li><a href="">FESTIVALS</a></li>
+				</ul>
+				<div class="hamburger"><span></span></div>
+			</div>
+		</div>
+	</header>
+	
+	<div class="ui container segment browse-container">
+
+		<div class="browse">
+			<h3>Browse events</h3>
+
+			<span class="ui blue label browse__match">544 events match your criteria.</span>
+	
+			<div class="browse__flex">
+				<div class="ui icon input item">
+					<i class="search icon"></i>
+					<input type="text" class="search-input" placeholder="Search all events by artist, venue, or keyword...">
+				</div>
+				<div class="ui checkbox">
+				  <input type="checkbox" id="e-ticketed" name="e-ticketed">
+				  <label for="e-ticketed">Show only e-ticketed events.</label>
+				</div>
+			</div>
+			
+			<div class="ui styled fluid accordion browse__inputs">
+			  <div class="title">
+			    <i class="dropdown icon"></i>
+			    Venue Styles
+			  </div>
+			  <div class="content">
+			  	<div class="ui checkbox">
+			  	  <input type="checkbox" id="all-styles" name="">
+			  	  <label for="all-styles"><b>All Styles</b>, or any of the following styles:</label>
+			  	</div>
+			    <div class="ui three column doubling grid transition hidden">
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input1"><label for="styles-input1">Attraction</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input2"><label for="styles-input2">Auditorium</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input3"><label for="styles-input3">Bar</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input4"><label for="styles-input4">Cafe/Coffee House</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input5"><label for="styles-input5">Recital Hall</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input6"><label for="styles-input6">Restaurant</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input7"><label for="styles-input7">Cinema</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input8"><label for="styles-input8">Hall</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input9"><label for="styles-input9">Listening Room</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input10"><label for="styles-input10">Lounge</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input11"><label for="styles-input11">Nightclub</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input12"><label for="styles-input12">Other</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input13"><label for="styles-input13">Piano Bar</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="styles-input14"><label for="styles-input14">Private Home (House Concert)</label></div>
+			    	</div>
+			    </div>
+			  </div>
+
+			  <div class="title">
+			    <i class="dropdown icon"></i>
+			    Venue Features
+			  </div>
+			  <div class="content">
+			  	<div class="ui checkbox">
+			  	  <input type="checkbox" id="all-styles" name="">
+			  	  <label for="all-styles"><b>All Features</b>, or any of the following features:</label>
+			  	</div>
+			    <div class="ui three column doubling grid transition hidden">
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="features-input1"><label for="features-input1">Child Friendly</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="features-input2"><label for="features-input2">Food Served</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="features-input3"><label for="features-input3">Licensed, Minors Allowed</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="features-input4"><label for="features-input4">Licensed, Minors Prohibited</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="features-input5"><label for="features-input5">Unlicensed</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="features-input6"><label for="features-input6">Wheelchair Accessible</label></div>
+			    	</div>
+			    </div>
+			  </div>
+
+			  <div class="title">
+			    <i class="dropdown icon"></i>
+			    Genres <p>(1 selected)</p>
+			  </div>
+			  <div class="content">
+			  	
+			    <div class="ui checkbox">
+			      <input type="checkbox" id="all-styles" name="">
+			      <label for="all-styles"><b>All Genres</b>, or any of the following genres:</label>
+			    </div>
+			    <div class="ui six column doubling grid transition hidden">
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input1"><label for="genres-input1">21st Century Classical</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input2"><label for="genres-input2">Adult Contemporary</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input3"><label for="genres-input3">Adult Pop</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input4"><label for="genres-input4">Alternative</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input5"><label for="genres-input5">Ambient Electronic</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input6"><label for="genres-input6">Big Band</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input7"><label for="genres-input7">Bluegrass</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input8"><label for="genres-input8">Blues</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input9"><label for="genres-input9">Canadian</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input10"><label for="genres-input10">Celtic</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input11"><label for="genres-input11">Children's</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input22"><label for="genres-input22">Choral</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input12"><label for="genres-input12">Christian</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input13"><label for="genres-input13">Classical</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input14"><label for="genres-input14">Comedy</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input15"><label for="genres-input15">Country</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input16"><label for="genres-input16">Dance</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input17"><label for="genres-input17">Dance</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input18"><label for="genres-input18">DJ</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input19"><label for="genres-input19">Drag / Performance</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input20"><label for="genres-input20">Electronic</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input21"><label for="genres-input21">Experimental</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input32"><label for="genres-input32">Film/Screen</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input33"><label for="genres-input33">Folk</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input23"><label for="genres-input23">Food Truck</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input24"><label for="genres-input24">Funk</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input25"><label for="genres-input25">Gospel</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input26"><label for="genres-input26">Hard Rock</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input27"><label for="genres-input27">Hip Hop</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input28"><label for="genres-input28">Holiday</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input29"><label for="genres-input29">House</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input30"><label for="genres-input30">Improv</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input31"><label for="genres-input31">Improvised</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input42"><label for="genres-input42">Indigenous</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input43"><label for="genres-input43">Industrial</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input44"><label for="genres-input44">Jazz</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input34"><label for="genres-input34">Karaoke</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input35"><label for="genres-input35">Latin</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input36"><label for="genres-input36">Metal</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input37"><label for="genres-input37">New Age</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input38"><label for="genres-input38">Hard Rock</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input39"><label for="genres-input39">Noise</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input40"><label for="genres-input40">Open Stage</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input41"><label for="genres-input41">Other</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input52"><label for="genres-input52">Pop</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input53"><label for="genres-input53">Post Rock</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input54"><label for="genres-input54">Progressive Rock/Metal</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input55"><label for="genres-input55">Psychedelic</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input45"><label for="genres-input45">Punk</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input46"><label for="genres-input46">R&B</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input47"><label for="genres-input47">Rap</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input48"><label for="genres-input48">Reggae</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input49"><label for="genres-input49">Regional</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input50"><label for="genres-input50">Rock</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input51"><label for="genres-input51">Singer/Songwriter</label></div>
+			    	</div>
+			    	<div class="column">
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input56"><label for="genres-input56">Ska</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input57"><label for="genres-input57">Soul</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input58"><label for="genres-input58">Spoken Word</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input59"><label for="genres-input59">Synthpop</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input60"><label for="genres-input60">Techno</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input61"><label for="genres-input61">Theater</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input62"><label for="genres-input62">Tropical</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input63"><label for="genres-input63">Workshop</label></div>
+			    		<div class="ui checkbox"><input type="checkbox" id="genres-input64"><label for="genres-input64">World</label></div>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="browse__buttons">
+				<button class="ui button">Reset & Show All</button>
+				<button class="ui button">Search</button>
+			</div>
+
+			<div class="browse__list">
+				<div class="browse__labels">
+					<div>
+						<a href='' title="Click to sort by Date" class="ui blue label large fluid">Date</a>
+					</div>
+					<div>
+						<a href='' title="Click to sort by Event Name" class="ui blue label large fluid">Event</a>
+					</div>
+					<div>
+						<a href='' title="Click to sort by Ticket Price" class="ui blue label large fluid">Ticket Details</a>
+					</div>
+				</div>
+
+				<div class="browse__item">
+					<div class="browse__date">
+						<a href="">
+							<div>
+								<span class="browse__date-month">DEC</span>
+								<span class="browse__date-day">13</span>
+							</div>
+							<div>
+								<span class="browse__date-week">Friday</span>
+								<span class="ui label blue inverted browse__date-time">12:00 pm</span>
+							</div>
+						</a>
+					</div>
+
+					<div class="events__info browse__info">
+						<a href="">
+							<img src="img/event.jpg" alt="">
+							<span class="ui button blue">Details</span>
+						</a>
+						<div>
+							<a class="events__info-headline" href="">DEEP WINTER SONG: A MYSTICAL EVENING OF MUSIC AND STORY SOLSTICE CONCERT</a>
+							<p class="browse__info-feat">Featuring <a href="">WAYMATEA ELLIS</a></p>
+							<p class="browse__info-genres">Reggae</p>
+							<p class="browse__info-with">
+								with <a>Doreen</a> and Goat Snorkel
+							</p>
+							<p class="browse__info-place">
+								at <a href="">The Art of Cake</a>
+								<span>11811 105 Ave NW Edmonton, AB T5H 0L9</span>
+							</p>
+						</div>
+					</div>
+					<div class="events__purchase">
+						<p>Tickets: <b>$5.00</b> available online and at the door</p>
+						<p>(Not available from YEG Live) Why not?</p>
+						<p>Tickets may be available from an <a href="">alternate service provider.</a></p>
+					</div>
+				</div>
+
+				<div class="browse__item highlighted">
+					<div class="browse__date">
+						<a href="">
+							<div>
+								<span class="browse__date-month">DEC</span>
+								<span class="browse__date-day">13</span>
+							</div>
+							<div>
+								<span class="browse__date-week">Friday</span>
+								<span class="ui label blue browse__date-time">12:00 pm</span>
+							</div>
+						</a>
+						
+					</div>
+					<div class="events__info browse__info">
+						<a>
+							<img src="img/event.jpg" alt="">
+							<span class="ui button blue">Details</span>
+						</a>
+						<div>
+							<a class="events__info-headline" href="">WINTERRUPTION YEG</a>
+							<p class="browse__info-feat">Featuring <a href="">WEAVES</a></p>
+							<p class="browse__info-genres">Alternative / Rock</p>
+							<p class="browse__info-with">
+								with <a href="">Eamon McGrath</a>
+								and <a href="">Girlfriend Material</a>
+								<span>
+									with SHAG and Good Rumour
+								</span>
+							</p>
+							<p class="browse__info-place">
+								at <a href="">The Art of Cake</a>
+								<span>11811 105 Ave NW Edmonton, AB T5H 0L9</span>
+							</p>
+						</div>
+					</div>
+					<div class="events__purchase">
+						<div class="events__available">
+							<div>
+								<p>Tickets: <b>$10.00</b> in advance, $10 at the door<br> ($1.99 e-ticket fee)</p>
+								<form action="">
+									<div class="ui input">
+										<input type="number" value="1">
+									</div>
+									
+									<input type="button" class="ui button" value="+">
+									<input type="button" class="ui button" value="-">
+								</form>
+							</div>
+							<div class="events__available-remedy">
+								<p><b>NEW!</b> Use the YEG Live Ticket Kiosks:</p>
+								
+								<img src="img/remedy.png" alt="">
+								<p>
+									<a href="https://remedycafe.ca/" target="_blank">Remedy Cafe</a> Kiosk Locations: 
+									<span>109 Street @ 87 Avenue</span>
+									<span>Whyte Avenue @ 105 Street</span>
+									<span>Terwillegar Towne</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="browse__item">
+					<div class="browse__date">
+						<a href="">
+							<div>
+								<span class="browse__date-month">DEC</span>
+								<span class="browse__date-day">13</span>
+							</div>
+							<div>
+								<span class="browse__date-week">Friday</span>
+								<span class="ui label blue browse__date-time">12:00 pm</span>
+							</div>
+							
+						</a>
+						
+					</div>
+					<div class="events__info browse__info">
+						<a href="">
+							<img src="img/event.jpg" alt="">
+							<span class="ui button blue">Details</span>
+						</a>
+						<div>
+							<a class="events__info-headline" href="">DEEP WINTER SONG: A MYSTICAL EVENING OF MUSIC AND STORY SOLSTICE CONCERT</a>
+							<p class="browse__info-feat">Featuring <a href="">WAYMATEA ELLIS</a></p>
+							<p class="browse__info-genres">Reggae</p>
+							<p class="browse__info-with">
+								with <a>Doreen</a> and Goat Snorkel
+							</p>
+							<p class="browse__info-place">
+								at <a href="">The Art of Cake</a>
+								<span>11811 105 Ave NW Edmonton, AB T5H 0L9</span>
+							</p>
+						</div>
+					</div>
+					<div class="events__purchase">
+							<p>Tickets: <b>$5.00</b> available online and at the door</p>
+							<p>(Not available from YEG Live) Why not?</p>
+							<p>Tickets may be available from an <a href="">alternate service provider.</a></p>
+					</div>
+				</div>
+				
+				<div class="browse__pagination">
+					<div class="browse__pagination-flex">
+						<a class="ui button mob-hidden">Start</a>
+						<a class="ui button">Prev</a>
+						<div class="ui pagination menu">
+							<a class="active item">
+							1
+							</a>
+							<a class="item">
+							2
+							</a>
+							<div class="disabled item">
+							...
+							</div>
+							<a class="item">
+							10
+							</a>
+							<a class="item">
+							11
+							</a>
+						</div>
+						<a class="ui button">Next</a>
+						<a class="ui button mob-hidden">End</a>
+					</div>
+					<div>
+						<div class="browse__pagination-flex">
+							<a class="ui button mob-btn">Start</a>
+							<p class="browse__pagination-counter">Page 1 of 11</p>
+							<a class="ui button mob-btn">End</a>
+						</div>
+						
+						<div class="browse__pagination-limit">
+							Display
+							<select class="ui dropdown">
+							  <option value="5">5</option>
+							  <option value="10">10</option>
+							  <option value="15">15</option>
+							  <option value="20">20</option>
+							  <option value="25">25</option>
+							  <option value="30">30</option>
+							</select>
+							rows per page
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="ui footer segment container">
+		<div class="ui four column divided doubling stackable grid footer__top">
+			<div class="column">
+				<h4>RESOURCES</h4>
+				<div class="ui list links">
+					<a href="http://yeglive.ca/backstage/terms-of-use">TERMS OF USE</a>
+					<a href="http://yeglive.ca/backstage/privacy-policy">PRIVACY POLICY</a>
+					<a href="http://yeglive.ca/backstage/credits-licenses">CREDITS & LICENSES</a>
+				</div>
+			</div>
+			<div class="column">
+				<h4>INFORMATION</h4>
+				<div class="ui list links">
+					<a href="http://yeglive.ca/about-yeg-live">ABOUT YEG LIVE</a>
+					<a href="http://yeglive.ca/about/how-it-works">HOW YEG LIVE WORKS</a>
+					<a href="http://yeglive.ca/about/how-e-ticketing-works">HOW E-TICKETING WORKS</a>
+					<a href="http://yeglive.ca/about/sell-tickets-with-yeg-live">SELL TICKETS TO YOUR EVENT</a>
+					<a href="http://yeglive.ca/advertise-with-us/yeg-live-advertising">ADVERTISE WITH YEG LIVE</a>
+				</div>
+			</div>
+			<div class="column">
+				<h4>ACTIVITIES</h4>
+				<div class="ui list links">
+					<a href="http://yeglive.ca/index.php?Itemid=55&option=com_rsform">LIST YOUR EVENT</a>
+					<a href="http://yeglive.ca/about/how-does-yeg-live-work-for-artists">GET AN ARTIST PROFILE</a>
+				</div>
+			</div>
+			<div class="column">
+				<h4>NEED HELP?</h4>
+				<div class="ui list links">
+					<a href="">1 877 ETIX NOW</a>
+					<a href="http://yeglive.ca/contact-us/yeg-live">CONTACT</a>
+					<a href=""></a>
+				</div>
+			</div>
+		</div>
+		<div class="ui two column stackable grid footer__bottom">
+			<div class="ui image column">
+				<span>PAY SECURELY USING</span>
+				<img src="img/payment.png" alt="">
+			</div>
+			<div class="column">
+				<p>® Trademark of INTERAC Inc. Used under licence.</p>
+				<p>© Copyright 2019 Canadian Live Productions Inc.; all rights reserved.<br> Some content is used under license: see Credits/Licenses for details.</p>
+			</div>
+			
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="js/scripts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>
