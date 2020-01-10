@@ -544,6 +544,8 @@ section {
 .delivery {
 	background: #FAFAFA;
 	padding: 100px 20px;
+	width: 100%;
+	overflow-x: hidden;
 	&::before {
 		content: '';
 		visibility: hidden;
