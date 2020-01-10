@@ -133,6 +133,9 @@ section {
 	}
 	&__menu {
 		display: flex;
+		&-wrapper {
+			display: flex;
+		}
 		li {
 			margin-left: 22px;
 			position: relative;
@@ -288,7 +291,7 @@ section {
 	}
 	&__border {
 		display: block;
-		width: 300px;
+		width: 280px;
 		height: 100px;
 		margin: 0 auto;
 		border: 2px solid $accent;
@@ -450,9 +453,34 @@ section {
 		width: calc(100% + 60px);
 		position: relative;
 		left: -30px;
+		align-items: flex-start;
 		li {
 			width: calc(100% / 9);
 			text-align: center;
+			position: relative;
+			cursor: pointer;
+			&:first-child {
+				.products__tooltip {
+					left: 0;
+					transform: translate3d(0,100%,0);
+					&::before {
+						left: 90px;
+						transform: translate3d(0,0,0);
+					}
+				}
+			}
+			&:last-child {
+				.products__tooltip {
+					left: auto;
+					right: 0;
+					transform: translate3d(0,100%,0);
+					&::before {
+						left: auto;
+						right: 90px;
+						transform: translate3d(0,0,0);
+					}
+				}
+			}
 		}
 		&-icon {
 			height: 150px;
@@ -469,6 +497,41 @@ section {
 			font-size: 15px;
 			text-transform: uppercase;
 			letter-spacing: -0.03em;
+		}
+	}
+	&__tooltip {
+		visibility: hidden;
+		position: absolute;
+		bottom: -10px;
+		left: 50%;
+		transform: translate3d(-50%,100%,0);
+		opacity: 0;
+		transition: .3s;
+		border-radius: 15px;
+		padding: 20px;
+		background: rgba(17,31,38,.95);
+		color: #fff;
+		font-size: 13px;
+		width: 300px;
+		z-index: 2;
+		&::before {
+			content: '';
+			display: block;
+			width: 0; 
+			height: 0; 
+			position: absolute;
+			top: -7px;
+			left: 50%;
+			transform: translate3d(-50%,0,0);
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+
+			border-bottom: 7px solid rgba(17,31,38,.95);
+		}
+		&.active {
+			visibility: visible;
+			opacity: 1;
+			transition: .3s;
 		}
 	}
 	&__buttons {
@@ -532,7 +595,7 @@ section {
 		}
 		@for $i from 1 through 6 {
 		  li:nth-child(#{$i}) .icon {
-		    background: url('../img/delivery#{$i}.png') no-repeat center center/ contain;
+		    background: url('../img/delivery/delivery#{$i}.png') no-repeat center center/ contain;
 		  }
 		}
 
@@ -585,6 +648,13 @@ section {
 		.wistia_responsive_wrapper {
 			opacity: 0;
 			transition: .3s;
+			cursor: pointer;
+			&:hover {
+				& + .delivery__screen-play {
+					background: url('../img/play.png') no-repeat center center/ contain;
+					transition: .3s;
+				}
+			}
 		}
 		&-wrapper {
 			position: relative;
@@ -604,6 +674,7 @@ section {
 			left: 50%;
 			cursor: pointer;
 			transform: translate3d(-50%,-50%,0);
+			transition: .3s;
 			background: url('../img/play-delivery.png') no-repeat center center/ contain;
 		}
 		
@@ -693,6 +764,10 @@ section {
 			position: relative;
 			z-index: 2;
 		}
+		.owl-item img {
+			width: 100%;
+			max-width: 300px;
+		}
 		.owl-nav {
 			position: absolute;
 			z-index: 1;
@@ -765,7 +840,8 @@ section {
 		justify-content: space-between;
 		width: 63%;
 		padding-bottom: 100px;
-		.contact__form-input {
+		align-items: flex-end;
+		&-input {
 			width: 48%;
 			margin-bottom: 22px;
 			font-size: 15px;
@@ -802,11 +878,22 @@ section {
 				display: block;
 				position: absolute;
 				right: 0;
-				top: 20px;
-				width: 7px;
-				height: 12px;
-				transform: rotate(90deg);
-				background: url('../img/arrow.png') no-repeat 0 0/ contain;
+				top: 23px;
+				width: 12px;
+				height: 7px;
+				background: url('../img/arrow-black.png') no-repeat 0 0/ contain;
+			}
+			&.select {
+				height: 42px;
+				select {
+					max-width: 280px;
+					padding: 10px 15px;
+					border: 1px solid #282828;
+				}
+				&::after {
+					right: 15px;
+					top: 17px;
+				}
 			}
 		}
 		textarea {
@@ -825,8 +912,12 @@ section {
 			padding: 15px 0 14px;
 		}
 		select {
-			width: 80%;
+			width: 100%;
 			margin-left: 15px;
+			&:-moz-focusring {
+				color: transparent;
+				text-shadow: 0 0 0 #000;
+			}
 			// width: 200px;
 		}
 		input {
