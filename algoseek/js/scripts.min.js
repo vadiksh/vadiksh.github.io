@@ -49,13 +49,13 @@ $(function() {
 			mouseEntered = true;
 		});
 	} else {
+		
 		$('.products__list li').click(function(){
 			$(this).addClass('active').find('.products__tooltip').addClass('active');
 			$(this).siblings().find('.products__tooltip').removeClass('active');
 		})
-		$(document).click(function(e) {
+		$(window).click(function(e) {
 			console.log(e.target);
-			console.log(e.currentTarget)
 			if (!$(e.target).is('.products__list li, .products__list li *')) {
 				$('.products__tooltip').removeClass('active');
 			}
