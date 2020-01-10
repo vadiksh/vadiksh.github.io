@@ -45,13 +45,13 @@ $(function() {
 	})
 	$('.products__tooltip').mouseenter(function() {
 		mouseEntered = true;
-	})
+	});
 	if ($(window).width() < 1250) {
 		$(document).click(function(e) {
 			if (!$(e.target).is('.products__list li')) {
 				$('.products__tooltip').removeClass('active');
 			}
-		}
+		})
 	}
 	
 
