@@ -30,25 +30,31 @@ $(function() {
 
 		})
 	}
-	var mouseEntered;
-	$('.products__list li').mouseenter(function(){
-		$(this).addClass('active').find('.products__tooltip').addClass('active');
-	})
-	$('.products__list li').mouseleave(function(){
-		var that = $(this);
-		mouseEntered = false;
-		setTimeout(function() {
-			if (!mouseEntered) {
-				that.find('.products__tooltip').removeClass('active');
-			}
-		},50)
-	})
-	$('.products__tooltip').mouseenter(function() {
-		mouseEntered = true;
-	});
-	if ($(window).width() < 1250) {
+	
+	if ($(window).width() > 1250) {
+		var mouseEntered;
+		$('.products__list li').mouseenter(function(){
+			$(this).addClass('active').find('.products__tooltip').addClass('active');
+		})
+		$('.products__list li').mouseleave(function(){
+			var that = $(this);
+			mouseEntered = false;
+			setTimeout(function() {
+				if (!mouseEntered) {
+					that.find('.products__tooltip').removeClass('active');
+				}
+			},50)
+		})
+		$('.products__tooltip').mouseenter(function() {
+			mouseEntered = true;
+		});
+	} else {
+		$('.products__list li').click(function(){
+			$(this).addClass('active').find('.products__tooltip').addClass('active');
+			$(this).siblings().find('.products__tooltip').removeClass('active');
+		})
 		$(document).click(function(e) {
-			if (!$(e.target).is('.products__list li')) {
+			if (!$(e.target).is('.products__list li, .products__list li *')) {
 				$('.products__tooltip').removeClass('active');
 			}
 		})

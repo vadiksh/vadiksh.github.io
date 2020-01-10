@@ -85,10 +85,12 @@
 			 	display: block;
 			 }
 			 &-wrapper {
-			 	width: 260px;
+			 	width: 100%;
 			 	margin: 0 auto;
 			 	flex-direction: column;
-			 	padding: 70px 0;
+			 	padding-left: calc((100% - 200px) / 2);
+			 	padding-top: 70px;
+			 	padding-bottom: 70px;
 			 	overflow-x: hidden;
 			 	overflow-y: scroll;
 			 	-webkit-overflow-scrolling: touch;
@@ -97,7 +99,7 @@
 			 	margin-bottom: 10px;
 			 	margin-left: 0;
 			 }
-			 li.close {
+			 .close {
 			 	display: flex;
 			 	position: fixed;
 			 	z-index: 15;
@@ -132,6 +134,7 @@
 			&.active::before {
 				transform: rotate(180deg);
 				transition: .3s;
+				top: 7px;
 			}
 			&.icon {
 				visibility: hidden;
