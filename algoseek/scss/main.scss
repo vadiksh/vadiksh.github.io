@@ -26,6 +26,11 @@ h1,h2,h3,h4 {
 li {
 	list-style: none;
 }
+.overflow-wrap {
+	width: 100%;
+	overflow-x: hidden;
+	position: relative;
+}
 .container {
 	max-width: 1200px;
 	margin: 0 auto; 
@@ -111,7 +116,7 @@ section {
 	height: 100vh;
 	min-height: 650px;
 	position: relative;
-	overflow: hidden;
+	z-index: 15;
 	&__top {
 		display: flex;
 		align-items: center;
@@ -120,7 +125,7 @@ section {
 		max-width: 1400px;
 		margin: 0 auto;
 		position: relative;
-		z-index: 3;
+		z-index: 15;
 	}
 	&__logo {
 		display: block;
@@ -274,7 +279,7 @@ section {
 		justify-content: center;
 		align-items: center;
 		position: relative;
-		z-index: 2;
+		// z-index: 2;
 		padding: 40px 0;
 		font-family: "montserrat";
 		h1 {
@@ -544,8 +549,6 @@ section {
 .delivery {
 	background: #FAFAFA;
 	padding: 100px 20px;
-	width: 100%;
-	overflow-x: hidden;
 	&::before {
 		content: '';
 		visibility: hidden;
