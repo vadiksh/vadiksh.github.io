@@ -1,4 +1,12 @@
 $(function() {
+	$(window).scroll(function() {
+		var scrolled = $(window).scrollTop();
+		if (scrolled > 0) {
+			$('.header__top').addClass('sticky')
+		} else {
+			$('.header__top').removeClass('sticky')
+		}
+	})
 	if ($(window).width() > 1023) {
 		var mouseEntered;
 		$('.header__link.dropdown').mouseenter(function(){

@@ -113,6 +113,7 @@ section {
 
 .header {
 	padding: 0 20px;
+	padding-top: 75px;
 	height: 100vh;
 	min-height: 650px;
 	position: relative;
@@ -124,8 +125,18 @@ section {
 		padding-top: 20px;
 		max-width: 1400px;
 		margin: 0 auto;
-		position: relative;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		padding: 20px;
 		z-index: 15;
+		transition: .3s;
+		height: 95px;
+		&.sticky {
+			background: #fff;
+			transition: .3s;
+		}
 	}
 	&__logo {
 		display: block;
