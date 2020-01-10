@@ -62,7 +62,7 @@ $(function() {
 			$(this).addClass('active').find('.products__tooltip').addClass('active');
 			$(this).siblings().find('.products__tooltip').removeClass('active');
 		})
-		$(window).click(function(e) {
+		$(window).on('touchstart', function(e) {
 			console.log(e.target);
 			if (!$(e.target).is('.products__list li, .products__list li *')) {
 				$('.products__tooltip').removeClass('active');
