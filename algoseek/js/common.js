@@ -54,7 +54,7 @@ $(function() {
 			$(this).siblings().find('.products__tooltip').removeClass('active');
 		})
 		$(document).click(function(e) {
-			if (!$(e.target).is('.products__list li, .products__list li *')) {
+			if (!$(e.currentTarget).is('.products__list li, .products__list li *')) {
 				$('.products__tooltip').removeClass('active');
 			}
 		})
