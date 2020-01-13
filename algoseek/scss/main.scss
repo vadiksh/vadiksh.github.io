@@ -988,6 +988,7 @@ section {
 		display: flex;
 		padding-right: 120px;
 		padding-left: calc(230px + 5%);
+		min-height: 100vh;
 	}
 	&__menu {
 		min-width: 230px;
@@ -1029,8 +1030,10 @@ section {
 	&__main {
 		position: relative;
 		max-width: 900px;
+		width: 100%;
 		transition: opacity .4s .2s;
 		opacity: 1;
+		overflow: hidden;
 		&.hidden {
 			transition: .2s;
 			opacity: 0;
@@ -1227,12 +1230,120 @@ section {
 		}
 
 	}
+	&__qa {
+		width: 100%;
+		padding-top: 60px;
+		padding-bottom: 100px;
+		h2 {
+			font-weight: 300;
+			font-size: 26px;
+			b {
+				font-weight: 700;
+			}
+			&::after {
+				content: '';
+				display: block;
+				width: 25px;
+				height: 5px;
+				background: $accent;
+				margin: 20px 0 30px;
+			}
+		}
+		&-list {
+			padding-left: 20px;
+		}
+		.question {
+			position: relative;
+			font-weight: 300;
+			font-family: "montserrat";
+			font-size: 30px;
+			border: 1px solid #D7D7D7;
+			padding: 18px 80px 18px 50px;
+			margin-top: 20px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			&.active {
+				&::after {
+					transform: translate3d(0,-50%,0) rotate(180deg) ;
+					transition: .3s;
+					// transform-origin: 50% 50%;
+				}
+			}
+			&::before {
+				position: absolute;
+				content: '';
+				width: 41px;
+				height: 41px;
+				left: -20px;
+				top: 50%;
+				transform: translate3d(0,-50%,0);
+				background: url('../img/question-icon.png') no-repeat center center / contain;
+			}
+			&::after {
+				position: absolute;
+				content: '';
+				width: 25px;
+				height: 35px;
+				right: 30px;
+				top: 50%;
+				transition: .3s;
+				transform: translate3d(0,-50%,0);
+				background: url('../img/arrow-green.png') no-repeat center center / contain;
+			}
+		}
+		.answer {
+			position: relative;
+			font-size: 18px;
+			color: #282828;
+			padding: 25px 20px 30px 50px;
+			display: none;
+			&::before {
+				position: absolute;
+				content: '';
+				width: 30px;
+				height: 30px;
+				left: 0px;
+				top: 25px;
+				background: url('../img/answer-icon.png') no-repeat center center / contain;
+			}
+			p {
+				margin-bottom: 17px;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+			&-sm {
+				font-size: 15px;
+				line-height: 2;
+			}
+			span {
+				width: 40px;
+				display: inline-block;
+			}
+			
+			.button {
+				border-width: 1px;
+				padding: 4px 10px;
+				margin-right: 10px;
+			}
+		}
+	}
 	&__icons {
 		position: fixed;
 		top: 50%;
 		right: 30px;
 		transform: translate3d(0,-50%,0);
 		text-align: right;
+		&.hidden {
+			li:not(.products-page__icons-mob) a {
+				opacity: 0;
+				width: 0;
+				height: 0;
+				margin: 0;
+				transition: .5s;
+			}
+		}
 		&.sticky {
 			position: absolute;
 			right: 10px;

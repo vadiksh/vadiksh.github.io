@@ -159,6 +159,8 @@ $(function() {
     		)
     	}
 
+    	
+
     	$('.products-page__data-group').click(function(e) {
     		// e.preventDefault();
     		$(this).siblings().find('a').removeClass('active');
@@ -169,6 +171,8 @@ $(function() {
    			if ($(window).width() < 768) {
    				$('.products-page__menu').removeClass('active');
    			}
+   			$('.products-page__icons').removeClass('hidden');
+
     		var index = $(this).index('.products-page__data-group');
     		$('body, html').animate({
     			scrollTop: 0
@@ -192,10 +196,13 @@ $(function() {
 	    		}
 	    		$('.products-page__main').removeClass('hidden');
     		}, 200);
-
-    		
     	})
+    	if (window.location.hash !== 0) {
+    		$('a[href*="' + window.location.hash + '"]').parent().trigger('click');
+    	}
     });
+    
+    
     $('.products-page__menu-list a').click(function (e) {
     	$(this).addClass('active');
     	$(this).parent().siblings().find('a').removeClass('active');
@@ -205,7 +212,21 @@ $(function() {
     	if ($(window).width() < 768) {
     		$('.products-page__menu').removeClass('active');
     	}
+
+    	$('.products-page__icons').addClass('hidden');
     })
+
+
+    if (window.location.hash !== 0) {
+    	$('a[href*="' + window.location.hash + '"]').trigger('click');
+    }
+    if (window.location.hash == '#featured') {
+    	$('.products-page__featured').addClass('active').siblings().removeClass('active');
+    } else if (window.location.hash == '#qa') {
+    	$('.products-page__qa').addClass('active').siblings().removeClass('active');
+
+    }
+
     $(window).on('hashchange', function() {
     	if (window.location.hash == '#featured') {
     		$('.products-page__featured').addClass('active').siblings().removeClass('active');
@@ -219,5 +240,15 @@ $(function() {
     	e.preventDefault();
     	$('.products-page__menu').addClass('active');
     })
-    $(window).trigger('scroll');
+
+    $('.products-page__qa .question').click(function() {
+    	$(this).siblings().slideToggle(300);
+    	if ($(this).hasClass('active')) {
+    		$(this).removeClass('active')
+    	} else {
+    		$(this).addClass('active');
+    	}
+    })
+
+    
 });
