@@ -184,7 +184,7 @@
 			 	width: 100%;
 			 	margin: 0 auto;
 			 	flex-direction: column;
-			 	padding-left: calc((100% - 200px) / 2);
+			 	padding-left: calc((100% - 230px) / 2);
 			 	padding-top: 70px;
 			 	padding-bottom: 90px;
 			 	overflow-x: hidden;
@@ -215,6 +215,7 @@
 		&__link {
 			padding-bottom: 0;
 			margin-bottom: 5px;
+			font-size: 18px;
 		}
 		&__link.dropdown {
 			&::before {
@@ -277,6 +278,7 @@
 				a {
 					padding-left: 30px;
 					color: #282828;
+					font-size: 18px;
 				}
 			}
 			&.tel + .icon{
@@ -293,11 +295,16 @@
 		}
 		&__link.cart::after {
 			content: 'Cart';
-			font-size: 15px;
+			font-size: 18px;
 			color: #282828;
 			padding-left: 30px;
 			position: relative;
-			top: -2px;
+			top: -3px;
+		}
+		&__dropdown {
+			a {
+				font-size: 16px;
+			}
 		}
 		&__dropdown.flex {
 			flex-direction: column;
@@ -315,7 +322,7 @@
 						left: 0;
 						transform: translate3d(0,100%,0);
 						&::before {
-							left: 70px;
+							left: 65px;
 							transform: translate3d(0,0,0);
 						}
 					}
@@ -323,8 +330,11 @@
 				&:nth-child(5) {
 					.products__tooltip {
 						right: 0;
+						left: auto;
+						transform: translate3d(0,100%,0);
 						&::before {
-							right: 70px;
+							left: auto;
+							right: 65px;
 							transform: translate3d(0,0,0);
 						}
 					}

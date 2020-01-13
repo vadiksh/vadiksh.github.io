@@ -7,7 +7,7 @@ $(function() {
 			$('.header__top').removeClass('sticky')
 		}
 
-		if ($(window).width() > 767) {
+		if ($(window).width() > 767 && $('.products-page').length) {
 			if ($('.products-page__icons').offset().top + $('.products-page__icons').height() > $('.footer').offset().top - 60) {
 				$('.products-page__icons').addClass('sticky');
 			} else if ($('.products-page__icons').hasClass('sticky') && scrolled + ($(window).height() - $('.products-page__icons').height())/2 < $('.products-page__icons').offset().top) {
@@ -135,7 +135,8 @@ $(function() {
     	$('.clients-carousel').owlCarousel({
     		loop:true,
     		items: 1,
-    		nav: true
+    		nav: true,
+    		navSpeed: 1000 
     	});
     }
    
@@ -153,7 +154,7 @@ $(function() {
     }).then(data => {
     	for (var i = 0; i < data.length; i++) {
     		$('.products-page__menu-list li:last-child').before(
-    			'<li class="products-page__data-group"><a href="../products.html#' + 
+    			'<li class="products-page__data-group"><a href="./products.html#' + 
     			data[i].product_listing_name + '">' + 
     			data[i].menu_name + '</a></li>'
     		)

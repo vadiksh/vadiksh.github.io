@@ -1,5 +1,5 @@
 @import "fonts";
-$accent: #4fa306;
+$accent: #59a745;
 
 * {
 	box-sizing: border-box;
@@ -12,12 +12,12 @@ body {
 	position: relative;
 	line-height: 1.65;
 	overflow-x: hidden;
-	color: #000;
+	color: #212529;
 	font-family: "Open Sans", sans-serif;
 	
 }
 a {
-	color: #000;
+	color: #212529;
 	text-decoration: none;
 }
 h1,h2,h3,h4 {
@@ -159,11 +159,12 @@ section {
 	}
 	&__menu {
 		display: flex;
+		margin-bottom: -13px;
 		&-wrapper {
 			display: flex;
 		}
 		li {
-			margin-left: 22px;
+			margin-left: 30px;
 			position: relative;
 		}
 		&-hamburger {
@@ -178,7 +179,7 @@ section {
 	}
 	&__link {
 		font-family: "Open Sans", sans-serif;
-		font-size: 15px;
+		font-size: 16px;
 		position: relative;
 		transition: .3s;
 		padding-bottom: 13px;
@@ -424,6 +425,7 @@ section {
 				top: 0;
 				left: 0;
 				background: url('../img/product-bg.png') no-repeat left center/ contain;
+				
 			}
 			h2 {
 				font-size: 76px;
@@ -493,7 +495,7 @@ section {
 					left: 0;
 					transform: translate3d(0,100%,0);
 					&::before {
-						left: 90px;
+						left: 60px;
 						transform: translate3d(0,0,0);
 					}
 				}
@@ -505,7 +507,7 @@ section {
 					transform: translate3d(0,100%,0);
 					&::before {
 						left: auto;
-						right: 90px;
+						right: 60px;
 						transform: translate3d(0,0,0);
 					}
 				}
@@ -537,12 +539,13 @@ section {
 		opacity: 0;
 		transition: .3s;
 		border-radius: 15px;
-		padding: 20px;
+		padding: 15px 18px 20px;
 		background: rgba(17,31,38,.95);
 		color: #fff;
-		font-size: 13px;
-		width: 300px;
+		font-size: 15px;
+		width: 310px;
 		z-index: 2;
+		text-align: left;
 		&::before {
 			content: '';
 			display: block;
@@ -855,6 +858,11 @@ section {
 			display: block;
 			padding-left: 30px;
 			position: relative;
+			transition: .3s;
+			&:hover {
+				color: $accent;
+				transition: .3s;
+			}
 			&::before {
 				content: '';
 				width: 19px;
@@ -918,18 +926,7 @@ section {
 				height: 7px;
 				background: url('../img/arrow-black.png') no-repeat 0 0/ contain;
 			}
-			&.select {
-				height: 42px;
-				select {
-					max-width: 280px;
-					padding: 10px 15px;
-					border: 1px solid #282828;
-				}
-				&::after {
-					right: 15px;
-					top: 17px;
-				}
-			}
+			
 		}
 		textarea {
 			width: 100%;
@@ -953,7 +950,6 @@ section {
 				color: transparent;
 				text-shadow: 0 0 0 #000;
 			}
-			// width: 200px;
 		}
 		input {
 			width: 100%;
@@ -983,6 +979,7 @@ section {
 .products-page {
 	position: relative;
 	z-index: 1;
+	overflow: hidden;
 	.container {
 		position: relative;
 		display: flex;
@@ -1033,7 +1030,7 @@ section {
 		width: 100%;
 		transition: opacity .4s .2s;
 		opacity: 1;
-		overflow: hidden;
+		// overflow: hidden;
 		&.hidden {
 			transition: .2s;
 			opacity: 0;
