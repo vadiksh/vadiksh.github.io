@@ -217,14 +217,15 @@ $(function() {
     })
 
 
-    if (window.location.hash !== 0) {
+    if (window.location.hash !== '') {
     	$('a[href*="' + window.location.hash + '"]').trigger('click');
+    } else {
+    	$('.products-page__menu-list li:first-child a').trigger('click');
     }
-    if (window.location.hash == '#featured') {
+    if (window.location.hash == '#featured' || window.location.hash == '') {
     	$('.products-page__featured').addClass('active').siblings().removeClass('active');
     } else if (window.location.hash == '#qa') {
     	$('.products-page__qa').addClass('active').siblings().removeClass('active');
-
     }
 
     $(window).on('hashchange', function() {
