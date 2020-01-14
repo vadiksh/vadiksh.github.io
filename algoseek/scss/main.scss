@@ -1929,6 +1929,9 @@ section {
 		&-textarea {
 			margin-top: 10px;
 			width: 100%;
+			label {
+				font-size: 15px;
+			}
 			textarea {
 				margin-top: 15px;
 				margin-bottom: 20px;
