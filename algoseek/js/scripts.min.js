@@ -276,7 +276,7 @@ $(function() {
     $('.order-upload').change(function() {
     	$(this).siblings('.order-upload-mark').html(this.files[0].name);
     })
-    $('.arrow-sliding h6').click(function (e) {
+    $('.arrow-sliding h6, .arrow-sliding input, .arrow-sliding textarea').click(function (e) {
     	e.preventDefault();
     });
     var period = 1;
