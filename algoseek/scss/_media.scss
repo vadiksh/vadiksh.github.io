@@ -932,7 +932,7 @@
 			transform: translate3d(-100%,0,0);
 			transition: .4s, height .3s;
 			flex-flow: column;
-			z-index: 1;
+			z-index: 11;
 			justify-content: center;
 			&-list {
 				width: 100%;
@@ -955,7 +955,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			z-index: 10;
+			z-index: 5;
 			li {
 				margin-bottom: 0;
 			}

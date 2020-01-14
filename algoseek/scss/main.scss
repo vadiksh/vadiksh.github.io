@@ -1847,9 +1847,11 @@ section {
 			transition: .3s;
 			color: #515151;
 			width: calc(100% - 60px);
+			border-radius: 0;
 			border: none;
 			border-bottom: 1px solid #515151;
 			padding: 6px 0px;
+			height: 35px;
 			padding-right: 5px;
 			font-size: 15px;
 			font-family: "Open Sans", sans-serif;
