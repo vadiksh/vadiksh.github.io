@@ -623,6 +623,13 @@
 		.products-page__table-headings {
 			display: block;
 		}
+		&-period {
+			h6 {
+				&::after, &::before {
+					opacity: 1;
+				}
+			}
+		}
 	}
 }
 @media (max-width: 767px) {

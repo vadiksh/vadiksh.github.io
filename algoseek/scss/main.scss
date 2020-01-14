@@ -1572,6 +1572,7 @@ section {
 			-webkit-appearance: none;
 			border: 1px solid #959595;
 			background: #fff;
+			border-radius: 0;
 			&:focus {
 				outline: none;
 			}
@@ -1807,17 +1808,12 @@ section {
 		}
 		&:first-of-type {
 			h6::after,h6::before {
-				// display: none;
+				display: none;
 			}
 		}
 		h6 {
 			position: relative;
 			color: #212529;
-			&.hide-close {
-				&::after, &::before {
-					display: none;
-				}
-			}
 			&:hover::after, &:hover::before {
 				opacity: 1;
 				transition: .3s;
