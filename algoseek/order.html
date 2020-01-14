@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title></title>
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="" type="image/x-icon">
+	<link rel="icon" href="" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	
+	
+</head>
+<body>
+<div class="overflow-wrap">
+
+<header class="header">
+	<div class="header__top">
+		<div class="header__top-container">
+			<a href="" class="header__logo"><img src="img/logo.svg" alt=""></a>
+			<div class="header__menu">
+				<ul class="header__menu-wrapper">
+					<li>
+	                    <a href="../products.html" class="header__link dropdown">
+	                        Products
+	                    </a>
+	                    <div class="header__dropdown flex">
+	                		<div>
+	                            <h4>MARKET DATA</h4>
+	                            <a href="../product/us_equity_market_data">Equity</a>
+	                            <a href="#">ETF/ETN</a>
+	                            <a href="#">Indices</a>
+	                            <a href="../product/us_options_market_data">Equity Options</a>
+	                            <a href="../product/us_futures_market_data">Futures</a>
+	                            <a href="../product/us_futures_options_data">Future Options</a>
+	                            <a href="#">Cash Forex</a>
+	                            <a href="#">Cryptocurrencies</a>
+	                        </div>
+	                        <div>
+	                            <h4>REFERENCE DATA</h4>
+	                            <a href="#">Equity Security Master File</a>
+	                            <a href="#">Future Security Master File</a>
+	                            <a href="#">Full Corporate Events</a>
+	                            <a href="#">Price Corporate Events</a>
+	                            <a href="#">Adjusted Pricing</a>
+	                        </div>
+	                    </div>
+	                </li>
+	                <li>
+	                    <a href="" class="header__link dropdown">
+	                        Delivery
+	                    </a>
+	                    <div class="header__dropdown">
+	                    	<a href="../delivery.html#api">API</a>
+	                       <a href="../delivery.html#cli">CLI</a>
+	                       <a href="../delivery.html#cloud">CLOUD</a>
+	                       <a href="../delivery.html#ftp">FTP</a>
+	                       <a href="../delivery.html#cloud">Browser</a>
+	                    </div>
+	                </li>
+	                <li>
+	                    <a href="#data-drive" class="header__link">Data Drive</a>
+	                </li>
+	                <li>
+	                    <a href="" class="header__link">
+	                        Company
+	                    </a>
+	                    <div class="header__dropdown">
+	                       <a href="../company-about.html">About us</a>
+	                       <a href="../company-vision.html">Our vision</a>
+	                       <a href="../company-mission.html">Our mission</a>
+	                       <a href="../company-team.html">Our team</a>
+	                    </div>
+	                </li>
+	                <li>
+	                    <a href="#support" class="header__link">Support</a>
+	                </li>
+	                <li>
+	                    <a href="#partner" class="header__link">Partner</a>
+	                </li>
+	                <li>
+	                	<a href="" class="header__link icon dropdown tel"></a>
+	                    <div class="header__dropdown icon">
+	                       <a href="tel:+16465831832">+1 646 583 1832</a>
+	                    </div>
+	                </li>
+	                <li>
+	                	<a href="" class="header__link icon dropdown mail"></a>
+	                    <div class="header__dropdown icon">
+		                    <a href="mailto:sales@algoseek.com">sales@algoseek.com</a>
+		                    <a href="mailto:support@algoseek.com">support@algoseek.com</a>
+	                    </div>
+	                </li>
+	                <li>
+	                    <a href="" class="header__link icon cart"></a>
+	                </li>
+				</ul>
+                <div class="close header__menu-close"><span></span></div>
+            </div>
+            <span class="header__menu-hamburger"></span>
+		</div>
+		
+	</div>
+</header>
+
+<section class="products-page order">
+	<div class="container-alt container">
+		<div class="products-page__menu">
+			<ul class="products-page__menu-list">
+				<li><a href="#order">Order Data Products</a></li>
+				<li><a href="#contact">My Contact Information</a></li>
+				<li><a href="#qa">Q&A</a></li>
+			</ul>
+		</div>
+		<main class="products-page__main order order__main" data-id="#order">
+			<div class="active">
+				<p class="order__info">
+					<b>Submitting order will not incur immediate payment.</b> <br>Algoseek sales will contact you in 24 hours for pricing and contact signing.
+				</p>
+				<h2>Order <b>Data Products</b></h2>
+				<form>
+					<ul class="order__table flex">
+						<li>
+							<div class="products-page__table-headings"><h5>DATA GROUP</h5>
+								<p class="products__tooltip">Select a Data Group to view list of available Data Sets.</p>
+							</div>
+							<div class="order__datagroups">
+							</div>
+						</li>
+						<li>
+							<div class="products-page__table-headings"><h5>SYMBOL</h5>
+								<p class="products__tooltip">
+									Enter the Symbol(s) you need.<br>
+									All.  All symbols in the Data Group<br>
+									Upload.  Upload a file with list of symbols<br>
+									Input.  Type in the list of symbols.
+
+								</p></div>
+							<div class="order__symbol">
+								<label class="order-radio">
+									<input type="radio" name="symbol" value="All">All
+								</label>
+
+								<label class="arrow order-radio">
+									<input type="radio" name="symbol" value="Upload">Upload
+									<input class="order-upload" type="file">
+									<span class="order-upload-mark arrow-sliding">No file selected</span>
+								</label>
+
+								<label class="order-radio">
+									<input type="radio" name="symbol" value="Input">Input
+									<textarea name="symbol-input" cols="30" rows="2"></textarea>
+								</label>
+							</div>
+						</li>
+						<li>
+							<div class="products-page__table-headings"><h5>DATA SET</h5>
+								<p class="products__tooltip">
+									Select one or more Data Sets from your Data Group.
+								</p></div>
+							<div class="order__datasets">
+								<label class="order-check arrow">
+									<input type="checkbox" name="dataset" value="Custom">
+									<span class="order-check-mark"></span>
+									Custom
+									<div class="arrow-sliding">
+										<div>
+											<textarea name="custom-dataset" cols="30" rows="2" placeholder="Describe Custom data"></textarea>
+											<input class="order-upload" type="file">
+											<span class="order-upload-mark">No file selected</span>
+										</div>
+									</div>
+								</label>
+							</div>
+						</li>
+						<li>
+							<div class="products-page__table-headings"><h5 class="last">HISTORICAL / UPDATES</h5>
+								<p class="products__tooltip">
+									Select the historical date range required.<br>
+									Select to Buy or Lease data
+								</p></div>
+							<div>
+								<label class="order-check">
+									<input type="checkbox" name="historical" value="Subscribe to daily updates">
+									<span class="order-check-mark"></span>Subscribe to daily updates
+								</label>
+
+								<label class="order-check order-historical arrow">
+									<input type="checkbox" name="historical" value="Historical Data">
+									<span class="order-check-mark"></span>
+									Historical Data
+									<div class="arrow-sliding">
+										<div>
+											<h6>Choose purchase option</h6>
+											<label class="order-radio">
+												<input type="radio" name="purchase-option" value="Buy" checked="">Buy
+											</label>
+											<label class="order-radio">
+												<input type="radio" name="purchase-option" value="Lease">Lease
+											</label>
+											<h6>Choose periods</h6>
+											<div class="order-period">
+												<h6 class="noline hide-close">Period 1</h6>
+												<label class="order-date">
+													From<input type="date" name="period-from" value="2013-01-01" min="2013-01-01">
+												</label>
+												<label class="order-date">
+													To<input type="date" name="period-to" value="2013-01-01" min="2013-01-01">
+												</label>
+											</div>
+											<span class="order-period-add">+ Period</span>
+										</div>
+									</div>
+								</label>
+							</div>
+						</li>
+							
+					</ul>
+					<span class="order__table-button order__table-add-row">Add New Row</span>
+					<div class="order__form" data-id="#contact">
+						<h2>My <b>contact information</b></h2>
+						<div class="contact__form order__form-block">
+							<div class="contact__form-input">
+								<input type="text" id="firstname-input" required="">
+					    		<label for="firstname-input">First Name *</label>
+					   	 	</div>
+							<div class="contact__form-input">
+							    <input type="text" id="lastname-input" required="">
+								<label for="lastname-input">Last Name *</label>
+							</div>
+							<div class="contact__form-input">
+							    <input type="email" id="email-input" required="">
+								<label for="email-input">Email Address *</label>
+							</div>
+							<div class="contact__form-input">
+							    <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" required="">
+								<label for="phone-input">Phone Number *</label>
+							</div>
+					        <label class="contact__form-input" for="country-select">
+					        	Country *
+					        	<select required="" id="country-select">
+					        	    <option value="USA">USA</option>
+					        	    <option value="China">China</option>
+					        	    <option value="Germany">Germany</option>
+					        	</select>
+					        </label>
+					        <div class="contact__form-input">
+					        	<input type="text" id="organization-input">
+					        	<label for="organization-input">Organization</label>
+					        </div>
+					       
+
+							<label class="contact__form-input" for="firmtype-select">
+								Firm Type
+								<select name="" id="firmtype-select" required="">
+									<option value="">Please Select</option>
+									<option value="Academic">Academic</option>
+									<option value="Bank">Bank</option>
+									<option value="Broker Dealer">Broker Dealer</option>
+									<option value="Consulting">Consulting</option>
+									<option value="Financial Technology">Financial Technology</option>
+									<option value="Hedge Fund">Hedge Fund</option>
+									<option value="Investment Advisor">Investment Advisor</option>
+									<option value="Individual">Individual</option>
+									<option value="Legal">Legal</option>
+									<option value="Proprietary Trading">Proprietary Trading</option>
+									<option value="Professional Trader">Professional Trader</option>
+									<option value="Other">Other</option>
+								</select>
+							</label>
+							<label class="contact__form-input" for="size-select">
+								Size
+								<select id="size-select">
+								    <option value="1-10">1-10</option>
+								    <option value="10-50">10-50</option>
+								    <option value="50-500">50-500</option>
+								    <option value="over-500">Over 500</option>
+								</select>
+							</label>
+					        <div class="order__form-textarea">
+					        	<label for="order-textarea">Additional Information or Requirements:</label>
+					        	<textarea placeholder="Message" id="order-textarea" class="string-message" rows="3"></textarea>
+					        </div>
+					        <label class="contact__form-input" for="contact-select">
+					        	Contact me by
+					        	<select id="contact-select">
+					        	    <option value="No Preference">No Preference</option>
+					        	    <option value="Email">Email</option>
+					        	    <option value="Phone">Phone</option>
+					        	</select>
+					        </label>
+						</div>
+				    </div>
+				    <button class="button" type="submit">Submit</button>
+				</form>
+
+				<div class="products-page__qa order__qa" data-id="#qa">
+					<h2>
+						Questions <b>& Answers</b>
+					</h2>
+					<ul class="products-page__qa-list">
+						<li>
+							<div class="question">
+								Do I need to provide payment information when I submit a new order?
+							</div>
+							<div class="answer">
+								The order form is to help us understand your needs. Your payment information is not required for submitting.
+							</div>
+						</li>
+						<li>
+							<div class="question">
+								How do I know the exact costs of datasets I have chosen?
+							</div>
+							<div class="answer">
+								Our sales will contact you for pricing and contract signing.
+							</div>
+						</li>
+						<li>
+							<div class="question">Can I change my order after submission?</div>
+							<div class="answer">Yes. You can discuss the changes you want to make with our sales rep.</div>
+						</li>
+						<li>
+							<div class="question">Can I cancel my order after submission?</div>
+							<div class="answer">Yes. You can find submitted orders under "My Orders" menu. And you can select the order and choose "cancel"</div>
+						</li>
+						<li>
+							<div class="question">Can I rent data by filling the new order form?</div>
+							<div class="answer">No. This Order Form is only for buy and lease option. Pleas visit data QuantGo if you want to rent data</div>
+						</li>
+						<li>
+							<div class="question">Where can I find guidance on how to filling the Order Form?</div>
+							<div class="answer">
+								You can click the <span class="question-icon"></span> button beneath the title row to find guidance on how to fill the cell.
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<ul class="products-page__icons">
+			<li class="products-page__icons-mob">
+				<a href=""></a>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<footer class="footer">
+	<div class="container flex">
+		<div class="footer__left">
+			<a href="#" class="footer__logo">
+			    <img src="img/logo-footer.png" alt="Algoseek">
+			</a>
+			<div class="footer__list">
+				<a href="#">Privacy & cookies</a>
+				<a href="#">Terms of use </a>
+				<a href="#">Trademarks </a>
+			</div>
+		</div>
+		<div class="footer__menu">
+			<div>
+				<div class="footer__list">
+					<h5>Coming Soon</h5>
+					<a href="#">Machine readable news</a>
+					<a href="#">FX data </a>
+				</div>
+				<div class="footer__list">
+					<h5>What’s new</h5>
+					<a href="#">Virtual data drive</a>
+					<a href="#">Master file</a>
+				</div>
+			</div>
+			<div>
+				<div class="footer__list">
+					<h5>Products and support</h5>
+					<a href="#">Stocks</a>
+					<a href="#">ETF/ETN</a>
+					<a href="#">Indices</a>
+					<a href="../products-options.html">Equity Options</a>
+					<a href="./products-futures.html">Futures</a>
+					<a href="../products-futur-opt.html">Future Options</a>
+					<a href="../delivery.html">Virtual data drive</a>
+					<a href="#">Sample data</a>
+					<a href="#">Pricing</a>
+				</div>
+			</div>
+			<div>
+				<div class="footer__list">
+					<h5>Company</h5>
+					<a href="../company-about.html">About us</a>
+					<a href="../company-vision.html">Our vision</a>
+					<a href="../company-mission.html">Our mission</a>
+					<a href="../company-team.html">Team members</a>
+				</div>
+				<div class="footer__list">
+					<h5>Career</h5>
+					<a href="../career.html">Developing</a>
+					<a href="../career.html">Marketing</a>
+				</div>
+			</div>
+		</div>
+        <div class="footer__copyright">AlgoSeek 2020. All rights reserved</div>
+	</div>
+</footer>
+</div>
+	
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/scripts.min.js"></script>
+
+</body>
+</html>

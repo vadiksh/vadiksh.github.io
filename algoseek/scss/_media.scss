@@ -7,12 +7,19 @@
 	.products-page {
 		&__menu {
 			left: calc((100vw - 1400px) / 2);
+			&.sticky {
+				left: 0;
+			}
 		}
 		&__icons {
 			right: calc((100vw - 1400px) / 2);
+			&.sticky {
+				right: 0;
+			}
 		}
 	}
 }
+
 @media (max-width: 1250px) {
 	.products {
 		&__list {
@@ -146,7 +153,59 @@
 
 		}
 	}
+	.order {
+		.container {
+			padding-right: 0;
+			padding-left: 250px;
+		}
+		.products-page__menu {
+			width: 220px;
+		}
+		.products-page__table-headings {
+			position: relative;
+			h5 {
+				white-space: pre-wrap;
+				display: block;
+				width: 100%;
+				position: absolute;
+				position: relative;
+				font-size: 13px;
+				padding-right: 40px;
+				&::after {
+					width: 19px;
+					height: 19px;
+					content: '';
+					display: inline-block;
+					background: url('../img/question.png') no-repeat center center/ contain;
+					position: absolute;
+					top: 3px;
+					margin-left: 8px;
+					right: 15px;
+				}
+			}
+		}
+		&__table {
+			flex-flow: row wrap;
+			margin-top: 50px;
+			margin-bottom: 0px;
+			>li {
+				width: 50%;
+				margin-bottom: 30px;
+				&:nth-child(2n) {
+					
+					&::after {
+						display: none;
+					}
+					h5 {
+						border-right: none;
+					}
+				}
+				
+			}
+		}
+	}
 }
+
 @media (max-width: 1023px) {
 	.section-title {
 		font-size: 50px;
@@ -550,7 +609,21 @@
 			}
 		}
 	}
-
+	.order {
+		&__form {
+			padding: 0;
+			border: none;
+			&-block {
+				width: 100%;
+			}
+			h2 {
+				// text-align: left;
+			}
+		}
+		.products-page__table-headings {
+			display: block;
+		}
+	}
 }
 @media (max-width: 767px) {
 
@@ -882,6 +955,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			z-index: 10;
 			li {
 				margin-bottom: 0;
 			}
@@ -913,6 +987,54 @@
 					left: -20px;
 				}
 			}
+		}
+	}
+	.order {
+		.products-page__menu {
+			width: 100%;
+			max-width: none;
+		}
+		&__main {
+			padding-top: 105px;
+		}
+		&__info {
+			font-size: 20px;
+			line-height: 1.5;
+			b {
+				display: inline-block;
+				margin-bottom: 5px;
+			}
+		}
+		h2 {
+			font-size: 30px;
+		}
+		&__form {
+			margin-top: 50px;
+			padding-top: 20px;
+			&-block {
+				padding-bottom: 0;
+			}
+		}
+		&__table {
+			flex-direction: column;
+			>li {
+				width: 100%;
+				&::after {
+					display: none;
+				}
+				.products-page__table-headings h5 {
+					border-right: 0;
+					font-size: 15px;
+				}
+				>div:last-child {
+					max-width: 280px;
+					margin: 0 auto;
+				}
+			}
+		}
+		&__qa {
+			margin-top: 0px;
+			padding-top: 80px;
 		}
 	}
 }

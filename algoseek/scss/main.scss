@@ -1495,6 +1495,463 @@ section {
 	}
 
 }
+.order {
+	.container {
+		padding-right: 0;
+	}
+	&__main {
+		max-width: 1050px;
+		padding-top: 65px;
+		padding-bottom: 65px;
+	}
+	&__info {
+		font-weight: 300;
+		font-size: 26px;
+		font-family: "montserrat";
+		line-height: 1.35;
+		b {
+			font-weight: 700;
+		}
+		&::after {
+			content: '';
+			display: block;
+			width: 25px;
+			height: 5px;
+			background: $accent;
+			margin: 32px 0 25px;
+		}
+	}
+	h2 {
+		font-size: 40px;
+		font-weight: 300;
+		line-height: 1.3;
+		margin-bottom: 40px;
+		b {
+			font-weight: 700;
+		}
+	}
+	
+	&__table {
+		line-height: 1.3;
+		transition: .4s;
+		margin-bottom: 60px;
+		> li {
+			width: 25%;
+			position: relative;
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 1px;
+				background: #ccc;
+				height: calc(100% - 80px);
+			}
+			&:last-child {
+				&::after {
+					display: none;
+				}
+			}
+			> div:last-child {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			&:first-child {
+				div {
+					padding-left: 0;
+				}
+			}
+		}
+		label {
+			// display: block;
+			width: 100%;
+			cursor: pointer;
+		}
+		input,textarea {
+			-webkit-appearance: none;
+			border: 1px solid #959595;
+			background: #fff;
+			&:focus {
+				outline: none;
+			}
+		}
+		input[type='date'] {
+			-webkit-appearance: initial;
+		}
+		.products-page__table-headings {
+			margin-bottom: 15px;
+			position: relative;
+		}
+		.products__tooltip {
+			bottom: 5px;
+		}
+		h5 {
+			cursor: pointer;
+			&.last {
+				border-right: 0;
+			}
+			&:nth-child(1) {
+				width: 100%;
+			}
+			&::after {
+				width: 19px;
+				height: 19px;
+				content: '';
+				display: inline-block;
+				background: url('../img/question.png') no-repeat center center/ contain;
+				position: relative;
+				top: 3px;
+				margin-left: 8px;
+			}
+		}
+		textarea {
+			display: block;
+			width: 100%;
+			resize: none;
+			border-color: #C2C2C2;
+			margin-top: 25px;
+			padding: 10px 12px;
+			font-size: 15px;
+			font-family: "Open Sans", sans-serif;
+		}
+		.arrow {
+			position: relative;
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 12px;
+				right: 0;
+				width: 8px;
+				height: 8px;
+				border: 2px solid $accent;
+				border-top: 0;
+				border-left: 0;
+				transform: rotate(45deg);
+				transition: .3s;
+			}
+			&.active {
+				&::after {
+					transform: rotate(225deg);
+					top: 19px;
+					transition: .3s;
+				}
+			}
+			&-sliding {
+				height: 0;
+				padding-top: 0;
+				opacity: 0;
+				visibility: hidden;
+				transition: .3s;
+				overflow: hidden;
+				textarea {
+					margin-top: 0;
+				}
+				&.active {
+					visibility: visible;
+					padding-top: 20px;
+					opacity: 1;
+					transition: .3s, opacity .3s .3s;
+				}
+			}
+		}
+
+		&-button {
+			background: #F1F6F8;
+			font-size: 15px;
+			color: #787878;
+			width: 100%;
+			display: block;
+			cursor: pointer;
+			padding: 15px 20px;
+			display: flex;
+			align-items: center;
+			transition: .2s;
+			&:hover {
+				background: #E2EFF5;
+				transition: .2s;
+			}
+			&::before {
+				width: 28px;
+				height: 28px;
+				content: '';
+				display: inline-block;
+				margin-right: 15px;
+				background: url('../img/plus.png') no-repeat left center/ contain;
+			}
+		}
+		&-remove {
+			position: relative;
+			margin-bottom: 20px;
+			&::before {
+				background: $accent;
+				border-radius: 50%;
+			}
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				left: 27px;
+				top: 50%;
+				transform: translate3d(0,-50%,0);
+				width: 13px;
+				height: 2px;
+				background: #fff;
+			}
+		}
+	}
+
+	
+	&-radio {
+		display: block;
+		padding: 10px 0 15px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		input {
+			border-radius: 50%;
+			width: 13px;
+			height: 13px;
+			margin-right: 10px;
+			&:checked {
+				background: radial-gradient(circle at 50%, $accent 0%, $accent 45%,#fff 45%, #fff 100%);
+			}
+		}
+	}
+	&-check {
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding: 10px 0 10px 25px;
+		> input, &-mark {
+			display: block;
+			width: 15px;
+			border: 1px solid #959595;
+			height: 15px;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translate3d(0,-50%,0);
+		}
+		> input {
+			z-index: 2;
+			opacity: 0;
+			&:checked + .order-check-mark::after {
+				transition: .25s;
+				opacity: 1;
+			}
+		}
+		h6 {
+			display: block;
+			padding-top: 20px;
+			font-size: 15px;
+			font-weight: 700;
+			&:first-of-type {
+				padding-top: 15px;
+			}
+			&.noline {
+				display: block;
+				margin-top: 10px;
+				margin-bottom: 15px;
+			}
+			&::after {
+				width: 15px;
+				height: 2px;
+				content: '';
+				display: block;
+				margin-top: 12px;
+				margin-bottom: 10px;
+				background: $accent;
+			}
+		}
+		&.arrow {
+			display: inline-block;
+			input, .order-check-mark {
+				top: 12px;
+				transform: none;
+			}
+			.arrow-sliding {
+				width: calc(100% + 25px);
+				position: relative;
+				left: -25px;
+			}
+			
+		}
+		&-mark {
+			z-index: 1;
+			&::after {
+				left: 2px;
+				top: 0px;
+				position: absolute;
+				content: '';
+				display: block;
+				width: 11px;
+				height: 4px;
+				border: 3px solid $accent;
+				border-bottom: 0;
+				border-left: 0;
+				transform: rotate(135deg);
+				opacity: 0;
+				transition: .25s;
+			}
+		}
+		
+	}
+	&-period {
+		label {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+		&:first-of-type {
+			h6::after,h6::before {
+				// display: none;
+			}
+		}
+		h6 {
+			position: relative;
+			color: #212529;
+			&.hide-close {
+				&::after, &::before {
+					display: none;
+				}
+			}
+			&:hover::after, &:hover::before {
+				opacity: 1;
+				transition: .3s;
+			}
+			&::after, &::before {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 12px;
+				height: 2px;
+				right: 2px;
+				bottom: 8px;
+				background: #515151;
+				opacity: 0;
+				transition: .3s;
+			}
+			&::after {
+				transform: rotate(45deg);
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+			&::before {
+				transform: rotate(-45deg);
+			}
+		}
+		input {
+			transition: .3s;
+			color: #515151;
+			width: calc(100% - 60px);
+			border: none;
+			border-bottom: 1px solid #515151;
+			padding: 6px 0px;
+			padding-right: 5px;
+			font-size: 15px;
+			font-family: "Open Sans", sans-serif;
+			background: url('../img/calendar.png') no-repeat right center/ 19px 20px;
+		}
+
+		[type="date"]::-webkit-inner-spin-button {
+		  display: none;
+		}
+		[type="date"]::-webkit-calendar-picker-indicator {
+		  opacity: 0;
+		}
+		&-add {
+			display: block;
+			cursor: pointer;
+			padding: 20px 0;
+			font-weight: 700;
+			color: $accent;
+		}
+	}
+	&-upload {
+		display: block;
+		width: 100%;
+		visibility: hidden;
+		position: absolute;
+		&-mark {
+			display: inline-block;
+			padding-left: 15px;
+			cursor: pointer;
+			display: block;
+			padding-top: 20px;
+			width: 100%;
+			font-size: 15px;
+			color: $accent;
+			white-space: nowrap;
+			overflow: hidden;
+			&::before {
+				width: 16px;
+				height: 18px;
+				content: '';
+				display: inline-block;
+				background: url('../img/upload-green.png') no-repeat center center/ contain;
+				position: relative;
+				top: 3px;
+				margin-right: 8px;
+			}
+		}
+	}
+	&__datasets {
+		transition: .2s;
+
+		&.hidden {
+			opacity: 0;
+			transition: .2s;
+		}
+	}
+	button {
+		margin: 55px auto 0;
+		display: block;
+		padding-left: 36px;
+		padding-right: 35px;
+	}
+	&__form {
+		margin-top: 70px;
+		width: 100%;
+		border: 1px solid $accent;
+		padding: 65px 15%;
+
+		h2 {
+			text-align: center;
+		}
+		&-block {
+			width: 100%;
+			padding-bottom: 0;
+		}
+		&-textarea {
+			margin-top: 10px;
+			width: 100%;
+			textarea {
+				margin-top: 15px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+	&__qa {
+		padding-top: 55px;
+		margin-top: 70px;
+		h2 {
+			font-size: 26px;
+		}
+		span.question-icon {
+			width: 19px;
+			height: 19px;
+			display: inline-block;
+			background: url('../img/question-icon-green.png') no-repeat center center/ contain;
+			position: relative;
+			top: 3px;
+			margin-left: 7px;
+			margin-right: 8px;
+		}
+	}
+}
 
 .footer {
 	position: relative;
