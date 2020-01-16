@@ -123,15 +123,15 @@
 				<form>
 					<ul class="order__table flex">
 						<li>
-							<div class="products-page__table-headings"><h5>DATA GROUP</h5>
-								<p class="products__tooltip">Select a Data Group to view list of available Data Sets.</p>
+							<div class="products-page__table-headings"><h5>DATA GROUP <span class="info"></span></h5>
+								<p class="products__tooltip order-tooltip">Select a Data Group to view list of available Data Sets.</p>
 							</div>
 							<div class="order__datagroups">
 							</div>
 						</li>
 						<li>
-							<div class="products-page__table-headings"><h5>SYMBOL</h5>
-								<p class="products__tooltip">
+							<div class="products-page__table-headings"><h5>SYMBOL <span class="info"></span></h5>
+								<p class="products__tooltip order-tooltip">
 									Enter the Symbol(s) you need.<br>
 									All.  All symbols in the Data Group<br>
 									Upload.  Upload a file with list of symbols<br>
@@ -140,24 +140,24 @@
 								</p></div>
 							<div class="order__symbol">
 								<label class="order-radio">
-									<input type="radio" name="symbol" value="All">All
+									<input type="radio" name="symbol" value="All" checked="">All
 								</label>
 
 								<label class="arrow order-radio">
 									<input type="radio" name="symbol" value="Upload">Upload
 									<input class="order-upload" type="file">
-									<span class="order-upload-mark arrow-sliding">No file selected</span>
+									<span class="order-upload-mark arrow-sliding">Select file</span>
 								</label>
 
 								<label class="order-radio">
 									<input type="radio" name="symbol" value="Input">Input
-									<textarea name="symbol-input" cols="30" rows="2"></textarea>
+									<textarea name="symbol-input" cols="30" rows="4"></textarea>
 								</label>
 							</div>
 						</li>
 						<li>
-							<div class="products-page__table-headings"><h5>DATA SET</h5>
-								<p class="products__tooltip">
+							<div class="products-page__table-headings"><h5>DATA SET <span class="info"></span></h5>
+								<p class="products__tooltip order-tooltip">
 									Select one or more Data Sets from your Data Group.
 								</p></div>
 							<div class="order__datasets">
@@ -167,17 +167,17 @@
 									Custom
 									<div class="arrow-sliding">
 										<div>
-											<textarea name="custom-dataset" cols="30" rows="2" placeholder="Describe Custom data"></textarea>
+											<textarea name="custom-dataset" cols="30" rows="4" placeholder="Describe Custom data"></textarea>
 											<input class="order-upload" type="file">
-											<span class="order-upload-mark">No file selected</span>
+											<span class="order-upload-mark">Select file (optional)</span>
 										</div>
 									</div>
 								</label>
 							</div>
 						</li>
 						<li>
-							<div class="products-page__table-headings"><h5 class="last">HISTORICAL / UPDATES</h5>
-								<p class="products__tooltip">
+							<div class="products-page__table-headings"><h5 class="last">HISTORICAL / UPDATES <span class="info"></span></h5>
+								<p class="products__tooltip order-tooltip">
 									Select the historical date range required.<br>
 									Select to Buy or Lease data
 								</p></div>
@@ -202,7 +202,7 @@
 											</label>
 											<h6>Choose periods</h6>
 											<div class="order-period">
-												<h6 class="noline">Period 1</h6>
+												<h6 class="noline">Period</h6>
 												<label class="order-date">
 													From<input type="date" name="period-from" value="2013-01-01" min="2013-01-01">
 												</label>
@@ -238,7 +238,7 @@
 							    <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" required="">
 								<label for="phone-input">Phone Number *</label>
 							</div>
-					        <label class="contact__form-input" for="country-select">
+					        <label class="contact__form-input full-width" for="country-select">
 					        	Country *
 					        	<select required="" id="country-select">
 					        	    <option value="USA">USA</option>
@@ -246,13 +246,13 @@
 					        	    <option value="Germany">Germany</option>
 					        	</select>
 					        </label>
-					        <div class="contact__form-input">
+					        <div class="contact__form-input full-width">
 					        	<input type="text" id="organization-input">
 					        	<label for="organization-input">Organization</label>
 					        </div>
 					       
 
-							<label class="contact__form-input" for="firmtype-select">
+							<label class="contact__form-input full-width" for="firmtype-select">
 								Firm Type
 								<select name="" id="firmtype-select" required="">
 									<option value="">Please Select</option>
@@ -270,8 +270,8 @@
 									<option value="Other">Other</option>
 								</select>
 							</label>
-							<label class="contact__form-input" for="size-select">
-								Size
+							<label class="contact__form-input full-width" for="size-select">
+								Firm Size
 								<select id="size-select">
 								    <option value="1-10">1-10</option>
 								    <option value="10-50">10-50</option>
@@ -283,7 +283,7 @@
 					        	<label for="order-textarea">Additional Information or Requirements:</label>
 					        	<textarea placeholder="Message" id="order-textarea" class="string-message" rows="3"></textarea>
 					        </div>
-					        <label class="contact__form-input" for="contact-select">
+					        <label class="contact__form-input full-width" for="contact-select">
 					        	Contact me by
 					        	<select id="contact-select">
 					        	    <option value="No Preference">No Preference</option>

@@ -45,18 +45,30 @@ $(function() {
 				$(this).removeClass('active').siblings().removeClass('slided').height(0);
 			} else {
 				var height = $(this).siblings()[0].scrollHeight;
-				console.log(height)
 				$(this).addClass('active').siblings().addClass('slided').height(height);
 			}
 		})
 	}
 	
 	if ($(window).width() > 1250) {
+
+
 		var mouseEntered;
-		$('.products__list li, .products-page__table-headings').mouseenter(function(){
+
+        $('.products-page__table-headings .info').mouseenter(function(){
+            mouseEntered = true;
+            $(this).parent().siblings('.products__tooltip').addClass('active');
+        })
+        $('.products-page__table-headings .info').mouseleave(function(){
+            var that = $(this);
+            that.parent().siblings().removeClass('active');
+        })
+
+
+		$('.products__list li').mouseenter(function(){
 			$(this).addClass('active').find('.products__tooltip').addClass('active');
 		})
-		$('.products__list li, .products-page__table-headings').mouseleave(function(){
+		$('.products__list li').mouseleave(function(){
 			var that = $(this);
 			mouseEntered = false;
 			setTimeout(function() {
@@ -65,7 +77,7 @@ $(function() {
 				}
 			},50)
 		})
-		$('.products__tooltip').mouseenter(function() {
+		$('.products__tooltip:not(.order__tooltip)').mouseenter(function() {
 			mouseEntered = true;
 		});
         $('.products__toolip').mouseleave(function(){
@@ -161,6 +173,7 @@ $(function() {
     fetch('js/as-website-products.json').then(response => {
         return response.json();
     }).then(data => {
+        var data = data;
     	for (var i = 0; i < data.length; i++) {
     		$('#products__menu li:last-child').before(
     			'<li class="products-page__data-group"><a href="./products.html#' + 
@@ -175,11 +188,13 @@ $(function() {
 
             if (window.location.hash == '#' + $($('.order__datagroups input')[i]).attr('data-id')) {    
                 $($('.order__datagroups input')[i]).prop('checked', true); 
-                setTimeout(function () {
-                   $('.order__datagroups').trigger('change');  
-                },1)
-                
+            
+            } else if (!window.location.hash || window.location.hash == '#order') {
+                $('.order__datagroups label:first-child input').prop('checked', true);
             }
+            setTimeout(function () {
+               $('.order__datagroups').trigger('change');  
+            }, 50)
     	}
     	$('.products-page__data-group').click(function(e) {
     		$(this).siblings().find('a').removeClass('active');
@@ -218,7 +233,6 @@ $(function() {
     	})
 
     	$('.order__datagroups').change(function() {
-            console.log('hkbjjk')
     		var index = $(this).find('input:checked').parent().index();
     		var table = $(this).parents('.order__table');
     		table.find('.order__datasets').addClass('hidden');
@@ -308,11 +322,9 @@ $(function() {
     				'</label><label>To<input type="date" name="period-to" min="2013-01-01"></label></div>'
     		);
     		table.find('.order-period:first-of-type h6').clone(true).html('Period ' + period).prependTo(table.find('.order-period-added'));
-    		
+    		table.find('.order-period:first-of-type h6').html('Period 1');
     		table.find('.order-period-added').addClass('order-period')
-    		// setTimeout(function() {
-    			table.find('.order-period-added').removeClass('order-period-added');
-    		// },100)
+    		table.find('.order-period-added').removeClass('order-period-added');
 
     		if (period == 5) {
     			$(this).fadeOut(300);
@@ -324,6 +336,7 @@ $(function() {
     })
     $('.order-period h6').click(function () {
     	var table = $(this).parents('.order__table');
+       
     	if (period > 1) {
     		$(this).parent().remove();  
     		 		
@@ -337,9 +350,12 @@ $(function() {
     	} 
 
     	for (var i = 0; i < table.find('.order-period').length; i++) {
-    		var index = i + 1;
-    		$(table.find('.order-period')[i]).find('h6').html('Period ' + index);
-    	}
+            var index = i + 1;
+            $(table.find('.order-period')[i]).find('h6').html('Period ' + index);
+            if (period == 1) {
+                table.find('.order-period:first-of-type h6').html('Period');
+            }
+        }
 
     	table.find('.order-historical .arrow-sliding.active').css({"height": table.find('.order-historical .arrow-sliding > div').height()});
     	setTableHeight(table);
@@ -356,23 +372,30 @@ $(function() {
     	newTable.find('.order__datasets .order-check:not(.arrow)').remove();
     	newTable.find('.arrow').removeClass('active').find('.arrow-sliding').removeClass('active').css({"height": "0"});
     	newTable.find('input:checked').prop('checked', false);
-
+        newTable.find('textarea').val('');
+        newTable.find('.order__datagroups label:first-child input,.order__symbol label:first-child input').prop('checked', true);
     	newTable.insertBefore('.order__table-add-row');
 
-    	$('.order__table:last-of-type').after(
-    		'<span class="order__table-button order__table-remove">Remove Order Row</span>'
+       $('.order__datagroups').trigger('change'); 
+
+    	$('.order__table:last-of-type').append(
+    		'<span class="order__table-remove"></span>'
     	)
     	if ($('.order__table').length == 5) {
     		$(this).fadeOut(500);
     	} 
     	for (var i = 0; i < $('.order__table:last-of-type input[type="file"]').length; i++) {
-    		$($('.order__table:last-of-type input[type="file"]')[i]).val('').next('.order-upload-mark').html('No file selected');
+            var input = $('.order__table:last-of-type input[type="file"]');
+    		$(input[i]).val('').next('.order-upload-mark').html('Select file');
+            if($(input[i]).parents('.order__datasets').length) {
+                $(input[i]).val('').next('.order-upload-mark').html('Select file (optional)');
+            }
     	}
     	
     	setTableHeight($('.order__table:last-of-type'));
 
     	$('.order__table-remove').click(function() {
-    		$(this).prev('.order__table').remove();
+    		$(this).parent('.order__table').remove();
     		$(this).remove();
     		if ($('.order__table').length < 5) {
     			$('.order__table-add-row').fadeIn(500);
@@ -396,7 +419,6 @@ $(function() {
     			}
     		},200)
     	} else {
-    		console.log('da')
     		$(this).addClass('active');
     		$(this).parent().siblings().find('a').removeClass('active');
 

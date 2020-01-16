@@ -266,6 +266,11 @@ section {
 			word-wrap: initial; 
 			text-wrap: none;
 			margin-bottom: 10px;
+			transition: .25s;
+			&:hover {
+				transition: .25s;
+				color: $accent;
+			}
 		}
 		&.active {
 			visibility: visible;
@@ -1538,6 +1543,8 @@ section {
 		line-height: 1.3;
 		transition: .4s;
 		margin-bottom: 60px;
+		position: relative;
+		padding-right: 40px;
 		> li {
 			width: 25%;
 			position: relative;
@@ -1551,7 +1558,7 @@ section {
 				background: #ccc;
 				height: calc(100% - 80px);
 			}
-			&:last-child {
+			&:last-of-type {
 				&::after {
 					display: none;
 				}
@@ -1559,11 +1566,6 @@ section {
 			> div:last-child {
 				padding-left: 15px;
 				padding-right: 15px;
-			}
-			&:first-child {
-				div {
-					padding-left: 0;
-				}
 			}
 		}
 		label {
@@ -1589,24 +1591,30 @@ section {
 		}
 		.products__tooltip {
 			bottom: 5px;
+			&::before {
+				transform: none;
+				left: 60px;
+			}
 		}
 		h5 {
 			cursor: pointer;
+			position: relative;
 			&.last {
 				border-right: 0;
 			}
 			&:nth-child(1) {
 				width: 100%;
 			}
-			&::after {
+			.info {
 				width: 19px;
 				height: 19px;
 				content: '';
 				display: inline-block;
 				background: url('../img/question.png') no-repeat center center/ contain;
-				position: relative;
+				position: absolute;
 				top: 3px;
 				margin-left: 8px;
+				right: 15px;
 			}
 		}
 		textarea {
@@ -1686,26 +1694,31 @@ section {
 			}
 		}
 		&-remove {
-			position: relative;
-			margin-bottom: 20px;
-			&::before {
-				background: $accent;
-				border-radius: 50%;
+			position: absolute;
+			cursor: pointer;
+			right: -5px;
+			top: 12px;
+			width: 28px;
+			height: 28px;
+			content: '';
+			display: inline-block;
+			background: url('../img/plus.png') no-repeat left center/ contain;
+			transform: rotate(45deg);
+			opacity: 1;
+			visibility: visible;
+			span {
+				&::after, &::before {
+					display: none;
+				} 
 			}
-			&::after {
-				content: '';
-				display: block;
-				position: absolute;
-				left: 27px;
-				top: 50%;
-				transform: translate3d(0,-50%,0);
-				width: 13px;
-				height: 2px;
-				background: #fff;
-			}
+			
 		}
 	}
-
+	&__symbol {
+		.arrow::after {
+			display: none;
+		}
+	}
 	
 	&-radio {
 		display: block;

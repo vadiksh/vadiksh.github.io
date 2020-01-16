@@ -56,6 +56,13 @@
 			}
 		}
 	}
+	.contact {
+		&__form-input {
+			&.full-width {
+				width: 100%;
+			}
+		}
+	}
 	.clients {
 		padding-top: 50px;
 		.container {
@@ -167,30 +174,22 @@
 				white-space: pre-wrap;
 				display: block;
 				width: 100%;
-				position: absolute;
-				position: relative;
 				font-size: 13px;
 				padding-right: 40px;
-				&::after {
-					width: 19px;
-					height: 19px;
-					content: '';
-					display: inline-block;
-					background: url('../img/question.png') no-repeat center center/ contain;
-					position: absolute;
-					top: 3px;
-					margin-left: 8px;
-					right: 15px;
-				}
 			}
 		}
 		&__table {
 			flex-flow: row wrap;
 			margin-top: 50px;
 			margin-bottom: 0px;
+			padding-right: 0;
+			&-remove {
+				top: -45px;
+				right: 0;
+			}
 			>li {
 				width: 50%;
-				margin-bottom: 30px;
+				margin-bottom: 40px;
 				&:nth-child(2n) {
 					
 					&::after {
@@ -338,27 +337,45 @@
 					padding-left: 30px;
 					color: #282828;
 					font-size: 18px;
+					transition: .25s;
+					&:hover {
+						color: $accent;
+						transition: .25s;
+					}
 				}
 			}
 			&.tel + .icon{
 				margin-top: 20px;
 				a {
 					background: url('../img/tel-black.png') no-repeat left center/ 20px auto;
+					&:hover {
+						background: url('../img/tel.png') no-repeat left center/ 20px auto;
+					}
 				}
 			}
 			&.mail + .icon{
 				a {
 					background: url('../img/mail-black.png') no-repeat left center/ 20px auto;
+					&:hover {
+						background: url('../img/mail.png') no-repeat left center/ 20px auto;
+					}
 				}
 			}
 		}
-		&__link.cart::after {
-			content: 'Cart';
-			font-size: 18px;
-			color: #282828;
-			padding-left: 30px;
-			position: relative;
-			top: -3px;
+		&__link.cart {
+			&::after {
+				content: 'Cart';
+				font-size: 18px;
+				color: #282828;
+				padding-left: 30px;
+				position: relative;
+				top: -3px;
+				transition: .25s;
+			}
+			&:hover::after {
+				color: $accent;
+				transition: .25s;
+			}
 		}
 		&__dropdown {
 			a {
