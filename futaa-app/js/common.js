@@ -21,4 +21,5 @@ $(function() {
 		}
 		$(this).siblings('input').val(val)
 	})
+
 });
