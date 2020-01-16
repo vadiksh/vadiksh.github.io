@@ -1,0 +1,174 @@
+@import "vars";
+
+@media (max-width: 767px) {
+	.header {
+		&__top, &__nav {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		&__nav {
+			ul {
+				display: flex;
+				justify-content: space-between;
+				text-align: center;
+			}
+			li {
+				width: 20%;
+				margin-right: 0;
+			}
+			a.active {
+				border-bottom: 3px solid $g;
+			}
+			li:last-child {
+				display: none;
+			}
+			&::after {
+				display: none;
+			}
+		}
+	}
+	.home {
+		.container {
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			max-width: 400px;
+			 > div {
+			 	width: 100%;
+			 }
+			.ad-center {
+				width: 100%;
+				order: 3;
+				margin-top: 0;
+			}
+		}
+		.ad-lg {
+			order: 1;
+		}
+		.entries {
+			order: 2;
+			padding-top: 10px;
+			padding-bottom: 8px;
+			.ad {
+				display: none;
+			}
+			.btn {
+				margin: 8px auto 5px;
+			}
+		}
+
+		.how {
+			order: 5;
+		}
+		.round {
+			order: 4;
+		}
+	}
+	.predict {
+		.container{
+			max-width: 400px;
+		}
+		&__list {
+			margin-top: 8px;
+			padding: 6px 0 0;
+			margin-bottom: 6px;
+			>li {
+				width: 100%;
+				padding: 0 6px 6px;
+				margin-bottom: 6px;
+				border-bottom: 5px solid #F5F5F6;
+				&:last-child {
+					margin-bottom: 0;
+					border-bottom: 0;
+				}
+			}
+		}
+		&__golden {
+			width: 100%;
+			margin-bottom: 15px;
+		}
+		&__btn {
+			width: calc(100% + 30px);
+			position: relative;
+			left: -15px;
+		}
+	}
+	.confirm {
+		.container {
+			flex-wrap: wrap;
+			background: none;
+			max-width: 400px;
+			>div {
+				width: 100%;
+				&:first-child {
+					padding: 30px 20px 0;
+				}
+				&:last-child {
+					padding: 16px 10px;
+				}
+			}
+		}
+		.round__teams {
+			li {
+				background: #fff;
+				width: 32%;
+				padding: 3px 0;
+				margin-bottom: 5px;
+				&::after {
+					top: 13px;
+				}
+			}
+		}
+		.ad-sm {
+			margin-bottom: 0;
+			width: calc(100% + 40px);
+			left: -20px;
+		}
+		.ad-lg {
+			display: none;
+		}
+	}
+	.bet {
+		&__list {
+			background: #fff;
+			border-radius: 2px;
+			padding-bottom: 15px;
+			li {
+				border-bottom: 1px solid #F5F5F6;
+				padding: 8px;
+				margin-bottom: 0;
+			}
+		}
+		.input {
+			padding: 0 10px;
+			border: none;
+			label {
+				&::before {
+					left: 20px;
+				}
+			}
+			input {
+				border: 1px solid $g;
+			}
+		}
+		&__info {
+			padding: 10px 10px 20px;
+
+		}
+		&__payout {
+			padding-bottom: 10px;
+			p {
+				margin-bottom: 20px;
+			}
+			.btn {
+				position: relative;
+				width: 95%;
+				left: 2.5%;
+			}
+		}
+		&__payout, .input, &__info {
+			background: #fff;
+			margin: 0;
+		}
+	}
+}
