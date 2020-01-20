@@ -45,10 +45,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "AlgoSeek.US.Equities.FullDepth.pdf",
+          "object_name": "algoseek.US.Equity.Full.Depth.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/FullDepth/",
           "last_updated": "2018-10-27"
-        }
+        },
+        "daily_size": "6 GB",
+        "annual_size": "1.4 TB"
       },
       {
         "id": "dts_eq_taq",
@@ -80,10 +82,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "AlgoSeek.US.Equities.TAQ.pdf",
+          "object_name": "algoseek.US.Equity.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotes/",
           "last_updated": "2018-10-04"
-        }
+        },
+        "daily_size": "5 GB",
+        "annual_size": "1.2 TB"
       },
       {
         "id": "dts_eq_trades",
@@ -115,10 +119,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "AlgoSeek.US.Equities.TradesOnly.pdf",
+          "object_name": "algoseek.US.Equity.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnly/",
           "last_updated": "2019-06-15"
-        }
+        },
+        "daily_size": "150 MB",
+        "annual_size": "35 GB"
       },
       {
         "id": "dts_eq_taq_1min",
@@ -151,10 +157,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "AlgoSeek.US.Equity.TradeAndQuotes.OHLC.Bars.pdf",
+          "object_name": "algoseek.US.Equity.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotesOneMin/",
           "last_updated": "2019-08-27"
-        }
+        },
+        "daily_size": "180 MB",
+        "annual_size": "45 GB"
       },
       {
         "id": "dts_eq_taq_1min_nofinra",
@@ -187,10 +195,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "AlgoSeek.US.Equity.TradeAndQuotes.OHLC.Bars.pdf",
+          "object_name": "algoseek.US.Equity.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotesOneMin/",
           "last_updated": "2019-08-27"
-        }
+        },
+        "daily_size": "160 MB",
+        "annual_size": "40 GB"
       },
       {
         "id": "dts_eq_trades_1min",
@@ -223,10 +233,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "AlgoSeek.US.Equity.TradeOnly.OHLC.Bars.pdf",
+          "object_name": "algoseek.US.EquityTrades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnlyOneMin/",
           "last_updated": "2019-08-27"
-        }
+        },
+        "daily_size": "15 MB",
+        "annual_size": "3.5 GB"
       },
       {
         "id": "dts_eq_trades_1min_nofinra",
@@ -259,10 +271,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "AlgoSeek.US.Equity.TradeOnly.OHLC.Bars.pdf",
+          "object_name": "algoseek.US.EquityTrades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnlyOneMin/",
           "last_updated": "2019-08-27"
-        }
+        },
+        "daily_size": "11 MB",
+        "annual_size": "2.7 GB"
       },
       {
         "id": "dts_eq_daily_ohlc_primary",
@@ -296,10 +310,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "US.Equity.Daily.PrimaryOpenClose.Guide.pdf",
+          "object_name": "algoseek.US.Equity.Daily.OHLC.Primary.Guide.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/DailyOHLCPrimary/",
           "last_updated": "2019-06-26"
-        }
+        },
+        "daily_size": "1.5 MB",
+        "annual_size": "450 MB"
       },
       {
         "id": "dts_eq_daily_ohlc_std",
@@ -333,10 +349,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "US.Equity.Daily.PrimaryOpenClose.Guide.pdf",
+          "object_name": "algoseek.US.Equity.Daily.OHLC.Primary.Guide.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/DailyOHLCPrimary/",
           "last_updated": "2019-06-26"
-        }
+        },
+        "daily_size": "375 kB",
+        "annual_size": "100 MB"
       },
       {
         "id": "dts_eq_daily_ohlc_std_adj",
@@ -370,10 +388,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-market-data-docs",
-          "object_name": "US.Equity.Daily.PrimaryOpenClose.Guide.pdf",
+          "object_name": "algoseek.US.Equity.Daily.OHLC.Primary.Guide.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/DailyOHLCPrimary/",
           "last_updated": "2019-06-26"
-        }
+        },
+        "daily_size": "500 kB",
+        "annual_size": "130 MB"
       },
       {
         "id": "dts_eq_daily_oc_price",
@@ -401,7 +421,9 @@
           "bucket_name": "algoseek-website-samples",
           "object_name": "equity_daily_oc_price.csv"
         },
-        "documentation": null
+        "documentation": null,
+        "daily_size": "300 kB",
+        "annual_size": "80 MB"
       }
     ]
   },
@@ -452,10 +474,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-options-market-data-docs",
-          "object_name": "AlgoSeek.US.Options.TradeAndQuotes.pdf",
+          "object_name": "algoseek.US.Options.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesAndQuotes/",
           "last_updated": "2019-06-04"
-        }
+        },
+        "daily_size": "400 GB",
+        "annual_size": ""
       },
       {
         "id": "dts_opt_trades",
@@ -487,10 +511,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-options-market-data-docs",
-          "object_name": "AlgoSeek.US.Options.TradesOnly.pdf",
+          "object_name": "algoseek.US.Options.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesOnly/",
           "last_updated": "2019-04-03"
-        }
+        },
+        "daily_size": "40 MB",
+        "annual_size": "10 Gb"
       },
       {
         "id": "dts_opt_taq_1min",
@@ -523,10 +549,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-options-market-data-docs",
-          "object_name": "AlgoSeek.USOptions.TradeAndQuotes.OHLC.Bars.pdf",
+          "object_name": "algoseek.US.Options.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesAndQuotesOneMin/",
           "last_updated": "2018-08-31"
-        }
+        },
+        "daily_size": "3.7 GB",
+        "annual_size": "900 GB"
       },
       {
         "id": "dts_opt_trades_1min",
@@ -559,10 +587,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-options-market-data-docs",
-          "object_name": "AlgoSeek.USOptions.TradesOnly.OHLC.Bars.pdf",
+          "object_name": "algoseek.US.Options.Trades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesOnlyOneMin/",
           "last_updated": "2018-08-31"
-        }
+        },
+        "daily_size": "10 MB",
+        "annual_size": "2.2 GB"
       }
     ]
   },
@@ -612,10 +642,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.CME.CBOT.NYMEX.COMEX.Level.Two.pdf",
+          "object_name": "algoseeek.CME.Futures.Multiple.Depth.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/MultipleDepth/",
           "last_updated": "2019-03-25"
-        }
+        },
+        "daily_size": "1 GB",
+        "annual_size": "320 GB"
       },
       {
         "id": "dts_fut_taq",
@@ -647,10 +679,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.CME.CBOT.NYMEX.COMEX.Futures.TradeAndQuotes.pdf",
+          "object_name": "algoseek.CME.Futures.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotes/",
           "last_updated": "2019-09-04"
-        }
+        },
+        "daily_size": "1.6 GB",
+        "annual_size": "480 GB"
       },
       {
         "id": "dts_fut_trades",
@@ -682,10 +716,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.CME.CBOT.NYMEX.COMEX.Futures.TradesOnly.pdf",
+          "object_name": "algoseek.CME.Futures.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnly/",
           "last_updated": "2019-07-29"
-        }
+        },
+        "daily_size": "12 MB",
+        "annual_size": "4 GB"
       },
       {
         "id": "dts_fut_taq_1min",
@@ -718,10 +754,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.TradeAndQuotes.OHLC.Bars.pdf",
+          "object_name": "algoseek.CME.Futures.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotesOneMin/",
           "last_updated": "2019-04-11"
-        }
+        },
+        "daily_size": "15 MB",
+        "annual_size": "4.5 GB"
       },
       {
         "id": "dts_fut_trades_1min",
@@ -754,10 +792,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.Trade.OHLC.Bars.pdf",
+          "object_name": "algoseek.CME.Futures.Trades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnlyOneMin/",
           "last_updated": "2019-04-11"
-        }
+        },
+        "daily_size": "1.2 MB",
+        "annual_size": "400 MB"
       }
     ]
   },
@@ -808,10 +848,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.CME.CBOT.NYMEX.COMEX.Futures.TradeAndQuotes.pdf",
+          "object_name": "algoseek.CME.Futures.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotes/",
           "last_updated": "2019-09-04"
-        }
+        },
+        "daily_size": "1.6 GB",
+        "annual_size": "480 GB"
       },
       {
         "id": "dts_fut_opt_trades",
@@ -843,10 +885,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.CME.CBOT.NYMEX.COMEX.Futures.TradesOnly.pdf",
+          "object_name": "algoseek.CME.Futures.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnly/",
           "last_updated": "2019-07-29"
-        }
+        },
+        "daily_size": "130 MB",
+        "annual_size": "40 GB"
       },
       {
         "id": "dts_fut_opt_taq_1min",
@@ -879,10 +923,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.TradeAndQuotes.OHLC.Bars.pdf",
+          "object_name": "algoseek.CME.Futures.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotesOneMin/",
           "last_updated": "2019-04-11"
-        }
+        },
+        "daily_size": "400 MB",
+        "annual_size": "120 GB"
       },
       {
         "id": "dts_fut_opt_trades_1min",
@@ -915,10 +961,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-market-data-docs",
-          "object_name": "AlgoSeek.US.Futures.Trade.OHLC.Bars.pdf",
+          "object_name": "algoseek.CME.Futures.Trades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnlyOneMin/",
           "last_updated": "2019-04-11"
-        }
+        },
+        "daily_size": "1.4 MB",
+        "annual_size": "450 GB"
       }
     ]
   },
@@ -969,10 +1017,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-reference-docs",
-          "object_name": "AlgoSeek.SecurityMasterFile.Guide.pdf",
+          "object_name": "algoseek.US.Equity.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/SecurityMaster/",
           "last_updated": "2019-08-22"
-        }
+        },
+        "daily_size": "3 KB",
+        "annual_size": "5 MB"
       },
       {
         "id": "dts_eq_lookup_files",
@@ -1004,10 +1054,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-reference-docs",
-          "object_name": "AlgoSeek.SecurityMasterFile.Guide.pdf",
+          "object_name": "algoseek.US.Equity.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/SecurityMaster/",
           "last_updated": "2019-08-22"
-        }
+        },
+        "daily_size": "0 KB",
+        "annual_size": "1.5 MB"
       },
       {
         "id": "dts_eq_adj_factors_basic",
@@ -1041,10 +1093,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-reference-docs",
-          "object_name": "AlgoSeek.DetailedAdjustmentFactors.Guide.pdf",
+          "object_name": "algoseek.US.Equity.Adjustment.Factors.Detailed.pdf",
           "source_path": "Algoseek/Documentation/AlgoSeek/Equity/AdjustmentFactorsDetailed/",
           "last_updated": "2019-06-04"
-        }
+        },
+        "daily_size": "4.5 kB",
+        "annual_size": "1.5 MB"
       },
       {
         "id": "dts_eq_adj_factors_detail",
@@ -1078,10 +1132,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-equity-reference-docs",
-          "object_name": "AlgoSeek.DetailedAdjustmentFactors.Guide.pdf",
+          "object_name": "algoseek.US.Equity.Adjustment.Factors.Detailed.pdf",
           "source_path": "Algoseek/Documentation/AlgoSeek/Equity/AdjustmentFactorsDetailed/",
           "last_updated": "2019-06-04"
-        }
+        },
+        "daily_size": "20 kB",
+        "annual_size": "5 MB"
       }
     ]
   },
@@ -1132,10 +1188,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-reference-docs",
-          "object_name": "Futures.MasterSecurityFile.Guide.pdf",
+          "object_name": "algoseeek.CME.Futures.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/SecurityMaster/",
           "last_updated": "2019-05-01"
-        }
+        },
+        "daily_size": "0",
+        "annual_size": "320 kB"
       },
       {
         "id": "dts_fut_lookup_files",
@@ -1167,10 +1225,12 @@
           "description": "Description of data content and fields format",
           "account_name": "algoseek-docs",
           "bucket_name": "us-futures-reference-docs",
-          "object_name": "Futures.MasterSecurityFile.Guide.pdf",
+          "object_name": "algoseeek.CME.Futures.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/SecurityMaster/",
           "last_updated": "2019-05-01"
-        }
+        },
+        "daily_size": "0 KB",
+        "annual_size": "50 kB"
       }
     ]
   }
