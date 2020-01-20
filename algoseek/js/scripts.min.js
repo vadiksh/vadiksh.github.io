@@ -18,10 +18,16 @@ $(function() {
                 $('.products-page__icons').removeClass('sticky');
             }
 
+            if (scrolled > 45) {
+                $('.products-page__menu').addClass('sticky-top');
+            } else {
+                $('.products-page__menu').removeClass('sticky-top');
+            }
+
             if ($('.products-page__menu').offset().top + $('.products-page__menu').height() > $('.footer').offset().top - 60) {
-                $('.products-page__menu').addClass('sticky');
+                $('.products-page__menu').addClass('sticky').removeClass('sticky-top');
             } else if ($('.products-page__menu').hasClass('sticky') && scrolled + 145 < $('.products-page__menu').offset().top) {
-                $('.products-page__menu').removeClass('sticky');
+                $('.products-page__menu').removeClass('sticky').addClass('sticky-top');
             }
         })
     }

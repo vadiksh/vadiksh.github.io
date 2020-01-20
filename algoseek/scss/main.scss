@@ -1096,11 +1096,20 @@ section {
 		left: 30px;
 		top: 145px;
 		bottom: auto;
+		transition: all 0s, transform .3s;
+		&.sticky-top {
+			transform: translate3d(0, -45px, 0);
+			transition: transform .3s;
+		}
 		&.sticky {
 			position: absolute;
 			left: 10px;
 			bottom: 60px;
 			top: auto;
+			transition: all 0s;
+			&.sticky-top {
+				transform: translate3d(0, 0, 0);
+			}
 		}
 		form {
 			display: none;
