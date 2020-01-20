@@ -430,7 +430,7 @@
 			    <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" required="">
 				<label for="phone-input">Phone Number *</label>
 			</div>
-	        <label class="contact__form-input" for="country-select">
+	        <label class="contact__form-input full-width" for="country-select">
 	        	Country *
         		<select required="" id="country-select" name="country">
         			<option value="Canada">Canada</option>
@@ -683,11 +683,38 @@
         		   <option value="Zimbabwe">Zimbabwe</option>
         		</select>
 	        </label>
-	        <div class="contact__form-input">
+	        <div class="contact__form-input full-width">
 	        	<input type="text" id="organization-input">
 	        	<label for="organization-input">Organization</label>
 	        </div>
 	       
+	       <label class="contact__form-input full-width" for="firmtype-select">
+	       	Firm Type
+	       	<select name="" id="firmtype-select" required="">
+	       		<option value="">Please Select</option>
+	       		<option value="Academic">Academic</option>
+	       		<option value="Bank">Bank</option>
+	       		<option value="Broker Dealer">Broker Dealer</option>
+	       		<option value="Consulting">Consulting</option>
+	       		<option value="Financial Technology">Financial Technology</option>
+	       		<option value="Hedge Fund">Hedge Fund</option>
+	       		<option value="Investment Advisor">Investment Advisor</option>
+	       		<option value="Individual">Individual</option>
+	       		<option value="Legal">Legal</option>
+	       		<option value="Proprietary Trading">Proprietary Trading</option>
+	       		<option value="Professional Trader">Professional Trader</option>
+	       		<option value="Other">Other</option>
+	       	</select>
+	       </label>
+	       <label class="contact__form-input full-width" for="size-select">
+	       	Firm Size
+	       	<select id="size-select">
+	       	    <option value="1-10">1-10</option>
+	       	    <option value="10-50">10-50</option>
+	       	    <option value="50-500">50-500</option>
+	       	    <option value="over-500">Over 500</option>
+	       	</select>
+	       </label>
 
 			<label class="contact__form-input full-width" for="subject-select">
 				Subject *
@@ -704,33 +731,7 @@
 	        
 	        <textarea placeholder="Message *" class="string-message" rows="3" required=""></textarea>
 
-	        <label class="contact__form-input full-width" for="firmtype-select">
-	        	Firm Type
-	        	<select name="" id="firmtype-select" required="">
-	        		<option value="">Please Select</option>
-	        		<option value="Academic">Academic</option>
-	        		<option value="Bank">Bank</option>
-	        		<option value="Broker Dealer">Broker Dealer</option>
-	        		<option value="Consulting">Consulting</option>
-	        		<option value="Financial Technology">Financial Technology</option>
-	        		<option value="Hedge Fund">Hedge Fund</option>
-	        		<option value="Investment Advisor">Investment Advisor</option>
-	        		<option value="Individual">Individual</option>
-	        		<option value="Legal">Legal</option>
-	        		<option value="Proprietary Trading">Proprietary Trading</option>
-	        		<option value="Professional Trader">Professional Trader</option>
-	        		<option value="Other">Other</option>
-	        	</select>
-	        </label>
-	        <label class="contact__form-input full-width" for="size-select">
-	        	Firm Size
-	        	<select id="size-select">
-	        	    <option value="1-10">1-10</option>
-	        	    <option value="10-50">10-50</option>
-	        	    <option value="50-500">50-500</option>
-	        	    <option value="over-500">Over 500</option>
-	        	</select>
-	        </label>
+	        
 	        <button class="button" type="submit">Submit</button>
 		</form> 
 	</div>

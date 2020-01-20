@@ -948,6 +948,9 @@ section {
 			resize: none;
 			padding: 10px 15px;
 			margin: 26px 0 22px;
+			resize: vertical;
+			min-height: 82px;
+			max-height: 250px;
 			&::placeholder {
 				opacity: 1;
 				color: #282828;
