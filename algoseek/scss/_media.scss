@@ -62,6 +62,17 @@
 				width: 100%;
 			}
 		}
+		&__form {
+			textarea {
+				height: 82px;
+				transition: .3s;
+				resize: none;
+				&:focus {
+					height: 180px;
+					transition: .3s;
+				}
+			}
+		}
 	}
 	.clients {
 		padding-top: 50px;
