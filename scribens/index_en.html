@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Free, Powerful English Grammar Checker | SCRIBENS</title>
+	<meta name="description" content="Scribens is a free online Grammar Checker that corrects over 250 types of common grammar, spelling mistakes and detects stylistic elements such as repetitions, run-on sentences, redundancies and more.">
+	<meta name="author" content="beeween.com">
+	<link href="https://plus.google.com/109822666656773841563/about" rel="publisher" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+	<link type="text/css" rel="stylesheet" href="beeween-framework/external-plugins.min.css">
+	<link type="text/css" rel="stylesheet" href="beeween-framework/stylesc9.css">
+	<link rel="shortcut icon" href="images/favicon.png">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png">
+	<script src="beeween-framework/external-plugins/modernizr/modernizr.custom.js"></script>
+    <link type="text/css" rel="stylesheet" href="Css/cor18.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+	<!-- <script type="text/javascript" language="javascript" src="NewCor/ScribensClient.js"></script> -->
+	<script type="text/javascript" language="javascript" src="NewCor/cor.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/dict.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/options.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/plugins.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/premium.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/proofreading.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/rules.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/stat.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/style.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/textEditor.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/tools.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/util.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="custom-icons/css/custom-icons.css">
+	<link type="text/css" rel="stylesheet" href="fontawesome/css/font-awesome.css">
+	
+	<script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-68373209-1', 'auto');
+	  ga('send', 'pageview');
+	  
+	</script>
+	
+	<!-- <script data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//delivery.adrecover.com/22726/adRecover.js?ts=1504640969524'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script> -->
+	
+</head>
+<body class="activate-appear-animation header-2">
+	<div id="global-wrapper">
+		<header class="menu-header navbar-fixed-top" role="banner">
+			<div class="container">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">
+							<img src="images/logo-scribens.png" alt="GRAMMAR CHECKER" title="GRAMMAR CHECKER" class="main-logo"/>
+						</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-left phonespacescrib">
+                            <li><a id="btnorth" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Grammar Check</a></li>
+							<li><a id="btndict" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Dictionaries</a></li>
+                            <li><a id="btnreg" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Grammar Rules</a></li>
+							<li><a id="btnext" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Extensions & API</a></li>
+							<li class="select-langue">
+								<ul>
+									<li><a id="btncn" class="btn-lang"><img src="images/flag-uk.svg">EN</a></li>
+									<li><a id="btncn" href="https://www.scribens.fr" target="blank" class="btn-lang"><img src="images/flag-fr.svg">FR</a></li>
+								</ul>
+							</li>	
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+
+		<main id="content">
+			<aside id="pub1" class="light-color pt-pub1 publicite">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<img src="images/pub/haut.png" class="responsive" alt="publicite">
+							 
+						</div>
+					</div>
+				</div>
+			</aside>
+
+			
+			<section id="recherche" class="light-color zonerecherche pb-small">
+				<div class="container-interface container-fluid">
+					
+					<!-- Titre -->
+					<div class="row">
+						<div id="Titre" class="row main-Title">
+							<div class="col-lg-12 col-md-12 text-center">
+								<h1 class="large no-shadow scribwntth2 scribsstitle">ENGLISH <span class="text-main-color inline">GRAMMAR CHECK</span></h1>
+								<p class="scribwntth2 nooomarginleft"></p>
+								<p class="scribsstitle">Scribens checks the grammar of your texts and finds spelling mistakes.</p>
+							</div>	
+						</div>
+					</div>
+					<!-- / Titre -->
+
+					<!-- Container flex -->
+					<div class="flex ortho-flex">
+						<!-- Wrapper shadow -->
+						<div class="wrapper-shadow">
+
+							<!-- Panel btn action -->
+							<div id="PanelBtn" class="row">
+
+								<!-- Left -->
+								<div class="left">
+									<div id="settingsLabel" class="button">
+										<span><img src="images/icone/picto-options.svg"/>options</span>
+									</div><!--
+									 --><div id="indications" class="hidden-xmi700 button">
+										<span><img src="images/icone/picto-color-key.svg"/>Color Key</span>
+									</div>
+								</div>
+								<!-- / Left -->
+		
+								<!-- Right -->
+								<div class="right">
+									<div id="actions" class="button hidden">
+										<p class="action"><img src="images/icone/picto-action.png" alt="" />Actions</p>
+										<ul>
+											<li><button id="print-textarea"><span><img src="images/icone/picto-print.png" alt=""/><img src="images/icone/picto-print-hover.png" alt=""/></span>Print</button></li>
+											<li><button id="copy-clipboard"><span><img src="images/icone/picto-copy.png" alt=""/><img src="images/icone/picto-copy-hover.png" alt=""/></span>Copy</button></li>
+											<li><button id="download"><span><img src="images/icone/picto-download.png" alt=""/><img src="images/icone/picto-download-hover.png" alt=""/></span>Download</button></li>
+											<li>
+												<button id="action-share">
+												<span><img src="images/share.png" alt=""/><img src="images/share-hover.png" alt=""/></span>
+												Share</button>
+											</li>
+										</ul>
+									</div><div id="SampleText" class="button">
+										<span><img src="images/icone/picto-try-sample.svg"/>Try our sample!</span>
+									</div><!-- 
+									 --><label id="importing-files" for="Input_ImportFile" class="button">
+										<span><img src="images/icone/picto-importing.svg"/>Importing files</span>
+									</label><input id="Input_ImportFile" type="file" style="display:none"><div id="check" class="button">
+										<span><img src="images/icone/picto-check.svg"/>Check</span>
+									</div>
+								</div>
+								<!--  /Right -->
+								
+							</div>
+							<!-- / Panel btn action -->
+							
+							<!-- Modal share files -->
+							<div class="Prem-PopupVPremium popaction share-pop" >
+								<div class="closer"><img src="images/CloseCrossWhite.png" style="cursor: pointer; margin-right: 10px; margin-top: 10px;"></div>
+								<div class="maindiv" >
+									<div>
+										<div class="titre">Share</div>
+									</div>
+									<p style="margin-bottom:20px;">Choose how you want to share:</p>
+									
+									<div id="social-share"></div>
+									
+								</div>
+							</div>
+							<!-- / Modal share files -->
+							
+							
+							<!-- Modal downlaod files -->
+							<div class="Prem-PopupVPremium popaction download-pop" >
+								<div class="closer"><img src="images/CloseCrossWhite.png" style="cursor: pointer; margin-right: 10px; margin-top: 10px;"></div>
+								<div class="maindiv"  id="checkboxs">
+									<div>
+										<div class="titre">Download</div>
+									</div>
+									<p style="margin-bottom:20px;">Choose the file format:</p>
+									
+									<form class="wrapp-checkbox">
+										<div class="item">
+											<input type="radio" name="gStyle" id="txt" value="txt" style="cursor: pointer;"><label for="txt"></label>
+											<p class="label-checkbox">txt (simple)</p>
+										</div>
+										<div class="item">
+											<input type="radio" name="gStyle" id="doc" value="doc" style="cursor: pointer;"><label for="doc"></label>
+											<p class="label-checkbox">doc (Word)</p>
+										</div>
+										<div class="item">
+											<input type="radio" name="gStyle" id="odt" value="odt" style="cursor: pointer;"><label for="odt"></label>
+											<p class="label-checkbox">odt (Open Office/Libre Office)</p>
+										</div>
+									</form>
+								</div>
+								<div class="buttons">
+									<table>
+										<tr>
+											<td>
+												<div class="Cor-RedButton" id="download-txt" style="padding-left: 40px; padding-right: 40px;">Download</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<!-- / Modal downlaod files -->
+	 
+	 
+		
+							<!-- Interface -->
+							<div class="row interface">
+		
+								<!-- Sidebar -->
+								<div class="sidebar hidden-xs hidden-sm">
+									<div id="ChoiceStatSyn"></div>
+									<div id="StyleTexte" class="Cor-styleTexteVP">
+									</div>
+									<div id="panelLeft"></div>
+								</div>
+								<!-- / Sidebar -->
+		
+								<!-- Content text -->
+								<div class="central-content form-minimal">
+										
+									<div id="MainDiv">
+										<!-- Text Editor -->
+										<div id="TextArea" class="TextEditor-FrameTx">
+											<iframe id="FrameTx" style="width:100%;height:100%;border:0px"></iframe>
+										</div>
+									</div>
+								</div>
+								<!-- / Content text -->
+		
+		
+								
+		
+							</div>
+							<!-- / Interface -->
+
+						</div>
+						<!-- / Wrapper shadow -->
+
+						<!-- Right side pub -->
+						<div class="side-pub hidden-xs hidden-sm">
+							<div id="InfSup" class="img-absolute-wrapper phonescribens">
+								<table>
+									<tr>
+										<td style="vertical-align:top">
+											<div id="DivMarques">
+											</div>
+										</td>
+										<td style="vertical-align:top">
+											<div id="DivStyleSyn">
+												<div id="pub3En" class="responsive" >
+													<img src="images/48-160_600.jpg"/>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- / Right side pub -->
+					</div>
+					<!-- / Container flex -->
+
+				</div>
+			</section>
+
+			
+			
+
+
+
+			<section id="services" class="light-color pt-medium pb-medium">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center heading mb-medium" data-beeweenanim="fadeInDown" data-beeweendelay="150">
+							<p class="scribwnttcontent"><span>The advantages of</span>SCRIBENS</p>
+						</div>
+					</div>
+                    <div class="row">
+                        <div class="col-sm-4" data-beeweenanim="fadeInUp" data-beeweendelay="300">
+                            <div class="team-member">
+                            <span class="fa-stack fa-5x">
+                                <i class="fa fa-circle fa-stack-2x iconecolor"></i>
+                                <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                            </span>
+                                <h3 class="stiiickmik top5">A POWERFUL, FREE ENGLISH GRAMMAR CHECKER</h3>
+                                <p class="phone">Scribens corrects over 250 types of common grammar and spelling mistakes, including verbs, nouns, pronouns, prepositions, homonyms, punctuation, typography, and more. </p><p>Online corrections are included with explanations in order to help the user progress his or her English writing skills. </Br></Br><span id="lnk-sample">Try our sample!</a></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" data-beeweenanim="fadeInUp" data-beeweendelay="450">
+                            <div class="team-member">
+                            <span class="fa-stack fa-5x">
+                                <i class="fa fa-circle fa-stack-2x iconecolor"></i>
+                                <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
+                            </span>
+                                <h3 class="stiiickmik top5">CORRECTS 10X MORE MISTAKES THAN MICROSOFT WORD</h3>
+                                <p class="phone">Scribens employs a sophisticated syntaxical recognition algorithm that detects even the most subtle errors in a text. In offering you an advanced correction software, Scribens allows you to significantly improve the quality of your writing.</p><p><b>Security and confidentiality</b></p><p>-&nbspData transfer is secured with SSL encryption (https protocol).<br>-&nbspThe powerful web application firewall <a href="https://www.incapsula.com" target="_blank">Incapsula</a> protects our servers against attacks.<br>-&nbspNo text being transferred is stored on our servers.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" data-beeweenanim="fadeInUp" data-beeweendelay="600">
+                            <div class="team-member">
+                            <span class="fa-stack fa-5x">
+                                <i class="fa fa-circle fa-stack-2x iconecolor"></i>
+                                <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                            </span>
+                                <h3 class="stiiickmik top5">USEFUL WRITING AND STYLE TOOLS</h3>
+                                <p class="phone">Scribens detects stylistic elements such as repetitions, run-on sentences, redundancies, and more. It even suggests synonyms for every word. </Br>It also provides highly detailed statistics on your texts, such as word, sentence, and paragraph count as well as a readability indicator and more.</p><p>Scribens provides definitions, conjugations, and synonyms with an accompanying dictionary and thesaurus.</p>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</section>
+			<section id="integration" class="pt-medium pb-medium">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center heading mb-medium" data-beeweenanim="fadeInDown" data-beeweendelay="150">
+							<p class="scribwnttcontent"><span>Perfectly integrates</span>with essential apps</p>
+						</div>
+					</div>
+					<div class="row pt">
+						<div class="col-md-12 text-center spekt" data-beeweenanim="fadeInUp" data-beeweendelay="300">
+							<p class="scribtwoo">Use Scribens anywhere you type</p>
+						</div>	
+						<div class="col-md-8 col-md-offset-2 text-center pt pb" data-beeweenanim="fadeInUp" data-beeweendelay="450">
+							<p class="phone">
+								Avoid copy-pasting and keep the formatting of your original texts:</Br>
+								Correct your texts on Gmail, Hotmail, Yahoo, Facebook, Twitter, LinkedIn, forums, blogs, etc.</Br>
+								Use Scribens as a seamless extension of Microsoft Word, Outlook, PowerPoint, Excel, OpenOffice or LibreOffice.
+							</p>
+						</div>	
+						<div class="col-md-12 text-center" >
+							<div class="logo-icon-logiciel pb-small">
+								<ul class="icons large circle">
+									<li class="icon large circle word animated tooltipBWN" title="WORD" data-beeweenanim="fadeInUp" data-beeweendelay="600"><img alt="WORD" src="images/icone/scribens/1-word.png" title="WORD"></li>
+									<li class="icon large circle outlook animated tooltipBWN" title="OUTLOOK" data-beeweenanim="fadeInUp" data-beeweendelay="650"><img alt="OUTLOOK" src="images/icone/scribens/2-outlook.png" title="OUTLOOK"></li>
+									<li class="icon large circle openoffice animated tooltipBWN" title="OPENOFFICE / LIBREOFFICE" data-beeweenanim="fadeInUp" data-beeweendelay="700"><img alt="OPENOFFICE / LIBREOFFICE" src="images/icone/scribens/3-openoffice.png" title="OPENOFFICE / LIBREOFFICE"></li>
+									<li class="icon large circle chrome animated tooltipBWN" title="GOOGLE CHROME" data-beeweenanim="fadeInUp" data-beeweendelay="750"><img alt="GOOGLE CHROME" src="images/icone/scribens/4-chrome.png" title="GOOGLE CHROME"></li>
+									<li class="icon large circle firefox animated tooltipBWN" title="FIREFOX" data-beeweenanim="fadeInUp" data-beeweendelay="800"><img alt="FIREFOX" src="images/icone/scribens/5-firefox.png" title="FIREFOX"></li>
+									<li class="icon large circle gmail animated tooltipBWN" title="GMAIL" data-beeweenanim="fadeInUp" data-beeweendelay="850"><img alt="GMAIL" src="images/icone/scribens/6-gmail.png" title="GMAIL"></li>
+									<li class="icon large circle facebook animated tooltipBWN" title="FACEBOOK" data-beeweenanim="fadeInUp" data-beeweendelay="900"><img alt="FACEBOOK" src="images/icone/scribens/7-facebook.png" title="FACEBOOK"></li>
+									<li class="icon large circle twitter animated tooltipBWN" title="TWITTER" data-beeweenanim="fadeInUp" data-beeweendelay="950"><img alt="TWITTER" src="images/icone/scribens/8-twitter.png" title="TWITTER"></li>
+									<li class="icon large circle linkedin animated tooltipBWN" title="LINKEDIN" data-beeweenanim="fadeInUp" data-beeweendelay="1000"><img alt="LINKEDIN" src="images/icone/scribens/9-linkedin.png" title="LINKEDIN"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="paaad50"></div>
+					<div class="row text-center" data-beeweenanim="fadeInUp" data-beeweendelay="1000">
+						<button id="btn-download-plugins" type="button" class="btn large default mmpaad" data-toggle="modal" data-target="#myModal">
+						  DOWNLOAD EXTENSIONS
+						</button>						
+						<a href="https://chrome.google.com/webstore/detail/spell-checker-and-grammar/dmgkiikdlhmpikkhpiplldicbnicmboc" target="_blank" class="btn large default mmpaad">DOWNLOAD THE GOOGLE CHROME EXTENSION</a>
+					</div>
+					<div class="paaad10"></div>
+					<div class="row pt">
+						<div class="col-md-12 text-center spekt" data-beeweenanim="fadeInUp" data-beeweendelay="300">
+							<p class="scribtwoo">Use our API to add Scribens to your website!</p>
+						</div>	
+					</div>
+					<div class="paaad30"></div>
+					<div class="row text-center" data-beeweenanim="fadeInUp" data-beeweendelay="1000">
+						<button id="btn-download-api" onclick= type="button" class="btn large default mmpaad" data-toggle="modal" data-target="#myModal">
+						  INTEGRATE SCRIBENS API
+						</button>						
+					</div>
+				</div>
+			</section>
+			<section id="visits" class="parallax image-background image-1 text-light"  data-stellar-background-ratio="0.5">
+				<div class="mask">
+					<div class="container pt-large pb-large">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p class="large scribss parallaxscribs">In 2017, 8 million people visited Scribens.fr</p>
+								<p class="lead scribss">- 200,000 people regularly use Scribens' French grammar corrector at scribens.fr -</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="premsup" class="pt-medium light-color">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center heading" data-beeweenanim="fadeInDown" data-beeweendelay="150">
+							<p class="scribwnttcontent"><span>Scribens</span>An efficient English Grammar Checker</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="presprem" class="light-color">
+				<div class="container">
+					<div class="row img-absolute">
+						<div class="col-sm-6 col-md-4 pb">
+							<div class="clearfix">
+								<h1 class="pt scribright spetitlebwn" data-beeweenanim="fadeInLeft" data-beeweendelay="300"><span>Online</span>PROOFREADING</h1>
+								<div class="feature-box media-right" data-beeweenanim="fadeInLeft" data-beeweendelay="300">
+									<i class="icon-glyph-28 medium  circle animated"></i>
+									<div class="feature-box-content">
+										<p class="scribsprems">Correction</p>
+										<p class="scribsletter small">
+											Corrects ten times more errors than Microsoft Word
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="feature-box media-right" data-beeweenanim="fadeInLeft" data-beeweendelay="450">
+									<i class="icon-glyph-145 medium  circle animated"></i>
+									<div class="feature-box-content">
+										<p class="scribsprems">Explanations</p>
+										<p class="scribsletter small">
+											Improve your English with grammar rules explained
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="feature-box media-right" data-beeweenanim="fadeInLeft" data-beeweendelay="600">
+									<i class="icon-glyph-9 medium  circle animated"></i>
+									<div class="feature-box-content">
+										<p class="scribsprems">Extensions</p>
+										<p class="scribsletter small">
+											Easily integrates with your favorite apps
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 hidden-xs hidden-sm" data-beeweenanim="fadeIn" data-beeweendelay="750">
+							<div class="text-center pt-premium">
+								<img class="circle responsive" src="images/icone/5.png" alt="CORRECTION GRAMMAIRE" title="CORRECTION GRAMMAIRE" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4 pb">
+							<div class="clearfix">
+								<h1 class="pt spetitlebwn" data-beeweenanim="fadeInRight" data-beeweendelay="750"><span>Writing </span>TOOLS</h1>
+								<div class="feature-box media-left" data-beeweenanim="fadeInRight" data-beeweendelay="750">
+									<i class="icon-glyph medium  circle animated"></i>
+									<div class="feature-box-content">
+										<p class="scribsprems">Style</p>
+										<p class="scribsletter small">
+											Detects repetitions, redundancies, and suggests synonyms
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="feature-box media-left" data-beeweenanim="fadeInRight" data-beeweendelay="900">
+									<i class="icon-glyph-165 medium  circle animated"></i>
+									<div class="feature-box-content">
+										<p class="scribsprems">Statistics</p>
+										<p class="scribsletter small">
+											Detailed stats on your texts
+										</p>
+									</div>
+								</div>
+							</div>
+                            <div class="clearfix">
+								<div class="feature-box media-left" data-beeweenanim="fadeInRight" data-beeweendelay="1050">
+									<i class="icon-glyph-293 medium  circle animated"></i>
+									<div class="feature-box-content">
+										<p class="scribsprems">Dictionaries</p>
+										<p class="scribsletter small">
+											Definitions, conjugations, and synonyms
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="cont">
+				<div class="pt-medium pb main-color">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 text-center heading" data-beeweenanim="fadeInDown" data-beeweendelay="100">
+								<p class="scribwnttcontent"><span>Contact Us</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<aside class="light-color">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 pt-medium pb-small form-minimal" data-beeweenanim="fadeInUp" data-beeweendelay="300">
+								<form method="post" action="beeween-framework/external-plugins/beeween-contact-ajax-plugin/php/form-handler.php" id="contactfrm" role="form" class="box padding-medium">
+									<div class="form-group">
+										<label class="nogxtbwn" for="name">Name</label>
+										<input type="text" class="form-control" name="name" id="name" placeholder=" "  title="Write your name please. Minimum Length – 2"/>
+										<div class="form-line"></div>
+									</div>
+									<div class="form-group">
+										<label class="nogxtbwn" for="email">Email</label>
+										<input type="email" class="form-control" name="email" id="email" placeholder=" " title="Write a valid email address please"/>
+										<div class="form-line"></div>
+									</div>
+									<div class="form-group">
+										<label class="nogxtbwn" for="comments">Message</label>
+										<textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder=" " title="Write your message please. Minimum Length – 10"></textarea>
+										<div class="form-line"></div>
+									</div>
+									
+									<div class="g-recaptcha" data-sitekey="6LeGixgUAAAAAFrvZvfpAQHA9UTtBFAECOYIxssH" ></div>
+									<div id="frm-result"></div>
+									<p></p>
+									
+									<div class="result"></div>
+									<div class="text-center">
+										<button name="submit" type="submit" class="btn large default mb" id="submit">SEND</button>
+									</div>
+									<script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
+								</form>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</section>
+		</main>
+		<footer id="main-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<div class="footer-widget">
+							<a href="index.html"><img src="images/logo-typo.png" alt="SCRIBENS" title="SCRIBENS" class="pb-small responsive" /></a>
+							<ul class="social-icons dark-color circle">
+								<li>
+									<a href="https://www.facebook.com/scribens" class="facebook tooltipBWN" title="Facebook" target="blank"><i class="icon-glyph-320"></i></a>
+								</li>
+								<li>
+									<a href="https://plus.google.com/109822666656773841563/about" class="gplus tooltipBWN" title="Google+" target="blank"><i class="icon-glyph-317"></i></a>
+								</li>
+								<li>
+									<a href="https://twitter.com/Scribens1" class="linkedin tooltipBWN" title="Twitter" target="blank"><i class="icon-glyph-299"></i></a>
+								</li>
+							</ul> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer-rights">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<p class="small">SCRIBENS COPYRIGHT © 2018 - ALL RIGHTS RESERVED</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<div id="overlayPopup" class=""></div>
+	<script type="text/javascript" src="beeween-framework/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="beeween-framework/jquery-ui-1.8.23.custom.min.js"></script>
+	<script type="application/javascript" src="beeween-framework/external-plugins.min.js"></script>
+	<script type="text/javascript" src="beeween-framework/beeween-framework.js"></script>
+	<script src="beeween-framework/custom.js"></script>
+	<script type="text/javascript" id="cookiebanner" src="https://cdnjs.cloudflare.com/ajax/libs/cookie-banner/1.0.0/cookiebanner.min.js" data-message="This website uses cookies to ensure you get the best experience on our website. We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services." data-linkmsg="Learn more" data-expires="Fri, 28 Aug 2019 23:59:59 GMT" data-moreinfo="https://www.google.com/intl/en/policies/privacy/partners/"></script>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+
+</body>
+</html>

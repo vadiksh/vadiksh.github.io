@@ -1,0 +1,79 @@
+
+/* Body of the textArea */
+body {
+	margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+
+	/*color:#333;*/
+	color:black;
+	/*font:12px/20px Arial, Helvetica, sans-serif;*/
+	font:17px 'Segoe-UI';
+	background:#fff;
+	cursor:text;
+	/*line-height: 17px;     ne peut pas marcher car constant. Voir avec des grandes et petites polices*/ 
+}
+.s-or,
+.s-bl,
+.s-rg,
+.s-ve,
+.s-ja,
+.u-bl{cursor:text;}
+
+.s-or {
+  color:#ff9d00;
+  background-color: #fbf5e8;
+}
+
+.s-bl {
+  color:#478aa8;
+  background-color:#d5e4eb;
+}
+
+.s-rg {
+  color:#d55a43;
+  background-color:#f8e9e6;
+}
+
+.s-ve {
+  color:#3a8b47;
+  background-color:#ecf6ed;
+}
+
+.s-ja {
+  background-color:#fffa84;
+}
+
+.u-bl {
+  background-color:#3b89ca ;
+  color:#fff;
+}
+
+p
+{
+  margin: 0px; 
+  padding-bottom: 10px;
+  color:#64676e;
+  /* font-size: 16px; */
+  /* line-height: 25px; */
+}
+
+@font-face {
+  font-family: 'Segoe-UI';
+  src:
+      local("Segoe UI"),
+      url(fonts/latest1.woff2) format("woff2"),
+      url(fonts/latest1.woff) format("woff"),
+      url(fonts/latest1.ttf) format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Segoe-UI-Bold';
+  src:
+      local("Segoe UI Bold"),
+      url(fonts/latest.woff2) format("woff2"),
+      url(fonts/latest.woff) format("woff"),
+      url(fonts/latest.ttf) format("truetype");
+  font-weight: 600;
+}

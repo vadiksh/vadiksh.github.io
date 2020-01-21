@@ -1,0 +1,8 @@
+
+1. Faire attention à ce que l'id barca34@mail.com && 12345678 ne soient pas au début du script.
+
+2. Launch ConcatenateJSFiles.jar to concatenate JS files in ScribensClient.js
+
+3. Minify JS : https://jscompress.com
+
+or obfuscate it : https://javascriptobfuscator.com/Javascript-Obfuscator.aspx

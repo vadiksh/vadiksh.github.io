@@ -1,0 +1,47 @@
+
+/* Body of the textArea */
+body {
+	margin-left:8px;
+	margin-right:8px;
+	margin-bottom:5px;
+	margin-top:14px;
+
+	/*color:#333;*/
+	color:black;
+	/*font:12px/20px Arial, Helvetica, sans-serif;*/
+	font:17px Times New Roman;
+	/*font:15px/16px Times New Roman;*/
+	background:#fff;
+	cursor:text;
+	/*line-height: 17px;     ne peut pas marcher car constant. Voir avec des grandes et petites polices*/ 
+}
+
+.s-or {
+  color:#FF9D00;
+  text-decoration : underline;
+}
+
+.s-bl {
+  color:#0000FF;
+  text-decoration : underline;
+}
+
+.s-rg {
+  color:#ff0000;
+  text-decoration : underline;
+}
+
+.s-ve {
+  color:#00CC00;
+  text-decoration : underline;
+}
+
+.s-ja {
+  background-color:#ffff00;
+}
+
+p
+{
+  margin: 0px; 
+  padding-bottom: 10px;
+}
