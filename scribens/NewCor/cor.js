@@ -3150,6 +3150,7 @@ Share : function()
 	stripedHtml_txt = stripedHtml_txt.replace(/<[^>]+>/g, '');
 	var stripedHtml = htmlString.replace(/<[^>]+>/g, '');
 	console.log(stripedHtml);
+	document.querySelector('meta[property="og:description"]').setAttribute("content", stripedHtml);
 	$("#social-share").jsSocials({
             shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp", "viber", "messenger", "telegram"],
             text: stripedHtml,
