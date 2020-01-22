@@ -130,13 +130,12 @@
           <label class="contact__form-input" for="country-select">
             Country *
             <select required="" id="country-select" name="country">
+               <option value="USA">USA</option>
                <option value="Canada">Canada</option>
+               <option value="United Kingdom">United Kingdom</option>
                <option value="China">China</option>
                <option value="HongKong">HongKong</option>
                <option value="Singapore">Singapore</option>
-               <option value="United Kingdom">United Kingdom</option>
-               <option value="USA">USA</option>
-
 
                <option value="Afganistan">Afghanistan</option>
                <option value="Albania">Albania</option>
@@ -385,15 +384,34 @@
                <label for="organization-input">Organization</label>
           </div>
 
+          <label class="contact__form-input full-width product-select" for="product-select">
+                  Product
+                  <select required="" id="product-select">
+                      <option value="">Select</option>
+                      <option value="Data Drive">Data Drive</option>
+                      <option value="AWS CLI">AWS CLI</option>
+                      <option value="API">API</option>
+                      <option value="Other">Other</option>
+                  </select>
+          </label>
 
-         <label class="contact__form-input full-width" for="data-group">
+         <label class="contact__form-input full-width flex-order-4" for="data-group">
                  Data Group
                  <select required="" id="data-group">
                      <option value="">Select</option>
                      <option value="Unknown">Unknown</option>
                  </select>
          </label>
-         <label class="contact__form-input select full-width">
+         <label class="contact__form-input full-width severity" for="severity">
+                 Severity
+                 <select name="severity" id="severity">
+                     <option selected="" value="Question">Question</option>
+                     <option value="General guidance">General guidance</option>
+                     <option value="Important">Important</option>
+                     <option value="Critical">Critical</option>
+                 </select>
+         </label>
+         <label class="contact__form-input select flex-order-4 full-width">
                  Data Set(s)
                  <div class="select-custom">
                      Select Data Set(s)
@@ -405,34 +423,24 @@
                    
                  </ul>
          </label>
-        <div class="severity-input">
-          <label class="contact__form-input full-width" for="severity">
-                  Severity
-                  <select name="severity" id="severity">
-                      <option selected="" value="Question">Question</option>
-                      <option value="General guidance">General guidance</option>
-                      <option value="Important">Important</option>
-                      <option value="Critical">Critical</option>
-                  </select>
-          </label>
-        </div>
+        
          
           
-         <div class="contact__form-input ">
+         <div class="contact__form-input flex-order-4">
             <input type="text" id="subject-input">
             <label for="subject-input">Subject</label>
         </div> 
           
-          <textarea placeholder="Description" class="string-message" rows="3" required=""></textarea>
+          <textarea placeholder="Description" class="string-message flex-order-4" rows="3" required=""></textarea>
           
          
           
 
-          <label class="file">
+          <label class="file flex-order-4">
               <input class="order-upload" type="file">
-              <span class="order-upload-mark">Select file</span>
+              <span class="order-upload-mark">Select file (optional)</span>
           </label>
-          <div class="button-wrapper">
+          <div class="button-wrapper flex-order-4">
             <button class="button" type="submit">Submit</button>
           </div>
       </form>

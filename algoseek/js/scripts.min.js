@@ -353,7 +353,13 @@ $(function() {
     	$(this).siblings('.order-upload').trigger('click');
     })
     $('.order-upload').change(function() {
-    	$(this).siblings('.order-upload-mark').html(this.files[0].name);
+        if(this.files[0].size > 15000000){
+           alert("File size should be less than 15MB");
+           this.value = "";
+           $(this).siblings('.order-upload-mark').html('Select file (optional)');
+        } else {
+            $(this).siblings('.order-upload-mark').html(this.files[0].name);
+        }
     })
     $('.arrow-sliding h6').click(function (e) {
     	e.preventDefault();

@@ -433,12 +433,13 @@
 	        <label class="contact__form-input full-width" for="country-select">
 	        	Country *
         		<select required="" id="country-select" name="country">
+        			<option value="USA">USA</option>
         			<option value="Canada">Canada</option>
+        			<option value="United Kingdom">United Kingdom</option>
         			<option value="China">China</option>
         			<option value="HongKong">HongKong</option>
         			<option value="Singapore">Singapore</option>
-        			<option value="United Kingdom">United Kingdom</option>
-        			<option value="USA">USA</option>
+        			
 
 
         		   <option value="Afganistan">Afghanistan</option>
@@ -796,16 +797,23 @@
 </div>
 	
 
-<script src="./js/particles.js"></script>
-<script>
-    particlesJS.load('particles-js', './js/particles-config.json', function() {
-        console.log('callback - particles.js config loaded');
-    });
-</script>
+<script src=""></script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="js/scripts.min.js"></script>
+<script>
+	$(function() {
+		if ($(window).width() > 767) {
+			$.getScript("./js/particles.js", function() {
+				particlesJS.load('particles-js', './js/particles-config.json', function() {
+				    console.log('callback - particles.js config loaded');
+				});
+			});
+		}
+	})
+</script>
 
 </body>
 </html>

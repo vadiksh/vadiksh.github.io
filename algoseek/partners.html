@@ -110,7 +110,14 @@
       <h2 class="section-title">Our <b>Partners</b></h2>
       <p>Algoseek has partnerships with FinTech firms, product startups, websites,<br> data vendors and a wide range of other firms.</p>
       <p> As the leading research market data provider we are want to talk with potential<br> partners and distributors.</p>
-      <form action="" class="contact__form support__form">
+      <div class="owl-carousel partner__carousel">
+        <div><img src="./img/partners/1.png" alt=""></div>
+        <div><img src="./img/partners/2.png" alt=""></div>
+        <div><img src="./img/partners/3.png" alt=""></div>
+        <div><img src="./img/partners/4.png" alt=""></div>
+        <div><img src="./img/partners/5.png" alt=""></div>
+      </div>
+      <form action="" class="contact__form">
          <div class="contact__form-input">
                  <input type="text" id="firstname-input" required="">
          <label for="firstname-input">First Name *</label>
@@ -130,12 +137,12 @@
           <label class="contact__form-input" for="country-select">
             Country *
             <select required="" id="country-select" name="country">
+               <option value="USA">USA</option>
                <option value="Canada">Canada</option>
+               <option value="United Kingdom">United Kingdom</option>
                <option value="China">China</option>
                <option value="HongKong">HongKong</option>
                <option value="Singapore">Singapore</option>
-               <option value="United Kingdom">United Kingdom</option>
-               <option value="USA">USA</option>
 
 
                <option value="Afganistan">Afghanistan</option>
@@ -485,6 +492,30 @@
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+   <script>
+    $(function() {
+      $('.owl-carousel').owlCarousel({
+          items: 5,
+          margin: 30,
+         nav: false,
+         responsiveClass:true,
+         responsive:{
+           0:{
+             items:3,
+             loop: true
+           },
+           600:{
+              loop:true,
+             items:4,
+           },
+           1000: {
+              items: 5,
+              loop:false
+           }
+         }
+       });
+    })
+   </script>
    <script src="js/scripts.min.js"></script>
 
 </body>

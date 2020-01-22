@@ -673,7 +673,9 @@
 	}
 }
 @media (max-width: 767px) {
-
+	.particles-js {
+		display: none;
+	}
 	.header {
 		padding: 85px 15px 0;
 
