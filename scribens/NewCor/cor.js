@@ -3146,18 +3146,32 @@ Share : function()
 {
 	// Content
 	var htmlString= document.getElementById("FrameTx").contentWindow.document.body.innerHTML;
-	var stripedHtml_txt = htmlString.replace(/<br>/g, "\r\n");
-	stripedHtml_txt = stripedHtml_txt.replace(/<[^>]+>/g, '');
-	var stripedHtml = htmlString.replace(/<[^>]+>/g, '');
+	var stripedHtml_txt = htmlString.replace(/<br>/g, "%0A");
+	var stripedHtml = stripedHtml_txt.replace(/<[^>]+>/g, '');
+	// var stripedHtml = htmlString.replace(/<[^>]+>/g, '');
 	console.log(stripedHtml);
-	document.querySelector('meta[property="og:description"]').setAttribute("content", stripedHtml);
-	$("#social-share").jsSocials({
-            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp", "viber", "messenger", "telegram"],
-            text: stripedHtml,
-            showLabel: true,
-            showCount: false,
-            shareIn: "popup"
-    });
+
+ 	document.getElementById("share-outlook").onclick = function() {
+ 		var link = 'https://outlook.live.com/mail/0/deeplink/compose?body=' + stripedHtml;
+ 		window.open(link, '_blank');
+ 	}; 
+ 	document.getElementById("share-gmail").onclick = function() {
+ 		var link = 'https://mail.google.com/mail/?view=cm&body=' + stripedHtml;
+ 		window.open(link, '_blank');
+ 	}; 
+ 	document.getElementById("share-yahoo").onclick = function() {
+ 		var link = 'http://compose.mail.yahoo.com/?body=' + stripedHtml;
+ 		window.open(link, '_blank');
+ 	}; 
+ 	document.getElementById("share-twitter").onclick = function() {
+ 		var link = 'https://twitter.com/intent/tweet?text=' + stripedHtml;
+ 		window.open(link, '_blank');
+ 	}; 
+ 	document.getElementById("share-linkedin").onclick = function() {
+ 		var link = 'https://www.linkedin.com/messaging/thread/new/?body=' + stripedHtml;
+ 		window.open(link, '_blank');
+ 	}; 
+
 	document.querySelector('.popaction.share-pop').classList.add("openpop"); 
 }
 

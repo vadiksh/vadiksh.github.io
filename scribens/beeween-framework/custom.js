@@ -21,6 +21,7 @@
         	e.preventDefault();
         	$('html,body').scrollTop(0);
         })
+
 	}); //End Doc Ready
 
 

@@ -18535,6 +18535,29 @@ label:hover:before {
   padding :10px;
 }
 
+.social-share {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+.social-share li {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+  font-size: 13px;
+  margin: 0 13px;
+  cursor: pointer;
+}
+.social-share li img {
+  max-height: 20px;
+  margin-right: 8px;
+}
 
 /*
 |--------------------------------------------------------------------------
