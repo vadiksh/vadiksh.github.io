@@ -193,11 +193,6 @@
 			flex-flow: row wrap;
 			margin-top: 50px;
 			margin-bottom: 0px;
-			padding-right: 0;
-			&-remove {
-				top: -45px;
-				right: 0;
-			}
 			>li {
 				width: 50%;
 				margin-bottom: 40px;
@@ -383,6 +378,9 @@
 		&__link.icon.cart {
 			width: 24px;
 			background-position: left  center;
+			&:hover {
+				background-position: left  center;
+			}
 			&::after {
 				content: 'Cart';
 				font-size: 21px;
@@ -670,6 +668,14 @@
 	}
 	.support__form {
 		width: 100%;	
+	}
+	.delivery-page {
+		.delivery__list {
+			margin-bottom: 0;
+			li {
+				margin-bottom: 0;
+			}
+		}
 	}
 }
 @media (max-width: 767px) {
@@ -1107,6 +1113,39 @@
 		p {
 			font-size: 16px;
 			line-height: 1.9;
+		}
+	}
+	.delivery-page {
+		h3 {
+			font-size: 30px;
+		}
+		p {
+			font-size: 16px;
+		}
+		li {
+			font-size: 16px;
+		}
+		&__list {
+			.flex {
+				flex-flow: row wrap;
+			}
+			li {
+				width: 26%;
+				margin-bottom: 30px;
+			}
+		}
+	}
+	.delivery__flex {
+		flex-flow: row wrap;
+		justify-content: space-around;
+		width: calc(100% + 30px);
+		position: relative;
+		left: -15px;
+		li {
+			padding: 0 15px;
+			width: 50%;
+			font-family: montserrat;
+			margin-bottom: 30px;
 		}
 	}
 }

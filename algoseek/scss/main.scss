@@ -122,7 +122,7 @@ section {
 
 .header {
 	padding: 0 20px;
-	padding-top: 85px;
+	padding-top: 95px;
 	position: relative;
 	z-index: 15;
 	&.homepage {
@@ -625,6 +625,7 @@ section {
 	&__list {
 		justify-content: center;
 		margin-bottom: 160px;
+		// background: #FAFAFA;
 		li {
 			margin: 0 40px;
 			transition: .4s;
@@ -728,6 +729,94 @@ section {
 			}
 		}
 		
+	}
+	&-page {
+		text-align: center;
+		background: #fff;
+		padding: 60px 0;
+		.section-title {
+			margin-bottom: 40px;
+		}
+		&__list {
+			margin: 0 auto 20px;
+			.flex {
+				max-width: 900px;
+				margin: 0 auto;
+				width: 100%;
+				padding-top: 12px;
+				padding-bottom: 12px;
+			}			
+			.title {
+				font-size: 15px;
+			}
+			.icon {
+				margin-bottom: 10px;
+				height: 51px;
+				width: 54px;
+			}
+			li:hover {
+				transform: translate3d(0, -15px,0);				
+				// .title {
+				// }
+			}
+		}
+		> .container {
+			padding: 60px 20px 70px;
+			border-bottom: 1px solid #eee;
+			&:last-child {
+				border-bottom: 0;
+			}
+			a {
+				color: $accent;
+				font-weight: 700;
+			}
+		}
+		p {
+			max-width: 800px;
+			margin: 0 auto 25px;
+			font-size: 20px;
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+			&.note {
+				font-weight: 300;
+				font-size: 15px;
+				color: #999999;
+				margin-top: 40px;
+			}
+		}
+		h3 {
+			font-size: 40px;
+			font-weight: 300;
+			margin-bottom: 40px;
+			text-transform: uppercase;
+			&::after {
+				content: '';
+				width: 22px;
+				height: 5px;
+				background: $accent;
+				display: block;
+				margin: 30px auto 40px;
+			}
+			b {
+				font-weight: 700;
+			}
+		}
+	}
+	
+	&__flex {
+		display: flex;
+		li {
+			width: 30%;
+			font-size: 20px;
+			font-family: montserrat;
+		}
+	}
+	&__buttons {
+		margin-top: 60px;
+		a {
+			margin: 0 10px;
+		}
 	}
 }
 .purchase {
@@ -2229,6 +2318,234 @@ section {
 	}
 	a {
 		color: $accent;
+	}
+}
+.company {
+	padding: 40px 0 80px;
+	.page {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	&__nav {
+		display: flex;
+		justify-content: space-between;
+		max-width: 900px;
+		margin: 0 auto 50px;
+		padding: 0 20px;
+		a {
+			font-family: "montserrat";
+			font-size: 20px;
+			transition: .2s;
+			font-weight: 700;
+			&.active, &:hover {
+				color: $accent;
+				transition: .2s;
+			}
+		}
+	}
+	&__container {
+		position: relative;
+		overflow: hidden;
+		>li {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			opacity: 0;
+			visibility: hidden;
+			transition: .3s;
+			&.active {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				transition: .3s;
+			}
+		}
+	}
+	&__banner {
+		width: 100%;
+		height: 430px;
+		padding-left: 20px;
+		padding-right: 20px;
+		margin-bottom: 70px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		.container {
+			width: 100%;
+		}
+		h2 {
+			text-align: left;
+		}
+	}
+	&__years {
+		font-family: montserrat;
+		display: flex;
+		flex-direction: column;
+		padding-top: 30px;
+		p {
+			margin-bottom: 0;
+			font-size: 17px;
+		}
+		li {
+			width: calc(50% + 20px);
+			display: flex;
+			align-items: center;
+			position: relative;
+			height: 110px;
+			&::after {
+				position: absolute;
+				content: '';
+				width: 8px;
+				height: 60px;
+				right: 16px;
+				bottom: -30px;
+				background: url('../img/dot.svg') repeat-y top center/ 100% 20px;
+			}
+			&:last-child::after {
+				display: none;
+			}
+			&:nth-of-type(2n - 1) {
+				justify-content: flex-end;
+				text-align: right;
+				.year::after {
+					margin-left: auto;
+					margin-right: 0;
+				}
+				.circle {
+					margin-left: 15px;
+				}
+			}
+			&:nth-of-type(2n) {
+				align-self: flex-end;
+				justify-content: flex-end;
+				flex-flow: row-reverse;
+				&::after {
+					right: auto;
+					left: 16px;
+				} 
+				.circle {
+					margin-right: 15px;
+				}	
+			}
+		}
+		.year {
+			font-size: 32px;
+			font-weight: 700;
+			display: block;
+			position: relative;
+			&::after {
+				content: '';
+				display: block;
+				width: 22px;
+				height: 5px;
+				background: $accent;
+				position: relative;
+				margin-bottom: 4px;
+			}
+		}
+		.circle {
+			display: block;
+			border-radius: 50%;
+			width: 40px;
+			min-width: 40px;
+			height: 40px;
+			border: 5px solid $accent;
+			position: relative;
+			&::after {
+				content: '';
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: $accent;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate3d(-50%, -50%, 0);
+			}
+		}
+	}
+	.list-title {
+		margin-bottom: 12px;
+	}
+	.numeric-list {
+		font-size: 17px;
+		margin-bottom: 30px;
+		padding-left: 20px;
+	}
+	&__team {
+		margin-top: 50px;
+		h3 {
+			font-size: 40px;
+			text-align: center;
+			line-height: 1.2;
+			font-weight: 300;
+			margin-bottom: 40px;
+			b {
+				font-weight: 700;
+			}
+		}
+		p:last-child {
+			margin-bottom: 0;
+		}
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 70px;
+			&:nth-of-type(2n) {
+				flex-direction: row-reverse;
+			}
+		}
+		img {
+			margin-top: 0;
+			width: calc(50% - 50px);
+			height: auto;
+		}
+		div {
+			width: 50%;
+		}
+		.name {
+			font-size: 28px;
+			font-family: montserrat;
+			line-height: 1.3;
+			position: relative;
+			&::after {
+				display: block;
+				content: '';
+				width: 22px;
+				height: 5px;
+				background: $accent;
+				margin-top: 30px;
+			}
+			b {
+				font-weight: 700;
+			}
+		}
+	}
+	&-about {
+		background: url('../img/company/1.png') no-repeat center top/ cover;
+	}
+	&-vision {
+		background: #e9f2f4;
+		height: auto;
+		display: block;
+		.container {
+			height: 430px;
+			display: flex;
+			align-items: center;
+			background: url('../img/company/2.png') no-repeat right  center/ auto 80%;
+		}
+	}
+	&-mission {
+		background: url('../img/company/3.png') no-repeat center center/ cover;
+		h2 {
+			color: #fff;
+		}
+	}
+	&-team {
+		background: url('../img/company/4.png') no-repeat center center/ cover;
 	}
 }
 
