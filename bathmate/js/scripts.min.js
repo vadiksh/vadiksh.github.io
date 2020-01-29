@@ -5,11 +5,12 @@ $(function() {
 		items: 1,
 		nav: false,
 		dots: false,
-		navSpeed: 1000,
-		autoplay: true,
+		navSpeed: 700,
+		autoplay: false,
+		autoplayTimeout: 3500,
 		autoplayHoverPause: true,
-		autoplaySpeed: 1000,
-		dragEndSpeed: 1000
+		autoplaySpeed: 700,
+		dragEndSpeed: 700
 	});
 	$('.orders input').on("input change", function() {
 		let clicks = $(this).val();
