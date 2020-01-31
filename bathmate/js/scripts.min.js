@@ -6,10 +6,10 @@ $(function() {
 		nav: false,
 		dots: false,
 		navSpeed: 700,
-		// autoplay: false,
-		// autoplayTimeout: 3500,
-		// autoplayHoverPause: true,
-		// autoplaySpeed: 700,
+		autoplay: false,
+		autoplayTimeout: 3500,
+		autoplayHoverPause: true,
+		autoplaySpeed: 700,
 		dragEndSpeed: 700,
 		onChanged: changeLogo
 	});
