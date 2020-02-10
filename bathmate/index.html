@@ -14,7 +14,17 @@
 </head>
 <body>
 	<header class="header">
-		<a href="/" class="header__logo"></a>
+		<div class="container">
+			<a href="/" class="header__logo"></a>
+			<nav class="header__nav">
+				<a href="">Sign in</a>
+				<a href="">Join</a>
+				<a href="#why">Why Bathmate</a>
+				<a href="#payouts">Payouts</a>
+				<div class="close"><span></span></div>
+			</nav>
+			<div class="hamburger"><span></span></div>
+		</div>
 	</header>
 	<section class="banner">
 		<div class="owl-carousel">
@@ -45,9 +55,9 @@
 	</section>
 	<section class="program">
 		<div class="program__title">
-			<h2>Do you have High Quality Men's Health related Traffic?</h2>
+			<h2>Do You Have Quality Mens Health Traffic?</h2>
 		</div>
-		<div class="program__image">
+		<div class="program__image" id="why">
 			<div class="container">
 				<ul>
 					<li>
@@ -63,7 +73,7 @@
 						 With our program you can start earning 35% commission on every sale right away. 
 					</li>
 					<li>
-						<h4>AOV $180.00</h4>  
+						<h4>Average Order Value $180.00</h4>  
 						Our products range from $99.00 to $299.00 leading to bigger payouts. 
 					</li>
 					<li>
@@ -74,9 +84,9 @@
 			</div>
 		</div>
 	</section>
-	<section class="orders">
+	<section class="orders" id="payouts">
 		<div class="container">
-			<h2>With an AOV of $180.00 You can earn Big Bucks with Bathmate</h2>
+			<h2>With an Average Order Value of $180.00 You can earn Big Bucks with Bathmate</h2>
 			<h3>Sales per day</h3>
 			<input type="range" id="range" name="design-range" min="100" max="1100" value="100">
 			<ul class="orders__labels">
@@ -113,6 +123,36 @@
 			</form>
 		</div>
 	</section>
+	<footer class="footer">
+		<div class="container">
+			<div>
+				<a href="/" class="header__logo"></a>
+				<ul class="footer__social">
+					<li><a href="">
+						<svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M5.97741 2.1582H7.3125V0.0914062C7.0826 0.0634766 6.29041 0 5.36804 0C3.44297 0 2.1245 1.07656 2.1245 3.05449V4.875H0V7.18555H2.1245V13H4.7282V7.18555H6.76683L7.09091 4.875H4.7282V3.28301C4.7282 2.61523 4.9304 2.1582 5.97741 2.1582Z" fill="white"/>
+						</svg>
+					</a></li>
+					<li><a href="">
+						<svg width="50" height="41" viewBox="0 0 50 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M44.8605 10.1205C44.8923 10.5647 44.8923 11.0089 44.8923 11.4531C44.8923 25 34.5814 40.6092 15.7361 40.6092C9.93021 40.6092 4.53683 38.9277 0 36.009C0.824906 36.1041 1.61798 36.1359 2.47462 36.1359C7.26517 36.1359 11.6751 34.5179 15.1967 31.7577C10.6916 31.6625 6.91624 28.712 5.61545 24.6511C6.25002 24.7462 6.8845 24.8097 7.55081 24.8097C8.47083 24.8097 9.39095 24.6827 10.2475 24.4607C5.55207 23.5089 2.03038 19.3845 2.03038 14.4036V14.2767C3.39454 15.0381 4.98098 15.514 6.66233 15.5774C3.90216 13.7373 2.09386 10.5964 2.09386 7.04309C2.09386 5.13957 2.60138 3.39464 3.48976 1.87178C8.53421 8.09007 16.1168 12.1509 24.6192 12.5952C24.4606 11.8337 24.3654 11.0407 24.3654 10.2475C24.3654 4.60021 28.934 0 34.6129 0C37.5634 0 40.2284 1.23731 42.1003 3.23605C44.4162 2.79191 46.637 1.93526 48.6041 0.761429C47.8426 3.14093 46.2246 5.13967 44.099 6.40862C46.1612 6.18665 48.16 5.61545 50 4.82238C48.6043 6.85276 46.8593 8.66107 44.8605 10.1205Z" fill="white"/>
+						</svg>
+					</a></li>
+					<li><a href="">
+						<svg xmlns="http://www.w3.org/2000/svg" width="21" height="14.766" viewBox="0 0 21 14.766">
+						  <path id="youtube" d="M35.494,66.31a2.639,2.639,0,0,0-1.857-1.869C32,64,25.433,64,25.433,64s-6.567,0-8.2.442a2.639,2.639,0,0,0-1.857,1.869,29.71,29.71,0,0,0,0,10.175,2.6,2.6,0,0,0,1.857,1.839c1.638.442,8.2.442,8.2.442s6.567,0,8.2-.442a2.6,2.6,0,0,0,1.857-1.839,29.71,29.71,0,0,0,0-10.175ZM23.285,74.52V68.275L28.774,71.4,23.285,74.52Z" transform="translate(-14.933 -64)" fill="#fff" opacity="1"/>
+						</svg>
+					</a></li>
+				</ul>
+			</div>
+			<nav class="footer__nav">
+				<a href="">Sign in</a>
+				<a href="">Join</a>
+				<a href="#why">Why Bathmate</a>
+				<a href="#payouts">Payouts</a>
+			</nav>
+		</div>
+	</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
