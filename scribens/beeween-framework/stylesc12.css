@@ -16536,7 +16536,7 @@ h1.spetitlebwn {
 }
 .menu-header .navbar-header .navbar-toggle {
     display: block !important;
-    margin: 12px 0 0 !important;
+    margin: 0!important;
 }
 
 }
@@ -18693,7 +18693,7 @@ label:hover:before {
     overflow-x: hidden;
   }
   body {
-    padding-top: 55px;
+    padding-top: 45px;
     overflow-y: hidden;
   }
   .Prem-PopupVPremium.open {
@@ -18707,9 +18707,25 @@ label:hover:before {
     margin-left: -10px;
     top: -3px;
     position: relative;
+    padding: 0 !important;
   }
   .menu-header .main-logo {
-    width: 150px;
+    width: 140px;
+  }
+  .menu-header .navbar-header {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+    height: 45px;
+  }
+  .menu-header .navbar-header::before, .menu-header .navbar-header::after {
+    display: none;
   }
   #global-wrapper .navbar {
     min-height: auto;
@@ -18757,6 +18773,9 @@ label:hover:before {
   #PanelBtn .button img {
     width: 16px;
   }
+  #PanelBtn #actions {
+    display: none;
+  }
   #PanelBtn .left {
       display: flex;
       width: calc((100% / 3) * 2);
@@ -18764,9 +18783,13 @@ label:hover:before {
   #PanelBtn .left > div {
       width: 50%;
   }
+  #PanelBtn .left .button:last-of-type {
+      border-right: 0;
+  }
   #PanelBtn .right {
     border-left: none;
     width: calc(100% / 3);
+    border-right: 1px solid #b4b6bc;
   }
   #PanelBtn .right > div {
     width: 100%;

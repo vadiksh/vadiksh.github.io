@@ -3091,7 +3091,10 @@ Print : function()
 	// childWindow.document.close();
 	childWindow.focus();
 	childWindow.print();
-	childWindow.close();
+	childWindow.onafterprint = (e) => {
+	  childWindow.close();
+	};
+	// childWindow.close();
 },
 
 // Download popup
