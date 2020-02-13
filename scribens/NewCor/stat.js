@@ -53,7 +53,6 @@ Init : function()
 	
 	// var divStatSyn = document.getElementById("DivStyleSyn");
 	var divStatSyn = document.getElementById("StyleTexte");
-	if(Cor.IsTablet == true) divStatSyn = document.getElementById("stat-syn");
 	
 	// divStatSyn.appendChild(Stat.PanelStat);
 	// divStatSyn.prepend(Stat.PanelStat);

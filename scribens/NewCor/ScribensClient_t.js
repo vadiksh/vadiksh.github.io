@@ -13572,12 +13572,6 @@ var Premium = {
 		// Set options Premium
 		Options.SetModeAbonne(true);
 		
-		// In tablet mode and French, show the button "Copy" and "Paste".
-		if(Cor.IdLangue == "fr" && Cor.IsTablet == true)
-		{
-			$('#copy-clipboard').addClass('hidden');
-			$('#paste-clipboard').addClass('hidden');
-		}
 	
 		// Lance un timer qui envoie un signal toutes les 10s pour avertir que la session est bien active.
 		Cor.TimerIdentification = setInterval(function()
@@ -17863,7 +17857,7 @@ var Premium = {
 	
 	// Deconnexion
 	Deconnexion : function()
-	{
+	{	
 		//cache le logo du compte à la deco
 		document.getElementById("compte").remove();
 		// Met à jour les labels des menus
@@ -17946,14 +17940,7 @@ var Premium = {
 		// Show  title// Non affichage de la partie "Titre".
 		var titreLabel = document.getElementById("TitreLabel");
 		if(titreLabel) titreLabel.style.display = "block";
-		
-		// In tablet mode and French, show the button "Copy" and "Paste".
-		if(Cor.IdLangue == "fr" && Cor.IsTablet == true)
-		{
-			$('#copy-clipboard').removeClass('hidden');
-			$('#paste-clipboard').removeClass('hidden');
-		}
-		
+
 		//HIDE LEFT SIDEBAR ON LOGOUT
 		$('.interface .sidebar').hide();
 	},
@@ -19401,24 +19388,15 @@ document.addEventListener("DOMContentLoaded", function()
 		Cor.User.Identifiant = "DemoChrome";
 		return;
 	}
-	
+	Cor.IsTablet = true;
 	// In tablet mode and French, show the button "Copy" and "Paste".
-	if(Cor.IsTablet == true)
+	if(Cor.IdLangue == "fr" && Cor.IsTablet == true)
 	{
 		$('#copy-tablet').removeClass('hidden');
-		$('#copy-tablet').click(function(){Cor.CopyClipboard();});
-		
 		$('#paste-tablet').removeClass('hidden');
-		$('#paste-tablet').click(function(){Cor.Paste();});
 		
 		$('#SampleText').addClass('hidden');
 		$('#importing-files').addClass('hidden');
-		
-		if(Cor.IdLangue == "en")
-		{
-			$('#copy-clipboard').addClass('hidden');
-			$('#paste-clipboard').addClass('hidden');
-		}
 	}
 	
 	// Confirmation de mail par paramètre passé à l'URL (le mail)
@@ -21354,7 +21332,6 @@ PopupPanelSol : function()
 			this.Node_ExpSol_Cor.style.left = window.pageXOffset + rect.left + posX + 'px';
 			this.Node_ExpSol_Cor.style.top = window.pageYOffset + rect.top + posY + 30 + 22 + (20 * vectSolution.length) + (vectSolution.length*hGap) + 'px';
 		}
-
 		
 		// High font size of ExpSol
 		if(TextEditor.FontSize < 20) this.Node_ExpSol_Cor.style.fontSize = '10pt';
@@ -21532,7 +21509,6 @@ PopupPanelSol : function()
 				else this.Node_ExpSol_Style.style.top = offSet + 'px';
 			}
 		}
-		
 		
 		// High fontsize
 		if(TextEditor.FontSize < 20) this.Node_ExpSol_Style.style.fontSize = '10pt';
@@ -22216,14 +22192,6 @@ Paste : function()
 		textPaste = "<p>" +  textPaste + "</p>";
 		
 		TextEditor.Document.body.innerHTML = textPaste;
-		
-		// Setting autocorrect when pasting
-		if(Cor.AutoCorrect_AfterPaste == true ||
-		// Mode smarthone. Very usefull
-		   Cor.IsMobile == true)
-		{
-			Cor.Check(false);
-		}
 	});
 },
 

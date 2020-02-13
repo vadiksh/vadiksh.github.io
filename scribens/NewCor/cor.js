@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function()
 		if(url.indexOf("mobile") >= 0) Cor.IsMobile = true;
 		
 		// Tablet mode.
-		if(url.indexOf("tablet") >= 0) Cor.IsTablet = true;
+		if(Cor.UserAgent.indexOf("android") >= 0 && Cor.UserAgent.indexOf("mobile") == -1) Cor.IsTablet = true;
 	}
 	
 	// Warn the user the website doesn't worrk anymore with IE.
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function()
 	{
 		eltBtnIndications.addEventListener('click', function()
 		{
-			if(Cor.MessageIndication == null) Cor.MessageIndication = new Util.MessageWindowConfirmation("", 4);
+			if(Cor.MessageIndication == null) Cor.MessageIndication = new Util.MessageWindowConfirmation("", 4, "Avertissement");
 			Cor.MessageIndication.SetVisible(true);
 		});
 	}
@@ -181,18 +181,30 @@ document.addEventListener("DOMContentLoaded", function()
 		Cor.InitModeEn();
 	}
 	
-	// En mode abonné, remonte les panneaux de gauches
-	if(Cor.ModeAbonnePremium == false)
-	{
-		//RootPanel.get("Legende").getElement().getStyle().setTop(125, Unit.PX);
-		//RootPanel.get("ExpVersion").getElement().getStyle().setTop(300, Unit.PX);
-	}
-	
 	// Version demo : pas plus loin.
 	if(Plugins.Demo == true)
 	{
 		Cor.User.Identifiant = "DemoChrome";
 		return;
+	}
+	
+	// In tablet mode and French, show the button "Copy" and "Paste".
+	if(Cor.IsTablet == true || $(window).width() < 768)
+	{
+		$('#copy-tablet').removeClass('hidden');
+		$('#copy-tablet').click(function(){Cor.CopyClipboard();});
+		
+		$('#paste-tablet').removeClass('hidden');
+		$('#paste-tablet').click(function(){Cor.Paste();});
+		
+		$('#SampleText').addClass('hidden');
+		$('#importing-files').addClass('hidden');
+		
+		if(Cor.IdLangue == "en")
+		{
+			$('#copy-clipboard').addClass('hidden');
+			$('#paste-clipboard').addClass('hidden');
+		}
 	}
 	
 	// Confirmation de mail par paramètre passé à l'URL (le mail)
@@ -217,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function()
 			{
 				Cor.User.Identifiant = Cor.ParameterUrl.substring(22);
 				
-				var popup = new Util.MessageWindowConfirmation("<p>Votre demande a bien " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " prise en compte.</p><p>Vous ne recevrez plus de messages.</p>", 0);
+				var popup = new Util.MessageWindowConfirmation("<p>Votre demande a bien " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " prise en compte.</p><p>Vous ne recevrez plus de messages.</p>", 0, "Avertissement");
 				popup.SetVisible(true);
 				
 				Cor.ParameterUrl = null;
@@ -286,7 +298,9 @@ document.addEventListener("DOMContentLoaded", function()
 		
 		// To delete
 		//Cor.User.Identifiant = "barca34@mail.com";
-		//Cor.User.MotDePasse = "fdffdfd!F";
+		//Cor.User.MotDePasse = "geDr:78!F";
+		
+		//Cor.MonCompte = true;
 		
 		//Cor.User.Identifiant = "alban.thiebaut@live.fr";
 		//Cor.User.MotDePasse = "123456";
@@ -363,17 +377,14 @@ document.addEventListener("DOMContentLoaded", function()
 	// Si l'User clqiue sur une publicit� Adword, il est renvoy� � la page de la version premium
 	if(Cor.ParameterUrl != null && (Cor.ParameterUrl == "VersionPremium"))
 	{
-		Cor.Handler_VersionPremium(true);
+		Cor.Handler_VersionPremium(true, "");
 	}
 	
-	// Grammar Rule
-	if(Cor.IdLangue == "en")
+	// Redirect to Grammar Rule
+	var ref_rule = Util.GetQueryVariable("rule");
+	if(ref_rule != null)
 	{
-		var ref_rule = Util.GetQueryVariable("rule");
-		if(ref_rule != null)
-		{
-			Cor.Handler_Rules(ref_rule);
-		}
+		Cor.Handler_Rules(ref_rule);
 	}
 	
 	// Message try our sample.
@@ -384,11 +395,8 @@ document.addEventListener("DOMContentLoaded", function()
 		{
 			Util.SetCookie("PopupEnSampleShown", "True", 5000);
 			
-			if(url.indexOf('https') == 0)
-			{
-				var msgw = new Cor.PopupMessageEnglish("<p>Welcome to Scribens</p><p>Try our sample text now!</p>", 0);		// Active later with cookies.
-				msgw.SetVisible(true);	// https for not disturb in development mode.
-			}
+			var msgw = new Cor.PopupMessageEnglish("<p>Welcome to Scribens</p><p>Try our sample text now!</p>", 0);		// Active later with cookies.
+			msgw.SetVisible(true);	// https for not disturb in development mode.
 		}
 		// API message (to enable sometime)
 		else
@@ -407,10 +415,41 @@ document.addEventListener("DOMContentLoaded", function()
 		}
 	}
 	
+	// Pub on scribens.fr
+	if(Cor.IdLangue == "fr" && (Plugins.Type == null) && (Cor.IsMobile == false) && (Cor.IsTablet == false))
+	{
+		//if(Cor.IsChrome == true)
+		//if(!Cor.IsMozillaF && !Cor.IsEdge)
+		//{
+			var valueCookieSt = Util.GetCookie("PopupFrPub1");
+			if(valueCookieSt == null || valueCookieSt.length == 0)
+			{
+				Util.SetCookie("PopupFrPub1", "True", 5000);
+				
+				var msgw = new Cor.PopupFrPub(1);
+				msgw.SetVisible(true);
+			}
+		//}
+	}
+	
 	// Windows load event.
 	window.onload = function()
 	{
 		Cor.Window_Loaded = true;
+		
+		// MSEdge. Must blur before.
+		if(Cor.IsEdge)
+		{
+			TextEditor.Document.body.blur();
+			
+			TextEditor.Document.body.addEventListener('focus', function(){
+				if((this.innerHTML == TextEditor.TextPlaceHolder_Fr && Cor.IdLangue == "fr") ||
+				   (this.innerHTML == TextEditor.TextPlaceHolder_En && Cor.IdLangue == "en"))
+				{
+					this.innerHTML = "<p></p>";
+				}
+			});
+		}
 	}
 	
 	// Window focus event
@@ -458,7 +497,22 @@ document.addEventListener("DOMContentLoaded", function()
 	var copyButton = document.getElementById("copy-clipboard");
 	if(copyButton)
 	{
-		copyButton.onclick = function(){Cor.CopyClipboard();}
+		copyButton.onclick = function()
+		{
+			Cor.CopyClipboard();
+			//$('#actions').addClass('hidden');
+			//var elt = document.getElementById("ListActions");
+			//elt.style.visibility = "hidden";
+			//elt.style.display = "none";
+			
+		}
+	}
+	
+	// Paste button
+	var pasteButton = document.getElementById("paste-clipboard");
+	if(pasteButton)
+	{
+		pasteButton.onclick = function(){Cor.Paste();};
 	}
 	
 	// Print button
@@ -467,41 +521,54 @@ document.addEventListener("DOMContentLoaded", function()
 	{
 		printButton.onclick = function(){Cor.Print();}
 	}
-	// Share button
-	var shareButton = document.getElementById("action-share");
-	if(shareButton)
-	{
-		shareButton.onclick = function(){Cor.Share();}
-	}
+	
 	// Download button
 	var downloadButton = document.getElementById("download");
 	if(downloadButton)
 	{
-		downloadButton.onclick = function() {document.querySelector('.popaction.download-pop').classList.add("openpop");}; 
-	}
-
-	var shareCloser = document.querySelector('.popaction.share-pop .closer');
-	if(shareCloser)
-	{
-		shareCloser.onclick = function() {document.querySelector('.popaction.share-pop').classList.remove("openpop");}; 
-	}
-
-	var downloadSelector = document.querySelector('.popaction.download-pop .closer');
-	if(downloadSelector)
-	{
-		downloadSelector.onclick = function() {document.querySelector('.popaction.download-pop').classList.remove("openpop");}; 
+		downloadButton.onclick = function()
+		{
+			if(Cor.DownloadPopupI == null) Cor.DownloadPopupI = new Cor.DownloadPopup();
+			
+			document.querySelector('.popaction.download-popup').classList.add("openpop");
+			
+			var downloadSelector = document.querySelector('.popaction.download-popup .closer');
+			if(downloadSelector)
+			{
+				downloadSelector.onclick = function() {document.querySelector('.popaction.download-popup').classList.remove("openpop");}; 
+			}
+		}
 	}
 	
-	var downloadButtonTxt = document.getElementById("download-txt");
-	if(downloadButtonTxt)
+	// Share button
+	var printButton = document.getElementById("print-textarea");
+	if(printButton)
 	{
-		downloadButtonTxt.onclick = function(){Cor.Download();}
+		printButton.onclick = function(){Cor.Print();}
+	}
+	
+	// Share button
+	var shareButton = document.getElementById("share");
+	if(shareButton)
+	{
+		shareButton.onclick = function()
+		{
+			if(Cor.SharePopupI == null) Cor.SharePopupI = new Cor.SharePopup();
+			
+			var shareCloser = document.querySelector('.popaction.share-pop .closer');
+			if(shareCloser)
+			{
+				shareCloser.onclick = function() {document.querySelector('.popaction.share-pop').classList.remove("openpop");}; 
+			}
+			
+			Cor.Share();
+		}
 	}
 	
 	//////////////////////////////////////////
 	// Panneaux pour l'affichage des groupes
 	//////////////////////////////////////////
-
+	
 	if(Cor.ModeDebug == true)
 	{
 		// Resize TinyMce
@@ -563,6 +630,24 @@ document.addEventListener("DOMContentLoaded", function()
 		textAreaDiv.appendChild(table1);
 		textAreaDiv.appendChild(table2);
 	}
+
+	var actionsHovered = false;
+	$('#actions p, #actions-list').mouseenter(function() {
+		actionsHovered = true;
+		$('#actions-list').css({"display": "block"});
+	});
+	$('#actions p, #actions-list').mouseleave(function() {
+		actionsHovered = false;
+		setTimeout(function() {
+			if(!actionsHovered) {
+				$('#actions-list').css({"display": "none"})
+			} 
+		}, 50)
+	});
+
+	$('#actions-list li').click(function() {
+		$('#actions-list').css({"display": "none"});
+	})
 	
 });
 	
@@ -698,6 +783,12 @@ LabelMaxCharI : null,
 // Set of on mouse ove rthe solution item
 MouseOverItemSolution : false,
 
+// Download popup
+DownloadPopupI : null,
+
+// Share popup
+SharePopupI : null,
+
 // Type of browsers
 IsMozillaF : false,
 IsChrome : false,
@@ -721,6 +812,13 @@ Id_Tomcat : 'Scribens',
 // Check function
 Check : function (isSample)
 {
+	// If place holder is here, then cancel.
+	if((TextEditor.Document.body.innerHTML == TextEditor.TextPlaceHolder_Fr && Cor.IdLangue == "fr") ||
+	   (TextEditor.Document.body.innerHTML == TextEditor.TextPlaceHolder_En && Cor.IdLangue == "en"))
+	{
+		return;
+	}
+	
 	$('.sidebar').addClass("hidden");
 	if(Cor.IsChecking == false)
 	{
@@ -823,7 +921,9 @@ SendCorRequest : function(isSampleText)
 	var texteStat = "";
 	if(Cor.ModeAbonnePremium == true)
 	{
-		if(Cor.FirstRequest == true || Stat.UpdatedStat == false)
+		if(Cor.FirstRequest == true ||
+		   Stat.UpdatedStat == false ||
+		  (Style.StatView == true && Cor.SetIdPhModifies.size > 0))		// Recheck in Stat View. If modified P, then recheck the stats.
 		{
 			texteStat = TextEditor.GetTotalContent(Cor.FirstRequest);
 		}
@@ -1092,7 +1192,7 @@ ApplySolution : function(textSolution)
 		
 		if(Cor.ModeAbonnePremium)
 		{
-			// 2. Complete le panel Transf
+			// 2. Complete le panel Style
 			Style.OnSuccessStyle(textSolution.StyleText);
 			
 			// 3. Complete le panel Stat
@@ -1263,7 +1363,6 @@ User : function()
 	this.Identifiant = "";
 	// Mot de passe (Mot de passe)
 	this.MotDePasse = "";			
-	
 	// Type d'abonnement
 	this.TypeAbonnement = "";
 	// Date d'expiration de l'abonnement
@@ -1272,9 +1371,16 @@ User : function()
 	this.DateExpirationDernierAbn = "";
 	// Ancien Tarif
 	this.AncienTarif = false;
-	
 	// InfEvolution
 	this.InfEvolutions = false;
+	// Settings of the user
+	this.Settings = "";
+	// RecurringPayment
+	this.RecurringPayment = false;
+	// Payment by card
+	this.PaymentByCard = false;
+	// Payment by Smartphone
+	this.PaymentBySmartphone = false;
 },
 
 // G�n�re un mot de passe pour l'int�gration aux sites web.
@@ -1372,7 +1478,6 @@ Register_ClickHandlerBtn : function()
 		btnDictionnary.addEventListener("click", function()
 		{
 			Cor.Handler_Dictionnary();
-			
 		});
 	}
 	
@@ -1405,7 +1510,7 @@ Register_ClickHandlerBtn : function()
 		{
 			btnVersionPremium.addEventListener("click", function()
 			{
-				Cor.Handler_VersionPremium(false);
+				Cor.Handler_VersionPremium(false, "");
 			});
 		}
 		
@@ -1416,7 +1521,6 @@ Register_ClickHandlerBtn : function()
 			btnConnexion.addEventListener("click", function()
 			{
 				Cor.Handler_Connexion();
-				
 			});
 		}
 	}
@@ -1507,41 +1611,24 @@ Handler_Orthographe : function()
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
-	{
-		mainDiv.style.width = "100%";
+	mainDiv.style.width = "100%";
+
+	// Show the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "visible";
 	
-		// Show the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "visible";
-		
-		// Display the ad
-		if(Cor.ModeAbonnePremium == false)
-		{
-			if(Cor.IdLangue == "fr") document.getElementById("InfSup").style.display = "none";
-			document.getElementById("pub3").style.display = "block";
-		}
-		else
-		{
-			document.getElementById("InfSup").style.display = "block";
-			var pub3 = document.getElementById("pub3");
-			if(pub3 != null) pub3.style.display = "none";
-		}
+	// Display the ad
+	if(Cor.ModeAbonnePremium == false)
+	{
+		if(Cor.IdLangue == "fr") document.getElementById("InfSup").style.display = "none";
+		document.getElementById("pub3").style.display = "block";
 	}
 	else
 	{
-		// Show the div style
-		if(Cor.ModeAbonnePremium == true)
-		{
-			document.getElementById("DivStyleStat").style.display = "block";
-		}
-		
-		var pub4 = document.getElementById("pub4");
-		if(pub4 != null) pub4.style.display = "block";
+		document.getElementById("InfSup").style.display = "block";
+		var pub3 = document.getElementById("pub3");
+		if(pub3 != null) pub3.style.display = "none";
 	}
-
-	
-	//if(Cor.ModeAbonnePremium == false) document.getElementById("pub2").style.display = "block";
 },
 
 // Handler dictionary
@@ -1570,36 +1657,16 @@ Handler_Dictionnary : function()
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
-	{
-		// mainDiv.style.width = "880px";
-		
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		document.getElementById("InfSup").style.display = "none";
-		
-		var pub3 = document.getElementById("pub3");
-		if(pub3 != null) pub3.style.display = "none";
-		
-		if(Cor.ModeAbonnePremium == false) $("#pub2").css('display', 'block');
-	}
-	else
-	{
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
-		
-		if(Cor.ModeAbonnePremium == false)
-		{
-			var pub2 = document.getElementById("pub2");
-			if(pub2 != null) pub2.style.display = "none";
-		}
-		
-		var pub4 = document.getElementById("pub4");
-		if(pub4 != null) pub4.style.display = "none";
-	}
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
+	
+	document.getElementById("InfSup").style.display = "none";
+	
+	var pub3 = document.getElementById("pub3");
+	if(pub3 != null) pub3.style.display = "none";
+	
+	if(Cor.ModeAbonnePremium == false) $("#pub2").css('display', 'block');
 	
 	// Create the panel of dictionary then add it
 	if(Dict.PanelDictI == null) Dict.PanelDictI = new Dict.PanelDict();
@@ -1631,28 +1698,19 @@ Handler_Rules : function(ref_rule)
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
+	mainDiv.style.width = "736px";
+	
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
+	
+	// Hide the div syn stat
+	document.getElementById("InfSup").style.display = "none";
+	
+	if(Cor.ModeAbonnePremium == false)
 	{
-		mainDiv.style.width = "736px";
-		
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		// Hide the div syn stat
-		document.getElementById("InfSup").style.display = "none";
-		
-		if(Cor.ModeAbonnePremium == false)
-		{
-			var pub3 = document.getElementById("pub3");
-			if(pub3 != null) pub3.style.display = "block";
-		}
-	}
-	else
-	{
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
+		var pub3 = document.getElementById("pub3");
+		if(pub3 != null) pub3.style.display = "block";
 	}
 	
 	if(Cor.ModeAbonnePremium == false)
@@ -1702,26 +1760,14 @@ Handler_ExtensionAPIEn : function()
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
-	{
-		mainDiv.style.width = "736px";
-		
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		// Hide the div syn stat
-		document.getElementById("InfSup").style.display = "none";
-	}
-	else
-	{
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
-		
-		var pub4 = document.getElementById("pub4");
-		if(pub4 != null) pub4.style.display = "block";
-	}
+	mainDiv.style.width = "736px";
+	
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
+	
+	// Hide the div syn stat
+	document.getElementById("InfSup").style.display = "none";
 	
 	// Create the panel then add it
 	if(Premium.PanelExtensionAPIEnI == null) Premium.PanelExtensionAPIEnI = new Premium.PanelExtensionAPIEn();
@@ -1730,7 +1776,7 @@ Handler_ExtensionAPIEn : function()
 },
 
 // Handler version premium
-Handler_VersionPremium : function(presentation)
+Handler_VersionPremium : function(presentation, typeAbn)
 {
 	//REMOVE CLASS FLEX WHEN NOT ON ORTOGRAPHE
 	$('.ortho-flex').removeClass('flex');
@@ -1754,26 +1800,17 @@ Handler_VersionPremium : function(presentation)
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
-	{
-		mainDiv.style.width = "100%";
-		
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		// Hide the div syn stat
-		document.getElementById("InfSup").style.display = "none";
-		
-		var pub3 = document.getElementById("pub3");
-		if(pub3 != null) pub3.style.display = "none";
-	}
-	else
-	{
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
-	}
+	mainDiv.style.width = "100%";
+	
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
+	
+	// Hide the div syn stat
+	document.getElementById("InfSup").style.display = "none";
+	
+	var pub3 = document.getElementById("pub3");
+	if(pub3 != null) pub3.style.display = "none";
 	
 	if(Cor.ModeAbonnePremium == false)
 	{
@@ -1795,8 +1832,16 @@ Handler_VersionPremium : function(presentation)
 			if(Premium.PanelMonCompteI == null) Premium.PanelMonCompteI = new Premium.PanelMonCompte();
 			
 			mainDiv.appendChild(Premium.PanelMonCompteI.Node);
+			
+			// Update information account. DO it each time because we can change the account.
+			Premium.UpdateInformationsCompte();
 		}
 	}
+	
+	// Type Abonnement selected
+	if(typeAbn == "P1M") document.getElementById("Radio1Mois").checked = true;
+	else if(typeAbn == "P3M") document.getElementById("Radio3Mois").checked = true;
+	else if(typeAbn == "P1A") document.getElementById("Radio1An").checked = true;
 },
 
 // Handler for proofreading
@@ -1818,26 +1863,17 @@ Handler_Proofreading : function()
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
-	{
-		mainDiv.style.width = "736px";
-		
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		// Hide the div syn stat
-		document.getElementById("InfSup").style.display = "none";
-		
-		var pub3 = document.getElementById("pub3");
-		if(pub3 != null) pub3.style.display = "none";
-	}
-	else
-	{	
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
-	}
+	mainDiv.style.width = "736px";
+	
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
+	
+	// Hide the div syn stat
+	document.getElementById("InfSup").style.display = "none";
+	
+	var pub3 = document.getElementById("pub3");
+	if(pub3 != null) pub3.style.display = "none";
 	
 	if(Cor.ModeAbonnePremium == false)
 	{
@@ -1853,7 +1889,7 @@ Handler_Proofreading : function()
 // Handler of test extension
 Handler_Test_Ext : function()
 {
-	Cor.Handler_VersionPremium(false);
+	Cor.Handler_VersionPremium(false, "");
 	
 	Premium.PresentationPremiumI.OpenDiv(1);
 	
@@ -1881,14 +1917,13 @@ CreateWaitingPanel : function()
 	elementDiv.hidden = true;
 	elementDiv.id = "PanelWait";
 	//if(Cor.IsMobile == true) elementDiv.style.marginBottom = "37px";
-	//else if(Cor.IsTablet == true) elementDiv.style.marginBottom = "6px";
 	
 	// Wait panel
 	this.TableWait = document.createElement("table");
 	this.TableWait.setAttribute("align", "center");
-	if(Cor.IsMobile == true) this.TableWait.style.paddingTop = "70px";
-	else if(Cor.IsTablet == true) this.TableWait.style.paddingTop = "110px";
+	if(Cor.IsMobile == true || $(window).width() < 768) this.TableWait.style.paddingTop = "70px";
 	else this.TableWait.style.paddingTop = "130px";
+	
 	this.TableWait.style.display = "block";
 	if(Cor.IdLangue == "fr")
 	{
@@ -1951,7 +1986,7 @@ CreateWaitingPanel : function()
 	// Label
 	var divTextWait = document.createElement("div");
 	divTextWait.setAttribute("class", "Cor-LabelWait");
-	divTextWait.style.marginBottom = "20px";
+	divTextWait.style.marginBottom = "60px";
 	
 	var label = "Veuillez patienter...";
 	if(Cor.IdLangue == "en") label = "Please wait...";
@@ -1962,23 +1997,23 @@ CreateWaitingPanel : function()
 	
 	// Progress bar
 	this.ProgressBar = document.createElement("div");
-	this.ProgressBar.style.width = "304px";
-	this.ProgressBar.style.height = "22px";
-	this.ProgressBar.style.backgroundColor = "6EAFDB";
-	//this.ProgressBar.style.backgroundColor = "#e6e6e6";
+	this.ProgressBar.style.width = "350px";
+	this.ProgressBar.style.height = "15px";
+	this.ProgressBar.style.backgroundColor = "#f1f1f1";
+	this.ProgressBar.style.borderRadius = "10px";
+	this.ProgressBar.style.overflow = "hidden";
 	this.ProgressBar.align = "left";
 	
-	this.ProgressBar.style.borderColor = "#e6e6e6";
-	this.ProgressBar.style.borderWidth = "2px";
-	this.ProgressBar.style.borderStyle = "solid";
+	// this.ProgressBar.style.borderColor = "#e6e6e6";
+	// this.ProgressBar.style.borderWidth = "2px";
+	// this.ProgressBar.style.borderStyle = "solid";
 	
 	// Div inside the progress bar
 	var divInside = document.createElement("div");
 	divInside.className = "progress-bar";
-	divInside.style.backgroundColor = "#D5EBF7";
 	
 	divInside.style.width = "0px";
-	divInside.style.height = "18px";
+	divInside.style.height = "15px";
 	
 	this.ProgressBar.appendChild(divInside);
 	
@@ -2086,7 +2121,7 @@ PopupPanelSol : function()
 	this.Id_Cor = "";
 	
 	var divListSol = document.createElement("div");
-	if(Cor.IsMobile == false && Cor.IsTablet == false) divListSol.style.fontSize = '16px';
+	if(Cor.IsMobile == false) divListSol.style.fontSize = '16px';
 	else divListSol.style.fontSize = '17px';
 	
 	this.Node_ListSol_Cor.appendChild(divListSol);
@@ -2105,7 +2140,7 @@ PopupPanelSol : function()
 		var divTa = document.getElementById('FrameTx');
 		var rect = divTa.getBoundingClientRect();
 		var hGap = 24;
-		if(Cor.IsMobile == true || Cor.IsTablet == true) hGap = 25;
+		if(Cor.IsMobile == true) hGap = 25;
 		
 		// High fontsize
 		if(TextEditor.FontSize >= 20) hGap = hGap + 14;
@@ -2122,6 +2157,11 @@ PopupPanelSol : function()
 		
 			this.Node_ExpSol_Cor.style.left = window.pageXOffset + rect.left + posX + 'px';
 			this.Node_ExpSol_Cor.style.top = window.pageYOffset + rect.top + posY + 30 + 22 + (20 * vectSolution.length) + (vectSolution.length*hGap) + 'px';
+		}
+		if ($(window).width() < 768) {
+			console.log('mob');
+			this.Node_ListSol_Cor.style.left = 'calc((100% - 310px) / 2)';
+			this.Node_ExpSol_Cor.style.left = 'calc((100% - 310px) / 2)';
 		}
 		
 		// High font size of ExpSol
@@ -2226,12 +2266,8 @@ PopupPanelSol : function()
 	this.Node_ListSol_Style.style.zIndex = '100';
 	
 	var divListSol = document.createElement("div");
-	if(Cor.IsMobile == false && Cor.IsTablet == false) divListSol.style.fontSize = '16px';
+	if(Cor.IsMobile == false) divListSol.style.fontSize = '16px';
 	else divListSol.style.fontSize = '17px';
-	
-	/*divListSol.style.maxHeight = "200px";
-	divListSol.style.overflowY = "auto";
-	divListSol.style.overflowx = "hidden";*/
 	
 	this.Node_ListSol_Style.appendChild(divListSol);
 	
@@ -2262,7 +2298,7 @@ PopupPanelSol : function()
 		// }
 		
 		var hGap = 24;
-		if(Cor.IsMobile == true || Cor.IsTablet == true) hGap = 25;
+		if(Cor.IsMobile == true) hGap = 25;
 		
 		// High fontsize
 		if(TextEditor.FontSize >= 20) hGap = hGap + 4;
@@ -2291,7 +2327,7 @@ PopupPanelSol : function()
 		else
 		{
 			this.Node_ListSol_Style.style.left = window.pageXOffset + rect.left + posX + 'px';
-			
+
 			if(offSet == 0) this.Node_ListSol_Style.style.top = window.pageYOffset + rect.top + posY + 30 + 'px';
 			else this.Node_ListSol_Style.style.top = offSet + 'px';
 		
@@ -2305,6 +2341,7 @@ PopupPanelSol : function()
 			}
 		}
 		
+		
 		// High fontsize
 		if(TextEditor.FontSize < 20) this.Node_ExpSol_Style.style.fontSize = '10pt';
 		else this.Node_ExpSol_Style.style.fontSize = "17px";
@@ -2315,9 +2352,10 @@ PopupPanelSol : function()
 		// Clear elements.
 		divListSol.innerHTML = '';
 		
-		if(vectSolution.length > 10)
+		if(vectSolution.length > 6)
 		{
-			divListSol.style.maxHeight = (hGap * 10) + "px";
+			divListSol.style.maxHeight = ((hGap + 19) * 6) + "px";
+			//divListSol.style.maxHeight = "245px";
 			divListSol.style.overflowY = "scroll";
 		}
 		else
@@ -2468,131 +2506,6 @@ PopupPanelSol : function()
 	
 },
 
-// Popup Panel of solutions. Version div imbriqued. Doesn't work.
-/*PopupPanelSol : function()
-{
-	this.Node = document.createElement("div");
-	this.Node.style.overflow = 'visible';
-	this.Node.style.position = 'absolute';
-	//this.Node.style.zIndex = '-100';
-	
-	////////////////////////////////////
-	// List of solutions Cor.  			  //
-	////////////////////////////////////
-	
-	this.Node_ListSolCor = document.createElement("div");
-	this.Node_ListSolCor.setAttribute("class", "Cor-PopupPanelListeSol");
-	this.Node_ListSolCor.style.width = "200px";
-	this.Node_ListSolCor.style.zIndex = '1100';
-	
-	var table = document.createElement("table");
-	table.style.fontSize = '12pt';
-	
-	this.Node_ListSolCor.appendChild(table);
-	
-	this.Node.appendChild(this.Node_ListSolCor);
-	
-	// Add to the body
-	//document.body.appendChild(this.Node_ListSolCor);
-
-	////////////////////////////////////
-	// Node explication of solution.  //
-	////////////////////////////////////
-	
-	this.Node_ExpSol = document.createElement("div");
-	this.Node_ExpSol.setAttribute("class", "Cor-PopupPanelExpSol");
-	this.Node_ExpSol.style.zIndex = '1100';
-	
-	this.Node.appendChild(this.Node_ExpSol);
-	
-	// Add to the body
-	//document.body.appendChild(this.Node_ExpSol);
-	
-	document.body.appendChild(this.Node);
-	
-	////////////////////////////////////
-	// Function Set solutions         //
-	////////////////////////////////////
-	this.SetSolutions = function(vectSolution, expSol, posX, posY)
-	{
-		// Set position
-		var divTa = document.getElementById('TextArea');
-		var rect = divTa.getBoundingClientRect();
-		
-		if(Cor.IsIE11 == false)
-		{
-			this.Node.style.left = window.scrollX + rect.left + posX + 'px';
-			this.Node.style.top = window.scrollY + rect.top + posY + 30 + 'px';
-		
-			//this.Node_ExpSol.style.left = window.scrollX + rect.left + posX + 'px';
-			//this.Node_ExpSol.style.top = window.scrollY + rect.top + (posY + 30 + 11 + (vectSolution.length*24)) + 'px';
-		}
-		else
-		{
-			this.Node_ListSolCor.style.left = window.pageXOffset + rect.left + posX + 'px';
-			this.Node_ListSolCor.style.top = window.pageYOffset + rect.top + posY + 30 + 'px';
-		
-			this.Node_ExpSol.style.left = window.pageXOffset + rect.left + posX + 'px';
-			this.Node_ExpSol.style.top = window.pageYOffset + rect.top + (posY + 30 + 11 + (vectSolution.length*24)) + 'px';
-		}
-		
-		// Set explication.
-		this.Node_ExpSol.innerHTML = expSol;
-		
-		// Set solutions. Max 5 solutions
-		var table = this.Node_ListSolCor.childNodes[0];
-		
-		// Clear elements.
-		table.innerHTML = '';
-		
-		var cntSol = 0;
-		
-		while(cntSol < vectSolution.length && cntSol < 5)
-		{
-			var solution = vectSolution[cntSol];
-		
-			var tr = document.createElement("tr");
-			tr.dataset.Sol = solution.Left;
-			
-			var div = document.createElement("div");
-		
-			div.innerHTML = solution.Right;
-			div.setAttribute("class", "Cor-ListSolTr");
-			
-			tr.appendChild(div);
-			
-			// Click event
-			tr.onclick = function()
-			{
-				TextEditor.ReplaceWord(this.dataset.Sol, false, false);
-			
-				// Hide the popups
-				Cor.PopupPanelSol.SetVisible(false);
-			
-				Cor.TexteModified = true;
-				Stat.CheckedStat = false;
-			}
-			
-			table.appendChild(tr);
-			
-			cntSol++;
-		}
-		
-		// Show the popup
-		this.SetVisible(true);
-	}
-	
-	// Show or hide //
-	this.SetVisible = function(visible)
-	{
-		this.Node.hidden = !visible;
-	
-		//this.Node_ExpSol_Style.hidden = !visible;
-		//this.Node_ListSol_Style.hidden = !visible;
-	}
-	
-},*/
-
 // Panel fo max character.
 PanelMaxChar : function()
 {
@@ -2614,14 +2527,14 @@ PanelMaxChar : function()
 	divButton.setAttribute("align", "center");
 	
 	var tableButtons = document.createElement('table');
-	tableButtons.style.marginTop = "20px";
+	tableButtons.style.marginTop = "40px";
 	
 	var tdButtonOK = document.createElement('td');
 	var buttonOK = document.createElement('div');
 	buttonOK.className = "Cor-RedButton";
 	buttonOK.innerHTML = "OK";
 	buttonOK.style.fontSize = "16px";
-	buttonOK.style.width = "120px";
+	buttonOK.style.width = "127px";
 	buttonOK.style.textAlign = "center";
 	buttonOK.style.marginLeft = "auto";
 	buttonOK.style.marginRight = "auto";
@@ -2682,7 +2595,7 @@ PanelMaxChar : function()
 		
 		Cor.IsChecking = false;
 		
-		Cor.Handler_VersionPremium(true);
+		Cor.Handler_VersionPremium(true, "");
 	}
 	
 	tdButtonVPremium.appendChild(buttonVPremium);
@@ -2787,6 +2700,7 @@ PopupMessageEnglish : function(text, type)
 	// Red button
 	var divTableButtons = document.createElement("div");
 	divTableButtons.setAttribute("align", "center");
+	divTableButtons.style.marginTop = "50px";
 	divTableButtons.style.verticalAlign = "top";
 	
 	var tableButtons = document.createElement("table");
@@ -2797,9 +2711,10 @@ PopupMessageEnglish : function(text, type)
 	
 	var buttonOK = document.createElement("div");
 	buttonOK.setAttribute("class", "Cor-RedButton");
-	//buttonOK.style.width = "120px";
-	buttonOK.style.paddingLeft = "40px";
-	buttonOK.style.paddingRight = "40px";
+	buttonOK.style.width = "160px";
+	buttonOK.style.textAlign = "center";
+	buttonOK.style.marginLeft = "auto";
+	buttonOK.style.marginRight = "auto";
 	buttonOK.innerHTML = "OK";
 	buttonOK.onclick = function()
 	{
@@ -2824,10 +2739,10 @@ PopupMessageEnglish : function(text, type)
 	
 	var buttonCancel = document.createElement("div");
 	buttonCancel.setAttribute("class", "Cor-RedButton");
-	//buttonCancel.style.width = "120px";
-	buttonCancel.style.paddingLeft = "30px";
-	buttonCancel.style.paddingRight = "30px";
-	buttonCancel.style.marginLeft = "20px";
+	buttonCancel.style.width = "160px";
+	buttonCancel.style.textAlign = "center";
+	buttonCancel.style.marginLeft = "auto";
+	buttonCancel.style.marginRight = "auto";
 	buttonCancel.innerHTML = "Cancel";
 	buttonCancel.onclick = function()
 	{
@@ -2852,6 +2767,107 @@ PopupMessageEnglish : function(text, type)
 	//popupBase.Node.style.visibility = "visible";
 	document.body.appendChild(this.PopupBase.Node);
 },
+
+// Popup of French pub
+PopupFrPub : function(type)
+{
+	this.PopupBase = new Util.PopupBase();
+	
+	var popup = document.createElement("div");
+	popup.setAttribute("align", "center");
+	
+	// Title
+	var title = document.createElement("div");
+	title.className = "titre";
+	title.style.fontSize = "20px";
+	title.innerHTML = "Nouveau !";
+	popup.appendChild(title);
+	
+	// Chrome extension
+	if(type == 0)
+	{
+		// Message
+		var divMessage = document.createElement("div");
+		divMessage.className = "Prem-TexteBasePremium";
+		divMessage.style.width = "500px";
+		divMessage.style.fontSize = "17px";
+		divMessage.style.fontWeight = "bold";
+		divMessage.style.marginTop = "10px";
+		divMessage.style.marginBottom = "45px";
+		//divMessage.setAttribute("textAlign", "left");
+		divMessage.innerHTML = "<p>Avec la nouvelle extension Google Chrome de Scribens, <br>vous pouvez désormais corriger vos textes en temps réel.</p><p></p><p>Pour l'installer, rendez-vous sur le chrome web store.</p>";
+		
+		popup.appendChild(divMessage);
+		
+		// Image
+		var linkImg = document.createElement("a");
+		linkImg.href = "https://chrome.google.com/webstore/detail/scribens-correcteur-dorth/djpeecijcbigpoijldkimmkilekocdao?hl=fr";
+		linkImg.target = "_blank";
+		var img = document.createElement("img");
+		img.src = "images/pub/LinkPubFrExt.png";
+		img.style.marginBottom = "50px";
+		img.style.cursor = "pointer";
+		linkImg.appendChild(img);
+		popup.appendChild(linkImg);
+		
+		// Red button
+		var divTableButtons = document.createElement("div");
+		divTableButtons.setAttribute("align", "center");
+		divTableButtons.style.verticalAlign = "top";
+		
+		var tableButtons = document.createElement("table");
+		var th = this;
+		
+		// Button OK
+		var buttonOK = document.createElement("div");
+		buttonOK.setAttribute("class", "Cor-RedButton");
+		buttonOK.style.width = "200px";
+		buttonOK.style.paddingLeft = "40px";
+		buttonOK.style.paddingRight = "40px";
+		buttonOK.innerHTML = "FERMER";
+		buttonOK.onclick = function()
+		{
+			th.SetVisible(false);
+		}
+		divTableButtons.appendChild(buttonOK);
+		
+		// Add the buttons
+		popup.appendChild(divTableButtons);
+	}
+	// Scribens keyboard
+	else if(type == 1)
+	{
+		this.PopupBase.Node.childNodes[1].style.padding = "70px";
+		this.PopupBase.Node.childNodes[1].style.paddingLeft = "0px";
+		this.PopupBase.Node.childNodes[1].style.paddingRight = "0px";
+		this.PopupBase.Node.childNodes[1].style.paddingBottom = "0px";
+		
+		//this.PopupBase.Node.style.top = "100px";
+		
+		// Image
+		var linkImg = document.createElement("a");
+		linkImg.href = "https://play.google.com/store/apps/details?id=com.bleu122.scribens";
+		linkImg.target = "_blank";
+		var img = document.createElement("img");
+		img.src = "images/pub/website_smartphone.gif";
+		img.style.cursor = "pointer";
+		linkImg.appendChild(img);
+		popup.appendChild(linkImg);
+	}
+			
+	this.PopupBase.Node.childNodes[1].appendChild(popup);
+	
+	// Function show
+	this.SetVisible = function(visible)
+	{
+		this.PopupBase.SetVisible(visible);
+		this.PopupBase.Node.style.top = "200px";
+	}
+	
+	//popupBase.Node.style.visibility = "visible";
+	document.body.appendChild(this.PopupBase.Node);
+},
+
 
 // Show or hide components of IHM
 SetVisible_All : function(visible, stylePanel)
@@ -2997,11 +3013,41 @@ ImportFile : function()
 	}
 },
 
+// Paste text
+Paste : function()
+{
+	// Get the content of the clipboard. The browser asks an authorisation. execCommand doesn't work.
+	navigator.clipboard.readText().then(text => {
+		//alert(text);
+		
+		var textPaste = text.replace(/\r?\n/g, '<br>');
+		textPaste = "<p>" +  textPaste + "</p>";
+		
+		TextEditor.Document.body.innerHTML = textPaste;
+		
+		// Setting autocorrect when pasting
+		if(Cor.AutoCorrect_AfterPaste == true ||
+		// Mode smarthone. Very usefull
+		   Cor.IsMobile == true)
+		{
+			Cor.Check(false);
+		}
+	});
+},
+
 // Copy to clipboard
 CopyClipboard : function()
 {
 	// var inputVal = document.getElementById('hidden-input');
 	var copyText = document.getElementById("FrameTx").contentWindow.document.body.innerHTML;
+	
+	// Dont copy placeholder
+	if((copyText == TextEditor.TextPlaceHolder_Fr && Cor.IdLangue == "fr") ||
+	   (copyText == TextEditor.TextPlaceHolder_En && Cor.IdLangue == "en"))
+	{
+		return;
+	}
+	
 	var StrippedString = copyText.replace(/<br>/g,"\r\n");
 	StrippedString = StrippedString.replace(/\//g, ",");
 	StrippedString = StrippedString.replace(/<,p><p>/g,"\r\n");
@@ -3042,10 +3088,164 @@ Print : function()
 	childWindow.document.write('<html><head></head><body>');
 	childWindow.document.write(inputText.replace(/\n/gi,'<br>'));
 	childWindow.document.write('</body></html>');
-	childWindow.document.close();
+	// childWindow.document.close();
 	childWindow.focus();
 	childWindow.print();
-	//childWindow.close();
+	childWindow.close();
+},
+
+// Download popup
+DownloadPopup : function()
+{
+	var divPremPopupVPremium = document.createElement('div');
+	divPremPopupVPremium.setAttribute("class", "Prem-PopupVPremium popaction download-popup");
+	
+	// Div closer
+	var divCloser = document.createElement('div');
+	divCloser.setAttribute("class", "closer");
+	var imgCloser = document.createElement('img');
+	imgCloser.src = "images/CloseCrossWhite.png";
+	imgCloser.style = "cursor: pointer; margin-right: 10px; margin-top: 10px;";
+	divCloser.appendChild(imgCloser);
+	divPremPopupVPremium.appendChild(divCloser);
+	
+	// Main div
+	var mainDiv1 = document.createElement('div');
+	mainDiv1.id = "checkboxs";
+	mainDiv1.setAttribute("class", "maindiv");
+	
+	// Div téléchargement
+	var div1 = document.createElement('div');
+	var divLabelTel = document.createElement('div');
+	divLabelTel.setAttribute("class", "titre");
+	if(Cor.IdLangue == "fr") divLabelTel.innerHTML = "Téléchargement";
+	else if(Cor.IdLangue == "en") divLabelTel.innerHTML = "Download";
+	div1.appendChild(divLabelTel);
+	mainDiv1.appendChild(div1);
+	
+	// pChoose
+	var pChoose = document.createElement('p');
+	pChoose.style = "margin-bottom:20px;";
+	if(Cor.IdLangue == "fr") pChoose.innerHTML = "Veuillez choisir le format de téléchargement :";
+	else if(Cor.IdLangue == "en") pChoose.innerHTML = "Choose the file format:";
+	mainDiv1.appendChild(pChoose);
+	
+	// Form
+	var formType = document.createElement('form');
+	formType.setAttribute("class", "wrapp-checkbox");
+	
+	// Item 1
+	var divItem1 = document.createElement('div');
+	divItem1.setAttribute("class", "item");
+	/*var divInput1 = document.createElement('input');
+	divInput1.type = "radio";
+	divInput1.name = "gStyle";
+	divInput1.id = "txt";
+	divInput1.value = "txt";
+	divInput1.style = "cursor: pointer;";
+	var label1 = document.createElement('label');
+	label1.setAttribute("for", "txt");
+	divInput1.appendChild(label1);
+	divItem1.appendChild(divInput1);
+	
+	var pLabel1 = document.createElement('p');
+	pLabel1.setAttribute("class", "label-checkbox");
+	pLabel1.innerHTML = "txt (simple)";
+	divItem1.appendChild(pLabel1);*/
+	
+	divItem1.innerHTML = "<input type='radio' name='gStyle' id='txt' value='txt' style='cursor: pointer;'><label for='txt'></label>" + 
+						 "<p class='label-checkbox'>txt (simple)</p>";
+	
+	
+	formType.appendChild(divItem1);
+	
+	// Txt selected by default
+	divItem1.childNodes[0].checked = true;
+	var labelCheckBox = divItem1.childNodes[2];
+	labelCheckBox.style.cursor = "pointer";
+	//labelCheckBox.setAttribute("userSelect", "none");
+	labelCheckBox.onclick = function(){divItem1.childNodes[0].checked = true;};
+	
+	// Item 2
+	var divItem2 = document.createElement('div');
+	divItem2.setAttribute("class", "item");
+	/*var divInput2 = document.createElement('input');
+	divInput2.type = "radio";
+	divInput2.name = "gStyle";
+	divInput2.id = "doc";
+	divInput2.value = "doc";
+	divInput2.style = "cursor: pointer;";
+	var label2 = document.createElement('label');
+	label2.setAttribute("for", "doc");
+	divInput2.appendChild(label2);
+	divItem2.appendChild(divInput2);
+	
+	var pLabel2 = document.createElement('p');
+	pLabel2.setAttribute("class", "label-checkbox");
+	pLabel2.innerHTML = "doc (Word)";
+	divItem2.appendChild(pLabel2);*/
+	
+	divItem2.innerHTML = "<input type='radio' name='gStyle' id='doc' value='doc' style='cursor: pointer;'><label for='doc'></label>" + 
+						 "<p class='label-checkbox'>doc (Word)</p>";
+	
+	formType.appendChild(divItem2);
+	
+	labelCheckBox = divItem2.childNodes[2];
+	labelCheckBox.style.cursor = "pointer";
+	labelCheckBox.onclick = function(){divItem2.childNodes[0].checked = true;};
+	
+	// Item 3
+	var divItem3 = document.createElement('div');
+	divItem3.setAttribute("class", "item");
+	/*var divInput3 = document.createElement('input');
+	divInput3.type = "radio";
+	divInput3.name = "gStyle";
+	divInput3.id = "odt";
+	divInput3.value = "odt";
+	divInput3.style = "cursor: pointer;";
+	var label3 = document.createElement('label');
+	label3.setAttribute("for", "odt");
+	divInput3.appendChild(label3);
+	divItem3.appendChild(divInput3);
+	
+	var pLabel3 = document.createElement('p');
+	pLabel3.setAttribute("class", "label-checkbox");
+	pLabel3.innerHTML = "odt (Open Office/Libre Office)";
+	divItem3.appendChild(pLabel3);*/
+	
+	divItem3.innerHTML = "<input type='radio' name='gStyle' id='odt' value='odt' style='cursor: pointer;'><label for='odt'></label>" + 
+						 "<p class='label-checkbox'>odt (Open Office/Libre Office)</p>";
+	
+	formType.appendChild(divItem3);
+	
+	labelCheckBox = divItem3.childNodes[2];
+	labelCheckBox.style.cursor = "pointer";
+	labelCheckBox.onclick = function(){divItem3.childNodes[0].checked = true;};
+	
+	mainDiv1.appendChild(formType);
+	
+	divPremPopupVPremium.appendChild(mainDiv1);
+	
+	// Buttons
+	var divButtons = document.createElement('div');
+	divButtons.setAttribute("class", "buttons");
+	var table = document.createElement('table');
+	var tr = document.createElement('tr');
+	var td = document.createElement('td');
+	var divB = document.createElement('div');
+	divB.setAttribute("class", "Cor-RedButton");
+	divB.id = "download-txt";
+	divB.style = "padding-left: 40px; padding-right: 40px;";
+	if(Cor.IdLangue == "fr") divB.innerHTML = "Télécharger";
+	else if(Cor.IdLangue == "en") divB.innerHTML = "Download";
+	td.appendChild(divB);
+	tr.appendChild(td);
+	table.appendChild(tr);
+	divButtons.appendChild(table);
+	
+	divPremPopupVPremium.appendChild(divButtons);
+	
+	document.body.appendChild(divPremPopupVPremium);
 },
 
 // Download
@@ -3069,9 +3269,8 @@ Download : function()
 	} else {
 		Cor.DownloadTxt('scribens.txt', stripedHtml_txt);
 	}
-	document.querySelector('.popaction.download-pop').classList.remove("openpop"); 
+	document.querySelector('.popaction').classList.remove("openpop"); 
 },
-
 
 // Download .txt
 DownloadTxt : function(filename, text) {
@@ -3141,38 +3340,233 @@ DownloadDoc : function(filename, elId) {
 	}
 },
 
+SharePopup : function()
+{
+	var divPremPopupVPremium = document.createElement('div');
+	divPremPopupVPremium.setAttribute("class", "Prem-PopupVPremium popaction share-pop");
+	
+	// Div closer
+	var divCloser = document.createElement('div');
+	divCloser.setAttribute("class", "closer");
+	var imgCloser = document.createElement('img');
+	imgCloser.src = "images/CloseCrossWhite.png";
+	imgCloser.style = "cursor: pointer; margin-right: 10px; margin-top: 10px;";
+	divCloser.appendChild(imgCloser);
+	divPremPopupVPremium.appendChild(divCloser);
+	
+	// Main div
+	var mainDiv1 = document.createElement('div');
+	mainDiv1.setAttribute("class", "maindiv");
+	
+	// Title
+	var div1 = document.createElement('div');
+	var divLabelTel = document.createElement('div');
+	divLabelTel.setAttribute("class", "titre");
+	if(Cor.IdLangue == "fr") divLabelTel.innerHTML = "Partager";
+	else if(Cor.IdLangue == "en") divLabelTel.innerHTML = "Share";
+	div1.appendChild(divLabelTel);
+	mainDiv1.appendChild(div1);
+	
+	// Text description
+	var pDesc = document.createElement('p');
+	pDesc.style.marginBottom = "25px";
+	pDesc.style.textAlign = "center";
+	if(Cor.IdLangue == "fr") pDesc.innerHTML = "Choisissez une des applications suivantes :"
+	else if(Cor.IdLangue == "en") pDesc.innerHTML = "Choose how you want to share:"
+	mainDiv1.appendChild(pDesc);	
+			
+	// Message apps
+	
+	var ulMessageApp = document.createElement('ul');
+	ulMessageApp.setAttribute("class", "social-share");
+	
+	// Outlook
+	var liShareOutlook = document.createElement('li');
+	liShareOutlook.id = "share-outlook";
+	var divShareOutlook = document.createElement('div');
+	divShareOutlook.setAttribute("class", "icon share-outlook");
+	var imgShareOutlook = document.createElement('img');
+	imgShareOutlook.src = "images/icone/outlook.svg";
+	imgShareOutlook.alt = "";
+	divShareOutlook.appendChild(imgShareOutlook);
+	var labelShareOutlook = document.createTextNode(" Outlook");
+	divShareOutlook.appendChild(labelShareOutlook);
+	var pShareOutlook = document.createElement('p');
+	if(Cor.IdLangue == "fr") pShareOutlook.innerHTML = "La taille d'exportation est limitée à 1500 caractères.";
+	else if(Cor.IdLangue == "en") pShareOutlook.innerHTML = "Sorry, the limit for sharing is 1500 characters.";
+	divShareOutlook.appendChild(pShareOutlook);
+	liShareOutlook.appendChild(divShareOutlook);
+	ulMessageApp.appendChild(liShareOutlook);
+	
+	// Gmail
+	var liShareGmail = document.createElement('li');
+	liShareGmail.id = "share-gmail";
+	var divShareGmail = document.createElement('div');
+	divShareGmail.setAttribute("class", "icon share-gmail");
+	var imgShareGmail = document.createElement('img');
+	imgShareGmail.src = "images/icone/gmail.svg";
+	imgShareGmail.alt = "";
+	divShareGmail.appendChild(imgShareGmail);
+	var labelShareGmail = document.createTextNode(" Gmail");
+	divShareGmail.appendChild(labelShareGmail);
+	var pShareGmail = document.createElement('p');
+	if(Cor.IdLangue == "fr") pShareGmail.innerHTML = "La taille d'exportation est limitée à 5500 caractères.";
+	else if(Cor.IdLangue == "en") pShareGmail.innerHTML = "Sorry, the limit for sharing is 5500 characters.";
+	divShareGmail.appendChild(pShareGmail);
+	liShareGmail.appendChild(divShareGmail);
+	ulMessageApp.appendChild(liShareGmail);
+	
+	// Yahoo
+	var liShareYahoo = document.createElement('li');
+	liShareYahoo.id = "share-yahoo";
+	var divShareYahoo = document.createElement('div');
+	divShareYahoo.setAttribute("class", "icon share-yahoo");
+	var imgShareYahoo = document.createElement('img');
+	imgShareYahoo.src = "images/icone/yahoo.svg";
+	imgShareYahoo.alt = "";
+	divShareYahoo.appendChild(imgShareYahoo);
+	var labelShareYahoo = document.createTextNode(" Yahoo");
+	divShareYahoo.appendChild(labelShareYahoo);
+	var pShareYahoo = document.createElement('p');
+	if(Cor.IdLangue == "fr") pShareYahoo.innerHTML = "La taille d'exportation est limitée à 2000 caractères.";
+	else if(Cor.IdLangue == "en") pShareYahoo.innerHTML = "Sorry, the limit for sharing is 2000 characters.";
+	divShareYahoo.appendChild(pShareYahoo);
+	liShareYahoo.appendChild(divShareYahoo);
+	ulMessageApp.appendChild(liShareYahoo);
+	
+	mainDiv1.appendChild(ulMessageApp);
+	
+	// Social networks
+	
+	var ulSocialNetworks = document.createElement('ul');
+	ulSocialNetworks.setAttribute("class", "social-share");
+	
+	// Twitter
+	var liShareTwitter = document.createElement('li');
+	liShareTwitter.id = "share-twitter";
+	var divShareTwitter = document.createElement('div');
+	divShareTwitter.setAttribute("class", "icon share-twitter");
+	var imgShareTwitter = document.createElement('img');
+	imgShareTwitter.src = "images/icone/twitter.svg";
+	imgShareTwitter.alt = "";
+	divShareTwitter.appendChild(imgShareTwitter);
+	var labelShareTwitter = document.createTextNode(" Twitter");
+	divShareTwitter.appendChild(labelShareTwitter);
+	var pShareTwitter = document.createElement('p');
+	if(Cor.IdLangue == "fr") pShareTwitter.innerHTML = "La taille d'exportation est limitée à 280 caractères.";
+	else if(Cor.IdLangue == "en") pShareTwitter.innerHTML = "Sorry, the limit for sharing is 280 characters.";
+	divShareTwitter.appendChild(pShareTwitter);
+	liShareTwitter.appendChild(divShareTwitter);
+	ulSocialNetworks.appendChild(liShareTwitter);
+	
+	// LinkedIn
+	var liShareLinkedIn = document.createElement('li');
+	liShareLinkedIn.id = "share-linkedin";
+	var divShareLinkedIn = document.createElement('div');
+	divShareLinkedIn.setAttribute("class", "icon share-linkedin");
+	var imgShareLinkedIn = document.createElement('img');
+	imgShareLinkedIn.src = "images/icone/linkedin.svg";
+	imgShareLinkedIn.alt = "";
+	divShareLinkedIn.appendChild(imgShareLinkedIn);
+	var labelShareLinkedIn = document.createTextNode(" LinkedIn");
+	divShareLinkedIn.appendChild(labelShareLinkedIn);
+	var pShareLinkedIn = document.createElement('p');
+	if(Cor.IdLangue == "fr") pShareLinkedIn.innerHTML = "La taille d'exportation est limitée à 5000 caractères.";
+	else if(Cor.IdLangue == "en") pShareLinkedIn.innerHTML = "Sorry, the limit for sharing is 5000 characters.";
+	divShareLinkedIn.appendChild(pShareLinkedIn);
+	liShareLinkedIn.appendChild(divShareLinkedIn);
+	ulSocialNetworks.appendChild(liShareLinkedIn);
+	
+	mainDiv1.appendChild(ulSocialNetworks);
+	
+	divPremPopupVPremium.appendChild(mainDiv1);
+	
+	document.body.appendChild(divPremPopupVPremium);
+},
+
 // Share
 Share : function()
 {
 	// Content
-	var htmlString= document.getElementById("FrameTx").contentWindow.document.body.innerHTML;
-	var stripedHtml_txt = htmlString.replace(/<br>/g, "%0A");
-	var stripedHtml = stripedHtml_txt.replace(/<[^>]+>/g, '');
-	// var stripedHtml = htmlString.replace(/<[^>]+>/g, '');
+	var htmlString = document.getElementById("FrameTx").contentWindow.document.body.innerHTML;
+	var compareString = htmlString.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, " ");
+
+	if (document.getElementsByClassName('sidebar')[0].style.length) {
+		var stripedHtml_txt = htmlString.replace(/<br>/g, "%0A");
+	} else {
+		var stripedHtml_txt = htmlString.replace(/<\/p><p>/g, "%0A").replace(/<br>/g, "%0A");
+		// var stripedHtml_txt = htmlString.replace(/<\/p><p>/g, "<br>");
+	}
+	// console.log(decodeURIComponent(stripedHtml_txt));
+	// 
+	var stripedHtml = encodeURIComponent(stripedHtml_txt.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, " ")).replace(/%250A/g, '%0A');
+	
 	console.log(stripedHtml);
+	
+	// Outlook
+	if (compareString.length > 1500) {
+		$('.share-outlook').addClass('disabled');
+		document.getElementById("share-outlook").onclick = function() {};
+	} else {
+		$('.share-outlook').removeClass('disabled');
+		document.getElementById("share-outlook").onclick = function() {
+			var link = 'http://outlook.live.com/mail/0/deeplink/compose?body=' + stripedHtml;
+			window.open(link, '_blank');
+		}; 
+	}
+	
+	// Gmail
+	if (compareString.length > 5500) {
+		$('.share-gmail').addClass('disabled');
+		document.getElementById("share-gmail").onclick = function() {};
+	} else {
+		$('.share-gmail').removeClass('disabled');
+		document.getElementById("share-gmail").onclick = function() {
+			var link = 'https://mail.google.com/mail/?view=cm&body=' + stripedHtml;
+			window.open(link, '_blank');
+		}; 
+	}
+	
+	// Yahoo
+	if (compareString.length > 2000) {
+		$('.share-yahoo').addClass('disabled');
+		document.getElementById("share-yahoo").onclick = function() {};
+	} else {
+		$('.share-yahoo').removeClass('disabled');
+		document.getElementById("share-yahoo").onclick = function() {	
+			var link = 'http://compose.mail.yahoo.com/?body=' + stripedHtml;
+			window.open(link, '_blank');
+		}; 
+	}
 
- 	document.getElementById("share-outlook").onclick = function() {
- 		var link = 'https://outlook.live.com/mail/0/deeplink/compose?body=' + stripedHtml;
- 		window.open(link, '_blank');
- 	}; 
- 	document.getElementById("share-gmail").onclick = function() {
- 		var link = 'https://mail.google.com/mail/?view=cm&body=' + stripedHtml;
- 		window.open(link, '_blank');
- 	}; 
- 	document.getElementById("share-yahoo").onclick = function() {
- 		var link = 'http://compose.mail.yahoo.com/?body=' + stripedHtml;
- 		window.open(link, '_blank');
- 	}; 
- 	document.getElementById("share-twitter").onclick = function() {
- 		var link = 'https://twitter.com/intent/tweet?text=' + stripedHtml;
- 		window.open(link, '_blank');
- 	}; 
- 	document.getElementById("share-linkedin").onclick = function() {
- 		var link = 'https://www.linkedin.com/messaging/thread/new/?body=' + stripedHtml;
- 		window.open(link, '_blank');
- 	}; 
-
+	// Twitter
+	if (compareString.length > 280) {
+		$('.share-twitter').addClass('disabled');
+		document.getElementById("share-twitter").onclick = function() {};
+	} else {
+		$('.share-twitter').removeClass('disabled');
+		document.getElementById("share-twitter").onclick = function() {
+			var link = 'https://twitter.com/intent/tweet?text=' + stripedHtml;
+			window.open(link, '_blank');
+		}; 
+	}
+	
+	// LinkedIn
+	if (compareString.length > 5000) {
+		$('.share-linkedin').addClass('disabled');
+		document.getElementById("share-linkedin").onclick = function() {};
+	} else {
+		$('.share-linkedin').removeClass('disabled');
+		document.getElementById("share-linkedin").onclick = function() {
+			var link = 'https://www.linkedin.com/messaging/thread/new/?body=' + stripedHtml;
+			window.open(link, '_blank');
+		}; 
+	}
+	
 	document.querySelector('.popaction.share-pop').classList.add("openpop"); 
+
 }
+
+
 
 }

@@ -60,26 +60,17 @@ Handler_Panel_ConnecteurLogiques : function()
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
-	{
-		// mainDiv.style.width = "736px";
-		
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		// Hide the div syn stat panel
-		document.getElementById("InfSup").style.display = "none";
-		
-		var pub3 = document.getElementById("pub3");
-		if(pub3 != null) pub3.style.display = "none";
-	}
-	else
-	{
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
-	}
+	// mainDiv.style.width = "736px";
+	
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
+	
+	// Hide the div syn stat panel
+	document.getElementById("InfSup").style.display = "none";
+	
+	var pub3 = document.getElementById("pub3");
+	if(pub3 != null) pub3.style.display = "none";
 	
 	// Create the panel then add it
 	if(Tools.Panel_ConnecteurLogiquesI == null) Tools.Panel_ConnecteurLogiquesI = new Tools.Panel_ConnecteurLogiques();
@@ -184,26 +175,15 @@ Handler_Panel_FormulesPolitesse : function()
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
 	
-	if(Cor.IsTablet == false)
-	{
-		// mainDiv.style.width = "736px";
-		
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		// Hide the div syn stat panel
-		document.getElementById("InfSup").style.display = "none";
-		
-		var pub3 = document.getElementById("pub3");
-		if(pub3 != null) pub3.style.display = "none";
-	}
-	else
-	{
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
-	}
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
+	
+	// Hide the div syn stat panel
+	document.getElementById("InfSup").style.display = "none";
+	
+	var pub3 = document.getElementById("pub3");
+	if(pub3 != null) pub3.style.display = "none";
 	
 	// Create the panel then add it
 	if(Tools.Panel_FormulesPolitesseI == null) Tools.Panel_FormulesPolitesseI = new Tools.Panel_FormulesPolitesse();
@@ -403,27 +383,16 @@ Handler_Panel_PresentationLettres : function()
 	document.getElementById("TextArea").style.display = "none";
 	
 	if(mainDiv.lastChild.id != null && mainDiv.lastChild.id != "PanelWait") mainDiv.removeChild(mainDiv.lastChild);
+		
+	// Hide the div style
+	var divStyle = document.getElementById("StyleTexte");
+	divStyle.style.visibility = "hidden";
 	
-	if(Cor.IsTablet == false)
-	{
-		// mainDiv.style.width = "736px";
-			
-		// Hide the div style
-		var divStyle = document.getElementById("StyleTexte");
-		divStyle.style.visibility = "hidden";
-		
-		// Hide the div syn stat panel
-		document.getElementById("InfSup").style.display = "none";
-		
-		var pub3 = document.getElementById("pub3");
-		if(pub3 != null) pub3.style.display = "none";
-	}
-	else
-	{
-		// Hide the div style
-		var divStyle = document.getElementById("DivStyleStat");
-		divStyle.style.display = "none";
-	}
+	// Hide the div syn stat panel
+	document.getElementById("InfSup").style.display = "none";
+	
+	var pub3 = document.getElementById("pub3");
+	if(pub3 != null) pub3.style.display = "none";
 	
 	// Create the panel then add it
 	if(Tools.Panel_PresentationLettresI == null) Tools.Panel_PresentationLettresI = new Tools.Panel_PresentationLettres();
@@ -733,101 +702,6 @@ Panel_PresentationLettres : function()
 	tabsContent.appendChild(tabsContentModel2);
 
 	this.Node.appendChild(tabsContent);
-	
-	// Title modele 1
-	// var titleModel1 = document.createElement("div");
-	// titleModel1.className = "Ored-TexteBasePresentationLettre";
-	// // titleModel1.style.fontWeight = "bold";
-	// // titleModel1.style.textDecoration = "underline";
-	// // titleModel1.style.fontSize = "18px";
-	// // titleModel1.style.marginLeft = "31px";
-	// // titleModel1.style.marginTop = "20px";
-	// titleModel1.innerHTML = "1er mod" + String.fromCharCode(232) + "le :";
-	// this.Node.appendChild(titleModel1);
-	
-	
-	
-	// this.Node.appendChild(modelePresentation1);
-	
-	// // Title exemle modele 1
-	// var titleSampleModel1 = document.createElement("div");
-	// titleSampleModel1.className = "Ored-TexteBasePresentationLettre";
-	// // titleSampleModel1.style.fontWeight = "bold";
-	// // titleSampleModel1.style.fontSize = "18px";
-	// // titleSampleModel1.style.marginLeft = "32px";
-	// titleSampleModel1.innerHTML = "Exemple :";
-	// this.Node.appendChild(titleSampleModel1);
-	
-	// // Exemple modele presentation 1
-	// var formulePolitesse = "Madame le Maire,";
-		
-	// var corpsMessage = "<p>En tant que membre d'une importante association de v" + String.fromCharCode(233) + "lo, je tenais " + String.fromCharCode(224) + " vous f" + String.fromCharCode(233) + "liciter pour la magnifique prestation du grand prix de Saint-Brieuc.</p>" +
-	// "<p>Celui-ci nous a " + String.fromCharCode(233) + "merveill" + String.fromCharCode(233) + ", moi et ma femme. J'ai soutenu mon cousin, qui a termin" + String.fromCharCode(233) + " " + String.fromCharCode(224) + " la 4e place ! L'organisation " + String.fromCharCode(233) + "tait parfaite et le commentateur " + String.fromCharCode(233) + "tait g" + String.fromCharCode(233) + "nial.</p>" + 
-	// "<p>Nous esp" + String.fromCharCode(233) + "rons que ce grand prix continuera " + String.fromCharCode(224) + " exister dans les prochaines ann" + String.fromCharCode(233) + "es et nous remercions pour tous les moments de plaisir que vous nous avez fait vivre.</p>";
-	
-	// var formulePolitesseFinal = "Je vous prie d'agr" + String.fromCharCode(233) + "er, Madame le Maire, l'expression de ma consid" + String.fromCharCode(233) + "ration la plus distingu" + String.fromCharCode(233) + "e.";
-	
-	// var imgSignature = document.createElement("img");
-	// imgSignature.src = "images/Signature.png";
-	
-	// var exempleModelePresentation1 = Tools.PresentationLettre(
-	// 	null, "Alain Toussaint", "06 56 78 45 34 - alain.toussaint@yahoo.fr", "9 rue des coquelicots", "22200 - Guingamp",
-	//     "Mairie de Saint-Brieuc", "1 place du G" + String.fromCharCode(233) + "n" + String.fromCharCode(233) + "ral de Gaulle", "22023 - Saint-Brieuc",
-	//     "Guingamp, le Lundi 28 Juillet 2014", formulePolitesse, corpsMessage,
-	//     formulePolitesseFinal, imgSignature, "Alain Toussaint"
-	// );
-	
-	// this.Node.appendChild(exempleModelePresentation1);
-	
-	// // Title modele 2
-	// var titleModel2 = document.createElement("div");
-	// titleModel2.className = "Ored-TexteBasePresentationLettre";
-	// // titleModel2.style.fontWeight = "bold";
-	// // titleModel2.style.textDecoration = "underline";
-	// // titleModel2.style.fontSize = "18px";
-	// // titleModel2.style.marginLeft = "31px";
-	// titleModel2.innerHTML = "2nd mod" + String.fromCharCode(232) + "le :";
-	// this.Node.appendChild(titleModel2);
-	
-	// // Modele presentation 2
-	// var modelePresentation1 = Tools.PresentationLettre(
-	// 	"[Ville au moment de r" + String.fromCharCode(233) + "diger le courrier], [Date]", "Votre Pr" + String.fromCharCode(233) + "nom, Nom", "N" + String.fromCharCode(176) + " de T" + String.fromCharCode(232) + "l. - mail", "Votre adresse", "Code Postal - Votre ville",
-	//    "Destinataire", "Adresse du destinataire", "Code Postal - ville du destinataire",
-	//    "[Objet : description de l'objet]", "[Formule de politesse]", "[Corps du message]",
-	//    "[Formule de politesse finale]", null, "Votre Pr" + String.fromCharCode(233) + "nom, Nom"
-	// );
-	
-	// this.Node.appendChild(modelePresentation1);
-	
-	// // Title exemle modele 2
-	// var titleSampleModel2 = document.createElement("div");
-	// titleSampleModel2.className = "Ored-TexteBasePresentationLettre";
-	// // titleSampleModel2.style.fontWeight = "bold";
-	// // titleSampleModel2.style.fontSize = "18px";
-	// // titleSampleModel2.style.marginLeft = "31px";
-	// titleSampleModel2.innerHTML = "Exemple :";
-	// this.Node.appendChild(titleSampleModel2);
-	
-	// // Exemple modele presentation 2
-	
-	// var formulePolitesse = "Monsieur Boiteau,";
-		
-	// var corpsMessage = "<p>J'ai l'honneur et la joie de vous informer de la naissance de mon enfant en date du 10 Janvier 2014.</p>" +
-	// 				   "<p>Aussi je souhaiterais b" + String.fromCharCode(233) + "n" + String.fromCharCode(233) + "ficier de mes 3 jours de cong" + String.fromCharCode(233) + "s du 11 Janvier 2014 au 13 Janvier 2014, conform" + String.fromCharCode(233) + "ment aux dispositions du Code du Travail relatif aux " + String.fromCharCode(233) + "v" + String.fromCharCode(232) + "nements familiaux.</p>";
-				
-	// var formulePolitesseFinal = "<p>Je vous prie d'agr" + String.fromCharCode(233) + "er, Monsieur, l'expression de mes respectueuses salutations.</p>";
-	
-	// var imgSignature = document.createElement("img");
-	// imgSignature.src = "images/Signature.png";
-	
-	// var modelePresentation2 = Tools.PresentationLettre(
-	// 	"Guingamp, le Lundi 28 Juillet 2014", "Alain Toussaint", "06 56 78 45 34 - alain.toussaint@yahoo.fr", "9 rue des coquelicots", "22200 - Guingamp",
-	// 	"Insitra Corp.", "52 rue Saint-Martin", "22303 - Lannion",
-	// 	"Objet : Demande de cong" + String.fromCharCode(233) + "s", formulePolitesse, corpsMessage,
-	// 	formulePolitesseFinal, imgSignature, "Alain Toussaint"
-	// );
-	
-	// this.Node.appendChild(modelePresentation2);
 	
 	document.getElementById('MainDiv').appendChild(this.Node);
 }

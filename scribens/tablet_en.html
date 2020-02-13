@@ -13,46 +13,29 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,700' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+	<link type="text/css" rel="stylesheet" href="custom-icons/css/custom-icons.css">
+    <link type="text/css" rel="stylesheet" href="fontawesome/css/font-awesome.css">
 	<link type="text/css" rel="stylesheet" href="beeween-framework/external-plugins.min.css">
-	<link type="text/css" rel="stylesheet" href="beeween-framework/stylesc12.css">
+	<link type="text/css" rel="stylesheet" href="beeween-framework/stylesc_mobile.css">
 	<link rel="shortcut icon" href="images/favicon.png">
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png">
 	<script src="beeween-framework/external-plugins/modernizr/modernizr.custom.js"></script>
-    <link type="text/css" rel="stylesheet" href="Css/cor18.css">
-	<!-- <script type="text/javascript" language="javascript" src="NewCor/ScribensClient.js"></script> -->
-	<script type="text/javascript" language="javascript" src="NewCor/cor.js"></script>
-	<script type="text/javascript" language="javascript" src="NewCor/dict.js"></script>
+    <link type="text/css" rel="stylesheet" href="Css/Cor_tablet.css">
+	
+	<script type="text/javascript" language="javascript" src="NewCor/util.js"></script>
 	<script type="text/javascript" language="javascript" src="NewCor/options.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/style.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/stat.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/dict.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/rules.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/tools.js"></script>
 	<script type="text/javascript" language="javascript" src="NewCor/plugins.js"></script>
 	<script type="text/javascript" language="javascript" src="NewCor/premium.js"></script>
-	<script type="text/javascript" language="javascript" src="NewCor/proofreading.js"></script>
-	<script type="text/javascript" language="javascript" src="NewCor/rules.js"></script>
-	<script type="text/javascript" language="javascript" src="NewCor/stat.js"></script>
-	<script type="text/javascript" language="javascript" src="NewCor/style.js"></script>
+	<script type="text/javascript" language="javascript" src="NewCor/cor.js"></script>
 	<script type="text/javascript" language="javascript" src="NewCor/textEditor.js"></script>
-	<script type="text/javascript" language="javascript" src="NewCor/tools.js"></script>
-	<script type="text/javascript" language="javascript" src="NewCor/util.js"></script>
-	
-	<link type="text/css" rel="stylesheet" href="custom-icons/css/custom-icons.css">
-	<link type="text/css" rel="stylesheet" href="fontawesome/css/font-awesome.css">
-	
-	<script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-68373209-1', 'auto');
-	  ga('send', 'pageview');
-	  
-	</script>
-	
-	<!-- <script data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//delivery.adrecover.com/22726/adRecover.js?ts=1504640969524'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script> -->
 	
 </head>
 <body class="activate-appear-animation header-2">
@@ -68,167 +51,104 @@
 							<span class="icon-bar"></span>
 						</button>
 						<a class="navbar-brand" href="index.html">
-							<img src="images/logo-scribens.png" alt="GRAMMAR CHECKER" title="GRAMMAR CHECKER" class="main-logo"/>
+							<img src="images/logo-scribens.png" alt="CORRECTEUR ORTHOGRAPHE" title="CORRECTEUR ORTHOGRAPHE" class="main-logo"/>
 						</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-left phonespacescrib">
                             <li><a id="btnorth" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Grammar Check</a></li>
 							<li><a id="btndict" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Dictionaries</a></li>
-                            <li><a id="btnreg" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Grammar Rules</a></li>
-							<li><a id="btnext" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Extensions & API</a></li>
-							<li class="select-langue">
-								<ul>
-									<li><a id="btncn" class="btn-lang"><img src="images/flag-uk.svg">EN</a></li>
-									<li><a id="btncn" href="https://www.scribens.fr" target="blank" class="btn-lang"><img src="images/flag-fr.svg">FR</a></li>
-								</ul>
-							</li>	
+                            <li><a id="btnreg" href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="">Extensions</a></li>
 						</ul>
 					</div>
 				</nav>
 			</div>
 		</header>
-
-
 		<main id="content">
-			<aside id="pub1" class="light-color pt-pub1 publicite">
+			<!-- pub 1 -->
+			<aside id="pub1" class="light-color pb-pub1 pt-pub1 publicite" style="padding-top:30px">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<img src="images/pub/haut.png" class="responsive" alt="publicite">
-							 
+							<img src="images/pub/haut.png" class="responsive">
 						</div>
 					</div>
 				</div>
 			</aside>
-
-			
 			<section id="recherche" class="light-color zonerecherche pb-small">
-				<div class="container-interface container-fluid">
-					
-					<!-- Titre -->
+				<div class="container">
+					<!-- Title -->
 					<div class="row">
 						<div id="Titre" class="row main-Title">
 							<div class="col-lg-12 col-md-12 text-center">
-								<h1 class="large no-shadow scribwntth2 scribsstitle">ENGLISH <span class="text-main-color inline">GRAMMAR CHECK</span></h1>
-								<p class="scribwntth2 nooomarginleft"></p>
+								<h1 class="large no-shadow scribwntth2 scribsstitle">English <span class="text-main-color inline">grammar check</span></h1>
+								<!-- <p class="scribwntth2 nooomarginleft"> &amp;</p>
+								<h2 class="large no-shadow scribwntth2 scribsstitle nooomarginleft">correction <span class="text-main-color inline">grammaire</span></h2> -->
 								<p class="scribsstitle">Scribens checks the grammar of your texts and finds spelling mistakes.</p>
 							</div>	
 						</div>
 					</div>
-					<!-- / Titre -->
-
-					<!-- Container flex -->
-					<div class="flex ortho-flex">
-						<!-- Wrapper shadow -->
-						<div class="wrapper-shadow">
-
-							<!-- Panel btn action -->
-							<div id="PanelBtn" class="row">
-
-								<!-- Left -->
-								<div class="left">
-									<div id="settingsLabel" class="button">
-										<span><img src="images/icone/picto-options.svg"/>options</span>
-									</div><div id="indications" class="hidden-xmi700 button">
-										<span><img src="images/icone/picto-color-key.svg"/>Color Key</span>
-									</div><div id="actions" class="button hidden">
-										<p class="action"><img src="images/icone/picto-action.png" alt="" />Actions</p>
-										<ul id="actions-list">
-											<li><button id="copy-clipboard"><span><img src="images/icone/picto-copy.png" alt=""/><img src="images/icone/picto-copy-hover.png" alt=""/></span>Copy</button></li>
-											<li><button id="paste-clipboard"><span><img src="images/icone/picto-paste.png" alt=""/><img src="images/icone/picto-paste-hover.png" alt=""/></span>Paste</button></li>
-											<li><button id="download"><span><img src="images/icone/picto-download.png" alt=""/><img src="images/icone/picto-download-hover.png" alt=""/></span>Download</button></li>
-											<li><button id="print-textarea"><span><img src="images/icone/picto-print.png" alt=""/><img src="images/icone/picto-print-hover.png" alt=""/></span>Print</button></li>
-											<li><button id="share"><span><img src="images/icone/picto-share.png" alt=""/><img src="images/icone/picto-share-hover.png" alt=""/></span>Share</button></li>
-										</ul>
-									</div><div id="copy-tablet" class="button hidden">
-										<span><img src="images/icone/copy-tablet.png"/>Copy</span>
-									</div><div id="paste-tablet" class="button hidden">
-										<span><img src="images/icone/paste-tablet.png"/>Paste</span>
-									</div>
-								</div>
-								<!-- / Left -->
-		
-								<!-- Right -->
-								<div class="right">
-									<div id="SampleText" class="button">
-										<span><img src="images/icone/picto-try-sample.svg"/>Try our sample!</span>
-									</div><label id="importing-files" for="Input_ImportFile" class="button">
-										<span><img src="images/icone/picto-importing.svg"/>Importing files</span>
-									</label><input id="Input_ImportFile" type="file" style="display:none"><div id="check" class="button">
-										<span><img src="images/icone/picto-check.svg"/>Check</span>
-									</div>
-								</div>
-								<!--  /Right -->
-								
-							</div>
-							<!-- / Panel btn action -->
-							
-							<!-- Interface -->
-							<div class="row interface">
-		
-								<!-- Sidebar -->
-								<div class="sidebar hidden-xs hidden-sm">
-									<div id="ChoiceStatSyn"></div>
-									<div id="StyleTexte" class="Cor-styleTexteVP">
-									</div>
-									<div id="panelLeft"></div>
-								</div>
-								<!-- / Sidebar -->
-		
-								<!-- Content text -->
-								<div class="central-content form-minimal">
-										
-									<div id="MainDiv">
-										<!-- Text Editor -->
-										<div id="TextArea" class="TextEditor-FrameTx">
-											<iframe id="FrameTx" style="width:100%;height:100%;border:0px"></iframe>
-										</div>
-									</div>
-								</div>
-								<!-- / Content text -->
-		
-		
-								
-		
-							</div>
-							<!-- / Interface -->
-
-						</div>
-						<!-- / Wrapper shadow -->
-
-						<!-- Right side pub -->
-						<div class="side-pub hidden-xs hidden-sm">
-							<div id="InfSup" class="img-absolute-wrapper phonescribens">
+					<!-- Buttons div -->
+					<div id="PanelBtn" class="row Cor-PanelBtn" style="margin:0px 0px 10px 0px;padding:5px">
+						<div class="col-xs-4" style="padding-left:0px">
+							<div align="left">
 								<table>
-									<tr>
-										<td style="vertical-align:top">
-											<div id="DivMarques">
-											</div>
-										</td>
-										<td style="vertical-align:top">
-											<div id="DivStyleSyn">
-												<div id="pub3En" class="responsive" >
-													<img src="images/48-160_600.jpg"/>
-												</div>
-											</div>
-										</td>
-									</tr>
+									<td>
+										<div id="settingsLabel" align="center" class="Cor-RedButton" style="width: 40px;">+</div>
+									</td>
+									<td>
+										<div id="btn_copy" align="center" id="settingsLabel" class="Cor-RedButton" style="width: 100px;margin-left:5px">Copy</div>
+									</td>
 								</table>
 							</div>
 						</div>
-						<!-- / Right side pub -->
+						<div class="col-xs-4">
+							<div align="center">
+								<div id="check" class="Cor-RedButton">Check</div>
+							</div>
+						</div>
+						<div class="col-xs-4" style="padding-right:0px">	
+							<div align="right">
+								<div align="center" id="SampleText" class="Cor-RedButton" style="width: 108px;">Example</div>
+							</div>	
+						</div>
 					</div>
-					<!-- / Container flex -->
-
+					<!-- TextArea div -->
+					<div class="row" style="margin-left:0px;margin-right:0px">
+						<div class="form-minimal">
+							<div id="MainDiv">
+								<!-- Text Editor -->
+								<div id="TextArea" class="TextEditor-FrameTx">
+									<iframe id="FrameTx" style="width:100%;height:100%;border:0px"></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Div Style and Stat -->
+					<div id="DivStyleStat" class="row Cor-PanelBtn" style="padding:10px;margin-left:0px;margin-right:0px;margin-top:5px">
+						<!-- Style redundancies -->
+						<div id="style-rep" class="col-xs-4" style="border-right:solid #d0d0d0 1px;padding-left:10px">
+						</div>
+						<!-- Style general -->
+						<div id="style-gen" class="col-xs-4" style="border-right:solid #d0d0d0 1px;padding-left:10px">
+						</div>
+						<!-- Style stats and synonyms -->
+						<div id="stat-syn" class="col-xs-4" style="padding-left:0px">
+							<div id="ChoiceStatSyn"></div>
+						</div>
+					</div>
 				</div>
 			</section>
-
-			
-			
-
-
-
+			<!-- pub 4 -->
+			<aside id="pub4" class="light-color pb-pub1 pt-pub1 publicite" style="padding-bottom:20px;padding-top:10px">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<img src="images/pub/haut.png" class="responsive">
+						</div>
+					</div>
+				</div>
+			</aside>
 			<section id="services" class="light-color pt-medium pb-medium">
 				<div class="container">
 					<div class="row">
@@ -309,19 +229,7 @@
 						<button id="btn-download-plugins" type="button" class="btn large default mmpaad" data-toggle="modal" data-target="#myModal">
 						  DOWNLOAD EXTENSIONS
 						</button>						
-						<a href="https://chrome.google.com/webstore/detail/spell-checker-and-grammar/dmgkiikdlhmpikkhpiplldicbnicmboc" target="_blank" class="btn large default mmpaad">DOWNLOAD THE GOOGLE CHROME EXTENSION</a>
-					</div>
-					<div class="paaad10"></div>
-					<div class="row pt">
-						<div class="col-md-12 text-center spekt" data-beeweenanim="fadeInUp" data-beeweendelay="300">
-							<p class="scribtwoo">Use our API to add Scribens to your website!</p>
-						</div>	
-					</div>
-					<div class="paaad30"></div>
-					<div class="row text-center" data-beeweenanim="fadeInUp" data-beeweendelay="1000">
-						<button id="btn-download-api" onclick= type="button" class="btn large default mmpaad" data-toggle="modal" data-target="#myModal">
-						  INTEGRATE SCRIBENS API
-						</button>						
+						<a href="https://chrome.google.com/webstore/detail/scribens-english-version/iembekjcmmanoehnlpcneapnnmmmldfe" target="_blank" class="btn large default mmpaad">DOWNLOAD THE GOOGLE CHROME EXTENSION</a>
 					</div>
 				</div>
 			</section>
@@ -330,8 +238,8 @@
 					<div class="container pt-large pb-large">
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<p class="large scribss parallaxscribs">In 2017, 8 million people visited Scribens.fr</p>
-								<p class="lead scribss">- 200,000 people regularly use Scribens' French grammar corrector at scribens.fr -</p>
+								<p class="large scribss parallaxscribs">In 2015, 4 million people visited Scribens.fr</p>
+								<p class="lead scribss">- 60,000 people regularly use Scribens' French grammar checker at scribens.fr -</p>
 							</div>
 						</div>
 					</div>
@@ -429,52 +337,6 @@
 					</div>
 				</div>
 			</section>
-			<section id="cont">
-				<div class="pt-medium pb main-color">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12 text-center heading" data-beeweenanim="fadeInDown" data-beeweendelay="100">
-								<p class="scribwnttcontent"><span>Contact Us</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<aside class="light-color">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-8 col-md-offset-2 pt-medium pb-small form-minimal" data-beeweenanim="fadeInUp" data-beeweendelay="300">
-								<form method="post" action="beeween-framework/external-plugins/beeween-contact-ajax-plugin/php/form-handler.php" id="contactfrm" role="form" class="box padding-medium">
-									<div class="form-group">
-										<label class="nogxtbwn" for="name">Name</label>
-										<input type="text" class="form-control" name="name" id="name" placeholder=" "  title="Write your name please. Minimum Length – 2"/>
-										<div class="form-line"></div>
-									</div>
-									<div class="form-group">
-										<label class="nogxtbwn" for="email">Email</label>
-										<input type="email" class="form-control" name="email" id="email" placeholder=" " title="Write a valid email address please"/>
-										<div class="form-line"></div>
-									</div>
-									<div class="form-group">
-										<label class="nogxtbwn" for="comments">Message</label>
-										<textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder=" " title="Write your message please. Minimum Length – 10"></textarea>
-										<div class="form-line"></div>
-									</div>
-									
-									<div class="g-recaptcha" data-sitekey="6LeGixgUAAAAAFrvZvfpAQHA9UTtBFAECOYIxssH" ></div>
-									<div id="frm-result"></div>
-									<p></p>
-									
-									<div class="result"></div>
-									<div class="text-center">
-										<button name="submit" type="submit" class="btn large default mb" id="submit">SEND</button>
-									</div>
-									<script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
-								</form>
-							</div>
-						</div>
-					</div>
-				</aside>
-			</section>
 		</main>
 		<footer id="main-footer">
 			<div class="container">
@@ -501,7 +363,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<p class="small">SCRIBENS COPYRIGHT © 2018 - ALL RIGHTS RESERVED</p>
+							<p class="small">SCRIBENS COPYRIGHT © 2016 - ALL RIGHTS RESERVED - CONCEPTION/DESIGN :<a href="http://beeween.com" target="blank" title="AGENCE COMMUNICATION MONTPELLIER"> BEEWEEN.COM</a></p>
 						</div>
 
 					</div>
@@ -509,12 +371,20 @@
 			</div>
 		</footer>
 	</div>
-	<div id="overlayPopup" class=""></div>
 	<script type="text/javascript" src="beeween-framework/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="beeween-framework/jquery-ui-1.8.23.custom.min.js"></script>
 	<script type="application/javascript" src="beeween-framework/external-plugins.min.js"></script>
 	<script type="text/javascript" src="beeween-framework/beeween-framework.js"></script>
+	<script>
+    $(document).ready(function() {
+   	$('.tooltipBWN').tooltipster({
+   		animation: 'grow',
+   		position: 'top',
+   		theme: '.tooltipsBWN',
+   		touchDevices: false,
+	});
+	});
+	</script>
 	<script src="beeween-framework/custom.js"></script>
-	<script type="text/javascript" id="cookiebanner" src="https://cdnjs.cloudflare.com/ajax/libs/cookie-banner/1.0.0/cookiebanner.min.js" data-message="This website uses cookies to ensure you get the best experience on our website. We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services." data-linkmsg="Learn more" data-expires="Fri, 28 Aug 2019 23:59:59 GMT" data-moreinfo="https://www.google.com/intl/en/policies/privacy/partners/"></script>
 </body>
 </html>

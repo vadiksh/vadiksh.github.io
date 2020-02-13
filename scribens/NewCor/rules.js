@@ -351,13 +351,13 @@ var Rules = {
 		iframe.className = "Regles-FrameRegle";
 		iframe.id = "XX";
 		iframe.style.height = "100%";		// Doesn't work in HTML 5. must define a size.
-		iframe.style.height =  height + "px";						
+		iframe.style.height =  height + "px";
 		iframe.src = "Exp/" + fileName;
-		//if(refPar != null) iframe.src += "Exp/" + fileName + "#" + refPar;
+		//if(refPar != null) iframe.src += "#" + refPar;	// Problem: the enubar hides the titla chapter.
 		divRule.appendChild(iframe);
 		
 		divRules.appendChild(divRule);
-		
+				
 		// Once the iframe is loaded, defined iframe height.
 		// iframe.onload = function()
 		// {
@@ -365,25 +365,35 @@ var Rules = {
 		// }
 	
 		// Once the iframe is loaded, scroll to the matching anchor.
-		// if(refPar != null)
-		// {
-		// 	iframe.onload = function()
-		// 	{
-		// 		console.log('2',iframe.contentDocument);
-		// 		var doc = iframe.contentDocument;
+		if(refPar != null)
+		{
+			iframe.onload = function()
+			{
+				var doc = iframe.contentDocument;		// null in test mode. Not null in online mode.
+
+				var topY = 0;
+
+				var els = doc.getElementsByTagName("a");
+				for (var i = 0, l = els.length; i < l; i++)
+				{
+					var el = els[i];
+					if (el.name == refPar)
+					{
+						topY = el.offsetTop - 10;
+						
+						var a = 1;
+						
+						//var yy = el.offsetTop + 130;
+						
+						//window.scrollTo(0, yy);
+						//window.scrollTo(0, 300);
+						//return;
+					}
+				}
 				
-		// 		var els = doc.getElementsByTagName("a");
-		// 		for (var i = 0, l = els.length; i < l; i++) {
-		// 			var el = els[i];
-		// 			if (el.name === refPar)
-		// 			{
-		// 				window.scrollTo(0, el.offsetTop + 130);
-		// 				return;
-		// 			}
-		// 		}
-		// 	}
-		// }
-		
+				window.scrollTo(0, topY);
+			}
+		}
 	},
 	
 	// If a rule must be shown with a url parameter
@@ -391,7 +401,7 @@ var Rules = {
 	{
 		// Rule can contaisn reference to the paragraph. Ex : Others/Punctuation_f.html#4
 		var fileName = ref_rule;
-		var refPar = null;
+		var refPar = '1';	// 1 by default
 		
 		var indexLastSl = ref_rule.lastIndexOf("_");
 		if(indexLastSl > 0)

@@ -48,7 +48,6 @@ GetCookie : function(cname)
 SendHttpRequest : function(servletId, tab, fct, param1, param2)
 {
 	var xmlhttpRequest = new XMLHttpRequest();
-	//xmlhttpRequest.open("POST", "http://localhost:8080/Scribens/" + servletId);
 	
 	var urlWebSite = "https://www.scribens.fr";
 	if(Cor.IdLangue == "en") urlWebSite = "https://www.scribens.com";
@@ -66,13 +65,16 @@ SendHttpRequest : function(servletId, tab, fct, param1, param2)
 	
 	var tomcat_Instance = Cor.Id_Tomcat;
 	
-	if((servletId == "Identification_Servlet")/* ||
-	   (servletId == "Pr_Servlet")*/)
+	if((servletId == "Identification_Servlet") ||
+	   (servletId == "Payment_Servlet"))
 	{
 		tomcat_Instance = "Scribens";
 	}
 	
+	
 	xmlhttpRequest.open("POST", urlWebSite + "/" + tomcat_Instance + "/" + servletId);
+	//if(servletId == "Save_SetupIntent") xmlhttpRequest.open("POST", "http://localhost:8080/TestWS/" + servletId);
+	
 	xmlhttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8");
 	if(fct)
 	{
@@ -188,6 +190,63 @@ Condition_Username : function(userName)
 	
 	return false;
 },
+
+// Conditions on address value
+Condition_Address : function(address)
+{
+	if(address != null)
+	{
+		if(address.length > 0 && address.length < 32 && !(address.indexOf("|") >= 0))
+		{
+			return true;
+		}
+	}
+	
+	return false;
+},
+
+// Conditions on city value
+Condition_City : function(city)
+{
+	if(city != null)
+	{
+		if(city.length > 0 && city.length < 32 && !(city.indexOf("|") >= 0))
+		{
+			return true;
+		}
+	}
+	
+	return false;
+},
+
+// Conditions on company value
+Condition_Company : function(company)
+{
+	if(company != null)
+	{
+		if(company.length >= 0 && company.length < 200 && !(company.indexOf("|") >= 0))		// Empty field company : OK
+		{
+			return true;
+		}
+	}
+	
+	return false;
+},
+
+// Conditions on postal code value
+/*Condition_PostalCode : function(postalCode)
+{
+	// Postal code, only if there are letters inside.
+	if(city != null)
+	{
+		if(city.length > 0 && city.length < 32 && !(city.indexOf("|") >= 0))
+		{
+			return true;
+		}
+	}
+	
+	return true;
+},*/
 
 // Conditions on email
 Condition_Email : function(email)
@@ -2817,6 +2876,8 @@ InfoBulle : function(infoLabel)
 	
 	this.PopupExp.style.overflow = 'visible';
 	this.PopupExp.style.position = 'absolute';
+	this.PopupExp.style.top = '0px';
+	this.PopupExp.style.left = '0px';
 	this.PopupExp.style.zIndex = "1002";
 	this.PopupExp.style.borderTop = "thin solid #dddddd";
 	
@@ -2992,7 +3053,62 @@ PanelRb : function(text, group, textInfo)
 		this.DivNb.innerHTML = '(' + number + ')';
 		
 		if(this.Counter > 0) this.Input.disabled = false;
-		else this.Input.disabled = true;
+		else
+		{
+			this.Input.disabled = true;
+			
+			// Hide the panelRb
+			this.Node.style.display = "none";
+			
+			// If the parent has only one panelRb, then hide it.
+			var parentNode = this.Node.parentNode;
+			
+			var cntPanelRbShown = 0;
+			for(var i = 0; i < parentNode.childNodes.length; i++)
+			{
+				// PanelRb
+				var childNode = parentNode.childNodes[i];
+				if(childNode.style.display == "block")
+				{
+					if(childNode instanceof Util.PanelRb)
+					{
+						cntPanelRbShown++;
+					}
+					// Table of repetitions
+					if(childNode.id == "DivWordRepetitions" ||
+					// Table of registers
+					   childNode.id == "TableReg")
+					{
+						cntPanelRbShown++;
+					}
+				}
+			}
+			
+			if(cntPanelRbShown == 0)
+			{
+				parentNode.style.display = "none";
+			}
+			
+			// If no more panel in style panel, then hide it and show "no remarks".
+			var divDisplayStyle = document.getElementById("DivDisplayStyle");
+			var cntDivShown = 0;
+			var divNoShowingShown = false;
+			for(var i = 0; i < divDisplayStyle.childNodes.length; i++)
+			{
+				var divStyle = divDisplayStyle.childNodes[i];
+				if(divStyle.style.display == "block")
+				{
+					cntDivShown++;
+					if(divStyle.id == "DivNoShowing") divNoShowingShown = true;
+				}
+			}
+			
+			if(cntDivShown == 1 && divNoShowingShown)
+			{
+				document.getElementById("DivNoShowing").style.display = "none";
+				document.getElementById("LabelNoRemark").style.display = "block";
+			}
+		}
 	}
 	
 	// Decrease of 1
@@ -3025,7 +3141,12 @@ TableType : function(nbRow, type)
 			// Column 0
 			var td0 = document.createElement("td");
 			td0.className = "Stat-CellStyle";
-			if(type == 'MainTableStat') td0.style.width = "172px";
+			if(type == 'MainTableStat')
+			{
+				td0.style.cursor = "default";
+				td0.style.width = "172px";
+			}
+			
 			tr.appendChild(td0);
 			
 			// Column 1
@@ -3094,9 +3215,6 @@ TableType : function(nbRow, type)
 // Popup de base
 PopupBase : function(supclass = '')
 {
-	
-
-
 	this.Node = document.createElement("div");
 	this.Loaded = false;
 	
@@ -3115,25 +3233,27 @@ PopupBase : function(supclass = '')
 	// Image close
 	var divImg = document.createElement("div");
 	divImg.classList = "closer";
+	divImg.style.cursor = "pointer";
+	
 	// divImg.setAttribute("align", "right");
 	// divImg.style.verticalAlign = "top";
+	
+	divImg.addEventListener('click', function()
+	{
+		// Hide the window
+		var popup = this.parentNode;
+		popup.style.visibility = "hidden";
+		$(popup).removeClass('open');
+		//document.getElementById('overlayPopup').classList.remove('open');
+	});
 	
 	var imgClose = document.createElement("img");
 	imgClose.setAttribute("src", "images/CloseCrossWhite.png");
 	imgClose.style.cursor = "pointer";
 	imgClose.style.marginRight = "10px";
 	imgClose.style.marginTop = "10px";
-	
-	imgClose.addEventListener('click', function()
-	{
-		// Hide the window
-		var popup = this.parentNode.parentNode;
-		popup.style.visibility = "hidden";
-		$(popup).removeClass('open');
-		//document.getElementById('overlayPopup').classList.remove('open');
-	});
-	
 	divImg.appendChild(imgClose);
+	
 	this.Node.appendChild(divImg);
 	
 	// Main div
@@ -3154,12 +3274,6 @@ PopupBase : function(supclass = '')
 			// Center the popup on the screen
 			var wndWidth = window.outerWidth;
 			var wndHeight = window.outerHeight;
-			
-			if(Cor.IsTablet == true)
-			{
-				wndWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-				wndHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-			}
 			
 			var width = 0;
 			var height = 0;
@@ -3195,7 +3309,7 @@ PopupBase : function(supclass = '')
 },
 
 // Popup of confirmation
-MessageWindowConfirmation : function(message, type)
+MessageWindowConfirmation : function(message, type, titleSt)
 {
 	// Init
 	this.Type = type;
@@ -3209,7 +3323,7 @@ MessageWindowConfirmation : function(message, type)
 	//titre
 	var title = document.createElement("div");
 		title.className = "titre";
-		title.innerHTML = "Avertissement";
+		title.innerHTML = titleSt;
 		popup.appendChild(title);
 
 	// Red button
@@ -3250,6 +3364,7 @@ MessageWindowConfirmation : function(message, type)
 		
 		popup.appendChild(divMessage);
 	}
+	
 	// Indications
 	if(type == 4)
 	{
@@ -3288,9 +3403,15 @@ MessageWindowConfirmation : function(message, type)
 								// Avertit l'utilisateur que son abonnement est supprimé
 								var messageSupp = "<p>Votre abonnement a bien " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " supprim" + String.fromCharCode(233) + "</p>";
 								messageSupp += "<p>Merci d'avoir utilis" + String.fromCharCode(233) + " Scribens.</p>";
-								var popupConfSupp = new Util.MessageWindowConfirmation(messageSupp, 3);
+								var popupConfSupp = new Util.MessageWindowConfirmation(messageSupp, 3, "Avertissement");
 								popupConfSupp.SetVisible(true);
 							 });
+		}
+		// Confirmation désinscription
+		else if(type == 3)
+		{
+			// Déconnexion
+			Premium.Deconnexion();
 		}
 
 		// Hide the window

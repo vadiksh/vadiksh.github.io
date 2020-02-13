@@ -21,6 +21,12 @@ var Premium = {
 	// Popup de d�sinscription
 	PopupDesinscriptionI : null,
 	
+	// Popup de paiment
+	PopupPaymentI : null,
+	
+	// Support popup
+	PopupSupportI : null,
+	
 	// Popup on CGV.
 	PopupCGV : null,
 	
@@ -35,6 +41,21 @@ var Premium = {
 	
 	// Subescribed : set if the user has suscribed
 	Subscribed : false,
+	
+	// Stripe instance
+	Stripe : null,
+	
+	// Card
+	Card : null,
+
+	// Paiement informations: Client secret frome payment intent
+	ClientSecret_PaymentIntent : null,
+	
+	// Paiement informations: Client secret frome setup intent
+	ClientSecret_SetupIntent : null,
+	
+	// Subscription type of paiement
+	SubscriptionType : "",
 
 	ResultIdentification : function(vectResult)
 	{
@@ -60,6 +81,10 @@ var Premium = {
 			// D�termine si l'User dispose de l'ancien tarif.
 			Cor.User.AncienTarif = JSON.parse(vectResult[12]);
 			Cor.User.InfEvolutions = JSON.parse(vectResult[13]);
+			Cor.User.Settings = vectResult[16];
+			Cor.User.RecurringPayment = JSON.parse(vectResult[17]);
+			Cor.User.PaymentByCard = JSON.parse(vectResult[18]);
+			Cor.User.PaymentBySmartphone = JSON.parse(vectResult[19]);
 			
 			// Cache la fen�tre d'identification
 			if(Premium.PopupIdentificationI != null)
@@ -95,7 +120,7 @@ var Premium = {
 				// Mode plugin
 				/*if(Plugins.Type != null) PresentationCor.EnableAll(false, true, false, true);	// TODO*/
 				
-				var popupMsgExpiration = new Util.MessageWindowConfirmation("Votre abonnement Premium est expir" + String.fromCharCode(233) + ".", 0);
+				var popupMsgExpiration = new Util.MessageWindowConfirmation("Votre abonnement Premium est expir" + String.fromCharCode(233) + ".", 0, "Avertissement");
 				popupMsgExpiration.SetVisible(true);
 				
 				// Envoie une requ�te pour r�ininitialiser la date d'expiration � NULL.
@@ -124,8 +149,8 @@ var Premium = {
 				Util.SetCookie("IdentificationScribens", chCookie, 5000);
 			}
 			
-			// Met � jour les informations sur l'User
-			//UpdateInformationsCompte();
+			// Met à jour les informations sur l'User
+			//Premium.UpdateInformationsCompte();
 			
 			// Se met en mode abonn�
 			if(result == "True")
@@ -163,11 +188,14 @@ var Premium = {
 			// Instructions pour utiliser le compte Premium : dans l'email de confirmation de la cr�ation du compte Premium.
 			if((result == "True") && (Cor.MonCompte == true))
 			{
-				Cor.Handler_VersionPremium(false);
+				Cor.Handler_VersionPremium(false, "");
 			}
 			
 			// Confirmation d'inscription
 			if(Cor.ParameterUrl != null && (Cor.ParameterUrl.indexOf("@") >= 0)) Premium.ConfirmationInscription();
+
+			// Update settings BDD
+			Options.UpdateSettingsBDD();
 
 			//change number of tabs option when login
 			$('.Cor-TabOptions').removeClass('tabs-number-1').addClass('tabs-number-3');
@@ -178,6 +206,8 @@ var Premium = {
 			//Show sidebar when login
 			$('.sidebar').show();
 			
+			// Met à jour les informations sur l'User
+			Premium.UpdateInformationsCompte();
 		}
 		// 4. Il ne faut pas qu'un autre User utilise la session.
 		else if(result == "SessionActive")
@@ -192,7 +222,7 @@ var Premium = {
 			// Au d�marrage du site
 			else
 			{
-				var messageWndConf = new Util.MessageWindowConfirmation("<p>Scribens est en cours d'utilisation par un autre utilisateur.</p>", 0);
+				var messageWndConf = new Util.MessageWindowConfirmation("<p>Scribens est en cours d'utilisation par un autre utilisateur.</p>", 0, "Avertissement");
 				messageWndConf.SetVisible(true);
 			}
 			
@@ -301,15 +331,18 @@ var Premium = {
 
 		//SHOW ACTIONS BUTTONS IF PREMIUM
 		$('#actions').removeClass('hidden');
+		
+		// Hide example
+		var divSample = document.getElementById("SampleText");
+		if(divSample != null) divSample.style.display = 'none';
 
 		// Show Style panel
 		var divStyle = document.getElementById("StyleTexte");
-		if(Cor.IsTablet == true) divStyle = document.getElementById("DivStyleStat");
 		
 		if(Plugins.Type == null) divStyle.style.display = "block";		// For plugin, show only after first check.
 	
 		// Show Panel Stat and syn.
-		if(Cor.IsTablet == false) document.getElementById("InfSup").style.display = "block";
+		document.getElementById("InfSup").style.display = "block";
 		
 		// Non affichage de la partie "Titre".
 		var titreLabel = document.getElementById("TitreLabel");
@@ -333,8 +366,6 @@ var Premium = {
 		// Affichage de l'ic�ne d'importation.
 		// if(Cor.IdLangue == "fr") document.getElementById("LabelInput_ImportFile").style.display = "block";
 		
-		if(Cor.IsTablet == true) document.getElementById("Titre").style.paddingTop = "30px";
-		
 		// Register handle des boutons du menu outils.
 		Premium.Register_ClickHandlerBtn_Outils();
 		
@@ -347,6 +378,12 @@ var Premium = {
 		// Set options Premium
 		Options.SetModeAbonne(true);
 		
+		// In tablet mode and French, show the button "Copy" and "Paste".
+		if(Cor.IdLangue == "fr" && Cor.IsTablet == true)
+		{
+			$('#copy-clipboard').addClass('hidden');
+			$('#paste-clipboard').addClass('hidden');
+		}
 	
 		// Lance un timer qui envoie un signal toutes les 10s pour avertir que la session est bien active.
 		Cor.TimerIdentification = setInterval(function()
@@ -367,7 +404,7 @@ var Premium = {
 		// Show a popup of confirmation inscription.
 		if(Premium.PopupConfirmationInscriptionI == null) Premium.PopupConfirmationInscriptionI = new Premium.PopupConfirmationInscription();
 		
-		Cor.Handler_VersionPremium();
+		Cor.Handler_VersionPremium(false, "");
 		
 		if(Cor.ModeAbonnePremium == false)
 		{
@@ -391,11 +428,11 @@ var Premium = {
 		divMessage.style.fontSize = "16px";
 		
 		var confirmationInscription = "";
-		confirmationInscription += "<p><b>Merci. Votre inscription a " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " valid" + String.fromCharCode(233) + "e</b>.<Br><Br>";
-		confirmationInscription += "Vous devez maintenant proc" + String.fromCharCode(233) + "der au <b>paiement de votre abonnement</b> :<Br><Br>";
+		confirmationInscription += "<p><b>Merci. Votre inscription a " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " valid" + String.fromCharCode(233) + "e</b> !<Br><Br>";
+		confirmationInscription += "Pour activer votre <b>abonnement Premium</b>, vous devez maintenant proc" + String.fromCharCode(233) + "der au <b>paiement</b> :<Br><Br>";
 		confirmationInscription += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + String.fromCharCode(8226) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V" + String.fromCharCode(233) + "rifiez que l'abonnement s" + String.fromCharCode(233) + "lectionn" + String.fromCharCode(233) + " est bien celui que vous souhaitez.<Br>"; 
 		confirmationInscription += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + String.fromCharCode(8226) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cochez la case des <b>CGV</b> si les conditions de vente vous conviennent.<Br>";
-		confirmationInscription += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + String.fromCharCode(8226) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cliquez sur <b>Acheter</b>.<Br><Br>";
+		confirmationInscription += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + String.fromCharCode(8226) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choisissez le <b>mode de paiement</b>.<Br><Br>";
 		confirmationInscription += "Vous serez alors dirig" + String.fromCharCode(233) + " vers notre plate-forme de paiement 100 % s" + String.fromCharCode(233) + "curis" + String.fromCharCode(233) + "e.</p>";
 		
 		divMessage.innerHTML = confirmationInscription;
@@ -780,8 +817,12 @@ var Premium = {
 		
 		var divButtonOuvrirCompte = document.createElement('div'); 
 		divButtonOuvrirCompte.className = "Cor-RedButton";
+		divButtonOuvrirCompte.id = "BtnOuvrirCompte";
 		divButtonOuvrirCompte.innerHTML = "Ouvrir un compte";
-		divButtonOuvrirCompte.style.marginLeft = "87px";
+		//divButtonOuvrirCompte.style.
+		divButtonOuvrirCompte.style.width = "280px";
+		divButtonOuvrirCompte.style.textAlign = "center";
+		divButtonOuvrirCompte.style.marginLeft = "75px";
 		divButtonOuvrirCompte.style.marginTop = "25px";
 		divButtonOuvrirCompte.style.display = "inline-block";
 		divButtonOuvrirCompte.onclick = function()
@@ -890,6 +931,23 @@ var Premium = {
 		this.SetVisible = function(visible)
 		{
 			this.PopupBase.SetVisible(visible);
+			
+			// Reinit fields.
+			
+			// Connexion
+			document.getElementById("inputIdC").value = "";
+			document.getElementById("inputMdpC").value = "";
+			document.getElementById("LabelErrorId2").style.display = "none";
+			
+			// Subscription
+			document.getElementById("inputNoO").value = "";
+			document.getElementById("inputNoO").disabled = false;
+			document.getElementById("inputIdO").value = "";
+			document.getElementById("inputIdO").disabled = false;
+			document.getElementById("inputPwdO").value = "";
+			document.getElementById("inputPwdO").disabled = false;
+			document.getElementById("BtnOuvrirCompte").innerHTML = "Ouvrir un compte";
+			document.getElementById("Suscribe_MessageWarning").style.display = 'none';
 		};
 		
 		// Is visible function
@@ -967,7 +1025,7 @@ var Premium = {
 		var condEmail = Util.Condition_Email(email);
 		var condPassword = (Premium.ValidatePassword() && pwd.indexOf(",") == -1);	// Musn't contain comma because of the database query.
 		
-		// Donn�es non valide. Avertissement � l'utilisateur
+		// Données non valide. Avertissement à l'utilisateur
 		if(condUsername == false ||
 		   condEmail == false ||
 		   condPassword == false)
@@ -977,66 +1035,89 @@ var Premium = {
 			divMessageWarning.style.display = 'block';
 			divMessageWarning.innerHTML = "<p><b>Donn" + String.fromCharCode(233) + "es invalides ou manquantes</b>.</p><p><b>Remarque : </b>les champs ne doivent pas comporter</p><p>les caract" + String.fromCharCode(232) + "res \" <b>'</b> \", \"<b>|</b>\" et \"<b>,</b>\" .</p>";
 		}
-		// Données valides : V�rification si l'identifiant (email) existe d�j�.
+		// Données valides : Vérification si l'identifiant (email) existe d�j�.
 		else
 		{
-			Util.SendHttpRequest('Identification_Servlet',
-							[['FunctionName', 'IdentifiantExiste'],
-							 ['Email', email]],
-			 function(response)
-			 {
-				var divMessageWarning = document.getElementById("Suscribe_MessageWarning");
-		
-				// L'identifiant existe d�j�
-				if(response == true)
-				{
-					var message = "<b>L'adresse mail existe d" + String.fromCharCode(233) + "j" + String.fromCharCode(224) + ".</b>";
-					divMessageWarning.style.display = 'block';
-					divMessageWarning.innerHTML = message;
-					
-					var inputPassword = document.getElementById("inputPwdO");
-					inputPassword.innerHTML = "";
-				}
-				// Nouveau compte
-				else
-				{
-					Premium.Subscribed = true;
-					
-					// Donn�es valides : envoi d'un email � l'utilisateur
-					var message = "<p><b>Merci. Votre compte a " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " cr" + String.fromCharCode(233) + String.fromCharCode(233) + ".</b></p><p><b>Un message vient de vous " + String.fromCharCode(234) + "tre envoy" + String.fromCharCode(233) + " pour vous permettre de valider votre inscription.</b></p>";
-					divMessageWarning.style.display = 'block';
-					divMessageWarning.innerHTML = message;
-					
-					// Update the database.
+			if(Premium.Subscribed == false)
+			{
+				Util.SendHttpRequest('Identification_Servlet',
+								[['FunctionName', 'IdentifiantExiste'],
+								 ['Email', email]], function(response){
+									 
+					var divMessageWarning = document.getElementById("Suscribe_MessageWarning");
+			
+					// L'identifiant existe d�j�
+					if(response == true)
+					{
+						var message = "<b>L'adresse mail existe d" + String.fromCharCode(233) + "j" + String.fromCharCode(224) + ".</b>";
+						divMessageWarning.style.display = 'block';
+						divMessageWarning.innerHTML = message;
+						
+						var inputPassword = document.getElementById("inputPwdO");
+						inputPassword.innerHTML = "";
+					}
+					// Nouveau compte
+					else
+					{
+						Premium.Subscribed = true;
+						
+						// Donn�es valides : envoi d'un email � l'utilisateur
+						var message = "<p><b>Merci. Votre compte a " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " cr" + String.fromCharCode(233) + String.fromCharCode(233) + ".</b></p><p><b>Un message vient de vous " + String.fromCharCode(234) + "tre envoy" + String.fromCharCode(233) + " pour vous permettre de valider votre inscription.</b></p><p><b>N'oubliez pas de vérifier dans votre boîte spam</b>.</p>";
+						divMessageWarning.style.display = 'block';
+						divMessageWarning.innerHTML = message;
+						
+						// Change the button "Ouvrir un compte"
+						var divButtonOuvrirCompte = document.getElementById("BtnOuvrirCompte");
+						divButtonOuvrirCompte.innerHTML = "Réenvoyer le message";
+						
+						// Update the database.
 
-					// User Name
-					userName = userName.replace(new RegExp(",", "g"), "");
-					userName = userName.replace(new RegExp("'", "g"), "");
-					
-					Util.SendHttpRequest('Identification_Servlet',
-						[['FunctionName', 'NewSubscription'],
-						 ['Identifiant', email],
-						 ['MotDePasse', pwd],
-						 ['Prenom', userName]],
-						 null);
-					
-					// Grise les champs.
-					document.getElementById("inputNoO").disabled = true;
-					document.getElementById("inputIdO").disabled = true;
-					document.getElementById("inputPwdO").disabled = true;
-					
-					// Envoi de l'email de confirmation � l'utilisateur.
-					Util.SendHttpRequest('Identification_Servlet',
-						[['FunctionName', 'SendMessageEmail'],
-						 ['IdMail', 'CONFIRMATION_INSCRIPTION'],
-						 ['LangId', Cor.IdLangue],
-						 ['EMail', email],
-						 ['MotDePasse', pwd],
-						 ['Prenom', userName]],
-						 null);
-						 
-				}
-			 });
+						// User Name
+						userName = userName.replace(new RegExp(",", "g"), "");
+						userName = userName.replace(new RegExp("'", "g"), "");
+						
+						Util.SendHttpRequest('Identification_Servlet',
+							[['FunctionName', 'NewSubscription'],
+							 ['Identifiant', email],
+							 ['MotDePasse', pwd],
+							 ['Prenom', userName]],
+							 null);
+						
+						// Grise les champs.
+						document.getElementById("inputNoO").disabled = true;
+						document.getElementById("inputIdO").disabled = true;
+						document.getElementById("inputPwdO").disabled = true;
+						
+						// Envoi de l'email de confirmation � l'utilisateur.
+						Util.SendHttpRequest('Identification_Servlet',
+							[['FunctionName', 'SendMessageEmail'],
+							 ['IdMail', 'CONFIRMATION_INSCRIPTION'],
+							 ['LangId', Cor.IdLangue],
+							 ['EMail', email],
+							 ['MotDePasse', pwd],
+							 ['Prenom', userName]],
+							 null);
+							 
+					}
+				});
+			}
+			// If yet sent, then resend the message
+			else
+			{
+				// User Name
+				userName = userName.replace(new RegExp(",", "g"), "");
+				userName = userName.replace(new RegExp("'", "g"), "");
+						
+				// Envoi de l'email de confirmation � l'utilisateur.
+				Util.SendHttpRequest('Identification_Servlet',
+					[['FunctionName', 'SendMessageEmail'],
+					 ['IdMail', 'CONFIRMATION_INSCRIPTION'],
+					 ['LangId', Cor.IdLangue],
+					 ['EMail', email],
+					 ['MotDePasse', pwd],
+					 ['Prenom', userName]],
+					 null);
+			}
 		}
 	},
 	
@@ -1494,38 +1575,43 @@ var Premium = {
 			// Line 6
 			var tr6 = this.CreateLineVPremium("<p>Correction directe de vos e-mails sans copier-coller :</p>" +
 										  "<p>- Messagerie : <b>Gmail</b>, <b>Hotmail</b>, <b>Yahoo</b>, <b>Orange</b>, etc.</p>" +
-										  "- 90 % des zones de texte sur Internet : <b>Facebook</b>, <b>Twitter</b>, <b>LinkedIn</b>, <b>LeBonCoin.fr</b>, <b>sites de blogs</b>, <b>forums</b>, <b>formulaires</b>, etc.", false, true);
+										  "<p>- 90 % des zones de texte sur Internet : <b>Facebook</b>, <b>Twitter</b>, <b>LinkedIn</b>, <b>LeBonCoin.fr</b>, <b>sites de blogs</b>, <b>forums</b>, <b>formulaires</b>, etc.</p>", false, true);
 			table.appendChild(tr6);
 			
 			// Line 7
-			var tr7 = this.CreateLineVPremium("<p>D" + String.fromCharCode(233) + "tections de probl" + String.fromCharCode(232) + "mes dans la r" + String.fromCharCode(233) + "daction :</p>" +
-									      "<p><b>R" + String.fromCharCode(233) + "p" + String.fromCharCode(233) + "titions</b>, <b>phrases longues</b>, <b>pl" + String.fromCharCode(233) + "onasmes</b>, <b>mots de registres particuliers</b> (populaire, vulgaire, etc.)</p>", false, false);
+			var tr7 = this.CreateLineVPremium("<p><b>Application Android</b> pour <b>smartphones</b>.</p>" +
+										      "<p>Corrigez directement vos textes depuis votre <b>clavier</b> Android. <a href='https://play.google.com/store/apps/details?id=com.bleu122.scribens&gl=FR' target='_blank'>Cliquez ici</a> pour en savoir plus.</p>", false, false);
 			table.appendChild(tr7);
 			
 			// Line 8
-			var tr8 = this.CreateLineVPremium("<p>Propositions d'am" + String.fromCharCode(233) + "lioration de la r" + String.fromCharCode(233) + "daction :</p>" + 
-										  "<p><b>15 types de reformulation</b>, <b>am" + String.fromCharCode(233) + "lioration de vocabulaire</b>.</p>", false, true);
+			var tr8 = this.CreateLineVPremium("<p>D" + String.fromCharCode(233) + "tections de probl" + String.fromCharCode(232) + "mes dans la r" + String.fromCharCode(233) + "daction :</p>" +
+									      "<p><b>R" + String.fromCharCode(233) + "p" + String.fromCharCode(233) + "titions</b>, <b>phrases longues</b>, <b>pl" + String.fromCharCode(233) + "onasmes</b>, <b>mots de registres particuliers</b> (populaire, vulgaire, etc.)</p>", false, true);
 			table.appendChild(tr8);
 			
-			// Line 8
-			var tr9 = this.CreateLineVPremium("<p>Fonction pour rendre un texte <b>positif</b> ou <b>n" + String.fromCharCode(233) + "gatif</b>.</p>", false, false);
-			table.appendChild(tr9);
-			
 			// Line 9
-			var tr9 = this.CreateLineVPremium("Statistiques sur le texte : <b>nombre de mots, de phrases, de paragraphes, indice de lisibilit" + String.fromCharCode(233) + ", etc.</b>", false, true);
+			var tr9 = this.CreateLineVPremium("<p>Propositions d'am" + String.fromCharCode(233) + "lioration de la r" + String.fromCharCode(233) + "daction :</p>" + 
+										  "<p><b>15 types de reformulation</b>, <b>am" + String.fromCharCode(233) + "lioration de vocabulaire</b>.</p>", false, false);
 			table.appendChild(tr9);
 			
 			// Line 10
-			var tr10 = this.CreateLineVPremium("Fonctions <b>copier</b>, <b>t" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "charger</b> et <b>imprimer</b> le texte.", false, false);
+			var tr10 = this.CreateLineVPremium("<p>Fonction pour rendre un texte <b>positif</b> ou <b>n" + String.fromCharCode(233) + "gatif</b>.</p>", false, true);
 			table.appendChild(tr10);
 			
 			// Line 11
-			var tr11 = this.CreateLineVPremium("<b>150</b> s" + String.fromCharCode(233) + "ries d'exercices d'orthographe, un dictionnaire des citations tr" + String.fromCharCode(232) + "s complet", false, true);
+			var tr11 = this.CreateLineVPremium("Statistiques sur le texte : <b>nombre de mots, de phrases, de paragraphes, indice de lisibilit" + String.fromCharCode(233) + ", etc.</b>", false, false);
 			table.appendChild(tr11);
 			
 			// Line 12
-			var tr12 = this.CreateLineVPremium("Aucune publicit" + String.fromCharCode(233), false, false);
+			var tr12 = this.CreateLineVPremium("Fonctions <b>copier</b>, <b>coller</b>, <b>t" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "charger</b>, <b>imprimer</b> et <b>partager</b> le texte.", false, true);
 			table.appendChild(tr12);
+			
+			// Line 13
+			var tr13 = this.CreateLineVPremium("<b>150</b> s" + String.fromCharCode(233) + "ries d'exercices d'orthographe, un dictionnaire des citations tr" + String.fromCharCode(232) + "s complet", false, false);
+			table.appendChild(tr13);
+			
+			// Line 14
+			var tr14 = this.CreateLineVPremium("Aucune publicit" + String.fromCharCode(233), false, true);
+			table.appendChild(tr14);
 			
 			this.MainDiv.appendChild(table);
 		}
@@ -1637,7 +1723,7 @@ var Premium = {
 			else if(index == 1)
 			{
 				table.childNodes[1].childNodes[0].src = "images/Plugins_logo/logo_firefox2.png";
-				table.childNodes[2].childNodes[0].href = "https://addons.mozilla.org/fr/firefox/addon/plugin-scribens-english";
+				table.childNodes[2].childNodes[0].href = "https://addons.mozilla.org/fr/firefox/addon/scribens-correcteur";
 				th.InstructionInst1 = Premium.Exp_Setup_MozillaFirefox;
 				
 				if(Cor.IsMozillaF == true) this.LabelActualBrowser.innerHTML = "<p>Le navigateur que vous utilisez actuellement est Mozilla Firefox.</p>";
@@ -1649,8 +1735,21 @@ var Premium = {
 				table.childNodes[2].childNodes[0].href = "https://www.scribens.com/download/Scribens.safariextz";
 				th.InstructionInst1 = Premium.Exp_Setup_Safari;
 				
-				if(Cor.IsSafari == true) this.LabelActualBrowser.innerHTML = "<p>Le navigateur que vous utilisez actuellement est Safari.</p>";
-				else this.LabelActualBrowser.innerHTML = "";
+				//if(Cor.IsSafari == true) this.LabelActualBrowser.innerHTML = "<p>Le navigateur que vous utilisez actuellement est Safari.</p>";
+				//else this.LabelActualBrowser.innerHTML = "";
+				
+				// Doesn't work for the moment.
+				this.LabelActualBrowser.innerHTML = "";
+			}
+			else if(index == 3)
+			{
+				table.childNodes[1].childNodes[0].src = "images/Plugins_logo/logo_edge2.png";
+				table.childNodes[2].childNodes[0].href = "https://microsoftedge.microsoft.com/addons/detail/aohjlchmgmmhlganagldeekegcofalai";
+				th.InstructionInst1 = Premium.Exp_Setup_MSEdge;
+				
+				//if(Cor.IsSafari == true) this.LabelActualBrowser.innerHTML = "<p>Le navigateur que vous utilisez actuellement est Safari.</p>";
+				//else this.LabelActualBrowser.innerHTML = "";
+				this.LabelActualBrowser.innerHTML = "";
 			}
 		}
 		
@@ -1714,7 +1813,7 @@ var Premium = {
 			divExtPremiums.appendChild(label5);
 			
 			// Table extension web 1
-			var tableExtWeb = this.CreateTableExtension([["images/Conf_PluginGoogleChrome.png", "images/Conf_PluginMozillaFirefox.png"], ["images/Conf_PluginSafari.png", ""]]);
+			var tableExtWeb = this.CreateTableExtension([["images/Conf_PluginGoogleChrome.png", "images/Conf_PluginMozillaFirefox.png"], ["images/Conf_PluginSafari.png", "images/Conf_PluginMSEdge.png"]]);
 			
 			divExtPremiums.appendChild(tableExtWeb);
 			
@@ -1754,6 +1853,9 @@ var Premium = {
 			var optionSafari = document.createElement("option");
 			optionSafari.innerHTML = "Safari (Mac)";
 			selectPlugins1.appendChild(optionSafari);
+			var optionMSEdge = document.createElement("option");
+			optionMSEdge.innerHTML = "Microsoft Edge";
+			selectPlugins1.appendChild(optionMSEdge);
 			
 			var th = this;
 			selectPlugins1.onchange = function()
@@ -1842,7 +1944,7 @@ var Premium = {
 			
 			labelInstructionsInst.onclick = function()
 			{
-				var popup = new Util.MessageWindowConfirmation(th.InstructionInst1, 0);
+				var popup = new Util.MessageWindowConfirmation(th.InstructionInst1, 0, "Instructions d'installation");
 				popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].setAttribute("align", "left");
 				popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].style.fontWeight = "normal";
 				popup.SetVisible(true);
@@ -1862,17 +1964,18 @@ var Premium = {
 				
 				th.SelectPluginsWeb(1, tableTestExtTt1, th);
 			}
-			else if(Cor.IsSafari == true)
+			// Doesn't work for the moment.
+			/*else if(Cor.IsSafari == true)
 			{
 				selectPlugins1.selectedIndex = 2;
 				
 				th.SelectPluginsWeb(2, tableTestExtTt1, th);
-			}
+			}*/
 			
 			// Separator
 			var divSep = document.createElement("div");
 			divSep.style.marginTop = "20px";
-			divSep.style.borderTop = "2px solid red";
+			divSep.style.borderTop = "2px solid #f5f3f3";
 			divExtPremiums.appendChild(divSep);
 			
 			// Label Title
@@ -1981,7 +2084,7 @@ var Premium = {
 						aDownloadLo.style.cursor = "pointer";
 						aDownloadLo.onclick = function()
 						{
-							var popup = new Util.MessageWindowConfirmation(msgOtherEdge, 0);
+							var popup = new Util.MessageWindowConfirmation(msgOtherEdge, 0, "Instructions d'installation");
 							popup.SetVisible(true); 
 						};
 						
@@ -2002,7 +2105,7 @@ var Premium = {
 						aDownloadOo.removeAttribute("href");
 						aDownloadOo.onclick = function()
 						{
-							var popup = new Util.MessageWindowConfirmation(msgOtherEdge, 0);
+							var popup = new Util.MessageWindowConfirmation(msgOtherEdge, 0, "Instructions d'installation");
 							popup.SetVisible(true); 
 						};
 						
@@ -2091,7 +2194,7 @@ var Premium = {
 			labelInstructionsInst2.innerHTML = "Instructions d'installation";
 			labelInstructionsInst2.onclick = function()
 			{
-				var popup = new Util.MessageWindowConfirmation(th.InstructionInst2, 0);
+				var popup = new Util.MessageWindowConfirmation(th.InstructionInst2, 0, "Instructions d'installation");
 				popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].setAttribute("align", "left");
 				popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].style.fontWeight = "normal";
 				popup.SetVisible(true);
@@ -2101,6 +2204,140 @@ var Premium = {
 			
 			divTest2.appendChild(tableTestExtTt2);
 			divExtPremiums.appendChild(divTest2);
+			
+			// Smartphone
+			
+			// Separator
+			var divSep = document.createElement("div");
+			divSep.style.marginTop = "20px";
+			divSep.style.borderTop = "2px solid #f5f3f3";
+			divExtPremiums.appendChild(divSep);
+			
+			// Label Title
+			var label3 = document.createElement("div");
+			label3.style.fontWeight = "bold";
+			label3.style.fontSize = "18px";
+			label3.style.paddingTop = "20px";
+			label3.style.paddingBottom = "20px";
+			label3.innerHTML = "Corrigez directement vos textes depuis le clavier Scribens pour Smarphone Android.";
+			divExtPremiums.appendChild(label3);
+			
+			// Image
+			
+			// Table extension 1
+			var tableDoc = this.CreateTableExtension([["images/Conf_Android.png", ""]]);
+			
+			divExtPremiums.appendChild(tableDoc);
+			
+			// Title test
+			var divTest1 = document.createElement("div");
+			divTest1.style.backgroundColor = "#f5f3f3";
+			divTest1.style.paddingBottom = "10px";
+			
+			var labelTest1 = document.createElement("div");
+			labelTest1.setAttribute("align", "center");
+			labelTest1.style.fontWeight = "bold";
+			labelTest1.style.fontSize = "16px";
+			labelTest1.style.paddingTop = "10px";
+			labelTest1.style.paddingBottom = "20px";
+			labelTest1.style.color = "#e04343";
+			labelTest1.innerHTML = "Testez nos applications gratuitement !";
+			divTest1.appendChild(labelTest1);
+			
+			// Table of test
+			var tableTestExtTt1 = document.createElement("table");
+			tableTestExtTt1.setAttribute("align", "center");
+			//tableTestExtTt.style.backgroundColor = "#f5f3f3";
+			tableTestExtTt1.style.border = "1px solid #ffffff";
+			
+			// Select plugins
+			var tdSelectPlugins1 = document.createElement("td");
+			tdSelectPlugins1.style.width = "180px";
+			
+			var selectPlugins1 = document.createElement("select");
+			selectPlugins1.style.marginLeft = "35px";
+			var optionAndroid = document.createElement("option");
+			optionAndroid.innerHTML = "Android";
+			selectPlugins1.appendChild(optionAndroid);
+			
+			var th = this;
+			selectPlugins1.onchange = function()
+			{
+				var index = this.selectedIndex;
+				var table = this.parentNode.parentNode;
+				
+				if(index == 0)
+				{
+					table.childNodes[1].childNodes[0].src = "images/Plugins_logo/logo_Android2.png";
+					th.InstructionInst2 = Premium.Exp_Setup_Android;
+					
+					var aDownloadGd = table.childNodes[2].childNodes[0];
+					aDownloadGd.href = "https://play.google.com/store/apps/details?id=com.bleu122.scribens&gl=FR";
+					aDownloadGd.onclick = null;
+				}
+			};
+			
+			tdSelectPlugins1.appendChild(selectPlugins1);
+			
+			tableTestExtTt1.appendChild(tdSelectPlugins1);
+			
+			// Logo
+			var tdImgLogo1 = document.createElement("td");
+			tdImgLogo1.style.borderRight = "2px solid #ffffff";
+			var imgLogo1 = document.createElement("img");
+			imgLogo1.src = "images/Plugins_logo/logo_Android2.png";
+			imgLogo1.style.marginLeft = "30px";
+			imgLogo1.style.marginRight = "20px";
+			imgLogo1.style.marginTop = "5px";
+			imgLogo1.style.marginBottom = "5px";
+			tdImgLogo1.appendChild(imgLogo1);
+			tableTestExtTt1.appendChild(tdImgLogo1);
+			
+			// Button tester
+			var tdDownload1 = document.createElement("td");
+			
+			var aDownload1 = document.createElement("a");
+			aDownload1.style.textDecoration = "underline";
+			aDownload1.innerHTML = "T" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "charger";
+			aDownload1.href = "https://play.google.com/store/apps/details?id=com.bleu122.scribens&gl=FR";
+			aDownload1.target = "_blank";
+			aDownload1.style.marginLeft = "30px";
+			aDownload1.style.marginRight = "30px";
+			aDownload1.style.marginTop = "15px";
+			aDownload1.style.marginBottom = "15px";
+			
+			tdDownload1.appendChild(aDownload1);
+			
+			tableTestExtTt1.appendChild(tdDownload1);
+			
+			// Instructions d'installation
+			var tdLabelInstructionsInst = document.createElement("td");
+			tdLabelInstructionsInst.style.borderLeft = "2px solid #ffffff";
+			var labelInstructionsInst = document.createElement("div");
+			labelInstructionsInst.style.fontSize = "18px";
+			labelInstructionsInst.style.paddingLeft = "20px";
+			labelInstructionsInst.style.paddingRight = "20px";
+			labelInstructionsInst.style.textDecoration = "underline";
+			labelInstructionsInst.style.cursor = "pointer";
+			labelInstructionsInst.innerHTML = "Instructions d'installation";
+			
+			var th = this;
+			
+			labelInstructionsInst.onclick = function()
+			{
+				var popup = new Util.MessageWindowConfirmation(Premium.Exp_Setup_Android, 0, "Instructions d'installation");
+				popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].setAttribute("align", "left");
+				popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].style.fontWeight = "normal";
+				popup.SetVisible(true);
+			}	
+			
+			tdLabelInstructionsInst.appendChild(labelInstructionsInst);
+			tableTestExtTt1.appendChild(tdLabelInstructionsInst);
+			
+			divTest1.appendChild(tableTestExtTt1);
+			divExtPremiums.appendChild(divTest1);
+			
+			// Others
 			
 			// Separator
 			var divSep = document.createElement("div");
@@ -2194,51 +2431,51 @@ var Premium = {
 			
 			// Label 0
 			var label0 = document.createElement("div");
-			label0.innerHTML = String.fromCharCode(8208) + " D" + String.fromCharCode(233) + "tection des r" + String.fromCharCode(233) + "p" + String.fromCharCode(233) + "titions.";
+			label0.innerHTML = "•  D" + String.fromCharCode(233) + "tection des mots <b>r" + String.fromCharCode(233) + "p" + String.fromCharCode(233) + "tés</b> et d'<b>expressions redondantes</b>. Exemple : <i>Se <b>réunir ensemble</b>.</i> -> <i>Se <b>réunir</b>.</i>";
 			label0.style.marginTop = "5px";
-			label0.style.marginBottom = "10px";
+			label0.style.marginBottom = "15px";
 			divStylePremium.appendChild(label0);
 			
 			// Label 1
 			var label1 = document.createElement("div");
-			label1.innerHTML = String.fromCharCode(8208) + " D" + String.fromCharCode(233) + "tection des phrases longues et des phrases comportant un trop grand nombre de virgules.";
+			label1.innerHTML = "•  D" + String.fromCharCode(233) + "tection des <b>phrases longues</b> et des <b>phrases comportant un trop grand nombre de virgules</b>.";
 			label1.style.marginTop = "5px";
-			label1.style.marginBottom = "10px";
+			label1.style.marginBottom = "15px";
 			divStylePremium.appendChild(label1);
 			
 			// Label 2
 			var label2 = document.createElement("div");
-			label2.innerHTML = String.fromCharCode(8208) + " D" + String.fromCharCode(233) + "tection des mots et expressions appartenant " + String.fromCharCode(224) + " des registres particuliers : vulgaire, p" + String.fromCharCode(233) + "joratif, familier, anglicisme, etc.";
+			label2.innerHTML = "•  D" + String.fromCharCode(233) + "tection de <b>tournures de phrases erron" + String.fromCharCode(233) + "es</b> ou <b>in" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "gantes</b> (15 types) et <b>propositions de reformulations</b>. Exemple : <i>La <b>voiture qui est belle</b> est ici.</i> -> <i>La <b>belle voiture</b> est là.</i>";
 			label2.style.marginTop = "5px";
-			label2.style.marginBottom = "10px";
+			label2.style.marginBottom = "15px";
 			divStylePremium.appendChild(label2);
 			
 			// Label 3
 			var label3 = document.createElement("div");
-			label3.innerHTML = String.fromCharCode(8208) + " Usage des verbes tr" + String.fromCharCode(232) + "s fr" + String.fromCharCode(233) + "quents tels que avoir, faire, mettre, etc. dans certaines expressions et propositions de remplacement de son verbe par un autre.";
+			label3.innerHTML = "•  Fonction d'<b>amélioration de vocabulaire</b> : proposition de remplacement de <b>mots simples</b> par des <b>mots plus complexes</b>. Exemple : <i>Il <b>a</b> une voiture.</i> -> <i>Il <b>possède</b> une voiture.</i>";
 			label3.style.marginTop = "5px";
-			label3.style.marginBottom = "10px";
+			label3.style.marginBottom = "15px";
 			divStylePremium.appendChild(label3);
 			
 			// Label 4
 			var label4 = document.createElement("div");
-			label4.innerHTML = String.fromCharCode(8208) + " D" + String.fromCharCode(233) + "tection de pl" + String.fromCharCode(233) + "onasmes et propositions de solutions.";
+			label4.innerHTML = "•  Fonction pour rendre un texte <b>positif</b> ou <b>négatif</b>. Exemple : <i>Une méthode.</i> -> <i>Une <b>excellente</b> méthode.</i> <i>Il marche.</i> -> <i>Il marche <b>lourdement</b>.</i>";
 			label4.style.marginTop = "5px";
-			label4.style.marginBottom = "10px";
+			label4.style.marginBottom = "15px";
 			divStylePremium.appendChild(label4);
 			
 			// Label 5
 			var label5 = document.createElement("div");
-			label5.innerHTML = String.fromCharCode(8208) + " Propositions de synonymes d'un mot.";
+			label5.innerHTML = "•  D" + String.fromCharCode(233) + "tection des mots et expressions appartenant " + String.fromCharCode(224) + " des <b>registres particuliers</b> : <b>vulgaire</b>, <b>p" + String.fromCharCode(233) + "joratif</b>, <b>familier</b>, <b>anglicisme</b>, etc.";
 			label5.style.marginTop = "5px";
-			label5.style.marginBottom = "10px";
+			label5.style.marginBottom = "15px";
 			divStylePremium.appendChild(label5);
 			
 			// Label 6
 			var label6 = document.createElement("div");
-			label6.innerHTML = String.fromCharCode(8208) + " D" + String.fromCharCode(233) + "tection de tournures de phrases erron" + String.fromCharCode(233) + "es ou in" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "gantes (15 types) et propositions de reformulations.";
+			label6.innerHTML = "•  Propositions de <b>synonymes</b> de mots ou d'expressions. Exemple : <i>Il lit <b>beaucoup</b>.</i> -> <i>Il lit <b>souvent</b>.</i>";
 			label6.style.marginTop = "5px";
-			label6.style.marginBottom = "15px";
+			label6.style.marginBottom = "50px";
 			divStylePremium.appendChild(label6);
 			
 			// Video
@@ -2276,30 +2513,30 @@ var Premium = {
 			
 			// Label 0
 			var label0 = document.createElement("div");
-			label0.innerHTML = String.fromCharCode(8208) + " Statistiques sur le texte : nombre de paragraphes, de phrases, lisibilit" + String.fromCharCode(233) + ", etc.";
+			label0.innerHTML = "•  Statistiques complètes sur le texte : nombre de <b>paragraphes</b>, de <b>phrases</b>, <b>lisibilit" + String.fromCharCode(233) + "</b>, <b>temps de lecture</b>, etc.";
 			label0.style.marginTop = "5px";
 			label0.style.marginBottom = "10px";
 			divDiversPremium.appendChild(label0);
 			
 			// Label 1
 			var label1 = document.createElement("div");
-			label1.innerHTML = String.fromCharCode(8208) + " 150 s" + String.fromCharCode(233) + "ries d'exercices d'orthographe.";
+			label1.innerHTML = "•  <b>150</b> s" + String.fromCharCode(233) + "ries d'<b>exercices</b> d'orthographe.";
 			label1.style.marginTop = "5px";
 			label1.style.marginBottom = "10px";
 			divDiversPremium.appendChild(label1);
 			
 			// Label 2
 			var label2 = document.createElement("div");
-			label2.innerHTML = String.fromCharCode(8208) + " Un dictionnaire des citations tr" + String.fromCharCode(232) + "s complet.";
+			label2.innerHTML = "•  Un dictionnaire des <b>citations</b> tr" + String.fromCharCode(232) + "s complet.";
 			label2.style.marginTop = "5px";
 			label2.style.marginBottom = "10px";
 			divDiversPremium.appendChild(label2);
 			
 			// Label 3
 			var label3 = document.createElement("div");
-			label3.innerHTML = String.fromCharCode(8208) + " R" + String.fromCharCode(233) + "glages des param" + String.fromCharCode(232) + "tres de la d" + String.fromCharCode(233) + "tection.";
+			label3.innerHTML = "•  R" + String.fromCharCode(233) + "glages des <b>param" + String.fromCharCode(232) + "tres</b> de la d" + String.fromCharCode(233) + "tection.";
 			label3.style.marginTop = "5px";
-			label3.style.marginBottom = "20px";
+			label3.style.marginBottom = "40px";
 			divDiversPremium.appendChild(label3);
 			
 			// Video
@@ -2385,7 +2622,7 @@ var Premium = {
 		{
 			if(Cor.Connexion == false) Cor.Handler_Connexion();
 			// Si connecté, se met au panneau MonCompte
-			else Cor.Handler_VersionPremium(false);
+			else Cor.Handler_VersionPremium(false, "P1M");
 		}
 	
 		// Contenu de la vignette
@@ -2442,7 +2679,7 @@ var Premium = {
 		{
 			if(Cor.Connexion == false) Cor.Handler_Connexion();
 			// Si connecté, se met au panneau MonCompte
-			else Cor.Handler_VersionPremium(false);
+			else Cor.Handler_VersionPremium(false, "P3M");
 		}
 	
 		// Contenu de la vignette
@@ -2509,7 +2746,7 @@ var Premium = {
 		{
 			if(Cor.Connexion == false) Cor.Handler_Connexion();
 			// Si connecté, se met au panneau MonCompte
-			else Cor.Handler_VersionPremium(false);
+			else Cor.Handler_VersionPremium(false, "P1A");
 		}
 	
 	
@@ -2717,18 +2954,27 @@ var Premium = {
 	{
 		// Name
 		var label_UserName = document.getElementById("Info_UserName");
-		label_UserName.innerHTML = Cor.User.UserName;
+		if(label_UserName != null)
+		{
+			label_UserName.innerHTML = Cor.User.UserName;
+		}
 		
 		// Email
 		var label_Email = document.getElementById("Info_Email");
-		label_Email.innerHTML = Cor.User.Identifiant;
+		if(label_Email != null)
+		{
+			label_Email.innerHTML = Cor.User.Identifiant;
+		}
 		
 		// Password
 		var label_Password = document.getElementById("Info_Password");
-		var password = Cor.User.MotDePasse;
-		var passwordEt = "";
-		for(var i = 0; i < password.length; i++) passwordEt += "*";
-		label_Password.innerHTML = passwordEt;
+		if(label_Password != null)
+		{
+			var password = Cor.User.MotDePasse;
+			var passwordEt = "";
+			for(var i = 0; i < password.length; i++) passwordEt += "*";
+			label_Password.innerHTML = passwordEt;
+		}
 		
 		// InfEvolution
 		var cb_infoEvolutions = document.getElementById("Info_InfEvol");
@@ -2769,7 +3015,64 @@ var Premium = {
 			
 			label_DateExpiration.innerHTML = dateExpirationLabel;
 		}
-	
+		
+		// RecurringPayment
+		var div_RecurringPayment = document.getElementById("Info_RecurringPayment");
+		var label_ProcPrelevement = document.getElementById("Info_ProcPrelevement");
+		if(div_RecurringPayment != null && label_ProcPrelevement != null)
+		{
+			var span_RecurringPayment = div_RecurringPayment.childNodes[0].childNodes[0].childNodes[3];
+			
+			if(Cor.ModeAbonnePremium && Cor.User.PaymentByCard)
+			{
+				if(Cor.User.RecurringPayment == true)
+				{
+					span_RecurringPayment.classList.remove('right');
+					span_RecurringPayment.classList.add('left');
+					
+					// Set the net payment to the expiration date.
+					var label_ExpirationDate = document.getElementById("Info_DateExpiration");
+					if(label_ExpirationDate != null)
+					{
+						label_ProcPrelevement.innerHTML = label_ExpirationDate.innerHTML;
+					}
+				}
+			}
+			else
+			{
+				div_RecurringPayment.innerHTML = "-";
+				label_ProcPrelevement.innerHTML = "-";
+			}
+		}
+		
+		// Automatic validation
+		var divAccordAut = document.getElementById("AccordAut");
+		if(divAccordAut != null)
+		{
+			if((!Cor.ModeAbonnePremium) ||
+			   (Cor.ModeAbonnePremium && !Cor.User.PaymentByCard))	// Paiement with Paypal
+			{
+				divAccordAut.style.display = "block";
+			}
+		}
+		
+		// If payment by android, disabld the payment.
+		var divPaymentContAll = document.getElementById("DivPaymentContAll");
+		var divLabelPaymentByAndroid = document.getElementById("DivLabelPaymentByAndroid");
+		if(divPaymentContAll != null && divLabelPaymentByAndroid != null)
+		{
+			if(Cor.User.PaymentBySmartphone == true && Cor.ModeAbonnePremium == true)
+			{
+				divPaymentContAll.style.display = "none";
+				divLabelPaymentByAndroid.style.display = "block";
+			}
+			else
+			{
+				divPaymentContAll.style.display = "block";
+				divLabelPaymentByAndroid.style.display = "none";
+			}
+		}
+		
 		Premium.MajButtonPayPal();
 	},
 	
@@ -2812,12 +3115,16 @@ var Premium = {
 		var trUserName = document.createElement("tr");
 		var tdLabelUserName = document.createElement("td");
 		tdLabelUserName.className = "info-labels-persos";
+		tdLabelUserName.style.paddingBottom = "7px";
 		tdLabelUserName.innerHTML = "Nom d'utilisateur :";
 		trUserName.appendChild(tdLabelUserName);
 		
 		var tdUserName = document.createElement("td");
 		tdUserName.id = "Info_UserName";
 		tdUserName.className = "info-persos";
+		tdUserName.style.fontWeight = "600";
+		tdUserName.style.color = "#707070";
+		tdUserName.style.paddingBottom = "7px";
 		trUserName.appendChild(tdUserName);
 		
 		tablePersonalInfo.appendChild(trUserName);
@@ -2826,12 +3133,16 @@ var Premium = {
 		var trEmail = document.createElement("tr");
 		var tdLabelEmail = document.createElement("td");
 		tdLabelEmail.className = "info-labels-persos";
-		tdLabelEmail.innerHTML = "E-mail";
+		tdLabelEmail.style.paddingBottom = "7px";
+		tdLabelEmail.innerHTML = "E-mail :";
 		trEmail.appendChild(tdLabelEmail);
 		
 		var tdEmail = document.createElement("td");
 		tdEmail.id = "Info_Email";
 		tdEmail.className = "info-persos";
+		tdEmail.style.fontWeight = "600";
+		tdEmail.style.color = "#707070";
+		tdEmail.style.paddingBottom = "7px";
 		trEmail.appendChild(tdEmail);
 		
 		tablePersonalInfo.appendChild(trEmail);
@@ -2841,12 +3152,14 @@ var Premium = {
 		
 		var tdLabelPassword = document.createElement("td");	
 		tdLabelPassword.className = "info-labels-persos";
-		tdLabelPassword.innerHTML = "Mot de passe";
+		tdLabelPassword.innerHTML = "Mot de passe :";
 		trPassword.appendChild(tdLabelPassword);
 		
 		var tdPassword = document.createElement("td");
 		tdPassword.id = "Info_Password";
 		tdPassword.className = "info-persos";
+		tdPassword.style.fontWeight = "600";
+		tdPassword.style.color = "#707070";
 		trPassword.appendChild(tdPassword);//placement dans la ligne
 		tablePersonalInfo.appendChild(trPassword);//placement dans la table
 		
@@ -2933,21 +3246,19 @@ var Premium = {
 		// Contacter le service client.
 		var divContactSvcClient = document.createElement("div");
 		divContactSvcClient.className = "Cor-RedButton2";
-	
-		var adivContactSvcClient = document.createElement("a");
-		//adivContactSvcClient.className = "Cor-RedButton";
-		adivContactSvcClient.href = "mailto:contact@scribens.fr";
-		adivContactSvcClient.innerHTML = "<span class='picto-mail'></span> Contacter le service client";
-		divContactSvcClient.appendChild(adivContactSvcClient);
-		boutonsInfo.appendChild(divContactSvcClient);//placement dans boutonsInfo
-		
+		divContactSvcClient.innerHTML = "<span class='picto-mail'></span> Contacter le service client";
+		divContactSvcClient.onclick = function()
+		{
+			if(Premium.PopupSupportI == null) Premium.PopupSupportI = new Premium.PopupSupport();
+			
+			Premium.PopupSupportI.SetVisible(true);
+		}
+		boutonsInfo.appendChild(divContactSvcClient);
 	
 		// Se d�sinscrire
 		var divDesinscrire = document.createElement("div");
 		divDesinscrire.className = "Cor-greyButton";
 		
-	
-	
 		divDesinscrire.innerHTML = "<span class='picto-cross'></span> Se d" + String.fromCharCode(233) + "sinscrire";
 		divDesinscrire.onclick = function()
 		{
@@ -2969,6 +3280,7 @@ var Premium = {
 	{
 		var blockInfo = Premium.BlockInfo("MON ABONNEMENT");
 		blockInfo.style.padding = "30px 20px 0 10px";
+		blockInfo.firstChild.style.width = "646px";
 		
 		// Table of personal info
 		var tableInfoAbn = document.createElement("table");
@@ -2978,12 +3290,16 @@ var Premium = {
 		var trTypeAbonnement = document.createElement("tr");
 		var tdLabelTypeAbonnement = document.createElement("td");
 		tdLabelTypeAbonnement.className = "info-labels-persos";
+		tdLabelTypeAbonnement.style.paddingBottom = "7px";
 		tdLabelTypeAbonnement.innerHTML = "Type d'abonnement :";
 		trTypeAbonnement.appendChild(tdLabelTypeAbonnement);
 		
 		var tdTypeAbonnement = document.createElement("td");
 		tdTypeAbonnement.id = "Info_TypeAbonneemnt";
 		tdTypeAbonnement.className = "info-persos";
+		tdTypeAbonnement.style.fontWeight = "600";
+		tdTypeAbonnement.style.color = "#707070";
+		tdTypeAbonnement.style.paddingBottom = "7px";
 		trTypeAbonnement.appendChild(tdTypeAbonnement);
 		
 		tableInfoAbn.appendChild(trTypeAbonnement);
@@ -2992,15 +3308,206 @@ var Premium = {
 		var trDateExpiration = document.createElement("tr");
 		var tdLabelDateExpiration = document.createElement("td");
 		tdLabelDateExpiration.className = "info-labels-persos";
+		tdLabelDateExpiration.style.paddingBottom = "7px";
 		tdLabelDateExpiration.innerHTML = "Date d'expiration :";
 		trDateExpiration.appendChild(tdLabelDateExpiration);
 		
 		var tdDateExpiration = document.createElement("td");
 		tdDateExpiration.id = "Info_DateExpiration";
 		tdDateExpiration.className = "info-persos";
+		tdDateExpiration.style.fontWeight = "600";
+		tdDateExpiration.style.color = "#707070";
+		tdDateExpiration.style.paddingBottom = "7px";
 		trDateExpiration.appendChild(tdDateExpiration);
 		
 		tableInfoAbn.appendChild(trDateExpiration);
+		
+		// Recurring payments
+		var trRecurringPayments = document.createElement("tr");
+		trRecurringPayments.style.verticalAlign = "top";
+			
+		var tdLabelRecurringPayments = document.createElement("td");
+		tdLabelRecurringPayments.className = "info-labels-persos";
+		tdLabelRecurringPayments.style.paddingBottom = "8px";
+		tdLabelRecurringPayments.innerHTML = "Renouvellement automatique :";
+		trRecurringPayments.appendChild(tdLabelRecurringPayments);
+		
+		// Radio button
+		var tdRadioButton = document.createElement("td");
+		tdRadioButton.className = "info-persos";
+		tdRadioButton.style.fontWeight = "600";
+		tdRadioButton.style.color = "#707070";
+		tdRadioButton.id = "Info_RecurringPayment";
+		//tdRadioButton.style.paddingTop = "15px";
+		var tableRadioButton = document.createElement("table");
+		
+		var trRadioButton = document.createElement("tr");
+		
+		// Label Oui
+		var tdLabelOui = document.createElement("td");
+		tdLabelOui.innerHTML = "Oui";
+		trRadioButton.appendChild(tdLabelOui);
+		
+		// Span
+		/*var tdRb = document.createElement("td");
+		tdRb.setAttribute("class", "toggle-outside");
+		tdRb.className = "switch switch--horizontal";
+		tdRb.style.height = "25px";
+		tdRb.style.width = "50px";
+		//tdRb.style.right = "230px";
+		//tdRb.style.marginRight = "270px";
+		var span4 = document.createElement("span");
+		span4.setAttribute("class", "toggle-inside");
+		span4.style.marginTop = "-1px";
+		span4.style.height = "2rem";
+		span4.style.width = "2rem";
+		tdRb.appendChild(span4); 
+		trRadioButton.appendChild(tdRb);
+		
+		// label Non
+		var tdLabelNon = document.createElement("td");
+		tdLabelNon.innerHTML = "Non";
+		trRadioButton.appendChild(tdLabelNon);*/
+		
+		//trRadioButton.id = "SettingsCorRef"; // donne un ID
+		trRadioButton.className = "switch switch--horizontal"; // donne une classe
+		trRadioButton.style.height = "0rem";
+		
+		var td1 = document.createElement("td");
+		td1.type = "rad<io";
+		var input1 = document.createElement("input");
+		// input1.setAttribute("value", "yes");
+		input1.id = "I1-a";
+		// input1.setAttribute("checked", "checked");
+		input1.type = "radio";
+		input1.setAttribute("name", "I1");
+		//input1.style.marginLeft = "50px";
+		td1.appendChild(input1);
+		input1.onclick = function fun(e) {
+			if (this.checked = true){
+				// Set recurring payment to true.
+				Premium.Set_RecurringPayment(true, $(this).parent().parent().find('.toggle-outside'));
+			}
+		}
+		trRadioButton.appendChild(td1);
+		
+		var td2 = document.createElement("label");
+		td2.setAttribute("for", "I1-a");
+		td2.className = "Cor-LabelOption";
+		td2.style.textAlign = "left";
+		//td2.style.width = "0px";
+		var labelYes = "Oui";
+		td2.innerHTML = labelYes;
+		trRadioButton.appendChild(td2);
+		
+		var span3 = document.createElement("span");
+		span3.setAttribute("class", "toggle-outside right");
+		span3.style.height = "25px";
+		span3.style.width = "50px";
+		span3.style.right = "280px";
+		span3.style.marginTop = "1px";
+		//span3.style.marginRight = "270px";
+		span3.style.cursor = "pointer";
+		span3.onclick = function fun() {
+			if($(this).hasClass('left'))
+			{
+				// Set recurring payment to true.
+				Premium.Set_RecurringPayment(false, $(this));
+			}
+			else
+			{
+				// Set recurring payment to true.
+				Premium.Set_RecurringPayment(true, $(this));
+			}		
+		}
+		
+		
+		var span4 = document.createElement("span");
+		span4.setAttribute("class", "toggle-inside");
+		span4.style.marginTop = "-1px";
+		span4.style.height = "2rem";
+		span4.style.width = "2rem";
+		span3.appendChild(span4); 
+		trRadioButton.appendChild(span3);
+		
+		var td3 = document.createElement("td");
+		var input2 = document.createElement("input");
+		input2.type = "radio";
+		input2.setAttribute("name", "I1");
+		//input2.style.marginRight = "20px";
+		// input2.setAttribute("value", "no");
+		input2.id = "I1-b";
+		td3.appendChild(input2);
+		input2.onclick = function fun() {
+			if (this.checked = true){
+				// Set recurring payment to true.
+				Premium.Set_RecurringPayment(false, $(this).parent().parent().find('.toggle-outside'));
+			}  
+		}
+		trRadioButton.appendChild(td3);
+		
+		
+		var td4 = document.createElement("label");
+		td4.setAttribute("for", "I1-b");
+		td4.className = "Cor-LabelOption";
+		td4.style.marginLeft = "0px";
+		td4.style.paddingLeft = "8rem";
+		var labelNo = "Non";
+		td4.innerHTML = labelNo;
+		trRadioButton.appendChild(td4);
+
+		
+		//$('#SettingsCorRef .toggle-outside').addClass('left');
+		
+		tableRadioButton.appendChild(trRadioButton);
+		
+		tdRadioButton.appendChild(tableRadioButton);
+		trRecurringPayments.appendChild(tdRadioButton);
+		
+		/*var divRadioButton = document.createElement("div");
+		divRadioButton.type = "radio";
+		var inputRadioButton = document.createElement("input");
+		// input1.setAttribute("value", "yes");
+		inputRadioButton.id = "I1-a";
+		// input1.setAttribute("checked", "checked");
+		inputRadioButton.type = "radio";
+		inputRadioButton.setAttribute("name", "I1");
+		inputRadioButton.onclick = function fun(e) {
+			if (this.checked = true){
+				$(this).parent().parent().find('.toggle-outside').removeClass('right');
+				$(this).parent().parent().find('.toggle-outside').addClass('left');
+			}  
+		}
+		
+		divRadioButton.appendChild(inputRadioButton);
+		tdRecurringPayments.appendChild(divRadioButton);*/
+		
+		
+		
+		
+		//trRecurringPayments.appendChild(tdRecurringPayments);
+		
+		tableInfoAbn.appendChild(trRecurringPayments);
+		
+		// Prochain prélèvement
+		var trProchPrelevement = document.createElement("tr");
+		var tdLabelrochPrelevement = document.createElement("td");
+		tdLabelrochPrelevement.className = "info-labels-persos";
+		tdLabelrochPrelevement.style.paddingBottom = "7px";
+		tdLabelrochPrelevement.innerHTML = "Prochain prélèvement :";
+		trProchPrelevement.appendChild(tdLabelrochPrelevement);
+		
+		var tdProchPrelevement = document.createElement("td");
+		tdProchPrelevement.id = "Info_ProcPrelevement";
+		tdProchPrelevement.className = "info-persos";
+		tdProchPrelevement.style.fontWeight = "600";
+		tdProchPrelevement.style.color = "#707070";
+		tdProchPrelevement.style.paddingBottom = "7px";
+		tdProchPrelevement.innerHTML = "-";
+		trProchPrelevement.appendChild(tdProchPrelevement);
+		
+		tableInfoAbn.appendChild(trProchPrelevement);
+		
 		
 		blockInfo.firstChild.appendChild(tableInfoAbn);
 		
@@ -3011,8 +3518,12 @@ var Premium = {
 		labelRenouvAbonnement.innerHTML = "JE VEUX RENOUVELER MON ABONNEMENT";	
 		blockInfo.firstChild.appendChild(labelRenouvAbonnement);
 		
+		var divPaymentContAll = document.createElement("div");
+		divPaymentContAll.id = "DivPaymentContAll";
+		
 		// Choix de l'abonnement.
 		var tableChoiceAbonnement = document.createElement("div");
+		tableChoiceAbonnement.id = "tableChoixAbn";
 		
 		// 1 an
 		var tr1An = document.createElement("tr");
@@ -3036,8 +3547,6 @@ var Premium = {
 		tr1An.appendChild(td1AnLabel);
 		
 		tableChoiceAbonnement.appendChild(tr1An);
-
-
 		
 		// 3 mois
 		var tr3Mois = document.createElement("tr");
@@ -3062,9 +3571,6 @@ var Premium = {
 		
 		tableChoiceAbonnement.appendChild(tr3Mois);
 
-
-
-		
 		// 1 mois
 		var tr1Mois = document.createElement("tr");
 		tr1Mois.style.position = "relative";
@@ -3089,16 +3595,15 @@ var Premium = {
 		
 		tableChoiceAbonnement.appendChild(tr1Mois);
 		
-		blockInfo.firstChild.appendChild(tableChoiceAbonnement);
-		
+		divPaymentContAll.appendChild(tableChoiceAbonnement);
 
-
-		
 		// Accord renouvellement automatique
 		var tableAccordAut = document.createElement("table");
+		tableAccordAut.id = "AccordAut";
 		tableAccordAut.className = "grey-border-top";
 		tableAccordAut.style.marginTop = "15px";
 		tableAccordAut.style.marginBottom = "22px";
+		tableAccordAut.style.display = "none";
 		//tableAccordAut.style.marginLeft = "13px";
 		
 		var tdCheckBox = document.createElement("td");
@@ -3118,10 +3623,12 @@ var Premium = {
 		
 		var tdLabelReceiveInfo = document.createElement("td");
 		tdLabelReceiveInfo.style.paddingLeft = "10px";
-		tdLabelReceiveInfo.innerHTML = "Je souhaite renouveler automatiquement mon abonnement (n" + String.fromCharCode(233) + "cessite un compte PayPal).";
+		tdLabelReceiveInfo.style.fontWeight = "600";
+		tdLabelReceiveInfo.style.color = "#707070";
+		tdLabelReceiveInfo.innerHTML = "Je souhaite renouveler automatiquement mon abonnement.";
 		tableAccordAut.appendChild(tdLabelReceiveInfo);
 		
-		blockInfo.firstChild.appendChild(tableAccordAut);
+		divPaymentContAll.appendChild(tableAccordAut);
 		
 		// Accord conditions g�n�rales
 		var tableAccordCondGen = document.createElement("table");
@@ -3144,48 +3651,243 @@ var Premium = {
 		
 		var tdLabelReceiveInfo = document.createElement("td");
 		tdLabelReceiveInfo.style.paddingLeft = "10px";
+		tdLabelReceiveInfo.style.fontWeight = "600";
+		tdLabelReceiveInfo.style.color = "#707070";
 		tdLabelReceiveInfo.innerHTML = "Vous devez accepter les <a href='https://www.scribens.fr/download/CGV_Scribens.txt' target=\"_blank\">conditions g" + String.fromCharCode(233) + "n" + String.fromCharCode(233) + "rales de vente</a> pour continuer.";
 		tableAccordCondGen.appendChild(tdLabelReceiveInfo);
 		
-		blockInfo.firstChild.appendChild(tableAccordCondGen);
+		divPaymentContAll.appendChild(tableAccordCondGen);
+		
+		// Boutons de paiment
+		
+		// Paiement par carte
+		var divButtonCarte = document.createElement("div");
+		divButtonCarte.setAttribute("align", "center");
+		divButtonCarte.style.marginLeft = "115px";
+		divButtonCarte.style.marginTop = "30px";
+		divButtonCarte.style.marginBottom = "5px";
+		divButtonCarte.style.width = "350px";
+		divButtonCarte.style.cursor = "pointer";
+		divButtonCarte.className = "Cor-RedButton2" ;
+		divButtonCarte.onclick = function()
+		{
+			var cbCGV = document.getElementById("CbCGV");
+			if(cbCGV.checked == false)
+			{
+				if(Premium.PopupCGV == null) Premium.PopupCGV = new Util.MessageWindowConfirmation("Vous devez accepter les conditions g" + String.fromCharCode(233) + "n" + String.fromCharCode(233) + "rales pour continuer.", 0, "Avertissement");
+			
+				Premium.PopupCGV.SetVisible(true);
+			}
+			else
+			{
+				if(Premium.PopupPaymentI == null) Premium.PopupPaymentI = new Premium.PopupPayment();
+				
+				document.getElementById("TablePaiement").style.display = "none";
+				document.getElementById("WaitingPanel").style.display = "block";
+				document.getElementById("LabelPaymentInShort").style.display = "none";
+				document.getElementById("SuccessPayment").style.display = "none";
+				document.getElementById("FailurePayment").style.display = "none";
+				
+				Premium.PopupPaymentI.SetVisible(true);
+				
+				// Subscription type
+				Premium.SubscriptionType = "P1M";
+				
+				if(document.getElementById("Radio3Mois").checked == true) Premium.SubscriptionType = "P3M";
+				else if(document.getElementById("Radio1An").checked == true) Premium.SubscriptionType = "P1A";
+				
+				//var checkBoxRenouvAut = document.getElementById("CbRenouvAut");
+				//if(checkBoxRenouvAut != null && checkBoxRenouvAut.checked == true) Premium.SubscriptionType += "_RA";
+				
+				// Launch the request for getitng the client secret key.
+				Util.SendHttpRequest('Payment_Servlet',
+						[['FunctionName', 'Get_CS_PaymentAndSetupIntent'],
+						 ['typeSubscription', Premium.SubscriptionType]],
+						 Premium.Get_CS_PaymentAndSetupIntent);
+			}
+		};
+		
+		divButtonCarte.innerHTML = "<span class='picto-caddie'></span> Paiement par carte";
+		//divButtonCarte.innerHTML = "<img src='images/paiement/paiement-securise-cartes.png' style=\"width:40%;height:40%;margin-right:5px\"> Paiement par carte";
+		//divButtonCarte.innerHTML = "Paiement par carte<img src='images/paiement/paiement-securise-cartes.png' style=\"width:40%;height:40%;margin-left:10px\">";
+		
+		//divButtonCarte.innerHTML = "<img src='images/paiements.jpg'></img> Payer par carte";
+		
+		divPaymentContAll.appendChild(divButtonCarte);
+		
+		// Label "OU"
+		var tableOu = document.createElement("table");
+		
+		var tdLine1 = document.createElement("td");
+		var divLine1 = document.createElement("div");
+		divLine1.style.borderTop = "1px solid #ddd";
+		divLine1.style.width = "273px";
+		divLine1.style.paddingTop = "5px";
+		tdLine1.appendChild(divLine1);
+		tableOu.appendChild(tdLine1);
+		
+		var td2 = document.createElement("td");
+		var divLabelOu = document.createElement("div");
+		divLabelOu.setAttribute("align", "center");
+		divLabelOu.style.marginTop = "10px";
+		divLabelOu.style.marginLeft = "10px";
+		divLabelOu.style.marginRight = "10px";
+		divLabelOu.innerHTML = "<b>OU</b>";
+		td2.appendChild(divLabelOu);
+		tableOu.appendChild(td2);
+		
+		var tdLine3 = document.createElement("td");
+		var divLine3 = document.createElement("div");
+		divLine3.style.borderTop = "1px solid #ddd";
+		divLine3.style.width = "273px";
+		divLine3.style.paddingTop = "5px";
+		tdLine3.appendChild(divLine3);
+		tableOu.appendChild(tdLine3);
+		
+		divPaymentContAll.appendChild(tableOu);
 		
 		// Button PayPal
 		var divButtonPayPal = document.createElement("div");
 		divButtonPayPal.setAttribute("align", "center");
-		//divButtonPayPal.style.marginLeft = "10px";
-		divButtonPayPal.style.cursor = "pointer";
 		divButtonPayPal.id = "IdButtonPayPal";
+		divButtonPayPal.style.marginLeft = "115px";
+		divButtonPayPal.style.marginTop = "15px";
+		divButtonPayPal.style.marginBottom = "10px";
+		divButtonPayPal.style.width = "350px";
+		divButtonPayPal.style.cursor = "pointer";
+		divButtonPayPal.style.backgroundColor = "#f6f6f6";
+		
+		divButtonPayPal.style.borderRadius = "40px";
+		
+		//divButtonPayPal.id = "IdButtonPayPal";
 		divButtonPayPal.className = "Cor-RedButton2" ;
 		divButtonPayPal.onclick = function()
 		{
 			var cbCGV = document.getElementById("CbCGV");
 			if(cbCGV.checked == false)
 			{
-				if(Premium.PopupCGV == null) Premium.PopupCGV = new Util.MessageWindowConfirmation("Vous devez accepter les conditions g" + String.fromCharCode(233) + "n" + String.fromCharCode(233) + "rales pour continuer.", 0);
+				if(Premium.PopupCGV == null) Premium.PopupCGV = new Util.MessageWindowConfirmation("Vous devez accepter les conditions g" + String.fromCharCode(233) + "n" + String.fromCharCode(233) + "rales pour continuer.", 0, "Avertissement");
 			
 				Premium.PopupCGV.SetVisible(true);
 			}
 		};
 		
-		divButtonPayPal.innerHTML = "<span class='picto-caddie'></span> Acheter";
-		blockInfo.firstChild.appendChild(divButtonPayPal);
+		divButtonPayPal.innerHTML = "<img src='images/paiement/PayPal_Gray.png'></img>";
 		
-
-		//partie Logo Paiement
-		var encartLogo = document.createElement("div");
-		encartLogo.id ="encartLogo";
-		imgPaiement = document.createElement("img");
-		imgPaiement.src = "images/paiements.jpg";
+		divPaymentContAll.appendChild(divButtonPayPal);
 		
-
-		//placements 
-		encartLogo.appendChild(imgPaiement);
-		blockInfo.firstChild.appendChild(encartLogo);
+		blockInfo.firstChild.appendChild(divPaymentContAll);
+		
+		// Label payment by android
+		var divLabelPaymentByAndroid = document.createElement("div");
+		divLabelPaymentByAndroid.id = "DivLabelPaymentByAndroid";
+		divLabelPaymentByAndroid.style.display = "none";
+		divLabelPaymentByAndroid.style.height = "166px";
+		
+		divLabelPaymentByAndroid.innerHTML = "<p>Vous avez souscrit à un abonnement sous <b>Android</b>.</p><p>Veuillez effectuer votre paiement à partir de la plateforme <b>Android</b>.</p>";
+		
+		blockInfo.firstChild.appendChild(divLabelPaymentByAndroid);
 
 		
 		return blockInfo;
 	},
 	
+	// Set reucrring payment.
+	Set_RecurringPayment : function(recurringPayment, spanToggle)
+	{
+		var valueBDD = "0";
+		
+		if(recurringPayment == true)
+		{
+			spanToggle.removeClass('right');
+			spanToggle.addClass('left');
+			
+			// Set the label of next payment
+			var label_ProcPrelevement = document.getElementById("Info_ProcPrelevement");
+			if(label_ProcPrelevement != null)
+			{
+				var label_ExpirationDate = document.getElementById("Info_DateExpiration");
+				if(label_ExpirationDate != null)
+				{
+					label_ProcPrelevement.innerHTML = label_ExpirationDate.innerHTML;
+				}
+			}
+			
+			valueBDD = "1";
+		}
+		else
+		{
+			spanToggle.removeClass('left');
+			spanToggle.addClass('right');
+			
+			// Empty date
+			var label_ProcPrelevement = document.getElementById("Info_ProcPrelevement");
+			if(label_ProcPrelevement != null)
+			{
+				label_ProcPrelevement.innerHTML = "-";
+			}
+		}
+		
+		// Update in database "RecurringPayment"
+		Util.SendHttpRequest('Identification_Servlet',
+					[['FunctionName', 'MajData'],
+					 ['DataName', 'RecurringPayment'],
+					 ['DataValue', valueBDD],
+					 ['TableName', 'abonnement_client'],
+					 ['Id', Cor.User.Identifiant]],
+					 null);
+	},
+	
+	// Get CS of payment and setup intent
+	Get_CS_PaymentAndSetupIntent : function(response)
+	{
+		var publishableKey = response[0];
+		
+		// ClientSecret for payment intent
+		Premium.ClientSecret_PaymentIntent = response[1];
+		
+		// ClientSecret for setup intent
+		Premium.ClientSecret_SetupIntent = response[2];
+		
+		document.getElementById("TablePaiement").style.display = "block";
+		document.getElementById("WaitingPanel").style.display = "none";
+		document.getElementById("SuccessPayment").style.display = "none";
+		document.getElementById("FailurePayment").style.display = "none";
+		
+	    // Mount
+	  
+		Premium.Stripe = Stripe(publishableKey);
+		
+		var elts = Premium.Stripe.elements();
+		
+		// Card Element
+		Premium.Card = elts.create("card", {
+			iconStyle: "solid",
+			style: {
+				base: {
+					iconColor: "#b5b5b5",
+					fontWeight: 400,
+					fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+					fontSize: "16px",
+					fontSmoothing: "antialiased",
+					
+					"::placeholder": {
+					  color: "#b5b5b5"
+					},
+					":-webkit-autofill": {
+					  color: "#fce883"
+					}
+				},
+				invalid: {
+					iconColor: "#E25950",
+					color: "#E25950",
+					borderColor: "#E25950"
+				}
+			}
+	    });
+	    Premium.Card.mount("#payment5-card");
+	},
+		
 	// Row of a plugin
 	TrPlugins : function(utilisation, instructionInst, title, imgSrc, imgSrc_Supp, linkDownload)
 	{
@@ -3195,28 +3897,14 @@ var Premium = {
 		var tdUtilisation = document.createElement("td");
 		tdUtilisation.className = "td";
 		tdUtilisation.innerHTML = utilisation;
+		tdUtilisation.style.borderRight = "1px solid #d6d9df";
 		
-		if(title == "Google Chrome")
+		if(title != "Mozilla Firefox" &&
+		  !title.startsWith("Safari"))
 		{
-			tdUtilisation.style.borderbottom = "1px solid #d6d9df";
-			tdUtilisation.style.borderRight = "1px solid #d6d9df";
-		}
-		if(title == "Mozilla Firefox")
-		{
-			tdUtilisation.style.borderbottom = "1px solid #d6d9df";
-			tdUtilisation.style.borderRight = "1px solid #d6d9df";
-		}
-		else if(title == "Safari (Mac)")
-		{
-			tdUtilisation.style.borderbottom = "1px solid #d6d9df";
-			tdUtilisation.style.borderRight = "1px solid #d6d9df";
-			
-		}
-		else{
 			tdUtilisation.style.borderBottom = "1px solid #d6d9df";
 			tdUtilisation.style.borderRight = "1px solid #d6d9df";
 		}
-
 		
 		trPlugin.appendChild(tdUtilisation);
 		
@@ -3247,7 +3935,7 @@ var Premium = {
 				aDownload.innerHTML = "Télécharger";
 				aDownload.onclick = function()
 				{
-					var popup = new Util.MessageWindowConfirmation("Utilisez un navigateur autre que Microsoft Edge pour t" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "charger l'extension sous LibreOffice ou OpenOffice : Google Chrome, Mozilla Firefox, Safari, Internet Explorer, etc.", 0);
+					var popup = new Util.MessageWindowConfirmation("Utilisez un navigateur autre que Microsoft Edge pour t" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "charger l'extension sous LibreOffice ou OpenOffice : Google Chrome, Mozilla Firefox, Safari, Internet Explorer, etc.", 0, "Avertissement");
 					popup.SetVisible(true); 
 				};
 			tdTitle.appendChild(aDownload);
@@ -3296,13 +3984,13 @@ var Premium = {
 				// Bug. Microsoft Edge download an .zip file instead of .oxt. Warn the user to do not use Microsoft Edge.
 				if(((title == "LibreOffice Writer" ) || (title == "OpenOffice Writer" )) && (Cor.IsEdge == true))
 				{
-					var popup = new Util.MessageWindowConfirmation("Utilisez un navigateur autre que Microsoft Edge pour t" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "charger l'extension sous LibreOffice ou OpenOffice : Google Chrome, Mozilla Firefox, Safari, Internet Explorer, etc.", 0);
+					var popup = new Util.MessageWindowConfirmation("Utilisez un navigateur autre que Microsoft Edge pour t" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "charger l'extension sous LibreOffice ou OpenOffice : Google Chrome, Mozilla Firefox, Safari, Internet Explorer, etc.", 0, "Avertissement");
 					popup.SetVisible(true); 
 				}
 				// Normal mode
 				else
 				{
-					var popup = new Util.MessageWindowConfirmation(instructionInst, 0);
+					var popup = new Util.MessageWindowConfirmation(instructionInst, 0, "Instructions d'installation");
 					popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].setAttribute("align", "left");
 					popup.PopupBase.Node.childNodes[1].childNodes[0].childNodes[0].style.fontWeight = "normal";
 					popup.SetVisible(true);
@@ -3383,24 +4071,31 @@ var Premium = {
 		
 		// 2. Firefox
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction sur Internet</p>" +
-													"<p>- Messagerie : Gmail, Hotmail, Outlook.com, Yahoo, Orange, etc.</p>" +
-													"<p>- R" + String.fromCharCode(233) + "seaux sociaux : Facebook, Twitter, LinkedIn, Instagram, etc.</p>" +
-													"<p>- Sites avec zones de texte : LeBonCoin.fr, sites de blogs, forums, formulaires, etc.</p>",
+												   "<p>- Messagerie : Gmail, Hotmail, Outlook.com, Yahoo, Orange, etc.</p>",
 													Premium.Exp_Setup_MozillaFirefox,
 													"Mozilla Firefox",
 													"images/Plugins_logo/logo_firefox2.png",
 													"",
-													"https://addons.mozilla.org/fr/firefox/addon/plugin-scribens-english"));
+													"https://addons.mozilla.org/fr/firefox/addon/scribens-correcteur"));
 		
 		// 3. Safari
-		tablePlugins.appendChild(Premium.TrPlugins("",
+		tablePlugins.appendChild(Premium.TrPlugins("<p>- R" + String.fromCharCode(233) + "seaux sociaux : Facebook, Twitter, LinkedIn, Instagram, etc.</p>" +
+												   "<p>- Sites avec zones de texte : LeBonCoin.fr, blogs, forums, formulaires, etc.</p>",
 													Premium.Exp_Setup_Safari,
 													"Safari (<b>Mac</b>)",
 													"images/Plugins_logo/logo_Safari2.png",
 													"",
 													"https://www.scribens.com/download/Scribens.safariextz"));
+													
+		// 4. Microsoft Edge
+		tablePlugins.appendChild(Premium.TrPlugins("",
+													Premium.Exp_Setup_MSEdge,
+													"Microsoft Edge",
+													"images/Plugins_logo/logo_edge2.png",
+													"",
+													"https://microsoftedge.microsoft.com/addons/detail/aohjlchmgmmhlganagldeekegcofalai"));
 												   
-		// 4. Microsoft Office 2016 for Windows and Mac
+		// 5. Microsoft Office 2016 for Windows and Mac
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de documents Word et de feuilles Excel sous Microsoft Word 2016 et Microsoft Excel 2016. Windows et Mac.</p>",
 													Premium.Exp_Setup_WordExcel_2016,
 													"Word 2016<br>Excel 2016<br><b>Windows</b> et <b>Mac</b>",
@@ -3408,7 +4103,7 @@ var Premium = {
 													"images/Plugins_logo/logo_ExcelOnline2.png",
 													"https://store.office.com/en-ca/app.aspx?assetid=WA104380587"));
 		
-		// 5. Microsoft Office
+		// 6. Microsoft Office
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de documents Word, feuilles Excel, Pr" + String.fromCharCode(233) + "sentations PowerPoint, Emails sous Outlook.</p>",
 													Premium.Exp_Setup_MicrosoftOffice,
 													"Microsoft Office",
@@ -3416,7 +4111,7 @@ var Premium = {
 													"",
 													"https://www.scribens.com/download/Scribens_MicrosoftOffice.exe"));
 		
-		// 6. LibreOffice Writer
+		// 7. LibreOffice Writer
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de documents sous LibreOffice Writer.</p>",
 													Premium.Exp_Setup_LibreOffice,
 													"LibreOffice Writer",
@@ -3424,7 +4119,7 @@ var Premium = {
 													"",
 													"http://extensions.libreoffice.org/extensions/spell-checker-and-grammar-checker-by-scribens"));
 		
-		// 7. OpenOffice Writer
+		// 8. OpenOffice Writer
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de documents sous OpenOffice Writer.</p>",
 												   	Premium.Exp_Setup_OpenOffice,
 												   	"OpenOffice Writer",
@@ -3432,7 +4127,7 @@ var Premium = {
 												   	"",
 												   	"http://extensions.openoffice.org/fr/node/18542"));
 												   
-		// 8. Google Docs
+		// 9. Google Docs
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de documents sous Google Docs.</p>",
 												   	Premium.Exp_Setup_GoogleDocs,
 												   	"Google Docs",
@@ -3440,7 +4135,7 @@ var Premium = {
 												   	"",
 												   	"https://chrome.google.com/webstore/detail/spell-checker-and-grammar/kpopjaeamijjhcgcodlbnoelgihljjkl"));
 		
-		// 9. Google Sheets
+		// 10. Google Sheets
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de feuilles sous Google Sheets.</p>",
 												   	Premium.Exp_Setup_GoogleSheets,
 												   	"Google Sheets",
@@ -3448,7 +4143,7 @@ var Premium = {
 												   	"",
 												   	"https://chrome.google.com/webstore/detail/spell-checker-and-grammar/jenfkmingepgdhdbcmdlgfnhogifjcgh"));
 		
-		// 10. Microsoft Word Online
+		// 11. Microsoft Word Online
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de documents sous Microsoft Word Online et Microsoft Excel Online.</p>",
 												   	Premium.Exp_Setup_WordExcelOnline,
 												   	"Word Online<br>Excel Online",
@@ -3456,7 +4151,15 @@ var Premium = {
 												   	"images/Plugins_logo/logo_ExcelOnline2.png",
 												   	"https://store.office.com/en-ca/app.aspx?assetid=WA104380587"));
 		
-		// 11. Mozilla Thunderbird
+		// 12. Android
+		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction de textes sur Smartphones Android.</p>",
+												   	Premium.Exp_Setup_Android,
+												   	"Android",
+												   	"images/Plugins_logo/logo_Android2.png",
+												   	"",
+												   	"https://play.google.com/store/apps/details?id=com.bleu122.scribens&gl=FR"));
+		
+		// 13. Mozilla Thunderbird
 		tablePlugins.appendChild(Premium.TrPlugins("<p>Correction d'emails sous Mozilla Thunderbird.</p>",
 												   	Premium.Exp_Setup_MozillaThunderbird,
 												   	"Mozilla Thunderbird",
@@ -3473,7 +4176,11 @@ var Premium = {
 		//btnRetourVPremium.style.verticalAlign = "right";
 		//btnRetourVPremium.style.align = "right";
 		btnRetourVPremium.innerHTML = "<span class='picto-star'></span> Version Premium";
-		btnRetourVPremium.onclick = function(){Cor.Handler_VersionPremium(true);}
+		btnRetourVPremium.onclick = function()
+		{
+			window.scrollTo(0, 0);
+			Cor.Handler_VersionPremium(true, "");
+		}
 		btnRetourVPremium.style.width = "max-content";
 		
 		// this.Node.appendChild(btnRetourVPremium);
@@ -3530,12 +4237,10 @@ var Premium = {
 		var panelExtensions = Premium.PanelExtensions();
 		this.Node.appendChild(panelExtensions);
 		
-		
-		
 		document.getElementById('MainDiv').appendChild(this.Node);
 		
 		// Update information account
-		Premium.UpdateInformationsCompte();
+		//Premium.UpdateInformationsCompte();
 	},
 	
 	// D�sinscription
@@ -3550,7 +4255,7 @@ var Premium = {
 			message += "<p><b>Vous perdrez alors votre abonnement Premium.</b></p>";
 		}
 	
-		if(Premium.PopupDesinscriptionI == null) Premium.PopupDesinscriptionI = new Util.MessageWindowConfirmation(message, 2);
+		if(Premium.PopupDesinscriptionI == null) Premium.PopupDesinscriptionI = new Util.MessageWindowConfirmation(message, 2, "Avertissement");
 		
 		Premium.PopupDesinscriptionI.SetVisible(true);
 	},
@@ -3558,6 +4263,8 @@ var Premium = {
 	// Mise � jour du bouton Paypal
 	MajButtonPayPal : function()
 	{
+		if(document.getElementById("Radio1Mois") == null) return;
+		
 		var htmlButtonPayPal = "";
 		
 		// Mise � jour du bouton PayPal	
@@ -3570,7 +4277,7 @@ var Premium = {
 		// Renouvelement automatique
 		var renouvAuto = false;
 		var checkBoxRenouvAut = document.getElementById("CbRenouvAut");
-		if(checkBoxRenouvAut != null && checkBoxRenouvAut.checked == true)
+		if(checkBoxRenouvAut != null && checkBoxRenouvAut.checked == true && Cor.ModeAbonnePremium == false)
 		{
 			renouvAuto = true;
 			typeAbonnement += "_RA";
@@ -3617,10 +4324,17 @@ var Premium = {
 		
 		var cb_CGV = document.getElementById("CbCGV");
 		
+		//buttonPayPal.style.paddingTop = "15px";
+		//buttonPayPal.style.paddingBottom = "15px";
+			
 		// Activation ou d�sactivation
 		if(cb_CGV.checked == true)
 		{
 			$('#IdButtonPayPal').removeClass('Cor-RedButton2');
+			buttonPayPal.style.backgroundColor = "#f6f6f6";
+			//buttonPayPal.style.paddingTop = "15px";
+			//buttonPayPal.style.paddingBottom = "15px";
+			
 			// Live
 			htmlButtonPayPal = "<form action=\"https://www" + sandBoxSt + ".paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_top\">" +
 			"<input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">" +
@@ -3638,16 +4352,16 @@ var Premium = {
 			"<input type=\"hidden\" name=\"custom\" value=\"" + vCustom + "\">" +
 			// Permet d'afficher en grand le paiement sans compte Paypal
 			"<input type=\"hidden\" id=\"pageState\" name=\"pageState\" value=\"billing\">" +
-			"<input id=\"btn-acheter-icon\" class=\"Cor-RedButton2\" type=\"image\" border=\"0\" name=\"submit\" alt=\"Acheter\" value=\"Acheter\">" +
-			//"<input type=\"image\" src=\"images/BtnCommander.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !\">" +
-			"<img alt=\"\" border=\"0\" width=\"1\" height=\"1\">" +
+			//"<input id=\"btn-acheter-icon\" class=\"Cor-RedButton2\" type=\"image\" border=\"0\" name=\"submit\" alt=\"Acheter\" value=\"Acheter\">" +
+			"<input type=\"image\" src=\"images/paiement/PayPal_Gray.png\" style=\"padding-left:134px;padding-right:134px;padding-top:20px;padding-bottom:14px;outline:none;\" border=\"0\" name=\"submit\">" +
+			//"<img alt=\"\" border=\"0\" width=\"1\" height=\"1\">" +
 			"</form>";
 		}
 		else
 		{
 			$('#IdButtonPayPal').addClass('Cor-RedButton2');
 			// En mode disable
-			htmlButtonPayPal = "<span class='picto-caddie'></span> Acheter";/* 		
+			htmlButtonPayPal = "<img src='images/paiement/PayPal_Gray.png'></img>";/* 		
 					"<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_buynowCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - la solution de paiement en ligne la plus simple et la plus s�curis�e !\">" +
 					//"<input type=\"image\" src=\"https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_buynowCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - la solution de paiement en ligne la plus simple et la plus s�curis�e !\">" +	
 					//"<img alt=\"\" border=\"0\" src=\"images/BtnCommander.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - la solution de paiement en ligne la plus simple et la plus s�curis�e !\">" +
@@ -3955,7 +4669,7 @@ var Premium = {
 	
 	// Deconnexion
 	Deconnexion : function()
-	{	
+	{
 		//cache le logo du compte à la deco
 		document.getElementById("compte").remove();
 		// Met à jour les labels des menus
@@ -3964,6 +4678,10 @@ var Premium = {
 		
 		//HIDE ACTIONS BUTTONS IF PREMIUM
 		$('#actions').addClass('hidden');
+		
+		// Show example
+		var divSample = document.getElementById("SampleText");
+		if(divSample != null) divSample.style.display = 'inline-block';
 
 		// Désafficache du sous-menu outil.
 		$('#btnout').addClass('menuprem');
@@ -4016,27 +4734,992 @@ var Premium = {
 			
 			// Hide Style panel
 			var divStyle = document.getElementById("StyleTexte");
-			if(Cor.IsTablet == true) divStyle = document.getElementById("DivStyleStat");
 			divStyle.style.display = "none";
 			
 			// Hide synonym and stat panel
-			if(Cor.IsTablet == false) document.getElementById("InfSup").style.display = "none";
-			
-			if(Cor.IsTablet == true) document.getElementById("Titre").style.paddingTop = "0px";
+			document.getElementById("InfSup").style.display = "none";
 		}
 
 		// Show ads
 		document.getElementById("pub1").style.display = "block";
 		$(".side-pub").css('display', 'block');
-		if(Cor.IdLangue == "fr") $("#pub2").css('display', 'block');
-		if(Cor.IdLangue == "fr" && Cor.IsTablet == false) $("#pub3").css('display', 'block');
+		if(Cor.IdLangue == "fr")
+		{
+			$("#pub2").css('display', 'block');
+			$("#pub3").css('display', 'block');
+		}
 		
 		// Show  title// Non affichage de la partie "Titre".
 		var titreLabel = document.getElementById("TitreLabel");
 		if(titreLabel) titreLabel.style.display = "block";
-
+		
+		// In tablet mode and French, show the button "Copy" and "Paste".
+		if(Cor.IdLangue == "fr" && Cor.IsTablet == true)
+		{
+			$('#copy-clipboard').removeClass('hidden');
+			$('#paste-clipboard').removeClass('hidden');
+		}
+		
 		//HIDE LEFT SIDEBAR ON LOGOUT
 		$('.interface .sidebar').hide();
+	},
+	
+	// Popup de support
+	PopupSupport : function()
+	{
+		this.PopupBase = new Util.PopupBase(1);
+		
+		//this.PopupBase.Node.style.top = "10px";
+		//this.PopupBase.Node.setAttribute("style", "top:10px");
+		this.PopupBase.Node.childNodes[1].style.paddingTop = "10px";
+		
+		// Create title
+		var title = document.createElement("div");
+		title.className = "titre";
+		title.style.paddingLeft = "20px";
+		title.innerHTML = "SUPPORT";
+		
+		this.PopupBase.Node.appendChild(title);
+		
+		var divMain = document.createElement("div");
+		divMain.style.borderRadius = "12px";
+		//divMain.style.width = "400px";
+		
+		// Text area
+		var textArea = document.createElement("textArea");
+		textArea.id = "TextSupportMessage";
+		textArea.style.width = "460px";
+		textArea.style.height = "300px";
+		textArea.style.marginLeft = "20px";
+		textArea.style.marginRight = "20px";
+		textArea.style.marginTop = "45px";
+		textArea.style.marginBottom = "15px";
+		textArea.style.padding = "10px";
+		textArea.style.resize = "none";
+		//textArea.style.display = "none";
+		//textArea.style.textAlign = "center";
+		textArea.placeholder = "Un problème technique ? Une question sur le fonctionnement de notre site ? Tapez ici votre question. Nous traiterons votre demande au plus vite.";
+		textArea.setAttribute("editable", "true");
+		
+		divMain.appendChild(textArea);
+		
+		// Buttons
+		var tableButtons = document.createElement("table");
+		tableButtons.id = "TableButtons";
+		tableButtons.style.backgroundColor = "#f6f6f6";
+		//tableButtons.style.display = "none";
+		
+		var trButtons = document.createElement("tr");
+		
+		// Send button
+		var tdButtonSend = document.createElement("td");
+		
+		var buttonSend = document.createElement('div');
+		buttonSend.className = "Cor-RedButton";
+		buttonSend.style.textAlign = "center";
+		buttonSend.style.width = "200px";
+		buttonSend.style.margin = "20px";
+		buttonSend.style.marginLeft = "30px";
+		buttonSend.innerHTML = "Envoyer";
+		buttonSend.onclick = function()
+		{
+			var eltTextArea = document.getElementById("TextSupportMessage");
+			var eltErrorMissingText = document.getElementById("Error_MissingText");
+			
+			// Empty text -> Error message
+			if(eltTextArea.value.length == 0)
+			{
+				eltErrorMissingText.style.display = "block";
+			}
+			else
+			{
+				// Hide and show elements for sending
+				eltErrorMissingText.style.display = "none";
+				
+				eltTextArea.style.display = "none";
+				var eltButtons = document.getElementById("TableButtons");
+				eltButtons.style.display = "none";
+				
+				document.getElementById("TextMessageSent").style.display = "block";
+				document.getElementById("DivButtonOKContainer").style.display = "block";
+				
+				var messageSt = eltTextArea.value;
+				messageSt = messageSt.replace(/\r?\n/g, '<br>');
+				messageSt = "<p>" +  messageSt + "</p>";
+				
+				// Send the message
+				Util.SendHttpRequest('Identification_Servlet',
+						[['FunctionName', 'SendSupportEmail'],
+						 ['Id', Cor.User.Identifiant],
+						 ['Name', Cor.User.UserName],
+						 ['Message', messageSt]],
+						 null);
+				
+			}
+		}
+		tdButtonSend.appendChild(buttonSend);
+		
+		trButtons.appendChild(tdButtonSend);
+		
+		// Cancel button
+		var tdButtonCancel = document.createElement("td");
+		
+		var buttonCancel = document.createElement('div');
+		buttonCancel.className = "Cor-RedButton cancel";
+		buttonCancel.style.textAlign = "center";
+		buttonCancel.style.width = "200px";
+		buttonCancel.style.margin = "20px";
+		buttonCancel.style.marginRight = "30px";
+		//buttonCancel.style.marginTop = "120px";
+		buttonCancel.innerHTML = "Annuler";
+		
+		var popupBase = this.PopupBase;
+		buttonCancel.onclick = function()
+		{
+			popupBase.SetVisible(false);
+		};
+		
+		tdButtonCancel.appendChild(buttonCancel);
+		
+		trButtons.appendChild(tdButtonCancel);
+		
+		
+		tableButtons.appendChild(trButtons);
+		divMain.appendChild(tableButtons);
+		
+		// Message empty text
+		var divTextNoMessage = document.createElement("div");
+		divTextNoMessage.id = "Error_MissingText";
+		divTextNoMessage.style.display = "none";
+		divTextNoMessage.style.backgroundColor = "#f6f6f6";
+		//divTextNoMessage.style.align = "center";
+		divTextNoMessage.style.paddingLeft = "190px";
+		//divTextNoMessage.style.marginTop = "10px";
+		divTextNoMessage.style.paddingBottom = "30px";
+		divTextNoMessage.innerHTML = "Texte manquant";
+		
+		divMain.appendChild(divTextNoMessage);
+		
+		// Message "message envoyé"
+		var divTextMessageSent = document.createElement("div");
+		divTextMessageSent.id = "TextMessageSent";
+		divTextMessageSent.style.display = "none";
+		divTextMessageSent.style.width = "498px";
+		divTextMessageSent.style.backgroundColor = "#f6f6f6";
+		divTextMessageSent.style.align = "center";
+		//divTextMessageSent.style.paddingLeft = "200px";
+		divTextMessageSent.style.paddingTop = "80px";
+		divTextMessageSent.style.paddingBottom = "30px";
+		divTextMessageSent.style.textAlign = "center";
+		divTextMessageSent.innerHTML = "<p>Merci pour votre message.</p><p></p><p>Nous allons traiter votre demande au plus vite.</p>";
+		divMain.appendChild(divTextMessageSent);
+		
+		// Button "OK"
+		var DivButtonOKContainer = document.createElement("div");
+		DivButtonOKContainer.id = "DivButtonOKContainer";
+		DivButtonOKContainer.style.display = "none";
+		DivButtonOKContainer.style.backgroundColor = "#f6f6f6";
+		DivButtonOKContainer.style.textAlign = "center";
+		DivButtonOKContainer.style.paddingTop = "20px";
+		DivButtonOKContainer.style.paddingBottom = "20px";
+		
+		var divButtonOK = document.createElement("div");
+		divButtonOK.className = "Cor-RedButton";
+		divButtonOK.style.width = "200px";
+		//divButtonOK.style.margin = "20px";
+		divButtonOK.style.marginLeft = "150px";
+		divButtonOK.innerHTML = "OK";
+		divButtonOK.onclick = function()
+		{
+			popupBase.SetVisible(false);
+		};
+		
+		DivButtonOKContainer.appendChild(divButtonOK);
+		divMain.appendChild(DivButtonOKContainer);
+		
+		this.PopupBase.Node.appendChild(divMain);
+		
+		// Set visible
+		this.SetVisible = function(visible)
+		{
+			document.getElementById("TextSupportMessage").style.display = "block";
+			document.getElementById("TableButtons").style.display = "block";
+			document.getElementById("Error_MissingText").style.display = "none";
+			document.getElementById("TextMessageSent").style.display = "none";
+			document.getElementById("DivButtonOKContainer").style.display = "none";
+			
+			this.PopupBase.SetVisible(visible);
+		}
+		
+	    document.body.appendChild(this.PopupBase.Node);
+	},
+	
+	// Popup de paiement
+	PopupPayment : function()
+	{
+		this.PopupBase = new Util.PopupBase(1);
+		
+		//this.PopupBase.Node.style.top = "10px";
+		//this.PopupBase.Node.setAttribute("style", "top:10px");
+		this.PopupBase.Node.childNodes[1].style.paddingTop = "10px";
+		
+		//this.MainDiv.style.height = "295px";
+	
+		// Create title
+		var title = document.createElement("div");
+		title.className = "titre";
+		title.style.paddingLeft = "170px";
+		title.innerHTML = "PAIEMENT PAR CARTE - PAIEMENT SÉCURISÉ<img src='images/paiement/paiement-securise-cartes.png' style='margin-left:20px'></img>";
+
+		this.PopupBase.Node.appendChild(title);
+
+		var divMain = document.createElement("div");
+		divMain.style.width = "928px";
+		//divMain.style.height = "550px";
+		
+		var table = document.createElement("table");
+		table.id = "TablePaiement";
+		table.style.display = "none";
+		table.style.paddingLeft = "30px";
+		table.style.paddingRight = "30px";
+		table.style.paddingBottom = "30px";
+		table.style.paddingTop = "50px";
+		//table.setAttribute("align", "top");
+		table.setAttribute("verticalAlign", "top");
+			
+		// Command details
+		var commandDetails = Premium.Get_PanelCommandDetails();
+		table.appendChild(commandDetails);
+		
+		// Payment details
+		var divPayment = Premium.Get_DivPayment();
+		table.appendChild(divPayment);
+		
+		divMain.appendChild(table);
+		
+		// Waiting panel
+		var waitingPanel = document.createElement('div');
+		waitingPanel.id = "WaitingPanel";
+		waitingPanel.style.textAlign = "center";
+		waitingPanel.style.height = "654px";
+		
+		var waitingImg = document.createElement('div');
+		waitingImg.className = "loader";
+		waitingImg.id = "loader-2";
+		waitingImg.style.top = "160px";
+		waitingPanel.appendChild(waitingImg);
+		
+		// Label : Paiement en cours.
+		var labelPaymentInShort = document.createElement('div');
+		labelPaymentInShort.id = "LabelPaymentInShort";
+		labelPaymentInShort.style.paddingTop = "230px";
+		labelPaymentInShort.style.marginLeft = "25px";
+		labelPaymentInShort.style.fontSize = "22px";
+		labelPaymentInShort.innerHTML = "Paiement en cours...";
+		waitingPanel.appendChild(labelPaymentInShort);
+		
+		divMain.appendChild(waitingPanel);
+		
+		// Sucess payement
+		var successPanel = document.createElement('div');
+		successPanel.id ="SuccessPayment";
+		successPanel.style.display = "none";
+		successPanel.style.height = "654px";
+		successPanel.style.fontSize = "30px";
+		successPanel.style.textAlign = "center";
+		successPanel.style.paddingTop = "100px";
+		successPanel.innerHTML = "<p><b>Votre paiement a bien " + String.fromCharCode(233) + "t" + String.fromCharCode(233) + " effectu" + String.fromCharCode(233) + ".</b></p><p></p><p></p><p><b>Merci !</b></p>";
+		
+		// Button valider
+		var buttonOK_Sucess = document.createElement('div');
+		buttonOK_Sucess.className = "Cor-RedButton";
+		buttonOK_Sucess.style.textAlign = "center";
+		buttonOK_Sucess.style.width = "200px";
+		buttonOK_Sucess.style.marginLeft = "370px";
+		buttonOK_Sucess.style.marginTop = "120px";
+		buttonOK_Sucess.innerHTML = "OK";
+		buttonOK_Sucess.setAttribute("onclick", "location.href='https://www.scribens.fr?key=MonCompte'");
+		successPanel.appendChild(buttonOK_Sucess);
+		
+		divMain.appendChild(successPanel);
+		
+		// Failure payement
+		var failurePanel = document.createElement('div');
+		failurePanel.id ="FailurePayment";
+		failurePanel.style.display = "none";	
+		failurePanel.style.height = "654px";
+		failurePanel.style.fontSize = "30px";
+		failurePanel.style.textAlign = "center";
+		failurePanel.style.paddingTop = "100px";
+		failurePanel.innerHTML = "<p><b>Le paiement a " + String.fromCharCode(233) + "chou" + String.fromCharCode(233) + ".</b></p>";
+		
+		// Button valider
+		var buttonOK_Failure = document.createElement('div');
+		buttonOK_Failure.className = "Cor-RedButton";
+		buttonOK_Failure.style.textAlign = "center";
+		buttonOK_Failure.style.width = "200px";
+		buttonOK_Failure.style.marginLeft = "380px";
+		buttonOK_Failure.style.marginTop = "150px";
+		buttonOK_Failure.innerHTML = "OK";
+		buttonOK_Failure.onclick = function(){Premium.PopupPaymentI.SetVisible(false)};
+		
+		failurePanel.appendChild(buttonOK_Failure);
+		
+		divMain.appendChild(failurePanel);
+		
+		// Set visible
+		this.SetVisible = function(visible)
+		{
+			// Hide the wargin mesage
+			if(visible) document.getElementById("Purchase_MessageWarning").style.display = "none";
+			
+			// MAJ product Id
+			var productPurchaseElt = document.getElementById("product_purchase");
+			
+			var labelProduct = "<b>Produit :</b> ";
+			
+			// Subscription type
+			if(document.getElementById("Radio1Mois").checked == true) labelProduct += "Abonnement Premium Scribens 1 mois";
+			else if(document.getElementById("Radio3Mois").checked == true) labelProduct += "Abonnement Premium Scribens 3 mois";
+			else if(document.getElementById("Radio1An").checked == true) labelProduct += "Abonnement Premium Scribens 1 an";
+			
+			// Renouvellement aut.
+			var checkBoxRenouvAut = document.getElementById("CbRenouvAut");
+			if(checkBoxRenouvAut != null && checkBoxRenouvAut.checked == true && Cor.ModeAbonnePremium == false) labelProduct += " Ren. Aut.";
+			
+			productPurchaseElt.innerHTML = labelProduct;
+
+			this.PopupBase.SetVisible(visible);
+		}
+		
+		this.PopupBase.Node.appendChild(divMain);
+		
+	    document.body.appendChild(this.PopupBase.Node);
+		
+		// Change the design of select elements.
+		$('select').each(function(){
+			var $this = $(this), numberOfOptions = $(this).children('option').length;
+	   
+			$this.wrap('<div class="select ' + $this.attr('class') + '"></div>');
+			$this.addClass('select-hidden');
+			this.parentNode.style.width = "200px";
+			$this.after('<div class="select-styled"></div>');
+			var $styledSelect = $this.next('div.select-styled');
+			$styledSelect.text($this.children('option').eq(0).text());
+			
+			var $list = $('<ul />', {
+				'class': 'select-options'
+			}).insertAfter($styledSelect);
+	   
+			for (var i = 0; i < numberOfOptions; i++) {
+				$('<li />', {
+					text: $this.children('option').eq(i).text(),
+					rel: $this.children('option').eq(i).val()
+				}).appendTo($list);
+				
+				//var v = $this.children('option').eq(i);
+				//var vx = v[0];
+				//vx.style.padding = "6px 15px";
+				//var xx = 1;
+			}
+	   
+			var $listItems = $list.children('li');
+	   
+			$styledSelect.click(function(e) {
+				e.stopPropagation();
+				$('div.select-styled.active').not(this).each(function(){
+					$(this).removeClass('active').next('ul.select-options').hide();
+				});
+				$(this).toggleClass('active').next('ul.select-options').toggle();
+			});
+	   
+			$listItems.click(function(e) {
+				e.stopPropagation();
+				$styledSelect.text($(this).text()).removeClass('active');
+				$this.val($(this).attr('rel'));
+				$list.hide();
+				console.log($(this).text().length * 2 + 10);
+				let newHeight = '42';
+				if ($(this).text().length * 2 > 42 ) {
+					newHeight = $(this).text().length * 2 + 10;
+				}
+				$styledSelect.css('height', newHeight + 'px' );
+				$styledSelect.parent().parent().css('height', newHeight + 'px' );
+			});
+	   
+			$(document).click(function() {
+				$styledSelect.removeClass('active');
+				$list.hide();
+			});
+		});
+		
+		// Select by default "France" as country
+		var selectElt = document.getElementById("Country");
+		//selectElt.parentNode.style.width = "200px";
+		selectElt.value = "France";
+		selectElt.nextSibling.innerHTML = "France";
+		var ul = selectElt.nextSibling.nextSibling;
+		
+		for(var  i = 0; i < ul.childNodes.length; i++)
+		{
+			var li = ul.childNodes[i];
+			li.style.padding = "6px 15px";	
+		}
+		
+		//this.PopupBase.Node.style.top = "10px";
+		//this.PopupBase.Node.setAttribute("style", "top:10px");
+	},
+	
+	// Create the panel of payment
+	Get_DivPayment : function()
+	{
+		// Payment fields
+		var divPayment = document.createElement('td');
+		divPayment.className = "cell payment payment5";
+		divPayment.style.width = "550px";
+		//divPayment.style.marginTop = "20px";
+		
+		var divForm = document.createElement('form');
+		var divFieldset = document.createElement('fieldset');
+		
+		// Mandatory fields
+		var divMandatoryFields = document.createElement('div');
+		divMandatoryFields.style.paddingLeft = "390px";
+		divMandatoryFields.style.fontSize = "12px";
+		divMandatoryFields.innerHTML = "* Champs obligatoires";
+		divFieldset.appendChild(divMandatoryFields);
+		
+		// Name & Last name
+		var tableFullname = document.createElement('table');
+		
+		// Name
+		var tdFieldName = document.createElement('td');
+		var divName = document.createElement('div');
+		divName.style.marginBottom = "10px";
+		divName.style.width = "200px";
+		//tdFieldName.className = "field";
+		
+		var divLabelName = document.createElement('label');
+		divLabelName.for = "payment5-name";
+		divLabelName.setAttribute("data-tid", "elements_examples.form.name_label");
+		divLabelName.style.marginBottom = "-10px";
+		divLabelName.innerHTML = "Prénom *";
+		divName.appendChild(divLabelName);
+		
+		var divInputName = document.createElement('input');
+		divInputName.id = "Name";
+		divInputName.setAttribute("data-tid", "elements_examples.form.name_placeholder");
+		divInputName.className = "input";
+		divInputName.type = "text";
+		divInputName.placeholder = "Patrick";
+		divInputName.required = "";
+		divInputName.autocomplete = "given-name";
+		divName.appendChild(divInputName);
+		
+		tdFieldName.appendChild(divName);
+		tableFullname.appendChild(tdFieldName);
+		
+		// Last name
+		var tdFieldLastName = document.createElement('td');
+		var divLastName = document.createElement('div');
+		divLastName.style.marginBottom = "10px";
+		divLastName.style.width = "200px";
+		//tdFieldLastName.className = "field";
+		
+		var divLabelLastName = document.createElement('label');
+		divLabelLastName.for = "payment5-name";
+		divLabelLastName.setAttribute("data-tid", "elements_examples.form.name_label");
+		divLabelLastName.style.marginBottom = "-10px";
+		divLabelLastName.innerHTML = "Nom *";
+		divLastName.appendChild(divLabelLastName);
+		
+		var divInputLastName = document.createElement('input');
+		divInputLastName.id = "LastName";
+		divInputLastName.setAttribute("data-tid", "elements_examples.form.name_placeholder");
+		divInputLastName.className = "input";
+		divInputLastName.type = "text";
+		divInputLastName.placeholder = "Dubois";
+		divInputLastName.required = "";
+		divInputLastName.autocomplete = "family-name";
+		divLastName.appendChild(divInputLastName);
+		
+		tdFieldLastName.appendChild(divLastName);
+		tableFullname.appendChild(tdFieldLastName);
+		
+		divFieldset.appendChild(tableFullname);
+		
+		// Adresse
+		var divFieldAdresse = document.createElement('div');
+		divFieldAdresse.style.marginBottom = "10px";
+		
+		//divFieldAdresse.className = "field";
+		
+		var divLabelAdresse = document.createElement('label');
+		divLabelAdresse.for = "payment5-name";
+		divLabelAdresse.setAttribute("data-tid", "elements_examples.form.name_label");
+		divLabelAdresse.style.marginBottom = "-10px";
+		divLabelAdresse.innerHTML = "Adresse *";
+		divFieldAdresse.appendChild(divLabelAdresse);
+		
+		var divInputAdresse = document.createElement('input');
+		divInputAdresse.id = "Address";
+		divInputAdresse.setAttribute("data-tid", "elements_examples.form.name_placeholder");
+		divInputAdresse.className = "input";
+		divInputAdresse.type = "text";
+		divInputAdresse.placeholder = "4 rue de la Tulipe";
+		divInputAdresse.autocomplete = "off";
+		divInputAdresse.required = "";
+		divFieldAdresse.appendChild(divInputAdresse);
+		
+		divFieldset.appendChild(divFieldAdresse);
+		
+		// City & Postal code
+		var tableCityCP = document.createElement('table');
+		tableCityCP.style.marginBottom = "8px";
+		
+		// City
+		var tdCity = document.createElement('td');
+		var divFieldCity = document.createElement('div');
+		divFieldCity.style.marginBottom = "10px";
+		divFieldCity.style.width = "200px";
+		
+		var divLabelCity = document.createElement('label');
+		divLabelCity.for = "payment5-name";
+		divLabelCity.setAttribute("data-tid", "elements_examples.form.name_label");
+		divLabelCity.style.marginBottom = "-10px";
+		divLabelCity.autocomplete = "off";
+		divLabelCity.innerHTML = "Ville *";
+		divFieldCity.appendChild(divLabelCity);
+		
+		var divInputCity = document.createElement('input');
+		divInputCity.id = "City";
+		divInputCity.setAttribute("data-tid", "elements_examples.form.name_placeholder");
+		divInputCity.className = "input";
+		divInputCity.type = "text";
+		divInputCity.placeholder = "Bordeaux";
+		divInputCity.autocomplete = "off";
+		divInputCity.required = "";
+		divFieldCity.appendChild(divInputCity);
+		
+		tdCity.appendChild(divFieldCity);
+		tableCityCP.appendChild(tdCity);
+		
+		// Postal code
+		var tdCP = document.createElement('td');
+		var divFieldCP = document.createElement('div');
+		divFieldCP.style.marginBottom = "10px";
+		divFieldCP.style.width = "200px";
+		
+		var divLabelCP = document.createElement('label');
+		divLabelCP.for = "payment5-name";
+		divLabelCP.setAttribute("data-tid", "elements_examples.form.name_label");
+		divLabelCP.style.marginBottom = "-10px";
+		divLabelCP.autocomplete = "off";
+		divLabelCP.innerHTML = "Code postal";
+		divFieldCP.appendChild(divLabelCP);
+		
+		var divInputCP = document.createElement('input');
+		divInputCP.id = "PostalCode";
+		divInputCP.setAttribute("data-tid", "elements_examples.form.name_placeholder");
+		divInputCP.className = "input";
+		divInputCP.type = "text";
+		divInputCP.placeholder = "33000";
+		divInputCP.required = "";
+		divInputCP.autocomplete = "off";
+		divFieldCP.appendChild(divInputCP);
+		
+		tdCP.appendChild(divFieldCP);
+		tableCityCP.appendChild(tdCP);
+		
+		divFieldset.appendChild(tableCityCP);
+		
+		// Country
+		var divCountry = document.createElement('div');
+		//divCountry.style.marginBottom = "5px";
+		
+		// Label
+		var divLabelCountry = document.createElement('div');
+		divLabelCountry.style.fontSize = "13px";
+		divLabelCountry.style.marginBottom = "10px";
+		divLabelCountry.innerHTML = "Pays";
+		divCountry.appendChild(divLabelCountry);
+		
+		// Combobox
+		var divCbCountry = document.createElement('div');
+		divCbCountry.className = "select";
+		divCbCountry.style.width = "200px";
+		var selectCountry = document.createElement('select');
+		selectCountry.className = 'select-pays';
+		selectCountry.style.marginBottom = "120px";
+		selectCountry.id = "Country";
+		
+		for(var i = 0; i < Premium.ArrayPays.length; i++)
+		{
+			var option = document.createElement('option');
+			option.innerHTML = Premium.ArrayPays[i];
+			selectCountry.appendChild(option);
+		}
+		
+		divCbCountry.appendChild(selectCountry);
+		divCountry.appendChild(divCbCountry);
+		
+		divFieldset.appendChild(divCountry);
+		
+		// Company
+		var divFieldCompany = document.createElement('div');
+		divFieldCompany.style.marginBottom = "10px";
+		divFieldCompany.style.width = "200px";
+		
+		var divLabelCompany = document.createElement('label');
+		divLabelCompany.for = "payment5-name";
+		divLabelCompany.setAttribute("data-tid", "elements_examples.form.name_label");
+		divLabelCompany.style.marginBottom = "-10px";
+		divLabelCompany.innerHTML = "Société";
+		divFieldCompany.appendChild(divLabelCompany);
+		
+		var divInputCompany = document.createElement('input');
+		divInputCompany.id = "Company";
+		divInputCompany.setAttribute("data-tid", "elements_examples.form.name_placeholder");
+		divInputCompany.className = "input";
+		divInputCompany.type = "text";
+		divInputCompany.placeholder = "ABC Communication";
+		divInputCompany.required = "";
+		divInputCompany.autocomplete = "off";
+		divFieldCompany.appendChild(divInputCompany);
+		
+		divFieldset.appendChild(divFieldCompany);
+		
+		// Card
+		var divFieldCard = document.createElement('div');
+		
+		var divLabelCard = document.createElement('label');
+		divLabelCard.for = "payment5-card";
+		divLabelCard.setAttribute("data-tid", "elements_examples.form.name_label");
+		divLabelCard.style.marginBottom = "-10px";
+		divLabelCard.innerHTML = "Carte *";
+		divFieldCard.appendChild(divLabelCard);
+		
+		var divInputCard = document.createElement('div');
+		divInputCard.id = "payment5-card";
+		divInputCard.className = "input";
+		divFieldCard.appendChild(divInputCard);
+		
+		divFieldset.appendChild(divFieldCard);
+		
+		// Button Purchase
+		var divButtons = document.createElement('div');
+		divButtons.setAttribute("align", "center");
+		
+		var buttonPurchase = document.createElement('div');
+		buttonPurchase.className = "Cor-RedButton";
+		buttonPurchase.innerHTML = "Payer";
+		buttonPurchase.style.fontSize = "16px";
+		buttonPurchase.style.width = "150px";
+		buttonPurchase.style.textAlign = "center";
+		buttonPurchase.style.marginLeft = "20px";
+		buttonPurchase.style.marginRight = "20px";
+		buttonPurchase.style.marginBottom = "10px";
+		buttonPurchase.style.marginTop = "30px";
+		
+		var popupBase = this;
+		buttonPurchase.onclick = function(){Premium.Purchase_Card();};
+		
+		divButtons.appendChild(buttonPurchase);
+		
+		divFieldset.appendChild(divButtons);
+		
+		// Warning message.
+		var divPurchase_MessageWarning = document.createElement('div');
+		divPurchase_MessageWarning.id = "Purchase_MessageWarning";
+		divPurchase_MessageWarning.style.textAlign = "center";
+		divPurchase_MessageWarning.style.marginTop = "20px";
+		divPurchase_MessageWarning.style.display = "none";
+		//divPurchase_MessageWarning.style.fontSize = "10px";
+		divFieldset.appendChild(divPurchase_MessageWarning);
+		
+		divForm.appendChild(divFieldset);
+		divPayment.appendChild(divForm);
+		
+		return divPayment;
+	},
+	
+	// Command details
+	Get_PanelCommandDetails : function()
+	{
+		var divCommandDetailsCont = document.createElement('td');
+		divCommandDetailsCont.verticalAlign = "top";
+		divCommandDetailsCont.align = "top";
+		
+		var divCommandDetails = document.createElement('div');
+		divCommandDetails.style.border = "1px solid #b5b5b5";
+		divCommandDetails.style.borderRadius = "6px";
+		divCommandDetails.style.paddingLeft = "15px";
+		divCommandDetails.style.paddingRight = "15px";
+		divCommandDetails.style.paddingTop = "11px";
+		divCommandDetails.style.marginRight = "20px";
+		divCommandDetails.style.paddingBottom = "263px";
+		divCommandDetails.style.width = "300px";
+		divCommandDetails.style.height = "574px";
+		//divCommandDetails.style.marginTop = "-10px";
+		
+		// Title
+		var title = document.createElement('div');
+		title.innerHTML = "<b><u>D" + String.fromCharCode(233) + "tails de votre commande :</u></b>";
+		divCommandDetails.appendChild(title);
+		
+		// Product
+		var product = document.createElement('div');
+		product.style.marginTop = "20px";
+		product.id = "product_purchase";
+		product.innerHTML = "<b>Produit :</b>" + " Abonnement Premium 1 mois";
+		divCommandDetails.appendChild(product);
+		
+		// Amount
+		var amount = document.createElement('div');
+		amount.style.marginTop = "20px";
+		amount.innerHTML = "<b>Montant :</b>" + " 5.90 € TTC";
+		divCommandDetails.appendChild(amount);
+		
+		
+		divCommandDetailsCont.appendChild(divCommandDetails);
+		
+		return divCommandDetailsCont;
+	},
+	
+	// Purchase by card
+	Purchase_Card : function()
+	{
+		// First, test values of the form.
+		
+		var name = document.getElementById("Name").value;
+		var lastName = document.getElementById("LastName").value;
+		var addressUser = document.getElementById("Address").value;
+		var cityUser = document.getElementById("City").value;
+		var postalCodeUser = document.getElementById("PostalCode").value;
+		var countryUser = document.getElementById("Country").value;
+		var company = document.getElementById("Company").value;
+		
+		//countryUser = "FRANCE";
+		
+		// Check the datas validity
+		var condName = Util.Condition_Username(name);
+		var condLastName = Util.Condition_Username(lastName);
+		var condAddress = Util.Condition_Address(addressUser);
+		var condCity = Util.Condition_City(cityUser);
+		var condCompany = Util.Condition_Company(company);
+		// No condition on postal code. Depends on different countries.
+		//var condPostalCode = Util.Condition_PostalCode(postalCodeUser);
+		
+		var divMessageWarning = document.getElementById("Purchase_MessageWarning");
+			
+		// Invalid datas. Warn the user.
+		if(condName == false ||
+		   condLastName == false ||
+		   condAddress == false ||
+		   condCity == false ||
+		   condCompany == false)
+		{
+			divMessageWarning.style.display = "block";
+			divMessageWarning.innerHTML = "<p style=\"font-size:5px\"><b>Donn" + String.fromCharCode(233) + "es invalides ou manquantes</b>.</p><p><b>Remarque : </b>les champs ne doivent pas comporter</p><p>les caract" + String.fromCharCode(232) + "res \" <b>'</b> \", \"<b>|</b>\" et \"<b>,</b>\" .</p>";
+		}
+		// Données valides : V�rification si l'identifiant (email) existe d�j�.
+		else
+		{
+			divMessageWarning.style.display = "none";
+			
+			// Load
+			document.getElementById("TablePaiement").style.display = "none";
+			document.getElementById("WaitingPanel").style.display = "block";
+			document.getElementById("LabelPaymentInShort").style.display = "block";
+			document.getElementById("SuccessPayment").style.display = "none";
+			document.getElementById("FailurePayment").style.display = "none";
+			
+			// 1. Init the paYement
+			Premium.Stripe.confirmCardPayment(Premium.ClientSecret_PaymentIntent, {
+			  payment_method: {
+				// Card details
+				card: Premium.Card,
+				// Payment details
+				billing_details: {
+					name: name + " " + lastName,
+					email: Cor.User.Identifiant,
+					address: {
+						line1: addressUser,
+						city: cityUser,
+						// Country: Don't work. Don't need because automaticaly detected with card number.
+						//country: countryUser,
+						postal_code: postalCodeUser
+					}
+				}
+			  }
+			})
+			.then(function(result) {
+			  if (result.error) {
+				// Show error to your customer
+				//showError(result.error.message);
+				Premium.PaymentFailure();
+			  } else {
+				// The payment has been processed.
+				
+				// Save the setup intent
+				Premium.Stripe.confirmCardSetup(Premium.ClientSecret_SetupIntent, {
+					payment_method: {
+					   card: Premium.Card,
+					   billing_details: {
+						   name: name + " " + lastName,
+						   email: Cor.User.Identifiant,
+						   address: {
+						       line1: addressUser,
+							   city: cityUser,
+							   // Country: Don't work. Don't need because automaticaly detected with card number.
+							   //country: countryUser,
+							   postal_code: postalCodeUser
+						   }
+					   }
+				    }
+				})
+				.then(function(result) {
+					if (result.error) {
+					  //changeLoadingState(false);
+					  //var displayError = document.getElementById("card-errors");
+					  //displayError.textContent = result.error.message;
+					  var a = 1;
+					} else {
+					  // The PaymentMethod was successfully setup
+					  // Be sure to attach the PaymentMethod to a Customer as shown by
+					  // the server webhook in this sample
+					  //orderComplete(stripe, setupIntent.client_secret);
+					  Premium.Stripe.retrieveSetupIntent(Premium.ClientSecret_SetupIntent).then(function(result)
+					  {
+						 var setupIntent = result.setupIntent;
+						 var setupIntentJson = JSON.stringify(setupIntent, null, 2);
+
+						 // Inf evolution
+						 var infEvolutions = false;
+						 var cb_infoEvolutions = document.getElementById("Info_InfEvol");
+					     if(cb_infoEvolutions != null) infEvolutions = cb_infoEvolutions.checked;
+						
+						 var recurringPayment = false;
+						 var checkBoxRenouvAut = document.getElementById("CbRenouvAut");
+						 if(checkBoxRenouvAut != null && checkBoxRenouvAut.checked == true && Cor.ModeAbonnePremium == false) recurringPayment = true;
+						
+						 // Send a request to udpate account informations
+						 Util.SendHttpRequest('Payment_Servlet',
+								[['FunctionName', 'Card_Purchase'],
+								 ['id', Cor.User.Identifiant],
+								 ['productId', Premium.SubscriptionType],
+								 ['userName', Cor.User.UserName],
+								 ['infEvolutions', infEvolutions],
+								 ['recurringPayment', recurringPayment],
+								 ['name', name],
+								 ['lastName', lastName],
+								 ['address', addressUser],
+								 ['city', cityUser],
+								 ['postalCode', postalCodeUser],
+								 ['country', countryUser],
+								 ['company', company],
+								 ['setupIntentJson', setupIntentJson]],	
+								 Premium.SuccessPaiementUpdateAccount);
+						 	
+						 /*Util.SendHttpRequest('Save_SetupIntent',
+								[['setupIntentJson', setupIntentJson]],		 
+								 null);*/
+					  });
+					}
+				});
+				
+				
+				//Premium.Stripe.retrievePaymentIntent(Premium.ClientSecret).then(function(result) {
+					//var paymentIntent = result.paymentIntent;
+					//var paymentIntentJson = JSON.stringify(paymentIntent, null, 2);
+					
+					//alert(paymentIntentJson);
+					
+					
+				//});
+			  }
+			});
+			
+			/*Premium.Stripe.confirmCardSetup(Premium.ClientSecret, {
+				payment_method: {
+				   card: Premium.Card,
+				   billing_details: { email: Cor.User.Identifiant }
+				}
+			})
+			.then(function(result) {
+				if (result.error) {
+				  //changeLoadingState(false);
+				  //var displayError = document.getElementById("card-errors");
+				  //displayError.textContent = result.error.message;
+				  var a = 1;
+				} else {
+				  // The PaymentMethod was successfully setup
+				  // Be sure to attach the PaymentMethod to a Customer as shown by
+				  // the server webhook in this sample
+				  //orderComplete(stripe, setupIntent.client_secret);
+				  Premium.Stripe.retrieveSetupIntent(Premium.ClientSecret).then(function(result) {
+					var setupIntent = result.setupIntent;
+					var setupIntentJson = JSON.stringify(setupIntent, null, 2);
+
+					var a = 1;
+
+					
+				  });
+				}
+			});*/
+			
+			
+		}
+		
+		/*Premium.Stripe.confirmCardSetup(Premium.ClientSecret, {
+				payment_method: {
+				   card: Premium.Card,
+				   billing_details: { email: Cor.User.Identifiant }
+				}
+			})
+			.then(function(result) {
+				if (result.error) {
+				  //changeLoadingState(false);
+				  //var displayError = document.getElementById("card-errors");
+				  //displayError.textContent = result.error.message;
+				  var a = 1;
+				} else {
+				  // The PaymentMethod was successfully setup
+				  // Be sure to attach the PaymentMethod to a Customer as shown by
+				  // the server webhook in this sample
+				  //orderComplete(stripe, setupIntent.client_secret);
+				  Premium.Stripe.retrieveSetupIntent(Premium.ClientSecret).then(function(result) {
+					var setupIntent = result.setupIntent;
+					var setupIntentJson = JSON.stringify(setupIntent, null, 2);
+
+					var a = 1;
+
+					Util.SendHttpRequest('Save_SetupIntent',
+							[['setupIntentJson', setupIntentJson]],
+							 null);
+				  });
+				}
+			});*/
+	},
+	
+	// End after update paiement account
+	SuccessPaiementUpdateAccount : function()
+	{
+		// Show onluy the sucess panel.
+		document.getElementById("TablePaiement").style.display = "none";
+		document.getElementById("WaitingPanel").style.display = "none";
+		document.getElementById("SuccessPayment").style.display = "block";
+		document.getElementById("FailurePayment").style.display = "none";
+	},
+	
+	// Payment failure
+	PaymentFailure : function()
+	{
+		// Show onluy the failure panel.
+		document.getElementById("WaitingPanel").style.display = "none";
+		document.getElementById("TablePaiement").style.display = "none";
+		document.getElementById("SuccessPayment").style.display = "none";
+		document.getElementById("FailurePayment").style.display = "block";
 	},
 	
 	// Explanation setup Google Chrome.
@@ -4046,16 +5729,22 @@ var Premium = {
 							 "<p><b>4.</b> Cliquez de nouveau sur l'<b>ic" + String.fromCharCode(244) + "ne Scribens</b> pour obtenir des propositions sur le <b>style</b>.</p>",
 	
 	// Explanation setup Mozilla Firefox.
-	Exp_Setup_MozillaFirefox : "<p><b>1.</b> Allez sur <a href='https://addons.mozilla.org/fr/firefox/addon/plugin-scribens-english' target='_blank'>cette page</a>.</p>" +
-							   "<p><b>2.</b> Cliquez sur <b>Ajouter " + String .fromCharCode(224) + " Firefox</b> puis sur <b>Installer</b>.</p>" +
-							   "<p><b>3.</b> Sur une zone d'un texte d'un site, faites un <b>clic droit</b> -> <b>Scribens</b> -> <b>Fran" + String.fromCharCode(231) + "ais</b></p>",
+	Exp_Setup_MozillaFirefox : "<p><b>1.</b> Allez sur <a href='https://addons.mozilla.org/fr/firefox/addon/scribens-correcteur' target='_blank'>cette page</a>.</p>" +
+							   "<p><b>2.</b> Cliquez sur <b>Ajouter " + String .fromCharCode(224) + " Firefox</b> puis sur <b>Ajouter</b>.</p>" +
+							   "<p><b>3.</b> Sur une zone d'un texte d'un site, faites un <b>clic droit</b> sur l'<b>ic" + String.fromCharCode(244) + "ne Scribens</b> situ" + String.fromCharCode(233) + "e en <b>haut " + String.fromCharCode(224) + " droite</b>.</p>" +
+							   "<p><b>4.</b> Cliquez de nouveau sur l'<b>ic" + String.fromCharCode(244) + "ne Scribens</b> pour obtenir des propositions sur le <b>style</b>.</p>",
 	
 	// Explanation setup Safari.
 	Exp_Setup_Safari : "<p><b>1.</b> T" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "chargez le fichier d'installation <a href='https://www.scribens.com/download/Scribens.safariextz' target='_blank'>ici</a> puis ouvrez-le.</p>" +
 					   "<p><b>2.</b> Cliquez sur le bouton <b>Se fier</b>.</p>" +
 					   "<p><b>3.</b> Cliquez sur la zone de texte d'un site, sur le <b>bouton Scribens</b> en haut, dans la <b>barre des t" + String.fromCharCode(226) + "ches,</b> puis sur <b>Scribens - Fran" + String.fromCharCode(231) + "ais</b>.</p>",
 	
-							
+	// Explanation setup Microsoft Edge.
+	Exp_Setup_MSEdge : "<p><b>1.</b> Allez sur <a href='https://microsoftedge.microsoft.com/addons/detail/aohjlchmgmmhlganagldeekegcofalai' target='_blank'>cette page</a>.</p>" +
+					   "<p><b>2.</b> Cliquez sur <b>Obtenir</b>.</p>" +
+					   "<p><b>3.</b> Sur une zone d'un texte d'un site, faites un <b>clic droit</b> sur l'<b>ic" + String.fromCharCode(244) + "ne Scribens</b> situ" + String.fromCharCode(233) + "e en <b>haut " + String.fromCharCode(224) + " droite</b>.</p>" +
+					   "<p><b>4.</b> Cliquez de nouveau sur l'<b>ic" + String.fromCharCode(244) + "ne Scribens</b> pour obtenir des propositions sur le <b>style</b>.</p>",
+				
 	// Explanation setup Microsoft Office.
 	Exp_Setup_MicrosoftOffice : "<p><b>1.</b> T" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "chargez le fichier d'installation <a href='https://www.scribens.fr/download/Scribens_MicrosoftOffice.exe' target='_blank'>ici</a> puis ouvrez-le.</p>" +
 								"<p><b>2.</b> Suivez les instructions d'installation.</b>" +
@@ -4107,7 +5796,13 @@ var Premium = {
 								"<p><b>2.</b> Entrez alors <b>Scribens</b> puis cliquez sur <b>Ajouter</b>.</p>" +
 								"<p><b>3.</b> Cliquez sur le nouveau bouton <b>Scribens</b> qui appara" + String.fromCharCode(238) + "t alors. S" + String.fromCharCode(233) + "lectionnez les paragraphes " + String.fromCharCode(224) + " corriger puis cliquez sur le <b>bouton de correction</b>.</p>" +
 								"<p><b>4.</b> Pour lancer Scribens, cliquez sur <b>Insertion</b>, puis sur le bouton <b>Scribens</b>.</p>",
-							  
+	
+	// Explanation setup Android
+	Exp_Setup_Android : "<p><b>1.</b> Depuis votre <b>smartphone Android</b>, allez dans le <b>Google Play Store</b>.</p>" +
+						"<p><b>2.</b> Recherchez <b>'Scribens'</b>. Une fois sur la page de l'application, cliquez sur <b>Installer</b> puis sur <b>Ouvrir</b>.</p>" +
+						"<p><b>3.</b> <b>Inscrivez-vous</b> ou <b>connectez-vous</b> à <b>votre compte</b> puis suivez les instructions pour installer le <b>clavier Android</b>.</p>" +
+						"<p><b>4.</b> Dans votre <b>clavier</b>, cliquez sur l'<b>icône Scribens</b> en haut à gauche pour consulter les <b>corrections</b>.</p>",
+		
 	// Explanation setup Mozilla Thunderbird.
 	Exp_Setup_MozillaThunderbird : "<p><b>1.</b> T" + String.fromCharCode(233) + "l" + String.fromCharCode(233) + "chargez le fichier d'installation <a href='https://www.scribens.com/download/Scribens_MozillaThunderbird.exe' target='_blank'>ici</a> puis ouvrez-le.</p>" +
 								   "<p><b>2.</b> Suivez les instructions d'installation.</b>" +
@@ -4116,6 +5811,210 @@ var Premium = {
 								   "<p><b>5.</b> Dans la zone de texte d'un message, faites un <b>clic droit</b> -> <b>Scribens</b> -> <b>Fran" + String.fromCharCode(231) + "ais</b></p>" +
 								   "<p><b>Note :</b></p>" +
 								   "<p>- Le navigateur <b>Google Chrome</b> est requis.</p>" +
-								   "<p>- Si la fen" + String.fromCharCode(234) + "tre du pare-feu de Windows se lance, cliquez sur <b>Autoriser l'acc" + String.fromCharCode(232) + "s.</b>"
+								   "<p>- Si la fen" + String.fromCharCode(234) + "tre du pare-feu de Windows se lance, cliquez sur <b>Autoriser l'acc" + String.fromCharCode(232) + "s.</b>",
+								   
+	ArrayPays : [
+		"Afrique du Sud",
+		"Albanie",
+		"Algérie",
+		"Allemagne",
+		"Andorre",
+		"Angola",
+		"Anguilla",
+		"Antigua-et-Barbuda",
+		"Antilles néerlandaises",
+		"Arabie saoudite",
+		"Argentine",
+		"Arménie",
+		"Aruba",
+		"Australie",
+		"Autriche",
+		"Azerbaïdjan",
+		"Bahamas",
+		"Bahreïn",
+		"Barbade",
+		"Belgique",
+		"Belize",
+		"Bénin",
+		"Bermudes",
+		"Bhoutan",
+		"Biélorussie",
+		"Bolivie",
+		"Bosnie-Herzégovine",
+		"Botswana",
+		"Brésil",
+		"Brunéi Darussalam",
+		"Bulgarie",
+		"Burkina Faso",
+		"Burundi",
+		"Cambodge",
+		"Cameroun",
+		"Canada",
+		"Cap-Vert",
+		"Chili",
+		"Chine",
+		"Chypre",
+		"Colombie",
+		"Comores",
+		"Congo-Brazzaville",
+		"Congo-Kinshasa",
+		"Corée du Sud",
+		"Costa Rica",
+		"Côte d’Ivoire",
+		"Croatie",
+		"Danemark",
+		"Djibouti",
+		"Dominique",
+		"Égypte",
+		"El Salvador",
+		"Émirats arabes unis",
+		"Équateur",
+		"Érythrée",
+		"Espagne",
+		"Estonie",
+		"État de la Cité du Vatican",
+		"États fédérés de Micronésie",
+		"États-Unis",
+		"Éthiopie",
+		"Fidji",
+		"Finlande",
+		"France",
+		"Gabon",
+		"Gambie",
+		"Géorgie",
+		"Gibraltar",
+		"Grèce",
+		"Grenade",
+		"Groenland",
+		"Guadeloupe",
+		"Guatemala",
+		"Guinée",
+		"Guinée-Bissau",
+		"Guyana",
+		"Guyane française",
+		"Honduras",
+		"Hongrie",
+		"Île Norfolk",
+		"Îles Caïmans",
+		"Îles Cook",
+		"Îles Féroé",
+		"Îles Malouines",
+		"Îles Marshall",
+		"Îles Pitcairn",
+		"Îles Salomon",
+		"Îles Turques-et-Caïques",
+		"Îles Vierges britanniques",
+		"Inde",
+		"Indonésie",
+		"Irlande",
+		"Islande",
+		"Israël",
+		"Italie",
+		"Jamaïque",
+		"Japon",
+		"Jordanie",
+		"Kazakhstan",
+		"Kenya",
+		"Kirghizistan",
+		"Kiribati",
+		"Koweït",
+		"La Réunion",
+		"Laos",
+		"Lesotho",
+		"Lettonie",
+		"Liechtenstein",
+		"Lituanie",
+		"Luxembourg",
+		"Macédoine",
+		"Madagascar",
+		"Malaisie",
+		"Malawi",
+		"Maldives",
+		"Mali",
+		"Malte",
+		"Maroc",
+		"Martinique",
+		"Maurice",
+		"Mauritanie",
+		"Mayotte",
+		"Mexique",
+		"Moldavie",
+		"Monaco",
+		"Mongolie",
+		"Monténégro",
+		"Montserrat",
+		"Mozambique",
+		"Namibie",
+		"Nauru",
+		"Népal",
+		"Nicaragua",
+		"Niger",
+		"Nigéria",
+		"Niue",
+		"Norvège",
+		"Nouvelle-Calédonie",
+		"Nouvelle-Zélande",
+		"Oman",
+		"Ouganda",
+		"Palaos",
+		"Panama",
+		"Papouasie-Nouvelle-Guinée",
+		"Paraguay",
+		"Pays-Bas",
+		"Pérou",
+		"Philippines",
+		"Pologne",
+		"Polynésie française",
+		"Portugal",
+		"Qatar",
+		"Hong Kong",
+		"République dominicaine",
+		"République tchèque",
+		"Roumanie",
+		"Royaume-Uni",
+		"Russie",
+		"Rwanda",
+		"Saint-Christophe-et-Niévès",
+		"Saint-Marin",
+		"Saint-Pierre-et-Miquelon",
+		"Saint-Vincent-et-les-Grenadines",
+		"Sainte-Hélène",
+		"Sainte-Lucie",
+		"Samoa",
+		"Sao Tomé-et-Principe",
+		"Sénégal",
+		"Serbie",
+		"Seychelles",
+		"Sierra Leone",
+		"Singapour",
+		"Slovaquie",
+		"Slovénie",
+		"Somalie",
+		"Sri Lanka",
+		"Suède",
+		"Suisse",
+		"Suriname",
+		"Svalbard et Jan Mayen",
+		"Swaziland",
+		"Tadjikistan",
+		"Taïwan",
+		"Tanzanie",
+		"Tchad",
+		"Thaïlande",
+		"Togo",
+		"Tonga",
+		"Trinité-et-Tobago",
+		"Tunisie",
+		"Turkménistan",
+		"Tuvalu",
+		"Ukraine",
+		"Uruguay",
+		"Vanuatu",
+		"Venezuela",
+		"Vietnam",
+		"Wallis-et-Futuna",
+		"Yémen",
+		"Zambie",
+		"Zimbabwe"],
 	
 	};

@@ -9,6 +9,7 @@ div.Cor-boutonOptions
 .margin-top-0{margin-top:0!important}
 .Cor-RedButton
 {
+	white-space: pre;
 	background-color:#ee6e73;
 
 	-moz-border-radius:3px;
@@ -2451,7 +2452,7 @@ text-align: right;
 
 .payment.payment5 input:-webkit-autofill,
 .payment.payment5 select:-webkit-autofill {
-  -webkit-text-fill-color: #fce883;
+  -webkit-text-fill-color: #64676e;
   transition: background-color 100000000s;
   -webkit-animation: 1ms void-animation-out;
 }
@@ -2532,4 +2533,8 @@ text-align: right;
 }
 
 
-
+@media (max-width: 767px) {
+	.Cor-ListSolTr span {
+		font-size: 14px ;
+	}
+}

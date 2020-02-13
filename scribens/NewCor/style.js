@@ -71,6 +71,9 @@ Vect_PossibleRegisters : [],
 // NonAffichage
 AffPanNonAffichage : false,
 
+// Stat view
+StatView : false,
+
 // Set if the panel has been initialized
 Initialized : false,
 
@@ -78,32 +81,29 @@ Initialized : false,
 Init : function()
 {
 	// Set the default options with the languege
-	if(Cor.IdLangue == 'en') Style.OptionsStyleSt = 'RepMin:3|GapRep:3|AllWords:0|FamilyWords:0|MinPhLg:30|MinPhCt:5|Ttr:300|Tts:130';
+	//if(Cor.IdLangue == 'en') Style.OptionsStyleSt = 'RepMin:3|GapRep:3|AllWords:0|FamilyWords:0|MinPhLg:30|MinPhCt:5|Ttr:300|Tts:130';
 
 	if(Cor.IsMobile == true) return;
 
-	if(Cor.IsTablet == false)
+	// Hide the right panel
+	if(Cor.IdLangue == 'fr') document.getElementById("InfSup").style.display = "none";
+	
+	var divStyle = document.getElementById("StyleTexte");
+	//divStyle.style.display = "block";
+	//divStyle.style.visibility = "visible";
+	
+	if(Cor.IdLangue == 'fr')
 	{
-		// Hide the right panel
-		if(Cor.IdLangue == 'fr') document.getElementById("InfSup").style.display = "none";
+		//if(Plugins.Type == null) divStyle.style.paddingTop = "136px";
+		//else divStyle.style.paddingTop = "66px";
+	}
+	else if(Cor.IdLangue == 'en')
+	{
+		//if(Plugins.Type == null) divStyle.style.paddingTop = "124px";
+		//else divStyle.style.paddingTop = "66px";
 		
-		var divStyle = document.getElementById("StyleTexte");
-		//divStyle.style.display = "block";
-		//divStyle.style.visibility = "visible";
-		
-		if(Cor.IdLangue == 'fr')
-		{
-			//if(Plugins.Type == null) divStyle.style.paddingTop = "136px";
-			//else divStyle.style.paddingTop = "66px";
-		}
-		else if(Cor.IdLangue == 'en')
-		{
-			//if(Plugins.Type == null) divStyle.style.paddingTop = "124px";
-			//else divStyle.style.paddingTop = "66px";
-			
-			// Descend la pub
-			document.getElementById("pub3En").style.paddingTop = "0px";
-		}
+		// Descend la pub
+		document.getElementById("pub3En").style.paddingTop = "0px";
 	}
 	
 	// Panel marques
@@ -122,14 +122,11 @@ Init : function()
 	Style.AddChoiceStyle();
 	
 	// Create the div display style.
-	if(Cor.IsTablet == false)
-	{
-		var divDisplayStyle = document.createElement("div");
-		divDisplayStyle.id = "DivDisplayStyle";
-		divDisplayStyle.style.padding = "7px";
-		divDisplayStyle.style.border = "1px solid #EDEDED";
-		document.getElementById("StyleTexte").appendChild(divDisplayStyle);
-	}
+	var divDisplayStyle = document.createElement("div");
+	divDisplayStyle.id = "DivDisplayStyle";
+	divDisplayStyle.style.padding = "7px";
+	divDisplayStyle.style.border = "1px solid #EDEDED";
+	document.getElementById("StyleTexte").appendChild(divDisplayStyle);
 	
 	// Add no remark block
 	Style.AddNoRemarkBlock();
@@ -166,8 +163,6 @@ Init : function()
 
 AddPanelMarques : function()
 {
-	if(Cor.IsTablet == true) return;
-
 	Style.DivMarques = document.getElementById("DivMarques");
 	Style.DivMarques.className = "Transf-PanelMarques";
 	Style.DivMarques.style.paddingLeft = "0px";
@@ -188,7 +183,6 @@ AddChoiceStatSyn : function()
 	var divChoiceStatSyn = document.getElementById("ChoiceStatSyn");
 	divChoiceStatSyn.className = "Transf-CadreGridSyn hidden";
 	divChoiceStatSyn.style.height = '48px';
-	if(Cor.IsTablet == true) divChoiceStatSyn.style.width = "156px";
 	divChoiceStatSyn.style.zIndex = '5';
 	
 	// Choice
@@ -220,23 +214,28 @@ AddChoiceStatSyn : function()
 	//checkBoxSyn.style.zIndex = '5';
 	checkBoxSyn.style.marginTop = "5px";
 	checkBoxSyn.id = "checkBoxSyn";
-	checkBoxSyn.onclick = function(){click_stat_fct();}
+	checkBoxSyn.onclick = function(){syn_fct();}
 	
 	td00.onclick = function()
 	{
-		if(checkBoxSyn.checked == false) {
-			
+		Style.StatView = false;
+		
+		if(checkBoxSyn.checked == false)
+		{	
 			checkBoxSyn.checked = true;
+			
+			if(!this.parentNode.className.includes('active'))
+			{
+				syn_fct();
+			}
 		}
 		else {
 			checkBoxSyn.checked = false;
 		}
-		
-		click_stat_fct();
 	}
 	
 	
-	var click_stat_fct = function()
+	var syn_fct = function()
 	{
 		if(checkBoxSyn.checked == true)
 		{
@@ -301,6 +300,8 @@ AddChoiceStatSyn : function()
 	td10.appendChild(divTextStat);
 	tr1.appendChild(td10);
 	
+	// To simplify
+	
 	// Check box Stats
 	var td11 = document.createElement("td");
 	var checkBoxStat = document.createElement("input");
@@ -309,17 +310,25 @@ AddChoiceStatSyn : function()
 	//checkBoxStat.setAttribute("value", "on");
 	checkBoxStat.style.marginTop = "10px";
 	checkBoxStat.id = "checkBoxStat";
-	checkBoxStat.onclick = function(){click_syn_fct();}
+	checkBoxStat.onclick = function(){stat_fct();}
 	
 	td10.onclick = function()
 	{
-		if(checkBoxStat.checked == false) checkBoxStat.checked = true;
-		else checkBoxStat.checked = false;
+		Style.StatView = true;
 		
-		click_syn_fct();
+		if(checkBoxStat.checked == false)
+		{
+			checkBoxStat.checked = true;
+			
+			if(!this.parentNode.className.includes('active'))
+			{
+				stat_fct();
+			}
+		}
+		else checkBoxStat.checked = false;
 	}
 	
-	var click_syn_fct = function()
+	var stat_fct = function()
 	{
 		if(checkBoxStat.checked == true)
 		{
@@ -327,7 +336,7 @@ AddChoiceStatSyn : function()
 			// Disable the syn check box
 			var checkBoxSyn = document.getElementById("checkBoxSyn");
 			checkBoxSyn.checked = false;
-
+			
 			document.getElementById('style-checkbox').checked = false;
 			document.getElementById('checkBoxSyn').parentNode.parentNode.classList.remove('active');
 			document.getElementById('style-checkbox').parentNode.parentNode.classList.remove('active');
@@ -347,7 +356,6 @@ AddChoiceStatSyn : function()
 				setTimeout(function(){
 					$('.Stat-StatTextePanel .scrollbar').attr('data-simplebar', 'init');
 			}, 100);
-			
 
 			// Launch the check if sentence changed.
 			if(Cor.SetIdPhModifies.size > 0) Stat.UpdatedStat = false;
@@ -378,28 +386,17 @@ AddChoiceStatSyn : function()
 	
 	divChoiceStatSyn.appendChild(tableChoice);
 	
-	//checkBoxStat.style.paddingTop = "3px";
 	td11.appendChild(checkBoxStat);
 	tr1.appendChild(td11);
-	
-	/*if(Cor.IsTablet == false) document.getElementById("TextAreaComp").appendChild(td);	// TODO X
-	else document.getElementById("stat-syn").appendChild(td);*/
 },
 
 AddSynPanel : function()
 {
 	Style.PanelSynI = new Style.PanelSyn();
 	
-	if(Cor.IsTablet == false)
-	{
-		// var divStyleSyn = document.getElementById("DivStyleSyn");
-		var divStyleSyn = document.getElementById("StyleTexte");
-		divStyleSyn.appendChild(Style.PanelSynI.Node);
-	}
-	else
-	{
-		document.getElementById("stat-syn").appendChild(Style.PanelSynI.Node);
-	}
+	// var divStyleSyn = document.getElementById("DivStyleSyn");
+	var divStyleSyn = document.getElementById("StyleTexte");
+	divStyleSyn.appendChild(Style.PanelSynI.Node);
 },
 
 AddSeparateurs : function()
@@ -440,8 +437,6 @@ AddSeparateurs : function()
 // Add choice style block
 AddChoiceStyle : function()
 {
-	if(Cor.IsTablet == true) return;
-
 	var panelStyle = document.getElementById("StyleTexte");
 	
 	var divChoiceStyle = document.createElement("div");
@@ -491,9 +486,18 @@ AddChoiceStyle : function()
 		StyleClickCheckboxfunction();
 	}
 	td0.onclick = function(){
-		if(checkBoxStyle.checked == false) checkBoxStyle.checked = true;
+		
+		Style.StatView = false;
+		
+		if(checkBoxStyle.checked == false)
+		{
+			checkBoxStyle.checked = true;
+			if(!this.parentNode.className.includes('active'))
+			{
+				StyleClickCheckboxfunction();
+			}
+		}
 		else checkBoxStyle.checked = false;
-		StyleClickCheckboxfunction();
 	}
 	
 	var StyleClickCheckboxfunction = function()
@@ -569,18 +573,10 @@ AddNoRemarkBlock : function()
 	if(Cor.IdLangue == 'en') label = "No suggestion";
 	setTimeout(function() {
 		labelNoRemark.innerHTML = label;
-		}, 5000);
+	}, 5000);
 
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(labelNoRemark);
-	}
-	else
-	{
-		var divRep = document.getElementById("style-rep");
-		divRep.appendChild(labelNoRemark);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(labelNoRemark);
 },
 
 // Add repetition block
@@ -687,16 +683,8 @@ AddRepetitionBlock : function()
 	
 	divRepetitions.appendChild(divWordRepetition2);
 	
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divRepetitions);
-	}
-	else
-	{
-		var divRep = document.getElementById("style-rep");
-		divRep.appendChild(divRepetitions);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divRepetitions);
 },
 
 // Add rephrase block
@@ -743,16 +731,8 @@ AddRephraseBlock : function()
 	Style.Map_PanelRb.set("RbRephrase_wordreducing", rbRephrase_ReducingWords);
 	divRephrase.appendChild(rbRephrase_ReducingWords.Node);
 	
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divRephrase);
-	}
-	else
-	{
-		var divStyleGen = document.getElementById("style-gen");
-		divStyleGen.appendChild(divRephrase);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divRephrase);
 },
 
 // Add vocabulary enhancement block
@@ -795,16 +775,8 @@ AddVocabularyEnhancement : function()
 	Style.Map_PanelRb.set("RbVocabulary_enhancement", rbVocabularyEnhancement);
 	divVocabularyEnhancement.appendChild(rbVocabularyEnhancement.Node);
 	
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divVocabularyEnhancement);
-	}
-	else
-	{
-		var divStyleGen = document.getElementById("style-gen");
-		divStyleGen.appendChild(divVocabularyEnhancement);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divVocabularyEnhancement);
 },
 
 // Add Subjectivity block
@@ -859,16 +831,8 @@ AddSubjectivity : function()
 	Style.Map_PanelRb.set("RbSubjectivity_Pejorative", rbSubjectivity_Pejorative);
 	divSubjectivity.appendChild(rbSubjectivity_Pejorative.Node);
 	
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divSubjectivity);
-	}
-	else
-	{
-		var divStyleGen = document.getElementById("style-gen");
-		divStyleGen.appendChild(divSubjectivity);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divSubjectivity);
 },
 
 // Add suggestion solutions block
@@ -930,16 +894,8 @@ AddSuggestionSolBlock : function()
 		divSuggestionSol.appendChild(rbPhonetique.Node);
 	}
 	
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divSuggestionSol);
-	}
-	else
-	{
-		var divStyleGen = document.getElementById("style-gen");
-		divStyleGen.appendChild(divSuggestionSol);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divSuggestionSol);
 },
 
 // Add sentence block
@@ -1013,16 +969,8 @@ AddSentenceBlock : function()
 	Style.Map_PanelRb.set("RbParenthesisSentence", rbPhParenthesis);
 	divSentences.appendChild(rbPhParenthesis.Node);
 
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divSentences);
-	}
-	else
-	{
-		var divStyleGen = document.getElementById("style-gen");
-		divStyleGen.appendChild(divSentences);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divSentences);
 },
 
 // Add register block
@@ -1060,16 +1008,8 @@ AddRegisterBlock : function()
 	
 	divRegistre.appendChild(rbCliches.Node);
 	
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divRegistre);
-	}
-	else
-	{
-		var divStyleGen = document.getElementById("style-gen");
-		divStyleGen.appendChild(divRegistre);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divRegistre);
 },
 
 // Add no showing block
@@ -1136,16 +1076,8 @@ AddNoShowingBlock : function()
 	
 	divNoShowing.appendChild(table);
 	
-	if(Cor.IsTablet == false)
-	{
-		var panelStyle = document.getElementById("DivDisplayStyle");
-		panelStyle.appendChild(divNoShowing);
-	}
-	else
-	{
-		var divStyleGen = document.getElementById("style-gen");
-		divStyleGen.appendChild(divNoShowing);
-	}
+	var panelStyle = document.getElementById("DivDisplayStyle");
+	panelStyle.appendChild(divNoShowing);
 },
 
 // Deselect the last row
@@ -1226,30 +1158,6 @@ OnSuccessStyle : function(styleText)
 		
 		// Fill the informations about the style
 		Style.FillStyle(styleText);
-		
-		/*PresentationTransf.PanelMarques.clear();
-		
-		if(Cor.TabPanel.getWidgetIndex(Cor.TabPanel.getActiveWidget()) == 1)
-		{
-			PresentationTransf.TransfTextePanel.setVisible(true);
-			PresentationTransf.PanelMarques.setVisible(true);
-			PresentationTransf.VPanelSyn.setVisible(true);
-			
-			// S'il n'y a aucne répétition, il faut tout désurligner
-			if((PresentationTransf.GridRep.Grid.getRowCount() == 0) &&
-			   (PresentationTransf.GridRep2mPh.Grid.getRowCount() == 0))
-			{
-				PresentationTransfUtil.DeSurligne();
-			}
-			
-			// Surligne les 1er mots.
-			PresentationTransf.SurligneFirstRep();
-		}
-		
-		// Cache la liste des synonymes de la grid des synonymes. Clear n'enlève pas les labels HTML.
-		PresentationTransf.ScrollPanGridSyn.setVisible(false);
-		PresentationTransf.LabelNoSyn.setVisible(true);*/
-		
 	}
 },
 
@@ -2149,7 +2057,7 @@ FillRegisters : function()
 	if(nbRows > 0)
 	{
 		Style.TableReg = new Util.TableType(nbRows, 0);
-		Style.TableReg.id = "TableReg";
+		Style.TableReg.Node.id = "TableReg";
 		//Style.TableReg.Node.align = "center";		// A faire ?
 		
 		// Fill the grid
@@ -2399,20 +2307,7 @@ UpdateStyle : function(chId)
 				}
 				if(expressionSol.Type.indexOf("Register") == 0)
 				{
-					var registerTypeSt = expressionSol.Type.substring(9, expressionSol.Type.length);
-					
-					for(var v = 0; v < Style.TableReg.Node.childNodes.length; v++)
-					{
-						var row = Style.TableReg.Node.childNodes[v];
-					
-						if(row.childNodes[0].innerHTML == registerTypeSt)
-						{
-							var number = parseInt(row.childNodes[1].innerHTML);
-							
-							row.childNodes[1].innerHTML = number - 1;
-						}
-					
-					}
+					Style.Update_Registers(expressionSol);
 				}
 				
 				delete Style.StyleText.Map_ExpressionSol[id];
@@ -2763,6 +2658,70 @@ UpdateRep : function(setSupp_SousGroupeRep, setSupp_SousGroupeRep2mPh)
 			}
 			
 			nodeRow.childNodes[1].innerHTML = nbRep;
+			
+			// If no more repetitions, then hide the row.
+			if(nbRep <= 0)
+			{
+				//nodeRow.style.display = "none";
+				nodeRow.hidden = true;
+			}
+		}
+		
+		// If no more rows in the table, then hide the table.
+		var cntRowShown = 0;
+		for(var i = 0; i < Style.TableRep.Node.childNodes.length; i++)
+		{
+			var nodeRow = Style.TableRep.Node.childNodes[i];
+			//if(nodeRow.style.display == "block")
+			if(nodeRow.hidden == false)
+			{
+				cntRowShown++;
+			}
+		}
+		
+		if(cntRowShown == 0)
+		{
+			document.getElementById("DivWordRepetitions").style.display = "none";
+			
+			// If panelRb of Redundancy is not displayed, then hide all the repetitions block.
+			var panelRbShown = false;
+			var divRepetitions = document.getElementById("DivRepetitions");
+			for(var i = 0; i < divRepetitions.childNodes.length; i++)
+			{
+				var childNodes = divRepetitions.childNodes[i];
+				if(childNodes instanceof Util.PanelRb)
+				{
+					if(childNodes.style.display == "block")
+					{
+						panelRbShown = true;
+					}
+				}
+			}
+			
+			if(panelRbShown == false)
+			{
+				divRepetitions.style.display = "none";
+				
+				// If no more panel in style panel, then hide it and show "no remarks".
+				var divDisplayStyle = document.getElementById("DivDisplayStyle");
+				var cntDivShown = 0;
+				var divNoShowingShown = false;
+				for(var i = 0; i < divDisplayStyle.childNodes.length; i++)
+				{
+					var divStyle = divDisplayStyle.childNodes[i];
+					if(divStyle.style.display == "block")
+					{
+						cntDivShown++;
+						if(divStyle.id == "DivNoShowing") divNoShowingShown = true;
+					}
+				}
+				
+				if(cntDivShown == 1 && divNoShowingShown)
+				{
+					document.getElementById("DivNoShowing").style.display = "none";
+					document.getElementById("LabelNoRemark").style.display = "block";
+				}
+			}
 		}
 	}
 	
@@ -2886,13 +2845,94 @@ UpdateRep : function(setSupp_SousGroupeRep, setSupp_SousGroupeRep2mPh)
 	
 },
 
+// Update registers
+Update_Registers : function(expressionSol)
+{
+	var registerTypeSt = expressionSol.Type.substring(9, expressionSol.Type.length);
+	
+	for(var v = 0; v < Style.TableReg.Node.childNodes.length; v++)
+	{
+		var row = Style.TableReg.Node.childNodes[v];
+	
+		if(row.childNodes[0].innerHTML == registerTypeSt)
+		{
+			var number = parseInt(row.childNodes[1].innerHTML);
+			
+			row.childNodes[1].innerHTML = number - 1;
+			
+			if((number - 1) <= 0)
+			{
+				row.hidden = true;
+			}
+			
+		}
+	}
+	
+	// If no more rows in the table, then hide the table.
+	var cntRowShown = 0;
+	for(var i = 0; i < Style.TableReg.Node.childNodes.length; i++)
+	{
+		var nodeRow = Style.TableReg.Node.childNodes[i];
+		//if(nodeRow.style.display == "block")
+		if(nodeRow.hidden == false)
+		{
+			cntRowShown++;
+		}
+	}
+	
+	if(cntRowShown == 0)
+	{
+		document.getElementById("TableReg").style.display = "none";
+		
+		// If no panelRb is not displayed, then hide all the register block.
+		var panelRbShown = false;
+		var divRegister = document.getElementById("DivRegister");
+		for(var i = 0; i < divRegister.childNodes.length; i++)
+		{
+			var childNodes = divRegister.childNodes[i];
+			if(childNodes instanceof Util.PanelRb)
+			{
+				if(childNodes.style.display == "block")
+				{
+					panelRbShown = true;
+				}
+			}
+		}
+		
+		if(panelRbShown == false)
+		{
+			divRegister.style.display = "none";
+			
+			// If no more panel in style panel, then hide it and show "no remarks".
+			var divDisplayStyle = document.getElementById("DivDisplayStyle");
+			var cntDivShown = 0;
+			var divNoShowingShown = false;
+			for(var i = 0; i < divDisplayStyle.childNodes.length; i++)
+			{
+				var divStyle = divDisplayStyle.childNodes[i];
+				if(divStyle.style.display == "block")
+				{
+					cntDivShown++;
+					if(divStyle.id == "DivNoShowing") divNoShowingShown = true;
+				}
+			}
+			
+			if(cntDivShown == 1 && divNoShowingShown)
+			{
+				document.getElementById("DivNoShowing").style.display = "none";
+				document.getElementById("LabelNoRemark").style.display = "block";
+			}
+		}
+	}
+},
+
 // Affiche les marques sur la droite
 ShowMarques : function(tabId)
 {
 	Style.EltTopPos = 1000000;
 
 	// Clear marques.
-	if(Cor.IsTablet == false) Style.DivMarques.innerHTML = "";
+	Style.DivMarques.innerHTML = "";
 	
 	// 1. Connaitre le dernier offset
 	var doc = TextEditor.Document;
@@ -2924,11 +2964,8 @@ ShowMarques : function(tabId)
 	
 		var indP = TextEditor.GetIndP(eltU.id);
 		
-		if(Cor.IsTablet == false)
-		{
-			var marque = new Style.Marque(posY, offSetTop, indP, eltU.id);
-			Style.DivMarques.appendChild(marque.DivMarque);
-		}
+		var marque = new Style.Marque(posY, offSetTop, indP, eltU.id);
+		Style.DivMarques.appendChild(marque.DivMarque);
 	}
 	
 	// Scroll to pos top

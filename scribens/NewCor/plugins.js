@@ -833,7 +833,7 @@ public static class AuthenticationHandlerDecompositionTexte<T> implements AsyncC
 		
 		if(Cor.IdLangue == "en") message = "Unable to replace the text. The text has been rechecked.";
 		
-		var popup = new Util.MessageWindowConfirmation(message, 0);
+		var popup = new Util.MessageWindowConfirmation(message, 0, "Avertissement");
 		popup.SetVisible(true);
 	},
 

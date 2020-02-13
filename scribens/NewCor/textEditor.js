@@ -111,7 +111,11 @@ GetTotalContent : function(firstRequest)
 				else textHtml = textHtml + nodePhrase.textContent;
 			}
 		}
+		
+		textHtml += '</p><p>';
 	}
+	
+	if(textHtml.endsWith('<br>')) textHtml = textHtml.substring(0, textHtml.length - 4);
 	
 	// Bug : lors de la 1ere requête, lorsque la frame n'est pas encore charg�e, le textHTML peut �tre vide. On alors TextEditor.Document.body = text + <p></p>
 	if(textHtml.length == 0 && firstRequest == true)
@@ -238,9 +242,10 @@ ClickOnText : function(pos_X, pos_Y)
 						if (motSolution.ExplicationSolution != "<p>Mot inconnu du dictionnaire.</p>" && motSolution.ExplicationSolution != "<p>Cet ensemble de mot est incorrect.</p>" ) {
 							if ($('.Cor-PopupPanelListeSol.open').is(':visible')) {
 								$('.Cor-PopupPanelExpSol.open').css('top', $('.Cor-PopupPanelListeSol.open').offset().top + $('.Cor-PopupPanelListeSol.open').outerHeight() + 15 );
-							} else {
-								$('.Cor-PopupPanelExpSol.open').css('top', pos_Y + $('.Cor-PopupPanelListeSol.open').outerHeight() + 15 );
 							}
+							//else {
+							//	$('.Cor-PopupPanelExpSol.open').css('top', pos_Y + $('.Cor-PopupPanelListeSol.open').outerHeight() + 15 );
+							//}
 						} else {
 							if ($('.Cor-PopupPanelListeSol.open').is(':visible')) {
 								$('.Cor-PopupPanelExpSol.open').css('top', $('.Cor-PopupPanelListeSol.open').offset().top + $('.Cor-PopupPanelListeSol.open').outerHeight() + 15 );
@@ -2607,41 +2612,80 @@ Init_TextArea : function()
 		if(!(Cor.IsIOS == true && (Cor.IsMobile == true || Cor.IsTablet == true))) cssLink.href = "Css/TextEditor_mobile.css";
 		else cssLink.href = "Css/TextEditor_mobile_ios.css";
 	}
-	else if(Cor.IsTablet == true)
-	{
-		if(!(Cor.IsIOS == true && (Cor.IsMobile == true || Cor.IsTablet == true))) cssLink.href = "Css/TextEditor_tablet.css";
-		else cssLink.href = "Css/TextEditor_tablet_ios.css";
-	}
-	cssLink.rel = "stylesheet"; 
-	cssLink.type = "text/css"; 
-	TextEditor.Document.childNodes[0].childNodes[0].appendChild(cssLink);
+	else if(Cor.IsIOS == true && (Cor.IsMobile == true || Cor.IsTablet == true)) cssLink.href = "Css/TextEditor_tablet_ios.css";
 	
-	if(!(Cor.IsIOS == true && (Cor.IsMobile == true || Cor.IsTablet == true)))
-	{
-		// Init the document with an empty paragraph.
-		TextEditor.Document.body.innerHTML = "<p></p>";
-	}
-	// iPhone and iPad. Ask to the user to paste
-	else
-	{
-		if(Cor.IdLangue == 'fr') TextEditor.Document.body.innerHTML = "<p>Collez votre texte ici.</p>";
-		else if(Cor.IdLangue == 'en') TextEditor.Document.body.innerHTML = "<p>Paste your text here.</p>";
-	}
+	cssLink.rel = "stylesheet"; 
+	cssLink.type = "text/css";
+	
+	// On load of the text area, put the placeholder.
+	cssLink.onload = function(){
+		if(!(Cor.IsIOS == true && (Cor.IsMobile == true || Cor.IsTablet == true)))
+		{
+			// Init the document with an empty paragraph.
+			if(Plugins.Type == null)
+			{
+				if(Cor.IdLangue == "fr") TextEditor.Document.body.innerHTML = TextEditor.TextPlaceHolder_Fr;
+				else if(Cor.IdLangue == "en") TextEditor.Document.body.innerHTML = TextEditor.TextPlaceHolder_En;
+			}
+			// Plugin mode
+			else
+			{
+				TextEditor.Document.body.innerHTML = "<p></p>";
+			}
+		}
+		// iPhone and iPad. Ask to the user to paste
+		else
+		{
+			if(Cor.IdLangue == 'fr') TextEditor.Document.body.innerHTML = "<p>Collez votre texte ici.</p>";
+			else if(Cor.IdLangue == 'en') TextEditor.Document.body.innerHTML = "<p>Paste your text here.</p>";
+		}
+	};
+
+	TextEditor.Document.childNodes[0].childNodes[0].appendChild(cssLink);
 	
 	// Set Paste event. Plain Text.
 	var elementFocusable = TextEditor.Document;
 	if(Cor.IsIE || Cor.IsIE10 || Cor.IsIE11 || Cor.IsEdge) elementFocusable = TextEditor.Document.body;
 	
+	// Functions for placeholder text to disappear
+	if(!Cor.IsEdge)
+	{
+		body.addEventListener('focus', function(){
+			if((this.innerHTML == TextEditor.TextPlaceHolder_Fr && Cor.IdLangue == "fr") ||
+			   (this.innerHTML == TextEditor.TextPlaceHolder_En && Cor.IdLangue == "en"))
+			{
+				this.innerHTML = "<p></p>";
+			}
+		});
+	}
+
+	// Functions for placeholder text to appear if the text is empty
+	body.addEventListener('blur', function() {
+		if ((this.innerHTML == "<p></p>" || this.innerHTML == "<p><br></p>") && Cor.IdLangue == "fr") {
+			this.innerHTML = TextEditor.TextPlaceHolder_Fr;
+		} else if ((this.innerHTML == "<p></p>" || this.innerHTML == "<p><br></p>") && Cor.IdLangue == "en") {
+			this.innerHTML = TextEditor.TextPlaceHolder_En;
+		}
+	});
+	
+	// On paste
 	elementFocusable.onpaste = function(event)
 	{
 		if(!(Cor.IsIOS == false && (Cor.IsMobile == true || Cor.IsTablet == true)))
 		{
 			// Cancel event
 			event.preventDefault();
-				
+			
 			// Bloque l'�venement paste en mode plugin
 			if(Plugins.Type == null)
 			{
+				// Problem of paste with placeholder. If focus at the palceholder, then problem.
+				if((TextEditor.Document.body.innerHTML == TextEditor.TextPlaceHolder_Fr && Cor.IdLangue == "fr") ||
+				   (TextEditor.Document.body.innerHTML == TextEditor.TextPlaceHolder_En && Cor.IdLangue == "en"))
+				{
+					TextEditor.Document.body.innerHTML = "<p></p>";
+				}
+			
 				if(!(Cor.IsIE || Cor.IsIE10 || Cor.IsIE11))
 				{
 					// iPhone and iPad. Remove the explanation paste text (auto spellcheck problem).
@@ -2781,6 +2825,14 @@ Init_TextArea : function()
 		{
 			evt.preventDefault();
 		}
+		
+		// If placeholder here, then remove it.
+		if((TextEditor.Document.body.innerHTML == TextEditor.TextPlaceHolder_Fr && Cor.IdLangue == "fr") ||
+	       (TextEditor.Document.body.innerHTML == TextEditor.TextPlaceHolder_En && Cor.IdLangue == "en"))
+		{
+			TextEditor.Document.body.innerHTML = "<p></p>";
+		}
+		
 		//else
 		//{
 			TextEditor.KeyDown(evt.keyCode);
@@ -2904,7 +2956,10 @@ Init_TextArea : function()
 	
 	// Test
 	//TextEditor.Document.write("<p>il est la</p>");
-}
+},
+
+TextPlaceHolder_Fr : "<p>Tapez ou collez votre texte ici...</p>",
+TextPlaceHolder_En : "<p>Type or paste your text here...</p>",
 
 }
 

@@ -77,3 +77,13 @@ p
       url(fonts/latest.ttf) format("truetype");
   font-weight: 600;
 }
+@media (max-width: 767px) {
+  body {
+    padding: 15px;
+    margin: 0;
+
+  }
+  body p {
+    font-size: 15px;
+  }
+}

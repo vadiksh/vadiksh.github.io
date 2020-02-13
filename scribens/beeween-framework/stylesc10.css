@@ -17159,6 +17159,29 @@ body .container.specialphone {width:100%;padding-left:10%!important;padding-righ
   border: 3px solid #ccc;
 }
 
+/* LOADER 2 */
+
+#loader-2:before, #loader-2:after{
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10%;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 3px solid transparent;
+  border-top-color: #3498db;
+}
+
+#loader-2:before{
+  z-index: 100;
+  animation: spin 1s infinite;
+}
+
+#loader-2:after{
+  border: 3px solid #ccc;
+}
+
 @keyframes spin{
   0%{
     -webkit-transform: rotate(0deg);
@@ -17322,7 +17345,7 @@ body .container.specialphone {width:100%;padding-left:10%!important;padding-righ
 .switch--horizontal  .toggle-outside.right {opacity:0.4}
 .switch--horizontal  .toggle-outside.right .toggle-inside {right: 0.25rem;}
 .switch--horizontal  .toggle-outside.left {}
-.switch--horizontal  .toggle-outside.left .toggle-inside {right: 3.25rem;}
+.switch--horizontal  .toggle-outside.left .toggle-inside {/*right: 3.25rem;*/}
 #SettingsShowUPSol .Cor-LabelOption {margin-bottom: 20px; display: block;}
 
 

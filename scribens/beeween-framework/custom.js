@@ -16,12 +16,10 @@
 
         $('#myModal').appendTo("body").modal('hide');
 
-
         $('.menu-header .nav a:not(#btncn)').click(function(e) {
         	e.preventDefault();
         	$('html,body').scrollTop(0);
         })
-
 	}); //End Doc Ready
 
 

@@ -113,14 +113,13 @@ WindowOptions : function()
 		number.className = "number-range";
 		number.innerHTML = range.value;
 
+		range.oninput = function() {
+			number.innerHTML = this.value;
+		}
+		
 		tdRange.appendChild(range);
 		tdRange.appendChild(number);
 		tr.appendChild(tdRange);
- 
-
-		range.oninput = function() {
-		  number.innerHTML = this.value;
-		}
 		
 		return tr;
 	};
@@ -147,21 +146,13 @@ WindowOptions : function()
 		else
 		{
 			table.appendChild(this.CreateTrSelect("British English / American English vocabulary", [["All", -1], ["British English", 0], ["American English", 1]], "", "SettingsUsBr"));
-			// Font size of the document
-
-			var trSelectFontSize = this.CreateTrRange("Font size of the document", 15, 30, "", "SettingsFontSize", 17);
-			trSelectFontSize.childNodes[0].style.paddingTop = "17px";
-			trSelectFontSize.childNodes[1].style.paddingTop = "17px";
-			table.appendChild(trSelectFontSize);
 		}
 		
 		div.appendChild(table);
 		
 		var tableOpt = document.createElement("table");
 		tableOpt.style.marginTop = "20px";
-
-
-			
+		
 		if(Cor.IdLangue == "fr")
 		{
 			// Reforme
@@ -172,7 +163,7 @@ WindowOptions : function()
 			
 			var td0 = document.createElement("td"); // créé un element td pour la ligne
 			td0.className = "Cor-LabelOption"; // donne une classe
-			td0.innerHTML = "* Prise en compte de la r" + String.fromCharCode(233) + "forme de l'orthographe de 1990"; // insere dans le html
+			td0.innerHTML = "* Prise en compte de la r" + String.fromCharCode(233) + "forme de l'orthographe de 1990."; // insere dans le html
 			tr0.appendChild(td0); // place dans la ligne l'elemtn td(le contenu html)
 						
 			var td1 = document.createElement("td");
@@ -235,73 +226,71 @@ WindowOptions : function()
 		}
 		
 		// Show solutions of unknown proper nouns.
-		if(Cor.IdLangue == "en")
-		{
-			var tr1 = document.createElement("tr");
-			tr1.id = "SettingsShowUPSol";
-			tr1.className = "switch switch--horizontal";
+		var tr1 = document.createElement("tr");
+		tr1.id = "SettingsShowUPSol";
+		tr1.className = "switch switch--horizontal";
+		
+		var td0 = document.createElement("td");
+		td0.className = "Cor-LabelOption";
+		if(Cor.IdLangue == "fr") td0.innerHTML = "* Affichage des corrections sur les noms propres inconnus.";
+		else if(Cor.IdLangue == "en") td0.innerHTML = "Show solutions of unknown proper nouns.";
+		
+		tr1.appendChild(td0);
+		
+		var td1 = document.createElement("td");
 			
-			var td0 = document.createElement("td");
-			td0.className = "Cor-LabelOption"; 
-			var labelShowNpUnkSol = "Show solutions of unknown proper nouns.";
-			td0.innerHTML = labelShowNpUnkSol;
-			tr1.appendChild(td0);
-			
-			var td1 = document.createElement("td");
-				
-			var input1 = document.createElement("input");
-			input1.type = "radio";
-			input1.setAttribute("name", "L2");
-			// input1.setAttribute("value", "yes");
-			input1.id = "L2-a";
-			// input1.setAttribute("checked", "checked");
-			td1.appendChild(input1);
-			input1.onclick = function fun(e) {
-				if (this.checked = true){
-					$(this).parent().parent().find('.toggle-outside').removeClass('right');
-					$(this).parent().parent().find('.toggle-outside').addClass('left');
-				}  
-			}
-			tr1.appendChild(td1);
-			
-			var td2 = document.createElement("label");
-			td2.setAttribute("for", "L2-a");
-			var labelYes = "Oui";
-			if(Cor.IdLangue == "en") labelYes = "Yes";
-			td2.innerHTML = labelYes;
-			tr1.appendChild(td2);
-			
-			var td3 = document.createElement("td"); 
-			var input2 = document.createElement("input");
-			input2.type = "radio";
-			input2.setAttribute("name", "L2");
-			// input2.setAttribute("value", "no");
-			input2.id = "L2-b";
-			td3.appendChild(input2);
-			input2.onclick = function fun() {
-				if (this.checked = true){
-					$(this).parent().parent().find('.toggle-outside').removeClass('left');
-					$(this).parent().parent().find('.toggle-outside').addClass('right');
-				}  
-			}
-			tr1.appendChild(td3);
-			
-			var td4 = document.createElement("label");
-			td4.setAttribute("for", "L2-b");
-			var labelNo = "Non";
-			if(Cor.IdLangue == "en") labelNo = "No";
-			td4.innerHTML = labelNo;
-			tr1.appendChild(td4);
-			
-			var span1 = document.createElement("span");
-			span1.setAttribute("class", "toggle-outside");
-			var span2 = document.createElement("span");
-			span2.setAttribute("class", "toggle-inside");
-			span1.appendChild(span2); 
-
-			tr1.appendChild(span1);
-			tableOpt.appendChild(tr1);
+		var input1 = document.createElement("input");
+		input1.type = "radio";
+		input1.setAttribute("name", "L2");
+		// input1.setAttribute("value", "yes");
+		input1.id = "L2-a";
+		// input1.setAttribute("checked", "checked");
+		td1.appendChild(input1);
+		input1.onclick = function fun(e) {
+			if (this.checked = true){
+				$(this).parent().parent().find('.toggle-outside').removeClass('right');
+				$(this).parent().parent().find('.toggle-outside').addClass('left');
+			}  
 		}
+		tr1.appendChild(td1);
+		
+		var td2 = document.createElement("label");
+		td2.setAttribute("for", "L2-a");
+		var labelYes = "Oui";
+		if(Cor.IdLangue == "en") labelYes = "Yes";
+		td2.innerHTML = labelYes;
+		tr1.appendChild(td2);
+		
+		var td3 = document.createElement("td"); 
+		var input2 = document.createElement("input");
+		input2.type = "radio";
+		input2.setAttribute("name", "L2");
+		// input2.setAttribute("value", "no");
+		input2.id = "L2-b";
+		td3.appendChild(input2);
+		input2.onclick = function fun() {
+			if (this.checked = true){
+				$(this).parent().parent().find('.toggle-outside').removeClass('left');
+				$(this).parent().parent().find('.toggle-outside').addClass('right');
+			}  
+		}
+		tr1.appendChild(td3);
+		
+		var td4 = document.createElement("label");
+		td4.setAttribute("for", "L2-b");
+		var labelNo = "Non";
+		if(Cor.IdLangue == "en") labelNo = "No";
+		td4.innerHTML = labelNo;
+		tr1.appendChild(td4);
+		
+		var span1 = document.createElement("span");
+		span1.setAttribute("class", "toggle-outside");
+		var span2 = document.createElement("span");
+		span2.setAttribute("class", "toggle-inside");
+		span1.appendChild(span2); 
+
+		tr1.appendChild(span1);
+		tableOpt.appendChild(tr1);
 		
 		// Auto correct when pasting.
 		var tr1 = document.createElement("tr"); //création d'une ligne TR
@@ -375,6 +364,50 @@ WindowOptions : function()
 		tableOpt.appendChild(tr1);
 		
 		div.appendChild(tableOpt);
+		
+		// Font size of the document
+		var tableFontSize = document.createElement("table");
+		var trFontSize = document.createElement("tr");
+		
+		var tdFontSize = document.createElement("td");
+		tdFontSize.style.verticalAlign = "top";
+		tdFontSize.style.fontSize = "15px";
+		tdFontSize.style.paddingRight = "20px";
+		tdFontSize.style.paddingTop = "5px";
+		
+		if(Cor.IdLangue == "fr") tdFontSize.innerHTML = "* Taille de police du document";
+		else if(Cor.IdLangue == "en") tdFontSize.innerHTML = "Font size of the document";
+		
+		trFontSize.appendChild(tdFontSize); 
+		
+		var tdSlide = document.createElement("td");
+		tdSlide.style.verticalAlign = "top";
+		tdSlide.style.paddingLeft = "40px";
+		tdSlide.style.paddingTop = "5px";
+		
+		var range = document.createElement("input");
+		range.type = "range";
+		range.id = "SettingsFontSize";
+		range.className = "slider-range";
+		range.setAttribute("min", 15);
+		range.setAttribute("max", 30);
+		range.setAttribute("value", 17);
+		
+		var number = document.createElement("p");
+		number.className = "number-range";
+		number.innerHTML = range.value;
+
+		range.oninput = function() {
+			number.innerHTML = this.value;
+		}
+
+		tdSlide.appendChild(range);
+		tdSlide.appendChild(number);
+		
+		trFontSize.appendChild(tdSlide); 
+		
+		tableFontSize.appendChild(trFontSize);
+		div.appendChild(tableFontSize);
 		
 		if(Cor.IdLangue == "fr")
 		{
@@ -540,6 +573,7 @@ WindowOptions : function()
 		
 		var td0 = document.createElement("td");
 		
+		// Button OK
 		var buttonOK = document.createElement("div");
 		buttonOK.setAttribute("class", "Cor-RedButton");
 		//buttonOK.style.width = "120px";
@@ -568,6 +602,7 @@ WindowOptions : function()
 		
 		var td1 = document.createElement("td");
 		
+		// Button cancel
 		var buttonCancel = document.createElement("div");
 		buttonCancel.setAttribute("class", "Cor-RedButton cancel");
 		//buttonOK.style.width = "120px";
@@ -584,7 +619,23 @@ WindowOptions : function()
 		});
 		
 		table.appendChild(buttonCancel); 
-	 
+		
+		// Button "set to default". Set all values to the default values.
+		var buttonSetToDefault = document.createElement("div");
+		buttonSetToDefault.setAttribute("class", "Cor-RedButton");
+		buttonSetToDefault.style.marginLeft = "50px";
+		
+		if(Cor.IdLangue == 'fr') buttonSetToDefault.innerHTML = "Rétablir les valeurs par défaut";
+		else if(Cor.IdLangue == 'en') buttonSetToDefault.innerHTML = "Reset settings to default";
+		
+		var valueWindow = this;
+		buttonSetToDefault.addEventListener('click', function()
+		{
+			// Set to default values
+			valueWindow.FillValues(true);
+		});
+		
+		table.appendChild(buttonSetToDefault); 
 		
 		divButtons.appendChild(table);
 	
@@ -593,8 +644,9 @@ WindowOptions : function()
 		// this.PopupBase.Node.childNodes[1].appendChild(divButtons);
 	};
 	
-	// Fill values with cookies
-	this.FillValues = function()
+	// Fill values with cookies.
+	// defaultValue : set to default values
+	this.FillValues = function(defaultValue)
 	{
 		var tabSt = Cor.OptionsCorSt.split("|");
 		
@@ -603,45 +655,86 @@ WindowOptions : function()
 		{
 			// Genres
 			var eltGenre_Je = document.getElementById("Genre_Je");
-			this.SetValueToSelect(eltGenre_Je, this.GetValueOfOption("Genre_Je", tabSt));	
+			var genre_Je_value = this.GetValueOfOption("Genre_Je", tabSt);
+			if(defaultValue) genre_Je_value = "0";
+			this.SetValueToSelect(eltGenre_Je, genre_Je_value);	
+			
 			var eltGenre_Tu = document.getElementById("Genre_Tu");
-			this.SetValueToSelect(eltGenre_Tu, this.GetValueOfOption("Genre_Tu", tabSt));	
+			var genre_Tu_value = this.GetValueOfOption("Genre_Tu", tabSt);
+			if(defaultValue) genre_Tu_value = "0";
+			this.SetValueToSelect(eltGenre_Tu, genre_Tu_value);
+			
 			var eltGenre_Nous = document.getElementById("Genre_Nous");
-			this.SetValueToSelect(eltGenre_Nous, this.GetValueOfOption("Genre_Nous", tabSt));
+			var genre_Nous_value = this.GetValueOfOption("Genre_Nous", tabSt);
+			if(defaultValue) genre_Nous_value = "0";
+			this.SetValueToSelect(eltGenre_Nous, genre_Nous_value);
+			
 			var eltGenre_Vous = document.getElementById("Genre_Vous");
-			this.SetValueToSelect(eltGenre_Vous, this.GetValueOfOption("Genre_Vous", tabSt));
+			var genre_Vous_value = this.GetValueOfOption("Genre_Vous", tabSt);
+			if(defaultValue) genre_Vous_value = "0";
+			this.SetValueToSelect(eltGenre_Vous, genre_Vous_value);
+			
 			var eltGenre_On = document.getElementById("Genre_On");
-			this.SetValueToSelect(eltGenre_On, this.GetValueOfOption("Genre_On", tabSt));
+			var genre_On_value = this.GetValueOfOption("Genre_On", tabSt);
+			if(defaultValue) genre_On_value = "0";
+			this.SetValueToSelect(eltGenre_On, genre_On_value);
 			
 			// Autres options
 			var valueCorRef = this.GetValueOfOption("RefOrth", tabSt);
+			if(defaultValue) valueCorRef = "0";
 			var elt1 = document.getElementById("SettingsCorRef");
 			
 			if(valueCorRef == "1")
 			{
 				$('#SettingsCorRef .toggle-outside').addClass('left');
+				$('#SettingsCorRef .toggle-outside').removeClass('right');
 				elt1.childNodes[1].firstChild.checked = true;
 				elt1.childNodes[3].firstChild.checked = false;
 			}
 			else
 			{
 				$('#SettingsCorRef .toggle-outside').addClass('right');
+				$('#SettingsCorRef .toggle-outside').removeClass('left');
 				elt1.childNodes[1].firstChild.checked = false;
 				elt1.childNodes[3].firstChild.checked = true;
 			}
 			
+			// Show unknown proper nouns solutions
+			var eltShowUNSol = document.getElementById("SettingsShowUPSol");
+			var valueShowUNSol = this.GetValueOfOption("ShowUPSol", tabSt);
+			if(defaultValue) valueShowUNSol = "1";
+			
+			if(valueShowUNSol == "1")
+			{
+				$('#SettingsShowUPSol .toggle-outside').addClass('left');
+				$('#SettingsShowUPSol .toggle-outside').removeClass('right');
+				eltShowUNSol.childNodes[1].firstChild.checked = true;
+				eltShowUNSol.childNodes[3].firstChild.checked = false;
+			}
+			else
+			{
+				$('#SettingsShowUPSol .toggle-outside').addClass('right');
+				$('#SettingsShowUPSol .toggle-outside').removeClass('left');
+				eltShowUNSol.childNodes[1].firstChild.checked = false;
+				eltShowUNSol.childNodes[3].firstChild.checked = true;
+			}
+			
 			// AutoCorrectPaste
 			var elt2 = document.getElementById("SettingsAutoCorrectPaste");
+			var valueAutoCorrect_AfterPaste = Cor.AutoCorrect_AfterPaste;
+			if(defaultValue) valueAutoCorrect_AfterPaste = false;
 			
-			if(Cor.AutoCorrect_AfterPaste == true)
+			if(valueAutoCorrect_AfterPaste == true)
 			{
 				$('#SettingsAutoCorrectPaste .toggle-outside').addClass('left');
+				$('#SettingsAutoCorrectPaste .toggle-outside').removeClass('right');
 				elt2.childNodes[1].firstChild.checked = true;
 				elt2.childNodes[3].firstChild.checked = false;
 			}
 			else
 			{
 				$('#SettingsAutoCorrectPaste .toggle-outside').addClass('right');
+				$('#SettingsAutoCorrectPaste .toggle-outside').removeClass('left');
 				elt2.childNodes[1].firstChild.checked = false;
 				elt2.childNodes[3].firstChild.checked = true;
 			}
@@ -651,76 +744,115 @@ WindowOptions : function()
 		{
 			// UsBr
 			var eltUsBr = document.getElementById("SettingsUsBr");
-			this.SetValueToSelect(eltUsBr, this.GetValueOfOption("UsBr", tabSt));
-			
-			// Font Size
-			var eltFontSize = document.getElementById("SettingsFontSize");
-			this.SetValueToSelect(eltFontSize, this.GetValueOfOption("FontSize", tabSt));
+			var valUsBr = this.GetValueOfOption("UsBr", tabSt);
+			if(defaultValue) valUsBr = "-1";
+			this.SetValueToSelect(eltUsBr, valUsBr);
 			
 			// Show unknown proper nouns solutions
 			var eltShowUNSol = document.getElementById("SettingsShowUPSol");
 			var valueShowUNSol = this.GetValueOfOption("ShowUPSol", tabSt);
+			if(defaultValue) valueShowUNSol = "1";
 			
 			if(valueShowUNSol == "1")
 			{
 				$('#SettingsShowUPSol .toggle-outside').addClass('left');
+				$('#SettingsShowUPSol .toggle-outside').removeClass('right');
 				eltShowUNSol.childNodes[1].firstChild.checked = true;
 				eltShowUNSol.childNodes[3].firstChild.checked = false;
 			}
 			else
 			{
 				$('#SettingsShowUPSol .toggle-outside').addClass('right');
+				$('#SettingsShowUPSol .toggle-outside').removeClass('left');
 				eltShowUNSol.childNodes[1].firstChild.checked = false;
 				eltShowUNSol.childNodes[3].firstChild.checked = true;
 			}
 			
 			// AutoCorrectPaste
 			var elt2 = document.getElementById("SettingsAutoCorrectPaste");
+			var valueAutoCorrect_AfterPaste = Cor.AutoCorrect_AfterPaste;
+			if(defaultValue) valueAutoCorrect_AfterPaste = false;
 			
-			if(Cor.AutoCorrect_AfterPaste == true)
+			if(valueAutoCorrect_AfterPaste == true)
 			{
 				$('#SettingsAutoCorrectPaste .toggle-outside').addClass('left');
+				$('#SettingsAutoCorrectPaste .toggle-outside').removeClass('right');
 				elt2.childNodes[1].firstChild.checked = true;
 				elt2.childNodes[3].firstChild.checked = false;
 			}
 			else
 			{
 				$('#SettingsAutoCorrectPaste .toggle-outside').addClass('right');
+				$('#SettingsAutoCorrectPaste .toggle-outside').removeClass('left');
 				elt2.childNodes[1].firstChild.checked = false;
 				elt2.childNodes[3].firstChild.checked = true;
 			}
 		}
+				
+		// Font Size
+		var eltFontSize = document.getElementById("SettingsFontSize");
+		var valueFontSize = TextEditor.FontSize;
+		if(defaultValue) valueFontSize = "17";
+		eltFontSize.value = valueFontSize
+		eltFontSize.nextSibling.innerHTML = valueFontSize;
 		
 		// Style
 		tabSt = Style.OptionsStyleSt.split("|");
 		
 		var elt0 = document.getElementById("OptionsStyleRepMin");
-		this.SetValueToSelect(elt0, this.GetValueOfOption("RepMin", tabSt));
+		var valueRepMin = this.GetValueOfOption("RepMin", tabSt);
+		if(defaultValue) valueRepMin = "3";
+		elt0.value = valueRepMin;
+		elt0.nextSibling.innerHTML = valueRepMin;
 		
 		var elt1 = document.getElementById("OptionStyleEcartRep");
-		this.SetValueToSelect(elt1, this.GetValueOfOption("GapRep", tabSt));
+		var valueGapRep = this.GetValueOfOption("GapRep", tabSt);
+		if(defaultValue) valueGapRep = "3";
+		this.SetValueToSelect(elt1, valueGapRep);
 		
 		var elt2 = document.getElementById("OptionsStyleAllWords");
-		this.SetValueToSelect(elt2, this.GetValueOfOption("AllWords", tabSt));
+		var valueAllWords = this.GetValueOfOption("AllWords", tabSt);
+		if(defaultValue) valueAllWords = "0";
+		this.SetValueToSelect(elt2, valueAllWords);
 		
 		if(Cor.IdLangue == "fr")
 		{
 			var elt3 = document.getElementById("OptionsStyleFamilyWords");
-			this.SetValueToSelect(elt3, this.GetValueOfOption("FamilyWords", tabSt));
+			var valueFamilyWords = this.GetValueOfOption("FamilyWords", tabSt);
+			if(defaultValue) valueFamilyWords = "0";
+			this.SetValueToSelect(elt3, valueFamilyWords);
 		}
 		
 		// Others
 		var elt0 = document.getElementById("OptionsOtherMinPhLg");
-		this.SetValueToSelect(elt0, this.GetValueOfOption("MinPhLg", tabSt));
+		var valueMinPhLg = this.GetValueOfOption("MinPhLg", tabSt);
+		if(defaultValue) valueMinPhLg = "30";
+		elt0.value = valueMinPhLg;
+		elt0.nextSibling.innerHTML = valueMinPhLg;
 		
 		var elt1 = document.getElementById("OptionsOtherMinPhCt");
-		this.SetValueToSelect(elt1, this.GetValueOfOption("MinPhCt", tabSt));
+		var valueMinPhCt = this.GetValueOfOption("MinPhCt", tabSt);
+		if(defaultValue) valueMinPhCt = "5";
+		elt1.value = valueMinPhCt;
+		elt1.nextSibling.innerHTML = valueMinPhCt;
 		
 		var elt2 = document.getElementById("OptionsOtherTTR");
-		this.SetValueToSelect(elt2, this.GetValueOfOption("Ttr", tabSt));
+		var valueTtr = this.GetValueOfOption("Ttr", tabSt);
+		if(defaultValue)
+		{
+			if(Cor.IdLangue == "fr") valueTtr = "250";
+			else if(Cor.IdLangue == "en") valueTtr = "300";
+		}
+		this.SetValueToSelect(elt2, valueTtr);
 		
 		var elt3 = document.getElementById("OptionsOtherTTS");
-		this.SetValueToSelect(elt3, this.GetValueOfOption("Tts", tabSt));
+		var valueTts = this.GetValueOfOption("Tts", tabSt);
+		if(defaultValue)
+		{
+			if(Cor.IdLangue == "fr") valueTts = "150";
+			else if(Cor.IdLangue == "en") valueTtr = "130";
+		}
+		this.SetValueToSelect(elt3, valueTts);
 		
 	}
 	
@@ -751,9 +883,14 @@ WindowOptions : function()
 		for(var i = 0; i < selectElt.childNodes.length; i++)		// .value = is prohibited by Edge.
 		{
 			var selectOption = selectElt.childNodes[i];
-			if(selectOption.value == value) {
-				$(selectOption).attr('selected', 'selected');
+			if(selectOption.value == value)
+			{
 				selectElt.selectedIndex = i;
+				
+				// Update the text.
+				var nextS = selectElt.nextSibling;
+				if(nextS != null) nextS.innerText = selectOption.text;
+				
 				return;
 			}
 		}
@@ -766,9 +903,16 @@ WindowOptions : function()
 	this.PopupBase.Node.style.zIndex = '200';
 	
 	this.MainDiv = document.createElement("div");
-	if(Cor.IdLangue == 'fr') this.MainDiv.style.width = "100%";
-	else if(Cor.IdLangue == 'en') this.MainDiv.style.width = "100%";
-	this.MainDiv.style.height = "295px";
+	if(Cor.IdLangue == 'fr')
+	{
+		this.MainDiv.style.width = "100%";
+		this.MainDiv.style.height = "400px";
+	}
+	else if(Cor.IdLangue == 'en')
+	{
+		this.MainDiv.style.width = "100%";
+		this.MainDiv.style.height = "295px";
+	}
 
 	// Create title
 	var title = document.createElement("div");
@@ -864,15 +1008,13 @@ WindowOptions : function()
 	// Buttons
 	this.CreateButtons();
 
-	
-	
 	document.body.appendChild(this.PopupBase.Node);
 	
 	// Function show
 	this.Show = function()
 	{
 		// Fill values
-		this.FillValues();
+		this.FillValues(false);
 	
 		// Show the popup
 		this.PopupBase.SetVisible(true);
@@ -915,6 +1057,18 @@ WindowOptions : function()
 	{
 		// Options Cor.
 		var optionsCor_Prec = Cor.OptionsCorSt;
+			
+		var optBdd_refOrth = "RefOrth:0";
+		var optBdd_showUpSol = "ShowUPSol:1";
+		var optBdd_USBR = "UsBr:-1";
+		var optBdd_RepMin = "RepMin:3";
+		var optBdd_GapRep = "GapRep:3";
+		var optBdd_AllWords = "AllWords:0";
+		var optBdd_FamilyWords = "FamilyWords:0";
+		var optBdd_MinPhLg = "MinPhLg:30";
+		var optBdd_MinPhCt = "MinPhCt:5";
+		var optBdd_Ttr = "Ttr:250";
+		var optBdd_Tts = "Tts:150";
 		
 		if(Cor.IdLangue == "fr")
 		{
@@ -940,27 +1094,52 @@ WindowOptions : function()
 			{
 				optionsCookiesSt += "RefOrth:1";
 				Cor.OptionsCorSt += "RefOrth:1";
+				optBdd_refOrth = "RefOrth:1";
 			}
 			else
 			{
 				optionsCookiesSt += "RefOrth:0";
 				Cor.OptionsCorSt += "RefOrth:0";
+				optBdd_refOrth = "RefOrth:0";
+			}
+			
+			// Show solutions of unknown proper nouns.
+			var eltShowUPSol = document.getElementById("SettingsShowUPSol");
+			
+			if(eltShowUPSol.childNodes[1].firstChild.checked == true)
+			{
+				optionsCookiesSt += "|" + "ShowUPSol:1";
+				Cor.OptionsCorSt += "|" + "ShowUPSol:1";
+				optBdd_showUpSol = "ShowUPSol:1";
+			}
+			else
+			{
+				optionsCookiesSt += "|" + "ShowUPSol:0";
+				Cor.OptionsCorSt += "|" + "ShowUPSol:0";
+				optBdd_showUpSol = "ShowUPSol:0";
 			}
 			
 			// AutoCorrect after pasting
 			var elt2 = $("#SettingsAutoCorrectPaste .toggle-outside");
-			optionsCookiesSt += "|";
 			
 			if($(elt2).hasClass('left'))
 			{
-				optionsCookiesSt += "AutoCorrectPaste:1";
+				optionsCookiesSt += "|" + "AutoCorrectPaste:1";
 				Cor.AutoCorrect_AfterPaste = true;
 			}
 			else
 			{
-				optionsCookiesSt += "AutoCorrectPaste:0";
+				optionsCookiesSt += "|" + "AutoCorrectPaste:0";
 				Cor.AutoCorrect_AfterPaste = false;
 			}
+			
+			// Font size
+			var eltFontSize = document.getElementById("SettingsFontSize");
+			optionsCookiesSt += "|" + "FontSize:" + eltFontSize.value;
+			
+			// Apply the new font size
+			TextEditor.FontSize = eltFontSize.value;
+			TextEditor.Document.body.style.fontSize = TextEditor.FontSize + "px";
 			
 			Util.SetCookie("OptionCor", optionsCookiesSt, 5000);
 		}
@@ -970,15 +1149,7 @@ WindowOptions : function()
 			var eltUsBr = document.getElementById("SettingsUsBr");
 			var optionsCookiesSt = "UsBr:" + eltUsBr.value;
 			Cor.OptionsCorSt = "UsBr:" + eltUsBr.value;
-			
-			// Font size
-			var eltFontSize = document.getElementById("SettingsFontSize");
-			optionsCookiesSt += "|" + "FontSize:" + eltFontSize.value;
-			Cor.OptionsCorSt += "|" + "FontSize:" + eltFontSize.value;
-			
-			// Apply the new font size
-			TextEditor.FontSize = eltFontSize.value;
-			TextEditor.Document.body.style.fontSize = TextEditor.FontSize + "px";
+			optBdd_USBR = "UsBr:" + eltUsBr.value;
 			
 			// Show solutions of unknown proper nouns.
 			var eltShowUPSol = document.getElementById("SettingsShowUPSol");
@@ -987,27 +1158,36 @@ WindowOptions : function()
 			{
 				optionsCookiesSt += "|" + "ShowUPSol:1";
 				Cor.OptionsCorSt += "|" + "ShowUPSol:1";
+				optBdd_showUpSol = "ShowUPSol:1";
 			}
 			else
 			{
 				optionsCookiesSt += "|" + "ShowUPSol:0";
 				Cor.OptionsCorSt += "|" + "ShowUPSol:0";
+				optBdd_showUpSol = "ShowUPSol:0";
 			}
 			
 			// AutoCorrect after pasting
 			var elt2 = document.getElementById("SettingsAutoCorrectPaste");
-			optionsCookiesSt += "|";
 			
 			if(elt2.childNodes[1].firstChild.checked == true)
 			{
-				optionsCookiesSt += "AutoCorrectPaste:1";
+				optionsCookiesSt += "|" + "AutoCorrectPaste:1";
 				Cor.AutoCorrect_AfterPaste = true;
 			}
 			else
 			{
-				optionsCookiesSt += "AutoCorrectPaste:0";
+				optionsCookiesSt += "|" + "AutoCorrectPaste:0";
 				Cor.AutoCorrect_AfterPaste = false;
 			}
+			
+			// Font size
+			var eltFontSize = document.getElementById("SettingsFontSize");
+			optionsCookiesSt += "|" + "FontSize:" + eltFontSize.value;
+			
+			// Apply the new font size
+			TextEditor.FontSize = eltFontSize.value;
+			TextEditor.Document.body.style.fontSize = TextEditor.FontSize + "px";
 			
 			Util.SetCookie("OptionCor_En", optionsCookiesSt, 5000);
 		}
@@ -1021,25 +1201,30 @@ WindowOptions : function()
 		var elt0 = document.getElementById("OptionsStyleRepMin");
 		optionsCookiesSt += "RepMin:" + elt0.value + "|";
 		Style.OptionsStyleSt += "RepMin:" + elt0.value + "|";
+		optBdd_RepMin = "RepMin:" + elt0.value;
 		
 		var elt1 = document.getElementById("OptionStyleEcartRep");
 		optionsCookiesSt += "GapRep:" + elt1.value + "|";
 		Style.OptionsStyleSt += "GapRep:" + elt1.value + "|";
+		optBdd_GapRep = "GapRep:" + elt1.value;
 		
 		var elt2 = document.getElementById("OptionsStyleAllWords");
 		optionsCookiesSt += "AllWords:" + elt2.value + "|";
 		Style.OptionsStyleSt += "AllWords:" + elt2.value + "|";
+		optBdd_AllWords = "AllWords:" + elt2.value;
 		
 		if(Cor.IdLangue == "fr")
 		{
 			var elt3 = document.getElementById("OptionsStyleFamilyWords");
 			optionsCookiesSt += "FamilyWords:" + elt3.value;
 			Style.OptionsStyleSt += "FamilyWords:" + elt3.value + "|";
+			optBdd_FamilyWords = "FamilyWords:" + elt3.value;
 		}
 		else
 		{
 			optionsCookiesSt += "FamilyWords:" + "0";
 			Style.OptionsStyleSt += "FamilyWords:" + "0" + "|";
+			optBdd_FamilyWords = "FamilyWords:" + "0";
 		}
 		
 		Util.SetCookie("OptionStyle", optionsCookiesSt, 5000);	
@@ -1050,18 +1235,22 @@ WindowOptions : function()
 		var elt0 = document.getElementById("OptionsOtherMinPhLg");
 		optionsCookiesSt += "MinPhLg:" + elt0.value + "|";
 		Style.OptionsStyleSt += "MinPhLg:" + elt0.value + "|";
+		var optBdd_MinPhLg = "MinPhLg:" + elt0.value;
 		
 		var elt1 = document.getElementById("OptionsOtherMinPhCt");
 		optionsCookiesSt += "MinPhCt:" + elt1.value + "|";
 		Style.OptionsStyleSt += "MinPhCt:" + elt1.value + "|";
+		optBdd_MinPhCt = "MinPhCt:" + elt1.value;
 		
 		var elt2 = document.getElementById("OptionsOtherTTR");
 		optionsCookiesSt += "Ttr:" + elt2.value + "|";
 		Style.OptionsStyleSt += "Ttr:" + elt2.value + "|";
+		optBdd_Ttr = "Ttr:" + elt2.value;
 		
 		var elt3 = document.getElementById("OptionsOtherTTS");
 		optionsCookiesSt += "Tts:" + elt3.value;
 		Style.OptionsStyleSt += "Tts:" + elt3.value;
+		optBdd_Tts = "Tts:" + elt3.value;
 		
 		Util.SetCookie("OptionAutres", optionsCookiesSt, 5000);
 		
@@ -1070,6 +1259,37 @@ WindowOptions : function()
 		   (optionsStyle_Prec != Style.OptionsStyleSt))
 		{
 			Cor.FirstRequest = true;
+		}
+		
+		// Save in BDD if different than previous
+		var chBDD = optBdd_refOrth + "|" +
+					optBdd_showUpSol + "|" +
+					optBdd_USBR + "|" +
+					optBdd_RepMin + "|" +
+					optBdd_GapRep + "|" +
+					optBdd_AllWords + "|" +
+					optBdd_FamilyWords + "|" +
+					optBdd_MinPhLg + "|" +
+					optBdd_MinPhCt + "|" +
+					optBdd_Ttr + "|" +
+					optBdd_Tts;
+		
+		if((Cor.User.Settings == null) ||
+		   (Cor.User.Settings != chBDD))
+		{
+			if(Cor.User.Identifiant != null && Cor.User.Identifiant.length > 0)
+			{
+				if(Cor.IdLangue == "fr")
+				{
+					Util.SendHttpRequest('Identification_Servlet',
+									[['FunctionName', 'MajData'],
+									 ['DataName', 'Settings'],
+									 ['DataValue', chBDD],
+									 ['TableName', 'abonnement_client'],
+									 ['Id', Cor.User.Identifiant]],
+									 null);
+				}
+			}
 		}
 	};
 	
@@ -1105,28 +1325,43 @@ LoadSettings_FromCookies : function()
 	// FM PL and AffExp by default.
 	Cor.OptionsCorSt = 'Genre_Je:0|Genre_Tu:0|Genre_Nous:0|Genre_Vous:0|Genre_On:0';
 	
-	// Fran�ais
+	// Français
 	if(Cor.IdLangue == 'fr')
 	{
 		// Autres options
 		var valueCookieSt = Util.GetCookie("OptionCor");
-		if(valueCookieSt == null || valueCookieSt.length == 0) valueCookieSt = "AffExp:1|RefOrth:0|AutoCorrectPaste:0";
+		if(valueCookieSt == null || valueCookieSt.length == 0) valueCookieSt = "AffExp:1|RefOrth:0|AutoCorrectPaste:0|ShowUPSol:1|FontSize:17";
 	
 		tabSt = valueCookieSt.split("|");
 		
-		// Reforme orthographe
-		if(tabSt.length >= 2)
+		for(var i = 0; i < tabSt.length; i++)
 		{
-			Cor.OptionsCorSt += '|' + valueCookieSt;
-		}
-		else Cor.OptionsCorSt += ";0";	// Former system
-		
-		// Autocorrect when pasting
-		if(tabSt.length >= 3)
-		{
-			var valueAutoCPaste = tabSt[2].split(":")[1];
-			if(valueAutoCPaste == '1') Cor.AutoCorrect_AfterPaste = true;
-			else Cor.AutoCorrect_AfterPaste = false;
+			var fieldSt = tabSt[i];
+			var tab = fieldSt.split(":");
+			
+			if(tab.length == 2)
+			{
+				var settingSt = tab[0];
+				var settingValueSt = tab[1];
+				
+				// OptionsCor
+				if(settingSt == "RefOrth" ||
+				   settingSt == "ShowUPSol")
+				{
+					Cor.OptionsCorSt += '|' + fieldSt;
+				}
+				// Autocorrect when pasting
+				else if(settingSt == "AutoCorrectPaste")
+				{
+					if(settingValueSt == '1') Cor.AutoCorrect_AfterPaste = true;
+					else Cor.AutoCorrect_AfterPaste = false;
+				}
+				// Fontsize
+				else if(settingSt == "FontSize")
+				{
+					TextEditor.FontSize = settingValueSt;
+				}
+			}
 		}
 	}
 	// English
@@ -1134,29 +1369,37 @@ LoadSettings_FromCookies : function()
 	{
 		// UsBr
 		var valueCookieSt = Util.GetCookie("OptionCor_En");
-		if(valueCookieSt == null || valueCookieSt.length == 0) valueCookieSt = "UsBr:-1|AutoCorrectPaste:0|FontSize:15|ShowUPSol:1";
+		if(valueCookieSt == null || valueCookieSt.length == 0) valueCookieSt = "UsBr:-1|AutoCorrectPaste:0|ShowUPSol:1|FontSize:17";
 		
 		tabSt = valueCookieSt.split("|");
-		if(tabSt.length >= 1)
-		{
-			// UsBr
-			Cor.OptionsCorSt = valueCookieSt;
-		}
-		else Cor.OptionsCorSt += ";-1";	// Former system
 		
-		for(var optSt in tabSt)
+		for(var i = 0; i < tabSt.length; i++)
 		{
-			// Autocorrect when pasting
-			if(optSt.indexOf('AutoCorrectPaste:') == 0)
+			var fieldSt = tabSt[i];
+			var tab = fieldSt.split(":");
+			
+			if(tab.length == 2)
 			{
-				var valueAutoCPaste = optSt.split(":")[1];
-				if(valueAutoCPaste == '1') Cor.AutoCorrect_AfterPaste = true;
-				else Cor.AutoCorrect_AfterPaste = false;
-			}
-			// Fontsize
-			else if(optSt.indexOf('FontSize:') == 0)
-			{
-				TextEditor.FontSize = optSt.split(":")[1];
+				var settingSt = tab[0];
+				var settingValueSt = tab[1];
+				
+				// OptionsCor
+				if(settingSt == "ShowUPSol" ||
+				   settingSt == "UsBr")
+				{
+					Cor.OptionsCorSt += '|' + fieldSt;
+				}
+				// Autocorrect when pasting
+				else if(settingSt == "AutoCorrectPaste")
+				{
+					if(settingValueSt == '1') Cor.AutoCorrect_AfterPaste = true;
+					else Cor.AutoCorrect_AfterPaste = false;
+				}
+				// Fontsize
+				else if(settingSt == "FontSize")
+				{
+					TextEditor.FontSize = settingValueSt;
+				}
 			}
 		}
 	}
@@ -1171,12 +1414,9 @@ LoadSettings_FromCookies : function()
 	if(tabSt.length >= 4)
 	{
 		Style.OptionsStyleSt = valueCookieSt;
-			
-		// NMostUsedWords
-		//Style.OptionsStyleSt += ";3000";
 	}
 	else Style.OptionsStyleSt += "3;3;0;0;3000";	// Former system
-	
+
 	// Others
 	valueCookieSt = Util.GetCookie("OptionAutres");
 	if(valueCookieSt == null || valueCookieSt.length == 0)
@@ -1196,6 +1436,76 @@ LoadSettings_FromCookies : function()
 		if(Cor.IdLangue == 'fr') Style.OptionsStyleSt += ";30;5;250;150";
 		else if(Cor.IdLangue == 'en') Style.OptionsStyleSt += ";30;5;300;130";
 	}
+},
+
+// Update settings BDD
+UpdateSettingsBDD : function()
+{
+	// Load datas of BDD.
+	var optBdd_refOrth = null;
+	var optBdd_showUpSol = null;
+	var optBdd_USBR = null;
+	var optBdd_RepMin = null;
+	var optBdd_GapRep = null;
+	var optBdd_AllWords = null;
+	var optBdd_FamilyWords = null;
+	var optBdd_MinPhLg = null;
+	var optBdd_MinPhCt = null;
+	var optBdd_Ttr = null;
+	var optBdd_Tts = null;
+		
+	var settings = Cor.User.Settings;
+	if(settings != null && settings.length > 0)
+	{
+		var tabBDDSt = settings.split("|");
+		
+		for(var i = 0; i < tabBDDSt.length; i++)
+		{
+			var fieldSt = tabBDDSt[i];
+			var tab = fieldSt.split(":");
+			
+			if(tab.length == 2)
+			{
+				var settingSt = tab[0];
+				var settingValueSt = tab[1];
+					
+				if(settingSt == "RefOrth") optBdd_refOrth = fieldSt;
+				else if(settingSt == "ShowUPSol") optBdd_showUpSol = fieldSt;
+				else if(settingSt == "UsBr") optBdd_USBR = fieldSt;
+				else if(settingSt == "RepMin") optBdd_RepMin = fieldSt;
+				else if(settingSt == "GapRep") optBdd_GapRep = fieldSt;
+				else if(settingSt == "AllWords") optBdd_AllWords = fieldSt;
+				else if(settingSt == "FamilyWords") optBdd_FamilyWords = fieldSt;
+				else if(settingSt == "MinPhLg") optBdd_MinPhLg = fieldSt;
+				else if(settingSt == "MinPhCt") optBdd_MinPhCt = fieldSt;
+				else if(settingSt == "Ttr") optBdd_Ttr = fieldSt;
+				else if(settingSt == "Tts") optBdd_Tts = fieldSt;
+			}
+		}
+
+		// OptionsCOr
+		if(Cor.IdLangue == 'fr')
+		{
+			if(optBdd_showUpSol != null && optBdd_refOrth != null)
+			{
+				Cor.OptionsCorSt = "Genre_Je:0|Genre_Tu:0|Genre_Nous:0|Genre_Vous:0|Genre_On:0|" + optBdd_refOrth + "|" + optBdd_showUpSol;
+			}
+		}
+		else if(Cor.IdLangue == 'en')
+		{
+			if(optBdd_showUpSol != null && optBdd_USBR != null)
+			{
+				Cor.OptionsCorSt = optBdd_showUpSol + "|" + optBdd_USBR;
+			}
+		}
+		
+		// Options style
+		if(optBdd_RepMin != null && optBdd_GapRep != null && optBdd_AllWords != null && optBdd_FamilyWords != null && optBdd_MinPhLg != null && optBdd_MinPhCt != null && optBdd_Ttr != null && optBdd_Tts != null)
+		{
+			Style.OptionsStyleSt = optBdd_RepMin + "|" + optBdd_GapRep + "|" + optBdd_AllWords + "|" + optBdd_FamilyWords + "|" + optBdd_MinPhLg + "|" + optBdd_MinPhCt + "|" + optBdd_Ttr + "|" + optBdd_Tts;
+		}
+	}
+	
 	
 },
 

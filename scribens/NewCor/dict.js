@@ -62,6 +62,7 @@ PanelDict : function()
 	this.Node.style.paddingLeft = "14px";
 	
 	var table = document.createElement("div");
+	table.style.margin = "0px";
 	
 	var td0 = document.createElement("td");
 	var inputWord = document.createElement("input");
@@ -172,6 +173,27 @@ PanelDict : function()
 	}
 	
 	this.Node.appendChild(table);
+	
+	// Blank panel. Indicates how to use the dictionaries.
+	var blankPanel = document.createElement("div");
+	blankPanel.style.height = "800px";
+	
+	// Loupe images
+	var imgLoupe = document.createElement("img");
+	imgLoupe.src = "images/Loupe.png";
+	imgLoupe.style.marginTop = "200px";
+	blankPanel.appendChild(imgLoupe);
+	
+	// Label indications
+	var labelInd = document.createElement("div");
+	labelInd.style.marginTop = "50px";
+	labelInd.style.fontSize = "24px";
+	labelInd.style.color = "#9c9c9c";
+	if(Cor.IdLangue == "fr") labelInd.innerHTML = "<p>Tapez votre mot dans la zone de recherche, puis cliquez sur les différents onglets.</p>";
+	else if(Cor.IdLangue == "en") labelInd.innerHTML = "<p>Enter a word in the search box, then click on the tabs.</p>";
+	blankPanel.appendChild(labelInd);
+	
+	this.Node.appendChild(blankPanel);
 	
 	document.getElementById('MainDiv').appendChild(this.Node);
 },
@@ -950,76 +972,80 @@ ShowResultCitKeyWord : function(citations, param, wordSt)
 	
 	var numbers = Math.ceil(vectCitations.length / Dict.NbMaxCitationsPanel);
 	
-	var tableNumbers = document.createElement("table");
-	tableNumbers.style.marginBottom = "30px";
-	
-	var tr = null;
-	
-	for(i = 0; i < numbers; i++)
+	if(numbers >= 2)	// With number == 1, don't show table of numbers
 	{
-		if((i % 20) == 0)
+		var tableNumbers = document.createElement("table");
+		tableNumbers.style.marginBottom = "30px";
+		tableNumbers.style.textAlign = "center";
+		
+		var tr = null;
+		
+		for(i = 0; i < numbers; i++)
 		{
-			tr = document.createElement("tr");
-			tableNumbers.appendChild(tr);
+			if((i % 20) == 0)
+			{
+				tr = document.createElement("tr");
+				tableNumbers.appendChild(tr);
+			}
+		
+			var td = document.createElement("td");
+			td.style.fontSize = "18px";
+			td.style.color = "#348EBF";
+			td.style.cursor = "pointer";
+			td.style.paddingRight = "5px";
+			td.innerHTML = (i + 1);
+			if(i == 0) td.style.fontWeight = "bold";
+			
+			td.onmouseover = function()
+			{
+				this.style.textDecoration = "underline";
+			};
+			td.onmouseout = function()
+			{
+				this.style.textDecoration = "none";
+			};
+			td.onclick = function()
+			{
+				var index = parseInt(this.innerHTML);
+			
+				var tableNumbers = this.parentNode.parentNode;
+			
+				for(var i = 0; i < tableNumbers.childNodes.length; i++)
+				{
+					var tr = tableNumbers.childNodes[i];
+					for(var u = 0; u < tr.childNodes.length; u++)
+					{
+						var td = tr.childNodes[u];
+						if(td == this)
+						{
+							this.style.fontWeight = "bold";
+						}
+						else td.style.fontWeight = "normal";
+					}
+				}	
+			
+				var listDivCitations = document.getElementById("ListDivCitations");
+				
+				for(var i = 1; i < listDivCitations.childNodes.length; i++)
+				{
+					var divList = listDivCitations.childNodes[i];
+					
+					if(i == index)
+					{
+						divList.style.display = "block";
+					}
+					else
+					{
+						divList.style.display = "none";
+					}
+				}
+			};
+			
+			tr.appendChild(td);
 		}
 	
-		var td = document.createElement("td");
-		td.style.fontSize = "18px";
-		td.style.color = "#348EBF";
-		td.style.cursor = "pointer";
-		td.style.paddingRight = "5px";
-		td.innerHTML = (i + 1);
-		if(i == 0) td.style.fontWeight = "bold";
-		
-		td.onmouseover = function()
-		{
-			this.style.textDecoration = "underline";
-		};
-		td.onmouseout = function()
-		{
-			this.style.textDecoration = "none";
-		};
-		td.onclick = function()
-		{
-			var index = parseInt(this.innerHTML);
-		
-			var tableNumbers = this.parentNode.parentNode;
-		
-			for(var i = 0; i < tableNumbers.childNodes.length; i++)
-			{
-				var tr = tableNumbers.childNodes[i];
-				for(var u = 0; u < tr.childNodes.length; u++)
-				{
-					var td = tr.childNodes[u];
-					if(td == this)
-					{
-						this.style.fontWeight = "bold";
-					}
-					else td.style.fontWeight = "normal";
-				}
-			}	
-		
-			var listDivCitations = document.getElementById("ListDivCitations");
-			
-			for(var i = 1; i < listDivCitations.childNodes.length; i++)
-			{
-				var divList = listDivCitations.childNodes[i];
-				
-				if(i == index)
-				{
-					divList.style.display = "block";
-				}
-				else
-				{
-					divList.style.display = "none";
-				}
-			}
-		};
-		
-		tr.appendChild(td);
+		divCits.appendChild(tableNumbers);
 	}
-	
-	divCits.appendChild(tableNumbers);
 	
 	// Citations lists
 	
