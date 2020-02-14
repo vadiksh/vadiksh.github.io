@@ -54,6 +54,11 @@ section {
 		color: $accent;
 		font-weight: 700;
 	}
+	&-sub {
+		font-size: 20px;
+		text-align: center;
+		margin-top: 25px;
+	}
 }
 .flex {
 	display: flex;
@@ -522,6 +527,7 @@ section {
 			}
 		}
 	}
+	
 	&__list {
 		padding: 100px 0;
 		font-family: "Open Sans", sans-serif;
@@ -529,6 +535,9 @@ section {
 		position: relative;
 		left: -30px;
 		align-items: flex-start;
+		&-title {
+			margin-top: 70px;
+		}
 		li {
 			width: calc(100% / 9);
 			text-align: center;
@@ -986,7 +995,11 @@ section {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-
+		p {
+			padding-right: 60px;
+			font-size: 17px;
+			margin-bottom: 30px;
+		}
 		a {
 			font-size: 20px;
 			line-height: 2;

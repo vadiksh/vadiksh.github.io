@@ -182,7 +182,7 @@ $(function() {
   	})
   	
 
-    fetch('js/as-website-products.json').then(response => {
+    fetch('https://as-data-architecture.s3.amazonaws.com/public_data/as-website-products.json').then(response => {
         return response.json();
     }).then(data => {
         var data = data;
@@ -386,25 +386,7 @@ $(function() {
             var table = $(this).parents('.order__table');
             var groupIndex = table.find('.order__datagroups input:checked').parent().index();
             setTimeout(function() {
-                // if (table.find('.order__datasets input:checked').length == 1) {
-                //     var datasetIndex = table.find('.order__datasets input:checked').parent('label:not(.arrow)').index();
-
-                //     console.log(datasetIndex);
-                //     if (data[groupIndex].datasets[datasetIndex] == undefined) {
-                //         table.find('.period-from').val('')
-                //         table.find('.period-to').val('')
-                //     } else {
-
-                //         table.find('.period-from').val(data[groupIndex].datasets[datasetIndex].start_date);
-                //         var d = new Date();
-                //         var datestring = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
-                //         console.log(datestring)
-                //         table.find('.period-to').val(data[groupIndex].datasets[datasetIndex].end_date || datestring);
-                //     }
-
                 if (table.find('.order__datasets input:checked').length) {
-                    
-
                     var firstIndex = $(table.find('.order__datasets input:checked')[0]).parent('label:not(.arrow)').index();
                     var earliest = data[groupIndex].datasets[firstIndex].start_date;
                     var earliestDate = new Date(earliest);

@@ -222,6 +222,9 @@
 @media (max-width: 1023px) {
 	.section-title {
 		font-size: 50px;
+		&-sub {
+			font-size: 17px;
+		}
 	}
 	.header {
 
@@ -230,6 +233,9 @@
 		}
 		&__top {
 			height: 85px;
+		}
+		&__headline {
+			font-size: 35px;
 		}
 		&__menu {
 			 position: fixed;
@@ -480,10 +486,13 @@
 	}
 	.contact {
 		&__info {
-			width: auto;
+			width: 50%;
+			p {
+				font-size: 16px;
+			}
 		}
 		&__form {
-			width: 55%;
+			width: 60%;
 		}
 	}
 	.footer {
@@ -675,9 +684,9 @@
 	.delivery-page {
 		.delivery__list {
 			margin-bottom: 0;
-			li {
-				margin-bottom: 0;
-			}
+		}
+		.button {
+			margin-bottom: 15px;
 		}
 	}
 }
@@ -705,10 +714,23 @@
 			height: 36px;
 		}
 		&__headline {
-			font-size: 22px;
+			font-size: 19px;
 			&-accent {
 				font-size: 18px;
 				text-transform: uppercase;
+				.ml4 {
+					width: 65px;
+				}
+				.ml4 .letters {
+				  bottom: -3px;
+				}
+			}
+			.ml4 {
+				width: 160px;
+			}
+			.ml4 .letters {
+			  bottom: -3px;
+			  right: 0;
 			}
 		}
 		&__benefits {
@@ -771,6 +793,13 @@
 		}
 		&__list {
 			padding: 70px 20px 0;
+			&-title {
+				margin-top: 50px;
+				+ p {
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+			}
 			li {
 				width: 50%;
 				&:nth-child(2n - 1) {
@@ -927,6 +956,7 @@
 		}
 		&__info {
 			margin-bottom: 30px;
+			width: 100%;
 		}
 		&__form {
 			width: 100%;
@@ -1149,6 +1179,9 @@
 			width: 50%;
 			font-family: montserrat;
 			margin-bottom: 30px;
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 }
