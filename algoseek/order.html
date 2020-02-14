@@ -10,8 +10,8 @@
 	<link rel="icon" href="" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-	
-	
+
+
 </head>
 <body>
 <div class="overflow-wrap">
@@ -101,7 +101,7 @@
             </div>
             <span class="header__menu-hamburger"></span>
 		</div>
-		
+
 	</div>
 </header>
 
@@ -120,7 +120,7 @@
 					<b>Submitting order will not incur immediate payment.</b> <br>Algoseek sales will contact you in 24 hours for pricing and contact signing.
 				</p>
 				<h2>Order <b>Data Products</b></h2>
-				<form>
+				<form id="order-form">
 					<ul class="order__table flex">
 						<li>
 							<div class="products-page__table-headings"><h5>DATA GROUP <span class="info"></span></h5>
@@ -145,7 +145,7 @@
 
 								<label class="arrow order-radio">
 									<input type="radio" name="symbol" value="Upload">Upload
-									<input class="order-upload" type="file">
+									<input class="order-upload" name="input-upload-file" type="file">
 									<span class="order-upload-mark arrow-sliding">Select file</span>
 								</label>
 
@@ -168,7 +168,7 @@
 									<div class="arrow-sliding">
 										<div>
 											<textarea name="custom-dataset" class="symbol-text" cols="30" rows="4" placeholder="Describe Custom data"></textarea>
-											<input class="order-upload" type="file">
+											<input class="order-upload" name="dataset-upload-file" type="file">
 											<span class="order-upload-mark">Select file (optional)</span>
 										</div>
 									</div>
@@ -203,10 +203,10 @@
 											<div class="order-period">
 												<h6 class="noline">Period</h6>
 												<label class="order-date">
-													From<input type="date" name="period-from" value="2013-01-01" min="2013-01-01">
+													From<input type="date" class="period-from" name="period-from" value="" min="">
 												</label>
 												<label class="order-date">
-													To<input type="date" name="period-to" value="2013-01-01" min="2013-01-01">
+													To<input type="date" class="period-to" name="period-to" value="" min="">
 												</label>
 											</div>
 											<span class="order-period-add">+ Period</span>
@@ -218,26 +218,26 @@
 								</p>
 							</div>
 						</li>
-							
+
 					</ul>
 					<span class="order__table-button order__table-add-row">Add New Row</span>
 					<div class="order__form" data-id="#contact">
 						<h2>My <b>contact information</b></h2>
 						<div class="contact__form order__form-block">
 							<div class="contact__form-input">
-								<input type="text" id="firstname-input" required="">
+								<input type="text" id="firstname-input" name="first_name" required="">
 					    		<label for="firstname-input">First Name *</label>
 					   	 	</div>
 							<div class="contact__form-input">
-							    <input type="text" id="lastname-input" required="">
+							    <input type="text" id="lastname-input" name="last_name" required="">
 								<label for="lastname-input">Last Name *</label>
 							</div>
 							<div class="contact__form-input">
-							    <input type="email" id="email-input" required="">
+							    <input type="email" id="email-input" name="email" required="">
 								<label for="email-input">Email Address *</label>
 							</div>
 							<div class="contact__form-input">
-							    <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" required="">
+							    <input type="tel" id='phone-input' name="phone" pattern="\+?[0-9\- ]+" required="">
 								<label for="phone-input">Phone Number *</label>
 							</div>
 					        <label class="contact__form-input full-width" for="country-select">
@@ -495,14 +495,14 @@
 					        	</select>
 					        </label>
 					        <div class="contact__form-input full-width">
-					        	<input type="text" id="organization-input">
+					        	<input type="text" id="organization-input" name="organization">
 					        	<label for="organization-input">Organization</label>
 					        </div>
-					       
+
 
 							<label class="contact__form-input full-width" for="firmtype-select">
 								Firm Type
-								<select name="" id="firmtype-select" required="">
+								<select id="firmtype-select" required="" name="firm_type">
 									<option value="">Please Select</option>
 									<option value="Academic">Academic</option>
 									<option value="Bank">Bank</option>
@@ -520,7 +520,7 @@
 							</label>
 							<label class="contact__form-input full-width" for="size-select">
 								Firm Size
-								<select id="size-select">
+								<select id="size-select" name="firm_size">
 								    <option value="1-10">1-10</option>
 								    <option value="10-50">10-50</option>
 								    <option value="50-500">50-500</option>
@@ -529,18 +529,20 @@
 							</label>
 					        <div class="order__form-textarea">
 					        	<label for="order-textarea">Additional Information or Requirements:</label>
-					        	<textarea placeholder="Message" id="order-textarea" class="string-message" rows="3"></textarea>
+					        	<textarea placeholder="Message" id="order-textarea" class="string-message" rows="3" name="message"></textarea>
 					        </div>
 					        <label class="contact__form-input full-width" for="contact-select">
 					        	Contact me by
-					        	<select id="contact-select">
+					        	<select id="contact-select" name="contact_preference">
 					        	    <option value="No Preference">No Preference</option>
 					        	    <option value="Email">Email</option>
 					        	    <option value="Phone">Phone</option>
 					        	</select>
-					        </label>
+							</label>
+							<input type="hidden" name="g-recaptcha-response" id="recaptcha">
 						</div>
-				    </div>
+					</div>
+
 				    <button class="button" type="submit">Submit</button>
 				</form>
 
@@ -653,11 +655,12 @@
 	</div>
 </footer>
 </div>
-	
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Ld-TNMUAAAAAOXOkYdmjDQNLuBYtiLS6nS6rEVS"></script>
 <script src="js/scripts.min.js"></script>
-
+<script src="js/order.js"></script>
 </body>
 </html>

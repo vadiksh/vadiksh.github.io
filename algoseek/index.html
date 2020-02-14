@@ -10,8 +10,8 @@
 	<link rel="icon" href="" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-	
-	
+
+
 </head>
 <body>
 <div class="overflow-wrap">
@@ -20,7 +20,7 @@
 
 	<div class="header__top">
 		<div class="header__top-container">
-			<a href="/" class="header__logo"><img src="img/logo.svg" alt=""></a>
+			<a href="/" class="header__logo"><img src="/img/logo.svg" alt=""></a>
 			<div class="header__menu">
 				<ul class="header__menu-wrapper">
 					<li>
@@ -62,17 +62,18 @@
 	                    </div>
 	                </li>
 	                <li>
-	                    <a href="#data-drive" class="header__link">Data Drive</a>
+	                    <a href="./data-drive.html" class="header__link">Data Drive</a>
 	                </li>
 	                <li>
-	                    <a href="./company.html" class="header__link">
+	                    <a href="./company.html" class="header__link dropdown">
 	                        Company
 	                    </a>
 	                    <div class="header__dropdown">
-	                       <a href="./company-about.html">About us</a>
-	                       <a href="./company-vision.html">Our vision</a>
-	                       <a href="./company-mission.html">Our mission</a>
-	                       <a href="./company-team.html">Our team</a>
+	                       <a href="./company.html#about">About us</a>
+	                       <a href="./company.html#vision">Our vision</a>
+	                       <a href="./company.html#mission">Our mission</a>
+	                       <a href="./company.html#team">Our team</a>
+	                       <a href="./company.html#career">Career</a>
 	                    </div>
 	                </li>
 	                <li>
@@ -95,25 +96,35 @@
 	                    </div>
 	                </li>
 	                <li>
-	                    <a href="" class="header__link icon cart"></a>
+	                    <a href="./order.html" class="header__link icon cart"></a>
 	                </li>
 				</ul>
                 <div class="close header__menu-close"><span></span></div>
             </div>
             <span class="header__menu-hamburger"></span>
 		</div>
-		
+
 	</div>
 
 	<div class="header__banner">
 		<div id="particles-js" class="particles-js"></div>
 		<div class="header__border top"><span class="header__play"></span></div>
-		<h2 class="header__headline">Maths is cool, <b>Data is grinding</b></h2>
-		<span class="header__headline-accent">Enjoy maths</span>
+		<h2 class="header__headline">
+			<p class="ml4">
+				<span class="letters letters-1">Maths is cool,</span> 
+				<span class="letters letters-2">Trading is exciting,</span></p>
+			<b> Data is grinding</b>
+		</h2>
+		<span class="header__headline-accent">
+		Enjoy <p class="ml4">
+			<span class="letters letters-1">math</span> 
+			<span class="letters letters-2">trading</span></p>
+		</p>
+		</span>
 		<h1>Leave data to <strong>algoseek</strong></h1>
 		<span class="header__benefits">High quality. Fair price.<br> Institutional market data.</span>
-		<div class="header__border bottom"><a href="" class="button">Explore Data</a></div>	
-		
+		<div class="header__border bottom"><a href="" class="button">Explore Data</a></div>
+
 	</div>
 </header>
 <section class="numeric">
@@ -236,7 +247,7 @@
 				<img src="img/products/product-icon3.png" alt="">
 				<span>Full Depth/<br> Multiple Depth</span>
 				<p class="products__tooltip">
-					Full depth (or multiple depth) shows price and size for limit orders placed for Bid and Ask. Each time a limit order changes then this change is published. 
+					Full depth (or multiple depth) shows price and size for limit orders placed for Bid and Ask. Each time a limit order changes then this change is published.
 				</p>
 			</li>
 			<li>
@@ -283,8 +294,8 @@
 			</li>
 		</ul>
 		<div class="products__buttons">
-			<a href="" class="button alt">Purchase historical data</a>
-			<a href="" class="button alt">Subscribe to Daily Updates</a>
+			<a href="" class="button ">Purchase historical data</a>
+			<a href="" class="button ">Subscribe to Daily Updates</a>
 		</div>
 	</div>
 </section>
@@ -345,7 +356,7 @@
 						</div>
 					</div>
 					<span class="delivery__screen-play" id="play"></span>
-					
+
 				</div>
 			</div>
 		</div>
@@ -415,19 +426,19 @@
 		</div>
 		<form action="" class="contact__form">
 			<div class="contact__form-input">
-				<input type="text" id="firstname-input" required="">
+				<input type="text" id="firstname-input" name="first_name" required="">
 	    		<label for="firstname-input">First Name *</label>
 	   	 	</div>
 			<div class="contact__form-input">
-			    <input type="text" id="lastname-input" required="">
+			    <input type="text" id="lastname-input" name="last_name" required="">
 				<label for="lastname-input">Last Name *</label>
 			</div>
 			<div class="contact__form-input">
-			    <input type="email" id="email-input" required="">
+			    <input type="email" id="email-input" name="email" required="">
 				<label for="email-input">Email Address *</label>
 			</div>
 			<div class="contact__form-input">
-			    <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" required="">
+			    <input type="tel" id='phone-input' name="phone" pattern="\+?[0-9\- ]+" required="">
 				<label for="phone-input">Phone Number *</label>
 			</div>
 	        <label class="contact__form-input full-width" for="country-select">
@@ -439,7 +450,7 @@
         			<option value="China">China</option>
         			<option value="HongKong">HongKong</option>
         			<option value="Singapore">Singapore</option>
-        			
+
 
 
         		   <option value="Afganistan">Afghanistan</option>
@@ -685,13 +696,13 @@
         		</select>
 	        </label>
 	        <div class="contact__form-input full-width">
-	        	<input type="text" id="organization-input">
+	        	<input type="text" id="organization-input" name="organization">
 	        	<label for="organization-input">Organization</label>
 	        </div>
-	       
+
 	       <label class="contact__form-input full-width" for="firmtype-select">
 	       	Firm Type
-	       	<select name="" id="firmtype-select" required="">
+	       	<select id="firmtype-select" name="firm_type">
 	       		<option value="">Please Select</option>
 	       		<option value="Academic">Academic</option>
 	       		<option value="Bank">Bank</option>
@@ -709,7 +720,7 @@
 	       </label>
 	       <label class="contact__form-input full-width" for="size-select">
 	       	Firm Size
-	       	<select id="size-select">
+	       	<select id="size-select" name="firm_size">
 	       	    <option value="1-10">1-10</option>
 	       	    <option value="10-50">10-50</option>
 	       	    <option value="50-500">50-500</option>
@@ -719,7 +730,7 @@
 
 			<label class="contact__form-input full-width" for="subject-select">
 				Subject *
-				<select required="" id="subject-select">
+				<select required="" id="subject-select" name="subject">
 				    <option value="">Select Subject</option>
 				    <option value="Purchase/Subscription Inquiry">Purchase/Subscription Inquiry</option>
 				    <option value="Products Inquiry">Products Inquiry</option>
@@ -729,12 +740,13 @@
 				    <option value="Account Issue">Account Issue</option>
 				</select>
 			</label>
-	        
-	        <textarea placeholder="Message *" class="string-message" rows="3" required=""></textarea>
 
-	        
+	        <textarea placeholder="Message *" class="string-message" rows="3" required="" name="message"></textarea>
+
+			<input type="hidden" name="g-recaptcha-response" id="recaptcha">
+
 	        <button class="button" type="submit">Submit</button>
-		</form> 
+		</form>
 	</div>
 </section>
 <footer class="footer">
@@ -752,7 +764,7 @@
 		<div class="footer__menu">
 			<div>
 				<div class="footer__list">
-					<h5>Coming Soon</h5>
+					<h5 class="accent">Coming Soon</h5>
 					<a href="#">Machine readable news</a>
 					<a href="#">FX data </a>
 				</div>
@@ -768,10 +780,10 @@
 					<a href="#">Stocks</a>
 					<a href="#">ETF/ETN</a>
 					<a href="#">Indices</a>
-					<a href="../products-options.html">Equity Options</a>
-					<a href="./products-futures.html">Futures</a>
-					<a href="../products-futur-opt.html">Future Options</a>
-					<a href="../delivery.html">Virtual data drive</a>
+					<a href="./products.html#us_options_market_data">Equity Options</a>
+					<a href="./products.html#us_futures_market_data">Futures</a>
+					<a href="./products.html#us_futures_options_data">Future Options</a>
+					<a href="./backend/data_drive">Virtual data drive</a>
 					<a href="#">Sample data</a>
 					<a href="#">Pricing</a>
 				</div>
@@ -779,15 +791,15 @@
 			<div>
 				<div class="footer__list">
 					<h5>Company</h5>
-					<a href="../company-about.html">About us</a>
-					<a href="../company-vision.html">Our vision</a>
-					<a href="../company-mission.html">Our mission</a>
-					<a href="../company-team.html">Team members</a>
+					<a href="./company.html#about">About us</a>
+					<a href="./company.html#vision">Our vision</a>
+					<a href="./company.html#mission">Our mission</a>
+					<a href="./company.html#team">Our team</a>
 				</div>
 				<div class="footer__list">
 					<h5>Career</h5>
-					<a href="../career.html">Developing</a>
-					<a href="../career.html">Marketing</a>
+					<a href="./company.html#team">Developing</a>
+					<a href="./company.html#team">Marketing</a>
 				</div>
 			</div>
 		</div>
@@ -795,14 +807,14 @@
 	</div>
 </footer>
 </div>
-	
-
-<script src=""></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Ld-TNMUAAAAAOXOkYdmjDQNLuBYtiLS6nS6rEVS"></script>
 <script src="js/scripts.min.js"></script>
+<script src="js/contact.js"></script>
 <script>
 	$(function() {
 		if ($(window).width() > 767) {
@@ -812,7 +824,43 @@
 				});
 			});
 		}
+
+		var ml4 = {};
+		ml4.opacityIn = [0,1];
+		ml4.scaleIn = [0, 1];
+		ml4.scaleOut = 1.2;
+		ml4.durationIn = 800;
+		ml4.durationOut = 500;
+		ml4.delay = 2000;
+
+		anime.timeline({loop: true})
+		  .add({
+		    targets: '.ml4 .letters-1',
+		    opacity: ml4.opacityIn,
+		    scale: ml4.scaleIn,
+		    duration: ml4.durationIn
+		  }).add({
+		    targets: '.ml4 .letters-1',
+		    opacity: 0,
+		    scale: ml4.scaleOut,
+		    duration: ml4.durationOut,
+		    easing: "easeInExpo",
+		    delay: ml4.delay
+		  }).add({
+		    targets: '.ml4 .letters-2',
+		    opacity: ml4.opacityIn,
+		    scale: ml4.scaleIn,
+		    duration: ml4.durationIn
+		  }).add({
+		    targets: '.ml4 .letters-2',
+		    opacity: 0,
+		    scale: ml4.scaleOut,
+		    duration: ml4.durationOut,
+		    easing: "easeInExpo",
+		    delay: ml4.delay
+		  });
 	})
+
 </script>
 
 </body>

@@ -803,16 +803,16 @@
   },
   {
     "id": "dgr_cme_futures_opt",
-    "display_name": "US Futures Options Data",
+    "display_name": "US Future Options Data",
     "product_listing_name": "us_futures_options_data",
-    "menu_name": "Futures Options",
+    "menu_name": "Future Options",
     "status": "Production",
     "tickers": [
       "All",
       "Upload",
       "Input"
     ],
-    "description": "US Futures Options data from CME,CBOT, NYMEX, COMEX from 2010 to present with all strikes and expiration dates.",
+    "description": "US Future Options data from CME,CBOT, NYMEX, COMEX from 2010 to present with all strikes and expiration dates.",
     "tags": [
       "Futures",
       "Options"

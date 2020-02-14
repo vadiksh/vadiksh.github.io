@@ -10,8 +10,8 @@
    <link rel="icon" href="" type="image/x-icon">
    <link rel="stylesheet" type="text/css" href="css/main.min.css">
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-   
-   
+
+
 </head>
 <body>
 <div class="overflow-wrap">
@@ -101,7 +101,7 @@
             </div>
             <span class="header__menu-hamburger"></span>
       </div>
-      
+
    </div>
 </header>
 
@@ -119,19 +119,19 @@
       </div>
       <form action="" class="contact__form">
          <div class="contact__form-input">
-                 <input type="text" id="firstname-input" required="">
+                 <input type="text" id="firstname-input" name="first_name" required="">
          <label for="firstname-input">First Name *</label>
          </div>
          <div class="contact__form-input">
-             <input type="text" id="lastname-input" required="">
+             <input type="text" id="lastname-input" name="last_name" required="">
                  <label for="lastname-input">Last Name *</label>
          </div>
          <div class="contact__form-input">
-             <input type="email" id="email-input" required="">
+             <input type="email" id="email-input" name="email" required="">
                  <label for="email-input">Email Address *</label>
          </div>
          <div class="contact__form-input">
-             <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" required="">
+             <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" name="phone" required="">
                  <label for="phone-input">Phone Number *</label>
          </div>
           <label class="contact__form-input" for="country-select">
@@ -388,13 +388,13 @@
             </select>
           </label>
           <div class="contact__form-input">
-               <input type="text" id="organization-input">
+               <input type="text" id="organization-input" name="organization">
                <label for="organization-input">Organization</label>
           </div>
 
            <label class="contact__form-input full-width" for="firmtype-select">
             Firm Type
-            <select name="" id="firmtype-select" required="">
+            <select name="" id="firmtype-select" name="firm_type" required="">
               <option value="">Please Select</option>
               <option value="Academic">Academic</option>
               <option value="Distributor">Distributor</option>
@@ -407,21 +407,23 @@
           </label>
           <label class="contact__form-input full-width" for="size-select">
             Firm Size
-            <select id="size-select">
+            <select id="size-select" name="firm_size">
                 <option value="1-10">1-10</option>
                 <option value="10-50">10-50</option>
                 <option value="50-500">50-500</option>
                 <option value="over-500">Over 500</option>
             </select>
           </label>
-          
+
          <div class="contact__form-input ">
-            <input type="text" id="subject-input">
+            <input type="text" id="subject-input" name="subject">
             <label for="subject-input">Subject</label>
-        </div> 
-          
-          <textarea placeholder="Message" class="string-message" rows="3" required=""></textarea>
-         
+        </div>
+
+          <textarea placeholder="Message" class="string-message" rows="3" name="message" required=""></textarea>
+
+          <input type="hidden" name="g-recaptcha-response" id="recaptcha">
+
           <div class="button-wrapper">
             <button class="button" type="submit">Submit</button>
           </div>
@@ -487,7 +489,7 @@
    </div>
 </footer>
 </div>
-   
+
 
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -516,7 +518,9 @@
        });
     })
    </script>
+   <script src="https://www.google.com/recaptcha/api.js?render=6Ld-TNMUAAAAAOXOkYdmjDQNLuBYtiLS6nS6rEVS"></script>
    <script src="js/scripts.min.js"></script>
+   <script src="js/partners.js"></script>
 
 </body>
 </html>

@@ -10,8 +10,8 @@
    <link rel="icon" href="" type="image/x-icon">
    <link rel="stylesheet" type="text/css" href="css/main.min.css">
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-   
-   
+
+
 </head>
 <body>
 <div class="overflow-wrap">
@@ -101,7 +101,7 @@
             </div>
             <span class="header__menu-hamburger"></span>
       </div>
-      
+
    </div>
 </header>
 
@@ -112,19 +112,19 @@
       <p>Please fill out the support request form below and a team member will respond.</p>
       <form action="" class="contact__form support__form">
          <div class="contact__form-input">
-                 <input type="text" id="firstname-input" required="">
+                 <input type="text" id="firstname-input" name="first_name" required="">
          <label for="firstname-input">First Name *</label>
          </div>
          <div class="contact__form-input">
-             <input type="text" id="lastname-input" required="">
+             <input type="text" id="lastname-input" name="last_name" required="">
                  <label for="lastname-input">Last Name *</label>
          </div>
          <div class="contact__form-input">
-             <input type="email" id="email-input" required="">
+             <input type="email" id="email-input" name="email" required="">
                  <label for="email-input">Email Address *</label>
          </div>
          <div class="contact__form-input">
-             <input type="tel" id='phone-input' pattern="\+?[0-9\- ]+" required="">
+             <input type="tel" id='phone-input' name="phone" pattern="\+?[0-9\- ]+" required="">
                  <label for="phone-input">Phone Number *</label>
          </div>
           <label class="contact__form-input" for="country-select">
@@ -380,13 +380,13 @@
             </select>
           </label>
           <div class="contact__form-input">
-               <input type="text" id="organization-input">
+               <input type="text" id="organization-input" name="organization">
                <label for="organization-input">Organization</label>
           </div>
 
           <label class="contact__form-input full-width product-select" for="product-select">
                   Product
-                  <select required="" id="product-select">
+                  <select required="" id="product-select" name="product">
                       <option value="">Select</option>
                       <option value="Data Drive">Data Drive</option>
                       <option value="AWS CLI">AWS CLI</option>
@@ -397,7 +397,7 @@
 
          <label class="contact__form-input full-width flex-order-4" for="data-group">
                  Data Group
-                 <select required="" id="data-group">
+                 <select id="data-group" name="datagroup">
                      <option value="">Select</option>
                      <option value="Unknown">Unknown</option>
                  </select>
@@ -416,28 +416,27 @@
                  <div class="select-custom">
                      Select Data Set(s)
                  </div>
-                 <ul class="select-list">
-                   
+                 <ul class="select-list" id="custom-select-datasets">
+
                  </ul>
                  <ul class="select-checkboxes">
-                   
+
                  </ul>
          </label>
-        
-         
-          
+
+
+
          <div class="contact__form-input flex-order-4">
-            <input type="text" id="subject-input">
+            <input type="text" id="subject-input" name="subject">
             <label for="subject-input">Subject</label>
-        </div> 
-          
-          <textarea placeholder="Description" class="string-message flex-order-4" rows="3" required=""></textarea>
-          
-         
-          
+        </div>
+
+          <textarea placeholder="Description" class="string-message flex-order-4" rows="3"  name="description"></textarea>
+
+          <input type="hidden" name="g-recaptcha-response" id="recaptcha">
 
           <label class="file flex-order-4">
-              <input class="order-upload" type="file">
+              <input class="order-upload" type="file" name="attachment">
               <span class="order-upload-mark">Select file (optional)</span>
           </label>
           <div class="button-wrapper flex-order-4">
@@ -505,12 +504,14 @@
    </div>
 </footer>
 </div>
-   
+
 
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+   <script src="https://www.google.com/recaptcha/api.js?render=6Ld-TNMUAAAAAOXOkYdmjDQNLuBYtiLS6nS6rEVS"></script>
    <script src="js/scripts.min.js"></script>
+   <script src="js/support.js"></script>
 
 </body>
 </html>
