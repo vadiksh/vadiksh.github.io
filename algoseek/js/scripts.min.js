@@ -535,7 +535,7 @@ $(function() {
     				'<div class="order-period-added"><label>From<input type="date" name="period-from" min="2013-01-01">' + 
     				'</label><label>To<input type="date" name="period-to" min="2013-01-01"></label></div>'
     		);
-    		table.find('.order-period:first-of-type h6').clone(true).html('Period ' + parseInt(table.find('.order-period').length + 1)).prependTo(table.find('.order-period-added'));
+    		table.find('.order-period:first-of-type h6').clone(true).addClass('new-period').html('Period ' + parseInt(table.find('.order-period').length + 1)).prependTo(table.find('.order-period-added'));
     		table.find('.order-period:first-of-type h6').html('Period 1');
     		table.find('.order-period-added').addClass('order-period')
     		table.find('.order-period-added').removeClass('order-period-added');
@@ -546,23 +546,22 @@ $(function() {
     		table.find('.order-historical .arrow-sliding.active').css({"height": table.find('.order-historical .arrow-sliding > div').height()});
     		setTableHeight($(this).parents('.order__table'));
     	}
-    	
     })
-    $('.order-period h6').click(function () {
-    	var table = $(this).parents('.order__table');
+    $(document).on('click', '.order-period h6.new-period', function() {
+        var table = $(this).parents('.order__table');
        
-    	if (table.find('.order-period').length > 1) {
-    		$(this).parent().remove();  
-    		 		
-    		if (table.find('.order-period').length < 5) {
-    			table.find('.order-period-add').fadeIn(200);
-    		}
-    		if (table.find('.order-period').length == 1) {
-    			table.find('.order-period h6').addClass('hide-close');
-    		}
-    	} 
+        if (table.find('.order-period').length > 1) {
+            $(this).parent().remove();  
+                    
+            if (table.find('.order-period').length < 5) {
+                table.find('.order-period-add').fadeIn(200);
+            }
+            if (table.find('.order-period').length == 1) {
+                table.find('.order-period h6').addClass('hide-close');
+            }
+        } 
 
-    	for (var i = 0; i < table.find('.order-period').length; i++) {
+        for (var i = 0; i < table.find('.order-period').length; i++) {
             var index = i + 1;
             $(table.find('.order-period')[i]).find('h6').html('Period ' + index);
             if (table.find('.order-period').length == 1) {
@@ -570,8 +569,11 @@ $(function() {
             }
         }
 
-    	table.find('.order-historical .arrow-sliding.active').css({"height": table.find('.order-historical .arrow-sliding > div').height()});
-    	setTableHeight(table);
+        table.find('.order-historical .arrow-sliding.active').css({"height": table.find('.order-historical .arrow-sliding > div').height()});
+        setTableHeight(table);
+    })
+    $('.order-period h6.new-period').click(function () {
+    	
     	
     });
     $('.order__table-add-row').click(function() {
