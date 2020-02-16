@@ -1,4 +1,16 @@
 $(function() {
+    if (window.location.pathname.indexOf('products') > 0) {
+        $('.header__menu-wrapper li:first-child a').addClass('active-link');
+    } else if (window.location.pathname.indexOf('delivery') > 0) {
+        $('.header__menu-wrapper li:nth-child(2) a').addClass('active-link');
+    } else if (window.location.pathname.indexOf('company') > 0) {
+        $('.header__menu-wrapper li:nth-child(4) a').addClass('active-link');
+    } else if (window.location.pathname.indexOf('support') > 0) {
+        $('.header__menu-wrapper li:nth-child(5) a').addClass('active-link');
+    } else if (window.location.pathname.indexOf('partners') > 0) {
+        $('.header__menu-wrapper li:nth-child(6) a').addClass('active-link');
+    }
+
 	$(window).scroll(function() {
 		var scrolled = $(window).scrollTop();
 		if (scrolled > 0) {
@@ -9,6 +21,9 @@ $(function() {
 	})
     $('.header__menu a:not(.dropdown)').click(function() {
         $('.header__menu').removeClass('active');
+    })
+    $('.products-page__menu .close').click(function() {
+        $('.products-page__menu').removeClass('active');
     })
     if ($(window).width() > 767 && $('.products-page').length) {
         $(window).scroll(function() {
@@ -182,7 +197,7 @@ $(function() {
   	})
   	
 
-    fetch('https://as-data-architecture.s3.amazonaws.com/public_data/as-website-products.json').then(response => {
+    fetch('js/as-website-products.json').then(response => {
         return response.json();
     }).then(data => {
         var data = data;
@@ -235,14 +250,14 @@ $(function() {
                     var docs = data[index].datasets[i].documentation;
                     var file = data[index].datasets[i].sample_file;
                     if (docs !== null) {
-                        docs_item = '<a class="products-page__table-doc" href="https://'+ docs.bucket_name +'.s3.amazonaws.com/' + docs.object_name + '">';
+                        docs_item = '<a class="products-page__table-doc ' + docs.file_ext + '" href="https://'+ docs.bucket_name +'.s3.amazonaws.com/' + docs.object_name + '">';
                     } else {
-                        docs_item = '<a class="products-page__table-doc doc-null" href="' + docs + '">';
+                        docs_item = '<a class="products-page__table-doc doc-null">';
                     }
                     if (file !== null) {
-                        file_item = '<a class="products-page__table-sample" href="https://'+ file.bucket_name +'.s3.amazonaws.com/' + file.object_name + '">';
+                        file_item = '<a class="products-page__table-sample ' + file.file_ext + '" href="https://'+ file.bucket_name +'.s3.amazonaws.com/' + file.object_name + '">';
                     } else {
-                        file_item = '<a class="products-page__table-sample item-null" href="' + file + '">';
+                        file_item = '<a class="products-page__table-sample item-null">';
                     }
 
 	    			$('.products-page__table ul').append(
@@ -271,11 +286,11 @@ $(function() {
         
         $('.icon-ruler').click(function(e) {
             e.preventDefault();
-            showSizes();
-        })
-        $('.back-to-files, .back-to-files + .tooltip').click(function(e) {
-            e.preventDefault();
-            backToFiles();
+            if (!$(this).hasClass('back-to-files')) {
+                showSizes();
+            } else {
+                backToFiles();
+            }            
         })
         function showSizes() {
             var sizeHref = window.location.origin + window.location.pathname + '?showsize' + window.location.hash;
@@ -284,8 +299,8 @@ $(function() {
             var indexItem = $('.products-page__menu').find('a[href="' + window.location.hash + '"]').parent();
             var index = indexItem.index('.products-page__data-group');
             for (var i = 0; i < data[index].datasets.length; i++) {
-                var dailySize = data[index].datasets[i].daily_size;
-                var annualSize = data[index].datasets[i].annual_size;
+                var dailySize = data[index].datasets[i].daily_size || ' — ';
+                var annualSize = data[index].datasets[i].annual_size || ' — ';
 
                 $('.products-page__table-headings h5:nth-of-type(3)').html('Daily Size')
                 $('.products-page__table-headings h5:nth-of-type(4)').html('Annual Size')
@@ -294,7 +309,10 @@ $(function() {
                 $('.products-page__table ul li').eq(i).find('.products-page__table-sample').replaceWith('<span>' + annualSize + '</span>');
                  
             }
-            $('.back-to-files').addClass('active');
+            $('.icon-ruler').addClass('back-to-files active').next('.tooltip').html('Docs & Sample');
+            setTimeout(function () {
+                $('.icon-ruler').removeClass('active');
+            },3000)
         }
         function backToFiles() {
             var sizeHref = window.location.origin + window.location.pathname + window.location.hash;
@@ -303,27 +321,27 @@ $(function() {
             var indexItem = $('.products-page__menu').find('a[href="' + window.location.hash + '"]').parent();
             var index = indexItem.index('.products-page__data-group');
             for (var i = 0; i < data[index].datasets.length; i++) {
-
                 var docs = data[index].datasets[i].documentation;
                 var file = data[index].datasets[i].sample_file;
 
                 if (docs !== null) {
-                    docs_item = '<a class="products-page__table-doc" href="https://'+ docs.bucket_name +'.s3.amazonaws.com/' + docs.object_name + '">';
+                    docs_item = '<a class="products-page__table-doc ' + docs.file_ext + '" href="https://'+ docs.bucket_name +'.s3.amazonaws.com/' + docs.object_name + '">';
                 } else {
-                    docs_item = '<a class="products-page__table-doc doc-null" href="' + docs + '">';
+                    docs_item = '<a class="products-page__table-doc doc-null">';
                 }
                 if (file !== null) {
-                    file_item = '<a class="products-page__table-sample" href="https://'+ file.bucket_name +'.s3.amazonaws.com/' + file.object_name + '">';
+                    file_item = '<a class="products-page__table-sample ' + file.file_ext + '" href="https://'+ file.bucket_name +'.s3.amazonaws.com/' + file.object_name + '">';
                 } else {
-                    file_item = '<a class="products-page__table-sample item-null" href="' + file + '">';
+                    file_item = '<a class="products-page__table-sample item-null">';
                 }
+
                 $('.products-page__table ul li').eq(i).find('span:first-of-type').replaceWith(docs_item);
                 $('.products-page__table ul li').eq(i).find('span:last-of-type').replaceWith(file_item);
 
                 $('.products-page__table-headings h5:nth-of-type(3)').html('Docs');
                 $('.products-page__table-headings h5:nth-of-type(4)').html('Sample Data');
             }
-            $('.back-to-files').removeClass('active');
+            $('.icon-ruler').removeClass('back-to-files').next('.tooltip').html('Dataset Sizes');
         }
 
         if (window.location.hash !== 0) {
@@ -339,13 +357,7 @@ $(function() {
     		setTimeout(function() {
                 table.find('.order__symbol').html('');
                 for (var i = 0; i < data[index].tickers.length; i++) {
-                    if (data[index].tickers[i] == 'All') {
-                        table.find('.order__symbol').append(
-                            '<label class="order-radio">' + 
-                                '<input type="radio" name="symbol" value="All" checked="">All' + 
-                            '</label>'
-                        )
-                    } else if (data[index].tickers[i] == 'Upload') {
+                    if (data[index].tickers[i] == 'Upload File') {
                         table.find('.order__symbol').append(
                             '<label class="arrow order-radio">' +
                                 '<input type="radio" name="symbol" value="Upload">Upload' +
@@ -353,11 +365,17 @@ $(function() {
                                 '<span class="order-upload-mark arrow-sliding">Select file</span>' +
                             '</label>'
                         )
-                    } else if (data[index].tickers[i] == 'Input') {
+                    } else if (data[index].tickers[i] == 'Input List') {
                         table.find('.order__symbol').append(
                             '<label class="arrow order-radio">' + 
                                 '<input type="radio" name="symbol" value="Input">Input' + 
                                 '<textarea name="symbol-input" class="arrow-sliding symbol-text" cols="30" rows="4"></textarea>' + 
+                            '</label>'
+                        )
+                    } else {
+                        table.find('.order__symbol').append(
+                            '<label class="order-radio">' + 
+                                '<input type="radio" name="symbol" value="' + data[index].tickers[i] + '" checked="">' + data[index].tickers[i] +
                             '</label>'
                         )
                     }
@@ -505,7 +523,7 @@ $(function() {
     });
     if ($(window).width() < 1024) {
         $('.arrow-sliding input, .arrow-sliding textarea').click(function (e) {
-            e.preventDefault();
+            // e.preventDefault();
         });
     }
     $('.order-period-add').click(function (e) {

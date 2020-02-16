@@ -197,12 +197,12 @@ section {
 		position: relative;
 		transition: .3s;
 		padding-bottom: 13px;
-		&:hover, &.active {
+		&:hover, &.active, &.active-link {
 			color: $accent;
 			transition: .3s;
 
 		}
-		&.dropdown {
+		&.dropdown, &.active-link {
 			&::after {
 				content: '';
 				width: 100%;
@@ -214,7 +214,7 @@ section {
 				opacity: 0;
 			}
 		}
-		&.dropdown:hover::after, &.active::after {
+		&.dropdown:hover::after, &.active::after, &.active-link::after {
 			opacity: 1;
 			transition: .2s;
 		}
@@ -393,7 +393,7 @@ section {
 			font-weight: 700;
 			color: $accent;
 			.ml4 {
-				width: 80px;
+				width: 95px;
 				line-height: 1;
 			}
 			.ml4 .letters {
@@ -1638,30 +1638,25 @@ section {
 				}
 			}
 			&.icon-ruler {
+				transition: .2s;
 				background: url('../img/ruler.png') no-repeat center center / contain;
 				&:hover {
 					background: url('../img/ruler-green.png') no-repeat center center / contain;
 				}
-			}
-			&.back-to-files {
-				opacity: 0;
-				visibility: hidden;
-				transition: .2s;
-				transform: rotate(90deg);
-				background: url('../img/arrow-green.png') no-repeat center center / contain;
-				& + .tooltip {
-					opacity: 0;
-					transition: .3s;
-					cursor: pointer;
-				}
-				&.active {
-					opacity: 1;
-					visibility: visible;
-					transition: .3s;
+				&.back-to-files {
+					transition: .2s;
+					background: url('../img/back-arrow.svg') no-repeat center center / contain;
 					& + .tooltip {
-						opacity: 1;
-						visibility: visible;
+						opacity: 0;
 						transition: .3s;
+						cursor: pointer;
+					}
+					&:hover, &.active {
+						& + .tooltip {
+							opacity: 1;
+							visibility: visible;
+							transition: .3s;
+						}
 					}
 				}
 			}
@@ -1699,10 +1694,10 @@ section {
 				border-right: 1px solid #fff;
 
 				&:nth-child(1) {
-					width: 30%;
+					width: 25%;
 				}
 				&:nth-child(2) {
-					width: 36%;
+					width: 41%;
 				}
 				&:nth-child(3) {
 					width: 18%;
@@ -1729,7 +1724,7 @@ section {
 			}
 		}
 		&-name {
-			width: 30%;
+			width: 25%;
 			font-size: 16px;
 			font-weight: 700;
 			padding: 15px;
@@ -1737,7 +1732,7 @@ section {
 			align-items: center;
 		}
 		&-descr {
-			width: 36%;
+			width: 41%;
 			padding: 15px 20px;
 			font-size: 14px;
 			display: flex;
@@ -1749,6 +1744,21 @@ section {
 			width: 18%;
 			font-weight: 700;
 			align-items: center;
+		}
+		.zip {
+			background: url('../img/files/zip.svg') no-repeat center center/ 41px auto;
+		}
+		.pdf {
+			background: url('../img/files/pdf.svg') no-repeat center center/ 37px auto;
+		}
+		.csv {
+			background: url('../img/files/csv.svg') no-repeat center center/ 41px auto;
+		}
+		.doc-null {
+			background: url('../img/files/pdf-black.svg') no-repeat center center/ 37px auto;
+		}
+		.item-null {
+			background: url('../img/files/csv-black.svg') no-repeat center center/ 41px auto;
 		}
 		&-doc {
 			width: 18%;
@@ -2629,9 +2639,8 @@ section {
 		background: url('../img/company/4.png') no-repeat center center/ cover;
 	}
 	&-career {
-		background: url('../img/career/career.jpg') no-repeat center left/ cover;
+		background: url('../img/career/career.jpg') no-repeat  80% center / cover;
 		b {
-			color: #231f20;
 		}
 	}
 }
@@ -2662,6 +2671,7 @@ section {
 		}
 		li {
 			margin-bottom: 50px;
+			align-items: center;
 			&:nth-child(2n) {
 				flex-direction: row-reverse;
 			}
@@ -2701,7 +2711,8 @@ section {
 		}
 		li {
 			img {
-				transform: scale(0.5);
+				width: 50px;
+				height: auto;
 			}
 			font-size: 18px;
 			text-transform: uppercase;

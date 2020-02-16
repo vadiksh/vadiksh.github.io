@@ -7,8 +7,8 @@
     "status": "Production",
     "tickers": [
       "All",
-      "Upload",
-      "Input"
+      "Upload File",
+      "Input List"
     ],
     "description": "AlgoSeek's historical data is from the full Consolidated tape (SIP feed) for all Equities, ETF, ETN, ADRs, Warrants for all US listed and delisted Stocks from January 2007 to present starting from pre-market open at 4am EST, regular market hours to post-market trading finishing at 8pm EST.   Data is from every exchange as well as FINRA.",
     "tags": [
@@ -37,7 +37,8 @@
           "description": "AAPL data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_full_depth.csv.gz"
+          "object_name": "equity_full_depth.csv.gz",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_full_depth",
@@ -47,7 +48,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.Full.Depth.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/FullDepth/",
-          "last_updated": "2018-10-27"
+          "last_updated": "2018-10-27",
+          "file_ext": "pdf"
         },
         "daily_size": "6 GB",
         "annual_size": "1.4 TB"
@@ -74,7 +76,8 @@
           "description": "AAPL data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_trade_and_quotes.csv.gz"
+          "object_name": "equity_trade_and_quotes.csv.gz",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_taq",
@@ -84,7 +87,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotes/",
-          "last_updated": "2018-10-04"
+          "last_updated": "2018-10-04",
+          "file_ext": "pdf"
         },
         "daily_size": "5 GB",
         "annual_size": "1.2 TB"
@@ -111,7 +115,8 @@
           "description": "AAPL data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_trades_only.csv"
+          "object_name": "equity_trades_only.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_trades",
@@ -121,7 +126,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnly/",
-          "last_updated": "2019-06-15"
+          "last_updated": "2019-06-15",
+          "file_ext": "pdf"
         },
         "daily_size": "150 MB",
         "annual_size": "35 GB"
@@ -149,7 +155,8 @@
           "description": "AAPL data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_trade_and_quotes_1min.csv"
+          "object_name": "equity_trade_and_quotes_1min.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_taq_1min",
@@ -159,7 +166,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotesOneMin/",
-          "last_updated": "2019-08-27"
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
         },
         "daily_size": "180 MB",
         "annual_size": "45 GB"
@@ -187,7 +195,8 @@
           "description": "AAPL data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_trade_and_quotes_1min_nofinra.csv"
+          "object_name": "equity_trade_and_quotes_1min_nofinra.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_taq_1min",
@@ -197,7 +206,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotesOneMin/",
-          "last_updated": "2019-08-27"
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
         },
         "daily_size": "160 MB",
         "annual_size": "40 GB"
@@ -225,7 +235,8 @@
           "description": "AAPL data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_trades_only_1min.csv"
+          "object_name": "equity_trades_only_1min.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_trades_1min",
@@ -235,7 +246,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.EquityTrades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnlyOneMin/",
-          "last_updated": "2019-08-27"
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
         },
         "daily_size": "15 MB",
         "annual_size": "3.5 GB"
@@ -247,7 +259,7 @@
         "product_listing_name": "one_minute_trade_only_bars_no_finra",
         "menu_name": "Trade Only Minute Bars excluding TRF",
         "short_description": "US Equity Trade Only Minute Bars Excluding FINRA/TRF Trades Data",
-        "long_description": "Trade based OHLC minute bars with only Trades from the listed Exchanges. TRF reports which can from from dark pools, OTC and broker-dealer internal crosses are excluded.  Dataset gives most accurate for backtesting trades on the public exchanges.",
+        "long_description": "Trade based OHLC minute bars with only Trades from the listed Exchanges. TRF reports from dark pools, OTC and broker-dealer internal crosses are excluded.  Dataset gives most accurate for backtesting trades on the public exchanges.",
         "data_class": "Equity",
         "data_type": "1MinTrades",
         "status": "Production",
@@ -263,7 +275,8 @@
           "description": "AAPL data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_trades_only_1min_nofinra.csv"
+          "object_name": "equity_trades_only_1min_nofinra.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_trades_1min",
@@ -273,7 +286,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.EquityTrades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnlyOneMin/",
-          "last_updated": "2019-08-27"
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
         },
         "daily_size": "11 MB",
         "annual_size": "2.7 GB"
@@ -302,7 +316,8 @@
           "description": "AAPL data for 2007-2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_daily_ohlc_primary.csv"
+          "object_name": "equity_daily_ohlc_primary.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_daily_ohlc",
@@ -312,7 +327,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.Daily.OHLC.Primary.Guide.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/DailyOHLCPrimary/",
-          "last_updated": "2019-06-26"
+          "last_updated": "2019-06-26",
+          "file_ext": "pdf"
         },
         "daily_size": "1.5 MB",
         "annual_size": "450 MB"
@@ -341,7 +357,8 @@
           "description": "AAPL data for 2007-2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_daily_ohlc_standard.csv"
+          "object_name": "equity_daily_ohlc_standard.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_daily_ohlc",
@@ -351,7 +368,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.Daily.OHLC.Primary.Guide.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/DailyOHLCPrimary/",
-          "last_updated": "2019-06-26"
+          "last_updated": "2019-06-26",
+          "file_ext": "pdf"
         },
         "daily_size": "375 kB",
         "annual_size": "100 MB"
@@ -380,7 +398,8 @@
           "description": "AAPL data for 2007-2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_daily_ohlc_standard_adj.csv"
+          "object_name": "equity_daily_ohlc_standard_adj.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_daily_ohlc",
@@ -390,7 +409,8 @@
           "bucket_name": "us-equity-market-data-docs",
           "object_name": "algoseek.US.Equity.Daily.OHLC.Primary.Guide.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/DailyOHLCPrimary/",
-          "last_updated": "2019-06-26"
+          "last_updated": "2019-06-26",
+          "file_ext": "pdf"
         },
         "daily_size": "500 kB",
         "annual_size": "130 MB"
@@ -419,11 +439,293 @@
           "description": "AAPL data for 2007-2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_daily_oc_price.csv"
+          "object_name": "equity_daily_oc_price.csv",
+          "file_ext": "csv"
         },
         "documentation": null,
         "daily_size": "300 kB",
         "annual_size": "80 MB"
+      }
+    ]
+  },
+  {
+    "id": "dgr_us_equity_index",
+    "display_name": "US Equity Indexes",
+    "product_listing_name": "us_equity_index",
+    "menu_name": "Indexes",
+    "status": "Production",
+    "tickers": [
+      "S&P 500",
+      "Nasdaq 100",
+      "Russell 1000",
+      "Russell 2000",
+      "DJIA",
+      "DJTA"
+    ],
+    "description": "AlgoSeek's historical Index data provides a portfolio of historical data where the Index is replicated for each tradedate. AlgoSeek has created these portfolios by tracking the publicly published changes.  AlgoSeek does not sell a historical index component changes list but provides a dataset that matches.",
+    "tags": [
+      "Equity",
+      "Index"
+    ],
+    "datasets": [
+      {
+        "id": "dts_idx_eq_full_depth",
+        "datagroup_id": "dgr_us_equity_index",
+        "display_name": "US Equity Index Full Depth Data",
+        "product_listing_name": "full_depth",
+        "menu_name": "Full Depth",
+        "short_description": "US Equity Index Full Depth Data",
+        "long_description": "Normalized full depth direct feeds data (Level 2) from multiple exchanges",
+        "data_class": "Equity",
+        "data_type": "FullDepth",
+        "status": "Production",
+        "start_date": "2013-01-01",
+        "end_date": "2019-04-12",
+        "datavendor_id": "vnd_trading_physics",
+        "bucketgroup_id": [],
+        "sample_file": {
+          "display_name": "Equity Index Full Depth Sample",
+          "description": "AAPL data for Jan 28, 2019",
+          "account_name": "algoseek-sample",
+          "bucket_name": "algoseek-website-samples",
+          "object_name": "equity_full_depth.csv.gz",
+          "file_ext": "csv"
+        },
+        "documentation": {
+          "id": "doc_eq_full_depth",
+          "display_name": "US Equity Full Depth Guide",
+          "description": "Description of data content and fields format",
+          "account_name": "algoseek-docs",
+          "bucket_name": "us-equity-market-data-docs",
+          "object_name": "algoseek.US.Equity.Full.Depth.pdf",
+          "source_path": "Algoseek/Documentation/DataProducts/Equity/FullDepth/",
+          "last_updated": "2018-10-27",
+          "file_ext": "pdf"
+        },
+        "daily_size": null,
+        "annual_size": null
+      },
+      {
+        "id": "dts_idx_eq_taq",
+        "datagroup_id": "dgr_us_equity_index",
+        "display_name": "US Equity Index Trade and Quotes Data",
+        "product_listing_name": "trade_and_quotes",
+        "menu_name": "Trade+Quotes",
+        "short_description": "US Equity Index Trade and Quotes Data",
+        "long_description": "Full Consolidated Tape (SIP feed) for Tape A, B, C with bid/ask from all listed exchanges, trades and official NBBO. Data includes exchange condition codes and millisecond timestamps. Institutional reference tick data for machine learning, AI and backtesting.",
+        "data_class": "Equity",
+        "data_type": "TAQ",
+        "status": "Production",
+        "start_date": "2007-01-01",
+        "end_date": null,
+        "datavendor_id": "vnd_trading_physics",
+        "bucketgroup_id": [],
+        "sample_file": {
+          "display_name": "Equity Index Trade and Quotes Sample",
+          "description": "AAPL data for Jan 28, 2019",
+          "account_name": "algoseek-sample",
+          "bucket_name": "algoseek-website-samples",
+          "object_name": "equity_trade_and_quotes.csv.gz",
+          "file_ext": "csv"
+        },
+        "documentation": {
+          "id": "doc_eq_taq",
+          "display_name": "US Equity Trade and Quotes Guide",
+          "description": "Description of data content and fields format",
+          "account_name": "algoseek-docs",
+          "bucket_name": "us-equity-market-data-docs",
+          "object_name": "algoseek.US.Equity.TAQ.pdf",
+          "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotes/",
+          "last_updated": "2018-10-04",
+          "file_ext": "pdf"
+        },
+        "daily_size": null,
+        "annual_size": null
+      },
+      {
+        "id": "dts_idx_eq_taq_1min",
+        "datagroup_id": "dgr_us_equity_index",
+        "display_name": "US Equity Index Trade and Quotes Minute Bars Data",
+        "product_listing_name": "one_minute_trade_and_quotes_bars",
+        "menu_name": "Trade+Quotes Minute Bars",
+        "short_description": "US Equity Index Trade and Quotes Minute Bars Data",
+        "long_description": "Continuous minute bars with 55+ fields per bar inlcuding OHLC for Bid, Ask, Trade with millisecond timestamps, spread information, trades at bid/mid/ask, quote count, tick count and other fields providing insights into the minute bar activity. Perfect for Machine learning or AI backtesting and research.",
+        "data_class": "Equity",
+        "data_type": "1MinTAQ",
+        "status": "Production",
+        "start_date": "2007-01-01",
+        "end_date": null,
+        "datavendor_id": "vnd_trading_physics",
+        "bucketgroup_id": [],
+        "sample_file": {
+          "display_name": "Equity Index Trade and Quotes Minute Bars Sample",
+          "description": "AAPL data for Jan 28, 2019",
+          "account_name": "algoseek-sample",
+          "bucket_name": "algoseek-website-samples",
+          "object_name": "equity_trade_and_quotes_1min.csv",
+          "file_ext": "csv"
+        },
+        "documentation": {
+          "id": "doc_eq_taq_1min",
+          "display_name": "US Equities Trade+Quotes Minute Bars Guide",
+          "description": "Description of data content and fields format",
+          "account_name": "algoseek-docs",
+          "bucket_name": "us-equity-market-data-docs",
+          "object_name": "algoseek.US.Equity.TAQ.Minute.Bars.pdf",
+          "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotesOneMin/",
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
+        },
+        "daily_size": null,
+        "annual_size": null
+      },
+      {
+        "id": "dts_idx_eq_taq_1min_nofinra",
+        "datagroup_id": "dgr_us_equity_index",
+        "display_name": "US Equity Index Trade and Quotes Minute Bars Excluding FINRA/TRF Trades Data",
+        "product_listing_name": "one_minute_trade_and_quote_bars_no_finra",
+        "menu_name": "Trade+Quote Minute Bars excluding TRF",
+        "short_description": "US Equity Index Trade and Quotes Minute Bars Excluding FINRA/TRF Trades Data",
+        "long_description": "Dataset same as Trade+Quote Minute Bars but for Trades only includes Trades from listed Exchanges. TRF reports which can from from dark pools, OTC and broker-dealer internal crosses are excluded. Dataset gives most accurate for backtesting trades on the public exchanges.",
+        "data_class": "Equity",
+        "data_type": "1MinTAQ",
+        "status": "Production",
+        "start_date": "2007-01-01",
+        "end_date": null,
+        "datavendor_id": "vnd_trading_physics",
+        "bucketgroup_id": [],
+        "sample_file": {
+          "display_name": "Equity Index Trade and Quotes Minute Bars Excluding FINRA/TRF Trades Sample",
+          "description": "AAPL data for Jan 28, 2019",
+          "account_name": "algoseek-sample",
+          "bucket_name": "algoseek-website-samples",
+          "object_name": "equity_trade_and_quotes_1min_nofinra.csv",
+          "file_ext": "csv"
+        },
+        "documentation": {
+          "id": "doc_eq_taq_1min",
+          "display_name": "US Equities Trade+Quotes Minute Bars Guide",
+          "description": "Description of data content and fields format",
+          "account_name": "algoseek-docs",
+          "bucket_name": "us-equity-market-data-docs",
+          "object_name": "algoseek.US.Equity.TAQ.Minute.Bars.pdf",
+          "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesAndQuotesOneMin/",
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
+        },
+        "daily_size": null,
+        "annual_size": null
+      },
+      {
+        "id": "dts_idx_eq_trades",
+        "datagroup_id": "dgr_us_equity_index",
+        "display_name": "US Equity Index Trades Only Data",
+        "product_listing_name": "trades_only",
+        "menu_name": "Trades Only",
+        "short_description": "US Equity Index Trades Only Data",
+        "long_description": "Trades data with millisecond timestamps and exchange condition codes from all exchanges.",
+        "data_class": "Equity",
+        "data_type": "Trades",
+        "status": "Production",
+        "start_date": "2007-01-01",
+        "end_date": null,
+        "datavendor_id": "vnd_trading_physics",
+        "bucketgroup_id": [],
+        "sample_file": {
+          "display_name": "Equity Index Trades Only Sample",
+          "description": "AAPL data for Jan 28, 2019",
+          "account_name": "algoseek-sample",
+          "bucket_name": "algoseek-website-samples",
+          "object_name": "equity_trades_only.csv",
+          "file_ext": "csv"
+        },
+        "documentation": {
+          "id": "doc_eq_trades",
+          "display_name": "US Equities Trades Only Guide",
+          "description": "Description of data content and fields format",
+          "account_name": "algoseek-docs",
+          "bucket_name": "us-equity-market-data-docs",
+          "object_name": "algoseek.US.Equity.Trades.Only.pdf",
+          "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnly/",
+          "last_updated": "2019-06-15",
+          "file_ext": "pdf"
+        },
+        "daily_size": null,
+        "annual_size": null
+      },
+      {
+        "id": "dts_idx_eq_trades_1min",
+        "datagroup_id": "dgr_us_equity_index",
+        "display_name": "US Equity Index Trade Only Minute Bars Data",
+        "product_listing_name": "one_minute_trade_only_bars",
+        "menu_name": "Trade Only Minute Bars",
+        "short_description": "US Equity Index Trade Only Minute Bars Data",
+        "long_description": "Trade based OHLC minute bars.",
+        "data_class": "Equity",
+        "data_type": "1MinTrades",
+        "status": "Production",
+        "start_date": "2007-01-01",
+        "end_date": null,
+        "datavendor_id": "vnd_trading_physics",
+        "bucketgroup_id": [],
+        "sample_file": {
+          "display_name": "Equity Index Trade Only Minute Bars Sample",
+          "description": "AAPL data for Jan 28, 2019",
+          "account_name": "algoseek-sample",
+          "bucket_name": "algoseek-website-samples",
+          "object_name": "equity_trades_only_1min.csv",
+          "file_ext": "csv"
+        },
+        "documentation": {
+          "id": "doc_eq_trades_1min",
+          "display_name": "US Equities Trade Only Minute Bars Guide",
+          "description": "Description of data content and fields format",
+          "account_name": "algoseek-docs",
+          "bucket_name": "us-equity-market-data-docs",
+          "object_name": "algoseek.US.EquityTrades.Only.Minute.Bars.pdf",
+          "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnlyOneMin/",
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
+        },
+        "daily_size": null,
+        "annual_size": null
+      },
+      {
+        "id": "dts_idx_eq_trades_1min_nofinra",
+        "datagroup_id": "dgr_us_equity_index",
+        "display_name": "US Equity Index Trade Only Minute Bars Excluding FINRA/TRF Trades Data",
+        "product_listing_name": "one_minute_trade_only_bars_no_finra",
+        "menu_name": "Trade Only Minute Bars excluding TRF",
+        "short_description": "US Equity Index Trade Only Minute Bars Excluding FINRA/TRF Trades Data",
+        "long_description": "Trade based OHLC minute bars with only Trades from the listed Exchanges. TRF reports from dark pools, OTC and broker-dealer internal crosses are excluded.  Dataset gives most accurate for backtesting trades on the public exchanges.",
+        "data_class": "Equity",
+        "data_type": "1MinTrades",
+        "status": "Production",
+        "start_date": "2007-01-01",
+        "end_date": null,
+        "datavendor_id": "vnd_trading_physics",
+        "bucketgroup_id": [],
+        "sample_file": {
+          "display_name": "Equity Index Trade Only Minute Bars US Equity Trade and Quotes Minute Bars Excluding FINRA/TRF Trades Sample",
+          "description": "AAPL data for Jan 28, 2019",
+          "account_name": "algoseek-sample",
+          "bucket_name": "algoseek-website-samples",
+          "object_name": "equity_trades_only_1min_nofinra.csv",
+          "file_ext": "csv"
+        },
+        "documentation": {
+          "id": "doc_eq_trades_1min",
+          "display_name": "US Equities Trade Only Minute Bars Guide",
+          "description": "Description of data content and fields format",
+          "account_name": "algoseek-docs",
+          "bucket_name": "us-equity-market-data-docs",
+          "object_name": "algoseek.US.EquityTrades.Only.Minute.Bars.pdf",
+          "source_path": "Algoseek/Documentation/DataProducts/Equity/TradesOnlyOneMin/",
+          "last_updated": "2019-08-27",
+          "file_ext": "pdf"
+        },
+        "daily_size": null,
+        "annual_size": null
       }
     ]
   },
@@ -435,8 +737,8 @@
     "status": "Production",
     "tickers": [
       "All",
-      "Upload",
-      "Input"
+      "Upload File",
+      "Input List"
     ],
     "description": "AlgoSeek's historical OPRA optoins data includes all stock, ETF, ETN and ADR options for all strikes and expirations from January 2012 to present. The historical options data is the full OPRA feed.",
     "tags": [
@@ -466,7 +768,8 @@
           "description": "IBM data for Feb 15, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": ""
+          "object_name": "",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_opt_taq",
@@ -476,7 +779,8 @@
           "bucket_name": "us-options-market-data-docs",
           "object_name": "algoseek.US.Options.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesAndQuotes/",
-          "last_updated": "2019-06-04"
+          "last_updated": "2019-06-04",
+          "file_ext": "pdf"
         },
         "daily_size": "400 GB",
         "annual_size": ""
@@ -492,7 +796,7 @@
         "data_class": "Options",
         "data_type": "Trades",
         "status": "Production",
-        "start_date": "2012-01-01",
+        "start_date": "2007-01-01",
         "end_date": null,
         "datavendor_id": "vnd_trading_physics",
         "bucketgroup_id": [
@@ -503,7 +807,8 @@
           "description": "IBM data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "options_trades_only.zip"
+          "object_name": "options_trades_only.zip",
+          "file_ext": "zip"
         },
         "documentation": {
           "id": "doc_opt_trades",
@@ -513,7 +818,8 @@
           "bucket_name": "us-options-market-data-docs",
           "object_name": "algoseek.US.Options.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesOnly/",
-          "last_updated": "2019-04-03"
+          "last_updated": "2019-04-03",
+          "file_ext": "pdf"
         },
         "daily_size": "40 MB",
         "annual_size": "10 Gb"
@@ -529,7 +835,7 @@
         "data_class": "Options",
         "data_type": "1MinTAQ",
         "status": "Production",
-        "start_date": "2012-01-01",
+        "start_date": "2007-01-01",
         "end_date": null,
         "datavendor_id": "vnd_trading_physics",
         "bucketgroup_id": [
@@ -541,7 +847,8 @@
           "description": "IBM data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "options_trade_and_quotes_1min.zip"
+          "object_name": "options_trade_and_quotes_1min.zip",
+          "file_ext": "zip"
         },
         "documentation": {
           "id": "doc_opt_taq_1min",
@@ -551,7 +858,8 @@
           "bucket_name": "us-options-market-data-docs",
           "object_name": "algoseek.US.Options.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesAndQuotesOneMin/",
-          "last_updated": "2018-08-31"
+          "last_updated": "2018-08-31",
+          "file_ext": "pdf"
         },
         "daily_size": "3.7 GB",
         "annual_size": "900 GB"
@@ -567,7 +875,7 @@
         "data_class": "Options",
         "data_type": "1MinTrades",
         "status": "Production",
-        "start_date": "2012-01-01",
+        "start_date": "2007-01-01",
         "end_date": null,
         "datavendor_id": "vnd_trading_physics",
         "bucketgroup_id": [
@@ -579,7 +887,8 @@
           "description": "IBM data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "options_trades_only_1min.zip"
+          "object_name": "options_trades_only_1min.zip",
+          "file_ext": "zip"
         },
         "documentation": {
           "id": "doc_opt_trades_1min",
@@ -589,7 +898,8 @@
           "bucket_name": "us-options-market-data-docs",
           "object_name": "algoseek.US.Options.Trades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Options/TradesOnlyOneMin/",
-          "last_updated": "2018-08-31"
+          "last_updated": "2018-08-31",
+          "file_ext": "pdf"
         },
         "daily_size": "10 MB",
         "annual_size": "2.2 GB"
@@ -604,8 +914,8 @@
     "status": "Production",
     "tickers": [
       "All",
-      "Upload",
-      "Input"
+      "Upload File",
+      "Input List"
     ],
     "description": "US Futures data from CME,CBOT, NYMEX, COMEX with VIX from CBOE from 2010 to present. Data includes base futures and spreads.",
     "tags": [
@@ -634,7 +944,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_multiple_depth.csv.gz"
+          "object_name": "futures_multiple_depth.csv.gz",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_fut_full_depth",
@@ -644,7 +955,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseeek.CME.Futures.Multiple.Depth.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/MultipleDepth/",
-          "last_updated": "2019-03-25"
+          "last_updated": "2019-03-25",
+          "file_ext": "pdf"
         },
         "daily_size": "1 GB",
         "annual_size": "320 GB"
@@ -671,7 +983,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_trade_and_quotes.csv.gz"
+          "object_name": "futures_trade_and_quotes.csv.gz",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_fut_taq",
@@ -681,7 +994,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotes/",
-          "last_updated": "2019-09-04"
+          "last_updated": "2019-09-04",
+          "file_ext": "pdf"
         },
         "daily_size": "1.6 GB",
         "annual_size": "480 GB"
@@ -708,7 +1022,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_trades_only.csv"
+          "object_name": "futures_trades_only.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_fut_trades",
@@ -718,7 +1033,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnly/",
-          "last_updated": "2019-07-29"
+          "last_updated": "2019-07-29",
+          "file_ext": "pdf"
         },
         "daily_size": "12 MB",
         "annual_size": "4 GB"
@@ -746,7 +1062,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_trade_and_quotes_1min.csv"
+          "object_name": "futures_trade_and_quotes_1min.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_fut_taq_1min",
@@ -756,7 +1073,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotesOneMin/",
-          "last_updated": "2019-04-11"
+          "last_updated": "2019-04-11",
+          "file_ext": "pdf"
         },
         "daily_size": "15 MB",
         "annual_size": "4.5 GB"
@@ -784,7 +1102,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_trades_only_1min.csv"
+          "object_name": "futures_trades_only_1min.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_fut_trades_1min",
@@ -794,7 +1113,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.Trades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnlyOneMin/",
-          "last_updated": "2019-04-11"
+          "last_updated": "2019-04-11",
+          "file_ext": "pdf"
         },
         "daily_size": "1.2 MB",
         "annual_size": "400 MB"
@@ -803,16 +1123,16 @@
   },
   {
     "id": "dgr_cme_futures_opt",
-    "display_name": "US Future Options Data",
+    "display_name": "US Futures Options Data",
     "product_listing_name": "us_futures_options_data",
-    "menu_name": "Future Options",
+    "menu_name": "Futures Options",
     "status": "Production",
     "tickers": [
       "All",
-      "Upload",
-      "Input"
+      "Upload File",
+      "Input List"
     ],
-    "description": "US Future Options data from CME,CBOT, NYMEX, COMEX from 2010 to present with all strikes and expiration dates.",
+    "description": "US Futures Options data from CME,CBOT, NYMEX, COMEX from 2010 to present with all strikes and expiration dates.",
     "tags": [
       "Futures",
       "Options"
@@ -840,7 +1160,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_options_trade_and_quotes.zip"
+          "object_name": "futures_options_trade_and_quotes.zip",
+          "file_ext": "zip"
         },
         "documentation": {
           "id": "doc_fut_taq",
@@ -850,7 +1171,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.TAQ.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotes/",
-          "last_updated": "2019-09-04"
+          "last_updated": "2019-09-04",
+          "file_ext": "pdf"
         },
         "daily_size": "1.6 GB",
         "annual_size": "480 GB"
@@ -877,7 +1199,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_options_trades_only.zip"
+          "object_name": "futures_options_trades_only.zip",
+          "file_ext": "zip"
         },
         "documentation": {
           "id": "doc_fut_trades",
@@ -887,7 +1210,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.Trades.Only.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnly/",
-          "last_updated": "2019-07-29"
+          "last_updated": "2019-07-29",
+          "file_ext": "pdf"
         },
         "daily_size": "130 MB",
         "annual_size": "40 GB"
@@ -915,7 +1239,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_options_trade_and_quotes_1min.zip"
+          "object_name": "futures_options_trade_and_quotes_1min.zip",
+          "file_ext": "zip"
         },
         "documentation": {
           "id": "doc_fut_taq_1min",
@@ -925,7 +1250,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.TAQ.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesAndQuotesOneMin/",
-          "last_updated": "2019-04-11"
+          "last_updated": "2019-04-11",
+          "file_ext": "pdf"
         },
         "daily_size": "400 MB",
         "annual_size": "120 GB"
@@ -953,7 +1279,8 @@
           "description": "ESH9 data for Jan 28, 2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "futures_options_trades_only_1min.zip"
+          "object_name": "futures_options_trades_only_1min.zip",
+          "file_ext": "zip"
         },
         "documentation": {
           "id": "doc_fut_trades_1min",
@@ -963,7 +1290,8 @@
           "bucket_name": "us-futures-market-data-docs",
           "object_name": "algoseek.CME.Futures.Trades.Only.Minute.Bars.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/TradesOnlyOneMin/",
-          "last_updated": "2019-04-11"
+          "last_updated": "2019-04-11",
+          "file_ext": "pdf"
         },
         "daily_size": "1.4 MB",
         "annual_size": "450 GB"
@@ -978,8 +1306,8 @@
     "status": "Production",
     "tickers": [
       "All",
-      "Upload",
-      "Input"
+      "Upload File",
+      "Input List"
     ],
     "description": "Reference data for US Equities from 2007 to present with daily updates.",
     "tags": [
@@ -1009,7 +1337,8 @@
           "description": "",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": ""
+          "object_name": "",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_sec_master",
@@ -1019,7 +1348,8 @@
           "bucket_name": "us-equity-reference-docs",
           "object_name": "algoseek.US.Equity.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/SecurityMaster/",
-          "last_updated": "2019-08-22"
+          "last_updated": "2019-08-22",
+          "file_ext": "pdf"
         },
         "daily_size": "3 KB",
         "annual_size": "5 MB"
@@ -1046,7 +1376,8 @@
           "description": "IBM",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": ""
+          "object_name": "",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_sec_master",
@@ -1056,7 +1387,8 @@
           "bucket_name": "us-equity-reference-docs",
           "object_name": "algoseek.US.Equity.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Equity/SecurityMaster/",
-          "last_updated": "2019-08-22"
+          "last_updated": "2019-08-22",
+          "file_ext": "pdf"
         },
         "daily_size": "0 KB",
         "annual_size": "1.5 MB"
@@ -1085,7 +1417,8 @@
           "description": "AAPL data for 2007-2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_adj_factor_basic.csv"
+          "object_name": "equity_adj_factor_basic.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_adj",
@@ -1095,7 +1428,8 @@
           "bucket_name": "us-equity-reference-docs",
           "object_name": "algoseek.US.Equity.Adjustment.Factors.Detailed.pdf",
           "source_path": "Algoseek/Documentation/AlgoSeek/Equity/AdjustmentFactorsDetailed/",
-          "last_updated": "2019-06-04"
+          "last_updated": "2019-06-04",
+          "file_ext": "pdf"
         },
         "daily_size": "4.5 kB",
         "annual_size": "1.5 MB"
@@ -1124,7 +1458,8 @@
           "description": "AAPL data for 2007-2019",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": "equity_adj_factor_detail.csv"
+          "object_name": "equity_adj_factor_detail.csv",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_eq_adj",
@@ -1134,7 +1469,8 @@
           "bucket_name": "us-equity-reference-docs",
           "object_name": "algoseek.US.Equity.Adjustment.Factors.Detailed.pdf",
           "source_path": "Algoseek/Documentation/AlgoSeek/Equity/AdjustmentFactorsDetailed/",
-          "last_updated": "2019-06-04"
+          "last_updated": "2019-06-04",
+          "file_ext": "pdf"
         },
         "daily_size": "20 kB",
         "annual_size": "5 MB"
@@ -1149,8 +1485,8 @@
     "status": "Production",
     "tickers": [
       "All",
-      "Upload",
-      "Input"
+      "Upload File",
+      "Input List"
     ],
     "description": "US Futures reference data CME,CBOT, NYMEX, COMEX and VIX from CBOE from 2010 to present.",
     "tags": [
@@ -1180,7 +1516,8 @@
           "description": "ES Contracts from 2010",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": ""
+          "object_name": "",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_fut_sec_master",
@@ -1190,7 +1527,8 @@
           "bucket_name": "us-futures-reference-docs",
           "object_name": "algoseeek.CME.Futures.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/SecurityMaster/",
-          "last_updated": "2019-05-01"
+          "last_updated": "2019-05-01",
+          "file_ext": "pdf"
         },
         "daily_size": "0",
         "annual_size": "320 kB"
@@ -1217,7 +1555,8 @@
           "description": "ES Futures tickers to SecID",
           "account_name": "algoseek-sample",
           "bucket_name": "algoseek-website-samples",
-          "object_name": ""
+          "object_name": "",
+          "file_ext": "csv"
         },
         "documentation": {
           "id": "doc_fut_sec_master",
@@ -1227,7 +1566,8 @@
           "bucket_name": "us-futures-reference-docs",
           "object_name": "algoseeek.CME.Futures.Security.Master.File.pdf",
           "source_path": "Algoseek/Documentation/DataProducts/Futures/SecurityMaster/",
-          "last_updated": "2019-05-01"
+          "last_updated": "2019-05-01",
+          "file_ext": "pdf"
         },
         "daily_size": "0 KB",
         "annual_size": "50 kB"
