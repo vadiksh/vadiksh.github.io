@@ -523,7 +523,7 @@ $(function() {
     });
     if ($(window).width() < 1024) {
         
-        $(document).on('click', '.arrow-sliding input[type="date"], .arrow-sliding textarea' function(e) {
+        $(document).on('click', '.arrow-sliding input[type="date"], .arrow-sliding textarea', function(e) {
             e.preventDefault();
         });
     }
