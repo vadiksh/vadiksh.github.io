@@ -148,6 +148,15 @@ $(function() {
 		$('.header__menu').removeClass('active');
 	})
 
+    $('.header__play').click(function() {
+        $('.video').addClass('active').find('iframe').attr('src', 'https://www.youtube.com/embed/CnQzCrZFsDg?autoplay=1&showinfo=0&rel=0&iv_load_policy=3');
+        $('body').css({'height': '100vh', 'overflow-y': 'hidden'})
+    })
+    $('.video .close').click(function() {
+        $('.video').removeClass('active').find('iframe').attr('src', '');
+        $('body').css({'height': '100%', 'overflow-y': 'auto'})
+    });
+    
 
 	window._wq = window._wq || [];
     _wq.push({
