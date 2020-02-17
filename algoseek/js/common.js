@@ -522,8 +522,8 @@ $(function() {
     	e.preventDefault();
     });
     if ($(window).width() < 1024) {
-        $('.arrow-sliding input, .arrow-sliding textarea').click(function (e) {
-            // e.preventDefault();
+        $('.arrow-sliding input[type="date"], .arrow-sliding textarea').click(function (e) {
+            e.preventDefault();
         });
     }
     $('.order-period-add').click(function (e) {
@@ -572,10 +572,7 @@ $(function() {
         table.find('.order-historical .arrow-sliding.active').css({"height": table.find('.order-historical .arrow-sliding > div').height()});
         setTableHeight(table);
     })
-    $('.order-period h6.new-period').click(function () {
-    	
-    	
-    });
+
     $('.order__table-add-row').click(function() {
     	var newTable = $('.order__table:first-of-type').clone(true);
     	
