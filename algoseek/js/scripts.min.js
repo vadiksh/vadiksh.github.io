@@ -522,7 +522,8 @@ $(function() {
     	e.preventDefault();
     });
     if ($(window).width() < 1024) {
-        $('.arrow-sliding input[type="date"], .arrow-sliding textarea').click(function (e) {
+        
+        $(document).on('click', '.arrow-sliding input[type="date"], .arrow-sliding textarea' function(e) {
             e.preventDefault();
         });
     }
