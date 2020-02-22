@@ -17,12 +17,11 @@ $(function() {
                     // data: data,
                     // dataType: "json",
                     success: function(data) {
-                        msg = 'Thank you for contacting agloseek and a Team member will respond within 24 hours.\n' +
-                            '\n\n' +
-                            'Thanks,\n' +
-                            'Algoseek Team';
-                        alert(msg);
-                        $("#order-form").trigger("reset");
+                        $('.submitted').addClass('active');
+                        $(".contact__form").trigger("reset");
+                        $(document).on('click', function(){
+                            $('.submitted').removeClass('active');
+                        })
                     },
                     error: function(data) {
                         alert(data.statusText);

@@ -12,12 +12,11 @@ $(function() {
                     data: data,
                     // dataType: "json",
                     success: function(data) {
-                        msg = 'Thank you for contacting agloseek and a Team member will respond within 24 hours.\n' +
-                            '\n\n' +
-                            'Thanks,\n' +
-                            'Algoseek Team';
-                        alert(msg);
+                        $('.submitted').addClass('active');
                         $(".contact__form").trigger("reset");
+                        $(document).on('click', function(){
+                            $('.submitted').removeClass('active');
+                        })
                     },
                     error: function(data) {
                         alert(data.statusText);
@@ -26,4 +25,24 @@ $(function() {
             });
         });
     });
+    $('.owl-carousel').owlCarousel({
+        items: 5,
+        margin: 30,
+       nav: false,
+       responsiveClass:true,
+       responsive:{
+         0:{
+           items:3,
+           loop: true
+         },
+         600:{
+            loop:true,
+           items:4,
+         },
+         1000: {
+            items: 5,
+            loop:false
+         }
+       }
+     });
 });

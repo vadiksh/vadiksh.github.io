@@ -24,7 +24,7 @@
 			<div class="header__menu">
 				<ul class="header__menu-wrapper">
 					<li>
-	                    <a href="../products.html" class="header__link dropdown">
+	                    <a href="./products.html" class="header__link dropdown">
 	                        Products
 	                    </a>
 	                    <div class="header__dropdown flex">
@@ -62,7 +62,7 @@
 	                    </div>
 	                </li>
 	                <li>
-	                    <a href="./data-drive.html" class="header__link">Data Drive</a>
+	                    <a href="./backend/data_drive" class="header__link">Data Drive</a>
 	                </li>
 	                <li>
 	                    <a href="./company.html" class="header__link dropdown">
@@ -77,27 +77,28 @@
 	                    </div>
 	                </li>
 	                <li>
-	                    <a href="support.html" class="header__link">Support</a>
+	                    <a href="./support.html" class="header__link">Support</a>
 	                </li>
 	                <li>
-	                    <a href="partners.html" class="header__link">Partner</a>
+	                    <a href="./partners.html" class="header__link">Partner</a>
 	                </li>
 	                <li>
-	                	<a href="" class="header__link icon dropdown tel"></a>
+	                    <a href="./order.html" class="header__link">Order</a>
+	                </li>
+	                <li>
+	                	<a class="header__link icon dropdown tel"></a>
 	                    <div class="header__dropdown icon">
 	                       <a href="tel:+16465831832">+1 646 583 1832</a>
 	                    </div>
 	                </li>
 	                <li>
-	                	<a href="" class="header__link icon dropdown mail"></a>
+	                	<a class="header__link icon dropdown mail"></a>
 	                    <div class="header__dropdown icon">
 		                    <a href="mailto:sales@algoseek.com">sales@algoseek.com</a>
 		                    <a href="mailto:support@algoseek.com">support@algoseek.com</a>
 	                    </div>
 	                </li>
-	                <li>
-	                    <a href="./order.html" class="header__link icon cart"></a>
-	                </li>
+	            
 				</ul>
                 <div class="close header__menu-close"><span></span></div>
             </div>
@@ -111,13 +112,13 @@
 		<div class="header__border top"><span class="header__play"></span></div>
 		<h2 class="header__headline">
 			<p class="ml4">
-				<span class="letters letters-1">Maths is cool,</span> 
+				<span class="letters letters-1 active">Maths is cool,</span> 
 				<span class="letters letters-2">Trading is exciting,</span></p>
 			<b> Data is grinding</b>
 		</h2>
 		<span class="header__headline-accent">
 		Enjoy <p class="ml4">
-			<span class="letters letters-1">math</span> 
+			<span class="letters letters-1 active">math</span> 
 			<span class="letters letters-2">trading</span></p>
 		</p>
 		</span>
@@ -130,7 +131,9 @@
 </header>
 <div class="video">
 	<div class="video__frame">
-		<iframe src="" rel="0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<div class="video__frame-inner">
+			<iframe src="" rel="0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
 	</div>
 	<div class="close"><span></span></div>
 </div>
@@ -400,19 +403,19 @@
 		<h3>OUR CLIENTS</h3>
 		<div class="clients-carousel owl-carousel">
 			<ul class="clients__list">
-				<li><img src="img/clients/1.png" alt=""></li>
-				<li><img src="img/clients/2.png" alt=""></li>
-				<li><img src="img/clients/3.png" alt=""></li>
+				<li><a target="_blank" href="http://www.bfcm.com/"><img src="img/clients/1.png" alt=""></a></li>
+				<li><a target="_blank" href="https://www.btgpactual.com/home_en/Home.aspx/Opening"><img src="img/clients/2.png" alt=""></a></li>
+				<li><a target="_blank" href="https://www.crestlineinvestors.com/"><img src="img/clients/3.png" alt=""></a></li>
 			</ul>
 			<ul class="clients__list">
-				<li><img src="img/clients/4.png" alt=""></li>
-				<li><img src="img/clients/5.png" alt=""></li>
-				<li><img src="img/clients/6.png" alt=""></li>
+				<li><a target="_blank" href="https://www.datadocksolutions.com/"><img src="img/clients/4.png" alt=""></a></li>
+				<li><a target="_blank" href="https://www.fintica-ai.com/"><img src="img/clients/5.png" alt=""></a></li>
+				<li><a target="_blank" href="http://www.globalsigmagroup.com/"><img src="img/clients/6.png" alt=""></a></li>
 			</ul>
 			<ul class="clients__list">
-				<li><img src="img/clients/7.png" alt=""></li>
-				<li><img src="img/clients/8.png" alt=""></li>
-				<li><img src="img/clients/9.png" alt=""></li>
+				<li><a target="_blank" href="https://www.gothamfunds.com/Default.aspx"><img src="img/clients/7.png" alt=""></a></li>
+				<li><a><img src="img/clients/8.png" alt=""></a></li>
+				<li><a target="_blank" href="https://www.quantconnect.com/"><img src="img/clients/9.png" alt=""></a></li>
 			</ul>
 		</div>
 	</div>
@@ -757,8 +760,13 @@
 
 	        <button class="button" type="submit">Submit</button>
 		</form>
+		<div class="submitted">
+			<p>Thank you for contacting agloseek and a Team member will respond within 24 hours.</p>
+			<img src="./img/logo-footer.png" alt="">
+		</div>
 	</div>
 </section>
+
 <footer class="footer">
 	<div class="container flex">
 		<div class="footer__left">
@@ -824,54 +832,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js?render=6Ld-TNMUAAAAAOXOkYdmjDQNLuBYtiLS6nS6rEVS"></script>
 <script src="js/scripts.min.js"></script>
-<script src="js/contact.js"></script>
-<script>
-	$(function() {
-		if ($(window).width() > 767) {
-			$.getScript("./js/particles.js", function() {
-				particlesJS.load('particles-js', './js/particles-config.json', function() {
-				    console.log('callback - particles.js config loaded');
-				});
-			});
-		}
-
-		var ml4 = {};
-		ml4.opacityIn = [0,1];
-		ml4.scaleIn = [0, 1];
-		ml4.scaleOut = 1.1;
-		ml4.durationIn = 800;
-		ml4.durationOut = 500;
-		ml4.delay = 4000;
-
-		anime.timeline({loop: true})
-		  .add({
-		    targets: '.ml4 .letters-1',
-		    opacity: ml4.opacityIn,
-		    scale: ml4.scaleIn,
-		    duration: ml4.durationIn
-		  }).add({
-		    targets: '.ml4 .letters-1',
-		    opacity: 0,
-		    scale: ml4.scaleOut,
-		    duration: ml4.durationOut,
-		    easing: "easeInExpo",
-		    delay: ml4.delay
-		  }).add({
-		    targets: '.ml4 .letters-2',
-		    opacity: ml4.opacityIn,
-		    scale: ml4.scaleIn,
-		    duration: ml4.durationIn
-		  }).add({
-		    targets: '.ml4 .letters-2',
-		    opacity: 0,
-		    scale: ml4.scaleOut,
-		    duration: ml4.durationOut,
-		    easing: "easeInExpo",
-		    delay: ml4.delay
-		  });
-	})
-
-</script>
+<script src="js/homepage.js"></script>
 
 </body>
 </html>
