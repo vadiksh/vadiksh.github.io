@@ -3085,17 +3085,17 @@ Print : function()
 	var inputText = document.getElementById("FrameTx").contentWindow.document.body.innerHTML; 
 	childWindow = window.open('','childWindow','location=yes, menubar=yes, toolbar=yes');
 	//childWindow.document.open();
-	childWindow.document.write('<html><head></head><body>');
+	childWindow.document.write('<html><head></head><body onafterprint="self.close()">');
 	childWindow.document.write(inputText.replace(/\n/gi,'<br>'));
 	childWindow.document.write('</body></html>');
 	childWindow.focus();
 
 	childWindow.print();
 	// childWindow.close();
-	childWindow.addEventListener("afterprint", function(event) {
-		// alert('dadsa');
-		childWindow.close();
-	});
+	// childWindow.addEventListener("afterprint", function(event) {
+	// 	// alert('dadsa');
+	// 	childWindow.close();
+	// });
 },
 
 // Download popup
