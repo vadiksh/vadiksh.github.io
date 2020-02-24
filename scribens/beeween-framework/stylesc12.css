@@ -16534,10 +16534,7 @@ h1.spetitlebwn {
     margin-left: -25px;
     padding: 7px 0 10.5px !important;
 }
-.menu-header .navbar-header .navbar-toggle {
-    display: block !important;
-    margin: 0!important;
-}
+
 
 }
 
@@ -18686,7 +18683,7 @@ label:hover:before {
     font-weight: 600;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 830px) {
   html,body {
     width: 100%;
     position: relative;
@@ -18698,6 +18695,10 @@ label:hover:before {
   }
   .Prem-PopupVPremium.open {
     display: none;
+  }
+  .menu-header .navbar-header .navbar-toggle {
+      display: block !important;
+      margin: 0!important;
   }
   .menu-header .container {
     padding-left: 15px;
@@ -18782,6 +18783,18 @@ label:hover:before {
   }
   #PanelBtn .left > div {
       width: 50%;
+
+  }
+  #services .col-sm-4 {
+    display: block;
+    width: 100%;
+  }
+  #copy-tablet, #paste-tablet {
+    display: block !important;
+    visibility: visible !important;
+  }
+  #SampleText, #importing-files {
+    display: none !important;
   }
   #PanelBtn .left .button:last-of-type {
       border-right: 0;
@@ -18795,6 +18808,9 @@ label:hover:before {
     width: 100%;
   }
   #PanelBtn #settingsLabel {
+    display: none;
+  }
+  #PanelBtn #indications {
     display: none;
   }
   #recherche .central-content #TextArea #FrameTx {
@@ -18867,13 +18883,37 @@ label:hover:before {
   .parallax p.parallaxscribs {
     font-size: 26px;
   }
+  .feature-box.media-right, .feature-box.media-left {
+    float: none;
+    display: block;
+  }
+  .spetitlebwn {
+    text-align: center;
+  }
   i[class^="icon-"].medium.rounded:before, i[class*=" icon-"].medium.rounded:before, i[class^="icon-"].medium.squared:before, i[class*=" icon-"].medium.squared:before, i[class^="icon-"].medium.circle:before, i[class*=" icon-"].medium.circle:before {
     width: 87px;
     height: 87px;
     font-size: 40px;
     line-height: 2;
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
   }
-
+  .feature-box i {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+  .feature-box h2, .feature-box p {
+    text-align: center;
+  }
+  .feature-box .feature-box-content {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
   label.nogxtbwn {
     background: transparent;
     color: #555;

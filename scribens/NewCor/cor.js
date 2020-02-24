@@ -3088,13 +3088,14 @@ Print : function()
 	childWindow.document.write('<html><head></head><body>');
 	childWindow.document.write(inputText.replace(/\n/gi,'<br>'));
 	childWindow.document.write('</body></html>');
-	// childWindow.document.close();
 	childWindow.focus();
+
 	childWindow.print();
-	childWindow.onafterprint = (e) => {
-	  childWindow.close();
-	};
 	// childWindow.close();
+	childWindow.addEventListener("afterprint", function(event) {
+		// alert('dadsa');
+		childWindow.close();
+	});
 },
 
 // Download popup
