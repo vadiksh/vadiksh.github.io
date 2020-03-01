@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html class="h-100">
+<head>
+  <title>Pension Angel Elements</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet"> -->
+  <link rel="stylesheet" href="../static/layout.css">
+<!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet" /> -->
+</head>
+<body class="h-100 flex flex-column">
+
+<style>
+    .bg-primary h1{ margin: 0; }
+    .sidebar{
+        border-right: 2px solid #08c; 
+        padding: 1em 1em;
+        position: sticky;
+        top: 0;
+        height: fit-content;
+    }
+    .sub-item{
+        padding: 0.5rem 0 0 1.5rem;
+    }
+    .example{
+        border: 3px solid #f5f2f0;
+        margin-right: 1em;
+    }
+    .example .html{
+        margin: 2em;
+        border: 1px solid #08c;
+    }
+    .code {
+        font-size: 87.5%;
+        color: #e83e8c;
+        word-wrap: break-word;
+    }
+    pre[class*="language-"]{
+        margin-bottom: 0 !important;
+        margin-right: 1em;
+    }
+    .example  pre[class*="language-"]{
+      margin-right: 0;
+    }
+    .bd-highlight{
+      background-color: rgba(86,61,124,.15);
+      border: 1px solid rgba(86,61,124,.15);
+    }
+</style>
+
+<main class="flex-shrink-0">
+  <div class="bg-primary">
+    <h1 class="text-light text-center py-4">Elements & Helpers</h1>
+  </div>
+
+  <div class="flex relative">
+
+    <nav class="navbar navbar-horizontal sidebar">
+      <ul class="navbar-nav">
+        <li> <h5>Elements & Helpers</h5> </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#layout">Layout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#typography">Typography</a>
+          <ul class="list-unstyled">
+              <li class="sub-item"><a href="#headings">Headings</a></li>
+              <li class="sub-item"><a href="#colors">Colors</a></li>
+              <li class="sub-item"><a href="#helpers">Helpers</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#navigation">Navigation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#icons">Icons</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="#buttons">Buttons</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="#forms">Forms</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="#tables">Tables</a>
+        </li>           
+        <li class="nav-item">
+          <a class="nav-link" href="#lists">Lists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#utilities">Utilities</a>
+          <ul class="list-unstyled">
+              <li class="sub-item"><a href="#spacing">Spacing</a></li>
+              <li class="sub-item"><a href="#sizes">Sizes</a></li>
+              <li class="sub-item"><a href="#flex">Flex</a></li>
+          </ul>
+        </li>        
+      </ul>
+
+    </nav>
+
+
+      <div class="pt-5 pl-5">
+        <h2><a name="layout">Layout</a></h2>
+        <!-- partial:elements/_layout.html -->
+        <p>The simplest page template:</p>
+
+<script type="text/plain" class="language-markup"><!DOCTYPE html>
+<html class="h-100">
+<head>
+  <title>PensionAngel</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+  <!-- a place for inserting .css files, and fonts -->
+</head>
+
+<body class="h-100 flex flex-column">
+
+<!-- navigation code is here -->
+
+<main class="flex-shrink-0">
+  <!-- your page code is here -->
+</main>
+
+<!-- footer code is here -->
+
+<!-- a place for inserting .js files and additional scripts (analytics, counters, etc...) -->
+
+</body>
+</html>
+</script>
+
+<p>Please, do not forget to add all classes to <code class="code">html</code>, <code class="code">body</code> and <code class="code">main</code> tags. They are required to correctly display the page</p>
+
+<h4>Additional helper classes: </h4>
+<h5><code class="code">.container</code></h5>
+<div class="example flex flex-column">
+  <div class="bg-primary mb-2 p-4 text-light">Ordinary div</div>
+  <div class="bg-primary p-4 text-light container">div with .container class</div>
+</div>
+
+<p>Add class <code class="code">.container</code> to the base tag to contain and pad the content within it. It looks like <a href="https://getbootstrap.com/docs/4.4/layout/overview/" target="_blank">Bootstrap Container</a> but we copied just one base <code class="code">.container</code> class which sets a <code class="code">max-width</code> at each responsive breakpoint:</p>
+
+<div class="mx-3">
+<table class="table text-left  table-bordered  table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>
+        Extra small (<span class="font-weight-normal">&lt;576px</span>)
+      </th>
+      <th>
+        Small (<span class="font-weight-normal">≥576px</span>)
+      </th>
+      <th>
+        Medium (<span class="font-weight-normal">≥768px</span>)
+      </th>
+      <th>
+        Large (<span class="font-weight-normal">≥992px</span>)
+      </th>
+      <th>
+        Extra large (<span class="font-weight-normal">≥1200px</span>)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.container</code></td>
+      <td class="text-muted">100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h5><code class="code">.breadcrumb</code></h5>
+
+<p>Breadcrumbs from Porto Theme. Example of use:</p>
+<div class="example">
+  <div class="m-3">
+  <div class="bg-primary">
+    <div class="container py-5">
+        <ul class="breadcrumb">
+            <li>Help <i class="pa-icon-angle-right delimiter"></i></li>
+            <li>How To Use the Personal Dashboard</li>
+        </ul>
+        <h1 class="text-light text-center mb-0">How to use</h1>        
+    </div>
+
+  </div>    
+  </div>
+  <script type="text/plain" class="language-markup"><div class="bg-primary">
+    <div class="container py-5">
+        <ul class="breadcrumb">
+            <li>Help <i class="pa-icon-angle-right delimiter"></i></li>
+            <li>How To Use the Personal Dashboard</li>
+        </ul>
+        <h1 class="text-light text-center mb-0">How to use</h1>        
+    </div>
+</div></script>
+</div>
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="typography">Typography</a></h2>
+        <h4><a name="headings">Headings</a></h4>
+        <!-- partial:elements/_headings.html -->
+        <p>All HTML headings, <code class="code">&lt;h1&gt;</code> through <code class="code">&lt;h6&gt;</code>, are available.</p>
+
+<h1>Heading <b>h1</b></h1>
+<h2>Heading <b>h2</b></h2>
+<h3>Heading <b>h3</b></h3>
+<h4>Heading <b>h4</b></h4>
+<h5>Heading <b>h5</b></h5>
+<h6>Heading <b>h6</b></h6>
+        <!-- partial -->
+        <h4><a name="colors">Colors</a></h4>
+        <!-- partial:elements/_colors.html -->
+        <p>You can make any text of any element coloured by adding one of next classes:</p>
+
+<div class="flex justify-content-around">
+  <div>
+    <h4>Simple text colors</h4>
+    <div class="text-default bg-quaternary mb-2">.text-default</div>
+    <div class="text-primary mb-2">.text-primary</div>
+    <div class="text-secondary mb-2">.text-secondary</div>
+    <div class="text-tertiary mb-2">.text-tertiary</div>
+    <div class="text-quaternary mb-2">.text-quaternary</div>
+
+    <div class="text-success mb-2">.text-success</div>
+    <div class="text-info mb-2">.text-info</div>
+    <div class="text-warning mb-2">.text-warning</div>
+    <div class="text-danger mb-2">.text-danger</div>
+    <div class="text-dark mb-2">.text-dark</div>
+    <div class="text-light bg-quaternary mb-2">.text-light</div>
+  </div>
+  <div>
+    <h4>Background colors</h4>
+    <div class="bg-default  p-2 my-2">.bg-default</div>
+    <div class="bg-primary text-light p-2 my-2">.bg-primary</div>
+    <div class="bg-secondary text-light p-2 my-2">.bg-secondary</div>
+    <div class="bg-tertiary text-light p-2 my-2">.bg-tertiary</div>
+    <div class="bg-quaternary text-light p-2 my-2">.bg-quaternary</div>
+
+    <div class="bg-success text-light p-2 my-2">.bg-success</div>
+    <div class="bg-info text-light p-2 my-2">.bg-info</div>
+    <div class="bg-warning text-light p-2 my-2">.bg-warning</div>
+    <div class="bg-danger text-light p-2 my-2">.bg-danger</div>
+    <div class="bg-dark text-light p-2 my-2">.bg-dark</div>    
+  </div>
+  <div>
+    <h4>Color system for gray colors</h4>
+    <div class="text-gray-100 bg-quaternary mb-2">.text-gray-100</div>
+    <div class="text-gray-200 mb-2">.text-gray-200</div>
+    <div class="text-gray-300 mb-2">.text-gray-300</div>
+    <div class="text-gray-400 mb-2">.text-gray-400</div>
+    <div class="text-gray-500 mb-2">.text-gray-500</div>
+    <div class="text-gray-600 mb-2">.text-gray-600</div>
+    <div class="text-gray-700 mb-2">.text-gray-700</div>
+    <div class="text-gray-800 mb-2">.text-gray-800</div>
+    <div class="text-gray-900 mb-2">.text-gray-900</div>   
+  </div>
+</div>
+        <!-- partial -->
+        <h4><a name="helpers">Helpers</a></h4>
+        <!-- partial:elements/_helpers.html -->
+        <h5> Text Alignment</h5>
+  
+<div class="text-left text-light bg-primary p-2 m-2">.text-left</div>
+<div class="text-center text-light bg-primary p-2 m-2">.text-center</div>
+<div class="text-right text-light bg-primary p-2 m-2">.text-right</div>
+
+<h5> Text transformations </h5>
+<div class="text-uppercase">.text-uppercase</div>
+<div class="text-lowercase">.text-lowercase</div>
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="navigation">Navigation</a></h2>
+        <!-- partial:elements/_navigation.html -->
+        <p>Add class <code class="code">navbar-horizontal</code> to <code class="code">.navbar</code> to make a horizontal navbar</p>
+<p>Add class <code class="code">active</code> to <code class="code">li</code> tag or <code class="code">a</code> tag to highlight active tab</p>
+<p>Here’s an example of all the sub-components included in a responsive navbar that automatically collapses.</p>
+
+<div class="example">
+    <div class="html">
+      <nav class="navbar">
+        <div class="container">
+          <a class="navbar-brand" href="#"><strong>Pension Angel</strong></a>
+          <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav" 
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="pa-icon-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Dropdown Menu</a>  
+                <div class="dropdown-menu">
+                  <a class="active" href="#">Dropdown 1</a>
+                  <a href="#">Dropdown 2</a>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                 <a class="nav-link" href="#">Menu Item</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link"><i class="pa-icon-user"></i>&nbsp;&nbsp;<span>User Name</span></a>
+              </li>
+
+              <li class="nav-item flex align-items-center">
+                &nbsp;<button class="btn btn-primary-outline">Log in</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <script type="text/plain" class="language-markup"><nav class="navbar">
+  <div class="container">
+    <a class="navbar-brand" href="#"><strong>Pension Angel</strong></a>
+    <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav" 
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="pa-icon-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Dropdown Menu</a>  
+          <div class="dropdown-menu">
+            <a class="active" href="#">Dropdown 1</a>
+            <a href="#">Dropdown 2</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+           <a class="nav-link" href="#">Menu Item</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link"><i class="fas fa-user"></i>&nbsp;&nbsp;<span>User Name</span></a>
+        </li>
+
+        <li class="nav-item flex align-items-center">
+          &nbsp;<button class="btn btn-primary-outline">Log in</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav></script> 
+</div>
+
+
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="icons">Icons</a></h2>
+        <!-- partial:elements/_icons.html -->
+        <p>... to be continued</p>
+<p>For now we use Fontawesome icon font, look here all their icons: <a href="https://fontawesome.com/icons?d=gallery&s=brands,solid&m=free" target="_blank">Fontawesome icons</a> </p>
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="buttons">Buttons</a></h2>
+        <!-- partial:elements/_buttons.html -->
+        <div class="flex">
+  <div class="w-25">
+    <h4>Default</h4>
+    <p>These are the default button style, select between any color you want. Additional class <code class="code">btn</code> is required for any button</p>
+  </div>
+  <div class="w-75">
+    <button class="btn mb-1">.btn .btn-default</button>
+    <button class="btn btn-success mb-1">.btn .btn-success</button>
+    <button class="btn btn-info mb-1">.btn .btn-info</button>
+    <button class="btn btn-warning mb-1">.btn .btn-warning</button>
+    <button class="btn btn-danger mb-1">.btn .btn-danger</button>
+    <button class="btn btn-primary mb-1">.btn .btn-primary</button>
+    <button class="btn btn-secondary mb-1">.btn .btn-secondary</button>
+    <button class="btn btn-tertiary mb-1">.btn .btn-tertiary</button>
+    <button class="btn btn-quaternary mb-1">.btn .btn-quaternary</button>
+    <button class="btn btn-dark mb-1">.btn .btn-dark</button>
+  </div>
+</div>
+<br/>
+
+<div class="flex flex-row">
+  <div class="w-25">
+    <h4>Outline</h4>
+    <p>Square button style using any color from skin.. Additional class <code class="code">btn</code> is required for any button</p>
+  </div>
+  <div class="w-75">
+    <button class="btn btn-default-ouline mb-1">.btn .btn-default-outline</button>
+    <button class="btn btn-success-outline mb-1">.btn .btn-success-outline</button>
+    <button class="btn btn-info-outline mb-1">.btn .btn-info-outline</button>
+    <button class="btn btn-warning-outline mb-1">.btn .btn-warning-outline</button>
+    <button class="btn btn-danger-outline mb-1">.btn .btn-danger-outline</button>
+    <button class="btn btn-primary-outline mb-1">.btn .btn-primary-outline</button>
+    <button class="btn btn-secondary-outline mb-1">.btn .btn-secondary-outline</button>
+    <button class="btn btn-tertiary-outline mb-1">.btn .btn-tertiary-outline</button>
+    <button class="btn btn-quaternary-outline mb-1">.btn .btn-quaternary-outline</button>
+    <button class="btn btn-dark-outline mb-1">.btn .btn-dark-outline</button>
+  </div>
+</div>
+<br/>
+
+<div class="flex flex-row">
+  <div class="w-25">
+    <h4>Button Sizes</h4>
+  </div>
+  <div class="w-75">
+    <button class="btn btn-primary btn-xl">.btn .btn-xl</button>
+    <button class="btn btn-primary btn-lg">.btn .btn-lg</button>
+    <button class="btn btn-primary">.btn</button>
+    <button class="btn btn-primary btn-sm">.btn .btn-sm</button>
+    <button class="btn btn-primary btn-xs">.btn .btn-xs</button>
+
+  </div>
+</div>
+<br/>
+<script type="text/plain" class="language-markup"><button class="btn btn-primary btn-xl">.btn .btn-xl</button>
+<button class="btn btn-primary btn-lg">.btn .btn-lg</button>
+<button class="btn btn-primary">.btn</button>
+<button class="btn btn-primary btn-sm">.btn .btn-sm</button>
+<button class="btn btn-primary btn-xs">.btn .btn-xs</button>
+</script>
+<br/>
+
+<div class="flex flex-row">
+  <div class="w-25">
+    <h4>Disabled button</h4>
+  </div>
+  <div class="w-75">
+    <button class="btn btn-primary disabled">.btn .disabled</button>
+    <button class="btn btn-primary" disabled="disabled">disabled="disabled"</button>
+  </div>
+</div>
+<script type="text/plain" class="language-markup"><button class="btn btn-primary disabled">.btn .disabled</button>
+<button class="btn btn-primary" disabled="disabled">disabled="disabled"</button></script>
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="forms">Forms</a></h2>
+        <!-- partial:elements/_forms.html -->
+        <div class="example">
+  <div class="m-3">
+    <form class="mr-3">
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" class="form-control" placeholder="name@example.com">
+        <small>We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label>Example select</label>
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Example textarea</label>
+        <textarea class="form-control"rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+  </div>
+
+<script type="text/plain" class="language-markup"><form class="mr-3"> <!-- class="mr-3" - look at Spacing -->
+  <div class="form-group">
+    <label>Email address</label>
+    <input type="email" class="form-control" placeholder="name@example.com">
+    <small>We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label>Example select</label>
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Example textarea</label>
+    <textarea class="form-control"rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form></script>
+</div>
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="tables">Tables</a></h2>
+        <!-- partial:elements/_tables.html -->
+        <h4>Examples</h4>
+<p>Simple table with class <code class="code">table</code></p>
+<div class="example">
+  <div class="m-3">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <script type="text/plain" class="language-markup">  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table></script>
+</div>
+
+<p>Add <code class="code">.table-bordered</code> for borders on all sides of the table and cells.</p>
+
+<div class="example">
+  <div class="m-3">
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+  </table>
+  </div>
+
+<script type="text/plain" class="language-markup"><table class="table table-bordered">
+  <thead>  ...   </thead>
+  <tbody>  ...   </tbody>
+</table></script>
+</div>
+
+<p>Add <code class="code">.table-borderless</code> for a table without borders.</p>
+<div class="example">
+  <div class="m-3">
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<script type="text/plain" class="language-markup"><table class="table table-borderless">
+  <thead>   ...   </thead>
+  <tbody>   ...   </tbody>
+</table></script>
+</div>
+
+<p>Add <code class="code">.table-sm</code> to make tables more compact by cutting cell padding in half.</p>
+
+<div class="example">
+  <div class="m-3">
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>    
+  </div>
+  <script type="text/plain" class="language-markup"><table class="table table-sm">
+  <thead>   ...  </thead>
+  <tbody>   ...  </tbody>
+</table></script> 
+</div>
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="lists">Lists</a></h2>
+        <!-- partial:elements/_lists.html -->
+        <p>There are only two classes exists <code class="code">.list-unstyled</code> and <code class="code">.list-ordered</code> </p>
+
+<div class="example px-3 py-1">
+    <code class="code">.list-unstyled</code>
+    <ul class="list-unstyled">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ul>
+    <code class="code">.list-ordered</code>
+    <ul class="list-ordered">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ul>    
+</div>
+
+        <!-- partial -->
+
+        <hr/>
+        <h2><a name="utilities">Utilities</a></h2>
+        <h4><a name="spacing">Spacing</a></h4>
+        <!-- partial:elements/_spacing.html -->
+        <p>Almost everything was taken from Bootstrap Spacing utilities. The classes are named using the format <code class="code">{property}{sides}-{size}</code> </p>
+
+<p>Where <em>property</em> is one of:</p>
+
+<ul>
+  <li><code class="code">m</code> - for classes that set <code class="code">margin</code></li>
+  <li><code class="code">p</code> - for classes that set <code class="code">padding</code></li>
+</ul>
+
+<p>Where <em>sides</em> is one of:</p>
+
+<ul>
+  <li><code class="code">t</code> - for classes that set <code class="code">margin-top</code> or <code class="code">padding-top</code></li>
+  <li><code class="code">b</code> - for classes that set <code class="code">margin-bottom</code> or <code class="code">padding-bottom</code></li>
+  <li><code class="code">l</code> - for classes that set <code class="code">margin-left</code> or <code class="code">padding-left</code></li>
+  <li><code class="code">r</code> - for classes that set <code class="code">margin-right</code> or <code class="code">padding-right</code></li>
+  <li><code class="code">x</code> - for classes that set both <code class="code">*-left</code> and <code class="code">*-right</code></li>
+  <li><code class="code">y</code> - for classes that set both <code class="code">*-top</code> and <code class="code">*-bottom</code></li>
+  <li>blank - for classes that set a <code class="code">margin</code> or <code class="code">padding</code> on all 4 sides of the element</li>
+</ul>
+
+<p>Where <em>size</em> is one of:</p>
+
+<ul>
+  <li><code class="code">0</code> - for classes that eliminate the <code class="code">margin</code> or <code class="code">padding</code> by setting it to <code class="code">0</code></li>
+  <li><code class="code">1</code> - (by default) for classes that set the <code class="code">margin</code> or <code class="code">padding</code> to <code class="code">$spacer * .25</code></li>
+  <li><code class="code">2</code> - (by default) for classes that set the <code class="code">margin</code> or <code class="code">padding</code> to <code class="code">$spacer * .5</code></li>
+  <li><code class="code">3</code> - (by default) for classes that set the <code class="code">margin</code> or <code class="code">padding</code> to <code class="code">$spacer</code></li>
+  <li><code class="code">4</code> - (by default) for classes that set the <code class="code">margin</code> or <code class="code">padding</code> to <code class="code">$spacer * 1.5</code></li>
+  <li><code class="code">5</code> - (by default) for classes that set the <code class="code">margin</code> or <code class="code">padding</code> to <code class="code">$spacer * 3</code></li>
+  <li><code class="code">auto</code> - for classes that set the <code class="code">margin</code> to auto</li>
+</ul>
+
+<h5>Examples</h5>
+
+<p>Here are some representative examples of these classes:</p>
+
+<pre><code class="language-css">.mt-0 {
+  margin-top: 0 !important;
+}
+
+.ml-1 {
+  margin-left: ($spacer * .25) !important;
+}
+
+.px-2 {
+  padding-left: ($spacer * .5) !important;
+  padding-right: ($spacer * .5) !important;
+}
+
+.p-3 {
+  padding: $spacer !important;
+} </code></pre>
+
+
+        <!-- partial -->
+        <br/>
+        <h4><a name="sizes">Sizes</a></h4>
+        <!-- partial:elements/_sizes.html -->
+        <p>Everything was taken from Bootstrap Sizing utilities. Look here: <a href="https://getbootstrap.com/docs/4.4/utilities/sizing/" target="_blank">Sizing Utility</a></p>
+
+<p>Width and height utilities are generated from the <code class="code">$sizes</code> Sass map in <code class="code">_variables.scss</code>. Includes support for <code class="code">25%</code>, <code class="code">50%</code>, <code class="code">75%</code>, <code class="code">100%</code>, and <code class="code">auto</code> by default. </p>
+
+<div class="example">
+  <div class="w-25 p-2" style="background-color: #eee;"><code class="code">.w-25</code></div>
+  <div class="w-50 p-2" style="background-color: #eee;"><code class="code">.w-50</code></div>
+  <div class="w-75 p-2" style="background-color: #eee;"><code class="code">.w-75</code></div>
+  <div class="w-100 p-2" style="background-color: #eee;"><code class="code">.w-100</code></div>
+  <div class="w-auto p-2" style="background-color: #eee;"><code class="code">.w-auto</code></div>
+</div>
+
+<p>The same classes are generated for height: <code class="code">.h-25   .h-50   .h-75   .h-100   .h-100   .h-auto</code></p>
+
+<script type="text/plain" class="language-markup"><img src="..." class="mw-100" alt="...">
+<div class="mh-100">Max-height 100%</div>
+</script>
+<br/>
+<h4>Relative to the viewport</h4>
+<p>You can also use utilities to set the width and height relative to the viewport.</p>
+<script type="text/plain" class="language-markup">
+<div class="min-vw-100">Min-width 100vw</div>
+<div class="min-vh-100">Min-height 100vh</div>
+<div class="vw-100">Width 100vw</div>
+<div class="vh-100">Height 100vh</div>
+</script>
+        <!-- partial -->
+        <br/>
+        <h4><a name="flex">Flex</a></h4>
+        <!-- partial:elements/_flex.html -->
+        <p>Managing flex looks like Bootstrap Flex utility but it's not the same. Still, it will be usefull to look at their examples: <a href="https://getbootstrap.com/docs/4.4/utilities/flex/" target="_blank">Bootstrap Flex</a></p>
+
+<h5>Enable flex behaviors</h5>
+<p>Add class <code class="code">flex</code> to the container:</p>
+<script type="text/plain" class="language-markup"><div class="flex">I'm a flexbox container!</div></script>
+
+<br/>
+
+<h5>Directions</h5>
+
+There are four classes: <code class="code">.flex-row</code> , <code class="code">.flex-column</code> , <code class="code">.flex-row-reverse</code> , and <code class="code">.flex-column-reverse</code>
+<br/>
+
+<h5>Justify content</h5>
+
+<div class="example">
+  <div class="flex justify-content-start bd-highlight mb-3">
+    <div class="p-2 bd-highlight">.justify-content-start</div>
+    <div class="p-2 bd-highlight">.justify-content-start</div>
+    <div class="p-2 bd-highlight">.justify-content-start</div>
+  </div>
+  <div class="flex justify-content-end bd-highlight mb-3">
+    <div class="p-2 bd-highlight">.justify-content-end</div>
+    <div class="p-2 bd-highlight">.justify-content-end</div>
+    <div class="p-2 bd-highlight">.justify-content-end</div>
+  </div>
+  <div class="flex justify-content-center bd-highlight mb-3">
+    <div class="p-2 bd-highlight">.justify-content-center</div>
+    <div class="p-2 bd-highlight">.justify-content-center</div>
+    <div class="p-2 bd-highlight">.justify-content-center</div>
+  </div>
+  <div class="flex justify-content-between bd-highlight mb-3">
+    <div class="p-2 bd-highlight">.justify-content-between</div>
+    <div class="p-2 bd-highlight">.justify-content-between</div>
+    <div class="p-2 bd-highlight">.justify-content-between</div>
+  </div>
+  <div class="flex justify-content-around bd-highlight">
+    <div class="p-2 bd-highlight">.justify-content-around</div>
+    <div class="p-2 bd-highlight">.justify-content-around</div>
+    <div class="p-2 bd-highlight">.justify-content-around</div>
+  </div>
+</div>
+
+<h5>Align items</h5>
+<div class="example">
+  <div class="flex align-items-start bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">.align-items-start</div>
+    <div class="p-2 bd-highlight">.align-items-start</div>
+    <div class="p-2 bd-highlight">.align-items-start</div>
+  </div>
+  <div class="flex align-items-end bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">.align-items-end</div>
+    <div class="p-2 bd-highlight">.align-items-end</div>
+    <div class="p-2 bd-highlight">.align-items-end</div>
+  </div>
+  <div class="flex align-items-center bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">.align-items-center</div>
+    <div class="p-2 bd-highlight">.align-items-center</div>
+    <div class="p-2 bd-highlight">.align-items-center</div>
+  </div>
+  <div class="flex align-items-baseline bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">.align-items-baseline</div>
+    <div class="p-2 bd-highlight">.align-items-baseline</div>
+    <div class="p-2 bd-highlight">.align-items-baseline</div>
+  </div>
+  <div class="flex align-items-stretch bd-highlight" style="height: 100px">
+    <div class="p-2 bd-highlight">.align-items-stretch</div>
+    <div class="p-2 bd-highlight">.align-items-stretch</div>
+    <div class="p-2 bd-highlight">.align-items-stretch</div>
+  </div>
+</div>
+
+<br/>
+<h5>Align Content</h5>
+<p>Use <code class="code">align-content</code> utilities on flexbox containers to align flex items <em>together</em> on the cross axis. Choose from <code class="code">start</code> (browser default), <code class="code">end</code>, <code class="code">center</code>, <code class="code">between</code>, <code class="code">around</code>, or <code class="code">stretch</code>. 
+<br />
+
+<h5>Other utililies are taken from Bootstrap, here are all remaining and available classes:</h5>
+<div><code class="code">.flex-wrap </code></div>
+<div><code class="code">.flex-nowrap </code></div>
+<div><code class="code">.flex-wrap-reverse </code></div>
+<div><code class="code">.flex-fill </code></div>
+<div><code class="code">.flex-grow-0 </code></div>
+<div><code class="code">.flex-grow-1 </code></div>
+<div><code class="code">.flex-shrink-0 </code></div>
+<div><code class="code">.flex-shrink-1 </code></div>
+
+        <!-- partial -->
+      </div>
+    
+  </div>
+
+
+</main>
+<!-- partial:_footer.html -->
+<footer class="footer mt-auto">
+  <div class="footer-main py-4">
+    <div class="container">
+      
+      <div class="content">
+        <div>
+          <h5 class="text-light text-uppercase">Newsletter</h5>
+          <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
+        </div>
+        <div>
+          <h5 class="text-light text-uppercase">Latest Tweets</h5>
+          <p>Please wait...</p>
+        </div>
+        <div>
+          <h5 class="text-light text-uppercase">Contact Us</h5>
+          <ul>
+            <li>Address</li>
+            <li>Phone: +3(324)234-2343</li>
+            <li>Email: mail@example.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom py-4">
+    <div class="container">
+      <span class="footer-copyright">© Copyright The Pension Angel 2019</span>  
+    </div>
+  </div>
+
+</footer>
+
+<script src="/static/pensionangel.min.js"></script>
+
+</body>
+</html>
+<!-- partial -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/unescaped-markup/prism-unescaped-markup.js"></script>
+
+</body>
+</html>

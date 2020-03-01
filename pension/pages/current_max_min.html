@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Best and Worst Pension Funds Growth{% endblock %}
+
+{% block content %}
+
+    <div id="showCurrentMaxMin"></div>
+    <!-- Using a call to
+        https://api.pensionangel.com:5000/api/v1.0/current_max_min
+    -->
+
+    <p><b>What it shows:</b> Best and worst growth performance for all pension fund types over the year to date.</p>
+
+    <p><b>Why it matters:</b> Regardless of what the headlines say about the health of the markets, pension funds turn in widely ranging performance numbers. These two numbers bring a 'feet on the ground' perspective to how pension funds are really performing.</p>
+
+    <p><b>How to use it:</b> Use it to get a sense of how varied the performance of pension funds are. If you have the year to date performance for your own pension fund(s), check which of these two numbers it is closest to. Hopefully towards the higher number!</p>
+    
+    <p><b>What next?</b> If your pension fund(s) are not close to the higher number, consider <a href="register">registering with the Pension Angel</a>. We will show you which of your funds needs review and help you - or your Independent Financial Advisor - find better performing funds.</p>
+
+{% endblock %}
+

@@ -1,0 +1,164 @@
+<!-- partial:_head.html -->
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <title>Pension Angel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/layout.css">
+  </head>
+
+  <body class="h-100 flex flex-column">
+
+<!-- partial -->
+
+
+<!-- partial:_navbar.html -->
+<!--Navbar-->
+<nav class="navbar">
+  <div class="container">
+    
+    <a class="navbar-brand" href="#"><strong>Pension Angel</strong></a>
+    
+    <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="pa-icon-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+          
+          <div class="dropdown-menu">
+            <a href="/pages/dashboard/performance.html">Latest Performance</a>
+            <a href="/pages/dashboard/assessment.html">Latest Assessment</a>
+            <a class="active" href="/pages/dashboard/improve.html">Better Performance</a>
+            <a href="/pages/dashboard/risk_advice.html">Manage Risks</a>
+            <a href="#">Update Account</a>
+            <a href="#">Logout</a>
+          </div>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Market Overview</a>
+          <div class="dropdown-menu">
+            <a href="/pages/show_trend.html">Overall Status</a>
+            <a href="/pages/show_trends.html">Rising/Falling Trend</a>
+          </div>         
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+          <div class="dropdown-menu">
+            <a href="/pages/help/benefits.html">Benefits For registered users</a>
+            <a href="/pages/help/howtouse.html">How to use Pension Angel Tools</a>
+            <a href="/pages/help/howpensionswork.html">How Defined Contribution pensions work</a>
+            <a href="/pages/help/checkfunds.html">How to find which funds you own</a>
+            <a href="/pages/help/makefunds.html">How to make your pension grow</a>
+            <a href="pages/help/about.html">About</a>
+
+          </div>          
+        </li>
+        <!-- example with user name in nav-->
+<!--         <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="pa-icon-user"></i>
+            &nbsp;&nbsp;<span>User Name</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#profile">Profile link</a>
+          </div>
+        </li> -->
+        <!-- example with button in nav -->
+        <li class="nav-item">
+          <a class="btn btn-primary" href="/pages/login.html">Log In</a>
+        </li> 
+        <!--<li class="nav-item login">
+          
+          <span class="login-label"> Have an account? <a class="text-primary">Log in <i class="pa-icon-angle-down"></i></a></span>
+          
+          <div class="dropdown-menu">
+            <span class="my-2">Have an account?</span>
+            
+            <input class="form-control mb-2" type="email" id="login_email" placeholder="Email" required/>
+            <input class="form-control mb-2" type="password" id="login_password" placeholder="Password" required minlength="8" />
+            
+            <div class="flex align-items-center text-nowrap">
+              <input type="checkbox" checked="checked" />
+              <span>&nbsp;Remember me</span>
+              <span class="mx-2">|</span>
+              <span class="mr-2"><a class="text-primary " target="__blank">Forgot password?</a></span>    
+            </div> 
+           
+
+            <button class="btn btn-primary" id="login">Log In</button>
+            
+            <hr />        
+            <span class="mb-2">New to Pension Angel?</span>
+            
+            <a class="btn btn-default" href="#">Sign Up</a>
+          
+          </div>
+        </li>-->
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--/.Navbar 
+
+<!-- partial -->
+<main class="flex-shrink-0">
+  <div class="bg-primary mb-4">
+    <h1 class="container text-light text-center py-4">Your Funds: Alternatives</h1>
+  </div>
+
+   <div class="container">
+    <div class="page page-better-performers">
+        <div id="betterPerformers" class="halfScreenForTabletsAndUp"></div>
+    </div>
+    <button class="btn btn-primary">I want to look at notification</button>
+    <button class="btn btn-danger">Error notification</button>
+    <button class="btn btn-warning">Warning notification</button>
+    <button class="btn btn-success">Success notification</button>
+  </div>
+</main>
+
+<!-- partial:_footer.html -->
+<footer class="footer mt-auto">
+  <div class="footer-main py-4">
+    <div class="container">
+      
+      <div class="content">
+        <div>
+          <h5 class="text-light text-uppercase">Newsletter</h5>
+          <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
+        </div>
+        <div>
+          <h5 class="text-light text-uppercase">Latest Tweets</h5>
+          <p>Please wait...</p>
+        </div>
+        <div>
+          <h5 class="text-light text-uppercase">Contact Us</h5>
+          <ul>
+            <li>Address</li>
+            <li>Phone: +3(324)234-2343</li>
+            <li>Email: mail@example.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom py-4">
+    <div class="container">
+      <span class="footer-copyright">© Copyright The Pension Angel 2019</span>  
+    </div>
+  </div>
+
+</footer>
+
+<script src="/static/pensionangel.min.js"></script>
+
+</body>
+</html>
+<!-- partial -->

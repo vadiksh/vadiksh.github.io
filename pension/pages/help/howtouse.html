@@ -1,0 +1,193 @@
+<!-- partial:_head.html -->
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <title>Pension Angel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/layout.css">
+  </head>
+
+  <body class="h-100 flex flex-column">
+
+<!-- partial -->
+
+<!-- partial:_navbar.html -->
+<!--Navbar-->
+<nav class="navbar">
+  <div class="container">
+    
+    <a class="navbar-brand" href="#"><strong>Pension Angel</strong></a>
+    
+    <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="pa-icon-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+          
+          <div class="dropdown-menu">
+            <a href="/pages/dashboard/performance.html">Latest Performance</a>
+            <a href="/pages/dashboard/assessment.html">Latest Assessment</a>
+            <a class="active" href="/pages/dashboard/improve.html">Better Performance</a>
+            <a href="/pages/dashboard/risk_advice.html">Manage Risks</a>
+            <a href="#">Update Account</a>
+            <a href="#">Logout</a>
+          </div>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Market Overview</a>
+          <div class="dropdown-menu">
+            <a href="/pages/show_trend.html">Overall Status</a>
+            <a href="/pages/show_trends.html">Rising/Falling Trend</a>
+          </div>         
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+          <div class="dropdown-menu">
+            <a href="/pages/help/benefits.html">Benefits For registered users</a>
+            <a href="/pages/help/howtouse.html">How to use Pension Angel Tools</a>
+            <a href="/pages/help/howpensionswork.html">How Defined Contribution pensions work</a>
+            <a href="/pages/help/checkfunds.html">How to find which funds you own</a>
+            <a href="/pages/help/makefunds.html">How to make your pension grow</a>
+            <a href="pages/help/about.html">About</a>
+
+          </div>          
+        </li>
+        <!-- example with user name in nav-->
+<!--         <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="pa-icon-user"></i>
+            &nbsp;&nbsp;<span>User Name</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#profile">Profile link</a>
+          </div>
+        </li> -->
+        <!-- example with button in nav -->
+        <li class="nav-item">
+          <a class="btn btn-primary" href="/pages/login.html">Log In</a>
+        </li> 
+        <!--<li class="nav-item login">
+          
+          <span class="login-label"> Have an account? <a class="text-primary">Log in <i class="pa-icon-angle-down"></i></a></span>
+          
+          <div class="dropdown-menu">
+            <span class="my-2">Have an account?</span>
+            
+            <input class="form-control mb-2" type="email" id="login_email" placeholder="Email" required/>
+            <input class="form-control mb-2" type="password" id="login_password" placeholder="Password" required minlength="8" />
+            
+            <div class="flex align-items-center text-nowrap">
+              <input type="checkbox" checked="checked" />
+              <span>&nbsp;Remember me</span>
+              <span class="mx-2">|</span>
+              <span class="mr-2"><a class="text-primary " target="__blank">Forgot password?</a></span>    
+            </div> 
+           
+
+            <button class="btn btn-primary" id="login">Log In</button>
+            
+            <hr />        
+            <span class="mb-2">New to Pension Angel?</span>
+            
+            <a class="btn btn-default" href="#">Sign Up</a>
+          
+          </div>
+        </li>-->
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--/.Navbar 
+
+<!-- partial -->
+<main class="flex-shrink-0">
+  
+  <div class="bg-primary">
+    <div class="container py-5">
+        <ul class="breadcrumb">
+            <li>Help <i class="pa-icon-angle-right delimiter"></i></li>
+            <li>How To Use the Personal Dashboard</li>
+        </ul>
+        <h1 class="text-light text-center mb-0">How to use</h1>        
+    </div>
+
+  </div>
+
+  <div class="container">
+    <h1 class="mt-2">How to Use the Personal Dashboard</h1>
+    <p>It really helps if you already know <a href="">the difference between a pension fund and your pension provider</a>. And if you know you can usually switch to better funds without changing your pension provider.</p>
+    <p>If you do know, then this guide is for you.</p>
+    <p>Anyone - registered or not - is welcome to use The Pension Angel's 'Help' and 'Trends' menus. The 'Show Trend' pie chart gives you a snapshot view of how the pension fund market is doing. The 'Show Trends' plot gives you the same view set against the historical trend.</p>
+    <p>The Pension Angel offers subscribers more and personalised information. The rest of this guide is for them.</p>
+    
+    <ol class="list-ordered">
+        <li><p>When you register, tell the Pension Angel the name of the pension funds you own. They should be listed in a letter you receive from your pension provider(s) near the start of the year.</p></li>
+        <li><p>The dashboard's 'Latest Performance' tab will tell you how your funds are performing compared to the vast range of other pension funds available.</p></li>
+    </ol>
+
+    <p>If your fund's value rises, you will see if it is rising more, less, or about as much as other funds.</p>
+    <p>If your fund's value falls, you will see if it is falling less than, more than, or the same as, other funds.</p>
+    <p>In other words, in good times, you'll see whether or not your fund is keeping up with the overall market. In bad times, you'll see whether or not your fund is suffering in line with the market.</p>
+    <p>The single most important action any pension saver can take is to move away of poor-performing funds.</p>
+    
+    <ol start="3" class="list-ordered" style="counter-reset: custom-counter 2;">
+        <li><p>The Dashboard's 'Latest Assessment' tab will tell you fund by fund, if your fund's performance is poor enough that you should take action. In those cases, we recommend asking an Independent Financial Advisor (IFA) to advise.</p></li>
+        <li><p>To help those conversations along, use the 'Better Performers' tab. For any poor-performing funds you own, it will identify up to ten better-performing alternative funds. We don't have access to your pension account so we can't give you the exact names assigned by your pension provider. But we can give you a list of keywords that will quickly identify them in your pension provider's customer portal.</p></li>
+    </ol>
+    
+    <p>Or help an IFA identify them for you.</p>
+
+    <ol start="5" class="list-ordered" style="counter-reset: custom-counter 4;">
+        <li>The Dashboard's 'Manage Risks' tab tells you when the probability of significant price rises is greater than the risk of falling prices. And when the risk of price falls outweighs the probability of significant gains.</li>
+    </ol>
+    <p>Most pension savers favour a 'set and forget' approach to pension contributions. However, if you are risk-averse and the 'Manage Risks' tab says risks are high, you can direct ongoing pension contributions into your pension scheme's cash pool or cash-equivalent funds.</p>
+    <p>If you are very risk averse, you can even switch your existing funds into cash-equivalent funds.</p>
+    <p>Amid fearful markets, the 'Manage Risks' tab identifies when the probability of prices rises is beginning to outweigh the risk of more price falls so that risk-averse savers may feel more comfortable redirecting contributions to equity funds.</p>
+
+  </div>
+</main>
+<!-- partial:_footer.html -->
+<footer class="footer mt-auto">
+  <div class="footer-main py-4">
+    <div class="container">
+      
+      <div class="content">
+        <div>
+          <h5 class="text-light text-uppercase">Newsletter</h5>
+          <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
+        </div>
+        <div>
+          <h5 class="text-light text-uppercase">Latest Tweets</h5>
+          <p>Please wait...</p>
+        </div>
+        <div>
+          <h5 class="text-light text-uppercase">Contact Us</h5>
+          <ul>
+            <li>Address</li>
+            <li>Phone: +3(324)234-2343</li>
+            <li>Email: mail@example.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom py-4">
+    <div class="container">
+      <span class="footer-copyright">© Copyright The Pension Angel 2019</span>  
+    </div>
+  </div>
+
+</footer>
+
+<script src="/static/pensionangel.min.js"></script>
+
+</body>
+</html>
+<!-- partial -->

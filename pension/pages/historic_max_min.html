@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Best and Worst Pension Funds Growth Trends{% endblock %}
+
+{% block content %}
+
+    <div id="showHistoricMaxMin"></div>
+    <!-- Using a call to
+        https://api.pensionangel.com:5000/api/v1.0/historic_max_min
+    -->
+
+   <p>Plot should look like:<br/> 
+    <img src="http://pensionangel.com/static/images/test_weekly_best_worst_plot.png"><p>
+
+
+    <p><b>What it shows:</b> Historical changes in best and worst growth performance for all pension fund types.</p>
+
+    <p><b>Why it matters:</b> The graph reveals just how poorly, and how well, pension funds can perform. It also shows what is reasonable growth to aim for, and how exceptional performance can be very shortlived.</p>
+
+    <p><b>How to use it:</b> Use it to set your expectations. What is normal growth over time? What is exceptional growth? Notice how there are always good performers even when the market turns down (shown by the poor performance numbers getting worse)? The trick is to be invested in the better performers over time. The Pension Angel helps give readers the keys to identifying those better performers.</p>
+    
+    <p><b>What next?</b> If your pension fund(s) are not growing at a rate in line with the better performers in this graph, consider <a href="register">registering with the Pension Angel</a>. We will show you which of your funds needs review and help you - or your Independent Financial Advisor - find better performing funds.</p>
+
+{% endblock %}
+

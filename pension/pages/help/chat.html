@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- partial:_head.html -->
+<html class="h-100">
+  <head>
+    <title>Pension Angel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.conversejs.org/6.0.0/dist/converse.min.css">
+    <script src="https://cdn.conversejs.org/6.0.0/dist/converse.min.js" charset="utf-8"></script>
+
+  </head>
+
+  <body class="h-100 flex flex-column">
+
+<!-- partial -->
+      <h1 class="text-light text-center py-4">Pension Angel Chat</h1>
+
+  <div class="container">
+<!--    <h1 class="mt-2">Pension Angel Chat</h1> -->
+
+<!--
+<div id="candy"></div>
+-->
+
+<p>prosody</p>
+    <!-- <iframe src="http://192.168.1.184/?nick=PensionAng|?#pensionangeltest" style="border:0; width:100%; height:450px;"></iframe> -->
+<!--    <iframe src="http://192.168.1.184/?nick=PensionAng|?#chat.pensionangel.com" style="border:0; width:100%; height:450px;"></iframe> -->
+  </div>
+
+
+</body>
+
+<!-- Per:
+https://conversejs.org/docs/html/quickstart.html#getting-a-demo-up-and-running
+-->
+
+<script>
+    converse.initialize({
+        authentication: 'anonymous',
+        auto_login: true,
+        auto_join_rooms: [
+            'anonymous@conference.nomnom.im',
+        ],
+        bosh_service_url: 'https://192.168.1.143:5269.org/http-bind/', // Please use this connection manager only for testing purposes
+        jid: 'nomnom.im', // XMPP server which allows anonymous login (doesn't
+        // allow chatting with other XMPP servers).
+<!--        notify_all_room_messages: [
+            'anonymous@conference.nomnom.im',
+        ],-->
+        singleton: true,
+        locales_url: "../locale/{{{locale}}}/LC_MESSAGES/converse.json",
+        view_mode: 'embedded',
+    });
+    </script>
+
+
+</html>
+<!-- partial -->
