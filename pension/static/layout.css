@@ -1881,15 +1881,15 @@ footer .footer-bottom {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: url(webfonts/Open_Sans/open-sans-v17-latin-regular.eot);
-  src: local("Open Sans Regular"),local("OpenSans-Regular"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.eot?#iefix) format("embedded-opentype"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.woff2) format("woff2"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.woff) format("woff"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.ttf) format("truetype"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.svg#OpenSans) format("svg")
+  src: url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.eot);
+  src: local("Open Sans Regular"),local("OpenSans-Regular"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.eot?#iefix) format("embedded-opentype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.woff2) format("woff2"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.woff) format("woff"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.ttf) format("truetype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.svg#OpenSans) format("svg")
 }
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: url(webfonts/Open_Sans/open-sans-v17-latin-700.eot);
-  src: local("Open Sans Bold"),local("OpenSans-Bold"),url(webfonts/Open_Sans/open-sans-v17-latin-700.eot?#iefix) format("embedded-opentype"),url(webfonts/Open_Sans/open-sans-v17-latin-700.woff2) format("woff2"),url(webfonts/Open_Sans/open-sans-v17-latin-700.woff) format("woff"),url(webfonts/Open_Sans/open-sans-v17-latin-700.ttf) format("truetype"),url(webfonts/Open_Sans/open-sans-v17-latin-700.svg#OpenSans) format("svg")
+  src: url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.eot);
+  src: local("Open Sans Bold"),local("OpenSans-Bold"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.eot?#iefix) format("embedded-opentype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.woff2) format("woff2"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.woff) format("woff"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.ttf) format("truetype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.svg#OpenSans) format("svg")
 }
 *,
 :after,
