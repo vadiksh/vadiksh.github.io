@@ -1,61 +1,74 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- partial:_head.html -->
 <html class="h-100">
   <head>
     <title>Pension Angel</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/layout.css">
-    <script src="../static/pensionangel.min.js"></script>
+    <link rel="stylesheet" href="http://pensionangel.com/static/layout.css">
+    <script type="text/javascript" src="http://pensionangel.com/static/pensionangel.min.js"></script>
   </head>
 
   <body class="h-100 flex flex-column">
-
-
-<!--Navbar-->
+<!-- Navbar -->
 <nav class="navbar">
-  <div class="container">
+    <div class="container">
     
-    <a class="navbar-brand" href="#"><strong>Pension Angel</strong></a>
+    <a class="navbar-brand" href="http://pensionangel.com/"><strong>Pension Angel</strong></a>
     
     <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="pa-icon-bars"></i>
+    <i class="pa-icon-bars"></i>
     </button>
 
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Your Funds</a>
+          <div class="dropdown-menu">
+            
+                <a href="http://pensionangel.com/pages/login.html">Login</a>
+                <a href="http://pensionangel.com/pages/register.html">Subscribe</a>
+          
+<!--            <a href="/pages/show_trend.html">Overall Status</a>
+            <a href="/pages/show_trends.html">Rising/Falling Trend</a> -->
+          </div>         
+        </li>
+
+<!--
         <li class="nav-item">
           <a class="nav-link" href="#">Dashboard</a>
-          
           <div class="dropdown-menu">
-            <a href="/pages/dashboard/performance.html">Latest Performance</a>
-            <a href="/pages/dashboard/assessment.html">Latest Assessment</a>
+            <a href="/pages/dashboard/performance.html">Your Funds: Performance</a>
+            <a href="/pages/dashboard/assessment.html">Your Funds: Assessment</a>
+            <a href="/pages/dashboard/improve.html">Your Funds: Alternatives</a>
             <a class="active" href="/pages/dashboard/improve.html">Better Performance</a>
-            <a href="/pages/dashboard/risk_advice.html">Manage Risks</a>
-            <a href="#">Update Account</a>
-            <a href="#">Logout</a>
+            <a href="/pages/dashboard/risk_advice.html">Your Funds: Risks</a>
+            <a href="/pages/dashboard/update.html">Update Account</a>
           </div>
-
         </li>
+-->
+
         <li class="nav-item">
           <a class="nav-link" href="#">Market Overview</a>
           <div class="dropdown-menu">
-            <a href="/pages/show_trend.html">Overall Status</a>
-            <a href="/pages/show_trends.html">Rising/Falling Trend</a>
+            <a href="/pages/show_trend.html">Current Health</a>
+            <a href="/pages/show_trends.html">Health Trend</a>
+            <a href="/pages/worst.html">Urgent Review</a>
           </div>         
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#">Help</a>
           <div class="dropdown-menu">
-            <a href="/pages/help/benefits.html">Benefits For registered users</a>
-            <a href="/pages/help/howtouse.html">How to use Pension Angel Tools</a>
-            <a href="/pages/help/howpensionswork.html">How Defined Contribution pensions work</a>
+            <a href="/pages/help/benefits.html">Subscriber benefits</a>
+            <a href="/pages/help/howtouse.html">How to use subscriber tools</a>
+            <a href="/pages/help/howpensionswork.html">How 'Defined Contribution' pensions work</a>
             <a href="/pages/help/checkfunds.html">How to find which funds you own</a>
-            <a href="/pages/help/makefunds.html">How to make your pension grow</a>
-            <a href="pages/help/about.html">About</a>
-
+            <a href="/pages/help/makegrow.html">How to make your pension grow</a>
+            <a href="/pages/help/about.html">About</a>
           </div>          
         </li>
+
         <!-- example with user name in nav-->
 <!--         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -66,14 +79,17 @@
             <a href="#profile">Profile link</a>
           </div>
         </li> -->
-        <!-- example with button in nav -->
+
+<!--
         <li class="nav-item">
-          <a class="btn btn-primary" href="/pages/login.html">Log In</a>
+            <a class="btn btn-primary" href="/pages/login.html">Log In</a>
         </li> 
-        <!--<li class="nav-item login">
-          
-          <span class="login-label"> Have an account? <a class="text-primary">Log in <i class="pa-icon-angle-down"></i></a></span>
-          
+-->
+
+        <!-- example with button in nav -->
+        <!--
+        <li class="nav-item login">          
+          <span class="login-label"><a class="text-primary">Log in <i class="pa-icon-angle-down"></i></a></span>
           <div class="dropdown-menu">
             <span class="my-2">Have an account?</span>
             
@@ -87,33 +103,77 @@
               <span class="mr-2"><a class="text-primary " target="__blank">Forgot password?</a></span>    
             </div> 
            
-
             <button class="btn btn-primary" id="login">Log In</button>
             
             <hr />        
             <span class="mb-2">New to Pension Angel?</span>
             
-            <a class="btn btn-default" href="#">Sign Up</a>
+            <a class="btn btn-default" href="/pages/register.html">Sign Up</a>
           
           </div>
-        </li>-->
+        </li>
+        -->
+
       </ul>
     </div>
   </div>
 </nav>
-<!-- Navbar --> 
-
-<!-- partial -->
+<!--/.Navbar -->
 
 <main class="flex-shrink-0">
-  <div class="bg-primary">
-    <h1 class="container text-light text-center py-4">Pension Funds Performance Trend</h1>
-  </div>
-   <div class="container">
-    <div id="showTrends"></div>
-  </div>
+    <div class="bg-primary">
+        <h1 class="text-light text-center py-4">
+            Urgent Review
+        </h1>
+    </div>
+
+        <div class="container">
+            
+
+    <p>A few pension funds are performing exceptionally badly. Typically they have the following keywords in their name :</p>
+
+    <ol id="worst_funds" class="text-danger">
+    </ol>
+
+    <p><strong>Recommendation:</strong> As a matter of urgency, check your pension funds to see if you own any of the indicated funds. If you do, check their YTD performance or ask your Indendepent Financial Adviser (IFA) to review and advise. If your funds are performing poorly, consider switching to better performing funds.</p>
+
+    <p><b>What it shows:</b> Keywords found in the names of the poorest performing pension funds over the last year.</p>
+
+    <p><b>Why it matters:</b> For your pension pot to grow well, you need to avoid poor-performing funds at all times. Even if you do not own the best-performing funds, it is criticallly important not to own the worst performers.</p>
+            
+    <p><b>How to use it:</b> Any of your pension funds that contain any of the keywords above should be urgently reviewed. Check your annual fund statement letter or your pension provider's web portal to see if you own any funds with these keywords in their name. Poor performance is unjustifiable in pension funds - unless the fund is paying a healthy dividend</p>
+                    
+    <p><b>What next?</b> If you do own a fund containing any of these keywords, check its performance and consider moving out of it into better performing funds. Better performing funds are visible in the 'Dashboard' for the Pension Angel's subscribers. As always, if you have an Independent Financial Advisor (IFA), seek their review and advice too.</p>
+
+
+    <script type="text/javascript">
+    // Create a request variable and assign a new XMLHttpRequest object to it.
+    var request = new XMLHttpRequest();
+    // Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', 'https://api.pensionangel.com:5000/api/v1.0/worst', true);
+    request.onload = function() {
+      // Begin accessing JSON data here
+        var json_response = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+              console.log(json_response.status);
+              console.log(json_response.data);
+              var funds_list = json_response.data;
+              for (var i = 0; i < funds_list.length; i++) {
+                  console.log(funds_list[i]);
+                    document.getElementById('worst_funds').innerHTML += '<li>' + funds_list[i] + '</li>';
+              };
+        } else {
+            console.log('Server status responded: error.');
+        }
+    } 
+    // Send request
+    request.send();
+    </script>
+
+
+        </div>
 </main>
-<!-- partial:_footer.html -->
+
 <footer class="footer mt-auto">
   <div class="footer-main py-4">
     <div class="container">
@@ -124,15 +184,18 @@
           <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
         </div>
         <div>
-          <h5 class="text-light text-uppercase">Latest Tweets</h5>
-          <p>Please wait...</p>
+          <h5 class="text-light text-uppercase">Data Protection</h5>
+          <p><a href="http://pensionangel.com/pages/dppolicy.html">Data Protection Policy</a></p>
         </div>
         <div>
           <h5 class="text-light text-uppercase">Contact Us</h5>
           <ul>
-            <li>Address</li>
-            <li>Phone: +3(324)234-2343</li>
-            <li>Email: mail@example.com</li>
+            <li>Pension Angel<br/>
+            64A Cumberland Street<br/>
+            Edinburgh<br/>
+            EH3 6RE</li>
+            <li>Phone: +44 (131) 516 2337</li>
+            <li>Email: info@pensionangel.com</li>
           </ul>
         </div>
       </div>
@@ -148,8 +211,5 @@
 
 </footer>
 
-
-
 </body>
 </html>
-<!-- partial -->
