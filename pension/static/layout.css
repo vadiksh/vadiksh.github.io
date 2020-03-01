@@ -2,8 +2,8 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 @font-face {
   font-family: pension-angel;
-  src: url(/static/webfonts/fonts/pension-angel.eot);
-  src: url(/static/webfonts/fonts/pension-angel.eot?#iefix) format("embedded-opentype"),url(/static/webfonts/fonts/pension-angel.woff) format("woff"),url(/static/webfonts/fonts/pension-angel.ttf) format("truetype"),url(/static/webfonts/fonts/pension-angel.svg#pension-angel) format("svg");
+  src: url(webfonts/fonts/pension-angel.eot);
+  src: url(webfonts/fonts/pension-angel.eot?#iefix) format("embedded-opentype"),url(webfonts/fonts/pension-angel.woff) format("woff"),url(webfonts/fonts/pension-angel.ttf) format("truetype"),url(webfonts/fonts/pension-angel.svg#pension-angel) format("svg");
   font-weight: 400;
   font-style: normal
 }
@@ -1881,15 +1881,15 @@ footer .footer-bottom {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.eot);
-  src: local("Open Sans Regular"),local("OpenSans-Regular"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.eot?#iefix) format("embedded-opentype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.woff2) format("woff2"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.woff) format("woff"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.ttf) format("truetype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-regular.svg#OpenSans) format("svg")
+  src: url(webfonts/Open_Sans/open-sans-v17-latin-regular.eot);
+  src: local("Open Sans Regular"),local("OpenSans-Regular"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.eot?#iefix) format("embedded-opentype"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.woff2) format("woff2"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.woff) format("woff"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.ttf) format("truetype"),url(webfonts/Open_Sans/open-sans-v17-latin-regular.svg#OpenSans) format("svg")
 }
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
-  src: url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.eot);
-  src: local("Open Sans Bold"),local("OpenSans-Bold"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.eot?#iefix) format("embedded-opentype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.woff2) format("woff2"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.woff) format("woff"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.ttf) format("truetype"),url(/static/webfonts/Open_Sans/open-sans-v17-latin-700.svg#OpenSans) format("svg")
+  src: url(webfonts/Open_Sans/open-sans-v17-latin-700.eot);
+  src: local("Open Sans Bold"),local("OpenSans-Bold"),url(webfonts/Open_Sans/open-sans-v17-latin-700.eot?#iefix) format("embedded-opentype"),url(webfonts/Open_Sans/open-sans-v17-latin-700.woff2) format("woff2"),url(webfonts/Open_Sans/open-sans-v17-latin-700.woff) format("woff"),url(webfonts/Open_Sans/open-sans-v17-latin-700.ttf) format("truetype"),url(webfonts/Open_Sans/open-sans-v17-latin-700.svg#OpenSans) format("svg")
 }
 *,
 :after,
