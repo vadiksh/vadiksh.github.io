@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/layout.css">
-    <script src="../static/pensionangel.min.js"></script>
+
   </head>
 
   <body>
@@ -209,7 +209,23 @@
 
 </footer>
 
+<script src="../static/pensionangel.min.js"></script>
+<script>
+$(function(){
 
+  $('.navbar button.navbar-toggler').click(function(){
+    $('.navbar .collapse').slideToggle(400);
+    $('.dropdown-menu').slideUp(400);
+  })
+
+  $('.navbar .nav-item').click(function(event){
+    $
+    $(this).siblings().find('.dropdown-menu').slideUp(400);
+    $(this).find('.dropdown-menu').slideDown(400);
+  })
+
+}) 
+</script>
 
 </body>
 </html>
