@@ -113,7 +113,7 @@
 		<h2 class="header__headline">
 			<p class="ml4">
 				<span class="letters letters-1 active">Maths is cool,</span> 
-				<span class="letters letters-2">Trading is exciting,</span></p>
+				<span class="letters letters-2">Math is beautiful,</span></p>
 			<b> Data is grinding</b>
 		</h2>
 		<span class="header__headline-accent">
@@ -137,7 +137,7 @@
 	</div>
 	<div class="close"><span></span></div>
 </div>
-<section class="numeric">
+<section class="numeric hidden">
 	<div class="container">
 		<ul class="flex">
 			<li>
@@ -160,7 +160,7 @@
 </section>
 <section class="products">
 	<div class="container">
-		<div class="products__main flex">
+		<div class="products__main flex hidden">
 			<div class="products__main-title">
 				<h2 class="section-title"><b>Data</b><br> Products</h2>
 			</div>
@@ -238,122 +238,154 @@
 				</div>
 			</div>
 		</div>
-		<h2 class="section-title products__list-title"><b>Data </b>Type</h2>
-		<p class="section-title-sub">A complete range of data types from full depth to custom bars.</p>
-		<ul class="products__list flex">
-			<li>
-				<img src="img/products/product-icon1.png" alt="">
-				<span>Trades Only<br> (tick)</span>
-				<p class="products__tooltip">
-					All Trades with millisecond or nanosecond timestamp and exchange flags.
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon2.png" alt="">
-				<span>Trade + Quotes/ <br>Level 2 (tick) with <br>condition codes</span>
-				<p class="products__tooltip">
-					Trade+Quote is all trades and top-of-book quotes (Bid and Ask) with all flags from all exchanges with millisecond or nanosecond timestamps.  Data may include National Best Bid Offer (if applicable).
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon3.png" alt="">
-				<span>Full Depth/<br> Multiple Depth</span>
-				<p class="products__tooltip">
-					Full depth (or multiple depth) shows price and size for limit orders placed for Bid and Ask. Each time a limit order changes then this change is published.
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon4.png" alt="">
-				<span>Trade+Quote minute <br>bar with 55+ <br>data points</span>
-				<p class="products__tooltip">
-					Trade+Quote minute bars provide in-depth analysis of each minute including Open/High/Low/Close for Bid/Ask/Trades, spread data, trade count at bid/mid/ask and other quantitative fields.  Designed for quant clients needing in-depth intraday data for their Machine Learning.
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon5.png" alt="">
-				<span>Trade minute <br>bars</span>
-				<p class="products__tooltip">
-					Trade only minute bars provide Open/High/Low/Close price, volume and number of trades based on Trades during the minute bar period.
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon6.png" alt="">
-				<span>Daily OHLC</span>
-				<p class="products__tooltip">
-					Daily Open/High/Low/Close is the daily price and size for official open/close with the high/low of the day.
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon7.png" alt="">
-				<span>Custom bars</span>
-				<p class="products__tooltip">
-					Algoseek’s parallel infrastructure framework enables the quick development and processing of big data sets to create custom bars and datasets to meet our client’s needs.
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon8.png" alt="">
-				<span>EOD</span>
-				<p class="products__tooltip">
-					End of Day is a dataset based on data from the complete trading day.
-				</p>
-			</li>
-			<li>
-				<img src="img/products/product-icon9.png" alt="">
-				<span>Reference<br> Data</span>
-				<p class="products__tooltip">
-					Reference data covers a wide range of meta data for a dataset, for example with equity it can inlcude corporate actions, type of equity, listing dates, primary exchange, etc.  Algoseek maintains multiple Reference Datasets, for example Security Master for equity.
-				</p>
-			</li>
-		</ul>
-		<div class="products__buttons">
-			<a href="" class="button ">Purchase historical data</a>
-			<a href="" class="button ">Subscribe to Daily Updates</a>
-		</div>
+		<div class="products__type hidden">
+			<h2 class="section-title products__list-title"><b>Data </b>Type</h2>
+			<p class="section-title-sub">A complete range of data types from market depth to end of day.</p>
+			<div class="products__buttons">
+				<a href="" class="button ">Purchase historical data</a>
+				<a href="" class="button ">Subscribe to Daily Updates</a>
+			</div>
+			<ul class="products__list flex">
+				<li>
+					<div>
+					<img src="img/products/product-icon1.png" alt="">
+					<span>Trade Only<br> (tick)</span>
+					</div>
+					<div class="products__tooltip">
+						<p>All trades with exchange flags.</p>
+						<p>Millisecond or nanosecond timestamp.</p>
+					</div>
+				</li>
+				<li>
+					<div>
+					<img src="img/products/product-icon2.png" alt="">
+					<span>Trade + Quote (tick)<br> with condition codes</span>
+					</div>
+					<div class="products__tooltip">
+						<p>All trades and top-of-book quotes (bid and ask) from all exchanges with flags.</p>
+						<p>Millisecond or nanosecond timestamps.</p>
+						<p>National Best Bid Offer included if applicable.</p>
+					</div>
+				</li>
+				<li>
+					<div>
+					<img src="img/products/product-icon3.png" alt="">
+					<span>Full Depth/<br> Multiple Depth</span>
+					</div>
+					<div class="products__tooltip">
+						<p>Shows the number of future contracts or the size of equity quotes that are displayed at each of the available prices.</p>
+						<p>Also known as the level 2, order book, depth of market. </p>
+					</div>
+				</li>
+				<li>
+					<div>
+					<img src="img/products/product-icon4.png" alt="">
+					<span>Trade+Quote minute <br>bar with 55+ <br>data points</span>
+					</div>
+					<div class="products__tooltip">
+						<p>Designed for quant clients needing ready-to-use in-depth intraday data for machine learning.</p>
+						<p>Include OHLC bid/ask/trades and <b>unique</b> fields such as TradeAtAsk, TradeAtBid,TradeAtMid, FinraVolume, RepeatUptickVolume, RepeatDowntickVolume, TimeWeightedBid/Ask, etc.</p>
+					</div>
+				</li>
+				<li>
+					<div>
+					<img src="img/products/product-icon5.png" alt="">
+					<span>Trade minute <br>bars</span>
+					</div>
+					<div class="products__tooltip">
+						<p>Provide Open/High/Low/Close price, volume and number of trades during the bar period.</p>
+					</div>
+				</li>
+				<li>
+					<div>
+					<img src="img/products/product-icon6.png" alt="">
+					<span>Daily OHLC</span>
+					</div>
+					<div class="products__tooltip">
+						<p>The daily price and size for <b>official open/close</b> from the security’s <b>primary exchange</b> and the high/low of the day.</p>
+					</div>
+				</li>
+				<li>
+					<div>
+					<img src="img/products/product-icon8.png" alt="">
+					<span>EOD</span>
+					</div>
+					<div class="products__tooltip">
+						<p>Standard end of day dataset with Open/Close and volume of the day.</p>
+					</div>
+				</li>
+				<li>
+					<div>
+					<img src="img/products/product-icon7.png" alt="">
+					<span>Custom bars</span>
+					</div>
+					<div class="products__tooltip">
+						<p>Data customization services to our clients.</p>
+						<p>With our cloud based infrastructure and parallel processing, custom bars are usually delivered in 3 to 7 days.</p>
+					</div>
+				</li>
+				
+				<li>
+					<div>
+					<img src="img/products/product-icon9.png" alt="">
+					<span>Reference<br> Data</span>
+					</div>
+					<div class="products__tooltip">
+						<p>Currently covers equities reference and futures reference.</p>
+						<p>Equity reference includes Security Master File, Full Corporate Actions and Price Adjustment Factors.</p>
+						<p>Options reference coming soon.</p>
+					</div>
+				</li>
+			</ul>
+		</div>	
 	</div>
 </section>
 <section class="delivery">
 	<div class="delivery__screen-close close"><span></span></div>
 	<div class="container">
-		<h2 class="section-title"><b>Delivery </b>Methods</h2>
-		<ul class="delivery__list flex">
-			<li>
-				<a href="../delivery.html">
-					<span class="icon"></span>
-					<span class="title">DATA<br> DRIVE</span>
-				</a>
-			</li>
-			<li>
-				<a href="../delivery.html#cloud">
-					<span class="icon"></span>
-					<span class="title">cloud</span>
-				</a>
-			</li>
-			<li>
-				<a href="../delivery.html#cli">
-					<span class="icon"></span>
-					<span class="title">aws<br> cli</span>
-				</a>
-			</li>
-			<li>
-				<a href="../delivery.html#sdk">
-					<span class="icon"></span>
-					<span class="title">aws<br> sdk</span>
-				</a>
-			</li>
-			<li>
-				<a href="../delivery.html#api">
-					<span class="icon"></span>
-					<span class="title">api</span>
-				</a>
-			</li>
-			<li>
-				<a href="../delivery.html#ftp">
-					<span class="icon"></span>
-					<span class="title">ftp</span>
-				</a>
-			</li>
-        </ul>
-		<div class="delivery__try flex">
+		<div class="delivery__methods hidden">
+			<h2 class="section-title"><b>Delivery </b>Methods</h2>
+			<ul class="delivery__list flex">
+				<li>
+					<a href="../delivery.html">
+						<span class="icon"></span>
+						<span class="title">DATA<br> DRIVE</span>
+					</a>
+				</li>
+				<li>
+					<a href="../delivery.html#cloud">
+						<span class="icon"></span>
+						<span class="title">cloud</span>
+					</a>
+				</li>
+				<li>
+					<a href="../delivery.html#cli">
+						<span class="icon"></span>
+						<span class="title">aws<br> cli</span>
+					</a>
+				</li>
+				<li>
+					<a href="../delivery.html#sdk">
+						<span class="icon"></span>
+						<span class="title">aws<br> sdk</span>
+					</a>
+				</li>
+				<li>
+					<a href="../delivery.html#api">
+						<span class="icon"></span>
+						<span class="title">api</span>
+					</a>
+				</li>
+				<li>
+					<a href="../delivery.html#ftp">
+						<span class="icon"></span>
+						<span class="title">ftp</span>
+					</a>
+				</li>
+	        </ul>
+		</div>
+		
+		<div class="delivery__try flex hidden">
 			<div class="delivery__left-content">
 				<span>VIRTUAL DATA DRIVE</span>
 				<h3>Explore cloud data like <b>browsing local folder</b></h3>
@@ -374,7 +406,7 @@
 		</div>
 	</div>
 </section>
-<section class="purchase">
+<section class="purchase hidden">
 	<div class="container flex">
 		<div class="purchase__title">
 			<h2 class="section-title"><b>Purchase</b><br>Options</h2>
@@ -391,14 +423,14 @@
 				</li>
 				<li>
 					<h4>RENT</h4>
-					<p>Budget option for individual<br> traders and students.</p>
+					<p>Sandbox solution for budget users.</p>
 				</li>
 			</ul>
 			<a href="" class="button">Learn more</a>
 		</div>
 	</div>
 </section>
-<section class="clients">
+<section class="clients hidden">
 	<div class="container flex">
 		<h3>OUR CLIENTS</h3>
 		<div class="clients-carousel owl-carousel">
@@ -420,13 +452,13 @@
 		</div>
 	</div>
 </section>
-<section class="contact">
+<section class="contact hidden">
 	<div class="container flex">
 		<div class="contact__info">
 			<h2 class="section-title">
 			    <b>Contact</b> Us
 			</h2>
-			<p>We are glad to help you determine the right data for you. Let us know if you have any questions, by writing to one of the emails below or giving us a call:</p>
+			<p>Algoseek data experts are ready to answer your questions.</p>
 			<a href="tel:+16465831832" class="phone">
 			    +1 646 583 1832
 			</a>
@@ -754,7 +786,7 @@
 				</select>
 			</label>
 
-	        <textarea placeholder="Message *" class="string-message" rows="3" required="" name="message"></textarea>
+	        <textarea placeholder="Message *" class="string-message" rows="4" required="" name="message"></textarea>
 
 			<input type="hidden" name="g-recaptcha-response" id="recaptcha">
 

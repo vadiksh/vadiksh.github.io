@@ -1,4 +1,6 @@
 $(function() {
+    $('.header').addClass('revealed');
+
     if (window.location.pathname.indexOf('products') > 0) {
         $('.header__menu-wrapper li:first-child a').addClass('active-link');
     } else if (window.location.pathname.indexOf('delivery') > 0) {
@@ -18,10 +20,14 @@ $(function() {
 		} else {
 			$('.header__top').removeClass('sticky')
 		}
+
+        
 	})
+
     $('.header__menu a:not(.dropdown)').click(function() {
         $('.header__menu').removeClass('active');
     })
+
     if ($(window).width() < 1023) {
         $('.header__link.dropdown').click(function(e){
             e.preventDefault();
@@ -667,23 +673,6 @@ $(function() {
     });
 
 
-    // delivery
-    if ($('.delivery-page').length) {
-        $('.delivery__list a').click(function (e) {
-            e.preventDefault();
-            var href = $(this).attr('href');
-            $('body,html').animate({
-                scrollTop: $(href).offset().top - 70
-            }, 500)
-        })
-        if (window.location.hash) {
-            var href = window.location.hash;
-            $('body,html').animate({
-                scrollTop: $(href).offset().top - 70
-            }, 500)
-        }
-    }
-    
 
     // Company
     if ($('.company').length) {
