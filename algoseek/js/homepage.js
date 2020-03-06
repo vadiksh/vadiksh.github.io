@@ -1,20 +1,9 @@
 $(function() {
 	// revealing elements
 	$(window).scroll(function() {
-		
-
 		for (var i = 0; i < $('.hidden').length; i++) {
 			revealOnScroll($($('.hidden')[i]));
 		}
-		// if (scrolled + $(window).height() / 1.5 > $('.hidden').offset().top) {
-		//     $('.hidden').addClass('revealed');
-		// }
-		// if (scrolled + $(window).height() / 1.5 > $('.products').offset().top) {
-		//     $('.products').addClass('revealed');
-		// }
-		// if (scrolled + $(window).height() / 1.5 > $('.products').offset().top) {
-		//     $('.products').addClass('revealed');
-		// }
 	})
 	function revealOnScroll(el) {
 		var scrolled = $(window).scrollTop();
@@ -23,6 +12,7 @@ $(function() {
 		}
 	}
 	$(window).trigger('scroll');
+
 	// particles
 	if ($(window).width() > 767) {
 		$.getScript("./js/particles.js", function() {
@@ -31,23 +21,17 @@ $(function() {
 			});
 		});
 	}
+
+	// products hover
 	$('.products__list li').mouseenter(function() {
-		var that = $(this);
-		// var tooltip = $(this);
-		// setTimeout(function() {
-			// console.log(tooltip.scrollHeight);
-			$($(this).find('.products__tooltip')[0]).css({'height': $(this).find('.products__tooltip')[0].scrollHeight + 'px'})
-		// }, 300)
-		
-	})
-	$('.products__list li').mouseleave(function() {
-		var that = $(this);
-		// setTimeout(function() {
-			
-			$(that.find('.products__tooltip')[0]).css({'height': 0})
-		// }, 0)
+		alert($(this).find('.products__tooltip')[0].scrollHeight);
+		$($(this).find('.products__tooltip')[0]).css({'height': $(this).find('.products__tooltip')[0].scrollHeight + 'px'})
 	
 	})
+	$('.products__list li').mouseleave(function() {
+		$($(this).find('.products__tooltip')[0]).css({'height': 0})	
+	})
+
 	// flip words
 	setInterval(function() {
 		$('.letters:not(.active)').addClass('active').siblings().removeClass('active');
@@ -146,12 +130,11 @@ $(function() {
 	    });
 	});	
 
+	// textarea resize
 	var textarea = document.querySelector('.string-message');
 	$('.string-message').on('input', function() {
 		
 		if (textarea.scrollHeight > textarea.offsetHeight) {
-			// console.log('hjgkhj');
-			// $('.string-message').css({'height': '250px'});
 			$('.string-message').css({'height': textarea.scrollHeight + 'px', 'transition': '.3s'})
 		}
 	});
