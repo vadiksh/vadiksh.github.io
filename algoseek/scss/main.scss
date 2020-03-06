@@ -152,7 +152,6 @@ select:-webkit-autofill:focus {
 		background: #dedfe1;
 	}
 	&__top {
-		
 		padding-top: 20px;
 		margin: 0 auto;
 		position: fixed;
@@ -161,7 +160,7 @@ select:-webkit-autofill:focus {
 		width: 100vw;
 		padding: 20px;
 		z-index: 15;
-		transition: .3s;
+		transition: background .3s, box-shadow .3s;
 		height: 95px;
 		transform: translate3d(0,-100px,0);
 		opacity: 0;
@@ -198,10 +197,9 @@ select:-webkit-autofill:focus {
 			height: 45px;
 			transition: .5s .8s, transform .3s;
 			opacity: 1;
-			// transform: scale(1);
 			&:hover {
 				transform: scale(1.15);
-				transition: .3s;
+				transition: transform .3s;
 			}
 		}
 		.header__headline {
@@ -276,11 +274,11 @@ select:-webkit-autofill:focus {
 		font-family: "Open Sans", sans-serif;
 		font-size: 16px;
 		position: relative;
-		transition: .3s;
+		transition: color .3s;
 		padding-bottom: 13px;
 		&:hover, &.active-link {
 			color: $accent;
-			transition: .3s;
+			transition: color .3s;
 		}
 		&.dropdown, &.active-link {
 			&::after {
@@ -290,13 +288,13 @@ select:-webkit-autofill:focus {
 				height: 4px;
 				margin-top:10px;
 				background: $accent;
-				transition: .2s;
+				transition: opacity .2s;
 				opacity: 0;
 			}
 		}
 		&.dropdown:hover::after, &.active::after, &.active-link::after {
 			opacity: 1;
-			transition: .2s;
+			transition: opacity .2s;
 		}
 		&.icon {
 			margin-top: 3px;
@@ -332,7 +330,7 @@ select:-webkit-autofill:focus {
 		top: 41px;
 		left: 0;
 		opacity: 0;
-		transition: .3s;
+		transition: opacity .3s, visibility .3s;
 		border-radius: 0 15px 15px;
 		padding: 24px 28px;
 		background: rgba(17,31,38,.8);
@@ -360,16 +358,11 @@ select:-webkit-autofill:focus {
 			word-wrap: initial; 
 			text-wrap: none;
 			margin-bottom: 10px;
-			transition: .25s;
+			transition: color .25s;
 			&:hover {
-				transition: .25s;
+				transition: color .25s;
 				color: $accent;
 			}
-		}
-		&.active {
-			// visibility: visible;
-			// opacity: 1;
-			// transition: .3s;
 		}
 		h4 {
 			font-family: "Open Sans", sans-serif;
@@ -387,6 +380,7 @@ select:-webkit-autofill:focus {
 	.button {
 		opacity: 0;
 		transform: scale(0.3);
+		transition: 0s;
 	}
 	&__banner {
 		text-align: center;
@@ -451,10 +445,7 @@ select:-webkit-autofill:focus {
 		display:inline-block;
 		cursor: pointer;
 		background: url('../img/play.png') no-repeat 0 0 /contain;
-		transition: .3s;
 		opacity: 0;
-		// transform: scale(0.3);
-		
 	}
 	.ml4 {
 		display: inline-block;
