@@ -178,6 +178,12 @@ select:-webkit-autofill:focus {
 		}
 	}
 	&.revealed {
+		.header__link {
+			transition: color .3s;
+		}
+		.header__dropdown {
+			transition: opacity .3s, visibility .3s;
+		}
 		.header__top {
 			transform: translate3d(0,0,0);
 			opacity: 1;
@@ -193,10 +199,8 @@ select:-webkit-autofill:focus {
 			transform: translate3d(0,0,0);
 		}
 		.header__play {
-			width: 45px;
-			height: 45px;
-			transition: .5s .8s, transform .3s;
 			opacity: 1;
+			transition: opacity .5s .8s, transform .3s;
 			&:hover {
 				transform: scale(1.15);
 				transition: transform .3s;
@@ -253,10 +257,10 @@ select:-webkit-autofill:focus {
 			}
 			&:hover .header__link {
 				color: $accent;
-				transition: .3s;
+				transition: color .3s;
 				&::after {
 					opacity: 1;
-					transition: .2s;
+					transition: opacity .2s;
 				}
 			}
 		}
@@ -274,7 +278,6 @@ select:-webkit-autofill:focus {
 		font-family: "Open Sans", sans-serif;
 		font-size: 16px;
 		position: relative;
-		transition: color .3s;
 		padding-bottom: 13px;
 		&:hover, &.active-link {
 			color: $accent;
@@ -330,7 +333,6 @@ select:-webkit-autofill:focus {
 		top: 41px;
 		left: 0;
 		opacity: 0;
-		transition: opacity .3s, visibility .3s;
 		border-radius: 0 15px 15px;
 		padding: 24px 28px;
 		background: rgba(17,31,38,.8);
@@ -403,7 +405,6 @@ select:-webkit-autofill:focus {
 			top: 0;
 			left: 0;
 			z-index: 1;
-			// background: #F1F2F4;
 			opacity: 0;
 		}
 		h1 {
@@ -440,8 +441,9 @@ select:-webkit-autofill:focus {
 		}
 	}
 	&__play {
-		width: 30px;
-		height: 30px;
+
+		width: 45px;
+		height: 45px;
 		display:inline-block;
 		cursor: pointer;
 		background: url('../img/play.png') no-repeat 0 0 /contain;
