@@ -12,6 +12,7 @@ $(function() {
     } else if (window.location.pathname.indexOf('partners') > 0) {
         $('.header__menu-wrapper li:nth-child(6) a').addClass('active-link');
     }
+// 
 
 // HEADER
 	$(window).scroll(function() {
@@ -46,65 +47,14 @@ $(function() {
             $('.header__menu').removeClass('active');
         })
     }
+// 
    
-
-     // products
-     $('.products-page__menu .close').click(function() {
+// PRODUCTS/ORDER
+    $('.products-page__menu .close').click(function() {
          $('.products-page__menu').removeClass('active');
      })
 
-
-    if ($(window).width() > 767 && $('.products-page').length) {
-        $(window).scroll(function() {
-            var scrolled = $(window).scrollTop();
-
-            if ($('.products-page__icons').length && $('.products-page__icons').offset().top + $('.products-page__icons').height() > $('.footer').offset().top - 60) {
-                $('.products-page__icons').addClass('sticky');
-            } else if ($('.products-page__icons').hasClass('sticky') && scrolled + ($(window).height() - $('.products-page__icons').height())/2 < $('.products-page__icons').offset().top) {
-                $('.products-page__icons').removeClass('sticky');
-            }
-
-            if (scrolled > 45) {
-                $('.products-page__menu').addClass('sticky-top');
-            } else {
-                $('.products-page__menu').removeClass('sticky-top');
-            }
-
-            if ($('.products-page__menu').offset().top + $('.products-page__menu').height() > $('.footer').offset().top - 60) {
-                $('.products-page__menu').addClass('sticky').removeClass('sticky-top');
-            } else if ($('.products-page__menu').hasClass('sticky') && scrolled + 145 < $('.products-page__menu').offset().top) {
-                $('.products-page__menu').removeClass('sticky').addClass('sticky-top');
-            }
-        })
-    }
-    
-
-	if ($(window).width() > 1250) {
-
-	} else {
-		// $('.products__list li, .products-page__table-headings').click(function(){
-		// 	$(this).addClass('active').find('.products__tooltip').addClass('active');
-		// 	$(this).siblings().find('.products__tooltip').removeClass('active');
-		// })
-		// $(window).on('touchstart', function(e) {
-		// 	if (!$(e.target).is('.products__list li, .products__list li *') || !$(e.target).is('.products-page__table-headings, .products-page__table-headings *')) {
-		// 		$('.products__tooltip').removeClass('active');
-		// 	}
-		// })
-
-	}
-
-	if ($(window).width() < 1440) {
-		$('.products-page__table-headings .docs').html('Docs')
-	}
-    // products //
-	
-
-	
-
-    
-
-
+// CONTACT FORM
   	$('.contact__form input').change(function() {
   		if ($(this).val().length !== 0) {
 			$(this).addClass('input-active');
@@ -112,6 +62,7 @@ $(function() {
   			$(this).removeClass('input-active');
   		}
   	})
+// 
   	
 
     fetch('js/as-website-products.json').then(response => {
@@ -597,7 +548,7 @@ $(function() {
         }
     }
 
-    $(".products-page__icons-mob a").click(function(e) {
+    $(".products-page__icons-mob").click(function(e) {
     	e.preventDefault();
     	$('.products-page__menu').addClass('active');
     })
@@ -612,85 +563,6 @@ $(function() {
     })
 
     $(window).trigger('scroll');
-
-    
-    // SUPPORT
-    fetch('js/as-website-products.json').then(response => {
-        return response.json();
-    }).then(data => {
-        var data = data;
-        for (var i = 0; i < data.length; i++) {
-            $('#data-group').append(
-                '<option value="' + data[i].menu_name + '">' + 
-                data[i].menu_name + '</option>'
-            )
-        }
-
-        $('#data-group').change(function() {
-            var index = $(this).find(':selected').index() - 2;
-            if (index >= 0) {
-                $('.select').addClass('active');
-                $('.select-list, .select-checkboxes').html('');
-                for (var i = 0; i < data[index].datasets.length; i++) {
-                    $('.select-list').append(
-                        '<li>' + data[index].datasets[i].menu_name + '</li>'
-                    )
-                    $('.select-checkboxes').append(
-                        '<input type="checkbox" name="selected-dataset" value="' + data[index].datasets[i].menu_name + '">'
-                    )
-                }
-                
-            } else {
-                $('.select').removeClass('active');
-            }
-        })
-        $(document).on('click', function(e) {
-            if (!$(e.target).is('.select, .select *')) {
-                $('.select-list').removeClass('active');
-            }
-        })
-        $('.select').click(function(e) {
-            e.preventDefault();
-            if (!$('.select-list').hasClass('active')) {
-                console.log('gg')
-                $('.select-list').addClass('active');
-            } else if (!$(e.target).is('.select-list li')) {
-                console.log('bb')
-
-                $('.select-list').removeClass('active');
-            }
-        });
-        $(document).on('click', '.select-list li', function() {
-            if (!$(this).hasClass('active')) {
-                $(this).addClass('active');
-                $('.select-checkboxes input').eq($(this).index()).prop('checked', true);
-            } else {
-                $(this).removeClass('active');
-                $('.select-checkboxes input').eq($(this).index()).prop('checked', false);
-            }
-        })
-        
-    });
-
-
-
-    // Company
-    if ($('.company').length) {
-        $('.company__nav a').click(function() {
-            $(this).addClass('active').parent().siblings().find('a').removeClass('active');
-            $('.company__container > li').eq($(this).parent().index()).addClass('active').siblings().removeClass('active');
-        })
-        if (window.location.hash) {
-            var href = window.location.hash;
-            console.log(href);
-            $('a[data-id=' + '"' + href.slice(1) + '"]').trigger('click');
-        }
-        $('.career__categ li').click(function() {
-            console.log($(this).index());
-            $(this).addClass('active').siblings().removeClass('active');
-            $('.career__list > li').eq($(this).index()).addClass('active').siblings().removeClass('active');
-        })
-    }
     
     
         

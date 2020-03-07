@@ -803,26 +803,19 @@ select:-webkit-autofill:focus {
 			&.active .products__tooltip {
 				opacity: 1;
 				visibility: visible;
-				transition: .5s, color .5s .3s, padding 0s;
+				transition: opacity .5s .2s,visibility .9s, color .5s .3s, height .5s;
 				color: #1a1a1a;
-				padding-top: 60px;
-				padding-left: 15px;
-				padding-bottom: 15px;
-				margin-top: 15px;
+				margin-top: 25px;
 			}
 			&:nth-child(7) .products__tooltip,
 			&:nth-child(8) .products__tooltip,
 			&:nth-child(9) .products__tooltip {
 				right: calc(360px - 50%);
 				left: auto;
+				padding-left: 0;
+				padding-right: 15px;
 				border-left: 0;
 				border-right: 1px solid #ddd;
-			}
-			&:nth-child(7):hover .products__tooltip,
-			&:nth-child(8):hover .products__tooltip,
-			&:nth-child(9):hover .products__tooltip {
-				padding-left: 10px;
-				padding-right: 10px;
 			}
 		}
 		&-icon {
@@ -856,6 +849,7 @@ select:-webkit-autofill:focus {
 		color: transparent;
 		position: relative;
 		left: 50%;
+		padding-left: 20px;
 		
 		b {
 			display: inline;
@@ -864,9 +858,12 @@ select:-webkit-autofill:focus {
 			display: block;
 			margin-bottom: 10px;
 		}
+		p:first-child {
+			padding-top: 60px;
+		}
 		p:last-child {
 			margin-bottom: 0;
-			padding-bottom: 10px;
+			padding-bottom: 25px;
 		}
 	}
 	&__buttons {

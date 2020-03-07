@@ -41,6 +41,7 @@
 						left: auto;
 						border-left: 0;
 						border-right: 1px solid #ddd;
+						padding-right: 15px;
 					}
 				}
 				&:nth-child(7) {
@@ -49,6 +50,7 @@
 						left: 50%;
 						border-right: 0;
 						border-left: 1px solid #ddd;
+						padding-left: 20px;
 					}
 				}
 			}
@@ -816,6 +818,8 @@
 				&:nth-child(2n - 1) {
 					.products__tooltip {
 						left: 0;
+						padding-left: 20px;
+						padding-right: 0;
 						border-right: 0;
 						border-left: 1px solid #ddd;
 						// transform: translate3d(-50%,0,0);
@@ -825,10 +829,10 @@
 					.products__tooltip {
 						right: auto;
 						left: calc(-300px + 100%);
-						padding-left: 10px;
-						padding-right: 10px;
 						border-left: 0;
 						border-right: 1px solid #ddd;
+						padding-right: 15px;
+						padding-left: 10px;
 					}
 				}
 			}
@@ -1049,7 +1053,7 @@
 				visibility: visible;
 				opacity: 1;
 				left: 15px;
-				top: 95px;
+				top: 80px;
 				span, span::after {
 					background: #212529;
 				}
