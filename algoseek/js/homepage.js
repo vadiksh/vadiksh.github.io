@@ -23,14 +23,46 @@ $(function() {
 	}
 
 	// products hover
-	$('.products__list li').mouseenter(function() {
-		alert($(this).find('.products__tooltip')[0].scrollHeight);
-		$($(this).find('.products__tooltip')[0]).css({'height': $(this).find('.products__tooltip')[0].scrollHeight + 'px'})
+	if ($(window).width() > 1366) {
+		// $('.products__list li').mouseenter(function() {
+		// 	// alert($(this).find('.products__tooltip')[0].scrollHeight);
+		// 	var tooltip = $(this).find('.products__tooltip')[0];
+		// 	$(tooltip).css({'height': tooltip.scrollHeight + 'px'})
+		
+		// })
+		// $('.products__list li').mouseleave(function() {
+		// 	var tooltip = $(this).find('.products__tooltip')[0];
+		// 	$(tooltip).css({'height': 0})	
+		// })
+	} else {
+		$('.products__list li').on('click', function() {
+			console.log('click');
+			console.log($(this).hasClass('active'))
+
+			if (!$(this).hasClass('active')) {
+				$('.products__list li.active .products__tooltip').css({'height': '0px'});
+				$('.products__list li.active').removeClass('active');
+
+				$(this).addClass('active');
+				$(this).find('.products__tooltip').css({'height': $(this).find('.products__tooltip')[0].scrollHeight + 75 + 'px'})
+			} else {
+				$(this).removeClass('active');
+				$(this).find('.products__tooltip').css({'height': '0px'})
+			}
+			
+
+		})
+		$(window).on('touchstart', function(e) {
+			// var tooltip = $(e.target).closest('li').find('.products__tooltip')[0];
+
+			if (!$(e.target).is('.products__list li.active, .products__list li.active *')) {
+				$('.products__list li').removeClass('active');
+				$('.products__tooltip').css({'height': '0px'})
+			}
+		})
+	}
+
 	
-	})
-	$('.products__list li').mouseleave(function() {
-		$($(this).find('.products__tooltip')[0]).css({'height': 0})	
-	})
 
 	// flip words
 	setInterval(function() {

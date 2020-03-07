@@ -799,10 +799,11 @@ select:-webkit-autofill:focus {
 					right: 0;
 				}
 			}
-			&:hover .products__tooltip {
+			// &:hover .products__tooltip,
+			&.active .products__tooltip {
 				opacity: 1;
 				visibility: visible;
-				transition: .5s, color .5s .3s, padding 0s 0s;
+				transition: .5s, color .5s .3s, padding 0s;
 				color: #1a1a1a;
 				padding-top: 60px;
 				padding-left: 15px;
@@ -864,7 +865,8 @@ select:-webkit-autofill:focus {
 			margin-bottom: 10px;
 		}
 		p:last-child {
-			// margin-bottom: 0;
+			margin-bottom: 0;
+			padding-bottom: 10px;
 		}
 	}
 	&__buttons {
