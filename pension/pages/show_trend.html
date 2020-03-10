@@ -1,20 +1,20 @@
-<!-- partial:_head.html -->
+
 <!DOCTYPE html>
 <html class="h-100">
   <head>
     <title>Pension Angel</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/layout.css">
+    <link rel="stylesheet" href="static/layout.css">
   </head>
 
-  <body class="h-100 flex flex-column">
+  <body>
 
 <!-- partial -->
 
 <!-- partial:_navbar.html -->
 <!--Navbar-->
-<nav class="navbar">
+<nav class="navbar" id="navb">
   <div class="container">
     
     <a class="navbar-brand" href="#"><strong>Pension Angel</strong></a>
@@ -102,7 +102,7 @@
     </div>
   </div>
 </nav>
-<!--/.Navbar 
+<!--/.Navbar -->
 
 <!-- partial -->
 
@@ -148,8 +148,238 @@
   </div>
 
 </footer>
+<!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script> -->
 
-<script src="/static/pensionangel.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>  -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--[if lt IE 9]>
+<script src="https://code.highcharts.com/modules/oldie-polyfills.js"></script>
+<![endif]-->  
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<!--[if lt IE 9]>
+<script src="https://code.highcharts.com/modules/oldie.js"></script>
+<![endif]-->
+<!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> -->
+<!-- <script src="static/pensionangel.min.js"></script> -->
+<script>
+	
+
+	document.addEventListener("DOMContentLoaded", function(event) {
+		(function(){
+		  
+		  function Helpers(){
+		  }
+
+		  Helpers.prototype.extractFormFields = function(form){
+		    var fields = {};
+
+		    $(form).find('*[name]').each(function(i, el){
+		      fields[$(el).attr('name')] = $(el).val() 
+		    })
+		    return fields;
+		  }
+
+		  Helpers.prototype.populateFormFields = function(form, data){
+		    for (var key in data){
+		      $(form).find('[name=' + key + ']').val(data[key]);
+		    }
+		  }
+
+		  Helpers.prototype.isValidForm = function(form){
+		    var isFormValid = true;
+
+		    $(form).find('[required]').each(function(i, el){
+		      if (!$(el).val()) isFormValid = false;
+		    })
+		    return isFormValid;
+		  }
+
+
+		  Helpers.prototype.customHeaders = function(metadata){
+		    return {
+		      title: {
+		        text: metadata.caption
+		      },
+		      subtitle: {
+		        text: metadata.subcaption
+		      },
+		      yAxis: {
+		        title: {
+		          text: metadata.y_axis_title
+		        }
+		      },
+		      xAxis: {
+		        title: {
+		          text: metadata.x_axis_title
+		        }
+		      }
+		    }    
+		  }
+		  
+		  Helpers.prototype.derive = function(data){
+		    if (data.data) data = data.data;
+
+		    var dates = [];
+		    for (var date in data){
+		      dates.push(date);
+		    }
+
+		    var labels = [];
+		    for (var label in data[dates[0]]){
+		      labels.push(label);
+		    }
+
+		    var values = [];
+		    for (var i in labels){
+		      var label = labels[i];
+		      var label_values = [];
+
+		      for (var j in dates){
+		        var date = dates[j];
+		        label_values.push(data[date][label])
+		      }
+		      values.push(label_values.length == 1 ? label_values[0] : label_values);
+
+		    }
+		    return {
+		      dates: dates,
+		      labels: labels,
+		      values: values      
+		    };
+		  }
+
+		  window.Helpers = new Helpers()
+
+		})();
+
+		$('.navbar button.navbar-toggler').click(function(){
+			$('.navbar .collapse').slideToggle(400);
+			$('.dropdown-menu').slideUp(400);
+		})
+
+		$('.navbar .nav-item').click(function(event){
+		  $(this).siblings().find('.dropdown-menu').slideUp(400);
+		  $(this).find('.dropdown-menu').slideDown(400);
+		})
+
+		function ajax(url, callback){
+			var xhr = new XMLHttpRequest();
+
+			xhr.open('GET', url, true);
+
+			xhr.send();
+			xhr.onreadystatechange = function(){
+				if (this.readyState == 4 && this.status == 200) {
+			       callback(JSON.parse(xhr.responseText));
+			    }
+			}
+		};
+		ajax('https://api.pensionangel.com:5000/api/v1.0/show_trend', function(data) {
+			// document.body.innerHTML = data.data['2020-03-06'][" of funds are worth more than a year ago"];
+			// console.log(data)
+			var derived = Helpers.derive(data);
+						
+			var series = derived.labels.map(function(label, idx){
+			  return {
+			    name: label,
+			    color: label == ' of funds are worth more than a year ago' ? '#619445': '#C94545',
+			    y: derived.values[idx]
+			  }
+			})
+
+			// document.body.innerHTML = series[0].name;
+			// console.log(series)
+			
+			Highcharts.chart('showTrend',{
+			  chart: {
+			      type: 'pie'
+			  },
+			  // plotOptions: {
+			  //   pie: {
+			  //     dataLabels: {
+			  //       format: '{point.percentage:.1f}% <b>{point.name}</b>'
+			  //     },
+			  //     tooltip:{
+			  //       headerFormat: '<b>{series.name}</b><br/>',
+			  //       pointFormat: '{point.percentage:.1f}% {point.name}'
+			  //     }
+			  //   }
+			  // },
+			  series: [{
+			    name: data.metadata.y_axis_title,
+			    data: series
+			  }]
+			});
+		});
+
+
+		// var ajax = function(url, callback, data){
+		// 	var xhr = new XMLHttpRequest();
+
+		// 	xhr.open(data ? 'POST' : 'GET', url, true);
+
+		// 	xhr.send();
+		// 	xhr.onreadystatechange = function(){
+		// 		if (this.readyState == 4 && this.status == 200) {
+		// 	       callback(JSON.parse(xhr.responseText));
+		// 	    }
+		// 	}
+		// };
+		// var apiUrl = 'https://api.pensionangel.com:5000/api/v1.0';
+		// var absoluteUrl = location.origin; //"http://localhost:3000/pages";
+
+		// window.Store = {
+		// 	showTrend: function(callback){
+		// 	  return ajax(apiUrl + '/show_trend', callback);
+		// 	}
+		// }
+
+		// Store.showTrend(function(data) {
+		// 	// console.log(data);
+		// 	var derived = Helpers.derive(data);
+			
+		// 	var series = derived.labels.map(function(label, idx){
+		// 	  return {
+		// 	    name: label,
+		// 	    color: label == ' of funds are worth more than a year ago' ? '#619445': '#C94545',
+		// 	    y: derived.values[idx]
+		// 	  }
+		// 	})
+
+		// 	Highcharts.chart('showTrend', Highcharts.merge({
+		// 	  chart: {
+		// 	      type: 'pie'
+		// 	  },
+		// 	  plotOptions: {
+		// 	    pie: {
+		// 	      dataLabels: {
+		// 	        format: '{point.percentage:.1f}% <b>{point.name}</b>'
+		// 	      },
+		// 	      tooltip:{
+		// 	        headerFormat: '<b>{series.name}</b><br/>',
+		// 	        pointFormat: '{point.percentage:.1f}% {point.name}'
+		// 	      }
+		// 	    }
+		// 	  },
+		// 	  series: [{
+		// 	    name: data.metadata.y_axis_title,
+		// 	    data: series
+		// 	  }]
+		// 	}));
+		// })
+		// Store.showTrend().then(function(data){
+		//   //   alert(data)
+		  
+		// })
+	});
+
+</script>
+
+<script>
+</script>
+
 
 </body>
 </html>
