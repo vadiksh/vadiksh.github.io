@@ -70,6 +70,12 @@ section {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	&--text {
+		align-items: flex-start;
+		p {
+			width: 48%;
+		}
+	}
 }
 .btn {
 	width: 250px;
@@ -170,6 +176,11 @@ section {
 	height: 23px;
 	background: url('../img/arrow-w.svg') no-repeat 0 0/ contain;
 	transform: rotate(90deg);
+	&--black {
+		margin-top: 80px;
+		margin-left: -15px;
+		background: url('../img/arrow-b.svg') no-repeat 0 0/ contain;
+	}
 }
 
 .header {
@@ -207,7 +218,8 @@ section {
 	min-height: 100vh;
 	color: #fff;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 	position: relative;
 	overflow:hidden;
 	&-homepage {
@@ -229,7 +241,11 @@ section {
 			left: 0;
 			background: url('../img/hero-lines.svg') right bottom /cover;
 		}
-		
+		&__text {
+			align-self: flex-end;
+			max-width: 540px;
+			line-height: 2;
+		}
 	}
 	&-case {
 		position: relative;
@@ -252,9 +268,9 @@ section {
 			color: #000;
 			overflow: visible;
 			.arrow {
-				margin-top: 80px;
-				margin-left: -15px;
-				background: url('../img/arrow-b.svg') no-repeat 0 0/ contain;
+				// margin-top: 80px;
+				// margin-left: -15px;
+				// background: url('../img/arrow-b.svg') no-repeat 0 0/ contain;
 			}
 			h2 {
 				margin-bottom: 100px;
@@ -270,13 +286,32 @@ section {
 			background: $case1;	
 		}
 	}
-	p {
-		align-self: flex-end;
-		max-width: 540px;
-		line-height: 2;
-	}
-	p.left {
-		align-self: flex-start;
+	&-about {
+		color: #000;
+		background: rgba(182, 225, 223, 0.25);
+		.head-homepage__flex {
+			height: 100vh;
+			align-items: flex-start;
+			width: 100%;
+		}
+		h2 {
+			margin-bottom: 80px;
+		}
+		.container {
+			position: relative;
+			z-index: 2;
+		}
+		&__lines {
+			height: 150%;
+			background: no-repeat url('../img/about-lines.svg') center top /contain;
+		}
+		h3 {
+			line-height: 1.5;
+			margin-bottom: 60px;
+		}
+		p {
+			line-height: 1.75;
+		}
 	}
 }
 .sub-head {

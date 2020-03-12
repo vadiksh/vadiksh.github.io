@@ -30,6 +30,7 @@ $(function() {
 		if (scrolled >= 0) {
 			var dif = scrolled;
 			$('.head-homepage__lines').css({'transform': 'rotateX(' + dif/8 + 'deg)'})
+			$('.head-about__lines').css({'transform': 'rotateX(' + dif/16 + 'deg)'})
 		}
 
 		if (scrolled + $(window).height() > $('.action').offset().top) {
