@@ -944,6 +944,38 @@ section {
 		}
 	}
 }
+.about {
+	font-size: 16px;
+	h5 {
+		margin-bottom: 60px;
+	}
+	.flex {
+		align-items: flex-start;
+		margin-bottom: 80px;
+	}
+	&__descr {
+		width: 47%;
+		padding-top: 40px;
+	}
+	img {
+		width: 100%;
+		height: auto;
+		margin-bottom: 18px;
+	}
+	&__info {
+		width: 47%;
+		text-align: center;
+		span {
+			font-size: 24px;
+			margin-bottom: 22px;
+			display: inline-block;
+		}
+		p {
+			font-size: 14px;
+			margin-bottom: 12px;
+		}
+	}
+}
 
 
 

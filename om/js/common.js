@@ -35,7 +35,7 @@ $(function() {
 
 		if (scrolled + $(window).height() > $('.action').offset().top) {
 			var dif = scrolled + $(window).height() - $('.action').offset().top
-			$('.action .lines').css({'transform': 'rotateX(' + dif / 20 + 'deg)'})
+			$('.action .lines').css({'transform': 'rotateX(' + dif / 18 + 'deg)'})
 		}
 	})
 
