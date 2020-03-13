@@ -229,18 +229,21 @@ a {
 		}
 	}
 	&__slide {
-		height: calc(100vh - 128px);
-		min-height: 500px;
-		display: flex;
-		flex-flow: column;
-		justify-content: center;
 		padding: 0 15px;
+		.container {
+			height: calc(100vh - 128px);
+			min-height: 500px;
+			display: flex;
+			flex-flow: column;
+			justify-content: center;			
+		}
 	}
+
 	&__buttons {
 		margin-top: 20px;
 		text-align: center;
 		a {
-			width: 250px;
+			width: 260px;
 			margin: 0 15px;
 		}
 	}
@@ -277,8 +280,21 @@ a {
 		}
 	}
 	.slide3 {
-		background: url('../img/banner3.jpg') no-repeat center center/contain;
+		background: url('../img/banner-33.jpg') no-repeat center 25%/cover;
 		position: relative;
+		.container {
+			justify-content: space-between;
+			padding-top: 80px;
+			padding-bottom: 15px;
+		}
+		p {
+			color: #fff;
+			font-size: 55px;
+			font-weight: 700;
+			text-shadow: 1px 1px 3px #000;
+			text-align: center;
+			line-height: 1.1;
+		}
 		&::after {
 			position: absolute;
 			width: 100%;
@@ -286,7 +302,7 @@ a {
 			top: 0;
 			left: 0;
 			content: '';
-			background: rgba(255,255,255,.25);
+			background: rgba(0,0,0,.2);
 			z-index: 1;
 		}
 		* {
@@ -303,16 +319,6 @@ a {
 		.btn:last-child {
 			margin-left: 90px;
 			margin-right: 0;
-		}
-		h2 {
-			background: rgba(255,255,255,.8);
-			padding: 10px 20px 15px;
-			margin-top: -50px;
-			margin-bottom: 30px;
-			border: 1px solid #bbb;
-			border-radius: 3px;
-			color: $a;
-			text-shadow: none;
 		}
 	}
 }

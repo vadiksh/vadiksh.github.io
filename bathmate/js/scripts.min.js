@@ -34,26 +34,15 @@ $(function() {
 		nav: false,
 		dots: false,
 		navSpeed: 700,
-		autoplay: true,
+		autoplay: false,
 		autoplayTimeout: 3500,
 		autoplayHoverPause: true,
 		autoplaySpeed: 700,
-		dragEndSpeed: 700,
-		onChanged: changeLogo
+		dragEndSpeed: 700
 	});
-	function changeLogo(e) {
-		var i = e.item.index;
-		if ($($('.owl-item')[i]).children('.slide1').length || $($('.owl-item')[i]).children('.slide2').length) {
-			$('.header').removeClass('white');
-		} else {
-			$('.header').addClass('white');
-		}
-	}
 	$('.orders input').on("input change", function() {
 		let clicks = $(this).val();
 		let comissions = ["$1,890.00","$3,780.00","$5,670.00","$7,560.00","$9,450.00","$11,340.00","$13,230.00","$15,120.00","$17,010.00","$18,900.00"]
-
-		
 
 		if (clicks >= 100 && clicks < 200) {
 			$('.orders__comission span').html(comissions[0])

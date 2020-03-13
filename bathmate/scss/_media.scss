@@ -1,7 +1,7 @@
 @media (max-width: 1024px) and (min-height: 1024px) {
 	.banner {
 		.slide3 {
-			background: url('../img/banner3.jpg') no-repeat 50% 55% /100% auto;
+			// background: url('../img/banner3.jpg') no-repeat 50% 55% /100% auto;
 			h2 {
 				margin-top: 0;
 				border: 0;
@@ -31,11 +31,18 @@
 @media (max-width: 1250px) {
 	.banner {
 		&__slide {
-			height: calc(100vh - 176px);
+			.container {
+				height: calc(100vh - 176px);
+			}
 		}
 		.slide3 {
-			h2 {
-				max-width: 700px;
+			background: url('../img/banner-33.jpg') no-repeat center 0%/cover;
+			.container {
+				padding-top: 100px;
+				padding-bottom: 40px;
+			}
+			h2,p {
+				font-size: 40px;
 				margin-left: auto;
 				margin-right: auto;
 			}
@@ -104,11 +111,10 @@
 			}
 		}
 		.slide3 {
-			.btn:first-child {
-				margin-right: 10px;
-			}
-			.btn:last-child {
-				margin-left: 10px;
+			background: url('../img/banner-33.jpg') no-repeat center 0%/auto 110%;
+			.container {
+				padding-top: 90px;
+				padding-bottom: 40px;
 			}
 		}
 	}
@@ -142,7 +148,9 @@
 			}
 		}
 		&__slide {
-			min-height: 100vh;
+			.container {
+				min-height: 100vh;
+			}
 		}
 		&__buttons {
 			a {
@@ -165,11 +173,17 @@
 			}
 		}
 		.slide3 {
-			background: url('../img/banner3.jpg') no-repeat 50% 45% /115% auto;
+			background: url('../img/banner-33.jpg') no-repeat 65% 0%/cover;
+			.container {
+				padding-top: 80px;
+				padding-bottom: 50px;
+			}
 			h2 {
-				margin-top: 20px;
 				border: 0;
 				padding: 0;
+			}
+			p,h2 {
+				font-size: 28px;
 			}
 			.banner__buttons {
 				margin-top: 230px;
@@ -288,28 +302,28 @@
 	}
 }
 
-@media (max-width: 359px) {
-	.banner {
-		.slide3 {
-			background-position: 50% 47%;
-			h2 {
-				margin-top: 50px;
-				font-size: 30px;
-			}
-			.banner__buttons {
-				margin-top: 200px;
-				a {
-					width: 270px;
-				}
-			}
-			.btn:first-child {
-				margin-right: 0px;
-			}
-			.btn:last-child {
-				margin-left: 0px;
-			}
-		}
-	}
-}
+// @media (max-width: 359px) {
+// 	.banner {
+// 		.slide3 {
+// 			background-position: 50% 47%;
+// 			h2 {
+// 				margin-top: 50px;
+// 				font-size: 30px;
+// 			}
+// 			.banner__buttons {
+// 				margin-top: 200px;
+// 				a {
+// 					width: 270px;
+// 				}
+// 			}
+// 			.btn:first-child {
+// 				margin-right: 0px;
+// 			}
+// 			.btn:last-child {
+// 				margin-left: 0px;
+// 			}
+// 		}
+// 	}
+// }
 
 
