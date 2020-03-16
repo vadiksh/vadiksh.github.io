@@ -91,6 +91,7 @@ section {
 }
 .btn {
 	width: 270px;
+	min-width: 270px;
 	height: 60px;
 	text-align: center;
 	font-size: 16px;
@@ -102,6 +103,7 @@ section {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	// transition: transform .3s;
 	&::after {
 		content: '';
 		display: inline-block;
@@ -127,6 +129,16 @@ section {
 		&::after {
 			background: url('../img/arrow-b.svg') no-repeat center center / contain
 		}
+	}
+	&.blue {
+		background: $blue;
+		color: #fff;
+		&::after {
+			background: url('../img/arrow-w.svg') no-repeat center center / contain
+		}
+	}
+	&.yellow {
+		border-color: $yellow; 
 	}
 	&.transp {
 		background: transparent;
@@ -184,13 +196,21 @@ section {
 	display: block;
 	position: fixed;
 	z-index: 3;
-	// width: 60px;
-	// height: 60px;
 	left: 0;
 	top: 0;
+	pointer-events: none;
+	cursor: none;
 	&::after {
-		content: '\2794';
+		content: '\276F';
 		font-size: 40px;
+		position: relative;
+		display: block;
+		animation: arrow-bounce .6s infinite;
+	}
+	&.left {
+		&::after {
+			content: '\276E';
+		}
 	}
 }
 .arrow {
@@ -665,14 +685,6 @@ section {
 	padding-left: 0;
 	padding-right: 0;
 	position: relative;
-	&__space {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		z-index: 3;
-	}
 	&__list {
 		display: flex;
 		width: 4140px;
@@ -856,9 +868,6 @@ section {
 				margin-top: -80px;
 				margin-left: -15px;
 			}
-		}
-		.btn {
-			color: #fff;
 		}
 	}
 }
@@ -1342,6 +1351,8 @@ section {
 		}
 	}
 	&__buttons {
+		display: flex;
+		justify-content: center;
 		.btn {
 			margin: 0 10px;
 		}
@@ -1394,7 +1405,7 @@ section {
 			}
 		}
 		.btn {
-			justify-content: space-between;
+			// justify-content: space-between;
 		}
 		.case1 {
 			background: $case1;
@@ -1471,6 +1482,9 @@ section {
 	&__list {
 		display: flex;
 		margin-top: 80px;
+		li {
+			width: calc(100% / 3);
+		}
 		p {
 			font-size: 28px;
 			line-height: 1.7;

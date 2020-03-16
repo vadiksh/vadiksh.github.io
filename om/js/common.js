@@ -20,54 +20,115 @@
 		  gap: 40
 		})
 		blog.mount();
-	}
-	
 
-	
 		
-	let x = -100,
-		y = -100,
-		move = 0;
-	const cursor = document.querySelector('.cursor'),
-		  perks = document.querySelector('.perks__space'),
-		  perksList = document.querySelector('.perks__list'),
-		  leftBoundary = window.innerWidth / 3,
-		  rightBoundary = window.innerWidth * 2 / 3;
+		let x = -100,
+			y = -100,
+			move = -250,
+			movedOut = false;
+		const cursor = document.querySelector('.cursor'),
+			  perks = document.querySelector('.perks__space'),
+			  perksList = document.querySelector('.perks__list'),
+			  leftBoundary = window.innerWidth / 3,
+			  rightBoundary = window.innerWidth * 2 / 3;
+			  
 
-	const initCursor = () => {
-		perks.addEventListener("mousemove", e => {
-			x = e.clientX;
-			y = e.clientY;
-		});
-		perks.addEventListener("mouseleave", e => {
-			x = window.innerWidth / 2;
-		});
-	  
-		const render = () => {
-			if (x < leftBoundary) {
-				move -= 1;
-				if (move / 10 == -50) {
-					move = 0;
+		const initCursor = () => {
+			document.addEventListener("mousemove", e => {
+				x = e.clientX;
+				y = e.clientY;
+				// console.log(e.target);
+			});
+			perksList.addEventListener("mouseenter", e => {
+				movedOut = false;
+
+			});
+			perksList.addEventListener("mouseleave", e => {
+				movedOut = true;
+				console.log('movedOut');
+				cursor.style.display = "none";
+				cursor.style.cursor = "initial";
+			});
+			
+		  
+			const render = () => {
+				if (!movedOut) {
+					if (x < leftBoundary) {
+						move --;
+						cursor.classList.add("left");
+						perksList.style.transform = "translateX(" + move / 10 + "%)";
+						if (move / 10 == -50) move = 0;
+
+					} else if (x > rightBoundary) {
+						move ++;
+						cursor.classList.remove("left");
+						perksList.style.transform = "translateX(" + move / 10 + "%)";
+						if (move / 10 == 0) move = -500
+					} else {
+						// move += 1;
+						// perksList.style.transform = "translateX(" + move / 10 + "%)";
+					}
+					if (x < leftBoundary || x > rightBoundary) {
+						cursor.style.transform = `translate(${x - 10}px, ${y - 30}px)`;
+						cursor.style.display = "block";
+						perksList.style.cursor = "none";
+					} else {
+						cursor.style.display = "none"
+						perksList.style.cursor = "initial";
+					}
+				} else {
+
 				}
-				perksList.style.transform = "translateX(" + move / 10 + "%)";
-
-			} else if (x > rightBoundary) {
-				// cursor.style.transform = `translate(${x}px, ${y}px)`;
-				move += 1;
-				if (move / 10 == 0) {
-					move = -500;
-				}
-				perksList.style.transform = "translateX(" + move / 10 + "%)";
-			} else {
-				// move += 1;
-				// perksList.style.transform = "translateX(" + move / 10 + "%)";
-			}
-
+				
+				requestAnimationFrame(render);
+			};
 			requestAnimationFrame(render);
 		};
-		requestAnimationFrame(render);
+		initCursor();
+	}
+	
+	
+
+
+	function inOutQuad(n){
+	    n *= 2;
+	    if (n < 1) return 0.5 * n * n;
+	    return - 0.5 * (--n * (n - 2) - 1);
 	};
-	initCursor();
+
+	// function startAnimation(domEl){
+	//     var stop = false;
+
+	//     // animating x (margin-left) from 20 to 300, for example
+	//     var startx = 20;
+	//     var destx = 300;
+	//     var duration = 1000;
+	//     var start = null;
+	//     var end = null;
+
+	//     function startAnim(timeStamp) {
+	//     	console.log(timeStamp);
+	//         start = timeStamp;
+	//         end = start + duration;
+	//         draw(timeStamp);
+	//     }
+
+	//     function draw(now) {
+	//         if (stop) return;
+	//         if (now - start >= duration) stop = true;
+	//         var p = (now - start) / duration;
+	//         val = inOutQuad(p);
+	//         x = startx + (destx - startx) * val;
+	//         $(domEl).css('margin-left', `${x}px`);
+	//         requestAnimationFrame(draw);
+	//     }
+
+	//     requestAnimationFrame(startAnim);
+	// }
+
+	// startAnimation($('#thing'))
+
+
 	
 
 	// REQUEST ANIMATION FRAME
