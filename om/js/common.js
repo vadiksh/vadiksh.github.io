@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		blog.mount();
 
 		// HOVER SCROLLER
-		if (isTouchDevice) {
+		if (!isTouchDevice) {
 			let x = -100,
 				y = -100,
 				move = -75,
@@ -190,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function() {
   	  parallax.forEach(function (el, i) {
 	  	if(isInViewport(cases)) {
 	  		parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 15;
-	  		console.log(parallaxY);
 	  		el.style.transform = "translateY(" + parallaxY[i] + "px)";
 	  	}
   	  });
@@ -285,6 +284,11 @@ document.addEventListener("DOMContentLoaded", function() {
 				select.classList.remove("active");
 			}
 		});
+
+		if (isTouchDevice) {
+			let contact = document.querySelector('.contact');
+			contact.classList.add("simple");
+		}
 	}
 
 
