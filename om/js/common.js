@@ -1,13 +1,24 @@
-// document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
+	// DETECT TOUCH
+	var isTouchDevice = (('ontouchstart' in window)
+	         || (navigator.MaxTouchPoints > 0)
+	         || (navigator.msMaxTouchPoints > 0));
+	 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+	   || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) { 
+	  isTouchDevice = true;
+	 } else {
+	  isTouchDevice = false;
+	 }
 
 	// HOMEPAGE
 	if (document.querySelector('.homepage')) {
 		var reviews = new Glide('.reviews__glide', {
-		  type: 'slider',
+		  type: 'carousel',
 		  rewind: false,
 		  startAt: 0,
 		  perView: 1,
 		  focusAt: 'center',
+		  animationDuration: 800,
 		  gap: 0
 		})
 		reviews.mount();
@@ -17,116 +28,116 @@
 		  rewind: false,
 		  startAt: 0,
 		  perView: 2.9,
-		  gap: 40
+		  gap: 40,
+		  breakpoints: {
+		  	768: {
+		  	    perView: 1
+		  	  }
+		  }
 		})
 		blog.mount();
 
-		
-		let x = -100,
-			y = -100,
-			move = -250,
-			movedOut = false;
-		const cursor = document.querySelector('.cursor'),
-			  perks = document.querySelector('.perks__space'),
-			  perksList = document.querySelector('.perks__list'),
-			  leftBoundary = window.innerWidth / 3,
-			  rightBoundary = window.innerWidth * 2 / 3;
-			  
+		// HOVER SCROLLER
+		if (isTouchDevice) {
+			let x = -100,
+				y = -100,
+				move = -75,
+				outside = true,
+				start = null,
+				end = null,
+				duration = 450,
+				startMove = 0;
+			    endMove = 0,
+			    stop = false,
+			    direction = true;
+			const cursor = document.querySelector('.cursor'),
+				  sides = document.querySelectorAll('.perks .left, .perks .right'),
+				  perksList = document.querySelector('.perks__list'),
+				  leftBoundary = window.innerWidth / 3,
+				  rightBoundary = window.innerWidth * 2 / 3;
+				  
 
-		const initCursor = () => {
-			document.addEventListener("mousemove", e => {
-				x = e.clientX;
-				y = e.clientY;
-				// console.log(e.target);
-			});
-			perksList.addEventListener("mouseenter", e => {
-				movedOut = false;
+			const init = () => {
+				document.addEventListener("mousemove", e => {
+					x = e.clientX;
+					y = e.clientY;
+				});
 
-			});
-			perksList.addEventListener("mouseleave", e => {
-				movedOut = true;
-				console.log('movedOut');
-				cursor.style.display = "none";
-				cursor.style.cursor = "initial";
-			});
-			
-		  
-			const render = () => {
-				if (!movedOut) {
-					if (x < leftBoundary) {
-						move --;
-						cursor.classList.add("left");
-						perksList.style.transform = "translateX(" + move / 10 + "%)";
-						if (move / 10 == -50) move = 0;
+				sides.forEach(function(el) {
+					el.addEventListener("mouseleave", e => {
+						outside = true;
+						startEasing();
+					});
+					el.addEventListener("mouseenter", e => {
+						outside = stop = false;
+					});
+				})
 
-					} else if (x > rightBoundary) {
-						move ++;
-						cursor.classList.remove("left");
-						perksList.style.transform = "translateX(" + move / 10 + "%)";
-						if (move / 10 == 0) move = -500
-					} else {
-						// move += 1;
-						// perksList.style.transform = "translateX(" + move / 10 + "%)";
+				
+				function startEasing() {
+					
+					function start(timeStamp) {
+						startMove = move;
+						endMove = direction ? (startMove + 8) : (startMove - 8);
+						start = timeStamp;
+
+						draw(timeStamp);
 					}
-					if (x < leftBoundary || x > rightBoundary) {
-						cursor.style.transform = `translate(${x - 10}px, ${y - 30}px)`;
-						cursor.style.display = "block";
-						perksList.style.cursor = "none";
-					} else {
-						cursor.style.display = "none"
-						perksList.style.cursor = "initial";
-					}
-				} else {
 
+					function draw(now) {
+						if (stop) return;
+						if (now - start >= duration) stop = true;
+
+						let a = (now - start) / duration;
+						let easingMove = move = startMove + (endMove - startMove) * easing(a);
+
+		         		perksList.style.transform = "translateX(" + easingMove / 10 + "%)";
+						requestAnimationFrame(draw);
+					}
+					requestAnimationFrame(start);
 				}
 				
+				const render = (timeStamp) => {
+
+					if (!outside) {
+						cursor.style.display = "block";
+						sides.forEach((el) => el.style.cursor = "none")
+						cursor.style.transform = `translate(${x - 10}px, ${y - 30}px)`;
+
+						if (x < leftBoundary) {
+							direction = false;
+							move --;
+							cursor.classList.add("left");
+							perksList.style.transform = "translateX(" + move / 10 + "%)";
+							if (Math.round(move) / 10 == -50) move = 0;
+
+						} else if (x > rightBoundary) {
+							direction = true;
+							move ++;
+							cursor.classList.remove("left");
+							perksList.style.transform = "translateX(" + move / 10 + "%)";
+							if (Math.round(move) / 10 == 0) move = -500
+						} 
+					}  else {
+						cursor.style.display = "none";
+						sides.forEach((el) => el.style.cursor = "initial")
+						// sides.style.cursor = "initial";
+					}
+					
+
+					requestAnimationFrame(render);
+				};
 				requestAnimationFrame(render);
 			};
-			requestAnimationFrame(render);
-		};
-		initCursor();
+			init();
+
+			
+			function easing(n){
+			    return n*(2-n)
+			};
+		}
+		// HOVER SCROLLER //
 	}
-	
-	
-
-
-	function inOutQuad(n){
-	    n *= 2;
-	    if (n < 1) return 0.5 * n * n;
-	    return - 0.5 * (--n * (n - 2) - 1);
-	};
-
-	// function startAnimation(domEl){
-	//     var stop = false;
-
-	//     // animating x (margin-left) from 20 to 300, for example
-	//     var startx = 20;
-	//     var destx = 300;
-	//     var duration = 1000;
-	//     var start = null;
-	//     var end = null;
-
-	//     function startAnim(timeStamp) {
-	//     	console.log(timeStamp);
-	//         start = timeStamp;
-	//         end = start + duration;
-	//         draw(timeStamp);
-	//     }
-
-	//     function draw(now) {
-	//         if (stop) return;
-	//         if (now - start >= duration) stop = true;
-	//         var p = (now - start) / duration;
-	//         val = inOutQuad(p);
-	//         x = startx + (destx - startx) * val;
-	//         $(domEl).css('margin-left', `${x}px`);
-	//         requestAnimationFrame(draw);
-	//     }
-
-	//     requestAnimationFrame(startAnim);
-	// }
-
-	// startAnimation($('#thing'))
 
 
 	
@@ -134,26 +145,39 @@
 	// REQUEST ANIMATION FRAME
 
 	let anim = window.requestAnimationFrame || function(callback){ window.setTimeout(callback, 1000/60)},
-		els = document.querySelectorAll('.lines-block'),
+		lines = document.querySelectorAll('.lines-block'),
+		parallax = document.querySelectorAll('.parallax'),
 		faded = document.querySelectorAll('.faded'),
+		cases = document.querySelector('.cases'),
 		winOffset, 
 		diff, 
-		lines = [];
-	els.forEach(function (el) {
-		lines.push(el.querySelector('.lines'));
+		parallaxY = [];
+		line = [];
+	lines.forEach(function (el) {
+		line.push(el.querySelector('.lines'));
 	})
-	const header = document.querySelector('.header'),
+	const header = document.querySelectorAll('.header'),
 		homepageHead = document.querySelector('.head-homepage') || false,
 		reviewsBlock = document.querySelector('.reviews') || false;
 
+	// parallax.forEach(function (el, i) {
+	// 	el.addEventListener("animationend", parallax);
+ // // || el.addEventListener("webkitAnimationEnd", parallax);
+	// 	function parallax() {
+	// 		el.classList.add("init")
+	// 	}  	  	
+	// });
+	// el.classList.contains("init") && 
+
 	function loop() {
 	  winOffset = window.pageYOffset;
-	  els.forEach(function (el, i) {	
+
+	  lines.forEach(function (el, i) {	
 	  	diff = winOffset - el.offsetTop;  	
 	    if (isInViewport(el)) {
-	      lines[i].style.transform = "rotateX(" + diff / 15 + "deg)";
+	      line[i].style.transform = "rotateX(" + diff / 17 + "deg)";
 	    } else {
-    	  lines[i].style.transform = "rotateX(0deg)";
+    	  line[i].style.transform = "rotateX(0deg)";
 	    }
   	  });
 
@@ -163,14 +187,23 @@
 	    }
   	  })
 
+  	  parallax.forEach(function (el, i) {
+	  	if(isInViewport(cases)) {
+	  		parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 15;
+	  		console.log(parallaxY);
+	  		el.style.transform = "translateY(" + parallaxY[i] + "px)";
+	  	}
+  	  });
+  	  
+
 	  if (winOffset > window.innerHeight/2) {
-	  	header.classList.add("sticky");
+	  	header.forEach((el) => el.classList.add("sticky"))
 	  } else {
-	  	header.classList.remove("sticky");
+	  	header.forEach((el) => el.classList.remove("sticky"))
 	  }
 
 	  if (homepageHead) {
-	  	isInViewport(homepageHead) || coversViewport(reviewsBlock) ? header.classList.add("homepage") : header.classList.remove("homepage");
+	  	isInViewport(homepageHead) || coversViewport(reviewsBlock) ? header[0].classList.add("homepage") : header[0].classList.remove("homepage");
 	  }
 
 	  anim(loop);
@@ -207,12 +240,12 @@
 
 	hamb.addEventListener("click", (e) => {
 		if (!overlay.classList.contains("active")) {
-			header.classList.add("overlayed");
+			header[0].classList.add("overlayed");
 			overlay.classList.add("active");
 			document.body.style.overflowY = 'hidden';
 		} else {
 			overlay.classList.remove("active");
-			header.classList.remove("overlayed");
+			header[0].classList.remove("overlayed");
 			document.body.style.overflowY = 'scroll';
 			overlayScroll.scrollTop = 0;
 		}
@@ -253,9 +286,6 @@
 			}
 		});
 	}
-	
 
 
-
-
-// });
+});

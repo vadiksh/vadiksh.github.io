@@ -94,7 +94,16 @@
 			</div>
 		</div>
 	</section>
-	<div class="overlay-bg"></div>
+
+	<header class="header overlay-block">
+		<div class="container container--lg flex">
+			<div class="hamburger">
+				<div class="overlay-bg"></div>
+			</div>
+			
+		</div>
+	</header>
+	
 
 	<section class="head head-homepage faded">
 		<div class="lines-block">
@@ -102,29 +111,30 @@
 		</div>
 
 		<div class="container head-homepage__flex head__container">
-			<h1>Build it right the first time (and enjoy the ride).</h1>
-			<span class="arrow"></span>
-			<p class="head-homepage__text">OMWorks is a team of math geeks, computer nerds, and surprisingly human software engineers. We like making apps that make people smile and doing things with code that have never been done before.</p>
+			<h1 class="faded--standard">Build it right the first time (and enjoy the ride).</h1>
+			<span class="arrow faded--standard"></span>
+			<p class="head-homepage__text faded--standard">OMWorks is a team of math geeks, computer nerds, and surprisingly human software engineers. We like making apps that make people smile and doing things with code that have never been done before.</p>
 		</div>
 	</section>
 
 	<section class="sub-head faded">
 		<div class="container">
-			<h5>Our Not-So-Secret Sauce</h5>
-			<p class="sub-head__text">We help innovative companies disrupt their industries. Our secret sauce isn’t secret at all... Get clarity. Follow proven process. Insist on strong engineering. Iterate. Your mega ambition, problem, or product requires mega code, math, and moxie. We supply it.</p>
+			<h5 class="faded--standard">Our Not-So-Secret Sauce</h5>
+			<p class="sub-head__text faded--standard">We help innovative companies disrupt their industries. Our secret sauce isn’t secret at all... Get clarity. Follow proven process. Insist on strong engineering. Iterate. Your mega ambition, problem, or product requires mega code, math, and moxie. We supply it.</p>
 
 		</div>
 	</section>
 
 	<div class="cursor"></div>
 	<section class="perks">
-		<div class="perks__space"></div>
 		<div class="perks__wrapper">
+			<div class="left"></div>
+			<div class="right"></div>
 			<ul class="perks__list">
 				<li>
 					<span class="perks__num">01</span>
 					<h3>Strong Engineering</h3>
-					<p>Strong We craft simple, masterful software architectures and write beautiful code. Usability, simplicity, and apps that just work – our clients can exhale knowing that they’ll be taken care of.</p>
+					<p>We craft simple, masterful software architectures and write beautiful code. Usability, simplicity, and apps that just work – our clients can exhale knowing that they’ll be taken care of.</p>
 				</li>
 				<li>
 					<span class="perks__num">02</span>
@@ -158,7 +168,7 @@
 
 	<section class="clients faded">
 		<div class="container">
-			<h5>Our Clients</h5>
+			<h5 class="faded--standard">Our Clients</h5>
 			<div class="clients__list">
 				<ul class="clients__list--top flex">
 					<li><img src="img/client1.png" alt=""></li>
@@ -176,25 +186,31 @@
 	</section>
 
 	<section class="cases">
+		<h5>Latest work</h5>
 		<ul class="cases__list cases__container">
-			<li class="case1">
-				<div class="container flex">
-					<div class="cases__info">
-						<img src="img/case1-logo.png" alt="">
-						<p class="case__descr">An air purifier reimagined from the inside out. Mila combines top notch performance, design, and technology at a price families can actually afford.</p>
-						<a href="" class="btn transp black">View Case Study</a>
+			<li class="faded faded--pic">
+				<div class="case1 parallax">
+					<div class="container flex">
+						<div class="cases__info">
+							<img class="faded--icon" src="img/case1-logo.png" alt="">
+							<p class="case__descr faded--standard">An air purifier reimagined from the inside out. Mila combines top notch performance, design, and technology at a price families can actually afford.</p>
+							<a href="" class="btn transp black faded--standard">View Case Study</a>
+						</div>
+						<img class="cases__img" src="img/case1.png">
 					</div>
-					<img class="cases__img" src="img/case1.png">
 				</div>
+				
 			</li>
-			<li class="case2">
-				<div class="container flex">
-					<div class="cases__info">
-						<img src="img/case2-logo.png" alt="">
-						<p class="case__descr">With a history of innovation, Breezy is the most sophisticated print platform in the world. We helped them build it.</p>
-						<a href="" class="btn transp white">View Case Study</a>
+			<li class="faded faded--pic">
+				<div class="case2 parallax">
+					<div class="container flex">
+						<div class="cases__info">
+							<img class="faded--icon" src="img/case2-logo.png" alt="">
+							<p class="case__descr faded--standard">With a history of innovation, Breezy is the most sophisticated print platform in the world. We helped them build it.</p>
+							<a href="" class="btn transp white faded--standard">View Case Study</a>
+						</div>
+						<img class="cases__img" src="img/case2.png">
 					</div>
-					<img class="cases__img" src="img/case2.png">
 				</div>
 			</li>
 		</ul>
@@ -246,10 +262,16 @@
 					</li>
 				</ul>
 			</div>
+			<div class="glide__bullets" data-glide-el="controls[nav]">
+			    <button class="glide__bullet" data-glide-dir="=0"><span></span></button>
+			    <button class="glide__bullet" data-glide-dir="=1"><span></span></button>
+			    <button class="glide__bullet" data-glide-dir="=2"><span></span></button>
+			    <button class="glide__bullet" data-glide-dir="=3"><span></span></button>
+			  </div>
 		</div>	
 	</section>
 
-	<section class="techs">
+	<section class="techs faded">
 		<h5>We like technology a little bit. Here are several of our favorite languages and frameworks...</h5>
 		<div class="techs-line"><p><span>iOS</span> <span>Objective-C</span> <span>Swift</span> <span>WatchOS</span> <span>TVOS</span> <span>Android</span> <span>Java</span> <span>Kotlin</span> <span>NDK</span> <span>Rx</span> <span>AWS</span> <span>Google</span> <span>iOS</span> <span>Objective-C</span> <span>Swift</span> <span>WatchOS</span> <span>TVOS</span> <span>Android</span> <span>Java</span> <span>Kotlin</span> <span>NDK</span> <span>Rx</span> <span>AWS</span> <span>Google</span></p></div>
 
@@ -259,21 +281,21 @@
 		<div class="techs-line"><p><span>Custom</span>  <span>ReactJS</span>  <span>Redux</span>  <span>VueJS</span>  <span>AngularJS</span>  <span>GraphQL</span>  <span>Serverless</span>  <span>Custom</span>  <span>ReactJS</span> <span>Redux</span> <span>VueJS</span> <span>AngularJS</span> <span>GraphQL</span> <span>Serverless</span></p></div>
 	</section>
 
-	<section class="action lines-block">
+	<section class="action lines-block faded">
 		<div class="lines"></div>
 		<div class="container flex">
-			<h3>Have a big idea?</h3>
+			<h3 class="faded--standard">Have a big idea?</h3>
 			<div class="action__info">
-				<p>What’s the too-good-to-be-true dream for your business? Let's talk about how we can make it happen.</p>
-				<a href="" class="btn white">Get in touch</a>
+				<p class="faded--standard">What’s the too-good-to-be-true dream for your business? Let's talk about how we can make it happen.</p>
+				<a href="contact.html" class="btn white faded--standard">Get in touch</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="blog">
+	<section class="blog faded">
 		<div class="blog__wrapper">
-			<h5>Our latest posts</h5>
-			<div class="glide blog__glide">
+			<h5 class="faded--standard">Our latest posts</h5>
+			<div class="glide blog__glide faded--standard">
 			  <div class="glide__track" data-glide-el="track">
 			    <ul class="blog__list glide__slides">
 			    	<li class="glide__slide">

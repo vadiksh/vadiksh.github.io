@@ -1,0 +1,51 @@
+
+
+// STANDARD FADE IN + PIC FADE IN
+.faded {
+	&--standard {
+		opacity: 0;
+		transform: translate3d(0,80px,0);
+	}
+	&.animated {
+		.faded--standard {
+			animation: fadein 1.3s forwards;
+			animation-timing-function: cubic-bezier(.26,.19,0,.88);
+		}
+	}
+
+	&--pic {
+		transform: scale(.3, .8);
+		opacity: 0;
+		img {
+			opacity: 0;
+		}
+		.cases__img {
+			transform: scale(1) translate3d(0,100px,0);
+		}
+		.faded--icon {
+			transform: scale(.5) translate3d(0,80px,0);
+		}
+		&.animated {
+			animation: faded--pic 1s forwards;
+			animation-timing-function: cubic-bezier(.26,.19,0,.88);
+			img {
+				transition-timing-function: cubic-bezier(.26,.19,0,.88);
+				opacity: 1;
+			}
+			.cases__img {
+				transform: scale(1.25) translate3d(0,0,0);
+				transition: transform 1.2s .3s, opacity .8s .4s;
+			}
+			.faded--icon {
+				transform: scale(.5) translate3d(0,0,0);
+				transition: transform 1.2s .4s, opacity 1.2s .4s;
+			}
+		}
+		
+	}
+	&--icon {
+		opacity: 0;
+	}
+}
+
+
