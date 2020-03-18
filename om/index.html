@@ -8,6 +8,15 @@
 	<meta name="description" content="">
 	<link rel="shortcut icon" href="" type="image/x-icon">
 	<link rel="icon" href="" type="image/x-icon">
+
+	<link rel="preload" as="font" href="fonts/Chromatica-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+	<!-- <link rel="preload" as="font" href="fonts/Chromatica-Regular.woff" type="font/woff" crossorigin="anonymous"> -->
+	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
+	<!-- <link rel="preload" as="font" href="fonts/Chromatica-Medium.woff" type="font/woff" crossorigin="anonymous"> -->
+	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
+	<!-- <link rel="preload" as="font" href="fonts/Chromatica-Bold.woff" type="font/woff" crossorigin="anonymous"> -->
+	
+	<link rel="stylesheet" type="text/css" href="css/fonts.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css"/>
 	
@@ -150,7 +159,7 @@
 				<li>
 					<span class="perks__num">01</span>
 					<h3>Strong Engineering</h3>
-					<p>Strong We craft simple, masterful software architectures and write beautiful code. Usability, simplicity, and apps that just work – our clients can exhale knowing that they’ll be taken care of.</p>
+					<p>We craft simple, masterful software architectures and write beautiful code. Usability, simplicity, and apps that just work – our clients can exhale knowing that they’ll be taken care of.</p>
 				</li>
 				<li>
 					<span class="perks__num">02</span>
@@ -171,14 +180,14 @@
 			<h5 class="faded--standard">Our Clients</h5>
 			<div class="clients__list">
 				<ul class="clients__list--top flex">
-					<li><img src="img/client1.png" alt=""></li>
-					<li><img src="img/client2.png" alt=""></li>
-					<li><img src="img/client3.png" alt=""></li>
+					<li><a href=""><img src="img/client1.png" alt=""></a></li>
+					<li><a href=""><img src="img/client2.png" alt=""></a></li>
+					<li><a href=""><img src="img/client3.png" alt=""></a></li>
 				</ul>
 				<ul class="flex">
-					<li><img src="img/client4.png" alt=""></li>
-					<li><img src="img/client5.png" alt=""></li>
-					<li><img src="img/client6.png" alt=""></li>
+					<li><a href=""><img src="img/client4.png" alt=""></a></li>
+					<li><a href=""><img src="img/client5.png" alt=""></a></li>
+					<li><a href=""><img src="img/client6.png" alt=""></a></li>
 				</ul>
 			</div>
 			
@@ -291,71 +300,105 @@
 			</div>
 		</div>
 	</section>
-
+	<section class="featured">
+		<ul class="cases-page__featured container faded flex">
+			<li class="flex-start faded--standard"><span>This project was<br> featured in</span></li>
+			<li>
+				<a href="aa">
+					<img src="img/featured/1.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="bb">
+					<img src="img/featured/2.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="c">
+					<img src="img/featured/3.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="d">
+					<img src="img/featured/4.png" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="e">
+					<img src="img/featured/5.png" alt="">
+				</a>
+			</li>
+		</ul>
+	</section>
 	<section class="blog faded">
-		<div class="blog__wrapper">
+		<div class="container">
 			<h5 class="faded--standard">Our latest posts</h5>
 			<div class="glide blog__glide faded--standard">
 			  <div class="glide__track" data-glide-el="track">
 			    <ul class="blog__list glide__slides">
 			    	<li class="glide__slide">
-			    		<span class="blog__date">march 13 2019</span>
-			    		<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
-			    		<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
 			    		<a href="">
-			    			<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-			    			<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
-			    			<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			</svg>
+			    			<span class="blog__date">march 13 2019</span>
+			    			<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
+			    			<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
+			    			
+		    				<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		    				<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
+		    				<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				</svg>
 			    		</a>
 			    	</li>
 			    	<li class="glide__slide">
-			    		<span class="blog__date">march 13 2019</span>
-			    		<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
-			    		<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
 			    		<a href="">
-			    			<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-			    			<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
-			    			<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			</svg>
+			    			<span class="blog__date">march 13 2019</span>
+			    			<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
+			    			<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
+			    			
+		    				<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		    				<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
+		    				<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				</svg>
 			    		</a>
 			    	</li>
 			    	<li class="glide__slide">
-			    		<span class="blog__date">march 13 2019</span>
-			    		<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
-			    		<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
 			    		<a href="">
-			    			<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-			    			<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
-			    			<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			</svg>
+			    			<span class="blog__date">march 13 2019</span>
+			    			<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
+			    			<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
+			    			
+		    				<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		    				<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
+		    				<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				</svg>
 			    		</a>
 			    	</li>
 			    	<li class="glide__slide">
-			    		<span class="blog__date">march 13 2019</span>
-			    		<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
-			    		<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
 			    		<a href="">
-			    			<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-			    			<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
-			    			<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			</svg>
+			    			<span class="blog__date">march 13 2019</span>
+			    			<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
+			    			<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
+			    			
+		    				<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		    				<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
+		    				<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				</svg>
 			    		</a>
 			    	</li>
 			    	<li class="glide__slide">
-			    		<span class="blog__date">march 13 2019</span>
-			    		<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
-			    		<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
 			    		<a href="">
-			    			<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-			    			<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
-			    			<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			    			</svg>
+			    			<span class="blog__date">march 13 2019</span>
+			    			<h4 class="blog__title">Custom software or Off-the-shelf, what is the best to choose?</h4>
+			    			<p>For frequent flyers, getting just the right seat on a plane is essential. Whether it's aisle or window, exit row.</p>
+			    			
+		    				<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		    				<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="black"/>
+		    				<path  class="path-arrow" d="M15.2585 30.6473L41.7383 30.6473" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				<path class="path-arrow" d="M33.8804 21.957L42.7871 30.6432L33.8804 39.3294" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		    				</svg>
 			    		</a>
 			    	</li>
 			    </ul>
@@ -435,8 +478,8 @@
 	</footer>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
-<script src="js/scripts.min.js"></script>
+<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+<script defer src="js/scripts.min.js"></script>
 
 </body>
 </html>

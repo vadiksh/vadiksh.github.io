@@ -19,15 +19,18 @@ document.addEventListener("DOMContentLoaded", function() {
 		  perView: 1,
 		  focusAt: 'center',
 		  animationDuration: 800,
+		  dragThreshold: 10,
 		  gap: 0
 		})
 		reviews.mount();
 
 		var blog = new Glide('.blog__glide', {
 		  type: 'slider',
+		  bound: true,
 		  rewind: false,
+		  dragThreshold: 10,
 		  startAt: 0,
-		  perView: 2.9,
+		  perView: 2.4,
 		  gap: 40,
 		  breakpoints: {
 		  	768: {
@@ -39,22 +42,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		// HOVER SCROLLER
 		if (!isTouchDevice) {
-			let x = -100,
-				y = -100,
-				move = -75,
-				outside = true,
-				start = null,
-				end = null,
-				duration = 450,
-				startMove = 0;
-			    endMove = 0,
-			    stop = false,
-			    direction = true;
-			const cursor = document.querySelector('.cursor'),
-				  sides = document.querySelectorAll('.perks .left, .perks .right'),
-				  perksList = document.querySelector('.perks__list'),
-				  leftBoundary = window.innerWidth / 3,
-				  rightBoundary = window.innerWidth * 2 / 3;
+			let x = -100; 
+			let y = -100;
+			let move = -75;
+			let outside = true;
+			let start = null;
+			let end = null;
+			let duration = 450;
+			let startMove = 0;
+			let endMove = 0;
+			let stop = false;
+			let direction = true;
+			const cursor = document.querySelector('.cursor');
+			const sides = document.querySelectorAll('.perks .left, .perks .right');
+			const perksList = document.querySelector('.perks__list');
+			const leftBoundary = window.innerWidth / 3;
+			const rightBoundary = window.innerWidth * 2 / 3;
 				  
 
 			const init = () => {
@@ -91,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						let a = (now - start) / duration;
 						let easingMove = move = startMove + (endMove - startMove) * easing(a);
 
-		         		perksList.style.transform = "translateX(" + easingMove / 10 + "%)";
+		         		perksList.style.transform = "translate3d(" + easingMove / 10 + "%,0,0)";
 						requestAnimationFrame(draw);
 					}
 					requestAnimationFrame(start);
@@ -102,20 +105,20 @@ document.addEventListener("DOMContentLoaded", function() {
 					if (!outside) {
 						cursor.style.display = "block";
 						sides.forEach((el) => el.style.cursor = "none")
-						cursor.style.transform = `translate(${x - 10}px, ${y - 30}px)`;
+						cursor.style.transform = `translate3d(${x - 10}px, ${y - 30}px,0)`;
 
 						if (x < leftBoundary) {
 							direction = false;
 							move --;
 							cursor.classList.add("left");
-							perksList.style.transform = "translateX(" + move / 10 + "%)";
+							perksList.style.transform = "translate3d(" + move / 10 + "%,0,0)";
 							if (Math.round(move) / 10 == -50) move = 0;
 
 						} else if (x > rightBoundary) {
 							direction = true;
 							move ++;
 							cursor.classList.remove("left");
-							perksList.style.transform = "translateX(" + move / 10 + "%)";
+							perksList.style.transform = "translate3d(" + move / 10 + "%,0,0)";
 							if (Math.round(move) / 10 == 0) move = -500
 						} 
 					}  else {
@@ -175,14 +178,16 @@ document.addEventListener("DOMContentLoaded", function() {
 	  lines.forEach(function (el, i) {	
 	  	diff = winOffset - el.offsetTop;  	
 	    if (isInViewport(el)) {
-	      line[i].style.transform = "rotateX(" + diff / 17 + "deg)";
+	      line[i].style.transform = "rotate3d(1,0,0," + diff / 17 + "deg)";
 	    } else {
-    	  line[i].style.transform = "rotateX(0deg)";
+    	  line[i].style.transform = "rotate3d(0,0,0,0deg)";
 	    }
   	  });
 
   	  faded.forEach(function(el, i) {
   	  	if (inView(el)) {
+  	  		// if (el.classList.contains()) {}
+  	  		console.log()
 	      el.classList.add("animated");
 	    }
   	  })
@@ -190,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
   	  parallax.forEach(function (el, i) {
 	  	if(isInViewport(cases)) {
 	  		parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 15;
-	  		el.style.transform = "translateY(" + parallaxY[i] + "px)";
+	  		el.style.transform = "translate3d(0," + parallaxY[i] + "px,0)";
 	  	}
   	  });
   	  
@@ -259,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				content.style.height = "0px";
 			} else {
 				el.classList.add("active");
-				content.style.height = content.scrollHeight + "px";
+				content.style.height = content.scrollHeight + 85 + "px";
 			}	
 		});	
 	});

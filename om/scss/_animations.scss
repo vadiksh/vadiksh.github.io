@@ -1,4 +1,4 @@
-
+$easing: cubic-bezier(.26,.19,0,.88);
 
 // STANDARD FADE IN + PIC FADE IN
 .faded {
@@ -9,7 +9,7 @@
 	&.animated {
 		.faded--standard {
 			animation: fadein 1.3s forwards;
-			animation-timing-function: cubic-bezier(.26,.19,0,.88);
+			animation-timing-function: $easing;
 		}
 	}
 
@@ -27,9 +27,9 @@
 		}
 		&.animated {
 			animation: faded--pic 1s forwards;
-			animation-timing-function: cubic-bezier(.26,.19,0,.88);
+			animation-timing-function: $easing;
 			img {
-				transition-timing-function: cubic-bezier(.26,.19,0,.88);
+				transition-timing-function: $easing;
 				opacity: 1;
 			}
 			.cases__img {

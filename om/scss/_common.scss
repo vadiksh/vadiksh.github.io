@@ -12,7 +12,7 @@ body {
 	line-height: 1.71;
 	overflow-x: hidden;
 	color: #000;
-	font-family: 'chr';
+	font-family: 'Chromatica';
 	font-weight: 400;
 	-webkit-overflow-scroll: touch;
 }
@@ -182,6 +182,14 @@ section {
 		}
 	}
 }
+.glide {
+	&__slides {
+		cursor: grab;
+	}
+	&__bullet {
+		cursor: pointer;
+	}
+}
 .cursor {
 	display: none;
 	position: fixed;
@@ -191,15 +199,17 @@ section {
 	pointer-events: none;
 	cursor: none;
 	&::after {
-		content: '\276F';
-		font-size: 40px;
+		content: '';
 		position: relative;
 		display: block;
-		animation: arrow-bounce .6s infinite;
+		width: 60px;
+		height: 23px;
+		background: url('../img/arrow-b.svg') no-repeat 0 0/ contain;
+		animation: ease-in-out bounce .6s infinite;
 	}
 	&.left {
 		&::after {
-			content: '\276E';
+			transform: rotate(180deg);
 		}
 	}
 }
@@ -229,8 +239,10 @@ section {
 	&__logo {
 		transition: transform .4s ease-out;
 		display: block;
-		max-height: 80px;
+		height: 80px;
+		width: 75px;
 		svg {
+			display: block;
 			width: 100%;
 			height: auto;
 		}

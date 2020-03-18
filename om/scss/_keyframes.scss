@@ -62,6 +62,19 @@
 	}
 }
 // 
+// SCROLLER ARROW
+@keyframes bounce {
+	0% {
+		right: 0;
+	}
+	50% {
+		right: 8px;
+	}
+	100% {
+		right: 0;
+	}
+}
+// 
 
 // TECHS LINES
 @keyframes techs {
