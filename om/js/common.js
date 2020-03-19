@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+	document.querySelector('.overlay-bg').classList.remove('hidden');
 	// DETECT TOUCH
 	var isTouchDevice = (('ontouchstart' in window)
 	         || (navigator.MaxTouchPoints > 0)
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		  rewind: false,
 		  dragThreshold: 10,
 		  startAt: 0,
-		  perView: 2.4,
+		  perView: 2.5,
 		  gap: 40,
 		  breakpoints: {
 		  	768: {

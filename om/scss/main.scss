@@ -179,11 +179,11 @@
 }
 .sub-head {
 	h5 {
-		margin-bottom: 70px;
+		margin-bottom: 80px;
 	}
 	&__text {
 		font-size: 42px;
-		line-height: 1.5;
+		line-height: 1.54;
 		font-weight: 500;
 		max-width: 965px;
 		color: rgba(0, 0, 0, 0.85);
@@ -215,6 +215,7 @@
 	}
 }
 .perks {
+	padding-top: 20px;
 	padding-left: 0;
 	padding-right: 0;
 	position: relative;
@@ -241,7 +242,7 @@
 		margin-bottom: 70px;
 	}
 	h3 {
-		margin-bottom: 40px;
+		margin-bottom: 44px;
 	}
 	p {
 		font-size: 24px;
@@ -587,16 +588,23 @@
 
 .blog {
 	padding-top: 150px;
+	padding-bottom: 112px;
 	padding-left: 0;
 	padding-right: 0;
 	background: rgba(49, 66, 155, 0.1547);
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 	&.faded {
 		.blog__glide {
 			animation-delay: .2s;
 		}
 	}
 	h5 {
-		margin-bottom: 60px;
+		margin-bottom: 64px;
 	}
 	.glide__slides {
 		overflow: visible;
@@ -624,6 +632,7 @@
 		li {
 			background: #fff;
 			transition: .3s;
+			max-width: 406px;
 			&:hover {
 				transform: scale(1.05);
 				box-shadow: 0 3px 12px rgba(0,0,0,.12);
@@ -633,14 +642,14 @@
 		span {
 			font-size: 18px;
 			text-transform: uppercase;
-			margin-bottom: 50px;
+			margin-bottom: 45px;
 			display: block;
 			font-weight: 500;
 			letter-spacing: 1px;
 		}
 		h4 {
 			line-height: 1.3;
-			margin-bottom: 23px;
+			margin-bottom: 25px;
 			font-weight: 400;
 		}
 		p {
@@ -648,7 +657,7 @@
 			line-height: 2;
 		}
 		a {
-			padding: 50px 25px 180px;
+			padding: 50px 25px 147px;
 			position: relative;
 			display: block;
 		}
@@ -1077,7 +1086,7 @@
 		position: relative;
 		display: flex;
 		width: 3360px;
-		margin-top: 80px;
+		margin-top: 85px;
 		// transform: translate3d(-46.5%,0,0);
 		li {
 			width: 430px;
