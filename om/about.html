@@ -8,8 +8,13 @@
 	<meta name="description" content="">
 	<link rel="shortcut icon" href="" type="image/x-icon">
 	<link rel="icon" href="" type="image/x-icon">
+
+	<link rel="preload" as="font" href="fonts/Chromatica-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
+	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
+	
+	<link rel="stylesheet" type="text/css" href="css/fonts.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 </head>
 <body>
 <div class="overflow-wrap">
@@ -43,16 +48,76 @@
 		</div>
 	</header>
 
-	<section class="head head-about">
+	<section class="overlay">
+		<div class="overlay__scroll">
+			<div class="container container--lg flex">
+				<nav>
+					<ul class="overlay__nav">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="services.html">Services</a></li>
+						<li><a href="cases-list.html">Cases</a></li>
+						<li><a href="contact.html">Work with us</a></li>
+					</ul>
+				</nav>
+				<div class="overlay__contact">
+					<span>contact OMWORKS</span>
+					<a href="tel:+60376224756">+603 7622 4756</a>
+					<a href="tel:+60123955637">+6012 395 5637</a>
+					<a href="mailto:hello@om.works">hello@om.works</a>
+					<ul class="flex footer__social overlay__social">
+						<li><a href="">
+							<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M26 51C39.8071 51 51 39.8071 51 26C51 12.1929 39.8071 1 26 1C12.1929 1 1 12.1929 1 26C1 39.8071 12.1929 51 26 51Z" fill="black" />
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M23.5287 36L23.5 27.25H19.75V23.5H23.5V21C23.5 17.626 25.5894 16 28.5992 16C30.041 16 31.2801 16.1073 31.6412 16.1553V19.6813L29.5537 19.6823C27.9168 19.6823 27.5998 20.4601 27.5998 21.6016V23.5H32.25L31 27.25H27.5998V36H23.5287Z" fill="white"/>
+							</svg>
+						</a></li>
+						<li><a href="">
+							<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M26 51C39.8071 51 51 39.8071 51 26C51 12.1929 39.8071 1 26 1C12.1929 1 1 12.1929 1 26C1 39.8071 12.1929 51 26 51Z" fill="black" />
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M25.875 24.75V27.75H31C30.75 29 29.5 31.5 26 31.5C23 31.5 20.625 29 20.625 26C20.625 23 23.125 20.5 26 20.5C27.75 20.5 28.875 21.25 29.5 21.875L31.875 19.625C30.375 18.125 28.375 17.25 26 17.25C21.125 17.25 17.25 21.125 17.25 26C17.25 30.875 21.125 34.75 26 34.75C31 34.75 34.375 31.25 34.375 26.25C34.375 25.625 34.375 25.25 34.25 24.75H25.875Z" fill="white"/>
+							</svg>
+
+						</a></li>
+						<li><a href="">
+							<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M51 25.9999C51 39.8071 39.8072 51 26 51C12.1928 51 1 39.8071 1 25.9999C1 12.1929 12.1928 1 26 1C39.8072 1 51 12.1929 51 25.9999Z" fill="black" />
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M36 20.375C35.25 20.75 34.5 20.875 33.625 21C34.5 20.5 35.125 19.75 35.375 18.75C34.625 19.25 33.75 19.5 32.75 19.75C32 19 30.875 18.5 29.75 18.5C27.625 18.5 25.75 20.375 25.75 22.625C25.75 23 25.75 23.25 25.875 23.5C22.5 23.375 19.375 21.75 17.375 19.25C17 19.875 16.875 20.5 16.875 21.375C16.875 22.75 17.625 24 18.75 24.75C18.125 24.75 17.5 24.5 16.875 24.25C16.875 26.25 18.25 27.875 20.125 28.25C19.75 28.375 19.375 28.375 19 28.375C18.75 28.375 18.5 28.375 18.25 28.25C18.75 29.875 20.25 31.125 22.125 31.125C20.75 32.25 19 32.875 17 32.875C16.625 32.875 16.375 32.875 16 32.875C17.875 34 20 34.75 22.25 34.75C29.75 34.75 33.875 28.5 33.875 23.125C33.875 23 33.875 22.75 33.875 22.625C34.75 22 35.5 21.25 36 20.375Z" fill="white"/>
+							</svg>
+
+						</a></li>
+						<li><a href="">
+							<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path class="path-circle" fill-rule="evenodd" clip-rule="evenodd" d="M51 25.9999C51 39.8071 39.8072 51 26 51C12.1928 51 1 39.8071 1 25.9999C1 12.1929 12.1928 1 26 1C39.8072 1 51 12.1929 51 25.9999Z" fill="black" />
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M35.125 16H16.875C16.375 16 16 16.375 16 16.875V35.25C16 35.625 16.375 36 16.875 36H35.25C35.75 36 36.125 35.625 36.125 35.125V16.875C36 16.375 35.625 16 35.125 16ZM21.875 33H19V23.5H22V33H21.875ZM20.5 22.25C19.5 22.25 18.75 21.375 18.75 20.5C18.75 19.5 19.5 18.75 20.5 18.75C21.5 18.75 22.25 19.5 22.25 20.5C22.125 21.375 21.375 22.25 20.5 22.25ZM33 33H30V28.375C30 27.25 30 25.875 28.5 25.875C27 25.875 26.75 27.125 26.75 28.375V33.125H23.75V23.5H26.625V24.75C27 24 28 23.25 29.375 23.25C32.375 23.25 32.875 25.25 32.875 27.75V33H33Z" fill="white"/>
+							</svg>
+
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="header overlay-block">
+		<div class="container container--lg flex">
+			<div class="hamburger">
+				<div class="overlay-bg"></div>
+			</div>
+			
+		</div>
+	</div>
+
+	<section class="head head-about faded">
 		<div class="lines-block"><div class="lines"></div></div>
 
 		<div class="container head__container">
-			<h1>Allow us to<br> introduce ourselves.</h1>
-			<span class="arrow arrow--black"></span>
+			<h1 class="faded--standard">Allow us to<br> introduce ourselves.</h1>
+			<span class="arrow arrow--black faded--standard"></span>
 		</div>
 		<div class="container">
-			<h3>OMWorks is a team of math geeks, computer nerds, and surprisingly human software engineers.</h3>
-			<div class="flex flex--text">
+			<h3 class="faded--standard">OMWorks is a team of math geeks, computer nerds, and surprisingly human software engineers.</h3>
+			<div class="flex flex--text faded--standard">
 				<p>After years of working for a one huge client, creating our own startups, and gaining lots of experience in the app business trenches, we decided to join forces to found OMWorks. We're here to help entrepreneurs and established businesses to harness the great and transformative power of the handheld computers that we call “phones.”</p>
 				<p>OMWorks provides our partners with four things hard to find elsewhere: honest communication, expert guidance, tight process, and strong engineering. We’ll help you build it right the first time and enjoy the ride.</p>
 			</div>
@@ -63,9 +128,9 @@
 	<section class="about">
 		<div class="container">
 			<h5>Our Leaders</h5>
-			<div class="flex">
-				<p class="about__descr">I’m from Kharkiv, Ukraine, but now live in Vancouver, BC, Canada with my family.<br> I have a Bachelor’s and a Master’s degree in Applied Mathematics, and am working on a PhD in Mathematical Physics, but most people know me as a yoga teacher, hiker and biker extraordinaire, Hirudo therapist, and world traveler. Two smart, awesome little girls call me “Mom.”<br> I was a developer for a decade, learning all the tools and tricks of the trade. I was able to work with lots of companies, determining what they did well and where they could improve. When I realized how many more clients I could help with my own business, founding OMWorks was the next logical step.<br> Along the way, I’ve found that I love building strong organizations in which people are excited to learn and grow, and creating spaces where smart people can craft beautiful products.<br> I feel like a superhero when we deliver on time, on budget, and on point. Simply put, I’m good at making good decisions. I skip the analysis paralysis and can quickly and accurately identify the root of the problem. I like problem solving because it makes people’s lives easier – and at the end of the day, isn’t that what technology is supposed to do?<br> I love helping others make their dreams become a reality. Working with the team at OMWorks allows me to do just that. </p>
-				<div class="about__info">
+			<div class="flex faded">
+				<p class="about__descr faded--standard">I’m from Kharkiv, Ukraine, but now live in Vancouver, BC, Canada with my family.<br> I have a Bachelor’s and a Master’s degree in Applied Mathematics, and am working on a PhD in Mathematical Physics, but most people know me as a yoga teacher, hiker and biker extraordinaire, Hirudo therapist, and world traveler. Two smart, awesome little girls call me “Mom.”<br> I was a developer for a decade, learning all the tools and tricks of the trade. I was able to work with lots of companies, determining what they did well and where they could improve. When I realized how many more clients I could help with my own business, founding OMWorks was the next logical step.<br> Along the way, I’ve found that I love building strong organizations in which people are excited to learn and grow, and creating spaces where smart people can craft beautiful products.<br> I feel like a superhero when we deliver on time, on budget, and on point. Simply put, I’m good at making good decisions. I skip the analysis paralysis and can quickly and accurately identify the root of the problem. I like problem solving because it makes people’s lives easier – and at the end of the day, isn’t that what technology is supposed to do?<br> I love helping others make their dreams become a reality. Working with the team at OMWorks allows me to do just that. </p>
+				<div class="about__info faded--standard">
 					<img src="img/about1.jpg" alt="">
 					<span>Tetyana Remayeva, CEO</span>
 					<p> BSc in Applied Mathematics at Karazin Kharkiv National University</p>
@@ -74,9 +139,9 @@
         			<p>Certified Scrum Master by Scrum Alliance</p>
 				</div>
 			</div>
-			<div class="flex">
-				<p class="about__descr">I was born and raised in Kharkiv, Ukraine, but have relocated to Toronto, Ontario, Canada.<br> Yeah, yeah, I’m a techy-coder guy. But at my core, I’m a full-time cool dad, part-time world explorer who loves going on exciting adventures (like celebrating my birthday at the top of a Chilean volcano or going to India to practice yoga).<br> I’ve always loved technology. As a kid, I spent days and days coding, stopping only to eat and sleep, then I turned that hobby into my career. I like making apps that solve people’s problems and improve life. I think it’s fun to figure out how to do what’s never been done before.<br> I can’t sit still.<br> That’s true of my time outside of the office, (typically spent kayaking and hiking), and it’s true of my time in the office. I can’t help but keep learning, growing, and improving. There’s a spirit of curiosity that burns within me. (No, seriously. A few times as a child, I literally burned myself and went to the hospital, all thanks to this boundless curiosity.) It drives me to be the best that I can be, and gives me lots of joy along the way. </p>
-				<div class="about__info">
+			<div class="flex faded">
+				<p class="about__descr faded--standard">I was born and raised in Kharkiv, Ukraine, but have relocated to Toronto, Ontario, Canada.<br> Yeah, yeah, I’m a techy-coder guy. But at my core, I’m a full-time cool dad, part-time world explorer who loves going on exciting adventures (like celebrating my birthday at the top of a Chilean volcano or going to India to practice yoga).<br> I’ve always loved technology. As a kid, I spent days and days coding, stopping only to eat and sleep, then I turned that hobby into my career. I like making apps that solve people’s problems and improve life. I think it’s fun to figure out how to do what’s never been done before.<br> I can’t sit still.<br> That’s true of my time outside of the office, (typically spent kayaking and hiking), and it’s true of my time in the office. I can’t help but keep learning, growing, and improving. There’s a spirit of curiosity that burns within me. (No, seriously. A few times as a child, I literally burned myself and went to the hospital, all thanks to this boundless curiosity.) It drives me to be the best that I can be, and gives me lots of joy along the way. </p>
+				<div class="about__info faded--standard">
 					<img src="img/about2.jpg" alt="">
 					<span>Kostiantyn Sokolinskyi, CTO</span>
 					<p>BSc in Applied Mathematics, Kharkiv Polytechnic University</p>
@@ -87,34 +152,53 @@
 		</div>
 	</section>
 
-	<section class="impact">
+	<section class="impact faded">
 		<div class="container">
-			<h5>Our Impact: Making Millions of Lives Better</h5>
-			<p class="impact__descr">We meet our clients where they are and help them build true solutions and trust with their users. We consider it a privilege to put elegant solutions into millions of people’s hands. </p>
-			<div class="impact__list">
-				<li>
-					<span class="impact__num perks__num">08</span>
-					<p>years since we officially set sail. </p>
-				</li>
-				<li>
-					<span class="impact__num perks__num">19</span>
-					<p>Fortune 500 companies use apps that we have developed for our clients </p>
-				</li>
-				<li>
-					<span class="impact__num perks__num">39</span>
-					<p>Fortune 200 client using our apps</p>
-				</li>
+			<h5 class="faded--standard">Our Impact: Making Millions of Lives Better</h5>
+			<p class="impact__descr faded--standard">We meet our clients where they are and help them build true solutions and trust with their users. We consider it a privilege to put elegant solutions into millions of people’s hands. </p>
+
+			<div class="cursor"></div>
+			<div class="scroller">
+				<div class="scroller__left"></div>
+				<div class="scroller__right"></div>
+				<ul class="impact__list scroller__list">
+					<li>
+						<span class="impact__num perks__num">08</span>
+						<p>years since we officially set sail. </p>
+					</li>
+					<li>
+						<span class="impact__num perks__num">19</span>
+						<p>Fortune 500 companies use apps that we have developed for our clients </p>
+					</li>
+					<li>
+						<span class="impact__num perks__num">39</span>
+						<p>Fortune 200 client using our apps</p>
+					</li>
+
+					<li>
+						<span class="impact__num perks__num">08</span>
+						<p>years since we officially set sail. </p>
+					</li>
+					<li>
+						<span class="impact__num perks__num">19</span>
+						<p>Fortune 500 companies use apps that we have developed for our clients </p>
+					</li>
+					<li>
+						<span class="impact__num perks__num">39</span>
+						<p>Fortune 200 client using our apps</p>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</section>
 	
-	<section class="action lines-block">
+	<section class="action lines-block faded">
 		<div class="lines"></div>
 		<div class="container flex">
-			<h3>Are you solving a big problem?</h3>
+			<h3 class="faded--standard">Are you solving a big problem?</h3>
 			<div class="action__info">
-				<p>Chances are, we have the expertise you clients need.</p>
-				<a href="" class="btn white">Let's talk</a>
+				<p class="faded--standard">Chances are, we have the expertise you clients need.</p>
+				<a href="" class="btn white faded--standard">Let's talk</a>
 			</div>
 		</div>
 	</section>
@@ -186,9 +270,8 @@
 		</div>
 	</footer>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script src="js/scripts.min.js"></script>
+
+<script defer src="js/scripts.min.js"></script>
 
 </body>
 </html>

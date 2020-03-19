@@ -39,109 +39,113 @@ document.addEventListener("DOMContentLoaded", function() {
 		  }
 		})
 		blog.mount();
+	}
 
-		// HOVER SCROLLER
-		if (!isTouchDevice) {
-			let x = -100; 
-			let y = -100;
-			let move = -75;
-			let outside = true;
-			let start = null;
-			let end = null;
-			let duration = 450;
-			let startMove = 0;
-			let endMove = 0;
-			let stop = false;
-			let direction = true;
-			const cursor = document.querySelector('.cursor');
-			const sides = document.querySelectorAll('.perks .left, .perks .right');
-			const perksList = document.querySelector('.perks__list');
-			const leftBoundary = window.innerWidth / 3;
-			const rightBoundary = window.innerWidth * 2 / 3;
-				  
+	// HOVER SCROLLER
+	if (!isTouchDevice && document.querySelector('.scroller')) {
+		let x = -100; 
+		let y = -100;
+		let move = -75;
+		let outside = true;
+		let start = null;
+		let end = null;
+		let duration = 450;
+		let startMove = 0;
+		let endMove = 0;
+		let stop = false;
+		let direction = true;
+		let scrollers = [],
+			sides = [],
+			index = 0,
+			// moves = [-75, -75];
+			moves = [0, 0];
+		const cursor = document.querySelector('.cursor');
+		const wrappers = document.querySelectorAll('.scroller');
+		wrappers.forEach((el,i) => {
+			scrollers.push(el.querySelector('.scroller__list'));
+			sides.push(el.querySelectorAll('.scroller__left, .scroller__right'));
+		});
+		
+		const leftBoundary = window.innerWidth / 3;
+		const rightBoundary = window.innerWidth * 2 / 3;
+			  
 
-			const init = () => {
-				document.addEventListener("mousemove", e => {
-					x = e.clientX;
-					y = e.clientY;
-				});
+		const init = () => {
+			document.addEventListener("mousemove", e => {
+				x = e.clientX;
+				y = e.clientY;
+			});
 
-				sides.forEach(function(el) {
-					el.addEventListener("mouseleave", e => {
+			sides.forEach(function(el, i) {
+				el.forEach(function(item) {
+					item.addEventListener("mouseleave", e => {
 						outside = true;
 						startEasing();
 					});
-					el.addEventListener("mouseenter", e => {
+					item.addEventListener("mouseenter", e => {
+						index = i;
 						outside = stop = false;
 					});
 				})
+			});
+			
+			function startEasing() {
+				function start(timeStamp) {
+					startMove = moves[index];
+					endMove = direction ? (startMove + 8) : (startMove - 8);
+					start = timeStamp;
 
-				
-				function startEasing() {
-					
-					function start(timeStamp) {
-						startMove = move;
-						endMove = direction ? (startMove + 8) : (startMove - 8);
-						start = timeStamp;
-
-						draw(timeStamp);
-					}
-
-					function draw(now) {
-						if (stop) return;
-						if (now - start >= duration) stop = true;
-
-						let a = (now - start) / duration;
-						let easingMove = move = startMove + (endMove - startMove) * easing(a);
-
-		         		perksList.style.transform = "translate3d(" + easingMove / 10 + "%,0,0)";
-						requestAnimationFrame(draw);
-					}
-					requestAnimationFrame(start);
+					draw(timeStamp);
 				}
-				
-				const render = (timeStamp) => {
+				function draw(now) {
+					if (stop) return;
+					if (now - start >= duration) stop = true;
 
-					if (!outside) {
-						cursor.style.display = "block";
-						sides.forEach((el) => el.style.cursor = "none")
-						cursor.style.transform = `translate3d(${x - 10}px, ${y - 30}px,0)`;
+					let a = (now - start) / duration;
+					let easingMove = moves[index] = startMove + (endMove - startMove) * easing(a);
 
-						if (x < leftBoundary) {
-							direction = false;
-							move --;
-							cursor.classList.add("left");
-							perksList.style.transform = "translate3d(" + move / 10 + "%,0,0)";
-							if (Math.round(move) / 10 == -50) move = 0;
+	         		scrollers[index].style.transform = "translate3d(" + easingMove / 10 + "%,0,0)";
+					requestAnimationFrame(draw);
+				}
+				requestAnimationFrame(start);
+			}
+			
+			const render = (timeStamp) => {
+				if (!outside) {
+					cursor.style.display = "block";
+					sides.forEach((el) => el.forEach((item) => item.style.cursor = "none"))
+					cursor.style.transform = `translate3d(${x - 10}px, ${y - 30}px,0)`;
 
-						} else if (x > rightBoundary) {
-							direction = true;
-							move ++;
-							cursor.classList.remove("left");
-							perksList.style.transform = "translate3d(" + move / 10 + "%,0,0)";
-							if (Math.round(move) / 10 == 0) move = -500
-						} 
-					}  else {
-						cursor.style.display = "none";
-						sides.forEach((el) => el.style.cursor = "initial")
-						// sides.style.cursor = "initial";
-					}
-					
+					if (x < leftBoundary) {
+						direction = false;
+						moves[index] --;
+						cursor.classList.add("left");
+						scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
+						if (Math.round(moves[index]) / 10 == -50) moves[index] = 0;
 
-					requestAnimationFrame(render);
-				};
+					} else if (x > rightBoundary) {
+						direction = true;
+						if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
+						moves[index] ++;
+						cursor.classList.remove("left");
+						scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
+						if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
+					} 
+				}  else {
+					cursor.style.display = "none";
+					sides.forEach((el) => el.forEach((item) => item.style.cursor = "initial"))
+				}
 				requestAnimationFrame(render);
 			};
-			init();
-
-			
-			function easing(n){
-			    return n*(2-n)
-			};
-		}
-		// HOVER SCROLLER //
+			requestAnimationFrame(render);
+		};
+		init();
+		
+		function easing(n){
+		    return n*(2-n)
+		};
 	}
-
+	// HOVER SCROLLER //
 
 	
 
@@ -163,15 +167,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		homepageHead = document.querySelector('.head-homepage') || false,
 		reviewsBlock = document.querySelector('.reviews') || false;
 
-	// parallax.forEach(function (el, i) {
-	// 	el.addEventListener("animationend", parallax);
- // // || el.addEventListener("webkitAnimationEnd", parallax);
-	// 	function parallax() {
-	// 		el.classList.add("init")
-	// 	}  	  	
-	// });
-	// el.classList.contains("init") && 
-
 	function loop() {
 	  winOffset = window.pageYOffset;
 
@@ -186,21 +181,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
   	  faded.forEach(function(el, i) {
   	  	if (inView(el)) {
-  	  		// if (el.classList.contains()) {}
-  	  		console.log()
 	      el.classList.add("animated");
 	    }
   	  })
 
   	  parallax.forEach(function (el, i) {
 	  	if(isInViewport(cases)) {
-	  		parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 15;
+	  		if (cases.classList.contains("cases-list")) {
+	  			parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 30;
+	  		} else {
+	  			parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 15;
+	  		}	
 	  		el.style.transform = "translate3d(0," + parallaxY[i] + "px,0)";
 	  	}
   	  });
   	  
 
-	  if (winOffset > window.innerHeight/2) {
+	  if (winOffset > 60) {
 	  	header.forEach((el) => el.classList.add("sticky"))
 	  } else {
 	  	header.forEach((el) => el.classList.remove("sticky"))
@@ -269,11 +266,44 @@ document.addEventListener("DOMContentLoaded", function() {
 		});	
 	});
 	
+	// RESULTS
+	if (document.querySelector('.cases-page__results')) {
+	let results = document.querySelector('.cases-page__results');
+		window.addEventListener('scroll', animateNums);
+
+		function animateNums() {
+			let nums = [],
+				ends = [];
+			if (inView(results)) {
+				window.removeEventListener('scroll', animateNums);
+				document.querySelectorAll('.odometer').forEach(function(el, i) {
+					nums.push(+el.dataset.start);
+					ends.push(+el.dataset.end);
+
+					el.innerHTML = nums[i];
+
+					let incr = () => {
+						setTimeout(function() {
+							el.innerHTML = nums[i];
+							if(nums[i] < ends[i]) {
+								nums[i]++;
+								incr();
+							}
+						}, 60)
+					}
+					incr();
+				})
+			}
+		}
+	}
+	// 
+
 	// CONTACT
 	if (document.querySelector('.contact')) {
 		let inputs = document.querySelectorAll('.contact input, .contact textarea');
 		inputs.forEach(function (el) {
 			el.addEventListener("input", (e) => {
+				el.classList.remove('error');
 				if (el.value.length) {
 					el.classList.add("active");
 				} else {
@@ -294,7 +324,41 @@ document.addEventListener("DOMContentLoaded", function() {
 			let contact = document.querySelector('.contact');
 			contact.classList.add("simple");
 		}
+
+		const forms = document.querySelectorAll('.contact__form'),
+			  err = document.querySelector('.contact__err');
+		forms.forEach(function (el) {
+			el.addEventListener("submit", (e) => {
+				e.preventDefault();
+				validate(el);
+			});
+		})
+
+		let validate = (el) => {
+			let inputs = el.querySelectorAll('.input-text'),
+				email = el.querySelector('.input-email');
+
+			window.pageYOffset = document.querySelector('.contact').offsetTop; 
+			if (!email.value.length) {
+				email.classList.add('error');
+				err.innerHTML = 'Please fill in our entire form. Every little bit helps!';
+				err.classList.add('active');
+				
+			} else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+				email.classList.add('error');
+				err.textContent = 'Please enter a valid e-mail address.';
+				err.classList.add('active');
+			}
+			inputs.forEach(function (inp) {
+				if(!inp.validity.valid) {
+					inp.classList.add('error');
+					err.innerHTML = 'Please fill in our entire form. Every little bit helps!';
+					err.classList.add('active');
+				}
+			});
+		}
 	}
+
 
 
 });
