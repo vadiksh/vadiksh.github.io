@@ -58,8 +58,11 @@ section {
 	position: relative;
 	z-index: 2;
 }
+.no-trans, .no-trans * {
+	transition: 0s 0s !important;
+}
 .container {
-	max-width: 1080px;
+	max-width: 1075px;
 	width: 100%;
 	display: block;
 	margin: 0 auto;
@@ -234,13 +237,16 @@ section {
 	left: 0;
 	padding: 40px 20px 0;
 	z-index: 5;
-	transition: padding-top .4s ease-out;
+	transition: padding-top .4s ease-out, opacity 1.2s 0s $easing;
+	&.no-trans {
+		opacity: 0;
+	}
 	path {
 		fill: #000;
 		transition: fill .4s ease-out;
 	}
 	&__logo {
-		transition: transform .4s ease-out;
+		transition: transform 1s $easing;
 		display: block;
 		height: 80px;
 		width: 75px;
@@ -322,6 +328,9 @@ section {
 				}
 			}
 		}
+		&.no-trans, &.no-trans * {
+			transition: 0s;
+		}
 	}
 	&.sticky {
 		padding-top: 0px;
@@ -382,6 +391,8 @@ section {
 	}
 }
 
+
+
 .overlay {
 	position: fixed;
 	width: 100%;
@@ -421,9 +432,8 @@ section {
 		transform: scale(0) translate3d(-50%,-50%,0);
 		will-change: transform;
 		transition: transform 1.2s cubic-bezier(.22,1,.39,.97);
-		&.hidden {
-			transform: scale(0);
-			transition: 0;
+		&.no-trans {
+			transition: 0s;
 		}
 	}
 	&.active {

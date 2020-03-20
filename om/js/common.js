@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-	document.querySelector('.overlay-bg').classList.remove('hidden');
 	// DETECT TOUCH
 	var isTouchDevice = (('ontouchstart' in window)
 	         || (navigator.MaxTouchPoints > 0)
@@ -58,13 +57,17 @@ document.addEventListener("DOMContentLoaded", function() {
 		let scrollers = [],
 			sides = [],
 			index = 0,
-			// moves = [-75, -75];
-			moves = [0, 0];
+			moves = [],
+			initialTransform;
 		const cursor = document.querySelector('.cursor');
 		const wrappers = document.querySelectorAll('.scroller');
 		wrappers.forEach((el,i) => {
 			scrollers.push(el.querySelector('.scroller__list'));
 			sides.push(el.querySelectorAll('.scroller__left, .scroller__right'));
+
+			initialTransform = getComputedStyle(scrollers[i]).getPropertyValue('transform').match(/(-?[0-9\.]+)/g)[4];
+			initialTransform = initialTransform / scrollers[i].scrollWidth * 1000;
+			moves.push(initialTransform);
 		});
 		
 		const leftBoundary = window.innerWidth / 3;
@@ -119,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 					if (x < leftBoundary) {
 						direction = false;
+						console.log(moves[index]);
 						moves[index] --;
 						cursor.classList.add("left");
 						scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
@@ -252,6 +256,12 @@ document.addEventListener("DOMContentLoaded", function() {
 			overlayScroll.scrollTop = 0;
 		}
 	});
+	setTimeout(function() {
+		document.querySelectorAll('.no-trans').forEach((el) => {
+			el.classList.remove('no-trans');
+		})
+	}, 100)
+
 
 	// SERVICES
 	document.querySelectorAll(".services__title").forEach(el => { 

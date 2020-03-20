@@ -60,7 +60,7 @@
 		top: 0;
 		left: 0;
 		z-index: -1;
-		background: url('../img/hero-lines-min.png') no-repeat center bottom/cover;
+		background: url('../img/hero-lines.png') no-repeat center bottom/cover;
 	}
 	&-homepage {
 		background: $blue;
@@ -221,11 +221,11 @@
 	position: relative;
 	&__list {
 		display: flex;
-		width: 4140px;
-		transform: translate3d(-50%,0,0);
+		width: 4080px;
+		transform: translate3d(-7.5%,0,0);
 		li {
 			width: 520px;
-			margin: 0 85px;
+			margin: 0 80px;
 		}
 	}
 	&__num {
@@ -1081,13 +1081,16 @@
 	.scroller {
 		width: 100vw;
 		margin-left: calc((1080px - 100vw)/2);
+		.container {
+			transform: translate3d(-43px,0,0);
+		}
 	}
 	&__list {
 		position: relative;
 		display: flex;
 		width: 3360px;
 		margin-top: 85px;
-		// transform: translate3d(-46.5%,0,0);
+		transform: translate3d(-50%,0,0);
 		li {
 			width: 430px;
 			margin: 0 65px;
