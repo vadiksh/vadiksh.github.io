@@ -13,8 +13,8 @@
 	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
 	
-	<link rel="stylesheet" type="text/css" href="css/fonts.min.css">
-	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css"/>
 	
 </head>
@@ -199,7 +199,7 @@
 
 	<section class="cases">
 		<h5>Latest work</h5>
-		<ul class="cases__list cases__container">
+		<ul class="cases__list cases-parallax cases__container">
 			<li class="faded faded--pic">
 				<div class="case1 parallax">
 					<div class="container flex">
@@ -236,7 +236,7 @@
 						<div class="container">
 							<p class="reviews__text">“This product is incredibly intuitive and easy to use. One of the best tools. Biggest game changer!”</p>
 							<div class="reviews__author">
-								<img src="" alt="">
+								<img class="lazyload" data-src="" alt="">
 								<span>Jon Johnson</span>
 								<p>CEO - Company X</p>
 							</div>
@@ -416,7 +416,7 @@
 	<footer class="footer">
 		<div class="container container--lg">
 			<div class="flex">
-				<a class="footer__logo" href=""><img src="img/logo-b.svg" alt=""></a>
+				<a class="footer__logo" href=""><img data-src="img/logo-b.svg" class="lazyload" alt=""></a>
 				<nav>
 					<ul class="footer__nav">
 						<li><a href="">Home</a></li>
@@ -481,9 +481,9 @@
 	</footer>
 </div>
 
-<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
 <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
-<script defer src="js/scripts.min.js"></script>
+<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+<script defer src="js/scripts.js"></script>
 
 </body>
 </html>

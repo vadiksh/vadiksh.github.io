@@ -13,8 +13,8 @@
 	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
 	
-	<link rel="stylesheet" type="text/css" href="css/fonts.min.css">
-	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
 </head>
 <body>
@@ -207,17 +207,17 @@
 			<div class="cases-page__items flex">
 				<li class="case1 faded faded--pic no-parallax">
 					<div class="cases__info flex">
-						<img class="faded--icon" src="img/case1-logo.png" alt="">
+						<img class="faded--icon lazyload" data-src="img/case1-logo.png" alt="">
 						<a href="" class="btn transp black faded--standard">View Case Study</a>
 					</div>
-					<img class="cases__img" src="img/case1.png" alt="">
+					<img class="cases__img lazyload" data-src="img/case1.png" alt="">
 				</li>
 				<li class="case2 faded faded--pic no-parallax">
 					<div class="cases__info flex">
-						<img class="faded--icon" src="img/case2-logo.png" alt="">
+						<img class="faded--icon lazyload" data-src="img/case2-logo.png" alt="">
 						<a href="" class="btn transp white faded--standard">View Case Study</a>
 					</div>
-					<img class="cases__img" src="img/case2.png" alt="">
+					<img class="cases__img lazyload" data-src="img/case2.png" alt="">
 				</li>
 			</div>
 		</div>
@@ -237,7 +237,7 @@
 	<footer class="footer">
 		<div class="container container--lg">
 			<div class="flex">
-				<a class="footer__logo" href=""><img src="img/logo-b.svg" alt=""></a>
+				<a class="footer__logo" href=""><img class="lazyload" data-src="img/logo-b.svg" alt=""></a>
 				<nav>
 					<ul class="footer__nav">
 						<li><a href="">Home</a></li>
@@ -301,8 +301,8 @@
 		</div>
 	</footer>
 </div>
-
-<script src="js/scripts.min.js"></script>
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
+<script src="js/scripts.js"></script>
 
 </body>
 </html>

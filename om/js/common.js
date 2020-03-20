@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
 	// DETECT TOUCH
 	var isTouchDevice = (('ontouchstart' in window)
@@ -41,117 +42,122 @@ document.addEventListener("DOMContentLoaded", function() {
 		blog.mount();
 	}
 
-	// HOVER SCROLLER
-	if (!isTouchDevice && document.querySelector('.scroller')) {
-		let x = -100; 
-		let y = -100;
-		let move = -75;
-		let outside = true;
-		let start = null;
-		let end = null;
-		let duration = 450;
-		let startMove = 0;
-		let endMove = 0;
-		let stop = false;
-		let direction = true;
-		let scrollers = [],
-			sides = [],
-			index = 0,
-			moves = [],
-			initialTransform;
-		const cursor = document.querySelector('.cursor');
-		const wrappers = document.querySelectorAll('.scroller');
-		wrappers.forEach((el,i) => {
-			scrollers.push(el.querySelector('.scroller__list'));
-			sides.push(el.querySelectorAll('.scroller__left, .scroller__right'));
+	window.addEventListener('load', (e) => {
+		document.querySelectorAll('.no-trans').forEach((el) => {
+			el.classList.remove('no-trans');
+		})
+	
+		// HOVER SCROLLER
+		if (!isTouchDevice && document.querySelector('.scroller')) {
+			let x = -100; 
+			let y = -100;
+			let move = -75;
+			let outside = true;
+			let start = null;
+			let end = null;
+			let duration = 450;
+			let startMove = 0;
+			let endMove = 0;
+			let stop = false;
+			let direction = true;
+			let scrollers = [],
+				sides = [],
+				index = 0,
+				moves = [],
+				initialTransform;
+			const cursor = document.querySelector('.cursor');
+			const wrappers = document.querySelectorAll('.scroller');
+			wrappers.forEach((el,i) => {
+				scrollers.push(el.querySelector('.scroller__list'));
+				sides.push(el.querySelectorAll('.scroller__left, .scroller__right'));
 
-			initialTransform = getComputedStyle(scrollers[i]).getPropertyValue('transform').match(/(-?[0-9\.]+)/g)[4];
-			initialTransform = initialTransform / scrollers[i].scrollWidth * 1000;
-			moves.push(initialTransform);
-		});
-		
-		const leftBoundary = window.innerWidth / 3;
-		const rightBoundary = window.innerWidth * 2 / 3;
-			  
-
-		const init = () => {
-			document.addEventListener("mousemove", e => {
-				x = e.clientX;
-				y = e.clientY;
-			});
-
-			sides.forEach(function(el, i) {
-				el.forEach(function(item) {
-					item.addEventListener("mouseleave", e => {
-						outside = true;
-						startEasing();
-					});
-					item.addEventListener("mouseenter", e => {
-						index = i;
-						outside = stop = false;
-					});
-				})
+				initialTransform = getComputedStyle(scrollers[i]).getPropertyValue('transform').match(/(-?[0-9\.]+)/g)[4];
+				initialTransform = initialTransform / scrollers[i].scrollWidth * 1000;
+				moves.push(initialTransform);
 			});
 			
-			function startEasing() {
-				function start(timeStamp) {
-					startMove = moves[index];
-					endMove = direction ? (startMove + 8) : (startMove - 8);
-					start = timeStamp;
+			const leftBoundary = window.innerWidth / 3;
+			const rightBoundary = window.innerWidth * 2 / 3;
+				  
 
-					draw(timeStamp);
+			const init = () => {
+				document.addEventListener("mousemove", e => {
+					x = e.clientX;
+					y = e.clientY;
+				});
+
+				sides.forEach(function(el, i) {
+					el.forEach(function(item) {
+						item.addEventListener("mouseleave", e => {
+							outside = true;
+							startEasing();
+						});
+						item.addEventListener("mouseenter", e => {
+							index = i;
+							outside = stop = false;
+						});
+					})
+				});
+				
+				function startEasing() {
+					function start(timeStamp) {
+						startMove = moves[index];
+						endMove = direction ? (startMove + 8) : (startMove - 8);
+						start = timeStamp;
+
+						draw(timeStamp);
+					}
+					function draw(now) {
+						if (stop) return;
+						if (now - start >= duration) stop = true;
+
+						let a = (now - start) / duration;
+						let easingMove = moves[index] = startMove + (endMove - startMove) * easing(a);
+
+		         		scrollers[index].style.transform = "translate3d(" + easingMove / 10 + "%,0,0)";
+						requestAnimationFrame(draw);
+					}
+					requestAnimationFrame(start);
 				}
-				function draw(now) {
-					if (stop) return;
-					if (now - start >= duration) stop = true;
+				
+				const render = (timeStamp) => {
+					if (!outside) {
+						cursor.style.display = "block";
+						sides.forEach((el) => el.forEach((item) => item.style.cursor = "none"))
+						cursor.style.transform = `translate3d(${x - 10}px, ${y - 30}px,0)`;
 
-					let a = (now - start) / duration;
-					let easingMove = moves[index] = startMove + (endMove - startMove) * easing(a);
+						if (x < leftBoundary) {
+							direction = false;
+							moves[index] --;
+							cursor.classList.add("left");
+							scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
+							if (Math.round(moves[index]) / 10 == -50) moves[index] = 0;
 
-	         		scrollers[index].style.transform = "translate3d(" + easingMove / 10 + "%,0,0)";
-					requestAnimationFrame(draw);
-				}
-				requestAnimationFrame(start);
-			}
-			
-			const render = (timeStamp) => {
-				if (!outside) {
-					cursor.style.display = "block";
-					sides.forEach((el) => el.forEach((item) => item.style.cursor = "none"))
-					cursor.style.transform = `translate3d(${x - 10}px, ${y - 30}px,0)`;
-
-					if (x < leftBoundary) {
-						direction = false;
-						console.log(moves[index]);
-						moves[index] --;
-						cursor.classList.add("left");
-						scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
-						if (Math.round(moves[index]) / 10 == -50) moves[index] = 0;
-
-					} else if (x > rightBoundary) {
-						direction = true;
-						if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
-						moves[index] ++;
-						cursor.classList.remove("left");
-						scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
-						if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
-					} 
-				}  else {
-					cursor.style.display = "none";
-					sides.forEach((el) => el.forEach((item) => item.style.cursor = "initial"))
-				}
+						} else if (x > rightBoundary) {
+							direction = true;
+							if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
+							moves[index] ++;
+							cursor.classList.remove("left");
+							scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
+							if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
+						} 
+					}  else {
+						cursor.style.display = "none";
+						sides.forEach((el) => el.forEach((item) => item.style.cursor = "initial"))
+					}
+					requestAnimationFrame(render);
+				};
 				requestAnimationFrame(render);
 			};
-			requestAnimationFrame(render);
-		};
-		init();
-		
-		function easing(n){
-		    return n*(2-n)
-		};
-	}
-	// HOVER SCROLLER //
-
+			init();
+			
+			function easing(n){
+			    return n*(2-n)
+			};
+		}
+	});
+		// HOVER SCROLLER //
+	
 	
 
 	// REQUEST ANIMATION FRAME
@@ -161,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		parallax = document.querySelectorAll('.parallax'),
 		faded = document.querySelectorAll('.faded'),
 		cases = document.querySelector('.cases'),
+		casesParallax = document.querySelector('.cases-parallax'),
 		winOffset, 
 		diff, 
 		parallaxY = [];
@@ -185,14 +192,14 @@ document.addEventListener("DOMContentLoaded", function() {
   	  });
 
   	  faded.forEach(function(el, i) {
-  	  	if (inView(el)) {
+  	  	if (isInViewport(el)) {
 	      el.classList.add("animated");
 	    }
   	  })
 
   	  parallax.forEach(function (el, i) {
-	  	if(isInViewport(cases)) {
-	  		if (cases.classList.contains("cases-list")) {
+	  	if(isInViewport(casesParallax)) {
+	  		if (casesParallax.classList.contains("cases-page__items")) {
 	  			parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 30;
 	  		} else {
 	  			parallaxY[i] = (winOffset - cases.offsetTop) * (i + 1) / 15;
@@ -256,11 +263,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			overlayScroll.scrollTop = 0;
 		}
 	});
-	setTimeout(function() {
-		document.querySelectorAll('.no-trans').forEach((el) => {
-			el.classList.remove('no-trans');
-		})
-	}, 100)
 
 
 	// SERVICES
