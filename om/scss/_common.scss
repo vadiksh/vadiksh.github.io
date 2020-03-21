@@ -343,14 +343,15 @@ section {
 	width: 100%;
 	top: 0;
 	left: 0;
-	padding: 40px 20px 0;
+	padding: 0px 20px 0;
+	transform: translate3d(0,40px,0);
 	z-index: 5;
-	transition: padding-top .4s ease-out, opacity 1.2s 0s $easing;
+	transition: transform .4s ease-out, opacity 1.2s 0s $easing;
 	&.no-trans {
 		opacity: 0;
 	}
 	&__logo {
-		transition: transform 1s $easing;
+		transition: transform .7s $easing;
 		display: block;
 		height: 80px;
 		width: 75px;
@@ -371,7 +372,7 @@ section {
 		padding: 4px 10px;
 		line-height: 1.3;
 		position: relative;
-		transition: opacity .4s ease-out;
+		transition: opacity .4s .5s ease-out;
 		&::after {
 			content: '';
 			width: 100%;
@@ -444,24 +445,12 @@ section {
 			transition: 0s;
 		}
 	}
-	&.sticky {
-		padding-top: 0px;
-		.header__logo {
-			transform: scale(.6) rotate(0deg);
-		}
-		.header__link {
-			opacity: 0;
-			visibility: hidden;
-			transition: .3s ease-out;
-		}
-		
-	}
+	
 	&.overlayed {
-		padding-top: 40px;
-		transition: padding .8s ease-out;
+		transform: translate3d(0,40px,0);
 		.header__logo {
 			transform: scale(1) rotate(360deg);
-			transition: transform .8s ease-out;
+			transition: transform .8s $easing;
 			path {
 				fill: #fff;
 				transition: fill .4s .4s ease;
@@ -475,29 +464,49 @@ section {
 		.hamburger {
 			background: $yellow;
 			span {
-				transform: rotate(225deg);
+				background: #000;
+				transform: rotate3d(0,0,1,-225deg);
 				transition: transform .5s .3s ease-out;
 				&::before, &::after {
 					background: #000;
-					transition: transform .5s .3s ease-out, top .2s ease, bottom .2s ease;
+					transform: rotate3d(0,0,1,90deg);
+					transition: transform .5s .3s ease-out, top .2s ease, bottom .2s ease, opacity 0s .2s;
 				}
 				&::before {
 					top: 0;
+					opacity: 0;
+					visibility: hidden;
 				}
 				&:after {
 					bottom: 0;
-					transform: rotate(90deg);
+					transform: rotate3d(0,0,1,90deg);
 				}
 
 			}
 			&:hover {
-				// background: #fff;
 				span {
 					background: #000;
 					&::after, &::before {
 						background: #000;
 					}
 				}
+			}
+		}
+	}
+	&.sticky {
+		transform: translate3d(0,0,0);
+		.header__logo {
+			transform: scale(.6) rotate(0deg);
+		}
+		.header__link {
+			opacity: 0;
+			visibility: hidden;
+			transition: .3s ease-out;
+		}
+		&.overlayed {
+			transform: translate3d(0,40px,0);
+			.header__logo {
+				transform: scale(1) rotate(180deg);
 			}
 		}
 	}
@@ -555,18 +564,18 @@ section {
 			li {
 				opacity: 1;
 				transform: translate3d(0, 0, 0);
-				transition: opacity .6s .5s ease-out, transform .8s .5s cubic-bezier(.26,.19,0,.88);
+				transition: opacity .6s .5s $easing, transform .8s .5s $easing;
 			}
 		}
 		.overlay__contact {
 			opacity: 1;
 			transform: translate3d(0, 0, 0);
-			transition: opacity .6s .6s ease-out, transform .8s .6s cubic-bezier(.26,.19,0,.88);
+			transition: opacity .6s .6s ease-out, transform .8s .6s $easing;
 		}
 		& + .overlay-block .overlay-bg {
 
 			transform: scale(1) translate3d(-50%,-50%,0);
-			transition: 1.2s cubic-bezier(.38,.04,0,.88);
+			transition: 1.2s $easing;
 		}
 	}
 	&__scroll {
@@ -590,6 +599,7 @@ section {
 			display: block;
 			opacity: 0;
 			transform: translate3d(0, 120px, 0);
+			transition: opacity .2s ease-out, transform 1s;
 		}
 		a {
 			font-size: 72px;
@@ -601,6 +611,7 @@ section {
 		align-self: flex-end;
 		opacity: 0;
 		transform: translate3d(0, 120px, 0);
+		transition: opacity .1s ease-out, transform 0s .5s;
 		span {
 			color: $yellow;
 			font-size: 18px;

@@ -51,9 +51,9 @@
 		}
 	}
 	.header {
-		padding-top: 26px;
+		transform: translate3d(0,26px,0);
 		&.overlayed {
-			padding-top: 26px;
+			transform: translate3d(0,26px,0);
 		}
 		&__logo {
 			width: 50px;

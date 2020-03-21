@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			imageUrl = isTouchDevice ? bgElement.getAttribute('data-bg-mob') : bgElement.getAttribute('data-bg'),
 			preloaderImg = document.createElement("img");
 
-		preloaderImg.src = window.location.origin + '/om/' + imageUrl;
+		preloaderImg.src = window.location.origin + '/' + imageUrl;
 		preloaderImg.addEventListener('load', (event) => {
 			bgElement.classList.add("loaded");
 			bgElement.style.backgroundImage = `url(${imageUrl})`;
