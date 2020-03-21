@@ -13,7 +13,6 @@
 	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
 	
-	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -109,7 +108,7 @@
 	</div>
 
 	<section class="head head-about faded">
-		<div class="lines-block"><div class="lines"></div></div>
+		<div class="lines-block"><div class="lines lazyload" data-bg="img/about-lines.png" data-bg-mob="img/about-lines-mob.png"></div></div>
 
 		<div class="container head__container">
 			<h1 class="faded--standard">Allow us to<br> introduce ourselves.</h1>
@@ -130,23 +129,31 @@
 			<h5>Our Leaders</h5>
 			<div class="flex faded">
 				<p class="about__descr faded--standard">I’m from Kharkiv, Ukraine, but now live in Vancouver, BC, Canada with my family.<br> I have a Bachelor’s and a Master’s degree in Applied Mathematics, and am working on a PhD in Mathematical Physics, but most people know me as a yoga teacher, hiker and biker extraordinaire, Hirudo therapist, and world traveler. Two smart, awesome little girls call me “Mom.”<br> I was a developer for a decade, learning all the tools and tricks of the trade. I was able to work with lots of companies, determining what they did well and where they could improve. When I realized how many more clients I could help with my own business, founding OMWorks was the next logical step.<br> Along the way, I’ve found that I love building strong organizations in which people are excited to learn and grow, and creating spaces where smart people can craft beautiful products.<br> I feel like a superhero when we deliver on time, on budget, and on point. Simply put, I’m good at making good decisions. I skip the analysis paralysis and can quickly and accurately identify the root of the problem. I like problem solving because it makes people’s lives easier – and at the end of the day, isn’t that what technology is supposed to do?<br> I love helping others make their dreams become a reality. Working with the team at OMWorks allows me to do just that. </p>
-				<div class="about__info faded--standard">
-					<img class="lazyload" data-src="img/about1.jpg" alt="">
-					<span>Tetyana Remayeva, CEO</span>
-					<p> BSc in Applied Mathematics at Karazin Kharkiv National University</p>
-        			<p>MSc in Applied Mathematics at Karazin Kharkiv National University  </p>              
-        			<p>PhD student in Mathematical Physics at Kharkiv National University</p>
-        			<p>Certified Scrum Master by Scrum Alliance</p>
+				<div class="about__info">
+					<div class="faded faded--pic">
+						<img class="lazyload" data-src="img/about1.jpg" alt="">
+					</div>
+					<div class="faded--standard">
+						<span>Tetyana Remayeva, CEO</span>
+						<p> BSc in Applied Mathematics at Karazin Kharkiv National University</p>
+	        			<p>MSc in Applied Mathematics at Karazin Kharkiv National University  </p>              
+	        			<p>PhD student in Mathematical Physics at Kharkiv National University</p>
+	        			<p>Certified Scrum Master by Scrum Alliance</p>
+					</div>
 				</div>
 			</div>
 			<div class="flex faded">
 				<p class="about__descr faded--standard">I was born and raised in Kharkiv, Ukraine, but have relocated to Toronto, Ontario, Canada.<br> Yeah, yeah, I’m a techy-coder guy. But at my core, I’m a full-time cool dad, part-time world explorer who loves going on exciting adventures (like celebrating my birthday at the top of a Chilean volcano or going to India to practice yoga).<br> I’ve always loved technology. As a kid, I spent days and days coding, stopping only to eat and sleep, then I turned that hobby into my career. I like making apps that solve people’s problems and improve life. I think it’s fun to figure out how to do what’s never been done before.<br> I can’t sit still.<br> That’s true of my time outside of the office, (typically spent kayaking and hiking), and it’s true of my time in the office. I can’t help but keep learning, growing, and improving. There’s a spirit of curiosity that burns within me. (No, seriously. A few times as a child, I literally burned myself and went to the hospital, all thanks to this boundless curiosity.) It drives me to be the best that I can be, and gives me lots of joy along the way. </p>
-				<div class="about__info faded--standard">
-					<img class="lazyload" data-src="img/about2.jpg" alt="">
-					<span>Kostiantyn Sokolinskyi, CTO</span>
-					<p>BSc in Applied Mathematics, Kharkiv Polytechnic University</p>
-        			<p>MSc in System Analysis and Control, Kharkiv Polytechnic University</p>
-        			<p>MSc in Intelligent Transportation Systems, Linköping University</p>
+				<div class="about__info">
+					<div class="faded faded--pic">
+						<img class="lazyload" data-src="img/about2.jpg" alt="">
+					</div>
+					<div class="faded--standard">
+						<span>Kostiantyn Sokolinskyi, CTO</span>
+						<p>BSc in Applied Mathematics, Kharkiv Polytechnic University</p>
+	        			<p>MSc in System Analysis and Control, Kharkiv Polytechnic University</p>
+	        			<p>MSc in Intelligent Transportation Systems, Linköping University</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -195,7 +202,7 @@
 	</section>
 	
 	<section class="action lines-block faded">
-		<div class="lines"></div>
+		<div class="lines lazyload" data-bg="img/action-lines.png" data-bg-mob="img/action-lines-mob.png"></div>
 		<div class="container flex">
 			<h3 class="faded--standard">Are you solving a big problem?</h3>
 			<div class="action__info">
@@ -263,7 +270,9 @@
 				<div class="footer__form">
 					<span class="footer__title">Newsletter</span>
 					<form action="">
-						<input type="email" required placeholder="Enter your email here…">
+						<label>
+							<input type="email" required placeholder="Enter your email here…">
+						</label>
 						<button></button>
 					</form>
 					<p>© omworks 2020</p>

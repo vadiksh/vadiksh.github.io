@@ -1,4 +1,40 @@
 // COMMON
+@font-face { 
+	font-family: 'Chromatica';  
+	font-weight: 400;  
+	font-style: normal;
+	unicode-range: U+000-5FF;
+	src: local('Chromatica'),       
+		 url('../fonts/Chromatica-Regular.woff2') format('woff2'),
+		 url('../fonts/Chromatica-Regular.woff') format('woff'),
+		 url('../fonts/Chromatica-Regular.ttf') format('ttf'),
+		 url('../fonts/Chromatica-Regular.eot') format('eot');
+	font-display: swap;
+}
+@font-face { 
+	font-family: 'Chromatica';  
+	font-weight: 500;  
+	font-style: normal;
+	unicode-range: U+000-5FF;
+	src: local('Chromatica-Medium'),       
+		 url('../fonts/Chromatica-Medium.woff2') format('woff2'),
+		 url('../fonts/Chromatica-Medium.woff') format('woff'),
+		 url('../fonts/Chromatica-Medium.ttf') format('ttf'),
+		 url('../fonts/Chromatica-Medium.eot') format('eot');
+	font-display: swap;
+}
+@font-face { 
+	font-family: 'Chromatica-Bold';  
+	font-weight: 700;  
+	font-style: normal;
+	unicode-range: U+000-5FF;
+	src: local('Chromatica'),       
+		 url('../fonts/Chromatica-Bold.woff2') format('woff2'),
+		 url('../fonts/Chromatica-Bold.woff') format('woff'),
+		 url('../fonts/Chromatica-Bold.ttf') format('ttf'),
+		 url('../fonts/Chromatica-Bold.eot') format('eot');
+	font-display: swap;
+}
 
 * {
 	box-sizing: border-box;
@@ -95,8 +131,9 @@ section {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	// transition: transform .3s;
+	transition: .25s;
 	&::after {
+		transition: .25s;
 		content: '';
 		display: inline-block;
 		width: 47px;
@@ -104,6 +141,7 @@ section {
 		background: url('../img/arrow-b.svg') no-repeat center center / contain;
 	}
 	&:hover {
+		transition: .25s;
 		&::after {
 			animation: arrow-bounce 1.5s infinite;
 		}
@@ -111,8 +149,16 @@ section {
 	&.black {
 		background: #000;
 		color: #fff;
+		border-color: #000;
 		&::after {
 			background: url('../img/arrow-w.svg') no-repeat center center / contain
+		}
+		&:hover {
+			background: transparent;
+			color: #000;
+			&::after {
+				background: url('../img/arrow-b.svg') no-repeat center center / contain
+			}
 		}
 	}
 	&.white {
@@ -120,6 +166,13 @@ section {
 		color: #000;
 		&::after {
 			background: url('../img/arrow-b.svg') no-repeat center center / contain
+		}
+		&:hover {
+			background: #000;
+			color: #fff;
+			&::after {
+				background: url('../img/arrow-w.svg') no-repeat center center / contain
+			}
 		}
 	}
 	&.blue {
@@ -140,8 +193,12 @@ section {
 		justify-content: flex-start;
 		width: 210px;
 		min-width: auto;
+		border-color: transparent;
 		&::after {
 			margin-left: 25px;
+		}
+		&:hover {
+			background: transparent;
 		}
 		&.black {
 			color: #000;
@@ -189,12 +246,35 @@ section {
 	}
 }
 .glide {
-	&__slides {
-		cursor: grab;
-	}
-	&__bullet {
-		cursor: pointer;
-	}
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    &__slide {
+    	width: 100%;
+    	height: 100%;
+    	flex-shrink: 0;
+    	white-space: normal;
+    }
+    &__slides {
+    	cursor: grab;
+    	position: relative;
+    	width: 100%;
+    	backface-visibility: hidden;
+    	transform-style: preserve-3d;
+    	touch-action: pan-Y;
+    	overflow: hidden;
+    	padding: 0;
+    	white-space: nowrap;
+    	display: flex;
+    	flex-wrap: nowrap;
+    	will-change: transform
+    }
+    &__bullet {
+    	cursor: pointer;
+    }
+}
+.glide * {
+    box-sizing: inherit
 }
 .cursor {
 	display: none;
@@ -241,19 +321,20 @@ section {
 	&.no-trans {
 		opacity: 0;
 	}
-	path {
-		fill: #000;
-		transition: fill .4s ease-out;
-	}
 	&__logo {
 		transition: transform 1s $easing;
 		display: block;
 		height: 80px;
 		width: 75px;
+		transform: rotate(180deg);
 		svg {
 			display: block;
 			width: 100%;
 			height: auto;
+		}
+		path {
+			fill: #000;
+			transition: fill .4s ease-out;
 		}
 	}
 	&__link {
@@ -301,8 +382,11 @@ section {
 		}
 	}
 	&.homepage {
-		path {
-			fill: #fff;
+		.header__logo {
+			path {
+				fill: #fff;
+				transition: fill .4s ease-out;
+			}
 		}
 		.header__link {
 			color: #fff;
@@ -335,7 +419,7 @@ section {
 	&.sticky {
 		padding-top: 0px;
 		.header__logo {
-			transform: scale(.6);
+			transform: scale(.6) rotate(0deg);
 		}
 		.header__link {
 			opacity: 0;
@@ -352,7 +436,7 @@ section {
 			transition: transform .8s ease-out;
 			path {
 				fill: #fff;
-				transition: .4s .4s ease;
+				transition: fill .4s .4s ease;
 			}
 		}
 		.header__link {
@@ -618,12 +702,17 @@ section {
 			font-size: 16px;
 			font-family: 'Chromatica';
 			color: #000;
+			line-height: 1.3;
 		}
 		form {
 			width: 100%;
 			display: flex;
 			border-bottom: 2px solid #000;
 			margin-bottom: 50px;
+		}
+		label {
+			display: block;
+			width: 100%;
 		}
 		input {
 			padding: 13px 0;

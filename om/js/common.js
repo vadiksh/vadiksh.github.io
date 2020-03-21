@@ -1,4 +1,4 @@
-
+history.scrollRestoration = "manual";
 document.addEventListener("DOMContentLoaded", function() {
 	// DETECT TOUCH
 	var isTouchDevice = (('ontouchstart' in window)
@@ -10,6 +10,20 @@ document.addEventListener("DOMContentLoaded", function() {
 	 } else {
 	  isTouchDevice = false;
 	 }
+	 document.addEventListener('lazybeforeunveil', function(e){
+	 	if (isTouchDevice) {
+	 		var bg = e.target.getAttribute('data-bg-mob');
+	 		if(bg){
+	 		    e.target.style.backgroundImage = 'url(' + bg + ')';
+	 		}
+	 	} else {
+	 		var bg = e.target.getAttribute('data-bg');
+	 		if(bg){
+	 		    e.target.style.backgroundImage = 'url(' + bg + ')';
+	 		}
+	 	}
+	     
+	 });
 
 	// HOMEPAGE
 	if (document.querySelector('.homepage')) {
@@ -192,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function() {
   	  });
 
   	  faded.forEach(function(el, i) {
-  	  	if (isInViewport(el)) {
+  	  	if (inView(el)) {
 	      el.classList.add("animated");
 	    }
   	  })

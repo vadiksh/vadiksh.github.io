@@ -19,10 +19,10 @@
 			animation-timing-function: $easing;
 			animation-delay: .3s;
 		}
-		.lines-block {
-			opacity: 1;
-			transition-timing-function: $easing;
-			transition: 1.2s .2s;
+		.lines.lazyloaded {
+			animation: lines-fadein 1.2s .5s forwards;
+			animation-timing-function: $easing;
+
 		}
 	}
 	.container {
@@ -51,7 +51,6 @@
 		top: 0;
 		left: 0;
 		z-index: 1;
-		opacity: 0;
 	}
 	.lines {
 		position: absolute;
@@ -60,7 +59,10 @@
 		top: 0;
 		left: 0;
 		z-index: -1;
-		background: url('../img/hero-lines.png') no-repeat center bottom/cover;
+		background-position: center bottom;
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 0;
 	}
 	&-homepage {
 		background: $blue;
@@ -103,7 +105,8 @@
 				height: 150%;
 			}
 			.lines {
-				background: url('../img/case-list-lines.png') no-repeat center top/100% auto;
+				background-position: center top;
+				background-size: 100% auto;
 			}
 			h1 {
 				margin-bottom: 50px;
@@ -123,7 +126,8 @@
 		background: rgba(182, 225, 223, 0.25);
 		padding-bottom: 100px;
 		.lines {
-			background: no-repeat url('../img/about-lines.png') center top -90px /100% auto;
+			background-position: center top -90px;
+			background-size: 100% auto;
 		}
 		h3 {
 			margin-top: 70px;
@@ -136,7 +140,6 @@
 		}
 	}
 	&-services {
-		// overflow: visible;
 		background: #FFF8EB;
 		position: relative;
 		z-index: 1;
@@ -154,14 +157,16 @@
 			max-width: 970px;
 		}
 		.lines {
-			background: url('../img/services-lines.png') no-repeat center top/ 100% auto;
+			background-position: center top;
+			background-size: 100% auto;
 		}
 	}
 	&-contact {
 		overflow: visible;
 		background: rgba(182, 225, 223, .5);
 		.lines {
-			background: url('../img/contact-lines.png') no-repeat center top -90px/ 100% auto;
+			background-position: center top -90px;
+			background-size: 100% auto;
 		}
 		.lines-block {
 			height: 150%;
@@ -219,10 +224,13 @@
 	padding-left: 0;
 	padding-right: 0;
 	position: relative;
+	.container {
+		transform: translate3d(-79px,0,0);
+	}
 	&__list {
 		display: flex;
 		width: 4080px;
-		transform: translate3d(-7.5%,0,0);
+		transform: translate3d(0,0,0);
 		li {
 			width: 520px;
 			margin: 0 80px;
@@ -539,18 +547,12 @@
 		content: '';
 		z-index: 1;
 		width: 100%;
-		height: 100%;
-		top: 0%;
+		height: 200%;
+		top: -50%;
 		left: 0;
-		&::after {
-			content: '';
-			position: absolute;
-			width: 100%;
-			height: 200%;
-			left: 0;
-			top: -50%;
-			background: url('../img/action-lines.png') no-repeat center center / 100% auto;
-		}
+		background-size: 100% auto;
+		background-position: center center;
+		background-repeat: no-repeat;
 	}
 	.flex {
 		position: relative;
@@ -692,8 +694,8 @@
 		display: flex;
 		justify-content: space-between;
 		width: 3720px;
-		transform: translateX(-0%);
-		li {
+		transform: translateX(-22.5%);
+		div {
 			width: 600px;
 			margin: 0 10px;
 		}
@@ -716,6 +718,10 @@
 	&__img {
 		margin-top: -20px;
 		max-width: 315px;
+		img {
+			width: 100%;
+			height: auto;
+		}
 	}
 	&__text-block {
 		padding: 110px 20px 80px;
@@ -1024,8 +1030,13 @@
 	.flex {
 		align-items: flex-start;
 		margin-bottom: 80px;
-		&.animated .about__info {
-			animation-delay: .3s;
+		&.animated {
+			.about__info .faded--standard {
+				animation-delay: .7s;
+			}
+			.about__descr {
+				animation-delay: .3s;
+			}
 		}
 		&:last-child {
 			margin-bottom: 0;
@@ -1048,6 +1059,7 @@
 		width: 100%;
 		height: auto;
 		margin-bottom: 15px;
+		object-fit: cover;
 	}
 	&__info {
 		width: 48%;
@@ -1288,6 +1300,10 @@
 		padding-right: 0;
 		height: 50px;
 		position: relative;
+		select {
+			position: relative;
+			z-index: 2;
+		}
 		&::after {
 			content: '';
 			border: solid black;
@@ -1298,11 +1314,12 @@
 			right: 20px;
 			top: 50%;
 			transform: rotate(45deg) translateY(-100%);
+			z-index: 1;
 		}
 	}
 	&--simple {
 		display: none;
-		textarea, .select {
+		textarea, select {
 			height: 80px;
 			resize: none;
 			display: block;
@@ -1314,9 +1331,6 @@
 			padding: 10px 20px;
 			border: 1px solid #000;
 			opacity: .6;
-			&:last-child {
-				height: 208px;
-			}
 			&:focus, &.active {
 				opacity: 1;
 				transition: .3s;
@@ -1326,8 +1340,14 @@
 				transition: .25s;
 			}
 		}
+		textarea:last-child {
+			height: 208px;
+		}
 		.select {
-			padding-left: 20px;
+			margin-bottom: 16px;
+		}
+		select {
+			display: block;
 			height: 50px;
 		}
 		::placeholder {

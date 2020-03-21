@@ -130,22 +130,20 @@
 		.arrow {
 			display: none;
 		}
+		.lines {
+			background-position: center center;
+			background-size: cover;
+		}
 		&__container {
 			min-height: auto;
 		} 
 		&-homepage {
-			.lines {
-				background: url('../img/hero-lines-mob.png') no-repeat center center/cover;
-			}
 			p {
 				font-size: 18px;
 				margin-top: 30px;
 			}
 		}
 		&-contact {
-			.lines {
-				background: url('../img/contact-lines-mob.png') no-repeat center center/cover;
-			}
 			.head__container {
 				height: auto;
 				padding-top: 110px;
@@ -183,9 +181,6 @@
 			.lines-block {
 				height: 115vh;
 			}
-			.lines {
-				background: url('../img/case-list-lines-mob.png') no-repeat center center/cover;
-			}
 			p {
 				font-weight: 400;
 				font-size: 18px;
@@ -194,9 +189,6 @@
 		}
 		&-services {
 			padding-top: 50px;
-			.lines {
-				background: url('../img/services-lines-mob.png') no-repeat center center/cover;
-			}
 			.lines-block {
 				height: 100vh;
 				min-height: auto;
@@ -210,9 +202,6 @@
 			padding-bottom: 55px;
 			.lines-block {
 				height: 100vh;
-			}
-			.lines {
-				background: url('../img/about-lines-mob.png') no-repeat center center/cover;
 			}
 			.head__container {
 				height: auto;
@@ -251,6 +240,9 @@
 		padding-right: 15px;
 		.left,.right {
 			display: none;
+		}
+		.container {
+			transform: none;
 		}
 		&__list {
 			width: 100%;
@@ -497,13 +489,23 @@
 		padding-bottom: 60px;
 		padding-top: 80px;
 		&--simple {
-			textarea,.select {
+			textarea {
 				border-radius: 0;
 				padding: 7px 10px;
 				font-size: 14px;
 			}
 			.btn {
 				margin-top: 20px;
+			}
+			select {
+				width: 100%;
+				font-size: 14px;
+				padding: 15px 10px;
+			}
+			.select {
+				padding: 0;
+				border-radius: 0;
+				height: auto;
 			}
 		}
 		&--convers {
@@ -605,6 +607,8 @@
 			width: 100%;
 			transform: translate(0);
 			div {
+				width: 100%;
+				margin: 0;
 				margin-bottom: 30px;
 			}
 			img {
@@ -802,6 +806,14 @@
 				flex-direction: column-reverse;
 				.about__descr {
 					padding-top: 35px;
+				}
+			}
+			&.animated {
+				.about__info .faded--standard {
+					animation-delay: .3s;
+				}
+				.about__descr {
+					animation-delay: .7s;
 				}
 			}
 		}

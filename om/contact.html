@@ -13,7 +13,6 @@
 	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
 	
-	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
 </head>
@@ -111,7 +110,7 @@
 
 	<section class="head head-contact faded">
 		<div class="lines-block">
-			<div class="lines"></div>
+			<div class="lines lazyload" data-bg="img/contact-lines.png" data-bg-mob="img/contact-lines-mob.png"></div>
 		</div>
 
 		<div class="container head-homepage__flex head__container">
@@ -225,7 +224,9 @@
 				<div class="footer__form">
 					<span class="footer__title">Newsletter</span>
 					<form action="">
-						<input type="email" required placeholder="Enter your email here…">
+						<label>
+							<input type="email" required placeholder="Enter your email here…">
+						</label>
 						<button></button>
 					</form>
 					<p>© omworks 2020</p>
@@ -234,7 +235,7 @@
 		</div>
 	</footer>
 </div>
-
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
 <script src="js/scripts.js"></script>
 
 </body>

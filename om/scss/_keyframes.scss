@@ -1,4 +1,12 @@
 // STANDARD + PIC
+@keyframes lines-fadein {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 @keyframes fadein {
 	0% {
 		opacity: 0;
@@ -14,7 +22,7 @@
 		transform: scale(.3, .8);
 		opacity: 0;
 	}
-	50% {
+	60% {
 		opacity: 1;
 	}
 	100% {

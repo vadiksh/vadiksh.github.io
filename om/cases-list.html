@@ -13,7 +13,6 @@
 	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
 	
-	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
 </head>
@@ -110,7 +109,9 @@
 	</div>
 
 	<section class="head head-case-list faded">
-		<div class="lines-block"><div class="lines"></div></div>
+		<div class="lines-block">
+			<div class="lines lazyload" data-bg="img/case-list-lines.png" data-bg-mob="img/case-list-lines-mob.png"></div>
+		</div>
 
 		<div class="container head__container">
 			<h1 class="faded--standard">Great work speaks for itself.</h1>
@@ -162,7 +163,7 @@
 	</section>
 	
 	<section class="action lines-block faded">
-		<div class="lines"></div>
+		<div class="lines lazyload" data-bg="img/action-lines.png" data-bg-mob="img/action-lines-mob.png"></div>
 		<div class="container flex">
 			<h3 class="faded--standard">Do you have a complex or ambitious project? </h3>
 			<div class="action__info">
@@ -230,7 +231,9 @@
 				<div class="footer__form">
 					<span class="footer__title">Newsletter</span>
 					<form action="">
-						<input type="email" required placeholder="Enter your email here…">
+						<label>
+							<input type="email" required placeholder="Enter your email here…">
+						</label>
 						<button></button>
 					</form>
 					<p>© omworks 2020</p>

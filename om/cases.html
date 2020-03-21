@@ -13,7 +13,6 @@
 	<link rel="preload" as="font" href="fonts/Chromatica-Medium.woff2" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" as="font" href="fonts/Chromatica-Bold.woff2" type="font/woff2" crossorigin="anonymous">
 	
-	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	
 	
@@ -116,7 +115,10 @@
 				<p class="faded--standard">Client is a rapidly growing European digital agency holding an array of awards and owned by a Fortune 500 Marketing company. The Client serves a number of high profile European and US clients with apps processing tens of millions of USD of transactions per year.</p>
 				<p class="faded--standard">Client has been in TOP 50 of Deloitte Fast 500 EMEA region during multiple years.</p>
 			</div>
-			<img  class="cases-page__img faded--standard lazyload" data-src="img/case1.png">
+			<div class="faded faded--pic cases-page__img">
+				<img src="img/case1.png">
+			</div>
+			
 		</div>
 	</section>
 	
@@ -404,7 +406,9 @@
 				<div class="footer__form">
 					<span class="footer__title">Newsletter</span>
 					<form action="">
-						<input type="email" required placeholder="Enter your email here…">
+						<label>
+							<input type="email" required placeholder="Enter your email here…">
+						</label>
 						<button></button>
 					</form>
 					<p>© omworks 2020</p>
@@ -413,6 +417,7 @@
 		</div>
 	</footer>
 </div>
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
 <script defer src="js/scripts.js"></script>
 
 </body>
