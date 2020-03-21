@@ -10,20 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	 } else {
 	  isTouchDevice = false;
 	 }
-	 document.addEventListener('lazybeforeunveil', function(e){
-	 	if (isTouchDevice) {
-	 		var bg = e.target.getAttribute('data-bg-mob');
-	 		if(bg){
-	 		    e.target.style.backgroundImage = 'url(' + bg + ')';
-	 		}
-	 	} else {
-	 		var bg = e.target.getAttribute('data-bg');
-	 		if(bg){
-	 		    e.target.style.backgroundImage = 'url(' + bg + ')';
-	 		}
-	 	}
-	     
-	 });
 
 	// HOMEPAGE
 	if (document.querySelector('.homepage')) {
@@ -280,20 +266,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 	// SERVICES
-	document.querySelectorAll(".services__title").forEach(el => { 
-		el.addEventListener("click", (e) => {
-			let content = el.nextElementSibling;
-			if (el.classList.contains("active")) {
-				el.classList.remove("active");
-				content.style.height = "0px";
-			} else {
-				el.classList.add("active");
-				content.style.height = content.scrollHeight + 85 + "px";
-			}	
-		});	
-	});
+	if (document.querySelector('.services')) {
+		document.querySelectorAll(".services__title").forEach(el => { 
+			el.addEventListener("click", (e) => {
+				let content = el.nextElementSibling;
+				if (el.classList.contains("active")) {
+					el.classList.remove("active");
+					content.style.height = "0px";
+				} else {
+					el.classList.add("active");
+					content.style.height = content.scrollHeight + 85 + "px";
+				}	
+			});	
+		});
+	}
 	
-	// RESULTS
+	
+	// RESULTS NUMBERS ANIMATION
 	if (document.querySelector('.cases-page__results')) {
 	let results = document.querySelector('.cases-page__results');
 		window.addEventListener('scroll', animateNums);
@@ -386,6 +375,33 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 
+	// LAZY LOAD LINES
+	if (!document.querySelector('.head-case')) {
+		let bgElement = document.querySelector(".head .lines"),
+			imageUrl = isTouchDevice ? bgElement.getAttribute('data-bg-mob') : bgElement.getAttribute('data-bg'),
+			preloaderImg = document.createElement("img");
 
+		preloaderImg.src = window.location.origin + '/' + imageUrl;
+		preloaderImg.addEventListener('load', (event) => {
+			bgElement.classList.add("loaded");
+			bgElement.style.backgroundImage = `url(${imageUrl})`;
+			preloaderImg = null;
+		});
+
+		document.addEventListener('lazybeforeunveil', function(e){
+			console.log(e.target);
+			if (isTouchDevice) {
+				var bg = e.target.getAttribute('data-bg-mob');
+				if(bg){
+				    e.target.style.backgroundImage = 'url(' + bg + ')';
+				}
+			} else {
+				var bg = e.target.getAttribute('data-bg');
+				if(bg){
+				    e.target.style.backgroundImage = 'url(' + bg + ')';
+				}
+			}
+		});
+	}
 
 });

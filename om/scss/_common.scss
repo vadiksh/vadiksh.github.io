@@ -65,6 +65,32 @@ a {
 	text-decoration: none;
 	color: #000;
 }
+a.content-link {
+	position: relative;
+	display: inline;
+	color: #000;
+	&::after {
+		width: 0%;
+		height: 2px;
+		content: '';
+		position: absolute;
+		left: 50%;
+		bottom: -1px;
+		transform: translate3d(-50%,0,0);
+		background: #000;
+		transition: .2s;
+	}
+	&:hover::after {
+		width: 100%;
+		transition: .2s;
+	}
+	&.white {
+		color: #fff;
+		&::after {
+			background: #fff;
+		}
+	}
+}
 h1 {
 	font-size: 88px;
 }
@@ -139,11 +165,13 @@ section {
 		width: 47px;
 		height: 20px;
 		background: url('../img/arrow-b.svg') no-repeat center center / contain;
+		animation: arrow-bounce 1.2s infinite;
+		animation-play-state: paused;
 	}
 	&:hover {
 		transition: .25s;
 		&::after {
-			animation: arrow-bounce 1.5s infinite;
+			animation-play-state: running;
 		}
 	}
 	&.black {
@@ -707,6 +735,7 @@ section {
 		form {
 			width: 100%;
 			display: flex;
+			flex-flow: row wrap;
 			border-bottom: 2px solid #000;
 			margin-bottom: 50px;
 		}
@@ -717,7 +746,7 @@ section {
 		input {
 			padding: 13px 0;
 			display: block;
-			width: 100%;
+			width: calc(100% - 38px);
 			border: 0;
 			outline: none;
 			-webkit-appearance: none;

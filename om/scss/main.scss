@@ -19,10 +19,9 @@
 			animation-timing-function: $easing;
 			animation-delay: .3s;
 		}
-		.lines.lazyloaded {
-			animation: lines-fadein 1.2s .5s forwards;
+		.lines.loaded {
+			animation: lines-fadein 1.2s .4s forwards;
 			animation-timing-function: $easing;
-
 		}
 	}
 	.container {
@@ -639,6 +638,14 @@
 				transform: scale(1.05);
 				box-shadow: 0 3px 12px rgba(0,0,0,.12);
 				transition: .5s $easing;
+				.path-circle {
+					fill: $yellow;
+					transition: .3s;
+				}
+				.path-arrow {
+					stroke: #000;
+					transition: .3s;
+				}
 			}
 		}
 		span {
@@ -673,16 +680,8 @@
 			path {
 				transition: .2s;
 			}
-			&:hover {
-				.path-circle {
-					fill: $yellow;
-					transition: .3s;
-				}
-				.path-arrow {
-					stroke: #000;
-					transition: .3s .1s;
-					animation: arrow-bounce 1.2s infinite;
-				}
+			.path-arrow {
+				transition: .2s;
 			}
 		}
 	}
@@ -1340,11 +1339,14 @@
 				transition: .25s;
 			}
 		}
-		textarea:last-child {
+		label:last-child textarea {
 			height: 208px;
 		}
 		.select {
 			margin-bottom: 16px;
+			&::after {
+				right: 25px;
+			}
 		}
 		select {
 			display: block;
@@ -1359,7 +1361,7 @@
 		.select {
 			display: inline;
 			&::after {
-				right: 40px;
+				right: 35px;
 			}
 		}
 		input, select {
