@@ -10,7 +10,7 @@ $(function() {
 		if (window.location.hash) {
 		    var href = window.location.hash;
 		    $('body,html').animate({
-		        scrollTop: $(href).offset().top - 140
+		        scrollTop: $(href).offset().top - 170
 		    }, 500)
 		}
 	} else {

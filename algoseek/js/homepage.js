@@ -1,4 +1,12 @@
 $(function() {
+	$('.coming-soon').click(function (e) {
+		e.preventDefault();
+		$('.coming').addClass('active');
+	})
+	$('.coming .close').click(function () {
+		$('.coming').removeClass('active');
+	})
+
 	// revealing elements
 	$(window).scroll(function() {
 		for (var i = 0; i < $('.hidden').length; i++) {
@@ -124,10 +132,10 @@ $(function() {
 		loop:true,
 		items: 1,
 		nav: true,
-		navSpeed: 1000,
-		autoplay: true,
-		autoplaySpeed: 1000,
-		autoplayHoverPause: true
+		navSpeed: 1000
+		// autoplay: true,
+		// autoplaySpeed: 1000,
+		// autoplayHoverPause: true
 	});
 
 	// form

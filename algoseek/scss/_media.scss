@@ -815,6 +815,22 @@
 			}
 			li {
 				width: 50%;
+				margin-bottom: 0;
+				div:not(.products__tooltip) {
+					padding-top: 30px;
+					padding-bottom: 30px;
+					border: 1px solid transparent;
+					transition: border-color .3s;
+				}
+				&.active {
+					.products__tooltip {
+						margin-top: 0;
+					}
+					div:not(.products__tooltip) {
+						border-color: #ddd;
+						transition: border-color .3s;
+					}
+				}
 				&:nth-child(2n - 1) {
 					.products__tooltip {
 						left: 0;
@@ -834,6 +850,9 @@
 						padding-right: 15px;
 						padding-left: 10px;
 					}
+				}
+				&:last-child {
+					width: 100%;
 				}
 			}
 			span {

@@ -83,14 +83,13 @@ $(function() {
 
             if (window.location.hash == '#' + $($('.order__datagroups input')[i]).attr('data-id')) {
                 $($('.order__datagroups input')[i]).prop('checked', true);
-            }
-            if (window.location.hash == '') {
+            } else if (!$('.order__datagroups input:checked').length) {
                 $($('.order__datagroups input')[0]).prop('checked', true);
             }
-            setTimeout(function () {
-               $('.order__datagroups').trigger('change');  
-            }, 50)
+
     	}
+        
+
     	$('.products-page__data-group').click(function(e) {
     		$(this).siblings().find('a').removeClass('active');
     		$(this).find('a').addClass('active');
@@ -220,42 +219,45 @@ $(function() {
 
     	$('.order__datagroups').change(function() {
     		var index = $(this).find('input:checked').parent().index();
-    		var table = $(this).parents('.order__table');
+    		var table = $(this).parents('.order__table'),
+                tableIndex = table.index('.order__table');
+
     		table.find('.order__datasets, .order__symbol').addClass('hidden');
     		setTimeout(function() {
                 table.find('.order__symbol').html('');
+
                 for (var i = 0; i < data[index].tickers.length; i++) {
                     if (data[index].tickers[i] == 'Upload File') {
                         table.find('.order__symbol').append(
                             '<label class="arrow order-radio">' +
-                                '<input type="radio" name="symbol" value="Upload">Upload' +
-                                '<input class="order-upload" name="input-upload-file" type="file">' +
+                                '<input type="radio" name="symbol' + tableIndex + '" value="Upload">Upload' +
+                                '<input class="order-upload" name="input-upload-file' + tableIndex + '" type="file">' +
                                 '<span class="order-upload-mark arrow-sliding">Select file</span>' +
                             '</label>'
                         )
                     } else if (data[index].tickers[i] == 'Input List') {
                         table.find('.order__symbol').append(
                             '<label class="arrow order-radio">' + 
-                                '<input type="radio" name="symbol" value="Input">Input' + 
-                                '<textarea name="symbol-input" class="arrow-sliding symbol-text" cols="30" rows="4"></textarea>' + 
+                                '<input type="radio" name="symbol' + tableIndex + '" value="Input">Input' + 
+                                '<textarea name="symbol-input' + tableIndex + '" class="arrow-sliding symbol-text" cols="30" rows="4"></textarea>' + 
                             '</label>'
                         )
                     } else {
                         table.find('.order__symbol').append(
                             '<label class="order-radio">' + 
-                                '<input type="radio" name="symbol" value="' + data[index].tickers[i] + '">' + data[index].tickers[i] +
+                                '<input type="radio" name="symbol' + tableIndex + '" value="' + data[index].tickers[i] + '">' + data[index].tickers[i] +
                             '</label>'
                         )
                     }
                 }
-                $('.order__symbol label:first-child input[type=radio]').attr('checked', true);
+                table.find('.order__symbol label:first-child input[type=radio]').prop('checked', true);
 
     			table.find('.order__datasets label:not(.arrow)').remove();
     			
 	    		for (var i = 0; i < data[index].datasets.length; i++) {
 		    		table.find('.order__datasets .arrow').before(
 		    			'<label class="order-check">' + 
-							'<input type="checkbox" name="dataset" value="' + 
+							'<input type="checkbox" name="dataset' + tableIndex + '" value="' + 
 							data[index].datasets[i].menu_name + '"><span class="order-check-mark"></span>' +
 							data[index].datasets[i].menu_name +
 						'</label>'
@@ -267,7 +269,8 @@ $(function() {
     		},200)
 
     	})
-    	setTableHeight($(this).parents('.order__table'));
+
+        $('.order__datagroups').trigger('change');
 
         $(document).on('change', '.order__datasets', function(){
             var table = $(this).parents('.order__table');
@@ -449,8 +452,10 @@ $(function() {
     	
     	newTable.find('input[name="datagroup"]').attr('name', 'datagroup' + $('.order__table').length);
     	newTable.find('input[name="purchase-option"]').attr('name', 'purchase-option' + $('.order__table').length);
-    	newTable.find('input[name="datagroup"]').attr('name', 'datagroup' + $('order__table').length);
-    	newTable.find('input[name="symbol"]').attr('name', 'symbol' + $('order__table').length);
+    	newTable.find('input[name="dataset"]').attr('name', 'dataset' + $('.order__table').length);
+        newTable.find('.order__symbol').html('');
+        newTable.find('input[id="custom-check"]').attr('id', 'custom-check' + $('.order__table').length);
+        newTable.find('label[for="custom-check"]').attr('for', 'custom-check' + $('.order__table').length);
     	newTable.find('.order__datasets .order-check:not(.arrow)').remove();
     	newTable.find('.arrow').removeClass('active').find('.arrow-sliding').removeClass('active').css({"height": "0"});
     	newTable.find('input:checked').prop('checked', false);
@@ -489,7 +494,6 @@ $(function() {
         var target = document.getElementsByClassName('symbol-text');
         for (var i = 0; i < target.length; i++) {
              observer.observe(target[i], { attributes : true, attributeFilter : ['style'] });
-
         }
     })
 
