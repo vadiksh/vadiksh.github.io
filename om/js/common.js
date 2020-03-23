@@ -11,152 +11,179 @@ document.addEventListener("DOMContentLoaded", function() {
 	  isTouchDevice = false;
 	 }
 
-	// HOMEPAGE
-	if (document.querySelector('.homepage')) {
-		var reviews = new Glide('.reviews__glide', {
-		  type: 'carousel',
-		  rewind: false,
-		  startAt: 0,
-		  perView: 1,
-		  focusAt: 'center',
-		  animationDuration: 800,
-		  dragThreshold: 10,
-		  gap: 0
-		})
-		reviews.mount();
-
-		var blog = new Glide('.blog__glide', {
-		  type: 'slider',
-		  bound: true,
-		  rewind: false,
-		  dragThreshold: 10,
-		  startAt: 0,
-		  perView: 2.5,
-		  gap: 40,
-		  breakpoints: {
-		  	768: {
-		  	    perView: 1
-		  	  }
-		  }
-		})
-		blog.mount();
-	}
-
 	window.addEventListener('load', (e) => {
 		document.querySelectorAll('.no-trans').forEach((el) => {
 			el.classList.remove('no-trans');
 		})
 	
 		// HOVER SCROLLER
-		if (!isTouchDevice && document.querySelector('.scroller')) {
-			let x = -100; 
-			let y = -100;
-			let move = -75;
-			let outside = true;
-			let start = null;
-			let end = null;
-			let duration = 450;
-			let startMove = 0;
-			let endMove = 0;
-			let stop = false;
-			let direction = true;
-			let scrollers = [],
-				sides = [],
-				index = 0,
-				moves = [],
-				initialTransform;
-			const cursor = document.querySelector('.cursor');
-			const wrappers = document.querySelectorAll('.scroller');
-			wrappers.forEach((el,i) => {
-				scrollers.push(el.querySelector('.scroller__list'));
-				sides.push(el.querySelectorAll('.scroller__left, .scroller__right'));
+		if (document.querySelector('.scroller')) {
+			if (!isTouchDevice) {
+				let x = -100,
+					y = -100,
+					outside = true,
+					start = null,
+					end = null,
+					duration = 800,
+					startMove = 0,
+					endMove = 0,
+					stop = true,
+					direction = true,
+					easing = 0,
+					easingMove = 0,
+					scrollers = [],
+					sides = [],
+					index = null,
+					moves = [],
+					initialTransform,
+					cursor = document.querySelector('.cursor'),
+					wrappers = document.querySelectorAll('.scroller');
 
-				initialTransform = getComputedStyle(scrollers[i]).getPropertyValue('transform').match(/(-?[0-9\.]+)/g)[4];
-				initialTransform = initialTransform / scrollers[i].scrollWidth * 1000;
-				moves.push(initialTransform);
-			});
-			
-			const leftBoundary = window.innerWidth / 3;
-			const rightBoundary = window.innerWidth * 2 / 3;
-				  
+				wrappers.forEach((el,i) => {
+					scrollers.push(el.querySelector('.scroller__list'));
+					sides.push(el.querySelectorAll('.scroller__left, .scroller__right'));
 
-			const init = () => {
-				document.addEventListener("mousemove", e => {
-					x = e.clientX;
-					y = e.clientY;
-				});
+					let slide = el.querySelector('.scroller__list li'),
+						 slides = el.querySelectorAll('.scroller__list li'),
+						 width = slide.scrollWidth,
+						 marginString = getComputedStyle(slide).getPropertyValue('margin-left'),
+						 margin = marginString.slice(0, marginString.length - 2) * 2,
+						 count = scrollers[i].childElementCount * 4,
+						 scrollerWidth = count * (width + margin);
 
-				sides.forEach(function(el, i) {
-					el.forEach(function(item) {
-						item.addEventListener("mouseleave", e => {
-							outside = true;
-							startEasing();
-						});
-						item.addEventListener("mouseenter", e => {
-							index = i;
-							outside = stop = false;
-						});
-					})
+					for (let a = 0; a < 3; a++) {
+						slides.forEach(item => {
+							let cloned = item.cloneNode(true);
+							let img = cloned.querySelector('img') || false;
+							if (img) img.setAttribute('src', img.dataset.src);
+						   scrollers[i].appendChild(cloned)
+						})
+					}
+					
+					scrollers[i].style.width = scrollerWidth + "px";
+
+					initialTransform = getComputedStyle(scrollers[i]).getPropertyValue('transform').match(/(-?[0-9\.]+)/g)[4];
+					initialTransform = initialTransform / scrollerWidth * 1000;
+					moves.push(initialTransform);
 				});
 				
-				function startEasing() {
-					function start(timeStamp) {
-						startMove = moves[index];
-						endMove = direction ? (startMove + 8) : (startMove - 8);
-						start = timeStamp;
+				const leftBoundary = window.innerWidth / 3;
+				const rightBoundary = window.innerWidth * 2 / 3;
+					  
 
-						draw(timeStamp);
-					}
-					function draw(now) {
-						if (stop) return;
-						if (now - start >= duration) stop = true;
+				const init = () => {
+					document.addEventListener("mousemove", e => {
+						x = e.clientX;
+						y = e.clientY;
+					});
 
-						let a = (now - start) / duration;
-						let easingMove = moves[index] = startMove + (endMove - startMove) * easing(a);
-
+					sides.forEach(function(el, i) {
+						el.forEach(function(item) {
+							item.addEventListener("mouseleave", e => {
+								outside = true;
+								stop = false;
+								startMove = moves[index];
+								endMove = direction ? (startMove + 15) : (startMove - 15);
+							});
+							item.addEventListener("mouseenter", e => {
+								index = i;
+								outside = start = false;
+								stop = true;
+							});
+						})
+					});
+					
+					const render = (timeStamp) => {
+						if (!stop) {
+							if (!start) start = timeStamp;
+						
+							easing = (timeStamp - start) / duration;
+							easingMove = moves[index] = startMove + (endMove - startMove) * easingFun(easing);
 		         		scrollers[index].style.transform = "translate3d(" + easingMove / 10 + "%,0,0)";
-						requestAnimationFrame(draw);
-					}
-					requestAnimationFrame(start);
-				}
-				
-				const render = (timeStamp) => {
-					if (!outside) {
-						cursor.style.display = "block";
-						sides.forEach((el) => el.forEach((item) => item.style.cursor = "none"))
-						cursor.style.transform = `translate3d(${x - 10}px, ${y - 30}px,0)`;
 
-						if (x < leftBoundary) {
-							direction = false;
-							moves[index] --;
-							cursor.classList.add("left");
-							scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
-							if (Math.round(moves[index]) / 10 == -50) moves[index] = 0;
+							if (timeStamp - start >= duration) stop = true;
+						}
 
-						} else if (x > rightBoundary) {
-							direction = true;
-							if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
-							moves[index] ++;
-							cursor.classList.remove("left");
-							scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
-							if (Math.round(moves[index]) / 10 == 0) moves[index] = -500
-						} 
-					}  else {
-						cursor.style.display = "none";
-						sides.forEach((el) => el.forEach((item) => item.style.cursor = "initial"))
-					}
+						if (!outside) {
+							cursor.style.display = "block";
+							sides.forEach((el) => el.forEach((item) => item.style.cursor = "none"))
+							cursor.style.transform = `translate3d(${x - 20}px, ${y - 15}px,0)`;
+
+							if (x < leftBoundary) {
+								direction = false;
+								moves[index] --;
+								cursor.classList.add("left");
+								scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
+								if (Math.round(moves[index]) / 10 == -75) moves[index] = -250;
+
+							} else if (x > rightBoundary) {
+								direction = true;
+								if (Math.round(moves[index]) / 10 == -25) moves[index] = -750;
+								moves[index] ++;
+								cursor.classList.remove("left");
+								scrollers[index].style.transform = "translate3d(" + moves[index] / 10 + "%,0,0)";
+								if (Math.round(moves[index]) / 10 == -25) moves[index] = -750;
+							} 
+						}  else {
+							cursor.style.display = "none";
+							sides.forEach((el) => el.forEach((item) => item.style.cursor = "initial"))
+
+
+						}
+						requestAnimationFrame(render);
+					};
 					requestAnimationFrame(render);
 				};
-				requestAnimationFrame(render);
-			};
-			init();
-			
-			function easing(n){
-			    return n*(2-n)
-			};
+				init();
+				
+				function easingFun(n){
+				    return n*(2-n)
+				};
+			} else {
+				document.querySelectorAll('.scroller').forEach(el => {
+					el.classList.add('touch');
+				})
+			}
+		}
+		// HOVER SCROLLER //
+
+		// HOMEPAGE SLIDERS
+		if (document.querySelector('.homepage')) {
+			var reviews = new Glide('.reviews__glide', {
+			  type: 'carousel',
+			  rewind: false,
+			  startAt: 0,
+			  perView: 1,
+			  focusAt: 'center',
+			  animationDuration: 800,
+			  dragThreshold: 30,
+			  swipeThreshold: 20,
+			  gap: 0
+			})
+			reviews.mount();
+			setTimeout(e => {
+				reviews.update()
+			}, 5000)
+
+			var blog = new Glide('.blog__glide', {
+			  type: 'slider',
+			  bound: true,
+			  rewind: false,
+			  dragThreshold: 30,
+			  swipeThreshold: 20,
+			  startAt: 0,
+			  perView: 2.5,
+			  gap: 40,
+			  breakpoints: {
+			  	768: {
+			  	    perView: 1
+			  	  }
+			  }
+			})
+			blog.mount();
 		}
 	});
-		// HOVER SCROLLER //
+
 	
 	
 
@@ -168,10 +195,14 @@ document.addEventListener("DOMContentLoaded", function() {
 		faded = document.querySelectorAll('.faded'),
 		cases = document.querySelector('.cases'),
 		casesParallax = document.querySelector('.cases-parallax'),
+		techs = document.querySelector('.techs'),
 		winOffset, 
 		diff, 
 		parallaxY = [];
-		line = [];
+		line = [],
+		// init = 0,
+		transX = [],
+		dur = 500;
 	lines.forEach(function (el) {
 		line.push(el.querySelector('.lines'));
 	})
@@ -179,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		homepageHead = document.querySelector('.head-homepage') || false,
 		reviewsBlock = document.querySelector('.reviews') || false;
 
-	function loop() {
+	function loop(ts) {
 	  winOffset = window.pageYOffset;
 
 	  lines.forEach(function (el, i) {	
@@ -207,7 +238,31 @@ document.addEventListener("DOMContentLoaded", function() {
 	  		el.style.transform = "translate3d(0," + parallaxY[i] + "px,0)";
 	  	}
   	  });
+
   	  
+  	  if (techs && isInViewport(techs)) {
+  	  		let techsLines = techs.querySelectorAll('.techs-line p');
+  	  		techsLines.forEach((el,i) => {
+  	  			
+  	  			if (el.classList.contains('reverse')) {
+  	  				transX.push(-3009)
+  	  				transX[i]++;
+  	  				el.style.transform = "translate3d(" + transX[i] / 60 + "%,0,0)";
+  	  				if (transX[i] / 60 == 0) {
+  	  					transX[i] = -3009
+  	  				}
+  	  			} else {
+  	  				transX.push(0)
+  	  				transX[i]--;
+  	  				el.style.transform = "translate3d(" + transX[i] / 60 + "%,0,0)";
+  	  				if (transX[i] / 60 == -50.15) {
+  	  					transX[i] = 0
+  	  				}
+  	  			}
+  	  		})
+  	  } else {
+
+  	  }
 
 	  if (winOffset > 60) {
 	  	header.forEach((el) => el.classList.add("sticky"))
@@ -263,6 +318,10 @@ document.addEventListener("DOMContentLoaded", function() {
 			overlayScroll.scrollTop = 0;
 		}
 	});
+	if (isTouchDevice) {
+		hamb.classList.add('no-hover');
+	}
+
 
 
 	// SERVICES
@@ -378,10 +437,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	// LAZY LOAD LINES
 	if (!document.querySelector('.head-case')) {
 		let bgElement = document.querySelector(".head .lines"),
-			imageUrl = isTouchDevice ? bgElement.getAttribute('data-bg-mob') : bgElement.getAttribute('data-bg'),
+			imageUrl = isTouchDevice && window.innerWidth < 768 ? bgElement.getAttribute('data-bg-mob') : bgElement.getAttribute('data-bg'),
 			preloaderImg = document.createElement("img");
 
-		preloaderImg.src = window.location.origin + '/om/' + imageUrl;
+		preloaderImg.src = window.location.origin + '/' + imageUrl;
 		preloaderImg.addEventListener('load', (event) => {
 			bgElement.classList.add("loaded");
 			bgElement.style.backgroundImage = `url(${imageUrl})`;
@@ -389,8 +448,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 
 		document.addEventListener('lazybeforeunveil', function(e){
-			console.log(e.target);
-			if (isTouchDevice) {
+			if (isTouchDevice && window.innerWidth < 768) {
 				var bg = e.target.getAttribute('data-bg-mob');
 				if(bg){
 				    e.target.style.backgroundImage = 'url(' + bg + ')';
@@ -403,5 +461,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		});
 	}
+
 
 });
