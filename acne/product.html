@@ -25,11 +25,20 @@
 		</div>
 	</header>
 	<section class="head">
-		<ul>
-			<li><img src="img/head.png" alt=""></li>
-			<li><img src="img/head.png" alt=""></li>
-			<li><img src="img/head.png" alt=""></li>
-		</ul>
+		<div class="glide head__slider">
+			<div class="glide__track" data-glide-el="track">
+			    <ul class="glide__slides">
+					<li><img src="img/head.png" alt=""></li>
+					<li><img src="img/head.png" alt=""></li>
+					<li><img src="img/head.png" alt=""></li>
+				</ul>
+			</div>
+			<div class="glide__bullets" data-glide-el="controls[nav]">
+			    <button class="glide__bullet" aria-label="slide 1" data-glide-dir="=0"><span></span></button>
+			    <button class="glide__bullet" aria-label="slide 2" data-glide-dir="=1"><span></span></button>
+			    <button class="glide__bullet" aria-label="slide 3" data-glide-dir="=2"><span></span></button>
+			  </div>
+		</div>
 	</section>
 	<section class="product">
 		<div class="container">
@@ -68,16 +77,19 @@
 					<span class="accent">No. of packs</span>
 					<div class="quantity">
 						<button class="decrement"></button>
-						<span>2</span>
+						<span>3</span>
 						<button class="increment"></button>
+						<b>packs</b>
 					</div>
 				</li>
 				<li>
-					<span class="accent">Delivered<br> once in</span>
+					<span class="accent">Delivered</span>
 					<div class="quantity">
+						<b>once in</b>
 						<button class="decrement"></button>
-						<span>3</span>
+						<span>2</span>
 						<button class="increment"></button>
+						<b>months</b>
 					</div>
 				</li>
 			</ul>
@@ -87,7 +99,7 @@
 					<span class="price">₹179 per pack</span>
 					<span class="accent">(33% off)</span>
 				</div>
-				<p>Done! Your order contains <span class="accent">2 packs</span> delivered <span class="accent">once in 3 months.</span><br> You are now ready for checkout.</p>
+				<p>Done! Your order contains <span class="accent">2 packs</span> delivered<br> <span class="accent">once in 3 months.</span><br> You are now ready for checkout.</p>
 			</div>
 		</div>
 	</section>
@@ -106,26 +118,41 @@
 	</section>
 	<section class="info-blocks">
 		<div class="container">
-			<ul>
+			<ul class="info-blocks__list">
 				<li>
 					<img src="img/info.jpg" alt="">
-					<h4>What is Menstrual Acne?</h4>
-					<p>Menstrual acne is a subset of hormonal acne. Like the latter, menstrual acne also occurs because the hormones go a little haywire before our periods. Drops in our Estrogen / Progesterone levels leaves the male sex hormone, Androgens at a high in our bodies. This level of androgens can cause amok with our skin leaving it more oily and vulnerable to acne. These conditions make it very easy for period pimple to sneak in.</p>
+					<div class="info-blocks__content">
+						<h4>What is Menstrual Acne?</h4>
+						<p>Menstrual acne is a subset of hormonal acne. Like the latter, menstrual acne also occurs because the hormones go a little haywire before our periods. Drops in our Estrogen / Progesterone levels leaves the male sex hormone, Androgens at a high in our bodies. This level of androgens can cause amok with our skin leaving it more oily and vulnerable to acne. These conditions make it very easy for period pimple to sneak in.</p>
+					</div>
+					
 				</li>
 				<li>
 					<img src="img/info.jpg" alt="">
-					<h4>When to use / Best Practices</h4>
-					<p>Our anti-acne formulation can be used at all times of the day. Not only can it fit perfectly in your morning and night routines, but it can be used throughout the day as well. Morning routine - this should be the last step, even your makeup. Cleanse, moisturize, put on sun protection and then our gel. All - day: If you feel like your pimple is acting up and you want to put it on a 24hr alert, you can use Spotless during the day too. Just cleanse the affected area with a wipe or water. Once dried, dab onto the skin. The gel is invisible and blends into the skin easily, making it very convenient to be used even in college, home or office. Night: Cleanse, Tone, Moisturize, put on gel.</p>
+					<div class="info-blocks__content">
+						<h4>When to use / Best Practices</h4>
+						<p>Our anti-acne formulation can be used at all times of the day. Not only can it fit perfectly in your morning and night routines, but it can be used throughout the day as well. Morning routine - this should be the last step, even your makeup. Cleanse, moisturize, put on sun protection and then our gel. All - day: If you feel like your pimple is acting up and you want to put it on a 24hr alert, you can use Spotless during the day too. Just cleanse the affected area with a wipe or water. Once dried, dab onto the skin. The gel is invisible and blends into the skin easily, making it very convenient to be used even in college, home or office. Night: Cleanse, Tone, Moisturize, put on gel.</p>
+					</div>
 				</li>
 				<li>
 					<img src="img/info.jpg" alt="">
-					<h4>Backed by science</h4>
-					<ul class="icon-list">
-						<li><img src="img/product-icon-1.png" alt=""><b>Salicylic Acid (0.5%):</b> Opens up pores</li>
-						<li><img src="img/product-icon-1.png" alt=""><b>Oligopeptide - 10 (5 - 10%):</b> Comes in contact, kills bacteria</li>
-						<li><img src="img/product-icon-1.png" alt=""><b>Cytobiol Iris (3 - 5%):</b> Supporting ingredient, encourages anti-inflammatory and helps scar recovery</li>
-					</ul>
-					<p>Made without parabens, phthalates and perfumes for a clean and effective solution.</p>
+					<div class="info-blocks__content">
+						<h4>Backed by science</h4>
+						<ul class="icon-list">
+							<li>
+								<img src="img/product-icon-1.png" alt="">
+								<p><b>Salicylic Acid (0.5%):</b> Opens up pores</p>
+							<li>
+								<img src="img/product-icon-1.png" alt="">
+								<p><b>Oligopeptide - 10 (5 - 10%):</b> Comes in contact, kills bacteria</p>
+							</li>
+							<li>
+								<img src="img/product-icon-1.png" alt="">
+								<p><b>Cytobiol Iris (3 - 5%):</b> Supporting ingredient, encourages anti-inflammatory and helps scar recovery</p>
+							</li>
+						</ul>
+						<p>Made without parabens, phthalates and perfumes for a clean and effective solution.</p>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -158,60 +185,79 @@
 			</ul>
 		</div>
 	</section>
-	<section>
+	<section class="blog">
 		<div class="container">
 			<h3 class="accent">Read more on our blog</h3>
-			<ul class="slider">
-				<li>
-					<img src="img/blog.png" alt="">
-					<p>How does heat help your cramps during PMS?</p>
-					<a href="" class="link">Read More</a>
-				</li>
-				<li>
-					<img src="img/blog.png" alt="">
-					<p>How does heat help your cramps during PMS?</p>
-					<a href="" class="link">Read More</a>
-				</li>
-				<li>
-					<img src="img/blog.png" alt="">
-					<p>How does heat help your cramps during PMS?</p>
-					<a href="" class="link">Read More</a>
-				</li>
-				<li>
-					<img src="img/blog.png" alt="">
-					<p>How does heat help your cramps during PMS?</p>
-					<a href="" class="link">Read More</a>
-				</li>
-			</ul>
+			<div class="glide slider">
+				<div class="glide__track" data-glide-el="track">
+				    <ul class="glide__slides">
+						<li>
+							<img src="img/blog.png" alt="">
+							<p>How does heat help your cramps during PMS?</p>
+							<a href="" class="link">Read More</a>
+						</li>
+						<li>
+							<img src="img/blog.png" alt="">
+							<p>How does heat help your cramps during PMS?</p>
+							<a href="" class="link">Read More</a>
+						</li>
+						<li>
+							<img src="img/blog.png" alt="">
+							<p>How does heat help your cramps during PMS?</p>
+							<a href="" class="link">Read More</a>
+						</li>
+						<li>
+							<img src="img/blog.png" alt="">
+							<p>How does heat help your cramps during PMS?</p>
+							<a href="" class="link">Read More</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</section>
-	<section>
+	<section class="products">
 		<div class="container">
 			<h3 class="accent">Products you might like</h3>
-			<ul class="slider">
-				<li>
-					<img src="img/product.png" alt="">
-					<p>Ultra thin pads with wings</p>
-					<span>₹199</span>
-				</li>
-				<li>
-					<img src="img/product.png" alt="">
-					<p>Ultra thin pads with wings</p>
-					<span>₹199</span>
-				</li>
-				<li>
-					<img src="img/product.png" alt="">
-					<p>Ultra thin pads with wings</p>
-					<span>₹199</span>
-				</li>
-				<li>
-					<img src="img/product.png" alt="">
-					<p>Ultra thin pads with wings</p>
-					<span>₹199</span>
-				</li>
-			</ul>
+			<div class="glide slider">
+				<div class="glide__track" data-glide-el="track">
+				    <ul class="glide__slides">
+						<li>
+							<img src="img/product.png" alt="">
+							<p>Ultra thin pads with wings</p>
+							<span>₹199</span>
+						</li>
+						<li>
+							<img src="img/product.png" alt="">
+							<p>Ultra thin pads with wings</p>
+							<span>₹199</span>
+						</li>
+						<li>
+							<img src="img/product.png" alt="">
+							<p>Ultra thin pads with wings</p>
+							<span>₹199</span>
+						</li>
+						<li>
+							<img src="img/product.png" alt="">
+							<p>Ultra thin pads with wings</p>
+							<span>₹199</span>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</section>
+	<div class="fixed-cart">
+		<div class="container">
+			<div class="fixed-cart__price">
+				<span class="price">₹249</span>
+				<span class="old-price">₹299</span>
+				<p class="italic">incl. delivery & disposal covers</p>
+			</div>
+			<a href="">Add to cart</a>
+		</div>
+	</div>
+	
 
 	<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
 	<script defer src="js/scripts.min.js"></script>
