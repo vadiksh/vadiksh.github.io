@@ -109,6 +109,8 @@ h4 {
 	}
 }
 .head {
+	width: 100%;
+	overflow: hidden;
 	padding: 0;
 	ul {
 		display: flex;
@@ -376,7 +378,13 @@ h4 {
 			&:last-child {
 				padding-bottom: 0;
 			}
+			>img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
 		}
+
 	}
 	.icon-list {
 		margin-top: 15px;
@@ -416,10 +424,16 @@ h3 {
 	margin-bottom: 16px;
 }
 .blog {
+	width: 100%;
+	overflow: hidden;
 	padding-top: 6px;
 	.container {
 		padding-bottom: 8px;
 	}
+}
+.products {
+	width: 100%;
+	overflow: hidden;
 }
 .slider {
 	ul {
