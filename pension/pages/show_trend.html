@@ -29,7 +29,7 @@
           <a class="nav-link" href="#">Dashboard</a>
           
           <div class="dropdown-menu">
-            <a href="/pages/dashboard/performance.html">Latest Performance</a>
+            <a href="dashboard/performance.html">Latest Performance</a>
             <a href="/pages/dashboard/assessment.html">Latest Assessment</a>
             <a class="active" href="/pages/dashboard/improve.html">Better Performance</a>
             <a href="/pages/dashboard/risk_advice.html">Manage Risks</a>
@@ -163,96 +163,97 @@
 <![endif]-->
 <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> -->
 <!-- <script src="static/pensionangel.min.js"></script> -->
-<script>
+<!-- <script>
 	
+	(function(){
+	  
+	  function Helpers(){
+	  }
+
+	  Helpers.prototype.extractFormFields = function(form){
+	    var fields = {};
+
+	    $(form).find('*[name]').each(function(i, el){
+	      fields[$(el).attr('name')] = $(el).val() 
+	    })
+	    return fields;
+	  }
+
+	  Helpers.prototype.populateFormFields = function(form, data){
+	    for (var key in data){
+	      $(form).find('[name=' + key + ']').val(data[key]);
+	    }
+	  }
+
+	  Helpers.prototype.isValidForm = function(form){
+	    var isFormValid = true;
+
+	    $(form).find('[required]').each(function(i, el){
+	      if (!$(el).val()) isFormValid = false;
+	    })
+	    return isFormValid;
+	  }
+
+
+	  Helpers.prototype.customHeaders = function(metadata){
+	    return {
+	      title: {
+	        text: metadata.caption
+	      },
+	      subtitle: {
+	        text: metadata.subcaption
+	      },
+	      yAxis: {
+	        title: {
+	          text: metadata.y_axis_title
+	        }
+	      },
+	      xAxis: {
+	        title: {
+	          text: metadata.x_axis_title
+	        }
+	      }
+	    }    
+	  }
+	  
+	  Helpers.prototype.derive = function(data){
+	    if (data.data) data = data.data;
+
+	    var dates = [];
+	    for (var date in data){
+	      dates.push(date);
+	    }
+
+	    var labels = [];
+	    for (var label in data[dates[0]]){
+	      labels.push(label);
+	    }
+
+	    var values = [];
+	    for (var i in labels){
+	      var label = labels[i];
+	      var label_values = [];
+
+	      for (var j in dates){
+	        var date = dates[j];
+	        label_values.push(data[date][label])
+	      }
+	      values.push(label_values.length == 1 ? label_values[0] : label_values);
+
+	    }
+	    return {
+	      dates: dates,
+	      labels: labels,
+	      values: values      
+	    };
+	  }
+
+	  window.Helpers = new Helpers()
+
+	})();
 
 	document.addEventListener("DOMContentLoaded", function(event) {
-		(function(){
-		  
-		  function Helpers(){
-		  }
-
-		  Helpers.prototype.extractFormFields = function(form){
-		    var fields = {};
-
-		    $(form).find('*[name]').each(function(i, el){
-		      fields[$(el).attr('name')] = $(el).val() 
-		    })
-		    return fields;
-		  }
-
-		  Helpers.prototype.populateFormFields = function(form, data){
-		    for (var key in data){
-		      $(form).find('[name=' + key + ']').val(data[key]);
-		    }
-		  }
-
-		  Helpers.prototype.isValidForm = function(form){
-		    var isFormValid = true;
-
-		    $(form).find('[required]').each(function(i, el){
-		      if (!$(el).val()) isFormValid = false;
-		    })
-		    return isFormValid;
-		  }
-
-
-		  Helpers.prototype.customHeaders = function(metadata){
-		    return {
-		      title: {
-		        text: metadata.caption
-		      },
-		      subtitle: {
-		        text: metadata.subcaption
-		      },
-		      yAxis: {
-		        title: {
-		          text: metadata.y_axis_title
-		        }
-		      },
-		      xAxis: {
-		        title: {
-		          text: metadata.x_axis_title
-		        }
-		      }
-		    }    
-		  }
-		  
-		  Helpers.prototype.derive = function(data){
-		    if (data.data) data = data.data;
-
-		    var dates = [];
-		    for (var date in data){
-		      dates.push(date);
-		    }
-
-		    var labels = [];
-		    for (var label in data[dates[0]]){
-		      labels.push(label);
-		    }
-
-		    var values = [];
-		    for (var i in labels){
-		      var label = labels[i];
-		      var label_values = [];
-
-		      for (var j in dates){
-		        var date = dates[j];
-		        label_values.push(data[date][label])
-		      }
-		      values.push(label_values.length == 1 ? label_values[0] : label_values);
-
-		    }
-		    return {
-		      dates: dates,
-		      labels: labels,
-		      values: values      
-		    };
-		  }
-
-		  window.Helpers = new Helpers()
-
-		})();
+		
 
 		$('.navbar button.navbar-toggler').click(function(){
 			$('.navbar .collapse').slideToggle(400);
@@ -264,21 +265,21 @@
 		  $(this).find('.dropdown-menu').slideDown(400);
 		})
 
-		function ajax(url, callback){
-			var xhr = new XMLHttpRequest();
+		function ajax(url, callback, data){
+		  var xhr = new XMLHttpRequest();
 
-			xhr.open('GET', url, true);
-
-			xhr.send();
+		  xhr.open(data ? 'POST' : 'GET', url, true);
+		        
+		  xhr.send(data ? JSON.stringify(data) : undefined );
 			xhr.onreadystatechange = function(){
 				if (this.readyState == 4 && this.status == 200) {
 			       callback(JSON.parse(xhr.responseText));
 			    }
 			}
 		};
+
 		ajax('https://api.pensionangel.com:5000/api/v1.0/show_trend', function(data) {
-			// document.body.innerHTML = data.data['2020-03-06'][" of funds are worth more than a year ago"];
-			// console.log(data)
+			
 			var derived = Helpers.derive(data);
 						
 			var series = derived.labels.map(function(label, idx){
@@ -288,25 +289,10 @@
 			    y: derived.values[idx]
 			  }
 			})
-
-			// document.body.innerHTML = series[0].name;
-			// console.log(series)
-			
 			Highcharts.chart('showTrend',{
 			  chart: {
 			      type: 'pie'
 			  },
-			  // plotOptions: {
-			  //   pie: {
-			  //     dataLabels: {
-			  //       format: '{point.percentage:.1f}% <b>{point.name}</b>'
-			  //     },
-			  //     tooltip:{
-			  //       headerFormat: '<b>{series.name}</b><br/>',
-			  //       pointFormat: '{point.percentage:.1f}% {point.name}'
-			  //     }
-			  //   }
-			  // },
 			  series: [{
 			    name: data.metadata.y_axis_title,
 			    data: series
@@ -375,8 +361,1030 @@
 		// })
 	});
 
-</script>
+</script> -->
+<script>
+	
+	 
 
+	document.addEventListener("DOMContentLoaded", function(event) {
+		// (function(){
+		//   var notification_el, timer;
+
+		//   function Notifications(){
+		//     this.defaultHeaders =  {
+		//       danger: 'Oops! An error occured.',
+		//        info: 'Information',
+		//        warning: 'Warning!',
+		//        success: 'Success!' 
+		//     }
+
+		//     notification_el = $.parseHTML(htmlTemplate)[0];
+		//     $(notification_el).hide();
+		//     $(notification_el).find('.close').click(function(){
+		//       $(notification_el).slideUp('fast');
+		//     })
+		//     $('body').addClass('relative').append(notification_el);
+		//   }
+
+		//   var htmlTemplate = `<div id="notification" class="notification danger">
+		//     <div class="close"><i class="pa-icon-close"></i></div>
+		//     <div class="circle"></div>
+		//     <div class="flex flex-direction-row align-items-center">
+		//       <i class="pa-icon-exclamation-triangle"></i>
+		//       <div>
+		//         <h5 class="notification-header">Header</h5>
+		//         <span>text</span>
+		//       </div>
+		//     </div>
+		//   </div>`;
+
+		//   var showNotification = function(options){
+		//     $(notification_el).find('.notification-header').html(options.header);
+		//     $(notification_el).find('span').html(options.text);
+		//     $(notification_el).removeClass('danger info warning success').addClass(options.type);
+		//     $(notification_el).slideDown('fast');
+		//     if (timer) clearTimeout(timer);
+		//     timer = setTimeout(function(){ $(notification_el).slideUp('fast') }, 5000);
+		//   }
+
+		//   Notifications.prototype.notify = function(options){
+		//     if (!options) return;
+		//     if (typeof options == 'string') options = { text: options };
+
+		//     options.type = options.type || 'danger';
+		    
+		//     options.header = options.header || this.defaultHeaders[options.type];
+		    
+		//     options.text = options.text || '';
+
+		//     showNotification(options);
+		//   };
+
+		//   window.Notifications = new Notifications()
+
+		// })();
+
+		(function(){
+		  
+		  function Helpers(){
+		  }
+
+		  Helpers.prototype.extractFormFields = function(form){
+		    var fields = {};
+
+		    $(form).find('*[name]').each(function(i, el){
+		      fields[$(el).attr('name')] = $(el).val() 
+		    })
+		    return fields;
+		  }
+
+		  Helpers.prototype.populateFormFields = function(form, data){
+		    for (var key in data){
+		      $(form).find('[name=' + key + ']').val(data[key]);
+		    }
+		  }
+
+		  Helpers.prototype.isValidForm = function(form){
+		    var isFormValid = true;
+
+		    $(form).find('[required]').each(function(i, el){
+		      if (!$(el).val()) isFormValid = false;
+		    })
+		    return isFormValid;
+		  }
+
+
+		  Helpers.prototype.customHeaders = function(metadata){
+		    return {
+		      title: {
+		        text: metadata.caption
+		      },
+		      subtitle: {
+		        text: metadata.subcaption
+		      },
+		      yAxis: {
+		        title: {
+		          text: metadata.y_axis_title
+		        }
+		      },
+		      xAxis: {
+		        title: {
+		          text: metadata.x_axis_title
+		        }
+		      }
+		    }    
+		  }
+
+		  
+		  /* 
+		  derive @fuction transform data from API call which has standart view like this:
+
+		  {
+		    2014-06-27: {Smaller Companies: 2, Tokyo: 2},
+		    2014-07-04: {Smaller Companies: 4, Biotech: 9},
+		    ...
+		  }
+
+		  to the next one: 
+
+		  {
+		    dates: ["2014-06-27", "2014-07-04"],
+		    labels: ["Smaller Companies", "Tokyo",   "Biotech"  ],
+		    values: [    [2, 4],          [2, null],   [null, 9] ]
+		  }
+		  */
+		  
+		  Helpers.prototype.derive = function(data){
+		    if (data.data) data = data.data;
+
+		    var dates = [];
+		    for (var date in data){
+		      dates.push(date);
+		    }
+
+		    var labels = [];
+		    for (var label in data[dates[0]]){
+		      labels.push(label);
+		    }
+
+		    var values = [];
+		    for (var i in labels){
+		      var label = labels[i];
+		      var label_values = [];
+
+		      for (var j in dates){
+		        var date = dates[j];
+		        label_values.push(data[date][label])
+		      }
+		      values.push(label_values.length == 1 ? label_values[0] : label_values);
+
+		    }
+		    return {
+		      dates: dates,
+		      labels: labels,
+		      values: values      
+		    };
+		  }
+
+		  window.Helpers = new Helpers()
+
+		})();
+
+
+	  $('.navbar button.navbar-toggler').click(function(){
+	    $('.navbar .collapse').slideToggle(400);
+	    $('.dropdown-menu').slideUp(400);
+	  })
+
+	  $('.navbar .nav-item').click(function(event){
+	    $(this).siblings().find('.dropdown-menu').slideUp(400);
+	    $(this).find('.dropdown-menu').slideDown(400);
+	  })
+	  
+	  // Store class for accessing and managing data and authorization.
+	  // document.addEventListener("DOMContentLoaded", function(event) {
+
+	  function setCookie(name,value,days) {
+	      var expires = "";
+	      if (days) {
+	          var date = new Date();
+	          date.setTime(date.getTime() + (days*24*60*60*1000));
+	          expires = "; expires=" + date.toUTCString();
+	      }
+	      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+	  }
+
+	  function getCookie(name) {
+	      var nameEQ = name + "=";
+	      var ca = document.cookie.split(';');
+	      for(var i=0;i < ca.length;i++) {
+	          var c = ca[i];
+	          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	      }
+	      return null;
+	  }
+
+	  function eraseCookie(name) {   
+	      document.cookie = name+'=; Max-Age=-99999999;';  
+	  }
+
+	  function setHeaders(url, callback, options){
+	    
+	    options = $.extend({
+	      url: url,
+	      headers:{
+	        "Authorization": 'Bearer ' + jwt
+	      }, 
+	    }, options || {});
+
+	    // return $.ajax(options).fail(function(){
+	    //   console.log('Request has been failed');
+	    // })
+
+	    var xhr = new XMLHttpRequest();
+
+	    xhr.open(options ? 'POST' : 'GET', url, true);
+	    xhr.send(options ? JSON.stringify(options) : undefined );
+	    // xhr.open(options, url, true);
+	    // xhr.send(options);
+
+	    xhr.onreadystatechange = function(){
+	      if (this.readyState == 4 && this.status == 200) {
+	           callback(JSON.parse(xhr.responseText));
+	      }
+	    }
+	  }
+
+	  // Notify about ALL errors which were caused by ajax requests
+	  $(document).ajaxError(function(event, req) {
+	    var errorMsg = req.status + ' ' + req.statusText;
+	    if (req.responseJSON && req.responseJSON.msg) errorMsg += ': ' + req.responseJSON.msg;
+	    Notifications.notify(errorMsg);
+	  });
+
+	  function ajax(url, callback, data){
+	    var xhr = new XMLHttpRequest();
+
+	    xhr.open(data ? 'POST' : 'GET', url, true);
+	          
+	    xhr.send(data ? JSON.stringify(data) : undefined );
+	    // xhr.open('GET', url, true);
+
+	    // xhr.send();
+	    xhr.onreadystatechange = function(){
+	      if (this.readyState == 4 && this.status == 200) {
+	           callback(JSON.parse(xhr.responseText));
+	        }
+	    }
+	  };
+
+	  var jwt = getCookie('jwt');
+	  var apiUrl = 'https://api.pensionangel.com:5000/api/v1.0';
+	  var absoluteUrl = location.origin; //"http://localhost:3000/pages";
+
+	  window.Store = {
+	    // New API call
+	    compare: function(){
+	      return ajax(apiUrl + '/compare');
+	    },
+
+	      // New API call
+	    compareAll: function(){
+	      return ajax(apiUrl + '/compare_all');
+	    },
+
+	    /* The following API calls no longer exist    
+	    rankings: function(){
+	      return setHeaders(apiUrl + '/rankings');
+	    },
+
+	    latestRankings: function(){
+	      return setHeaders(apiUrl + '/rankings/latest');
+	    },
+	    */    
+	    // performance: function(){
+	    //   return setHeaders(apiUrl + '/performance', showPerfomance);
+	    // },
+
+	    // improve: function(){
+	    //   return setHeaders(apiUrl + '/improve', showImprove);
+	    // },
+
+	    // protected: function(){
+	    //   return setHeaders(apiUrl + '/protected');
+	    // },
+
+	    // assessment: function(){
+	    //   // return setHeadersJSON('../../data/assessment.json');
+	    //   return setHeaders(apiUrl + '/assessment', showAssessment);
+	    // },
+
+	    // riskAdvice: function(){
+	    //   return setHeaders(apiUrl + '/risk_advice', showRiskAdvice);
+	    // },
+
+	    // showTrend: function(){
+	    //   return ajax(apiUrl + '/show_trend', showTrendChart);
+	    // },
+
+	    // showTrends: function(){
+	    //   return ajax(apiUrl + '/show_trends', showTrendsChart);
+	    // },
+
+	    // showCurrentMaxMin: function(){
+	    //   return ajax(apiUrl + '/current_max_min', showCurrentMaxMinChart);
+	    // },
+	    // showHistoricMaxMin: function(){
+	    //   return ajax(apiUrl + '/historic_max_min', showHistoricMaxMinChart);
+	    // },
+	    /* The following API call no longer exists    
+	    compareTrend: function(){
+	      return setHeaders(apiUrl + '/compare_trend/');
+	    },
+	    */
+
+	    // Placeholder for functions that I don't know how to write!
+	    // Provide date for which to compare best and worst fund categories - and user-
+	    // owned categories if they are logged in
+	    compareBestDate: function(){
+	        return ajax(apiUrl + '/compare_best_date/<date variable?>');
+	    },
+
+	    // Provide date for which to compare all fund categories - and user-
+	    // owned categories if they are logged in
+	    compareAllDate: function(){
+	        return ajax(apiUrl + '/compare_all_date/<date variable?>');
+	    },
+
+	    // Provide fund category to compare against best and worst-performing fund categories - 
+	    // and user-owned categories if they are logged in
+	    compareSelected: function(){
+	        return ajax(apiUrl + '/compare_selected/<fund category variable?>');
+	    },
+
+	    // Provide fund category to compare against all fund categories - and user-owned 
+	    // categories if they are logged in
+	    compareAllSelected: function(){
+	        return ajax(apiUrl + '/compare_all_selected/<fund category variable?>');
+	    },
+
+	    // Provide fund category to compare against user-owned categories if they are logged in.
+	    // Otherwise, just show data for the selected fund category
+	    compareUser: function(){
+	        return ajax(apiUrl + '/compare_user/<fund category variable?>');
+	    },
+
+	    // Utility functions available for any reader (Ie logged in or not logged in):
+	    // Get latest date for which comparison data is available
+	    latestDate: function(){
+	        return ajax(apiUrl + '/latest_date');
+	    },
+
+	    // Get list of all dates for which comparison data is available
+	    allDates: function(){
+	        return ajax(apiUrl + '/all_dates');
+	    },
+
+	    // Get list of all fund categories for which comparison data is available
+	    allCategories: function(){
+	        return ajax(apiUrl + '/all_categories');
+	    },
+
+	    // Utility functions available only to logged in readers):
+	    // Get list of all user-owned funds and their Pension Angel categories
+	    myCategories: function(){
+	        return ajax(apiUrl + '/my_categories');
+	    }
+
+	    // login: function(payload){
+	    //   if (!payload || !payload.email || !payload.password) return;
+	      
+	    //   return ajax(apiUrl + '/login', loginCallback, payload)
+
+	    // },
+
+	    // isAuthorized: function(){
+	    //   return !!jwt;
+	    // },
+
+	    // logout: function(){
+	    //   if (!jwt) return;
+	    //   return ajax(apiUrl + '/logout', logoutCallback);
+
+	    //   function logoutCallback(data){
+	    //     eraseCookie('jwt');
+	    //     jwt = undefined;
+	    //   }
+	    // },
+
+	    // register: function(payload){
+	    //   return ajax(apiUrl + '/register', registerCallback, payload)
+	    // },
+
+	    // update: function(payload){
+	    //   if (!payload){
+	    //     return setHeaders(apiUrl + '/update', updateCallback);
+	    //   } else {
+	    //     return setHeaders('https://api.pensionangel.com:5000/api/v1.0' + '/update_submission', updateSubmitted, {
+	    //       method: 'POST',
+	    //       data: payload
+	    //     })
+
+	    //     function updateSubmitted(res) {
+	    //         Notifications.notify({
+	    //           type: 'success',
+	    //           header: 'Funds were updated!',
+	    //           text: 'Waiting for redirect...'
+	    //         });
+
+	    //         (function(data){
+	    //           setTimeout(function(){ if (data.redirect) window.location.replace(absoluteUrl + data.redirect); }, 5000)
+	    //         })(res)
+
+	    //         return res;
+	    //     }
+	    //   }
+	    // }
+	  }
+
+	// });
+
+	// document.addEventListener("DOMContentLoaded", function(event) {
+	  $('#login').click(function(){
+	    login({
+	      email: $('#login_email').val(),
+	      password: $('#login_password').val()
+	    });
+	  })
+
+	  function login(payload){
+	    if (!payload || !payload.email || !payload.password) return;
+	    
+	    ajax(apiUrl + '/login', loginCallback, payload)
+
+	  }
+
+	  // isAuthorized: function(){
+	  //   return !!jwt;
+	  // },
+
+	  // logout: function(){
+	  //   if (!jwt) return;
+	  //   return ajax(apiUrl + '/logout', logoutCallback);
+
+	  //   function logoutCallback(data){
+	  //     eraseCookie('jwt');
+	  //     jwt = undefined;
+	  //   }
+	  // },
+
+	  function loginCallback(data){
+	    if (data.jwt){
+	      data.data.jwt = data.jwt;
+	      
+
+	      ajax('http://pensionangel.com/api/v1.0/session_login', sessionCallback, data.data);
+
+	      // $.post('http://pensionangel.com/api/v1.0/session_login', data.data).done(function(){
+	      function sessionCallback(){
+	        setCookie('jwt', data.jwt, 1);
+	        jwt = data.jwt;
+
+	        Notifications.notify({
+	          type: 'success',
+	          header: 'Logged in',
+	          text: 'Analysing your funds...'
+	        });
+
+	        (function(data){
+	          setTimeout(function(){ if (data.redirect) window.location.replace(absoluteUrl + data.redirect); }, 2500)
+	        })(data)            
+	      }
+
+	    } else {
+	       Notifications.notify(data.message);
+	    }
+	    return data;
+	  };
+	// });
+
+	// document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/login([./]{1}|$)/) !== -1 ) {
+	    $('form').submit(function(event){
+	      event.preventDefault();
+	      var form = $(this),
+	          isFormValid = Helpers.isValidForm(form);
+	      
+	      if (!isFormValid) {console.log('form is invalid!'); return;} 
+
+	      login(Helpers.extractFormFields(form));
+	    })
+	  }
+	  
+	  
+
+	// });
+	// document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/current_max_min([./]{1}|$)/) !== -1 ) {
+	      // showCurrentMaxMin();
+	      // function showCurrentMaxMin(){
+	        ajax(apiUrl + '/current_max_min', showCurrentMaxMinChart);
+	      // }
+	      
+	      function showCurrentMaxMinChart(data){
+
+	        Highcharts.chart('showCurrentMaxMin', {
+	          chart: {
+	            type: 'bar'
+	          },
+	          title: {
+	            text: data.metadata.caption
+	          },
+	          plotOptions: {
+	            series: {
+	                stacking: 'normal',
+	                pointWidth: 30
+	            }
+	          },
+	          yAxis: {
+	            title: {
+	              text: data.metadata.x_axis_title + ' ' + data.metadata.x_axis_units,
+	              margin: 20
+	            }
+	          },
+	          xAxis: {
+	            categories: ['']
+	          },
+	          series: [{
+	          data: [data.data.B],
+	          color: 'green',
+	          name: 'Best'
+	          },
+	          {
+	            data: [data.data.W],
+	            color: 'red',
+	            name: 'Worst'
+	          }]
+	        });
+	        
+	      }
+	  }
+
+	   
+
+	// })
+	// document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/historic_max_min([./]{1}|$)/) !== -1 ) {
+
+	    // showHistoricMaxMin();
+
+	    // function showHistoricMaxMin(){
+	      ajax(apiUrl + '/historic_max_min', showHistoricMaxMinChart);
+	    // }
+	    
+	    function showHistoricMaxMinChart(data){
+	      console.log(data);
+	      var derived = Helpers.derive(data);
+	      console.log(derived);
+	      var categories = derived.dates;
+
+	      Highcharts.chart('showHistoricMaxMin', {
+	        chart: {
+	          type: 'bar'
+	        },
+	        title: {
+	          text: data.metadata.caption
+	        },
+	        plotOptions: {
+	          series: {
+	              pointWidth: 1,
+	              pointPadding: 0,
+	              borderWidth: 0.5
+	          }
+	        },
+	        yAxis: {
+	          title: {
+	            text: data.metadata.x_axis_title + ' ' + data.metadata.x_axis_units,
+	            margin: 20
+	          }
+	        },
+	        xAxis: {
+	          categories: categories,
+	      title: {
+	        text: data.metadata.y_axis_title + ' ' + data.metadata.y_axis_units,
+	         margin: 20
+	      },
+	      reversed: false
+	      },
+	        series: [{
+	        data: derived.values[0],
+	        color: 'green',
+	        name: 'Best'
+	        },
+	        {
+	          data: derived.values[1],
+	          color: 'red',
+	          name: 'Worst'
+	        }]
+	      });
+	      
+	    }
+	  }
+
+	   
+	 
+	// })
+	// document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/register([./]{1}|$)/) !== -1 ) {
+	  	$('form').submit(function(event){
+	  	  event.preventDefault();
+	  	  
+	  	  var form = $(this),
+	  	      isFormValid = Helpers.isValidForm(form);
+	  	  
+	  	  if (!isFormValid) {console.log('form is invalid!'); return;} 
+
+	  	  register(Helpers.extractFormFields(form));
+	  	})
+
+	  	function register(payload){
+	  	  ajax(apiUrl + '/register', registerCallback, payload)
+	  	}
+
+	  	function registerCallback(data) {
+		  if (data.status == 'error') {
+		    Notifications.notify(data.message);
+		    return;
+		  }
+		  setCookie('jwt', data.jwt, 1);
+		  jwt = data.jwt;
+
+		  Notifications.notify({
+		    type: 'success',
+		    header: 'Successfully registered',
+		    text: 'Analysing your funds...'
+		  });
+
+		  (function(data){
+		    setTimeout(function(){ if (data.redirect) window.location.replace(absoluteUrl + data.redirect); }, 2500)
+		  })(data)
+
+		  return data;
+	  	}
+	  }
+	  
+	  
+
+	// });
+	  if (window.location.pathname.search(/\/show_trend([./]{1}|$)/) !== -1 ) {
+	    // Store.showTrend();
+	    // showTrend: function(){
+	    ajax(apiUrl + '/show_trend', showTrendChart);
+	    // },
+	    function showTrendChart(data) {
+
+	      var derived = Helpers.derive(data);
+	            
+	      var series = derived.labels.map(function(label, idx){
+	        return {
+	          name: label,
+	          color: label == ' of funds are worth more than a year ago' ? '#619445': '#C94545',
+	          y: derived.values[idx]
+	        }
+	      })
+
+	      Highcharts.chart('showTrend', {
+	        chart: {
+	            type: 'pie'
+	        },
+	        title: {
+	        text: data.metadata.caption
+	        },
+	        plotOptions: {
+	          pie: {
+	            dataLabels: {
+	              format: '{point.percentage:.1f}% <b>{point.name}</b>'
+	            },
+	            tooltip:{
+	              headerFormat: '<b>{series.name}</b><br/>',
+	              pointFormat: '{point.percentage:.1f}% {point.name}'
+	            }
+	          }
+	        },
+	        series: [{
+	          name: data.metadata.y_axis_title,
+	          data: series
+	        }]
+	      });
+	    }
+
+	  }
+
+	  
+	// document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/show_trends([./]{1}|$)/) !== -1 ) {
+	    // Store.showTrends();
+	    // showTrends: function(){
+	    ajax(apiUrl + '/show_trends', showTrendsChart);
+	    // },
+	    function showTrendsChart(data){
+	      var derived = Helpers.derive(data);
+
+	      derived.labels.push(derived.labels.shift());
+	      derived.values.push(derived.values.shift());
+	      
+	      var series = derived.labels.map(function(label, labelIndex){
+	        return {
+	          name: label,
+	          color: label == 'Percentage of funds worth more than previous year' ? '#619445': '#C94545',
+	          data: derived.dates.map(function(date, index){
+	            return [(new Date(date)).getTime(), derived.values[labelIndex][index]]
+	          })
+	        }
+	      })
+
+	      Highcharts.chart('showTrends', Highcharts.merge({
+	        chart: {
+	          type: 'area'
+	        },
+	        xAxis: {
+	          type: 'datetime'
+	        },
+	        plotOptions: {
+	          area: {
+	            stacking: 'percent',
+	            lineColor: '#ffffff',
+	            lineWidth: 1,
+	            marker: {
+	              lineWidth: 1,
+	              lineColor: '#ffffff'
+	            }
+	          }
+	        },
+	        series: series
+	      }, Helpers.customHeaders(data.metadata)));
+	    }
+	  }
+
+	   
+	  
+	// })
+	// document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/update([./]{1}|$)/) !== -1 ) {
+	    update();
+	    function update(payload){
+	      if (!payload){
+	        return setHeaders(apiUrl + '/update', updateCallback);
+	      } else {
+	        return setHeaders('https://api.pensionangel.com:5000/api/v1.0' + '/update_submission', updateSubmitted, {
+	          method: 'POST',
+	          data: payload
+	        })
+
+	        function updateSubmitted(res) {
+	            Notifications.notify({
+	              type: 'success',
+	              header: 'Funds were updated!',
+	              text: 'Waiting for redirect...'
+	            });
+
+	            (function(data){
+	              setTimeout(function(){ if (data.redirect) window.location.replace(absoluteUrl + data.redirect); }, 5000)
+	            })(res)
+
+	            return res;
+	        }
+	      }
+	    }
+
+	    function updateCallback(data){
+	      data = data.data;
+	      data.funds.forEach(function(fund, i){
+	        data['fund' + i] = fund;
+	      })
+	      delete data.funds;
+	      Helpers.populateFormFields($('form[name=fund-update]'), data);
+	    }
+	    
+	    $('form').submit(function(event){
+	      event.preventDefault();
+	      var form = $(this),
+	          isFormValid = Helpers.isValidForm(form);
+	      
+	      if (!isFormValid) { console.log('form is invalid!'); return; } 
+
+	      Store.update(Helpers.extractFormFields(form));
+	    })
+	  }
+
+	  
+
+	// });
+	// document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/assessment([./]{1}|$)/) !== -1 ) {
+	    console.log('assessment page');
+	    // assessment: function(){
+	      // return setHeadersJSON('../../data/assessment.json');
+	    setHeaders(apiUrl + '/assessment', showAssessment);
+	    // },
+	    // Store.assessment();
+
+	    function showAssessment(result){
+	      for (var index in result.data){
+	        var assessment = result.data[index];
+	        
+	        var fund = $($('#assessment-fund-template').html())
+	          .addClass(assessment['Grade'])
+	          .appendTo('#assessment');
+	        fund.find('.growth span').html(assessment['Fund Growth'] + '<small>' + result.metadata.y_axis_units + '</small>')
+	        fund.find('.description .performance-assessment').text(assessment['Performance Assessment'])
+	        fund.find('.description .comparative-performance').text(assessment['Comparative Performance'])
+	        fund.find('h3').text(assessment['Fundname'])
+	        fund.find('.recommendation p').html(assessment['Recommendation'])
+	      }
+	    }
+	  }
+	  
+	// })
+	 // document.addEventListener("DOMContentLoaded", function(event) {
+
+	  if (window.location.pathname.search(/\/improve([./]{1}|$)/) !== -1 ) {
+	    // Store.improve()
+	    // improve: function(){
+	    setHeaders(apiUrl + '/improve', showImprove);
+	    // },
+
+	    function showImprove(result){
+
+	      for (var index in result.data){
+
+	        var fund = result.data[index];
+	        $('#betterPerformers').append('<div id="performer' + index + '"></div>')
+
+	        var data = Object.keys(fund['Better Performers']).map(function(performer, value){
+	          return { name: performer, y: fund['Better Performers'][performer]}
+	        })
+
+	        Highcharts.chart('performer' + index,  {
+	          chart: {
+	              type: 'bar'
+	          },
+	          credits: {
+	            enabled: false 
+	          },
+	          title: {
+	              text: fund.Fundname
+	          },
+	          subtitle: {
+	            text: result.metadata['caption']
+	          },
+	          legend: {
+	            enabled: false
+	          },
+	          xAxis: {
+	            visible: false
+	          },
+	          yAxis: {
+	              title: {
+	                  text: result.metadata['y_axis_title'] + ' ' + result.metadata['y_axis_units']
+	              }
+	          },
+	          plotOptions: {
+	            bar: {
+	              groupPadding: 0
+	            }
+	          },
+	          series: [{
+	            name: result.metadata['y_axis_title'] + ', ' + result.metadata['y_axis_units'],
+	            colorByPoint: true,
+	            data: data,
+	            dataLabels: {
+	              enabled: true,
+	              inside: true,
+	              align: 'left',
+	              padding: 1,
+	              formatter: function(){
+	                return this.point.name
+	              },
+	              style: {
+	                backgroundColor: 'transparent',
+	                textOutline: '0',
+	                fontWeight: 'normal'
+	              }
+	            }
+	          }]
+	        });
+	      }
+	    }
+	  }
+
+	    // A code to run since DOM is loaded and ready
+
+	   
+	// });
+
+	// document.addEventListener("DOMContentLoaded", function(event) {
+	  if (window.location.pathname.search(/\/performance([./]{1}|$)/) !== -1 ) {
+
+	     // Store.performance();
+	     // performance: function(){
+	     setHeaders(apiUrl + '/performance', showPerfomance);
+	     // },
+	     
+	     function showPerfomance (data) {
+	      for (var index in data.data){
+	        var fund = data.data[index];
+	        $('#latestPerformance').append('<div id="performance' + index + '"></div"');
+
+	        Highcharts.chart('performance' + index,  {
+	          chart: {
+	            type: 'gauge'
+	          },
+	          credits: { 
+	            enabled: false 
+	          },
+	          title: {
+	            text: fund.Fundname
+	          },
+	          subtitle: {
+	            text: data.metadata['caption']
+	          },
+	          pane: {
+	            startAngle: -150,
+	            endAngle: 150,
+	          },
+
+	          // the value axis
+	          yAxis: {
+	            min: data.metadata['Worst Growth'],
+	            max: data.metadata['Best Growth'],
+
+	            minorTickInterval: 'auto',
+	            minorTickWidth: 1,
+	            minorTickLength: 10,
+	            minorTickPosition: 'inside',
+	            minorTickColor: '#666',
+
+	            tickPixelInterval: 30,
+	            tickWidth: 2,
+	            tickPosition: 'inside',
+	            tickLength: 10,
+	            tickColor: '#666',
+
+	            labels: {
+	              step: 2,
+	              rotation: 'auto'
+	            },
+	            title: {
+	              text: '%'
+	            },          
+	            plotBands: [{
+	              from: data.metadata['Worst Growth'],
+	              to: data.metadata['plotBand 0'],
+	              color: '#DF5353' // green'#55BF3B' // red
+	            }, {
+	              from: data.metadata['plotBand 0'],
+	              to: data.metadata['plotBand 1'],
+	              color: '#DDDF0D' // yellow
+	            }, {
+	              from: data.metadata['plotBand 1'],
+	              to: data.metadata['Best Growth'],
+	              color: '#55BF3B' // red
+	            }]
+	          },
+
+	          series: [{
+	            name: 'Growth',
+	            data: [fund["Fund Growth"]],
+	            tooltip: {
+	              valueSuffix: '%'
+	            }
+	          }]
+	        })
+
+	      }
+	     }
+	     // .then(function(data){
+
+	      
+	    // })
+	  }
+	   
+
+	// });
+
+	// document.addEventListener("DOMContentLoaded", function(event) {
+	  if (window.location.pathname.search(/\/risk_advice([./]{1}|$)/) !== -1 ) {
+	    console.log('risk_advice page');
+	    // riskAdvice: function(){
+	    setHeaders(apiUrl + '/risk_advice', showRiskAdvice);
+	    // },
+	    // Store.riskAdvice();
+	    function showRiskAdvice(result){
+
+	      var risk = result.data;
+	      
+	      var fund = $('#riskAdvice')
+	        .addClass(risk['Grade:'])
+	        .appendTo('#riskAdvice');
+	      
+	      fund.find('.risk-level').text(risk['Risk Level:'])
+	      fund.find('.new-contributions').text(risk['New Contributions:'])
+	      fund.find('.existing-investments').text(risk['Existing Investments:'])
+	    }
+	  }
+	  
+	});
+
+</script>
 </body>
 </html>
 <!-- partial -->
