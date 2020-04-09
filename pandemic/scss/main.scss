@@ -151,7 +151,18 @@ p {
 @media (max-width: 1350px) {
 	.pandemic {
 		padding: 50px 70px;
-		.container {
+		&__map {
+			&-wrap {
+				background: url('../img/map-mob.svg') no-repeat center center/contain;
+			}
+		}
+		&__play {
+			span {
+				background: url('../img/play-mob.svg') no-repeat center center/contain;
+				&.active {
+					background: url('../img/pause-mob.svg') no-repeat center center/contain;
+				}
+			}
 		}
 	}
 }
