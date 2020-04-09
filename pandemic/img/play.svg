@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 266 266">
-  <defs>
+ <!--  <defs>
     <filter id="a" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB">
       <feOffset dy="3"/>
       <feGaussianBlur result="blur" stdDeviation="3"/>
@@ -7,9 +7,9 @@
       <feComposite in2="blur" operator="in"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-  </defs>
+  </defs> -->
   <g data-name="Group 271">
-    <g data-name="Group 270" filter="url(#a)" opacity=".7">
+    <g data-name="Group 270"  opacity=".7">
       <path fill="#fff" d="M133 40a93 93 0 1093 93 93 93 0 00-93-93zm30 98l-44 29a6 6 0 01-9-5v-58a6 6 0 019-5l44 29a6 6 0 010 10z" data-name="Path 877"/>
     </g>
     <g fill="none" stroke="#fff" stroke-width="14" data-name="Ellipse 820">
