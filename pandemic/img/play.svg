@@ -1,24 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="266" height="266" viewBox="0 0 266 266">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 266 266">
   <defs>
-    <filter id="Path_877" x="30.629" y="33.629" width="204.743" height="204.743" filterUnits="userSpaceOnUse">
-      <feOffset dy="3" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feFlood flood-color="#100d0d" flood-opacity="0.757"/>
-      <feComposite operator="in" in2="blur"/>
+    <filter id="a" width="204.7" height="204.7" x="30.6" y="33.6" filterUnits="userSpaceOnUse">
+      <feOffset dy="3"/>
+      <feGaussianBlur result="blur" stdDeviation="3"/>
+      <feFlood flood-color="#100d0d" flood-opacity=".8"/>
+      <feComposite in2="blur" operator="in"/>
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g id="Group_271" data-name="Group 271" transform="translate(-218 -427)">
-    <g id="noun_play_1940008" transform="translate(257.629 466.629)" opacity="0.684">
-      <g id="Group_270" data-name="Group 270" transform="translate(0 0)">
-        <g transform="matrix(1, 0, 0, 1, -39.63, -39.63)" filter="url(#Path_877)">
-          <path id="Path_877-2" data-name="Path 877" d="M95.872,2.5a93.372,93.372,0,1,0,93.372,93.372A93.456,93.456,0,0,0,95.872,2.5Zm30.076,98.089L81.915,129.879a5.687,5.687,0,0,1-8.846-4.718V66.582a5.687,5.687,0,0,1,8.846-4.718l44.032,29.289A5.693,5.693,0,0,1,125.947,100.589Z" transform="translate(37.13 37.13)" fill="#fff"/>
-        </g>
-      </g>
+  <g data-name="Group 271">
+    <g data-name="Group 270" filter="url(#a)" opacity=".7">
+      <path fill="#fff" d="M133 40a93 93 0 1093 93 93 93 0 00-93-93zm30 98l-44 29a6 6 0 01-9-5v-58a6 6 0 019-5l44 29a6 6 0 010 10z" data-name="Path 877"/>
     </g>
-    <g id="Ellipse_820" data-name="Ellipse 820" transform="translate(218 427)" fill="none" stroke="#fff" stroke-width="14">
+    <g fill="none" stroke="#fff" stroke-width="14" data-name="Ellipse 820">
       <circle cx="133" cy="133" r="133" stroke="none"/>
-      <circle cx="133" cy="133" r="126" fill="none"/>
+      <circle cx="133" cy="133" r="126"/>
     </g>
   </g>
 </svg>
