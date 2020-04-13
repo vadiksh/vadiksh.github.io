@@ -9,6 +9,11 @@
 	<link rel="shortcut icon" href="" type="image/x-icon">
 	<link rel="icon" href="" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.6/proj4.js"></script>
+	<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+	<script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
 	
 </head>
 <body>
@@ -19,7 +24,7 @@
 				<h2>You are awesome.</h2>
 				<p>Enjoy this exclusive early listen <br>below along with others in the world </p>
 				<div class="pandemic__map">
-					<div class="pandemic__map-wrap">
+					<div class="pandemic__map-wrap" id="container">
 						
 					</div>
 				</div>
@@ -35,7 +40,8 @@
 		
 		
 	</section>
-	
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 	document.querySelector('.pandemic__play span').addEventListener('click', (e) => {
@@ -45,6 +51,74 @@ document.addEventListener("DOMContentLoaded", function() {
 			e.target.classList.add('active');
 		}
 	})
+
+	var map = Highcharts.maps['custom/world'],
+    chart,
+    data = [
+            {
+              count: 100,
+              city: 'Los Angeles',
+              latitude: 39.0536909,
+              longitude: -112.2427666
+            },
+						{
+              count: 200,
+              city: 'Los Angeles',
+              latitude: 34.0536909,
+              longitude: -118.2427666
+            },
+						{
+              count: 1200,
+              city: 'Los Angeles',
+              latitude: 64.0536909,
+              longitude: -100.2427666
+            },
+						{
+              count: 150,
+              city: 'Los Angeles',
+              latitude: 134.0536909,
+              longitude: -118.2427666
+            },
+						{
+              count: 20,
+              city: 'Los Angeles',
+              latitude: 54.0536909,
+              longitude: 60.2427666
+            },
+						{
+              count: 10,
+              city: 'Los Angeles',
+              latitude: 114.0536909,
+              longitude: 120.2427666
+            }
+		];
+					
+	var bubbles = [];
+	data.forEach(function (p) {
+	  p.z = p.count;
+	  p.lon = p.longitude;
+	  p.lat = p.latitude;
+	  bubbles.push(p);
+	});
+		
+    chart = Highcharts.mapChart('container', {
+    	title: {
+    		floating: 'true'
+    	},
+    	tooltip: {
+	        enabled: false
+	    },
+        series: [{
+            mapData: map,
+            showInLegend: false
+        },{
+            type: 'mapbubble',
+            data: data,
+  			minSize: (window.outerWidth > 767) ? '12px' : '5px',
+            maxSize: (window.outerWidth > 767) ? '25px' : '11px',
+            showInLegend: false
+        }]
+    });		
 });
 </script>
 </body>
