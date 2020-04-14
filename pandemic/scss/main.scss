@@ -30,7 +30,7 @@ p {
 	line-height: 1.3;
 }
 .pandemic {
-	padding: 50px 100px;
+	padding: 50px 160px;
 	position: relative;
 	min-height: 100vh;
 	display: flex;
@@ -45,18 +45,21 @@ p {
 		right: 0;
 		background: url('../img/stars.png') no-repeat right bottom /100% auto;
 	}
-	.container {
+	&__container {
 		width: 100%;
 		max-width: 1650px;
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
+		>div {
+			width: 50%;
+		}
 	}
 	&__map {
-		margin-top: 110px;
+		margin-top: 6vh;
 		width: 100%;
-		margin-left: -20px;
+		margin-left: -5%;
 		&-wrap {
 			background: url('../img/map.svg') no-repeat center center/contain;
 			padding-bottom: 65%;
@@ -103,10 +106,11 @@ p {
 	}
 	&__play {
 		margin-right: -20px;
+		margin-bottom: 15vh;
 		span {
 			position: relative;
 			display: block;
-			margin: 0 auto 170px;
+			margin: 0 auto;
 			width: 265px;
 			height: 265px;
 			background: url('../img/play.svg') no-repeat center center/contain;
@@ -151,20 +155,19 @@ p {
 		}
 	}
 }
-@media (max-width: 1680px) {
+@media (max-width: 1740px) {
 	.pandemic {
 		padding: 50px 130px;
-		.container {
+		&__container {
 			justify-content: space-around;
 		}
 		&__map {
-			margin-top: 80px;
+			margin-top: 55px;
 		}
 		&__play {
 			span {
 				width: 200px;
 				height: 200px;
-				margin-bottom: 130px;
 			}
 		}
 	}
@@ -176,17 +179,9 @@ p {
 		font-size: 29px;
 	}
 }
-@media (max-width: 1500px) {
+@media (max-width: 1440px) {
 	.pandemic {
-		padding: 50px 130px;
-		.container {
-			justify-content: space-between;
-		}
-	}
-}
-@media (max-width: 1350px) {
-	.pandemic {
-		padding: 50px 70px;
+		padding: 40px 100px;
 		&__map {
 			&-wrap {
 				background: url('../img/map-mob.svg') no-repeat center center/contain;
@@ -202,9 +197,12 @@ p {
 		}
 	}
 }
-@media (max-width: 1023px) {
+@media (max-width: 1280px) {
 	.pandemic {
-		padding: 50px 35px;
+		padding: 40px 55px;
+		&__play {
+			margin-bottom: 10vh;
+		}
 	}
 	h2 {
 		font-size: 40px;
@@ -213,7 +211,13 @@ p {
 		font-size: 22px;
 	}
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
+	.pandemic {
+		padding: 50px 35px;
+	}
+}
+
+@media (orientation: portrait) {
 	.pandemic {
 		padding: 65px 30px 320px;
 		align-items: flex-start;
@@ -222,7 +226,68 @@ p {
 		&::after {
 			display: none;
 		}
-		.container {
+		&__container {
+			flex-direction: column;
+			>div {
+				width: auto;
+				margin: 0 auto;
+			}
+		}
+		&__play {
+			margin: 40px auto;
+			span {
+				width: 103px;
+				height: 103px;
+			}
+		}
+		&__map {
+			width: 70%;
+			left: 50%;
+			transform: translateX(-50%);
+			margin: 0;
+			position: absolute;
+			bottom: 65px;
+			svg {
+				top: -72%;
+				width: 123%;
+				left: -10.5%;
+				height: 250%;
+			}
+		}
+	}
+}
+@media (orientation: portrait) and (min-width: 1024px) {
+	.pandemic {
+		padding-top: 120px;
+		&__container {
+			>div {
+				width: auto;
+			}
+		}
+		&__play {
+			margin: 60px auto;
+		}
+		&__map {
+			bottom: 120px;
+		}
+	}
+	h2{
+		font-size: 60px;
+	}
+	p {
+		font-size: 26px;
+	}
+}
+@media (max-width: 767px) {
+	.pandemic {
+		padding: 65px 30px 86%;
+		align-items: flex-start;
+		position: relative;
+		background: url('../img/stars-mob.png') no-repeat right top/contain;
+		&::after {
+			display: none;
+		}
+		&__container {
 			flex-direction: column;
 			>div {
 				width: 100%;
@@ -238,21 +303,18 @@ p {
 			}
 		}
 		&__map {
-			width: calc(100% - 60px);
-			max-width: 315px;
+			width: calc(100% - 40px);
+			// max-width: 315px;
 			left: 50%;
 			transform: translateX(-50%);
 			margin: 0;
 			position: absolute;
 			bottom: 65px;
 			svg {
-				position: absolute;
 				top: -72%;
 				width: 123%;
 				left: -10.5%;
 				height: 250%;
-				transform: scaleY(1.1);
-				transform-origin: 50% 50%;
 			}
 		}
 	}
@@ -261,7 +323,7 @@ p {
 		margin-bottom: 16px;
 	}
 	p {
-		font-size: 20px;
+		font-size: 18px;
 	}
 }
 @keyframes pulse {
