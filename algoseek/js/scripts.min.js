@@ -24,8 +24,6 @@ $(function() {
 		}
 	})
 
-    $('.header').addClass('revealed');
-
     $('.header__menu a:not(.dropdown)').click(function() {
         $('.header__menu').removeClass('active');
     })
@@ -48,7 +46,61 @@ $(function() {
         })
     }
 // 
-   
+
+// COMING
+    var interval;
+    var comingText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    $('.overflow-wrap').append('<div class="coming no-trans"><img class="coming__logo" src="img/logo.svg" alt=""><div class="coming__intro"><h2>Coming <b>in May</b></h2><p>' + 
+        comingText + 
+        '</p></div><ul class="coming__timer flex"><li><span class="days"></span><p>Days</p></li><li><span class="hours"></span><p>Hours</p></li><li><span class="mins"></span><p>Minutes</p></li><li><span class="secs"></span><p>Seconds</p></li></ul><form action="" class="coming__form"> <input type="email" name="email" placeholder="Email" required=""><button class="button">NOTIFY ME!</button></form><div class="close"><span></span></div></div>');
+    
+    $('.coming-soon').click(function (e) {
+        e.preventDefault();
+        $('.coming').addClass('active');
+        $('body').css({'height': '100vh', 'overflow-y': 'hidden'})
+
+        var releaseDate = $(this).attr('data-date');
+
+        var countDownDate = new Date(releaseDate).getTime();
+        var distance,
+            now;
+            // console.log(countDownDate);
+
+        tick();
+        interval = setInterval(function() {
+          tick();
+        }, 1000);
+
+        function tick(){
+            now = new Date().getTime();
+            distance = countDownDate - now;
+
+            var days = ("0" + Math.floor(distance / (1000 * 60 * 60 * 24))).slice(-2);
+            var hours = ("0" + Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).slice(-2);
+            var minutes = ("0" + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).slice(-2);
+            var seconds = ("0" + Math.floor((distance % (1000 * 60)) / 1000)).slice(-2); 
+
+            $('.days').html(days);
+            $('.hours').html(hours);
+            $('.mins').html(minutes);
+            $('.secs').html(seconds);
+
+            if (distance < 0) {
+              clearInterval(interval);
+              document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+        }
+    })
+    $('.coming .close').click(function () {
+        clearInterval(interval);
+        $('.coming').removeClass('active');
+        $('body').css({'height': '100%', 'overflow-y': 'auto'})
+    })
+
+    
+// 
+    $('.no-trans').removeClass('no-trans');
+    $('.header').addClass('revealed');
 // PRODUCTS/ORDER
     $('.products-page__menu .close').click(function() {
          $('.products-page__menu').removeClass('active');
@@ -111,6 +163,8 @@ $(function() {
     			$('.products-page__item-descr').html(data[index].description);
     			$('.products-page__item-info span').html(data[index].menu_name);
                 $('.products-page__table-order, .products-page__icons .icon-cart').attr('href', './order.html#' + data[index].id)
+                $('.products-page__table-pricing, .products-page__icons .icon-tag').attr('href', './pricing.html#' + data[index].id)
+
     			$('.products-page__table ul').html('');
 
 	    		for (var i = 0; i < data[index].datasets.length; i++) {
@@ -369,6 +423,8 @@ $(function() {
 
     }
 
+    
+
     $('.order-check.arrow').change(function() {
     	if ($(this).find('input[type="checkbox"]').prop('checked')) {
     		$(this).addClass('active').find('.arrow-sliding').addClass('active').css({"height": $(this).find('.arrow-sliding > div').height() + 20});
@@ -377,10 +433,19 @@ $(function() {
 
     	}
     });
+    if (window.location.hash == '#historical') {
+        $('.historical-data').prop('checked', true).trigger('change');
+
+    }
+    if (window.location.hash == '#updates') {
+        $('.daily-updates').prop('checked', true)
+    }   
+
     $(document).on('click', '.order-upload-mark', function(e) {
         e.preventDefault();
         $(this).siblings('.order-upload').trigger('click');
     })
+
     $(document).on('change', '.order-upload', function() {
         if(this.files[0].size > 15000000){
            alert("File size should be less than 15MB");
@@ -390,11 +455,11 @@ $(function() {
             $(this).siblings('.order-upload-mark').html(this.files[0].name);
         }
     });
+
     $('.arrow-sliding h6').click(function (e) {
     	e.preventDefault();
     });
     if ($(window).width() < 1024) {
-        
         $(document).on('click', '.arrow-sliding input[type="date"], .arrow-sliding textarea', function(e) {
             e.preventDefault();
         });
@@ -498,7 +563,7 @@ $(function() {
     })
 
 
-    // PRODUCTS
+    // PRODUCTS/order
     $(document).on('click', '.products-page__menu-list a', function() {
     	if ($('.order').length) {
     		var href = $(this).attr('href');
@@ -528,6 +593,7 @@ $(function() {
     onHashChange();
     
 
+    // PRODUCTS
     $(window).on('hashchange', function() {
     	if (window.location.hash == '#featured') {
     		$('.products-page__featured').addClass('active').siblings().removeClass('active');
@@ -558,12 +624,8 @@ $(function() {
     })
 
     $('.products-page__qa .question').click(function() {
-    	$(this).siblings().slideToggle(300);
-    	if ($(this).hasClass('active')) {
-    		$(this).removeClass('active')
-    	} else {
-    		$(this).addClass('active');
-    	}
+    	$(this).next().slideToggle(450);
+		$(this).toggleClass('active');
     })
 
     $(window).trigger('scroll');
