@@ -1,0 +1,1045 @@
+/* Add your CSS code here.
+
+For example:
+.example {
+    color: red;
+}
+
+For brushing up on your CSS knowledge, check out http://www.w3schools.com/css/css_syntax.asp
+
+End of comment */
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+html, body {
+  /* overflow-x: hidden; */
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: Helvetica, arial;
+  font-size: 16px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background: #6f6f6f;
+  background: -o-radial-gradient(circle, #6f6f6f 10%, #525252 47%);
+  background: radial-gradient(circle, #6f6f6f 10%, #525252 47%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6f6f6f",endColorstr="#525252",GradientType=1);
+}
+
+svg {
+  border-radius: 2px 2px 10px 10px;
+}
+
+#piano-content {
+  position: relative;
+  top: 10vh;
+  width: 100%;
+  margin-bottom: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+.piano-body {
+  height: 100% !important;
+  /*  width: 1240px; */
+  margin: 0px auto;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3B3B3B), color-stop(20%, #222222), color-stop(40%, #000000), color-stop(95%, #191919), to(#343434));
+  background: -o-linear-gradient(top, #3B3B3B 0%, #222222 20%, #000000 40%, #191919 95%, #343434 100%);
+  background: linear-gradient(to bottom, #3B3B3B 0%, #222222 20%, #000000 40%, #191919 95%, #343434 100%);
+  border: 1px solid black;
+}
+
+.piano-menu {
+  padding: 10px 6px;
+}
+
+.piano-menu__top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.piano-menu__search {
+  padding: 10px;
+  color: #939393;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 64%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3C3C3C), color-stop(4%, #222222), color-stop(15%, #000), color-stop(50%, #212020), color-stop(85%, #000), color-stop(96%, #191919), to(#343434));
+  background: -o-linear-gradient(top, #3C3C3C 0%, #222222 4%, #000 15%, #212020 50%, #000 85%, #191919 96%, #343434 100%);
+  background: linear-gradient(to bottom, #3C3C3C 0%, #222222 4%, #000 15%, #212020 50%, #000 85%, #191919 96%, #343434 100%);
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+.piano-menu__search div {
+  width: 50%;
+  padding: 6px 30px;
+}
+
+.piano-menu__search h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #FF8300;
+  text-shadow: none;
+  text-align: initial;
+  text-shadow: 0px 0px 10px rgba(255, 131, 0, 0.53);
+  margin: 0 0 8px 0;
+}
+
+.piano-menu__search div:first-child {
+  text-align: right;
+  border-right: 1px solid #505050;
+}
+
+.piano-menu__search div:first-child h3 {
+  text-align: right;
+}
+
+.piano-menu__search p {
+  margin: 0;
+  line-height: 1.5;
+  max-width: 280px;
+  text-align: left;
+}
+
+.piano-menu__search input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #6C6C6C;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  background: url("../img/search.svg") no-repeat right 10px top 5px/15px 15px;
+  font-size: 13px;
+  color: #939393;
+  letter-spacing: .5px;
+  max-width: 270px;
+  display: inline-block;
+  width: 100%;
+  padding: 5px 15px;
+  letter-spacing: 1px;
+}
+
+.piano-menu__search input::-webkit-input-placeholder {
+  font-size: 13px;
+  color: #939393;
+  letter-spacing: .5px;
+}
+
+.piano-menu__search input::-moz-placeholder {
+  font-size: 13px;
+  color: #939393;
+  letter-spacing: .5px;
+}
+
+.piano-menu__search input:-ms-input-placeholder {
+  font-size: 13px;
+  color: #939393;
+  letter-spacing: .5px;
+}
+
+.piano-menu__search input::-ms-input-placeholder {
+  font-size: 13px;
+  color: #939393;
+  letter-spacing: .5px;
+}
+
+.piano-menu__search input::placeholder {
+  font-size: 13px;
+  color: #939393;
+  letter-spacing: .5px;
+}
+
+.piano-menu__search input:focus {
+  outline: none;
+}
+
+.piano-menu__speaker {
+  position: relative;
+  width: 15.7%;
+  background: url("../img/speaker.svg") no-repeat center center/contain;
+}
+
+.piano-menu__speaker.right::after {
+  position: absolute;
+  content: '';
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  background: url("../img/logo.svg") no-repeat center center/contain;
+}
+
+.piano-menu__bottom {
+  padding: 6px;
+  margin-top: 8px;
+  border-radius: 6px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3C3C3C), color-stop(5%, #212020), color-stop(33%, #000), color-stop(50%, #101010), color-stop(56%, #191818), color-stop(95%, #212121), to(#343434));
+  background: -o-linear-gradient(top, #3C3C3C 0%, #212020 5%, #000 33%, #101010 50%, #191818 56%, #212121 95%, #343434 100%);
+  background: linear-gradient(to bottom, #3C3C3C 0%, #212020 5%, #000 33%, #101010 50%, #191818 56%, #212121 95%, #343434 100%);
+}
+
+.piano-menu__bottom ul {
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.piano-menu__bottom a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  -webkit-transition: .25s;
+  -o-transition: .25s;
+  transition: .25s;
+}
+
+.piano-menu__bottom a:hover {
+  color: #FF8300;
+  text-shadow: 0 0 15px #FF8300;
+  -webkit-transition: .25s;
+  -o-transition: .25s;
+  transition: .25s;
+}
+
+.piano-menu__bottom li.active a {
+  color: #FF8300;
+  text-shadow: 0 0 15px #FF8300;
+}
+
+.key-white:hover {
+  fill: url("#grad-white-hover");
+}
+
+.key-black:hover {
+  fill: url("#grad-black-hover");
+}
+
+.key-black:active, .key-white:active {
+  fill: transparent;
+}
+
+.key-span-white {
+  background: -webkit-gradient(linear, left top, left bottom, from(#b5b5b5), color-stop(1.48%, #fff), color-stop(3.95%, #d3d3d3), color-stop(93.6%, #a5a5a5), color-stop(94.62%, #d1d1d1), color-stop(95.57%, #bababa), color-stop(96.44%, #e0e0e0), color-stop(97.67%, #c1c1c1), color-stop(98.85%, #a0a0a0), to(rgba(0, 0, 0, 0)));
+  background: -o-linear-gradient(#b5b5b5 0%, #fff 1.48%, #d3d3d3 3.95%, #a5a5a5 93.6%, #d1d1d1 94.62%, #bababa 95.57%, #e0e0e0 96.44%, #c1c1c1 97.67%, #a0a0a0 98.85%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(#b5b5b5 0%, #fff 1.48%, #d3d3d3 3.95%, #a5a5a5 93.6%, #d1d1d1 94.62%, #bababa 95.57%, #e0e0e0 96.44%, #c1c1c1 97.67%, #a0a0a0 98.85%, rgba(0, 0, 0, 0) 100%);
+  overflow: hidden;
+  border-radius: 2px 2px 11px 11px;
+  -webkit-box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.3);
+          box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.3);
+}
+
+.key-span-white svg {
+  border-left: 1.5px solid #707070;
+  border-radius: 2px 2px 11px 11px;
+}
+
+.key-span-white:first-child svg {
+  border-left: 2px solid #000;
+}
+
+.key-span-black {
+  height: 136px !important;
+  -webkit-transform: translateX(2px);
+      -ms-transform: translateX(2px);
+          transform: translateX(2px);
+  border-radius: 2px 2px 10px 10px;
+}
+
+.key-span-black svg, .key-span-black rect {
+  height: 135px;
+}
+
+.key-span-black, .key-span-black svg, .key-span-black svg rect {
+  width: 20px !important;
+  margin-left: 0.5% !important;
+}
+
+select {
+  visibility: hidden;
+}
+
+.container {
+  display: none;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                      supported by Chrome, Opera and Firefox */
+}
+
+.hidden {
+  display: none;
+}
+
+#Keyboard {
+  margin: 3px !important;
+  -ms-flex-negative: 0;
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
+  height: 100%;
+  /*scroll-snap-align: start;
+    */
+  scroll-behavior: smooth;
+  -webkit-box-shadow: black 1px 0 5px;
+  box-shadow: black 1px 0 5px;
+}
+
+.slider {
+  /*  width: 700px;*/
+  /* height: 240px;*/
+  display: block;
+  overflow-x: auto;
+  /* -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory; 
+  */
+}
+
+#menu-div-low {
+  display: none;
+}
+
+.keylabel-w {
+  position: absolute;
+  left: 0px;
+  padding: auto;
+  top: 70%;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  pointer-events: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.keylabel-b {
+  position: absolute;
+  left: 0px;
+  padding: auto;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+  pointer-events: none;
+  font-family: 'Lato', sans-serif;
+}
+
+/*ipad*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .piano-body {
+    width: 95vw;
+    margin: 0px auto;
+    padding-left: 7px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-image: -o-linear-gradient(#454545 32px, #000 278px);
+    background: #2b2b2b;
+    background: -o-linear-gradient(top, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#2b2b2b), color-stop(3%, #3b3b3b), color-stop(15%, #525252), color-stop(38%, black), color-stop(90%, #191919), to(#343434));
+    background: linear-gradient(180deg, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2b2b2b",endColorstr="#343434",GradientType=1);
+    border: 2px solid black;
+  }
+  .slider {
+    margin: 0px;
+    height: 240px;
+    display: block;
+    overflow-x: auto;
+    /* background-image: linear-gradient(#454545 32px, #000 278px); */
+  }
+  #menu-div {
+    margin: 1%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #3c3c3c;
+    background: -o-linear-gradient(top, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), color-stop(3%, #222222), color-stop(10%, black), color-stop(50%, #212020), color-stop(90%, black), color-stop(95%, #191919), to(#343434));
+    background: linear-gradient(180deg, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c3c3c",endColorstr="#343434",GradientType=1);
+  }
+  body, html {
+    background-size: 110%;
+    background-repeat: repeat-y;
+    overflow-x: hidden !important;
+  }
+  body {
+    position: relative !important;
+  }
+  #Selector {
+    display: none;
+  }
+  #piano-content {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+            justify-content: center;
+  }
+}
+
+/*iphone x*/
+.slider-active {
+  width: 700px;
+}
+
+.pressed {
+  fill: transparent;
+}
+
+.span-pressed {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+h1, h3 {
+  text-align: center;
+  color: whitesmoke;
+  text-shadow: black 1px 0 5px;
+  text-transform: uppercase;
+  /* -webkit-text-fill-color: white; */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 1px black;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar:horizontal {
+  margin-top: 10px;
+  height: 10%;
+  border-radius: 10px;
+  background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-mob-port.png");
+  background-position-y: 0px;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  height: 30px;
+  background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-mob.png");
+  background-size: 100%;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 10px;
+  height: 20px;
+  background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-thumb.png");
+  background-size: initial;
+  background-repeat: no-repeat;
+}
+
+p {
+  text-align: center;
+}
+
+.song-wrapper {
+  text-align: center;
+  margin: 0 36%;
+  display: block;
+  padding: 5px;
+  border-radius: 0.6em;
+  background-color: #3a3a3a;
+  color: #f5831f;
+  display: none;
+}
+
+.sustain-button {
+  /*  margin: auto;*/
+  border-color: #3a3a3a;
+  color: #f5831f;
+  -webkit-box-shadow: 0 0 40px 40px #3a3a3a inset, 0 0 0 0 #3a3a3a;
+  box-shadow: 0 0 40px 40px #3a3a3a inset, 0 0 0 0 #3a3a3a;
+  -webkit-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid  #3a3a3a;
+  border-radius: 0.6em;
+  cursor: pointer;
+  /*   display: -webkit-box;
+      display: -ms-flexbox;
+     */
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.7rem;
+  font-weight: 400;
+  line-height: 1;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.sustain-button:hover {
+  -webkit-box-shadow: 0 0 10px 0 #3a3a3a inset, 0 0 10px 4px #3a3a3a;
+  box-shadow: 0 0 10px 0 #3a3a3a inset, 0 0 10px 4px #3a3a3a;
+  color: #ff9538;
+  outline: 0;
+}
+
+.sustain-button.clicked {
+  -webkit-box-shadow: 0 0 10px 0 #3a3a3a inset, 0 0 10px 4px #f5831f;
+  box-shadow: 0 0 10px 0 #3a3a3a inset, 0 0 10px 4px #f5831f;
+  color: #ff9538;
+  outline: 0;
+}
+
+#loading-scr {
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+.load-wrap {
+  margin: 0 auto;
+  top: 15vh;
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  -webkit-align-self: center;
+          align-self: center;
+  text-align: center;
+}
+
+/*  Tablets in landscape mode, older desktop monitors */
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+/* IPAD */
+@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  body {
+    overflow-x: hidden;
+    margin: 0px;
+  }
+  .slider {
+    margin: 0px;
+    height: 290px;
+    display: block;
+    overflow-x: auto;
+  }
+  #menu-div {
+    height: 100px;
+  }
+  #menu-div-low {
+    display: block;
+    width: 735px;
+    height: 34px;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), color-stop(5.91%, #212020), color-stop(25.62%, #000), color-stop(47.78%, #101010), color-stop(56.27%, #191818), color-stop(92.61%, #212121), to(#343434));
+    background: -o-linear-gradient(#3c3c3c 0%, #212020 5.91%, #000 25.62%, #101010 47.78%, #191818 56.27%, #212121 92.61%, #343434 100%);
+    background: linear-gradient(#3c3c3c 0%, #212020 5.91%, #000 25.62%, #101010 47.78%, #191818 56.27%, #212121 92.61%, #343434 100%);
+    margin: 0.5%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0px;
+  }
+  .key-span-black, .key-span-black svg, .key-span-black svg rect {
+    width: 31px !important;
+    height: 115px !important;
+    margin-left: 0.5% !important;
+    margin-top: -1px;
+    -webkit-box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+    border-radius: 2px 2px 13px 13px;
+  }
+  .key-span-white, .key-span-white svg, .key-span-white svg rect {
+    -webkit-box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.2);
+    box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.2);
+    border-radius: 2px 2px 17px 17px;
+    width: 47px !important;
+  }
+  ::-webkit-scrollbar:horizontal {
+    top: -10px;
+    position: relative;
+    height: 30px;
+    background: #4d4d4d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), color-stop(5%, #3b3b3b), color-stop(22%, #222222), color-stop(37%, #1e1e1e), color-stop(96%, #191919), to(#343434));
+    background: linear-gradient(180deg, #4d4d4d 0%, #3b3b3b 5%, #222222 22%, #1e1e1e 37%, #191919 96%, #343434 100%);
+    background-position-y: 0px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track:horizontal {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 30px;
+    background: #4d4d4d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), color-stop(5%, #3b3b3b), color-stop(22%, #222222), color-stop(37%, #1e1e1e), color-stop(96%, #191919), to(#343434));
+    background: linear-gradient(180deg, #4d4d4d 0%, #3b3b3b 5%, #222222 22%, #1e1e1e 37%, #191919 96%, #343434 100%);
+    background-size: 100%;
+  }
+  ::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 10px;
+    height: 10px;
+    background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-thumb.png");
+    background-size: 90% 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/*  Tablets in portrait mode, large display smartphones landscape mode */
+@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  body {
+    width: 100%;
+  }
+  .piano-body {
+    width: 95vw;
+    margin: 0px auto;
+    padding-left: 7px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-image: -o-linear-gradient(#454545 32px, #000 278px);
+    background: #2b2b2b;
+    background: -o-linear-gradient(top, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#2b2b2b), color-stop(3%, #3b3b3b), color-stop(15%, #525252), color-stop(38%, black), color-stop(90%, #191919), to(#343434));
+    background: linear-gradient(180deg, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2b2b2b",endColorstr="#343434",GradientType=1);
+    border: 2px solid black;
+  }
+  .slider {
+    margin: 0px;
+    height: 240px;
+    display: block;
+    overflow-x: auto;
+    /* background-image: linear-gradient(#454545 32px, #000 278px); */
+  }
+  #menu-div {
+    margin: 1%;
+    height: 88px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #3c3c3c;
+    background: -o-linear-gradient(top, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), color-stop(3%, #222222), color-stop(10%, black), color-stop(50%, #212020), color-stop(90%, black), color-stop(95%, #191919), to(#343434));
+    background: linear-gradient(180deg, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c3c3c",endColorstr="#343434",GradientType=1);
+  }
+  body, html {
+    background-size: 110%;
+    background-repeat: repeat-y;
+    overflow-x: hidden !important;
+  }
+  body {
+    position: relative !important;
+  }
+  #Selector {
+    display: none;
+  }
+  #piano-content {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+            justify-content: center;
+  }
+  .key-span-black, .key-span-black svg, .key-span-black svg rect {
+    width: 31px !important;
+    height: 100px !important;
+    margin-left: 0.5% !important;
+    margin-top: -1px;
+    -webkit-box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+    border-radius: 2px 2px 13px 13px;
+  }
+  .key-span-white, .key-span-white svg, .key-span-white svg rect {
+    -webkit-box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.2);
+    box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.2);
+    border-radius: 2px 2px 17px 17px;
+    width: 48px !important;
+  }
+  ::-webkit-scrollbar:horizontal {
+    top: -10px;
+    position: relative;
+    height: 30px;
+    background: #4d4d4d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), color-stop(5%, #3b3b3b), color-stop(22%, #222222), color-stop(37%, #1e1e1e), color-stop(96%, #191919), to(#343434));
+    background: linear-gradient(180deg, #4d4d4d 0%, #3b3b3b 5%, #222222 22%, #1e1e1e 37%, #191919 96%, #343434 100%);
+    background-position-y: 0px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track:horizontal {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 30px;
+    background: #4d4d4d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), color-stop(5%, #3b3b3b), color-stop(22%, #222222), color-stop(37%, #1e1e1e), color-stop(96%, #191919), to(#343434));
+    background: linear-gradient(180deg, #4d4d4d 0%, #3b3b3b 5%, #222222 22%, #1e1e1e 37%, #191919 96%, #343434 100%);
+    background-size: 100%;
+  }
+  ::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 10px;
+    height: 20px;
+    background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-thumb.png");
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/*  Smartphones in landscape mode */
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  body {
+    width: 100%;
+  }
+  .piano-body {
+    width: 90vw;
+    margin: 0px auto;
+    padding-left: 7px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-image: -o-linear-gradient(#454545 32px, #000 278px);
+    background: #2b2b2b;
+    background: -o-linear-gradient(top, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#2b2b2b), color-stop(3%, #3b3b3b), color-stop(15%, #525252), color-stop(38%, black), color-stop(90%, #191919), to(#343434));
+    background: linear-gradient(180deg, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2b2b2b",endColorstr="#343434",GradientType=1);
+    border: 2px solid black;
+  }
+  .slider {
+    margin: 0px;
+    height: 240px;
+    display: block;
+    overflow-x: auto;
+    /* background-image: linear-gradient(#454545 32px, #000 278px); */
+  }
+  #menu-div {
+    margin: 1%;
+    height: 88px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #3c3c3c;
+    background: -o-linear-gradient(top, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), color-stop(3%, #222222), color-stop(10%, black), color-stop(50%, #212020), color-stop(90%, black), color-stop(95%, #191919), to(#343434));
+    background: linear-gradient(180deg, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c3c3c",endColorstr="#343434",GradientType=1);
+  }
+  .menu-table {
+    color: #FF8300;
+    width: 100%;
+  }
+  .menu-table td {
+    margin: 20px;
+  }
+  .menu-left {
+    text-align: right;
+  }
+  body, html {
+    background-size: 110%;
+    background-repeat: repeat-y;
+    overflow-x: hidden !important;
+  }
+  body {
+    position: relative !important;
+  }
+  #Selector {
+    display: none;
+  }
+  #piano-content {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+            justify-content: center;
+  }
+  .key-span-black, .key-span-black svg, .key-span-black svg rect {
+    height: 100px !important;
+    width: 31px !important;
+    margin-left: 0.5% !important;
+    margin-top: -1px;
+    border-radius: 5px 5px 13px 13px;
+  }
+  .key-span-white, .key-span-white svg, .key-span-white svg rect {
+    border-radius: 2px 2px 17px 17px;
+    width: 48px !important;
+  }
+  .key-span-black {
+    -webkit-box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+  }
+  .key-span-white {
+    -webkit-box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.4);
+    box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.4);
+  }
+  ::-webkit-scrollbar:horizontal {
+    top: -10px;
+    position: relative;
+    height: 30px;
+    background: #4d4d4d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), color-stop(5%, #3b3b3b), color-stop(22%, #222222), color-stop(37%, #1e1e1e), color-stop(96%, #191919), to(#343434));
+    background: linear-gradient(180deg, #4d4d4d 0%, #3b3b3b 5%, #222222 22%, #1e1e1e 37%, #191919 96%, #343434 100%);
+    background-position-y: 0px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track:horizontal {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 30px;
+    background: #4d4d4d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), color-stop(5%, #3b3b3b), color-stop(22%, #222222), color-stop(37%, #1e1e1e), color-stop(96%, #191919), to(#343434));
+    background: linear-gradient(180deg, #4d4d4d 0%, #3b3b3b 5%, #222222 22%, #1e1e1e 37%, #191919 96%, #343434 100%);
+    background-size: 100%;
+  }
+  ::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 10px;
+    height: 20px;
+    background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-thumb.png");
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/*  Smartphones in portrait mode  */
+@media only screen and (max-width: 420px) {
+  body {
+    width: 100%;
+  }
+  .key-span-black, .key-span-black svg, .key-span-black svg rect {
+    width: 31px !important;
+    margin-left: 0.5% !important;
+    margin-top: -1px;
+    -webkit-box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 6px 4px -3px rgba(0, 0, 0, 0.4);
+    border-radius: 2px 2px 13px 13px;
+  }
+  .key-span-white, .key-span-white svg, .key-span-white svg rect {
+    /*margin-right: 22px !important;
+        */
+    border-radius: 2px 2px 17px 17px;
+    width: 45px;
+  }
+  .key-span-white {
+    background: -webkit-gradient(linear, left top, left bottom, from(#b5b5b5), color-stop(1.48%, #fff), color-stop(3.95%, #d3d3d3), color-stop(93.6%, #a5a5a5), color-stop(94.62%, #d1d1d1), color-stop(95.57%, #bababa), color-stop(96.44%, #e0e0e0), color-stop(97.67%, #c1c1c1), color-stop(98.85%, #a0a0a0), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(#b5b5b5 0%, #fff 1.48%, #d3d3d3 3.95%, #a5a5a5 93.6%, #d1d1d1 94.62%, #bababa 95.57%, #e0e0e0 96.44%, #c1c1c1 97.67%, #a0a0a0 98.85%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(#b5b5b5 0%, #fff 1.48%, #d3d3d3 3.95%, #a5a5a5 93.6%, #d1d1d1 94.62%, #bababa 95.57%, #e0e0e0 96.44%, #c1c1c1 97.67%, #a0a0a0 98.85%, rgba(0, 0, 0, 0) 100%);
+    -webkit-box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.4);
+    box-shadow: 2px 6px 4px -3px rgba(255, 255, 255, 0.4);
+    border-radius: 2px 2px 17px 17px;
+    background-size: 20px 100%;
+    width: 45px !important;
+  }
+  .piano-body {
+    height: 100% !important;
+    width: 90vw;
+    height: 24rem;
+    margin: 0px auto;
+    padding-left: 7px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-image: -o-linear-gradient(#454545 32px, #000 278px);
+    background: #2b2b2b;
+    background: -o-linear-gradient(top, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#2b2b2b), color-stop(3%, #3b3b3b), color-stop(15%, #525252), color-stop(38%, black), color-stop(90%, #191919), to(#343434));
+    background: linear-gradient(180deg, #2b2b2b 0%, #3b3b3b 3%, #525252 15%, black 38%, #191919 90%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2b2b2b",endColorstr="#343434",GradientType=1);
+    border: 2px solid black;
+  }
+  .slider {
+    margin: 0px;
+    height: 18rem;
+    display: block;
+    overflow-x: auto;
+    /* background-image: linear-gradient(#454545 32px, #000 278px); */
+  }
+  #menu-div {
+    margin: 8px;
+    height: 88px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #3c3c3c;
+    background: -o-linear-gradient(top, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), color-stop(3%, #222222), color-stop(10%, black), color-stop(50%, #212020), color-stop(90%, black), color-stop(95%, #191919), to(#343434));
+    background: linear-gradient(180deg, #3c3c3c 0%, #222222 3%, black 10%, #212020 50%, black 90%, #191919 95%, #343434 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c3c3c",endColorstr="#343434",GradientType=1);
+  }
+  ::-webkit-scrollbar:horizontal {
+    top: -10px;
+    position: relative;
+    height: 30px;
+    background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-mob-port.png");
+    background-position-y: 0px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track:horizontal {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 30px;
+    background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-mob.png");
+    background-size: 100%;
+  }
+  ::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 10px;
+    height: 20px;
+    background: url("https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets//scroll-thumb.png");
+    background-position: center;
+    background-size: 100% 40%;
+    background-repeat: no-repeat;
+  }
+}
+
+.menu-table {
+  color: #FF8300;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.menu-table td {
+  margin: 20px;
+}
+
+.menu-left {
+  text-align: right;
+}

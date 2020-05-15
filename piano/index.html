@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes" />
+	<title>Virtual Piano v1</title>
+    <meta name="description" content="">
+	<link rel="shortcut icon" href="" type="image/x-icon">
+	<link rel="icon" href="" type="image/x-icon">
+	<!-- <link rel="stylesheet" type="text/css" href="css/main.min.css"> -->
+	
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>   
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js" integrity="sha256-lrZTgsdM1iVdRigETFOU8u8/BmLX1ysQ8bzrULbuVFU="
+    crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+   <!-- <link rel="stylesheet" href="../wp-content/themes/generatepress_child/js-dev/mainv3.css"> -->
+    <!-- <link rel="stylesheet" href="https://devv.virtualpiano.net/wp-content/uploads/custom-css-js/mainv3.css"> -->
+    <link rel="stylesheet" href="css/main.min.css">
+    
+ 
+ 
+  
+  
+
+
+</head>
+
+<body>
+    <!-- <div id="loading-scr">
+        <div class="load-wrap">
+        <img id="loading-logo" style="margin: 0px auto;" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets/piano-logo.png"/>
+        </div>
+    </div> -->
+    <div id="piano-content">
+        
+        <div class="container" id="piano-div">            
+            <p>
+                <button id='sustain-button' class='sustain-button'>Sustain</button>
+                <button id='piano-switch' class='sustain-button'>Piano 1</button>
+                <button id='key-assist-btn' class='sustain-button' style="display: block;margin: 14px auto;">Key Assist ON</button>
+
+
+                <select id='song-search' style='width: 200px;'>
+                    <option value='0'>Select a Song</option>                
+                    
+                </select>
+        
+            </p>
+            <div class='song-wrapper'>
+                <h4 id='song-title'></h4>
+                <p id='song-text'></p>                
+            </div>
+            <br/>
+            <div id='piano-body' class='piano-body'>
+                <div id='menu-div' class="piano-menu">
+                    <div class="piano-menu__top">
+                        <div class="piano-menu__speaker"></div>
+                        <div class="piano-menu__search">
+                            <div>
+                                <h3>Select song</h3>
+                                <input id="search-input" type="text" placeholder="Search music sheets to play…">
+                            </div>
+                            <div>
+                                <h3>Just play</h3>
+                                <p>USE YOUR COMPUTER KEYBOARD TO PLAY YOUR CHOSEN SONG</p>
+                            </div>
+                        </div>
+                        <div class="piano-menu__speaker right"></div>
+                    </div>
+                    <div class="piano-menu__bottom">
+                        <ul>
+                            <li class="active"><a href="">Record</a></li>
+                            <li><a href="">Key assist</a></li>
+                            <li><a href="">Autoplay</a></li>
+                            <li><a href="">Metronome</a></li>
+                            <li><a href="">Sustain</a></li>
+                            <li><a href="">Styles</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="menu-div-low"></div>
+                <div class='slider'>                    
+                    <div id="Keyboard"></div>                
+                </div>
+    
+</div>
+<svg>
+        <defs>        
+       
+            <linearGradient id='grad-white-hover' xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <stop offset="0" stop-color="#b5b5b5"/>
+                <stop offset="0.015" stop-color="#fff"/>
+                <stop offset="0.892" stop-color="#dbdbdb"/>
+                <stop offset="0.913" stop-color="#f4f4f4"/>
+                <stop offset="0.922" stop-color="#e0e0e0"/>
+                <stop offset="0.965" stop-color="#faf8f8"/>
+                <stop offset="0.974" stop-color="#fff"/>
+                <stop offset="1" stop-color="#fff"/>
+              </linearGradient>
+
+            <linearGradient id='grad-black-hover' xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <stop offset="0" stop-color="#383838"/>
+                <stop offset="0.025"/>
+                <stop offset="0.039" stop-color="#121212"/>
+                <stop offset="0.133" stop-color="#272727"/>
+                <stop offset="0.852" stop-color="#343434"/>
+                <stop offset="0.877" stop-color="#141414"/>
+                <stop offset="0.887" stop-color="#343434"/>
+                <stop offset="0.916" stop-color="#2b2b2b"/>
+                <stop offset="1"/>
+              </linearGradient>
+
+            <linearGradient id="grad-white" xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <stop offset="0" stop-color="#b5b5b5"/>
+                <stop offset="0.015" stop-color="#fff"/>
+                <stop offset="0.892" stop-color="#fff"/>
+                <stop offset="0.913" stop-color="#f4f4f4"/>
+                <stop offset="0.922" stop-color="#e0e0e0"/>
+                <stop offset="0.965" stop-color="#faf8f8"/>
+                <stop offset="0.974" stop-color="#fff"/>
+                <stop offset="1" stop-color="#fff"/>
+              </linearGradient>
+
+              <linearGradient id="grad-black" xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <stop offset="0" stop-color="#383838"/>
+                <stop offset="0.025"/>
+                <stop offset="0.039" stop-color="#121212"/>
+                <stop offset="0.094" stop-color="#272727"/>
+                <stop offset="0.852" stop-color="#585858"/>
+                <stop offset="0.877" stop-color="#141414"/>
+                <stop offset="0.887" stop-color="#343434"/>
+                <stop offset="0.921" stop-color="#2b2b2b"/>
+                <stop offset="1"/>
+              </linearGradient>  
+
+        </defs>   
+    </svg>     
+
+    </div>
+
+    <script type="text/javascript" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/loadingScreen.js"></script>
+    <script type="text/javascript" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/external-js/nprogress.js" ></script> 
+    <script type="text/javascript" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/external-js/NexusUI.js" ></script>
+    <script type="text/javascript" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/external-js/Tone.js" ></script>
+    
+    <script type="text/javascript" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/songSearch.js"></script>
+    
+    <script type="text/javascript" src="js/scripts.min.js"></script>
+    
+
+
+
+
+
+</body>
+
+</html>

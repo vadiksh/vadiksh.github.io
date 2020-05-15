@@ -24,7 +24,7 @@ $(function() {
 		if (window.location.hash) {
 		    var href = window.location.hash;
 		    $('body,html').animate({
-		        scrollTop: $(href).offset().top - 20
+		        scrollTop: $(href).offset().top - 90
 		    }, 500)
 		}
 	}
@@ -39,10 +39,10 @@ $(function() {
          $('.delivery-sticky').removeClass('fixed');
        }
      } else {
-       if (scrolled > 245) {
+       if (scrolled > 225) {
          $('.delivery-sticky').addClass('fixed');
        }
-       if (scrolled <= 245) {
+       if (scrolled <= 225) {
          $('.delivery-sticky').removeClass('fixed');
        }
      }

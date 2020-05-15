@@ -7,9 +7,16 @@ $(function() {
 	$('.career__categ li').click(function() {
 	    $(this).addClass('active').siblings().removeClass('active');
 	    $('.career__list > li').eq($(this).index()).addClass('active').siblings().removeClass('active');
-	    $('body,html').animate({
-	    	scrollTop: $('.career__list').offset().top - 90
-	    }, 500)
+	    
+	    if ($(window).width() < 1024) {
+	    	$('body,html').animate({
+	    		scrollTop: $('.career__list').offset().top - 40
+	    	}, 500)
+	    } else {
+	    	$('body,html').animate({
+	    		scrollTop: $('.career__list').offset().top - 90
+	    	}, 500)
+	    }
 	})
 	if (window.location.hash) {
 	    var href = window.location.hash;
