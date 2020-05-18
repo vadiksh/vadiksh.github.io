@@ -176,7 +176,7 @@ pianO2.chain(vol2, Tone.Master);
 
 
 var keyMap = {
-    '1': 24,'!': 25,'2': 26,'@': 27,'3': 28,'4': 29,'$': 30,'5': 31,'%': 32,'6': 33,'^': 34,'7': 35,'8': 36,'*': 37,'9': 38,'(': 39,'0': 40,'q': 41,'Q': 42,'w': 43,'W': 44,'e': 45,'E': 46,'r': 47,'t': 48,'T': 49,'y': 50,'Y': 51,'u': 52,'i': 53,'I': 54,'o': 55,'O': 56,'p': 57,'P': 58,'a': 59,'s': 60,'S': 61,'d': 62,'D': 63,'f': 64,'g': 65,'G': 66,'h': 67,'H': 68,'j': 69,'J': 70,'k': 71,'l': 72,'L': 73,'z': 74,'Z': 75,'x': 76,'c': 77,'C': 78,'v': 79,'V': 80,'b': 81,'B': 82,'n': 83,'m': 84
+    '1': 24,'!': 25,'2': 26,'@': 27,'3': 28,'4': 29,'$': 30,'5': 31,'%': 32,'6': 33,'ˆ': 34,'7': 35,'8': 36,'*': 37,'9': 38,'(': 39,'0': 40,'q': 41,'Q': 42,'w': 43,'W': 44,'e': 45,'E': 46,'r': 47,'t': 48,'T': 49,'y': 50,'Y': 51,'u': 52,'i': 53,'I': 54,'o': 55,'O': 56,'p': 57,'P': 58,'a': 59,'s': 60,'S': 61,'d': 62,'D': 63,'f': 64,'g': 65,'G': 66,'h': 67,'H': 68,'j': 69,'J': 70,'k': 71,'l': 72,'L': 73,'z': 74,'Z': 75,'x': 76,'c': 77,'C': 78,'v': 79,'V': 80,'b': 81,'B': 82,'n': 83,'m': 84
     };
 
 
@@ -249,7 +249,7 @@ document.addEventListener("keydown", (e) => {
     
 
        if (e.keyCode >= 48 && e.keyCode <= 90)  {
-        console.log(Tone.Frequency(keyMap[e.key], "midi").toNote());
+        // console.log(Tone.Frequency(keyMap[e.key], "midi").toNote());
        pianO.triggerAttack(Tone.Frequency(keyMap[e.key], "midi").toNote()); 
      //  e.preventDefault();
        pressed = true;
@@ -261,7 +261,7 @@ document.addEventListener("keydown", (e) => {
 
 document.addEventListener("keyup", (e) => {      
           
-    console.log(e.key);
+    // console.log(e.key);
     if (e.keyCode >= 48 && e.keyCode <= 90)  {  
          if (sustClicked){
             pianO.triggerRelease(Tone.Frequency(keyMap[e.key], "midi").toNote());    
@@ -271,8 +271,26 @@ document.addEventListener("keyup", (e) => {
      animateKey('key_'+ keyMap[e.key]);  
      //   e.preventDefault();      
     }
+
+
+    if (!$('.piano-menu__search-box').hasClass('active')) {
+        $('.piano-menu__played').addClass('active').siblings().removeClass('active');
+
+        console.log(Tone.Frequency(keyMap[e.key], "midi").toNote());
+        if(Tone.Frequency(keyMap[e.key], "midi").toNote() !== 'undefined-Infinity') {
+
+            $('#piano-chord').html(Tone.Frequency(keyMap[e.key], "midi").toNote());
+            $('#piano-key').html(e.key);
+            $('#piano-key-history').append(e.key);
+        }
+        
+    }
 });
 
+$('.piano-menu__played-back').click(function() {
+    $('.piano-menu__search').addClass('active').siblings().removeClass('active');
+    $('#piano-key-history').html('');
+})
 
 }
 
@@ -286,12 +304,12 @@ resizePiano(x);
 x.addListener(resizePiano);
 
 function resizePiano(x) {
-	if (x.matches) {
+    if (x.matches) {
         buttons.resize(1200, 150);
-		Tone.context.lookAhead = 0.1;
+        Tone.context.lookAhead = 0.1;
     } else {
        // buttons.resize(1000, 150);
-		Tone.context.lookAhead = 0;
+        Tone.context.lookAhead = 0;
     }
 }*/
 
@@ -320,7 +338,6 @@ window.onload = function(){
             if (key.getAttribute('fill') === "url('#grad-black')") {
                key.classList.add('key-black');
                span.classList.add('key-span-black');
-               // span.css({'height': '136px'})
                span.id = 'span_b_' + keyIds[i];
                $('<label class="keyassist keylabel-b">'+keyNames[i-1]+'<br>+<br>⇧' +'<label>').appendTo(span);
 
@@ -356,7 +373,7 @@ window.onload = function(){
         console.log('resized! mm');
     } 
 
-	    var assistButton = document.getElementById('key-assist-btn');
+        var assistButton = document.getElementById('key-assist-btn');
     var assistClicked = false;
 
     assistButton.addEventListener('click', function(e) {        
@@ -380,6 +397,29 @@ window.onload = function(){
     })
   
 
+    // open search box
+    $('.piano-menu__search-box').click(function() {
+        if ($('.piano-menu__search input').val()) {
+            $('.piano-menu__search-results').addClass('active');
+        }
+        $(this).addClass('active')
+    })
+
+    // close search box if clicked outside of search box
+    $(document).on('click', function(e) {
+        if ($(e.target)[0] !== $('.piano-menu__search-box')[0] && $(e.target)[0] !== $('.piano-menu__search-box input')[0]) {
+            $('.piano-menu__search-box, .piano-menu__search-results').removeClass('active');
+        }
+    })
+
+    $('.piano-menu__search input').on('input', function() {
+        // if search input !== 0 then reveal the search results
+        if ($(this).val()) {
+            $(this).next().addClass('active');
+        } else {
+            $(this).next().removeClass('active');
+        }
+    })
 }
 
 

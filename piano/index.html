@@ -36,112 +36,140 @@
         <img id="loading-logo" style="margin: 0px auto;" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets/piano-logo.png"/>
         </div>
     </div> -->
-    <div id="piano-content">
+<div id="piano-content">
         
-        <div class="container" id="piano-div">            
-            <p>
-                <button id='sustain-button' class='sustain-button'>Sustain</button>
-                <button id='piano-switch' class='sustain-button'>Piano 1</button>
-                <button id='key-assist-btn' class='sustain-button' style="display: block;margin: 14px auto;">Key Assist ON</button>
+    <div class="container" id="piano-div">            
+        <p>
+            <button id='sustain-button' class='sustain-button'>Sustain</button>
+            <button id='piano-switch' class='sustain-button'>Piano 1</button>
+            <button id='key-assist-btn' class='sustain-button' style="display: block;margin: 14px auto;">Key Assist ON</button>
 
 
-                <select id='song-search' style='width: 200px;'>
-                    <option value='0'>Select a Song</option>                
-                    
-                </select>
-        
-            </p>
-            <div class='song-wrapper'>
-                <h4 id='song-title'></h4>
-                <p id='song-text'></p>                
-            </div>
+            <select id='song-search' style='width: 200px;'>
+                <option value='0'>Select a Song</option>                
+                
+            </select>
+    
+        </p>
+        <div class='song-wrapper'>
+            <h4 id='song-title'></h4>
+            <p id='song-text'></p>                
+        </div>
+
             <br/>
-            <div id='piano-body' class='piano-body'>
-                <div id='menu-div' class="piano-menu">
-                    <div class="piano-menu__top">
-                        <div class="piano-menu__speaker"></div>
-                        <div class="piano-menu__search">
+        <div id='piano-body' class='piano-body'>
+            <div id='menu-div' class="piano-menu">
+                <div class="piano-menu__top">
+                    <div class="piano-menu__speaker"></div>
+                    <div class="piano-menu__panel">
+                        <div class="piano-menu__search active">
                             <div>
                                 <h3>Select song</h3>
-                                <input id="search-input" type="text" placeholder="Search music sheets to play…">
+                                <div class="piano-menu__search-box">
+                                    <input id="search-input" type="text" placeholder="Search music sheets to play…">
+                                    <ul class="piano-menu__search-results">
+                                        <li>Happy Days – Pratt</li>
+                                        <li>Happy Days – Pratt</li>
+                                        <li>Happy Days – Pratt</li>
+                                        <li>Happy Days – Pratt</li>
+                                    </ul>
+                                    <span class="piano-menu__search-close"></span>
+                                </div>
                             </div>
                             <div>
                                 <h3>Just play</h3>
                                 <p>USE YOUR COMPUTER KEYBOARD TO PLAY YOUR CHOSEN SONG</p>
                             </div>
                         </div>
-                        <div class="piano-menu__speaker right"></div>
+                        <div class="piano-menu__played">
+                            <div class="piano-menu__chord">
+                                <span id="piano-chord"></span>
+                                <span id="piano-key"></span>
+                            </div>
+                            <p class="piano-menu__history" id="piano-key-history">
+                                
+                            </p>
+                            <div class="piano-menu__played-functions">
+                                <span class="piano-menu__played-back"></span>
+                                <span class="piano-menu__played-copy"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="piano-menu__bottom">
-                        <ul>
-                            <li class="active"><a href="">Record</a></li>
-                            <li><a href="">Key assist</a></li>
-                            <li><a href="">Autoplay</a></li>
-                            <li><a href="">Metronome</a></li>
-                            <li><a href="">Sustain</a></li>
-                            <li><a href="">Styles</a></li>
-                        </ul>
-                    </div>
+
+                    
+                    <div class="piano-menu__speaker right"></div>
                 </div>
-                <div id="menu-div-low"></div>
-                <div class='slider'>                    
-                    <div id="Keyboard"></div>                
+                <div class="piano-menu__bottom">
+                    <ul>
+                        <li class="active"><a href="">Record</a></li>
+                        <li><a href="">Key assist</a></li>
+                        <li><a href="">Autoplay</a></li>
+                        <li><a href="">Metronome</a></li>
+                        <li><a href="">Sustain</a></li>
+                        <li><a href="">Styles</a></li>
+                    </ul>
                 </div>
-    
-</div>
-<svg>
-        <defs>        
-       
-            <linearGradient id='grad-white-hover' xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-                <stop offset="0" stop-color="#b5b5b5"/>
-                <stop offset="0.015" stop-color="#fff"/>
-                <stop offset="0.892" stop-color="#dbdbdb"/>
-                <stop offset="0.913" stop-color="#f4f4f4"/>
-                <stop offset="0.922" stop-color="#e0e0e0"/>
-                <stop offset="0.965" stop-color="#faf8f8"/>
-                <stop offset="0.974" stop-color="#fff"/>
-                <stop offset="1" stop-color="#fff"/>
-              </linearGradient>
+            </div>
+            <div id="menu-div-low"></div>
+            <div class='slider'>                    
+                <div id="Keyboard"></div>                
+            </div>
 
-            <linearGradient id='grad-black-hover' xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-                <stop offset="0" stop-color="#383838"/>
-                <stop offset="0.025"/>
-                <stop offset="0.039" stop-color="#121212"/>
-                <stop offset="0.133" stop-color="#272727"/>
-                <stop offset="0.852" stop-color="#343434"/>
-                <stop offset="0.877" stop-color="#141414"/>
-                <stop offset="0.887" stop-color="#343434"/>
-                <stop offset="0.916" stop-color="#2b2b2b"/>
-                <stop offset="1"/>
-              </linearGradient>
+        </div>
+        <svg>
+            <defs>        
+           
+                <linearGradient id='grad-white-hover' xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                    <stop offset="0" stop-color="#b5b5b5"/>
+                    <stop offset="0.015" stop-color="#fff"/>
+                    <stop offset="0.892" stop-color="#dbdbdb"/>
+                    <stop offset="0.913" stop-color="#f4f4f4"/>
+                    <stop offset="0.922" stop-color="#e0e0e0"/>
+                    <stop offset="0.965" stop-color="#faf8f8"/>
+                    <stop offset="0.974" stop-color="#fff"/>
+                    <stop offset="1" stop-color="#fff"/>
+                  </linearGradient>
 
-            <linearGradient id="grad-white" xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-                <stop offset="0" stop-color="#b5b5b5"/>
-                <stop offset="0.015" stop-color="#fff"/>
-                <stop offset="0.892" stop-color="#fff"/>
-                <stop offset="0.913" stop-color="#f4f4f4"/>
-                <stop offset="0.922" stop-color="#e0e0e0"/>
-                <stop offset="0.965" stop-color="#faf8f8"/>
-                <stop offset="0.974" stop-color="#fff"/>
-                <stop offset="1" stop-color="#fff"/>
-              </linearGradient>
+                <linearGradient id='grad-black-hover' xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                    <stop offset="0" stop-color="#383838"/>
+                    <stop offset="0.025"/>
+                    <stop offset="0.039" stop-color="#121212"/>
+                    <stop offset="0.133" stop-color="#272727"/>
+                    <stop offset="0.852" stop-color="#343434"/>
+                    <stop offset="0.877" stop-color="#141414"/>
+                    <stop offset="0.887" stop-color="#343434"/>
+                    <stop offset="0.916" stop-color="#2b2b2b"/>
+                    <stop offset="1"/>
+                  </linearGradient>
 
-              <linearGradient id="grad-black" xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-                <stop offset="0" stop-color="#383838"/>
-                <stop offset="0.025"/>
-                <stop offset="0.039" stop-color="#121212"/>
-                <stop offset="0.094" stop-color="#272727"/>
-                <stop offset="0.852" stop-color="#585858"/>
-                <stop offset="0.877" stop-color="#141414"/>
-                <stop offset="0.887" stop-color="#343434"/>
-                <stop offset="0.921" stop-color="#2b2b2b"/>
-                <stop offset="1"/>
-              </linearGradient>  
+                <linearGradient id="grad-white" xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                    <stop offset="0" stop-color="#b5b5b5"/>
+                    <stop offset="0.015" stop-color="#fff"/>
+                    <stop offset="0.892" stop-color="#fff"/>
+                    <stop offset="0.913" stop-color="#f4f4f4"/>
+                    <stop offset="0.922" stop-color="#e0e0e0"/>
+                    <stop offset="0.965" stop-color="#faf8f8"/>
+                    <stop offset="0.974" stop-color="#fff"/>
+                    <stop offset="1" stop-color="#fff"/>
+                  </linearGradient>
 
-        </defs>   
-    </svg>     
+                  <linearGradient id="grad-black" xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                    <stop offset="0" stop-color="#383838"/>
+                    <stop offset="0.025"/>
+                    <stop offset="0.039" stop-color="#121212"/>
+                    <stop offset="0.094" stop-color="#272727"/>
+                    <stop offset="0.852" stop-color="#585858"/>
+                    <stop offset="0.877" stop-color="#141414"/>
+                    <stop offset="0.887" stop-color="#343434"/>
+                    <stop offset="0.921" stop-color="#2b2b2b"/>
+                    <stop offset="1"/>
+                  </linearGradient>  
+
+            </defs>   
+        </svg>     
 
     </div>
+</div> 
 
     <script type="text/javascript" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/loadingScreen.js"></script>
     <script type="text/javascript" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/external-js/nprogress.js" ></script> 
