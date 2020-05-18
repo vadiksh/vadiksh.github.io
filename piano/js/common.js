@@ -273,7 +273,7 @@ document.addEventListener("keyup", (e) => {
     }
 
 
-    if (!$('.piano-menu__search-box').hasClass('active')) {
+    if (!$('.piano-menu__search-box').hasClass('active') && $('.piano-menu__search').hasClass('active')) {
         $('.piano-menu__played').addClass('active').siblings().removeClass('active');
 
         console.log(Tone.Frequency(keyMap[e.key], "midi").toNote());
@@ -284,6 +284,9 @@ document.addEventListener("keyup", (e) => {
             $('#piano-key-history').append(e.key);
         }
         
+    }
+    if ($('.piano-menu__song').hasClass('active')) {
+        $('.piano-menu__song-start').addClass('hidden');
     }
 });
 
@@ -411,6 +414,10 @@ window.onload = function(){
             $('.piano-menu__search-box, .piano-menu__search-results').removeClass('active');
         }
     })
+    $('.close').click(function() {
+        $('.piano-menu__search').addClass('active').siblings().removeClass('active');
+        $('.piano-menu__song-start').removeClass('hidden');
+    })
 
     $('.piano-menu__search input').on('input', function() {
         // if search input !== 0 then reveal the search results
@@ -419,6 +426,16 @@ window.onload = function(){
         } else {
             $(this).next().removeClass('active');
         }
+    })
+
+    // PICK A SONG FROM SEARCH
+    $('.piano-menu__search-results li').click(function() {
+        $('.piano-menu__song').addClass('active').siblings().removeClass('active');
+    })
+    
+    $('.stats-toggle').click(function () {
+        $(this).toggleClass('active');
+        $('.piano-menu__song-stats').toggleClass('invisible');
     })
 }
 

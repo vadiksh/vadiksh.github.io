@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.186" height="13.373" viewBox="0 0 14.186 13.373">
+  <g id="_003-piano-1" data-name="003-piano-1" transform="translate(0 0)">
+    <path id="Path_394" data-name="Path 394" d="M341.671,6.017H339.21V12.49c0,.364-.193.8-.588.8h-.588v6.1h3.638a.812.812,0,0,0,.749-.856V6.766A.719.719,0,0,0,341.671,6.017Z" transform="translate(-328.233 -6.017)" fill="#4e4e4e"/>
+    <g id="Group_778" data-name="Group 778" transform="translate(0 0)">
+      <path id="Path_397" data-name="Path 397" d="M6.045,13.292a.89.89,0,0,1-.8-.8V6.017H2.889a.812.812,0,0,0-.856.749V18.535a.9.9,0,0,0,.856.856H6.419v-6.1Z" transform="translate(-2.033 -6.017)" fill="#4e4e4e"/>
+      <path id="Path_398" data-name="Path 398" d="M174.045,13.292a.89.89,0,0,1-.8-.8V6.017H171.21V12.49c0,.364-.193.8-.588.8h-.588v6.1h4.386v-6.1Z" transform="translate(-165.132 -6.017)" fill="#4e4e4e"/>
+    </g>
+  </g>
+</svg>
