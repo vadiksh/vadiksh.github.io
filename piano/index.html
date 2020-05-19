@@ -166,8 +166,23 @@
                                 
                             </p>
                             <div class="piano-menu__played-functions">
-                                <span class="piano-menu__played-back"></span>
-                                <span class="piano-menu__played-copy"></span>
+                                <span class="piano-menu__played-back">
+                                   <svg id="home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
+                                     <g>
+                                       <g>
+                                         <path d="M14.748,18.9l-6.73-6.022a.776.776,0,0,0-1.036,0L.252,18.9a.741.741,0,0,0-.2.831.764.764,0,0,0,.717.482H1.845v6.033a.437.437,0,0,0,.441.433H5.975a.437.437,0,0,0,.441-.433V22.579H8.584v3.663a.437.437,0,0,0,.441.433h3.689a.437.437,0,0,0,.441-.433V20.209H14.23a.764.764,0,0,0,.717-.482A.742.742,0,0,0,14.748,18.9Z" transform="translate(0 -13)" fill="#4e4e4e"/>
+                                       </g>
+                                     </g>
+                                     
+                                   </svg>
+
+                                </span>
+                                <span class="piano-menu__played-copy">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17">
+                                      <path d="M5.363,115.556a2.608,2.608,0,0,1-2.605-2.605v-6.283H1.686A1.687,1.687,0,0,0,0,108.354v8.275a1.687,1.687,0,0,0,1.686,1.686H9.347a1.687,1.687,0,0,0,1.686-1.686v-1.073Zm0,0" transform="translate(1.5 -103.5)" fill="#4e4e4e"/>
+                                      <path d="M137.807,1.686A1.685,1.685,0,0,0,136.121,0h-6.436A1.685,1.685,0,0,0,128,1.686V9.347a1.685,1.685,0,0,0,1.686,1.686h6.436a1.685,1.685,0,0,0,1.686-1.686Zm0,0" transform="translate(-122 -0.6)" fill="#4e4e4e"/>
+                                    </svg>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -178,12 +193,38 @@
                 </div>
                 <div class="piano-menu__bottom">
                     <ul>
-                        <li class="active"><a href="">Record</a></li>
-                        <li><a href="">Key assist</a></li>
-                        <li><a href="">Autoplay</a></li>
-                        <li><a href="">Metronome</a></li>
-                        <li><a href="">Sustain</a></li>
-                        <li><a href="">Styles</a></li>
+                        <li>
+                            <a class="record-btn orange" href="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+                                    <g>
+                                      <path d="M109.916,106.667a3.25,3.25,0,1,0,3.25,3.25A3.251,3.251,0,0,0,109.916,106.667Z" transform="translate(-103.416 -103.417)" fill="#e01e17"/>
+                                      <path d="M6.5,0A6.5,6.5,0,1,0,13,6.5,6.5,6.5,0,0,0,6.5,0Zm0,11.7a5.2,5.2,0,1,1,5.2-5.2A5.2,5.2,0,0,1,6.5,11.7Z" fill="#e01e17"/>
+                                    </g>
+                                </svg>Record
+                            </a>
+                        </li>
+                        <li><a class="assist-btn active" href="">Key assist</a></li>
+                        <li>
+                            <a class="metronome-btn" href="">Metronome</a>
+                            <div class="submenu metronome">
+                                <div class="close"></div>
+                                <div class="metronome__menu">
+                                    <span class="metronome__play"></span>
+                                    <div>
+                                        <span class="metronome__bpm">50</span>
+                                        <p>beats<br> per<br> minute</p>
+                                    </div>
+                                </div>
+                                <div class="metronome__range">
+                                    <span>–</span>
+                                    <input type="range">
+                                    <span>+</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a class="sound-btn" href="">Sound</a></li>
+                        <li><a class="styles-btn" href="">Styles</a></li>
+                        <li><a class="save-btn" href="">Save</a></li>
                     </ul>
                 </div>
             </div>

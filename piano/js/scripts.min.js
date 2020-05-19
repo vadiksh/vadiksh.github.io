@@ -413,8 +413,11 @@ window.onload = function(){
         if ($(e.target)[0] !== $('.piano-menu__search-box')[0] && $(e.target)[0] !== $('.piano-menu__search-box input')[0]) {
             $('.piano-menu__search-box, .piano-menu__search-results').removeClass('active');
         }
+        if ($(e.target) !== $('.submenu')) {
+            // $('.submenu').removeClass('active');
+        }
     })
-    $('.close').click(function() {
+    $('.piano-menu__top .close').click(function() {
         $('.piano-menu__search').addClass('active').siblings().removeClass('active');
         $('.piano-menu__song-start').removeClass('hidden');
     })
@@ -436,6 +439,40 @@ window.onload = function(){
     $('.stats-toggle').click(function () {
         $(this).toggleClass('active');
         $('.piano-menu__song-stats').toggleClass('invisible');
+    })
+
+    $('.piano-menu__bottom a').click(function(e) {
+        e.preventDefault();
+    })
+
+    $('.record-btn').click(function(e) {
+        if ($(this).hasClass('recording')) {
+            $(this).removeClass('recording');
+        } else {
+            $(this).addClass('active recording');
+        }
+
+    });
+    $('.assist-btn').click(function() {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            $('.keyassist').css({'opacity': '0', 'transition': '.3s'});
+        } else {
+            $(this).addClass('active');
+            $('.keyassist').css({'opacity': '1', 'transition': '.3s'});
+        }
+    })
+    $('.metronome-btn').click(function(e) {
+        $('.metronome').addClass('active');
+    });
+
+    $('.metronome__play').click(function() {
+        $(this).toggleClass('played');
+        $('.metronome-btn').toggleClass('active');
+    })
+
+    $('.submenu .close').click(function() {
+        $('.submenu').removeClass('active');
     })
 }
 
