@@ -66,7 +66,7 @@
                             <div>
                                 <h3>Select song</h3>
                                 <div class="piano-menu__search-box">
-                                    <input id="search-input" type="text" placeholder="Search music sheets to play…">
+                                    <input id="search-input" name="search-input" type="text" placeholder="Search music sheets to play…">
                                     <ul class="piano-menu__search-results">
                                         <li>Happy Days – Pratt</li>
                                         <li>Happy Days – Pratt</li>
@@ -194,7 +194,7 @@
                 <div class="piano-menu__bottom">
                     <ul>
                         <li>
-                            <a class="record-btn orange" href="">
+                            <a class="piano-menu__bottom-btn record-btn orange" href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
                                     <g>
                                       <path d="M109.916,106.667a3.25,3.25,0,1,0,3.25,3.25A3.251,3.251,0,0,0,109.916,106.667Z" transform="translate(-103.416 -103.417)" fill="#e01e17"/>
@@ -202,10 +202,25 @@
                                     </g>
                                 </svg>Record
                             </a>
+                            <div class="submenu record">
+                                <span class="close"></span>
+                                <div class="record__play">
+                                    <span class="record__play-btn"></span>
+                                    <input type="range" min="0" max="100" id="record" value="0">
+                                    <div class="record__time">
+                                        <span>00:00</span>
+                                        <span>-00:30</span>
+                                    </div>
+                                </div>
+                                <a href="" class="record__link download">Download</a>
+                                <a href="" class="record__link soundcloud">Upload to Soundcloud</a>
+                                <a href="" class="record__link social">Share on social media</a>
+                                
+                            </div>
                         </li>
-                        <li><a class="assist-btn active" href="">Key assist</a></li>
+                        <li><a class="piano-menu__bottom-btn assist-btn active" href="">Key assist</a></li>
                         <li>
-                            <a class="metronome-btn" href="">Metronome</a>
+                            <a class="piano-menu__bottom-btn metronome-btn" href="">Metronome</a>
                             <div class="submenu metronome">
                                 <div class="close"></div>
                                 <div class="metronome__menu">
@@ -222,9 +237,96 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a class="sound-btn" href="">Sound</a></li>
-                        <li><a class="styles-btn" href="">Styles</a></li>
-                        <li><a class="save-btn" href="">Save</a></li>
+                        <li>
+                            <a class="piano-menu__bottom-btn sound-btn" href="">Sound</a>
+                            <div class="submenu sound">
+                                <span class="close"></span>
+                                <label class="sustain">
+                                    <input type="checkbox" checked>
+                                    <span class="sustain__slide sound-input"><span>Sustain</span></span>
+                                </label>
+                                <div class="transpose">
+                                    <div class="sound-input">
+                                        <span class="transpose__sign">–</span>
+                                        <div class="transpose__value">
+                                            <span>0</span> transpose
+                                        </div>
+                                        <span class="transpose__sign increment">+</span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="type">
+                                    <div class="sound-input">
+                                        <div class="type__current">CLASSICAL PIANO</div>
+                                        <select name="piano-type" hidden>
+                                            <option value="CLASSICAL PIANO">CLASSICAL PIANO</option>
+                                            <option value="GRAND CLASSICAL PIANO">GRAND CLASSICAL PIANO</option>
+                                        </select>
+                                        <ul class="type__custom">
+                                            <li class="active">CLASSICAL PIANO</li>
+                                            <li>GRAND CLASSICAL PIANO</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="volume">
+                                    <div class="volume__range sound-input">
+                                        Volume
+                                        <input type="range">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="piano-menu__bottom-btn styles-btn" href="">Styles</a>
+                            <div class="submenu sound">
+                                <span class="close"></span>
+                                <div class="type bg">
+                                    <div class="sound-input">
+                                        <div class="type__current">Background</div>
+                                    </div>
+                                </div>
+                                <div class="type theme">
+                                    <div class="sound-input">
+                                        <div class="type__current">Default theme</div>
+                                        <select name="piano-type" hidden>
+                                            <option value="Default Theme">Default Theme</option>
+                                            <option value="SPRING">SPRING</option>
+                                            <option value="SUMMER">SUMMER</option>
+                                            <option value="AUTUMN">AUTUMN</option>
+                                            <option value="WINTER">WINTER</option>
+                                        </select>
+                                        <ul class="type__custom">
+                                            <li class="active">DEFAULT THEME</li>
+                                            <li>SPRING</li>
+                                            <li>SUMMER</li>
+                                            <li>AUTUMN</li>
+                                            <li>WINTER</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <a class="piano-menu__bottom-btn save-btn" href="">Save</a>
+                            <div class="submenu save">
+                                <span class="close"></span>
+                                <h4>SAVE SETTINGS / PERFORMANCES</h4>
+                                <div class="save__login">
+                                    <h5>Login</h5>
+                                    <p>To save your settings or performance, you need to be logged in:</p>
+                                    <input type="text" name="username" placeholder="username">
+                                    <input type="password" name="password" placeholder="Password">
+                                    <button class="btn">LOGIN</button>
+                                    <span class="save__forgot">Forgot Password</span>
+                                </div>
+                                <div>
+                                    <h5>Register</h5>
+                                    <p>Don’t have an account, register below:</p>
+                                    <button class="btn">Register</button>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -234,7 +336,7 @@
             </div>
 
         </div>
-        <svg>
+        <svg style="position: absolute;">
             <defs>        
            
                 <linearGradient id='grad-white-hover' xmlns="http://www.w3.org/2000/svg" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">

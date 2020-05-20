@@ -443,6 +443,9 @@ window.onload = function(){
 
     $('.piano-menu__bottom a').click(function(e) {
         e.preventDefault();
+        $(this).parent().siblings().find('a').removeClass('opened').next().removeClass('active');
+        $(this).toggleClass('opened');
+        $(this).next().toggleClass('active');
     })
 
     $('.record-btn').click(function(e) {
@@ -462,17 +465,55 @@ window.onload = function(){
             $('.keyassist').css({'opacity': '1', 'transition': '.3s'});
         }
     })
-    $('.metronome-btn').click(function(e) {
-        $('.metronome').addClass('active');
-    });
+    $('.assist-btn').trigger('click');
 
     $('.metronome__play').click(function() {
         $(this).toggleClass('played');
         $('.metronome-btn').toggleClass('active');
     })
 
+    $('.transpose__sign').click(function(e) {
+        var value = $('.transpose__value span').html();
+        if ($(this).hasClass('increment')) {
+            value++;
+        } else {
+            value--;
+        }
+
+        if (value > 0) {
+            value = '+' + value;
+        }
+        $('.transpose__value span').html(value);
+        checkSoundModification();
+    });
+    $('.type__current').click(function(e) {
+        $(this).parents('.type').toggleClass('active');
+    });
+    $('.type__custom li').click(function(e) {
+        $(this).addClass('active').siblings().removeClass('active');
+        $('.type').removeClass('active');
+        $(this).parents('.type').find('option').eq($(this).index()).prop('selected', true);
+        $(this).parents('.type').find('.type__current').html($(this).parents('.type').find('option:selected').html());
+
+        checkSoundModification();
+    });
+
+    
+    $('.sound input').change(function() {
+        checkSoundModification();
+    });
+    function checkSoundModification() {
+        console.log($('.type option:selected').val());
+        if (!$('.sustain input').prop('checked') || $('.transpose__value span').html() !== '0' || $('.type option:selected').val() !== 'CLASSICAL PIANO') {
+            $('.sound-btn').addClass('active');
+        } else {
+            $('.sound-btn').removeClass('active');
+        }
+    }
+
     $('.submenu .close').click(function() {
         $('.submenu').removeClass('active');
+        $('.piano-menu__bottom a').removeClass('opened');
     })
 }
 
