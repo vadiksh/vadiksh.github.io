@@ -38,8 +38,13 @@ loadScr.start();
 
 //document.querySelector("#loading").style.display = 'none';
 window.onload = NProgress.done();
-document.querySelector(".container").style.display = 'block';
-document.querySelector("#piano-div").style.display = 'block';
+// document.querySelector(".container").style.display = 'block';
+// document.querySelector("#piano-div").style.display = 'block';
+
+$('.loading').addClass('loading-progress');
+setTimeout(function() {
+    $('.loading').addClass('loaded');
+}, 3000)
 // create Nexus UI //
 Nexus.colors.accent = "transparent";
 
@@ -146,26 +151,26 @@ var pianoSwitch = document.getElementById('piano-switch');
 
 var switchClicked = false;
 
-pianoSwitch.addEventListener('click', function(e){
-    if(e.repeat){return};
-    pianoSwitch.classList.toggle('clicked');
-    if (!switchClicked){
-        pianoSwitch.textContent = 'PIANO NEW';
-        pianO = pianO2;
-        switchClicked = true;
+// pianoSwitch.addEventListener('click', function(e){
+//     if(e.repeat){return};
+//     pianoSwitch.classList.toggle('clicked');
+//     if (!switchClicked){
+//         pianoSwitch.textContent = 'PIANO NEW';
+//         pianO = pianO2;
+//         switchClicked = true;
         
 
-    } else {
+//     } else {
         
         
-        pianoSwitch.textContent = 'PIANO 1';
-        pianO = pianO1;
-        switchClicked = false;
+//         pianoSwitch.textContent = 'PIANO 1';
+//         pianO = pianO1;
+//         switchClicked = false;
        
         
-    }
+//     }
     
-});
+// });
 
 
 var vol1 = new Tone.Volume(-10);
@@ -184,24 +189,24 @@ var sustainButton = document.getElementById('sustain-button');
 
 var sustClicked = false;
 
-sustainButton.addEventListener('click', function(e){
-    if(e.repeat){return};
-    sustainButton.classList.toggle('clicked');
-    if (!sustClicked){
-        sustainButton.textContent = 'SUSTAIN OFF';
-        sustClicked = true;
+// sustainButton.addEventListener('click', function(e){
+//     if(e.repeat){return};
+//     sustainButton.classList.toggle('clicked');
+//     if (!sustClicked){
+//         sustainButton.textContent = 'SUSTAIN OFF';
+//         sustClicked = true;
         
-        pianO.release = 2;
+//         pianO.release = 2;
 
-    } else {
+//     } else {
         
-        sustainButton.textContent = 'SUSTAIN ON';
-        sustClicked = false;
+//         sustainButton.textContent = 'SUSTAIN ON';
+//         sustClicked = false;
        
-        pianO.release = 10;
-    }
+//         pianO.release = 10;
+//     }
     
-});
+// });
 
 
 
@@ -379,25 +384,25 @@ window.onload = function(){
         var assistButton = document.getElementById('key-assist-btn');
     var assistClicked = false;
 
-    assistButton.addEventListener('click', function(e) {        
+    // assistButton.addEventListener('click', function(e) {        
 
-        if (!assistClicked){
-            assistButton.innerHTML = "key assist off";
-            assistButton.classList.toggle('clicked');
-            assistClicked = true;
+    //     if (!assistClicked){
+    //         assistButton.innerHTML = "key assist off";
+    //         assistButton.classList.toggle('clicked');
+    //         assistClicked = true;
            
-        } else {
-            assistButton.innerHTML = "key assist on";
-            assistButton.classList.toggle('clicked');
-            assistClicked = false;
-        }
+    //     } else {
+    //         assistButton.innerHTML = "key assist on";
+    //         assistButton.classList.toggle('clicked');
+    //         assistClicked = false;
+    //     }
 
-        let labels = document.querySelectorAll('.keyassist');
-        for (let label of labels){
-            label.classList.toggle('hidden');
-        }
+    //     let labels = document.querySelectorAll('.keyassist');
+    //     for (let label of labels){
+    //         label.classList.toggle('hidden');
+    //     }
        
-    })
+    // })
   
 
     // open search box
@@ -412,9 +417,6 @@ window.onload = function(){
     $(document).on('click', function(e) {
         if ($(e.target)[0] !== $('.piano-menu__search-box')[0] && $(e.target)[0] !== $('.piano-menu__search-box input')[0]) {
             $('.piano-menu__search-box, .piano-menu__search-results').removeClass('active');
-        }
-        if ($(e.target) !== $('.submenu')) {
-            // $('.submenu').removeClass('active');
         }
     })
     $('.piano-menu__top .close').click(function() {
@@ -441,31 +443,113 @@ window.onload = function(){
         $('.piano-menu__song-stats').toggleClass('invisible');
     })
 
-    $('.piano-menu__bottom a').click(function(e) {
+    $('.piano-menu__bottom-btn').click(function(e) {
         e.preventDefault();
-        $(this).parent().siblings().find('a').removeClass('opened').next().removeClass('active');
-        $(this).toggleClass('opened');
-        $(this).next().toggleClass('active');
+        if (!$(this).hasClass('record-btn') && !$(this).hasClass('assist-btn')) {
+
+            if (!$(this).hasClass('opened')) {
+                $('.submenu').removeClass('active');
+                
+                if($('.submenu.dragged').length) {
+                    setTimeout(function() {
+                        var classAttr = $('.submenu.dragged').attr('class').split(' ')[1];
+                        var menu = $('.' + classAttr).removeClass('dragged').attr('style', '').detach();
+                        $('a[data-menu="' + classAttr + '"]').after(menu);
+                    }, 400);
+                }
+
+                $(this).addClass('opened').parent().siblings().find('.piano-menu__bottom-btn').removeClass('opened');
+                $(this).next().addClass('active');
+            } else {  
+                $(this).removeClass('opened');
+                $('.submenu').removeClass('active');
+
+                var classAttr = $(this).attr('data-menu');
+                var that = $(this);
+                setTimeout(function() {
+                    that.after($('.' + classAttr).removeClass('dragged').attr('style', ''));
+                }, 400);
+            }
+        }
+        
     })
 
     $('.record-btn').click(function(e) {
         if ($(this).hasClass('recording')) {
-            $(this).removeClass('recording');
+            $(this).removeClass('recording').addClass('opened');
+            $(this).next().addClass('active')
+        } else if ($('.record').hasClass('active')) {
+            $(this).removeClass('opened active');
+            $(this).next().removeClass('active');
         } else {
             $(this).addClass('active recording');
         }
-
     });
-    $('.assist-btn').click(function() {
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-            $('.keyassist').css({'opacity': '0', 'transition': '.3s'});
-        } else {
-            $(this).addClass('active');
-            $('.keyassist').css({'opacity': '1', 'transition': '.3s'});
-        }
+    $('.record .close').click(function() {
+        $('.record-btn').removeClass('opened active');
+        $('.record').removeClass('active');
     })
-    $('.assist-btn').trigger('click');
+     $('.record__play-btn').click(function(e) {
+        $(this).toggleClass('played');
+     });
+
+    // $('.assist-btn').click(function() {
+    //     if ($(this).hasClass('active')) {
+    //         $(this).removeClass('active');
+    //         $('.keyassist').css({'opacity': '0', 'transition': '.3s'});
+    //     } else {
+    //         $(this).addClass('active');
+    //         $('.keyassist').css({'opacity': '1', 'transition': '.3s'});
+    //     }
+    // })
+    // $('.assist-btn').trigger('click');
+
+    var dragBlocks = document.querySelectorAll('.submenu');
+    dragBlocks.forEach((el) => {
+        el.onmousedown = function(event) {
+          if (event.target.classList.contains('submenu')) {
+            let shiftX = event.clientX - el.getBoundingClientRect().left;
+            let shiftY = event.clientY - el.getBoundingClientRect().top;
+
+            $(el).addClass('dragged');
+            el.style.position = 'absolute';
+            el.style.zIndex = 1000;
+            el.style.transition = '0s';
+            document.body.append(el);
+
+            moveAt(event.pageX, event.pageY);
+
+            // moves the dragBlock at (pageX, pageY) coordinates
+            // taking initial shifts into account
+            function moveAt(pageX, pageY) {
+              el.style.left = pageX - shiftX + 'px';
+              el.style.top = pageY - shiftY + 'px';
+            }
+
+            function onMouseMove(event) {
+              moveAt(event.pageX, event.pageY);
+            }
+
+            // move the dragBlock on mousemove
+            document.addEventListener('mousemove', onMouseMove);
+
+            // drop the dragBlock, remove unneeded handlers
+            el.onmouseup = function() {
+              document.removeEventListener('mousemove', onMouseMove);
+              el.onmouseup = null;
+              el.style.transition = '0.4s';
+            };
+
+          }
+          
+        };
+
+        el.ondragstart = function() {
+          return false;
+        };
+    });
+
+  
 
     $('.metronome__play').click(function() {
         $(this).toggleClass('played');
@@ -475,13 +559,13 @@ window.onload = function(){
     $('.transpose__sign').click(function(e) {
         var value = $('.transpose__value span').html();
         if ($(this).hasClass('increment')) {
-            value++;
-        } else {
+            if (value < 5) value++;
+        } else if (value > -5) {
             value--;
         }
 
-        if (value > 0) {
-            value = '+' + value;
+        if (value > 0 && value <= 5) {
+            value = '+' + +value;
         }
         $('.transpose__value span').html(value);
         checkSoundModification();
@@ -497,23 +581,34 @@ window.onload = function(){
 
         checkSoundModification();
     });
-
     
     $('.sound input').change(function() {
         checkSoundModification();
     });
+    $('.sustain input').change(function () {
+        if ($(this).is(':checked')) {
+            console.log('checked');
+        } else {
+            console.log('not');
+        }
+    })
     function checkSoundModification() {
-        console.log($('.type option:selected').val());
         if (!$('.sustain input').prop('checked') || $('.transpose__value span').html() !== '0' || $('.type option:selected').val() !== 'CLASSICAL PIANO') {
             $('.sound-btn').addClass('active');
         } else {
             $('.sound-btn').removeClass('active');
         }
     }
-
-    $('.submenu .close').click(function() {
+    $(document).on('click', '.submenu .close', function(){
         $('.submenu').removeClass('active');
         $('.piano-menu__bottom a').removeClass('opened');
+
+        var that = $(this);
+        setTimeout(function() {
+            var classAttr = that.parent().attr('class').split(' ')[1];
+            var menu = that.parent().removeClass('dragged').attr('style', '').detach();
+            $('a[data-menu="' + classAttr + '"]').after(menu);
+        }, 400);
     })
 }
 

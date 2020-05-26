@@ -31,15 +31,23 @@
 </head>
 
 <body>
-    <!-- <div id="loading-scr">
-        <div class="load-wrap">
-        <img id="loading-logo" style="margin: 0px auto;" src="https://devv.virtualpiano.net/wp-content/themes/generatepress_child/js-dev/assets/piano-logo.png"/>
-        </div>
-    </div> -->
-<div id="piano-content">
+
+
+<div id="piano-content" class="piano-content">
         
+    <div id="loading-scr" class="loading">
+        <div class="loading__container">
+            <div class="loading__icons">
+                <img src="img/logo-orange.svg" alt="">
+            </div>
+            <p class="loading__title">VIRTUAL PIANO IS THE WORLD’S FIRST AND MOST LOVED ONLINE PIANO KEYBOARD</p>
+            <p class="loading__description">Enabling you to <span>play the piano instantly</span>. Become an online pianist and <span>create your own extraordinary music!</span></p>
+            <span class="loading__pros">QUICK. EASY. ENJOYABLE.</span>
+        </div>
+    </div>
+    
     <div class="container" id="piano-div">            
-        <p>
+       <!--  <p>
             <button id='sustain-button' class='sustain-button'>Sustain</button>
             <button id='piano-switch' class='sustain-button'>Piano 1</button>
             <button id='key-assist-btn' class='sustain-button' style="display: block;margin: 14px auto;">Key Assist ON</button>
@@ -49,14 +57,14 @@
                 <option value='0'>Select a Song</option>                
                 
             </select>
-    
         </p>
         <div class='song-wrapper'>
             <h4 id='song-title'></h4>
             <p id='song-text'></p>                
         </div>
+            <br/> -->
 
-            <br/>
+
         <div id='piano-body' class='piano-body'>
             <div id='menu-div' class="piano-menu">
                 <div class="piano-menu__top">
@@ -194,7 +202,7 @@
                 <div class="piano-menu__bottom">
                     <ul>
                         <li>
-                            <a class="piano-menu__bottom-btn record-btn orange" href="">
+                            <a class="piano-menu__bottom-btn record-btn orange" data-menu="record" href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
                                     <g>
                                       <path d="M109.916,106.667a3.25,3.25,0,1,0,3.25,3.25A3.251,3.251,0,0,0,109.916,106.667Z" transform="translate(-103.416 -103.417)" fill="#e01e17"/>
@@ -203,7 +211,10 @@
                                 </svg>Record
                             </a>
                             <div class="submenu record">
-                                <span class="close"></span>
+                                <span class="close">
+                                    <span></span>
+                                    <span></span>
+                                </span>
                                 <div class="record__play">
                                     <span class="record__play-btn"></span>
                                     <input type="range" min="0" max="100" id="record" value="0">
@@ -220,9 +231,12 @@
                         </li>
                         <li><a class="piano-menu__bottom-btn assist-btn active" href="">Key assist</a></li>
                         <li>
-                            <a class="piano-menu__bottom-btn metronome-btn" href="">Metronome</a>
+                            <a class="piano-menu__bottom-btn metronome-btn" data-menu="metronome" href="">Metronome</a>
                             <div class="submenu metronome">
-                                <div class="close"></div>
+                                <div class="close">
+                                    <span></span>
+                                    <span></span>
+                                </div>
                                 <div class="metronome__menu">
                                     <span class="metronome__play"></span>
                                     <div>
@@ -238,9 +252,12 @@
                             </div>
                         </li>
                         <li>
-                            <a class="piano-menu__bottom-btn sound-btn" href="">Sound</a>
-                            <div class="submenu sound">
-                                <span class="close"></span>
+                            <a class="piano-menu__bottom-btn sound-btn" href="" data-menu="sound-menu">Sound</a>
+                            <div class="submenu sound-menu sound">
+                                <span class="close">
+                                    <span></span>
+                                    <span></span>
+                                </span>
                                 <label class="sustain">
                                     <input type="checkbox" checked>
                                     <span class="sustain__slide sound-input"><span>Sustain</span></span>
@@ -277,9 +294,12 @@
                             </div>
                         </li>
                         <li>
-                            <a class="piano-menu__bottom-btn styles-btn" href="">Styles</a>
-                            <div class="submenu sound">
-                                <span class="close"></span>
+                            <a class="piano-menu__bottom-btn styles-btn" href="" data-menu="styles">Styles</a>
+                            <div class="submenu styles sound">
+                                <span class="close">
+                                    <span></span>
+                                    <span></span>
+                                </span>
                                 <div class="type bg">
                                     <div class="sound-input">
                                         <div class="type__current">Background</div>
@@ -308,9 +328,12 @@
                             </div>
                         </li>
                         <li>
-                            <a class="piano-menu__bottom-btn save-btn" href="">Save</a>
+                            <a class="piano-menu__bottom-btn save-btn" href="" data-menu="save">Save</a>
                             <div class="submenu save">
-                                <span class="close"></span>
+                                <span class="close">
+                                    <span></span>
+                                    <span></span>
+                                </span>
                                 <h4>SAVE SETTINGS / PERFORMANCES</h4>
                                 <div class="save__login">
                                     <h5>Login</h5>
