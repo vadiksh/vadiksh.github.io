@@ -147,7 +147,7 @@ pianO = pianO1;
 
 /* PIANO SWITCHER */
 
-var pianoSwitch = document.getElementById('piano-switch');
+// var pianoSwitch = document.getElementById('piano-switch');
 
 var switchClicked = false;
 
@@ -185,7 +185,7 @@ var keyMap = {
     };
 
 
-var sustainButton = document.getElementById('sustain-button');
+// var sustainButton = document.getElementById('sustain-button');
 
 var sustClicked = false;
 
@@ -579,6 +579,16 @@ window.onload = function(){
         $(this).parents('.type').find('option').eq($(this).index()).prop('selected', true);
         $(this).parents('.type').find('.type__current').html($(this).parents('.type').find('option:selected').html());
 
+        if ($('#piano-type option:selected').val() !== 'CLASSICAL PIANO') {
+            pianO = pianO2;
+            switchClicked = true;
+            console.log('grand piano');
+        } else {
+            pianO = pianO1;
+            switchClicked = false;
+        }
+        
+        
         checkSoundModification();
     });
     
@@ -587,9 +597,12 @@ window.onload = function(){
     });
     $('.sustain input').change(function () {
         if ($(this).is(':checked')) {
-            console.log('checked');
+            sustClicked = false;
+            pianO.release = 10;
         } else {
-            console.log('not');
+            sustClicked = true;        
+            pianO.release = 2;
+            console.log('sustain off')
         }
     })
     function checkSoundModification() {
