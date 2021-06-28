@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66.003" height="58" viewBox="0 0 66.003 58">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3482ed"/>
+      <stop offset="1" stop-color="#00a7ff"/>
+    </linearGradient>
+  </defs>
+  <path id="noun_Pyramid_1833484" d="M690.868,61.5l32,56A1,1,0,0,1,722,119H658a1,1,0,0,1-.868-1.5l32-56A1,1,0,0,1,690.868,61.5ZM677.437,86l-5.143,9h35.411l-5.143-9Zm-12.571,22-5.143,9h60.554l-5.143-9Zm43.982-11h-37.7l-5.143,9h47.982ZM683.723,75l-5.143,9H701.42l-5.143-9ZM690,64.016,684.866,73h10.268Z" transform="translate(-656.999 -61)" fill-rule="evenodd" fill="url(#linear-gradient)"/>
+</svg>

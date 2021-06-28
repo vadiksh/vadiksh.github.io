@@ -74,7 +74,7 @@
                             <div>
                                 <h3>Select song</h3>
 
-                                <div class="hamburger"><span></span></div>
+                                <div class="hamburger hamburger-btn"><span></span></div>
 
                                 <div class="piano-menu__search-box">
                                     <input id="search-input" name="search-input" type="text" placeholder="Search music sheets to play…">
@@ -93,14 +93,19 @@
                             </div>
                         </div>
 
-                        <div class="piano-menu__song">
+                        <div class="piano-menu__song active">
                             <div class="piano-menu__song-wrapper">
                                 <div class="piano-menu__song-info">
+                                    <div class="hamburger-btn song-hamburger"><span></span></div>
                                     <h4>Happy Birthday To You</h4>
                                     <div>
-                                        <button class="play-btn" id="play-btn">Play</button>
-                                        <button class="restart-btn" id="restart-btn">Restart</button>
-                                        <button class="autoplay-btn" id="autoplay-btn">Auto Play</button>
+                                        <div class="piano-menu__song-menu">
+                                            <span class="close-song-menu"></span>
+                                            <button class="play-btn" id="play-btn">Play</button>
+                                            <button class="restart-btn" id="restart-btn">Restart</button>
+                                            <button class="autoplay-btn" id="autoplay-btn">Auto Play</button>
+                                            
+                                        </div>
                                         <span class="close"></span>
                                     </div>
                                 </div>
